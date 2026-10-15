@@ -589,9 +589,7 @@
       padding: 18px;
     }
 
-    .quiz-q { margin-bottom: 14px; }
-    .quiz-q-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .quiz-option {
+            .quiz-option {
       background: #090e1a;
       border: 1px solid var(--border-color);
       border-radius: 6px;
@@ -629,7 +627,6 @@
           <button type="button" class="lens-btn right active" id="btnGlobalRight" onclick="setGlobalPerspective('RIGHT')">Right</button>
         </div>
 
-        <button type="button" class="btn-quick" onclick="openQuizModal()">🎯 Quiz</button>
         <button type="button" class="btn-quick primary" onclick="showLoungeTab()">💬 Lounge</button>
       </div>
     </div>
@@ -1832,36 +1829,7 @@
     </div>
   </main>
 
-  <!-- Quiz Modal -->
-  <div id="modalQuiz" class="modal-backdrop">
-    <div class="modal-box">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <h4 style="font-size: 15px; font-weight: 800; color: #fff;">Calibrate Your Lens</h4>
-        <button type="button" style="background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer;" onclick="closeQuizModal()">&times;</button>
-      </div>
-
-      <form id="quizFormElement" onsubmit="handleQuizSubmit(event)">
-        <div class="quiz-q">
-          <div class="quiz-q-title">1. Energy Strategy:</div>
-          <label class="quiz-option"><input type="radio" name="q1" value="RIGHT" required><span>Maximize domestic oil, gas, and nuclear for cheap baseload power.</span></label>
-          <label class="quiz-option"><input type="radio" name="q1" value="CENTER"><span>All-of-the-above: maintain gas reliability while upgrading grid wires.</span></label>
-          <label class="quiz-option"><input type="radio" name="q1" value="LEFT"><span>Aggressively phase out fossil fuels with clean energy subsidies.</span></label>
-        </div>
-
-        <div class="quiz-q">
-          <div class="quiz-q-title">2. Inflation and Spending:</div>
-          <label class="quiz-option"><input type="radio" name="q2" value="RIGHT" required><span>Cut federal deficit spending, deregulate, and lower corporate taxes.</span></label>
-          <label class="quiz-option"><input type="radio" name="q2" value="CENTER"><span>Maintain steady central bank monetary policy while clearing supply bottlenecks.</span></label>
-          <label class="quiz-option"><input type="radio" name="q2" value="LEFT"><span>Regulate corporate price markups and fund social safety net programs.</span></label>
-        </div>
-
-        <div style="margin-top: 14px; display: flex; justify-content: flex-end; gap: 6px;">
-          <button type="button" class="btn-quick" onclick="closeQuizModal()">Cancel</button>
-          <button type="submit" class="btn-quick primary">Save Lens</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  
 
   <script>
     var currentGlobalPerspective = "RIGHT";
