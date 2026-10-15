@@ -1,5 +1,101 @@
 [
   {
+    "id": "story-1792107769-0",
+    "category": "Politics",
+    "title": "Trump lashes out at Republicans as Ken Paxton struggles in Texas",
+    "source": "Politico National \u2022 Just now",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+    "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
+    "credit": "\ud83d\udcf8 White House Photo Archive",
+    "neutral_summary": "Trump lashes out at Republicans as Ken Paxton struggles in Texas. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Advocates Demand Accountability and Ethics in Wake of Trump lashes out at Republicans as Ken Paxton st...",
+        "why_it_matters": [
+          "Raises urgent questions regarding public accountability, institutional integrity, and citizen protections.",
+          "Demands strict oversight to prevent entrenched leadership from sidelining public transparency.",
+          "Highlights the necessity of defending statutory standards, ethical compliance, and consumer rights."
+        ],
+        "talking_points": [
+          "Public accountability must take precedence over political convenience.",
+          "We need transparent rules that protect everyday working families and ethical standards."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Stakeholders Weigh Institutional Impact of Trump lashes out at Republicans as Ken Paxton st...",
+        "why_it_matters": [
+          "Reflects the ongoing necessity of balancing compliance with operational and political realities.",
+          "Highlights the practical trade-offs required to maintain institutional continuity and stability.",
+          "Requires pragmatic collaboration among decision-makers to prevent disruptive impasses."
+        ],
+        "talking_points": [
+          "Pragmatic governance requires balancing stability, compliance, and institutional reality.",
+          "Divided opinions require sensible middle-ground solutions over ideological posturing."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Standards in Trump lashes out at Republicans as Ken Paxton st...",
+        "why_it_matters": [
+          "Highlights the ongoing risks of bureaucratic overreach, credentialism, and administrative mismanagement.",
+          "Emphasizes the vital necessity of merit, individual accountability, and constitutional limits on agency power.",
+          "Calls for institutional reform, regulatory restraint, and protection of private enterprise."
+        ],
+        "talking_points": [
+          "Accountability and transparent standards solve problems faster than top-down bureaucratic excuses.",
+          "Protecting constitutional checks, merit, and fiscal discipline must remain the priority."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792107770-1",
+    "category": "Energy & Infrastructure",
+    "title": "Hit a midlife wall? This test identifies your strengths and what matters to you",
+    "source": "NPR News \u2022 Just now",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+    "caption": "The White House North Portico in Washington, D.C.",
+    "credit": "\ud83d\udcf8 White House Archive",
+    "neutral_summary": "Hit a midlife wall? This test identifies your strengths and what matters to you. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Advocates Demand Accountability and Ethics in Wake of Hit a midlife wall? This test identifies your st...",
+        "why_it_matters": [
+          "Raises urgent questions regarding public accountability, institutional integrity, and citizen protections.",
+          "Demands strict oversight to prevent entrenched leadership from sidelining public transparency.",
+          "Highlights the necessity of defending statutory standards, ethical compliance, and consumer rights."
+        ],
+        "talking_points": [
+          "Public accountability must take precedence over political convenience.",
+          "We need transparent rules that protect everyday working families and ethical standards."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Stakeholders Weigh Institutional Impact of Hit a midlife wall? This test identifies your st...",
+        "why_it_matters": [
+          "Reflects the ongoing necessity of balancing compliance with operational and political realities.",
+          "Highlights the practical trade-offs required to maintain institutional continuity and stability.",
+          "Requires pragmatic collaboration among decision-makers to prevent disruptive impasses."
+        ],
+        "talking_points": [
+          "Pragmatic governance requires balancing stability, compliance, and institutional reality.",
+          "Divided opinions require sensible middle-ground solutions over ideological posturing."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Standards in Hit a midlife wall? This test identifies your st...",
+        "why_it_matters": [
+          "Highlights the ongoing risks of bureaucratic overreach, credentialism, and administrative mismanagement.",
+          "Emphasizes the vital necessity of merit, individual accountability, and constitutional limits on agency power.",
+          "Calls for institutional reform, regulatory restraint, and protection of private enterprise."
+        ],
+        "talking_points": [
+          "Accountability and transparent standards solve problems faster than top-down bureaucratic excuses.",
+          "Protecting constitutional checks, merit, and fiscal discipline must remain the priority."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792098679-0",
     "category": "Politics",
     "title": "The new White House press secretary failed the bar exam. She shared posts calling her an attorney anyway - CNN",
@@ -100,9 +196,9 @@
     "category": "Sports",
     "title": "Guardians trail Rays 2-1 in Game 3 of ALCS - FOX 8 News",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Major League baseball stadium field under lights.",
-    "credit": "\ud83d\udcf8 Sports Media Wire",
+    "image_url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional basketball arena hardwood court.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
     "neutral_summary": "Guardians trail Rays 2-1 in Game 3 of ALCS - FOX 8 News. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -244,9 +340,9 @@
     "category": "Politics",
     "title": "Mitch Daniels rebukes JD Vance over free-market retreat",
     "source": "Politico National \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
-    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/James_S._Brady_Press_Briefing_Room.jpg",
+    "caption": "James S. Brady Press Briefing Room at the White House.",
+    "credit": "\ud83d\udcf8 White House Photo",
     "neutral_summary": "Mitch Daniels rebukes JD Vance over free-market retreat. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -484,9 +580,9 @@
     "category": "Tech & Free Speech",
     "title": "Microsoft\u2019s new Photos app combines your PC, OneDrive, and iCloud galleries - The Verge",
     "source": "Google News Tech \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80",
-    "caption": "National press briefing room and broadcast journalism desk.",
-    "credit": "\ud83d\udcf8 Wire Media Archive",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+    "caption": "The White House North Portico in Washington, D.C.",
+    "credit": "\ud83d\udcf8 White House Archive",
     "neutral_summary": "Microsoft\u2019s new Photos app combines your PC, OneDrive, and iCloud galleries - The Verge. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -676,9 +772,9 @@
     "category": "Economy & Inflation",
     "title": "Social Security cost-of-living increase sparks debate over looming funding shortfall - Fox Business",
     "source": "Google News Business \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg",
-    "caption": "Federal Reserve Board Building in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Federal Reserve Pool",
+    "image_url": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Commercial banking currency reserves and vault operations.",
+    "credit": "\ud83d\udcf8 Treasury Photo",
     "neutral_summary": "Social Security cost-of-living increase sparks debate over looming funding shortfall - Fox Business. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
     "perspectives": {
       "LEFT": {
@@ -772,9 +868,9 @@
     "category": "Sports",
     "title": "Eagles QB Jalen Hurts ruled out vs. Panthers with blood clot in calf - ESPN",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Collegiate football stadium under stadium lights during conference matchup.",
-    "credit": "\ud83d\udcf8 NCAA Photo Archive",
+    "image_url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional championship fairway and clubhouse green.",
+    "credit": "\ud83d\udcf8 PGA Tour Media Archive",
     "neutral_summary": "Eagles QB Jalen Hurts ruled out vs. Panthers with blood clot in calf - ESPN. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
     "perspectives": {
       "LEFT": {
@@ -916,9 +1012,9 @@
     "category": "Tech & Free Speech",
     "title": "Microsoft says Windows 11 is now \u2018more responsive\u2019 and runs better on 8GB of RAM - The Verge",
     "source": "Google News Tech \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
-    "caption": "United States Capitol building in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Architect of the Capitol",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+    "caption": "The White House North Portico in Washington, D.C.",
+    "credit": "\ud83d\udcf8 White House Archive",
     "neutral_summary": "Microsoft says Windows 11 is now \u2018more responsive\u2019 and runs better on 8GB of RAM - The Verge. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
     "perspectives": {
       "LEFT": {
@@ -1012,9 +1108,9 @@
     "category": "Politics",
     "title": "\u2018I think Alaska\u2019s turning blue\u2019: Republicans fret Sullivan\u2019s path to reelection",
     "source": "Politico National \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/US_Capitol_Rotunda_inside.jpg",
-    "caption": "The Great Rotunda inside the United States Capitol.",
-    "credit": "\ud83d\udcf8 Library of Congress",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+    "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
+    "credit": "\ud83d\udcf8 Architect of the Capitol",
     "neutral_summary": "\u2018I think Alaska\u2019s turning blue\u2019: Republicans fret Sullivan\u2019s path to reelection. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
     "perspectives": {
       "LEFT": {
@@ -1091,102 +1187,6 @@
       },
       "RIGHT": {
         "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Overreach and Costs in Fort Hood survivors praise Trump for scrapping Has...",
-        "why_it_matters": [
-          "Highlights the risks of regulatory overreach, excessive bureaucratic intervention, and federal cost burdens.",
-          "Emphasizes the vital importance of market competition, private enterprise freedom, and individual responsibility.",
-          "Calls for fiscal restraint, constitutional limits on administrative power, and protection of state authority."
-        ],
-        "talking_points": [
-          "Free enterprise and transparent competition solve problems faster than top-down federal mandates.",
-          "Protecting constitutional checks, fiscal discipline, and consumer freedom must remain the priority."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792094282-11",
-    "category": "Politics",
-    "title": "Trump links Michigan Senate candidate Abdul El-Sayed to Muslim Brotherhood: 'He's a con man'",
-    "source": "Fox News Politics \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
-    "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
-    "credit": "\ud83d\udcf8 White House Photo Archive",
-    "neutral_summary": "Trump links Michigan Senate candidate Abdul El-Sayed to Muslim Brotherhood: 'He's a con man'. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Advocates Urge Accountability and Protections in Wake of Trump links Michigan Senate candidate Abdul El-Say...",
-        "why_it_matters": [
-          "Raises vital questions regarding public interest, regulatory accountability, and working-class equity.",
-          "Demands robust oversight to ensure corporate conglomerates and institutional leaders protect public transparency.",
-          "Underscores the necessity of federal protections, fair labor standards, and community safety nets."
-        ],
-        "talking_points": [
-          "Public accountability must take precedence over corporate convenience.",
-          "We need transparent rules that protect everyday working families and community standards."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Stakeholders Weigh Policy Trade-Offs Surrounding Trump links Michigan Senate candidate Abdul El-Say...",
-        "why_it_matters": [
-          "Reflects the ongoing necessity of balancing regulatory standards with commercial and operational reality.",
-          "Highlights the practical trade-offs required to maintain institutional stability and market confidence.",
-          "Requires pragmatic collaboration between policymakers and stakeholders to avoid costly disruptions."
-        ],
-        "talking_points": [
-          "Pragmatic governance requires balancing stability, compliance, and economic feasibility.",
-          "Divided opinions require sensible middle-ground solutions over ideological extremes."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Overreach and Costs in Trump links Michigan Senate candidate Abdul El-Say...",
-        "why_it_matters": [
-          "Highlights the risks of regulatory overreach, excessive bureaucratic intervention, and federal cost burdens.",
-          "Emphasizes the vital importance of market competition, private enterprise freedom, and individual responsibility.",
-          "Calls for fiscal restraint, constitutional limits on administrative power, and protection of state authority."
-        ],
-        "talking_points": [
-          "Free enterprise and transparent competition solve problems faster than top-down federal mandates.",
-          "Protecting constitutional checks, fiscal discipline, and consumer freedom must remain the priority."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792094284-12",
-    "category": "Energy & Infrastructure",
-    "title": "U.S. historic preservation law faces the most serious threat in its 60-year history",
-    "source": "NPR News \u2022 Just now",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
-    "caption": "The White House North Portico in Washington, D.C.",
-    "credit": "\ud83d\udcf8 White House Archive",
-    "neutral_summary": "U.S. historic preservation law faces the most serious threat in its 60-year history. Federal and state authorities, industry analysts, and stakeholders continue reviewing legal, regulatory, and economic implications.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Advocates Urge Accountability and Protections in Wake of U.S. historic preservation law faces the most seri...",
-        "why_it_matters": [
-          "Raises vital questions regarding public interest, regulatory accountability, and working-class equity.",
-          "Demands robust oversight to ensure corporate conglomerates and institutional leaders protect public transparency.",
-          "Underscores the necessity of federal protections, fair labor standards, and community safety nets."
-        ],
-        "talking_points": [
-          "Public accountability must take precedence over corporate convenience.",
-          "We need transparent rules that protect everyday working families and community standards."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Stakeholders Weigh Policy Trade-Offs Surrounding U.S. historic preservation law faces the most seri...",
-        "why_it_matters": [
-          "Reflects the ongoing necessity of balancing regulatory standards with commercial and operational reality.",
-          "Highlights the practical trade-offs required to maintain institutional stability and market confidence.",
-          "Requires pragmatic collaboration between policymakers and stakeholders to avoid costly disruptions."
-        ],
-        "talking_points": [
-          "Pragmatic governance requires balancing stability, compliance, and economic feasibility.",
-          "Divided opinions require sensible middle-ground solutions over ideological extremes."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Overreach and Costs in U.S. historic preservation law faces the most seri...",
         "why_it_matters": [
           "Highlights the risks of regulatory overreach, excessive bureaucratic intervention, and federal cost burdens.",
           "Emphasizes the vital importance of market competition, private enterprise freedom, and individual responsibility.",
