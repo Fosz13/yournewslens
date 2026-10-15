@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-LensWire Automated 15-Minute News Ingestion & Synthesis Engine
+Your News Lens Automated 15-Minute News Ingestion & Synthesis Engine
 Fetches wire stories from RSS feeds, extracts the factual core, and generates
 three ideological lenses (Left, Center, Right) with Why It Matters and Talking Points.
 Designed to run automatically every 15 minutes via GitHub Actions.
@@ -114,7 +114,7 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
     try:
         req = urllib.request.Request(
             feed_info["url"],
-            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) LensWire Ingestion Bot 1.0"}
+            headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Your News Lens Ingestion Bot 1.0"}
         )
         with urllib.request.urlopen(req, timeout=12) as resp:
             content = resp.read()
@@ -151,7 +151,7 @@ def call_ai_synthesizer(title: str, context: str, category: str) -> Optional[Dic
     gemini_key = os.environ.get("GEMINI_API_KEY")
     anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
     
-    prompt = f"""You are the editorial synthesis engine for LensWire, an objective, multi-perspective news platform.
+    prompt = f"""You are the editorial synthesis engine for Your News Lens, an objective, multi-perspective news platform.
 Analyze this news item:
 Category: {category}
 Title: {title}
@@ -200,22 +200,24 @@ Return strictly a valid JSON object (no markdown, no backticks, just raw JSON) w
   }}
 }}"""
 
-    # 1. Try Google Gemini API if key is present
+    # 1. Try Google Gemini API with fallback models
     if gemini_key:
-        try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_key}"
-            payload = json.dumps({
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {"response_mime_type": "application/json"}
-            }).encode("utf-8")
-            
-            req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-                text = data["candidates"][0]["content"]["parts"][0]["text"]
-                return json.loads(text)
-        except Exception as e:
-            print(f"Gemini API error: {e}")
+        for model_name in ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-2.5-flash"]:
+            try:
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model_name}:generateContent?key={gemini_key}"
+                payload = json.dumps({
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {"response_mime_type": "application/json"}
+                }).encode("utf-8")
+                
+                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+                with urllib.request.urlopen(req, timeout=25) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    text = data["candidates"][0]["content"]["parts"][0]["text"]
+                    return json.loads(text)
+            except Exception as e:
+                print(f"Gemini API error with {model_name}: {e}")
+                continue
 
     # 2. Try Anthropic Claude API if key is present
     if anthropic_key:
@@ -249,7 +251,7 @@ Return strictly a valid JSON object (no markdown, no backticks, just raw JSON) w
 
 def run_pipeline():
     """Main execution loop run every 15 minutes."""
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting LensWire 15-Minute Pipeline...")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting Your News Lens 15-Minute Pipeline...")
     
     # Load existing stories
     existing_stories = []

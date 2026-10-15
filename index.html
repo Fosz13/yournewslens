@@ -2017,6 +2017,133 @@
       closeQuizModal();
       setGlobalPerspective(chosen);
     }
-  </script>
+  
+    function renderStoriesFeed(stories) {
+      var container = document.getElementById('storiesFeedView');
+      if (!container || !stories || !stories.length) return;
+
+      var html = '';
+      for (var s = 0; s < stories.length; s++) {
+        var story = stories[s];
+        var sId = story.id || ('story-dyn-' + s);
+        var cat = story.category || 'General News';
+        var isSpecialPol = cat.toLowerCase().indexOf('politics') !== -1;
+        var isSpecialSport = cat.toLowerCase().indexOf('sports') !== -1;
+        var catTagClass = 'category-tag' + (isSpecialPol ? ' special-pol-tag' : isSpecialSport ? ' special-tag' : '');
+        var catTagStyle = isSpecialPol ? 'style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-color:rgba(99,102,241,0.3);"' : '';
+
+        html += '<article class="compact-card" data-category="' + cat + '" id="' + sId + '">';
+        html += '  <div class="hero-image-wrap">';
+        html += '    <img src="' + (story.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80') + '" alt="' + (story.caption || story.title) + '" class="hero-photo" loading="lazy" />';
+        html += '    <div class="photo-caption-bar">';
+        html += '      <span class="caption-text">' + (story.caption || story.title) + '</span>';
+        html += '      <span class="credit-tag">' + (story.credit || '📸 News Wire') + '</span>';
+        html += '    </div>';
+        html += '  </div>';
+
+        html += '  <div class="card-body">';
+        html += '    <div class="meta-row">';
+        html += '      <span class="' + catTagClass + '" ' + catTagStyle + '>' + cat + '</span>';
+        html += '      <span class="source-tag">' + (story.source || 'Associated Press') + '</span>';
+        html += '    </div>';
+
+        html += '    <h3 class="story-title">' + story.title + '</h3>';
+
+        html += '    <div class="neutral-box">';
+        html += '      <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>';
+        html += '      <div class="neutral-desc">' + (story.neutral_summary || '') + '</div>';
+        html += '    </div>';
+
+        var perspectives = story.perspectives || {};
+        var lensList = [
+          { key: 'RIGHT', name: 'Conservative Lens', icon: '🔴', chipClass: 'red', bulletClass: 'red' },
+          { key: 'CENTER', name: 'Centrist / Balanced', icon: '🟢', chipClass: 'emerald', bulletClass: 'emerald' },
+          { key: 'LEFT', name: 'Progressive Lens', icon: '🔵', chipClass: 'blue', bulletClass: 'blue' }
+        ];
+
+        for (var l = 0; l < lensList.length; l++) {
+          var lens = lensList[l];
+          var pData = perspectives[lens.key] || {};
+          var isVisible = (lens.key === currentGlobalPerspective);
+          var displayStyle = isVisible ? '' : 'style="display: none;"';
+
+          html += '    <div id="' + sId + '-view-' + lens.key + '" class="perspective-view-box" ' + displayStyle + '>';
+          html += '      <div class="lens-status-row">';
+          html += '        <div class="lens-chip ' + lens.chipClass + '">';
+          html += '          <span>' + lens.icon + '</span>';
+          html += '          <span>' + lens.name + '</span>';
+          html += '        </div>';
+
+          html += '        <div class="card-toggle-group">';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'LEFT' ? 'active left' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'LEFT')">Left</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'CENTER' ? 'active center' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'CENTER')">Balanced</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'RIGHT' ? 'active right' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'RIGHT')">Right</button>';
+          html += '        </div>';
+          html += '      </div>';
+
+          html += '      <div class="framing-headline">';
+          html += '        <span>📌</span>';
+          html += '        <span>' + (pData.headline_framing || 'Perspective Overview') + '</span>';
+          html += '      </div>';
+
+          html += '      <div class="label-heading">Why It Matters For Your Stance:</div>';
+          html += '      <ul class="compact-bullets ' + lens.bulletClass + '">';
+          var bullets = pData.why_it_matters || [];
+          for (var b = 0; b < bullets.length; b++) {
+            html += '        <li>' + bullets[b] + '</li>';
+          }
+          html += '      </ul>';
+
+          var talkingPoints = pData.talking_points || [];
+          var copyPayload = talkingPoints.map(function(t) { return '• ' + t; }).join('\n');
+          html += '      <div class="talking-points-panel">';
+          html += '        <div class="panel-header">';
+          html += '          <span class="panel-title">💬 Key Talking Points & Arguments</span>';
+          html += '          <button type="button" class="btn-copy-chip" onclick="copyDirectText(this, '' + copyPayload.replace(/'/g, "\'") + '')">📋 Copy</button>';
+          html += '        </div>';
+          for (var tp = 0; tp < talkingPoints.length; tp++) {
+            html += '        <div class="quote-row">"' + talkingPoints[tp] + '"</div>';
+          }
+          html += '      </div>';
+          html += '    </div>';
+        }
+
+        html += '    <div class="card-bottom-actions">';
+        html += '      <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">';
+        html += '        <span>🤍</span>';
+        html += '        <span>Save</span>';
+        html += '      </button>';
+        html += '      <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">';
+        html += '        <span>👥</span> Discuss';
+        html += '      </button>';
+        html += '    </div>';
+        html += '  </div>';
+        html += '</article>';
+      }
+
+      container.innerHTML = html;
+      // Re-apply currently selected perspective to newly rendered cards
+      setGlobalPerspective(currentGlobalPerspective);
+    }
+
+    function loadLiveStories() {
+      fetch('data/stories.json?t=' + Date.now())
+        .then(function(res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(stories) {
+          if (Array.isArray(stories) && stories.length > 0) {
+            console.log('Successfully hydrated ' + stories.length + ' stories from data/stories.json');
+            renderStoriesFeed(stories);
+          }
+        })
+        .catch(function(err) {
+          console.log('Live feed not accessible or using static fallback:', err);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadLiveStories);
+</script>
 </body>
 </html>
