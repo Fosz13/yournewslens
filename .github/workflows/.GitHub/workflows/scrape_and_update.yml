@@ -1,1 +1,55 @@
+name: Ingest Wire Feeds & Update Stories
 
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Allows manual trigger testing
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install google-genai
+
+      - name: Run Feed Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python engine.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'LensWire Bot'
+          git config --global user.email 'bot@lenswire.com'
+          git add data/stories.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(feed): update wire synthesis [skip ci]" && git push)
+
+      - name: Deploy to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy-pages:
+    needs: build-and-scrape
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
