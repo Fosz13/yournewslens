@@ -1,14 +1,67 @@
 [
   {
+    "id": "story-1792163705-19",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates - CNBC",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792162380,
+    "source": "Google News Business \u2022 21 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Nasdaq_Tower_May_2026.jpg/330px-Nasdaq_Tower_May_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Nasdaq \u2014 American stock exchange.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Nasdaq",
+    "neutral_summary": "Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates. Automotive industry analysts, engineering executives, and investors are evaluating technical battery specifications and scalable assembly-line production milestones.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity",
+        "why_it_matters": [
+          "Highlights how automotive capital is channeled toward six-figure luxury sports vehicles rather than affordable, mass-market electric transit for working families.",
+          "Demands strict independent regulatory oversight on high-speed propulsion, battery safety, and advanced autonomous driver-assist systems.",
+          "Advocates for union protections, safe factory conditions, and fair wages across domestic electric vehicle manufacturing plants."
+        ],
+        "talking_points": [
+          "The electric transition should focus on affordable transit and clean vehicles for everyday families, not luxury toys for the wealthy.",
+          "Automakers must be held to rigorous public road safety and labor standards, regardless of corporate brand power."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Engineering Innovation Meets Commercial Delivery: Evaluating Production Feasibility for Dow jumps 200 points, Nasdaq slides as...",
+        "why_it_matters": [
+          "Assesses whether breakthrough battery density and powertrain engineering can be translated into reliable assembly-line manufacturing.",
+          "Balances consumer excitement and brand halo effects against past delivery delays and intensifying legacy automaker EV competition.",
+          "Monitors regulatory homologation and supply chain readiness ahead of commercial customer delivery windows."
+        ],
+        "talking_points": [
+          "Breakthrough vehicle concepts generate industry buzz, but consistent manufacturing execution determines long-term success.",
+          "The automotive sector thrives when ambitious engineering benchmarks push the boundaries of electric propulsion."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "American Innovation and Free Enterprise: Private Engineering Disruption Drives Global EV Leadership",
+        "why_it_matters": [
+          "Celebrates American private enterprise and engineering audacity that disrupted legacy global automotive cartels without relying on coercive government bans.",
+          "Proves that consumer enthusiasm, private capital investment, and technological competition drive green adoption far more effectively than Washington subsidies.",
+          "Strengthens domestic high-technology manufacturing and advanced battery intellectual property within the United States."
+        ],
+        "talking_points": [
+          "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
+          "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161791-21",
     "category": "Economy & Inflation",
     "title": "Dow jumps 150 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates - CNBC",
     "source_name": "Google News Business",
     "pub_timestamp": 1792160400,
-    "source": "Google News Business \u2022 23 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Nasdaq_Tower_May_2026.jpg/330px-Nasdaq_Tower_May_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Nasdaq \u2014 American stock exchange.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Nasdaq",
+    "source": "Google News Business \u2022 54 mins ago",
+    "image_url": "https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Financial markets rally with upward trending index charts and stock market trading gains.",
+    "credit": "\ud83d\udcf8 Wall Street Financial Wire",
     "neutral_summary": "Dow jumps 150 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -55,10 +108,10 @@
     "title": "Israeli settlers attack Palestinians and Washington Post photographer in West Bank - The Washington Post",
     "source_name": "Google News World",
     "pub_timestamp": 1792160039,
-    "source": "Google News World \u2022 28 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/West_Bank_in_Palestine_%28%2Bclaimed%29.svg/330px-West_Bank_in_Palestine_%28%2Bclaimed%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "West Bank \u2014 Palestinian territory occupied by Israel.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / West Bank",
+    "source": "Google News World \u2022 1 hour ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/en/5/57/The-Washington-Post-10-June-2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "caption": "The Washington Post \u2014 American daily newspaper.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / The Washington Post",
     "neutral_summary": "Israeli settlers attack Palestinians and Washington Post photographer in West Bank. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -105,10 +158,10 @@
     "title": "CoreWeave bond rout tests market's math on AI buildout - Reuters",
     "source_name": "Google News Business",
     "pub_timestamp": 1792159780,
-    "source": "Google News Business \u2022 33 mins ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "source": "Google News Business \u2022 1 hour ago",
+    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+    "caption": "High-density enterprise cloud data center and computational server infrastructure.",
+    "credit": "\ud83d\udcf8 Tech Systems Wire",
     "neutral_summary": "CoreWeave bond rout tests market's math on AI buildout. Institutional underwriters and venture analysts are calibrating enterprise software multiples and operational burn rates ahead of prospective capital market listings.",
     "perspectives": {
       "LEFT": {
@@ -155,10 +208,10 @@
     "title": "Bystander 'heroically intervened' after three children and teacher killed in US school shooting in Bend, Oregon - BBC",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792159772,
-    "source": "Google News Top Headlines \u2022 32 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Oregon.svg/330px-Flag_of_Oregon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Oregon \u2014 U.S. state.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Oregon",
+    "source": "Google News Top Headlines \u2022 1 hour ago",
+    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Municipal first responders and law enforcement security perimeter operations.",
+    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
     "neutral_summary": "Bystander 'heroically intervened' after three children and teacher killed in US school shooting in Bend, Oregon. Federal, state, and local law enforcement authorities secured the campus, launched comprehensive investigations into the shooter's background and weapon acquisition, and commended the armed bystander who intervened.",
     "perspectives": {
       "LEFT": {
@@ -195,6 +248,165 @@
         "talking_points": [
           "The only thing that stops a bad guy with a gun is a good guy with a gun; that brave armed citizen saved countless lives.",
           "Gun control disarms the victims, not the criminals; protecting our schools requires armed deterrence and unwavering support for self-defense."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163688-11",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "China invites Katie Zacharia to visit more often after she said it lacks \u2018proper toilets\u2019 - NBC News",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792159447,
+    "source": "Google News Politics \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg/330px-Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Katie Zacharia \u2014 American political spokesperson.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Katie Zacharia",
+    "neutral_summary": "China invites Katie Zacharia to visit more often after she said it lacks \u2018proper toilets\u2019. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding China invites Katie Zacharia to visit more of...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding china invites katie zacharia to visit more often after she said it lacks \u2018proper toilets\u2019.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in China invites Katie Zacharia to visit more...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage china invites katie zacharia to visit more often after she said it lacks \u2018proper toilets\u2019.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in China invites Katie Zacharia to visit mo...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding china invites katie zacharia to visit more often after she said it lacks \u2018proper toilets\u2019.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163676-6",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "White House Reportedly Ordered Limits On Ukraine's Starshield Use\u2014As Trump Blasts Zelenskyy - Forbes",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792158995,
+    "source": "Google News U.S. \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Delphinapterus_leucas_2.jpg/330px-Delphinapterus_leucas_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "White \u2014 Lightest color.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / White",
+    "neutral_summary": "White House Reportedly Ordered Limits On Ukraine's Starshield Use\u2014As Trump Blasts Zelenskyy. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "why_it_matters": [
+          "Warns of the acute danger when private billionaire executives hold unilateral veto power over sovereign battlefield communications and democratic allies.",
+          "Calls for direct international oversight and multilateral defense contracts to guarantee uninterrupted satellite communication for nations resisting autocratic aggression.",
+          "Demands steadfast solidarity with Ukraine, emphasizing that telecommunications restrictions directly imperil civilian lives and frontline defenses."
+        ],
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "why_it_matters": [
+          "Assesses the contractual and legal boundaries governing civilian commercial satellite technology deployed in active international combat zones.",
+          "Weighs the risk of service disruptions against national defense demands for resilient, redundant orbital communication relays.",
+          "Monitors tactical frontline adjustments as Ukrainian defense forces integrate alternative allied military satellite networks."
+        ],
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "why_it_matters": [
+          "Recognizes that American private aerospace ingenuity provided Ukraine with vital asymmetric advantages against a brutal adversary.",
+          "Demands clear, decisive strategic leadership from the Pentagon to procure dedicated military satellite constellations rather than relying on commercial good will.",
+          "Emphasizes that weakness and service ambiguity only embolden hostile adversaries like Russia; strong, uninterrupted communication is vital to victory."
+        ],
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163703-18",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Warsh Vows to Tame Inflation as A.I. Delivers \u2018Shock\u2019 to Economy - The New York Times",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792157708,
+    "source": "Google News Business \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Folio_of_Arabe_330_%28b%29.jpg/330px-Folio_of_Arabe_330_%28b%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Warsh \u2014 Muslim theologian of Quran (728\u2013812).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Warsh",
+    "neutral_summary": "Warsh Vows to Tame Inflation as A.I. Delivers \u2018Shock\u2019 to Economy. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Warsh Vows to Tame Inflation as A.I. Delivers...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding warsh vows to tame inflation as a.i. delivers \u2018shock\u2019 to economy.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Warsh Vows to Tame Inflation as A.I. Deliv...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage warsh vows to tame inflation as a.i. delivers \u2018shock\u2019 to economy.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Warsh Vows to Tame Inflation as A.I. Del...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding warsh vows to tame inflation as a.i. delivers \u2018shock\u2019 to economy.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
         ]
       }
     }
@@ -255,10 +467,10 @@
     "title": "Democrats call for gun control after Oregon school shooter reportedly uses shotgun purchased by his mother",
     "source_name": "Fox News Politics",
     "pub_timestamp": 1792156326,
-    "source": "Fox News Politics \u2022 1 hour ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "source": "Fox News Politics \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Flag_of_Oregon.svg/330px-Flag_of_Oregon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Oregon \u2014 U.S. state.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Oregon",
     "neutral_summary": "Democrats call for gun control after Oregon school shooter reportedly uses shotgun purchased by his mother. Federal, state, and local law enforcement authorities secured the campus, launched comprehensive investigations into the shooter's background and weapon acquisition, and commended the armed bystander who intervened.",
     "perspectives": {
       "LEFT": {
@@ -305,7 +517,7 @@
     "title": "Tens of thousands in SoCal without power as Santa Ana winds force safety shutoffs - ABC7 Los Angeles",
     "source_name": "Google News U.S.",
     "pub_timestamp": 1792155660,
-    "source": "Google News U.S. \u2022 1 hour ago",
+    "source": "Google News U.S. \u2022 2 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Hermosa_Beach_Pier_I_%28262176665%29_%28cropped%29.jpeg/330px-Hermosa_Beach_Pier_I_%28262176665%29_%28cropped%29.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Southern California \u2014 Geographic and cultural region of the US.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Southern California",
@@ -355,7 +567,7 @@
     "title": "Apple iPhone Duo preorders sell out, deliveries extend to late January - Yahoo Finance",
     "source_name": "Google News Tech",
     "pub_timestamp": 1792155626,
-    "source": "Google News Tech \u2022 1 hour ago",
+    "source": "Google News Tech \u2022 2 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Pink_lady_and_cross_section.jpg/330px-Pink_lady_and_cross_section.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Apple \u2014 Edible fruit.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Apple",
@@ -400,15 +612,121 @@
     }
   },
   {
+    "id": "story-1792163692-13",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Albania PM refuses to resign as student protesters attack government buildings - Financial Times",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792155475,
+    "source": "Google News Politics \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Flag_of_Albania.svg/330px-Flag_of_Albania.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Albania \u2014 Country in Southeastern Europe.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Albania",
+    "neutral_summary": "Albania PM refuses to resign as student protesters attack government buildings. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Albania PM refuses to resign as student prote...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding albania pm refuses to resign as student protesters attack government buildings.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Albania PM refuses to resign as student pr...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage albania pm refuses to resign as student protesters attack government buildings.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Albania PM refuses to resign as student ...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding albania pm refuses to resign as student protesters attack government buildings.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163700-17",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Why CoreWeave, Nebius, and other neocloud stocks are being pounded: Goldman Sachs explains - Yahoo Finance",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792155450,
+    "source": "Google News Business \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Goldman_Sachs_%2855312935052%29.jpg/330px-Goldman_Sachs_%2855312935052%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Goldman Sachs \u2014 American investment bank.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Goldman Sachs",
+    "neutral_summary": "Why CoreWeave, Nebius, and other neocloud stocks are being pounded: Goldman Sachs explains. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Why CoreWeave, Nebius, and other neocloud sto...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding why coreweave, nebius, and other neocloud stocks are being pounded: goldman sachs explains.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Why CoreWeave, Nebius, and other neocloud ...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage why coreweave, nebius, and other neocloud stocks are being pounded: goldman sachs explains.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Why CoreWeave, Nebius, and other neoclou...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding why coreweave, nebius, and other neocloud stocks are being pounded: goldman sachs explains.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161766-10",
     "category": "Politics",
     "title": "First images released of Pope Leo celebrating Mass at hospital after cancer surgery - AP News",
     "source_name": "Google News World",
     "pub_timestamp": 1792155000,
-    "source": "Google News World \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Poids_fonte_2_kg_03_%28cropped%29.jpg/330px-Poids_fonte_2_kg_03_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Mass \u2014 Amount of matter present in an object.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Mass",
+    "source": "Google News World \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Pope_Leo_XIV_3_%283x4_cropped%29.png/330px-Pope_Leo_XIV_3_%283x4_cropped%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Pope \u2014 Head of the Catholic Church.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Pope",
     "neutral_summary": "First images released of Pope Leo celebrating Mass at hospital after cancer surgery. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -456,9 +774,9 @@
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792153057,
     "source": "Google News Top Headlines \u2022 2 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg/330px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Donald Trump \u2014 President of the United States (2017\u20132021; since 2025).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Donald Trump",
+    "image_url": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Orbital satellite communications array and high-frequency defense telecommunications relay.",
+    "credit": "\ud83d\udcf8 Aerospace Defense Media",
     "neutral_summary": "Trump says Ukraine resuming strikes on Russian oil sites is a \u2018disgrace\u2019. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
     "perspectives": {
       "LEFT": {
@@ -500,15 +818,68 @@
     }
   },
   {
+    "id": "story-1792163666-2",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "How cold will winter be? Your official winter weather forecast is here - USA Today",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792152780,
+    "source": "Google News Top Headlines \u2022 3 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Modern medical research and public healthcare facility.",
+    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "neutral_summary": "How cold will winter be? Your official winter weather forecast is here. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding How cold will winter be? Your official winter...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding how cold will winter be? your official winter weather forecast is here.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in How cold will winter be? Your official win...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage how cold will winter be? your official winter weather forecast is here.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in How cold will winter be? Your official w...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding how cold will winter be? your official winter weather forecast is here.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161816-34",
     "category": "Tech & Free Speech",
     "title": "The Surface Laptop Ultra delivers on most of Microsoft\u2019s promises - Ars Technica",
     "source_name": "Google News Tech",
     "pub_timestamp": 1792152005,
-    "source": "Google News Tech \u2022 2 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Laptop_collage.jpg/330px-Laptop_collage.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Laptop \u2014 Personal computer for mobile use.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Laptop",
+    "source": "Google News Tech \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/330px-Red_Apple.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Surface \u2014 Outermost layer of a physical object.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Surface",
     "neutral_summary": "The Surface Laptop Ultra delivers on most of Microsoft\u2019s promises. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -539,6 +910,271 @@
         "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in The Surface Laptop Ultra delivers on mos...",
         "why_it_matters": [
           "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding the surface laptop ultra delivers on most of microsoft\u2019s promises.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163671-5",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Troy Jackson tells Susan Collins to \u2018shut up\u2019 during Maine Senate debate - The Hill",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792151580,
+    "source": "Google News U.S. \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Senator_Susan_Collins_2014_official_portrait_%281%29.jpg/330px-Senator_Susan_Collins_2014_official_portrait_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Susan Collins \u2014 American politician (born 1952).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Susan Collins",
+    "neutral_summary": "Troy Jackson tells Susan Collins to \u2018shut up\u2019 during Maine Senate debate. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Troy Jackson tells Susan Collins to \u2018shut up\u2019...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding troy jackson tells susan collins to \u2018shut up\u2019 during maine senate debate.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Troy Jackson tells Susan Collins to \u2018shut ...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage troy jackson tells susan collins to \u2018shut up\u2019 during maine senate debate.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Troy Jackson tells Susan Collins to \u2018shu...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding troy jackson tells susan collins to \u2018shut up\u2019 during maine senate debate.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163698-16",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Elon Musk reveals \u2018world\u2019s first flying car\u2019 at Tesla event - The Guardian",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792151580,
+    "source": "Google News Business \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Elon_Musk_-_54820081119_%28cropped%29.jpg/330px-Elon_Musk_-_54820081119_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Elon Musk \u2014 Businessman and entrepreneur (born 1971).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Elon Musk",
+    "neutral_summary": "Elon Musk reveals \u2018world\u2019s first flying car\u2019 at Tesla event. Automotive industry analysts, engineering executives, and investors are evaluating technical battery specifications and scalable assembly-line production milestones.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity",
+        "why_it_matters": [
+          "Highlights how automotive capital is channeled toward six-figure luxury sports vehicles rather than affordable, mass-market electric transit for working families.",
+          "Demands strict independent regulatory oversight on high-speed propulsion, battery safety, and advanced autonomous driver-assist systems.",
+          "Advocates for union protections, safe factory conditions, and fair wages across domestic electric vehicle manufacturing plants."
+        ],
+        "talking_points": [
+          "The electric transition should focus on affordable transit and clean vehicles for everyday families, not luxury toys for the wealthy.",
+          "Automakers must be held to rigorous public road safety and labor standards, regardless of corporate brand power."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Engineering Innovation Meets Commercial Delivery: Evaluating Production Feasibility for Elon Musk reveals \u2018world\u2019s first flyin...",
+        "why_it_matters": [
+          "Assesses whether breakthrough battery density and powertrain engineering can be translated into reliable assembly-line manufacturing.",
+          "Balances consumer excitement and brand halo effects against past delivery delays and intensifying legacy automaker EV competition.",
+          "Monitors regulatory homologation and supply chain readiness ahead of commercial customer delivery windows."
+        ],
+        "talking_points": [
+          "Breakthrough vehicle concepts generate industry buzz, but consistent manufacturing execution determines long-term success.",
+          "The automotive sector thrives when ambitious engineering benchmarks push the boundaries of electric propulsion."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "American Innovation and Free Enterprise: Private Engineering Disruption Drives Global EV Leadership",
+        "why_it_matters": [
+          "Celebrates American private enterprise and engineering audacity that disrupted legacy global automotive cartels without relying on coercive government bans.",
+          "Proves that consumer enthusiasm, private capital investment, and technological competition drive green adoption far more effectively than Washington subsidies.",
+          "Strengthens domestic high-technology manufacturing and advanced battery intellectual property within the United States."
+        ],
+        "talking_points": [
+          "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
+          "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163669-4",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Trump wants the midterms to be all about himself. Judging by the ads, Democrats are happy to oblige - AP News",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792150920,
+    "source": "Google News Top Headlines \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg/330px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Donald Trump \u2014 President of the United States (2017\u20132021; since 2025).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Donald Trump",
+    "neutral_summary": "Trump wants the midterms to be all about himself. Judging by the ads, Democrats are happy to oblige. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Trump wants the midterms to be all about hims...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding trump wants the midterms to be all about himself. judging by the ads, democrats are happy to oblige.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Trump wants the midterms to be all about h...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage trump wants the midterms to be all about himself. judging by the ads, democrats are happy to oblige.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Trump wants the midterms to be all about...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding trump wants the midterms to be all about himself. judging by the ads, democrats are happy to oblige.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163664-1",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Natalie Harp Knifes Ice Maiden and Sparks Trump \u2018Freakout\u2019 - The Daily Beast",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792150869,
+    "source": "Google News Top Headlines \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Harp.png/330px-Harp.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Harp \u2014 Plucked string instrument.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Harp",
+    "neutral_summary": "Natalie Harp Knifes Ice Maiden and Sparks Trump \u2018Freakout\u2019. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Natalie Harp Knifes Ice Maiden and Sparks Tru...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding natalie harp knifes ice maiden and sparks trump \u2018freakout\u2019.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Natalie Harp Knifes Ice Maiden and Sparks ...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage natalie harp knifes ice maiden and sparks trump \u2018freakout\u2019.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Natalie Harp Knifes Ice Maiden and Spark...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding natalie harp knifes ice maiden and sparks trump \u2018freakout\u2019.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163696-15",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Prime Minister Carney says US is trying to break Canada as Alberta votes on separation path - Anchorage Daily News",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792150630,
+    "source": "Google News Politics \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Mark_Carney_Argentina_v_Spain_19_July_2026-303_%283x4_close_up_cropped%29.jpg/330px-Mark_Carney_Argentina_v_Spain_19_July_2026-303_%283x4_close_up_cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Mark Carney \u2014 Prime Minister of Canada since 2025.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Mark Carney",
+    "neutral_summary": "Prime Minister Carney says US is trying to break Canada as Alberta votes on separation path. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Prime Minister Carney says US is trying to br...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding prime minister carney says us is trying to break canada as alberta votes on separation path.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Prime Minister Carney says US is trying to...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage prime minister carney says us is trying to break canada as alberta votes on separation path.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Prime Minister Carney says US is trying ...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding prime minister carney says us is trying to break canada as alberta votes on separation path.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -656,9 +1292,9 @@
     "source_name": "Google News World",
     "pub_timestamp": 1792150092,
     "source": "Google News World \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Financial market exchange trading floor and electronic index terminals.",
+    "credit": "\ud83d\udcf8 Financial Wire Pool",
     "neutral_summary": "Indian police detain \u2018cockroach\u2019 movement founder Dipke ahead of protest, video shows. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -689,6 +1325,112 @@
         "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Indian police detain \u2018cockroach\u2019 movemen...",
         "why_it_matters": [
           "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding indian police detain \u2018cockroach\u2019 movement founder dipke ahead of protest, video shows.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163686-10",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "What Life Is Like in Kyiv as Russia Tries to Make It Unlivable - The New York Times",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792149922,
+    "source": "Google News World \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Coral_reef..._South_end_of_my_area_%2814119221571%29.jpg/330px-Coral_reef..._South_end_of_my_area_%2814119221571%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Life \u2014 Matter with biological processes.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Life",
+    "neutral_summary": "What Life Is Like in Kyiv as Russia Tries to Make It Unlivable. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "why_it_matters": [
+          "Warns of the acute danger when private billionaire executives hold unilateral veto power over sovereign battlefield communications and democratic allies.",
+          "Calls for direct international oversight and multilateral defense contracts to guarantee uninterrupted satellite communication for nations resisting autocratic aggression.",
+          "Demands steadfast solidarity with Ukraine, emphasizing that telecommunications restrictions directly imperil civilian lives and frontline defenses."
+        ],
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "why_it_matters": [
+          "Assesses the contractual and legal boundaries governing civilian commercial satellite technology deployed in active international combat zones.",
+          "Weighs the risk of service disruptions against national defense demands for resilient, redundant orbital communication relays.",
+          "Monitors tactical frontline adjustments as Ukrainian defense forces integrate alternative allied military satellite networks."
+        ],
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "why_it_matters": [
+          "Recognizes that American private aerospace ingenuity provided Ukraine with vital asymmetric advantages against a brutal adversary.",
+          "Demands clear, decisive strategic leadership from the Pentagon to procure dedicated military satellite constellations rather than relying on commercial good will.",
+          "Emphasizes that weakness and service ambiguity only embolden hostile adversaries like Russia; strong, uninterrupted communication is vital to victory."
+        ],
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163682-9",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Rubio urges Lebanon to resist Hezbollah pressure over seized explosives - Axios",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792149426,
+    "source": "Google News World \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Lebanon.svg/330px-Flag_of_Lebanon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Lebanon \u2014 Country in West Asia.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Lebanon",
+    "neutral_summary": "Rubio urges Lebanon to resist Hezbollah pressure over seized explosives. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Rubio urges Lebanon to resist Hezbollah press...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding rubio urges lebanon to resist hezbollah pressure over seized explosives.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Rubio urges Lebanon to resist Hezbollah pr...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage rubio urges lebanon to resist hezbollah pressure over seized explosives.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Rubio urges Lebanon to resist Hezbollah ...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding rubio urges lebanon to resist hezbollah pressure over seized explosives.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -755,7 +1497,7 @@
     "title": "Former NFL team doctor addresses Jalen Hurts' blood clot as QB's season hinges on one key word - Fox News",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792148696,
-    "source": "Google News Sports \u2022 3 hours ago",
+    "source": "Google News Sports \u2022 4 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg",
     "caption": "Philadelphia Eagles quarterback Jalen Hurts.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Jeffrey Beall",
@@ -805,7 +1547,7 @@
     "title": "Teen suspect dead after Oregon school shooting and debunking an election conspiracy theory: Morning Rundown - NBC News",
     "source_name": "Google News U.S.",
     "pub_timestamp": 1792148528,
-    "source": "Google News U.S. \u2022 3 hours ago",
+    "source": "Google News U.S. \u2022 4 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Teens_sharing_a_song.jpg/330px-Teens_sharing_a_song.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Adolescence \u2014 Human transition from puberty to adult.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Adolescence",
@@ -850,15 +1592,68 @@
     }
   },
   {
+    "id": "story-1792163711-21",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Nike's India campus is a long-term growth bet amid turnaround - CNBC",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792148401,
+    "source": "Google News Business \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/330px-Flag_of_India.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "India \u2014 Country in South Asia.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / India",
+    "neutral_summary": "Nike's India campus is a long-term growth bet amid turnaround. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Nike's India campus is a long-term growth bet...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding nike's india campus is a long-term growth bet amid turnaround.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Nike's India campus is a long-term growth ...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage nike's india campus is a long-term growth bet amid turnaround.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Nike's India campus is a long-term growt...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding nike's india campus is a long-term growth bet amid turnaround.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792156400-28",
     "category": "Energy & Infrastructure",
     "title": "What this bankruptcy says about AI startups",
     "source_name": "NPR News",
     "pub_timestamp": 1792148400,
-    "source": "NPR News \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "source": "NPR News \u2022 4 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Championship athletics stadium under stadium lights.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
     "neutral_summary": "What this bankruptcy says about AI startups. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -905,7 +1700,7 @@
     "title": "Bo Nix: I don\u2019t know where the disconnect is offensively - NBC Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792148261,
-    "source": "Google News Sports \u2022 3 hours ago",
+    "source": "Google News Sports \u2022 4 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Bo_Nix_scramble.png/330px-Bo_Nix_scramble.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Bo Nix \u2014 American football player (born 2000).",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Bo Nix",
@@ -955,7 +1750,7 @@
     "title": "\u2018Oh, Shut Up\u2019: 5 Takeaways From the Senate Debate in Maine - The New York Times",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792147800,
-    "source": "Google News Top Headlines \u2022 3 hours ago",
+    "source": "Google News Top Headlines \u2022 4 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/SHUT_UP%5E_NAME%2C_RANK%2C_SERIAL_NO._ONLY%5E_-_NARA_-_515415.jpg/330px-SHUT_UP%5E_NAME%2C_RANK%2C_SERIAL_NO._ONLY%5E_-_NARA_-_515415.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Shut up \u2014 Command with meaning akin to \"be quiet\".",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Shut up",
@@ -1005,10 +1800,10 @@
     "title": "Teen shooter kills 3 children, teacher in Oregon elementary school before being shot by bystander - CNN",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792147800,
-    "source": "Google News Top Headlines \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Municipal first responders and law enforcement security perimeter operations.",
-    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
+    "source": "Google News Top Headlines \u2022 4 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Modern medical research and public healthcare facility.",
+    "credit": "\ud83d\udcf8 Health Systems Wire",
     "neutral_summary": "Teen shooter kills 3 children, teacher in Oregon elementary school before being shot by bystander. Federal, state, and local law enforcement authorities secured the campus, launched comprehensive investigations into the shooter's background and weapon acquisition, and commended the armed bystander who intervened.",
     "perspectives": {
       "LEFT": {
@@ -1045,6 +1840,59 @@
         "talking_points": [
           "The only thing that stops a bad guy with a gun is a good guy with a gun; that brave armed citizen saved countless lives.",
           "Gun control disarms the victims, not the criminals; protecting our schools requires armed deterrence and unwavering support for self-defense."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792163668-3",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Body found in barrel at Lake Mead identified as murder victim from Arkansas: \"Earmarks of a mob hit\" - CBS News",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792146706,
+    "source": "Google News Top Headlines \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Lake_Mead_in_July_2022_by_Landsat.jpg/330px-Lake_Mead_in_July_2022_by_Landsat.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Lake Mead \u2014 Reservoir on the Colorado River in Arizona and Nevada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Lake Mead",
+    "neutral_summary": "Body found in barrel at Lake Mead identified as murder victim from Arkansas: \"Earmarks of a mob hit\". Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Body found in barrel at Lake Mead identified ...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding body found in barrel at lake mead identified as murder victim from arkansas: \"earmarks of a mob hit\".",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Body found in barrel at Lake Mead identifi...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage body found in barrel at lake mead identified as murder victim from arkansas: \"earmarks of a mob hit\".",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Body found in barrel at Lake Mead identi...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding body found in barrel at lake mead identified as murder victim from arkansas: \"earmarks of a mob hit\".",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
         ]
       }
     }
@@ -1105,7 +1953,7 @@
     "title": "Abdul El-Sayed Flips JD Vance\u2019s \u2018Weasel\u2019 Jab Into An R-Rated Michigan Rallying Cry - HuffPost",
     "source_name": "Google News U.S.",
     "pub_timestamp": 1792145355,
-    "source": "Google News U.S. \u2022 4 hours ago",
+    "source": "Google News U.S. \u2022 5 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Ralamb-40.jpg/330px-Ralamb-40.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Sayyid \u2014 Nobility title in the Islamic world.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Sayyid",
@@ -1150,71 +1998,24 @@
     }
   },
   {
-    "id": "story-1792161820-36",
-    "category": "Tech & Free Speech",
-    "title": "ChatGPT Can Now Look At Your Chrome Tabs To Do Tasks For You - Engadget",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792145175,
-    "source": "Google News Tech \u2022 4 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Artificial intelligence venture valuation and advanced neural computing technology.",
-    "credit": "\ud83d\udcf8 Tech Systems Wire",
-    "neutral_summary": "ChatGPT Can Now Look At Your Chrome Tabs To Do Tasks For You. Institutional underwriters and venture analysts are calibrating enterprise software multiples and operational burn rates ahead of prospective capital market listings.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations",
-        "why_it_matters": [
-          "Exposes how speculative venture capital inflates tech valuations while proprietary AI companies operate with minimal public transparency or safety testing.",
-          "Demands strong consumer privacy safeguards, ethical guardrails, and prevention of monopoly model consolidation among a handful of Silicon Valley giants.",
-          "Protects creative artists, workers, and content producers whose intellectual property is absorbed to train commercial generative models without consent."
-        ],
-        "talking_points": [
-          "Artificial intelligence must serve the public interest and respect workers' rights, not just generate speculative billions for Silicon Valley insiders.",
-          "We need independent safety oversight and transparent auditing on advanced AI systems before they are deployed across society."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Market Realism and Sustainable Growth: AI Enterprise Sector Shifts from Hype to Financial Fundamentals",
-        "why_it_matters": [
-          "Signals a healthy market normalization where artificial intelligence startups are evaluated on sustainable revenue, margin quality, and enterprise unit economics.",
-          "Weighs astronomical cloud compute infrastructure expenses against recurring software revenue and enterprise customer retention.",
-          "Establishes realistic valuation baselines necessary for healthy, stable technology initial public offerings."
-        ],
-        "talking_points": [
-          "Sustainable artificial intelligence adoption depends on genuine enterprise utility and disciplined financial balance sheets.",
-          "Calibrating valuations based on real revenue growth creates a much healthier, more durable technology ecosystem."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Market Discipline at Work: Free Enterprise Price Discovery Separates Real Innovation from Speculation",
-        "why_it_matters": [
-          "Validates the power of free-market price discovery: private investors naturally discipline over-hyped valuations and demand proven commercial viability.",
-          "Protects everyday 401(k) retirement accounts and retail investors from buying into artificial, inflated venture capital multiples.",
-          "Rewards technological innovation that delivers tangible productivity gains while penalizing corporate over-spending."
-        ],
-        "talking_points": [
-          "The free market always wins: real earnings, profitability, and customer value will always matter more than promotional Silicon Valley hype.",
-          "Disciplined private investment ensures capital flows to businesses that actually generate economic value."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161818-35",
-    "category": "Tech & Free Speech",
-    "title": "Googlebook review: Android on a laptop is still Android - Ars Technica",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792144832,
-    "source": "Google News Tech \u2022 4 hours ago",
+    "id": "story-1792163678-7",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Trump wants more Afrikaner refugees while others are stuck due to his \u2018cruel\u2019 policies - The Guardian",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792144800,
+    "source": "Google News U.S. \u2022 5 hours ago",
     "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
     "caption": "Championship athletics stadium under stadium lights.",
     "credit": "\ud83d\udcf8 Sports Wire Archive",
-    "neutral_summary": "Googlebook review: Android on a laptop is still Android. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "neutral_summary": "Trump wants more Afrikaner refugees while others are stuck due to his \u2018cruel\u2019 policies. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Googlebook review: Android on a laptop is sti...",
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Trump wants more Afrikaner refugees while oth...",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding googlebook review: android on a laptop is still android.",
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding trump wants more afrikaner refugees while others are stuck due to his \u2018cruel\u2019 policies.",
           "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
           "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
         ],
@@ -1224,9 +2025,9 @@
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Googlebook review: Android on a laptop is ...",
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Trump wants more Afrikaner refugees while ...",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage googlebook review: android on a laptop is still android.",
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage trump wants more afrikaner refugees while others are stuck due to his \u2018cruel\u2019 policies.",
           "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
           "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
         ],
@@ -1236,9 +2037,9 @@
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Googlebook review: Android on a laptop i...",
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Trump wants more Afrikaner refugees whil...",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding googlebook review: android on a laptop is still android.",
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding trump wants more afrikaner refugees while others are stuck due to his \u2018cruel\u2019 policies.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -1250,62 +2051,12 @@
     }
   },
   {
-    "id": "story-1792161743-1",
-    "category": "Tech & Free Speech",
-    "title": "GOP senators press Pentagon over Ukraine\u2019s loss of Starshield data - The Hill",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792144800,
-    "source": "Google News Top Headlines \u2022 4 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/5-gon_cyclic_01.svg/330px-5-gon_cyclic_01.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Pentagon \u2014 Shape with five sides.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Pentagon",
-    "neutral_summary": "GOP senators press Pentagon over Ukraine\u2019s loss of Starshield data. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "why_it_matters": [
-          "Warns of the acute danger when private billionaire executives hold unilateral veto power over sovereign battlefield communications and democratic allies.",
-          "Calls for direct international oversight and multilateral defense contracts to guarantee uninterrupted satellite communication for nations resisting autocratic aggression.",
-          "Demands steadfast solidarity with Ukraine, emphasizing that telecommunications restrictions directly imperil civilian lives and frontline defenses."
-        ],
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "why_it_matters": [
-          "Assesses the contractual and legal boundaries governing civilian commercial satellite technology deployed in active international combat zones.",
-          "Weighs the risk of service disruptions against national defense demands for resilient, redundant orbital communication relays.",
-          "Monitors tactical frontline adjustments as Ukrainian defense forces integrate alternative allied military satellite networks."
-        ],
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "why_it_matters": [
-          "Recognizes that American private aerospace ingenuity provided Ukraine with vital asymmetric advantages against a brutal adversary.",
-          "Demands clear, decisive strategic leadership from the Pentagon to procure dedicated military satellite constellations rather than relying on commercial good will.",
-          "Emphasizes that weakness and service ambiguity only embolden hostile adversaries like Russia; strong, uninterrupted communication is vital to victory."
-        ],
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161830-40",
     "category": "Politics",
     "title": "Haley Stevens is everywhere \u2014 except on the trail for El-Sayed",
     "source_name": "Politico National",
     "pub_timestamp": 1792144500,
-    "source": "Politico National \u2022 4 hours ago",
+    "source": "Politico National \u2022 5 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Haley_Stevens%2C_official_portrait%2C_116th_Congress.jpg/330px-Haley_Stevens%2C_official_portrait%2C_116th_Congress.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Haley Stevens \u2014 American politician (born 1983).",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Haley Stevens",
@@ -1350,65 +2101,15 @@
     }
   },
   {
-    "id": "story-1792161842-47",
-    "category": "Politics",
-    "title": "Illegal alien busted allegedly hauling enough fentanyl to potentially kill state\u2019s entire population \u2014 twice",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792143057,
-    "source": "Fox News Politics \u2022 5 hours ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg",
-    "caption": "U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.",
-    "credit": "\ud83d\udcf8 U.S. Customs and Border Protection",
-    "neutral_summary": "Illegal alien busted allegedly hauling enough fentanyl to potentially kill state\u2019s entire population \u2014 twice. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Illegal alien busted allegedly hauling enough...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding illegal alien busted allegedly hauling enough fentanyl to potentially kill state\u2019s entire population \u2014 twice.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Illegal alien busted allegedly hauling eno...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage illegal alien busted allegedly hauling enough fentanyl to potentially kill state\u2019s entire population \u2014 twice.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Illegal alien busted allegedly hauling e...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding illegal alien busted allegedly hauling enough fentanyl to potentially kill state\u2019s entire population \u2014 twice.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161796-24",
     "category": "Economy & Inflation",
     "title": "IMF chief says AI risks may exceed opportunities without safeguards and ethical framework - Reuters",
     "source_name": "Google News Business",
     "pub_timestamp": 1792143022,
     "source": "Google News Business \u2022 5 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "image_url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+    "caption": "National electrical transmission corridor and infrastructure.",
+    "credit": "\ud83d\udcf8 Energy Photo Archive",
     "neutral_summary": "IMF chief says AI risks may exceed opportunities without safeguards and ethical framework. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -1450,151 +2151,54 @@
     }
   },
   {
-    "id": "story-1792161844-48",
-    "category": "Politics",
-    "title": "Personal jabs, billionaire donors and party loyalty fuel heated Maine Senate debate",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792141248,
-    "source": "Fox News Politics \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Seal_of_Maine.svg/330px-Seal_of_Maine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Maine Senate \u2014 Upper house of the Maine Legislature.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Maine Senate",
-    "neutral_summary": "Personal jabs, billionaire donors and party loyalty fuel heated Maine Senate debate. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "id": "story-1792163660-0",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "'Everything got worse': Gen Z express frustration, regret after Trump vote - NPR",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792141200,
+    "source": "Google News Top Headlines \u2022 6 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Hubble_ultra_deep_field.jpg/330px-Hubble_ultra_deep_field.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Everything \u2014 All that exists.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Everything",
+    "neutral_summary": "'Everything got worse': Gen Z express frustration, regret after Trump vote. Federal postal inspectors, the FBI, and state election authorities launched comprehensive investigations to intercept hazardous items and secure election administration facilities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Personal jabs, billionaire donors and party l...",
+        "headline_framing": "Protecting Democratic Integrity: Election Workers and Public Servants Must Be Guarded Against Political Threats",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding personal jabs, billionaire donors and party loyalty fuel heated maine senate debate.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+          "Demands comprehensive federal security protection and legal safeguards for frontline election workers and public administrative staff facing intimidation.",
+          "Condemns extremist political rhetoric and violent harassment aimed at destabilizing democratic balloting and public trust in elections.",
+          "Urges immediate federal funding to harden local election facilities, postal screening technology, and inter-agency threat sharing."
         ],
         "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+          "Threats against election workers and public servants are attacks on our democracy itself; perpetrators must face maximum legal penalties.",
+          "We must stand united in protecting the dedicated citizens who ensure our elections remain free, fair, and secure."
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Personal jabs, billionaire donors and part...",
+        "headline_framing": "Inter-Agency Security Mobilization: Federal Authorities Coordinate Threat Interdiction and Public Safety",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage personal jabs, billionaire donors and party loyalty fuel heated maine senate debate.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+          "Prioritizes swift coordination among the FBI, U.S. Postal Inspection Service, and state election boards to neutralize security risks.",
+          "Balances rapid facility decontamination and threat verification with transparent updates to prevent voter disenfranchisement or panic.",
+          "Ensures standard operating protocols and mail screening standards are uniformly enforced across all government and election buildings."
         ],
         "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+          "Ensuring the physical safety of election personnel and postal workers is a fundamental non-partisan government duty.",
+          "Law enforcement agencies must follow the evidence impartially and secure public offices without operational disruption."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Personal jabs, billionaire donors and pa...",
+        "headline_framing": "Law and Order Must Prevail: Zero Tolerance for Intimidation Against Public Facilities and Election Infrastructure",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding personal jabs, billionaire donors and party loyalty fuel heated maine senate debate.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+          "Demands aggressive law enforcement investigation and severe criminal prosecution for anyone sending illicit materials to government or election offices.",
+          "Emphasizes that public order, election integrity, and constitutional governance cannot function under criminal threats or disruption.",
+          "Calls for heightened surveillance, postal screening enforcement, and decisive judicial deterrence to prevent copycat crimes."
         ],
         "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161774-13",
-    "category": "Politics",
-    "title": "Caracas Is Eerily Safe. State Death Squads Made Sure of It. - The New York Times",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792141214,
-    "source": "Google News World \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bd/Caracas_desde_el_%C3%A1vila.jpg/330px-Caracas_desde_el_%C3%A1vila.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Caracas \u2014 Capital and largest city of Venezuela.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Caracas",
-    "neutral_summary": "Caracas Is Eerily Safe. State Death Squads Made Sure of It.. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Caracas Is Eerily Safe. State Death Squads Ma...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding caracas is eerily safe. state death squads made sure of it..",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Caracas Is Eerily Safe. State Death Squads...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage caracas is eerily safe. state death squads made sure of it..",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Caracas Is Eerily Safe. State Death Squa...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding caracas is eerily safe. state death squads made sure of it..",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161846-49",
-    "category": "Politics",
-    "title": "Personal attacks fly as Sullivan, Peltola spar over corruption, character and controversy",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792141201,
-    "source": "Fox News Politics \u2022 5 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
-    "neutral_summary": "Personal attacks fly as Sullivan, Peltola spar over corruption, character and controversy. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Personal attacks fly as Sullivan, Peltola spa...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding personal attacks fly as sullivan, peltola spar over corruption, character and controversy.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Personal attacks fly as Sullivan, Peltola ...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage personal attacks fly as sullivan, peltola spar over corruption, character and controversy.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Personal attacks fly as Sullivan, Peltol...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding personal attacks fly as sullivan, peltola spar over corruption, character and controversy.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+          "Law and order is non-negotiable: anyone threatening election officials or public offices belongs behind bars.",
+          "Constitutional elections require strict security, physical safety, and zero tolerance for unlawful intimidation."
         ]
       }
     }
@@ -1605,10 +2209,10 @@
     "title": "Remembering Oscar-winning actor Eva Marie Saint",
     "source_name": "NPR News",
     "pub_timestamp": 1792141200,
-    "source": "NPR News \u2022 5 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "source": "NPR News \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Major motion picture theatrical cinema and entertainment industry production.",
+    "credit": "\ud83d\udcf8 Entertainment News Wire",
     "neutral_summary": "Remembering Oscar. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -1655,10 +2259,10 @@
     "title": "How much money has Musk given to Republican groups since July? The quiz knows",
     "source_name": "NPR News",
     "pub_timestamp": 1792141200,
-    "source": "NPR News \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Naturalists_Library_-_Mammalia_-_Volume_III_-_The_Thibetian_Musk.jpg/330px-Naturalists_Library_-_Mammalia_-_Volume_III_-_The_Thibetian_Musk.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Musk \u2014 Class of aromatic substances used in perfumes.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Musk",
+    "source": "NPR News \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Tesla electric performance vehicle and high-technology automotive manufacturing.",
+    "credit": "\ud83d\udcf8 Automotive News Wire",
     "neutral_summary": "How much money has Musk given to Republican groups since July? The quiz knows. Automotive industry analysts, engineering executives, and investors are evaluating technical battery specifications and scalable assembly-line production milestones.",
     "perspectives": {
       "LEFT": {
@@ -1705,10 +2309,10 @@
     "title": "Do Americans own the president's papers? Appeals court to weigh in",
     "source_name": "NPR News",
     "pub_timestamp": 1792141200,
-    "source": "NPR News \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Map_of_the_American_Diaspora_in_the_World.svg/330px-Map_of_the_American_Diaspora_in_the_World.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Americans \u2014 People of the United States.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Americans",
+    "source": "NPR News \u2022 6 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
+    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
+    "credit": "\ud83d\udcf8 National Photo Archive",
     "neutral_summary": "Do Americans own the president's papers? Appeals court to weigh in. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -1739,56 +2343,6 @@
         "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Do Americans own the president's papers?...",
         "why_it_matters": [
           "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding do americans own the president's papers? appeals court to weigh in.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161831-41",
-    "category": "Politics",
-    "title": "The nation\u2019s cartoonists on the week in politics",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792141200,
-    "source": "Politico National \u2022 5 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Enterprise technology infrastructure and network servers.",
-    "credit": "\ud83d\udcf8 Technology Media Wire",
-    "neutral_summary": "The nation\u2019s cartoonists on the week in politics. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding The nation\u2019s cartoonists on the week in polit...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding the nation\u2019s cartoonists on the week in politics.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in The nation\u2019s cartoonists on the week in po...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage the nation\u2019s cartoonists on the week in politics.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in The nation\u2019s cartoonists on the week in ...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding the nation\u2019s cartoonists on the week in politics.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -1850,15 +2404,68 @@
     }
   },
   {
+    "id": "story-1792163709-20",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Indonesia Stocks Log Worst Day Since 1998 on MSCI Downgrade Warning - WSJ",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792135080,
+    "source": "Google News Business \u2022 7 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Stocks_%28PSF%29.png/330px-Stocks_%28PSF%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Stocks \u2014 Restraining device.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Stocks",
+    "neutral_summary": "Indonesia Stocks Log Worst Day Since 1998 on MSCI Downgrade Warning. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Indonesia Stocks Log Worst Day Since 1998 on ...",
+        "why_it_matters": [
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding indonesia stocks log worst day since 1998 on msci downgrade warning.",
+          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
+          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
+        ],
+        "talking_points": [
+          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
+          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Indonesia Stocks Log Worst Day Since 1998 ...",
+        "why_it_matters": [
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage indonesia stocks log worst day since 1998 on msci downgrade warning.",
+          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
+          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
+        ],
+        "talking_points": [
+          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
+          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Indonesia Stocks Log Worst Day Since 199...",
+        "why_it_matters": [
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding indonesia stocks log worst day since 1998 on msci downgrade warning.",
+          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
+          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
+          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161801-26",
     "category": "Sports",
     "title": "Dodgers tip cap to Brewers as title reign ends in NLCS sweep - ESPN",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792133580,
-    "source": "Google News Sports \u2022 7 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/NLCS_2008.jpg/330px-NLCS_2008.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "League Championship Series \u2014 Major League Baseball postseason series.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / League Championship Series",
+    "source": "Google News Sports \u2022 8 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Major League Baseball postseason championship ballpark field and diamond.",
+    "credit": "\ud83d\udcf8 Sports Media Wire",
     "neutral_summary": "Dodgers tip cap to Brewers as title reign ends in NLCS sweep. Team front offices, players, and baseball analysts are evaluating postseason tactical bullpen management, roster adjustments, and pennant implications.",
     "perspectives": {
       "LEFT": {
@@ -1895,106 +2502,6 @@
         "talking_points": [
           "The final scoreboard is the ultimate truth in sports: championships are earned on the field, not awarded on paper.",
           "Postseason adversity exposes team discipline; winning programs adapt, execute, and deliver when everything is on the line."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161848-50",
-    "category": "Politics",
-    "title": "Trump admin sued over alleged illegal collection of sensitive voter data from 47 states",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792133265,
-    "source": "Fox News Politics \u2022 7 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Championship athletics stadium under stadium lights.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
-    "neutral_summary": "Trump admin sued over alleged illegal collection of sensitive voter data from 47 states. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Trump admin sued over alleged illegal collect...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding trump admin sued over alleged illegal collection of sensitive voter data from 47 states.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Trump admin sued over alleged illegal coll...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage trump admin sued over alleged illegal collection of sensitive voter data from 47 states.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Trump admin sued over alleged illegal co...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding trump admin sued over alleged illegal collection of sensitive voter data from 47 states.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161781-16",
-    "category": "Politics",
-    "title": "New White House press secretary Katie Zacharia says China lacked 'proper' toilets - Euronews.com",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792131189,
-    "source": "Google News Politics \u2022 8 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg/330px-Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Katie Zacharia \u2014 American political spokesperson.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Katie Zacharia",
-    "neutral_summary": "New White House press secretary Katie Zacharia says China lacked 'proper' toilets. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding New White House press secretary Katie Zachari...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding new white house press secretary katie zacharia says china lacked 'proper' toilets.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in New White House press secretary Katie Zach...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage new white house press secretary katie zacharia says china lacked 'proper' toilets.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in New White House press secretary Katie Za...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding new white house press secretary katie zacharia says china lacked 'proper' toilets.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
         ]
       }
     }
@@ -2050,65 +2557,15 @@
     }
   },
   {
-    "id": "story-1792161850-51",
-    "category": "Politics",
-    "title": "Democrat's debate 'cue cards' steal spotlight in high-stakes Senate clash",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792127590,
-    "source": "Fox News Politics \u2022 9 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
-    "neutral_summary": "Democrat's debate 'cue cards' steal spotlight in high. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Democrat's debate 'cue cards' steal spotlight...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding democrat's debate 'cue cards' steal spotlight in high.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Democrat's debate 'cue cards' steal spotli...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage democrat's debate 'cue cards' steal spotlight in high.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Democrat's debate 'cue cards' steal spot...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding democrat's debate 'cue cards' steal spotlight in high.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161812-32",
     "category": "Sports",
     "title": "Stacy Rost: Seahawks\u2019 faltering offense is a multi-layered issue - Seattle Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792127068,
-    "source": "Google News Sports \u2022 9 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "source": "Google News Sports \u2022 10 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Championship athletics stadium under stadium lights.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
     "neutral_summary": "Stacy Rost: Seahawks\u2019 faltering offense is a multi-layered issue. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -2150,21 +2607,24 @@
     }
   },
   {
-    "id": "story-1792161775-14",
-    "category": "Politics",
-    "title": "Israel\u2019s Arab-led parties could decide the election if anyone would partner with them - AP News",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792126440,
-    "source": "Google News World \u2022 9 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_Israel.svg/330px-Flag_of_Israel.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Israel \u2014 Country in West Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Israel",
-    "neutral_summary": "Israel\u2019s Arab-led parties could decide the election if anyone would partner with them. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "id": "story-1792163715-23",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "APOD: 2026 October 16 \u2013 Chasing the International Space Station - NASA Science (.gov)",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792123500,
+    "source": "Google News Science \u2022 11 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Deep space observation and advanced astronomical planetary science.",
+    "credit": "\ud83d\udcf8 NASA / Scientific Photo Archive",
+    "neutral_summary": "APOD: 2026 October 16 \u2013 Chasing the International Space Station. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Israel\u2019s Arab-led parties could decide the el...",
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding APOD: 2026 October 16 \u2013 Chasing the Internati...",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding israel\u2019s arab-led parties could decide the election if anyone would partner with them.",
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding apod: 2026 october 16 \u2013 chasing the international space station.",
           "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
           "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
         ],
@@ -2174,9 +2634,9 @@
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Israel\u2019s Arab-led parties could decide the...",
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in APOD: 2026 October 16 \u2013 Chasing the Intern...",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage israel\u2019s arab-led parties could decide the election if anyone would partner with them.",
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage apod: 2026 october 16 \u2013 chasing the international space station.",
           "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
           "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
         ],
@@ -2186,9 +2646,9 @@
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Israel\u2019s Arab-led parties could decide t...",
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in APOD: 2026 October 16 \u2013 Chasing the Inte...",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding israel\u2019s arab-led parties could decide the election if anyone would partner with them.",
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding apod: 2026 october 16 \u2013 chasing the international space station.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -2205,7 +2665,7 @@
     "title": "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades - Fox Business",
     "source_name": "Google News Business",
     "pub_timestamp": 1792123380,
-    "source": "Google News Business \u2022 10 hours ago",
+    "source": "Google News Business \u2022 11 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Erythroxylum_novogranatense_var._Novogranatense_%28retouched%29.jpg/330px-Erythroxylum_novogranatense_var._Novogranatense_%28retouched%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Coca \u2014 Plant in the Erythroxylaceae family.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Coca",
@@ -2255,7 +2715,7 @@
     "title": "Troy Jackson tells Susan Collins to \u2018shut up\u2019 during heated Maine Senate debate - AP News",
     "source_name": "Google News U.S.",
     "pub_timestamp": 1792119360,
-    "source": "Google News U.S. \u2022 11 hours ago",
+    "source": "Google News U.S. \u2022 12 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Troy_Jackson_in_the_Senate_Chamber_%28cropped%29.jpg/330px-Troy_Jackson_in_the_Senate_Chamber_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Troy Jackson \u2014 American politician and logger (born 1968).",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Troy Jackson",
@@ -2300,21 +2760,24 @@
     }
   },
   {
-    "id": "story-1792161778-15",
-    "category": "Politics",
-    "title": "Imran Khan to move HC against notice asking him to leave country for taking part in protest - The Hindu",
+    "id": "story-1792163690-12",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "White House press secretary Katie Zacharia says she did not pass bar exam - Reuters",
     "source_name": "Google News Politics",
-    "pub_timestamp": 1792115874,
-    "source": "Google News Politics \u2022 12 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
-    "caption": "National electrical transmission corridor and infrastructure.",
-    "credit": "\ud83d\udcf8 Energy Photo Archive",
-    "neutral_summary": "Imran Khan to move HC against notice asking him to leave country for taking part in protest. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "pub_timestamp": 1792115640,
+    "source": "Google News Politics \u2022 13 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/White_House_north_and_south_sides.jpg/330px-White_House_north_and_south_sides.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "White House \u2014 Residence and workplace of the US president.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / White House",
+    "neutral_summary": "White House press secretary Katie Zacharia says she did not pass bar exam. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Imran Khan to move HC against notice asking h...",
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding White House press secretary Katie Zacharia sa...",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding imran khan to move hc against notice asking him to leave country for taking part in protest.",
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding white house press secretary katie zacharia says she did not pass bar exam.",
           "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
           "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
         ],
@@ -2324,9 +2787,9 @@
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Imran Khan to move HC against notice askin...",
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in White House press secretary Katie Zacharia...",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage imran khan to move hc against notice asking him to leave country for taking part in protest.",
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage white house press secretary katie zacharia says she did not pass bar exam.",
           "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
           "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
         ],
@@ -2336,9 +2799,9 @@
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Imran Khan to move HC against notice ask...",
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in White House press secretary Katie Zachar...",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding imran khan to move hc against notice asking him to leave country for taking part in protest.",
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding white house press secretary katie zacharia says she did not pass bar exam.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -2400,21 +2863,24 @@
     }
   },
   {
-    "id": "story-1792161822-37",
-    "category": "Tech & Free Speech",
-    "title": "Oops, Apple's Website Just Hinted at iPad Mini 8 - MacRumors",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792110420,
-    "source": "Google News Tech \u2022 14 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/United_States_Antarctic_Program_website_from_2018_02_22.png/330px-United_States_Antarctic_Program_website_from_2018_02_22.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Website \u2014 Any web page served from a single domain.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Website",
-    "neutral_summary": "Oops, Apple's Website Just Hinted at iPad Mini 8. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "id": "story-1792163680-8",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "Houthi missile attack on Yemeni presidential palace kills five, minister says - BBC",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792107526,
+    "source": "Google News World \u2022 15 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Ansar_Allah_Logo.svg/330px-Ansar_Allah_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Houthis \u2014 Shia Islamist organization in Yemen.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Houthis",
+    "neutral_summary": "Houthi missile attack on Yemeni presidential palace kills five, minister says. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Oops, Apple's Website Just Hinted at iPad Min...",
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding Houthi missile attack on Yemeni presidential ...",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding oops, apple's website just hinted at ipad mini 8.",
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding houthi missile attack on yemeni presidential palace kills five, minister says.",
           "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
           "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
         ],
@@ -2424,9 +2890,9 @@
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Oops, Apple's Website Just Hinted at iPad ...",
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Houthi missile attack on Yemeni presidenti...",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage oops, apple's website just hinted at ipad mini 8.",
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage houthi missile attack on yemeni presidential palace kills five, minister says.",
           "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
           "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
         ],
@@ -2436,59 +2902,9 @@
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Oops, Apple's Website Just Hinted at iPa...",
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Houthi missile attack on Yemeni presiden...",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding oops, apple's website just hinted at ipad mini 8.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161749-4",
-    "category": "Politics",
-    "title": "Wildfire in Malibu explodes to 200 acres, evacuations orders issued - KTLA",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792110232,
-    "source": "Google News Top Headlines \u2022 14 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Burnout_ops_on_Mangum_Fire_McCall_Smokejumpers.jpg/330px-Burnout_ops_on_Mangum_Fire_McCall_Smokejumpers.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Wildfire \u2014 Uncontrolled fire in forests or open spaces.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Wildfire",
-    "neutral_summary": "Wildfire in Malibu explodes to 200 acres, evacuations orders issued. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Wildfire in Malibu explodes to 200 acres, eva...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding wildfire in malibu explodes to 200 acres, evacuations orders issued.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Wildfire in Malibu explodes to 200 acres, ...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage wildfire in malibu explodes to 200 acres, evacuations orders issued.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Wildfire in Malibu explodes to 200 acres...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding wildfire in malibu explodes to 200 acres, evacuations orders issued.",
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding houthi missile attack on yemeni presidential palace kills five, minister says.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
@@ -2505,7 +2921,7 @@
     "title": "College Football Playoff reportedly near deal to expand to 24 teams in 2027 - Yahoo Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792105561,
-    "source": "Google News Sports \u2022 15 hours ago",
+    "source": "Google News Sports \u2022 16 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
     "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
     "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
@@ -2550,71 +2966,77 @@
     }
   },
   {
-    "id": "story-1792161787-19",
-    "category": "Politics",
-    "title": "4 GOP senators join letter demanding Pentagon inspector general investigation of Ukraine\u2019s Starlink outage - The Hill",
+    "id": "story-1792163694-14",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "5 GOP House members join letter urging Trump to cancel Russia diesel deal, up sanctions - The Hill",
     "source_name": "Google News Politics",
-    "pub_timestamp": 1792103880,
-    "source": "Google News Politics \u2022 16 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/330px-Flag_of_Ukraine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Ukraine \u2014 Country in Eastern Europe.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Ukraine",
-    "neutral_summary": "4 GOP senators join letter demanding Pentagon inspector general investigation of Ukraine\u2019s Starlink outage. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
+    "pub_timestamp": 1792094220,
+    "source": "Google News Politics \u2022 19 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
+    "caption": "International petroleum transit and energy shipping operations under sanctions scrutiny.",
+    "credit": "\ud83d\udcf8 Maritime Energy Archive",
+    "neutral_summary": "5 GOP House members join letter urging Trump to cancel Russia diesel deal, up sanctions. Congressional foreign relations leaders and international energy diplomats are evaluating geopolitical leverage, crude supply chains, and statutory compliance.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "headline_framing": "Global Human Rights and Clean Independence: Enforcing Sanctions Over Fossil Fuel Concessions",
         "why_it_matters": [
-          "Warns of the acute danger when private billionaire executives hold unilateral veto power over sovereign battlefield communications and democratic allies.",
-          "Calls for direct international oversight and multilateral defense contracts to guarantee uninterrupted satellite communication for nations resisting autocratic aggression.",
-          "Demands steadfast solidarity with Ukraine, emphasizing that telecommunications restrictions directly imperil civilian lives and frontline defenses."
+          "Demands uncompromised enforcement of international sanctions against hostile autocratic regimes responsible for global instability.",
+          "Accelerates the strategic imperative to transition toward domestic renewable power and eliminate reliance on petro-states.",
+          "Rebuffs bilateral trade waivers that enrich foreign oligarchs at the expense of international human rights standards."
         ],
         "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+          "We cannot compromise on basic human rights and international law for short-term fossil fuel arrangements.",
+          "True energy security means severing our ties to foreign petro-dictatorships once and for all."
         ]
       },
       "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "headline_framing": "Geopolitical Realism: Calibrating Economic Sanctions Against Global Fuel Supply Volatility",
         "why_it_matters": [
-          "Assesses the contractual and legal boundaries governing civilian commercial satellite technology deployed in active international combat zones.",
-          "Weighs the risk of service disruptions against national defense demands for resilient, redundant orbital communication relays.",
-          "Monitors tactical frontline adjustments as Ukrainian defense forces integrate alternative allied military satellite networks."
+          "Balances national security objectives against potential diesel price spikes that could burden domestic commercial logistics.",
+          "Assesses whether coordinated multilateral enforcement or targeted supply exemptions best serve long-term strategic interests.",
+          "Maintains transparent congressional oversight to ensure foreign policy doctrine remains consistent and predictable."
         ],
         "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+          "Effective diplomacy requires balancing moral resolve with practical calculations of global fuel supply stability.",
+          "Predictable, bipartisan economic policies are essential to maintaining international alliance credibility."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "headline_framing": "American Energy Dominance: Expand Domestic Production and Eliminate Foreign Adversary Deals",
         "why_it_matters": [
-          "Recognizes that American private aerospace ingenuity provided Ukraine with vital asymmetric advantages against a brutal adversary.",
-          "Demands clear, decisive strategic leadership from the Pentagon to procure dedicated military satellite constellations rather than relying on commercial good will.",
-          "Emphasizes that weakness and service ambiguity only embolden hostile adversaries like Russia; strong, uninterrupted communication is vital to victory."
+          "Demands complete unleashing of American oil, natural gas, and refining infrastructure to power the free world without foreign reliance.",
+          "Insists on maximum pressure sanctions and zero commercial loopholes for hostile foreign powers.",
+          "Asserts constitutional congressional power over foreign commerce, holding federal agencies accountable to national security statutes."
         ],
         "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+          "America has the natural resources to power our economy; we should be drilling our own energy, not buying from adversaries.",
+          "Peace through strength requires maximum economic resolve and total American energy dominance."
         ]
       }
     }
   },
   {
-    "id": "story-1792161833-42",
-    "category": "Politics",
-    "title": "Trump lashes out at Republicans as Ken Paxton struggles in Texas",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792102482,
-    "source": "Politico National \u2022 16 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Ken_Paxton_%2854816860552%29_%28cropped%29.jpg/330px-Ken_Paxton_%2854816860552%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Ken Paxton \u2014 American politician and lawyer (born 1962).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Ken Paxton",
-    "neutral_summary": "Trump lashes out at Republicans as Ken Paxton struggles in Texas. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
+    "id": "story-1792163713-22",
+    "category": [
+      "National News",
+      "National Headlines"
+    ],
+    "title": "How a laboratory accident revealed a new way to rescue dying corals - Euronews.com",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792040547,
+    "source": "Google News Science \u2022 Yesterday",
+    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Modern medical research and public healthcare facility.",
+    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "neutral_summary": "How a laboratory accident revealed a new way to rescue dying corals. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Trump lashes out at Republicans as Ken Paxton...",
+        "headline_framing": "Public Accountability and Democratic Oversight Regarding How a laboratory accident revealed a new way ...",
         "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding trump lashes out at republicans as ken paxton struggles in texas.",
+          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding how a laboratory accident revealed a new way to rescue dying corals.",
           "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
           "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
         ],
@@ -2624,9 +3046,9 @@
         ]
       },
       "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Trump lashes out at Republicans as Ken Pax...",
+        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in How a laboratory accident revealed a new w...",
         "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage trump lashes out at republicans as ken paxton struggles in texas.",
+          "Assesses the realistic legal, operational, and administrative factors required to effectively manage how a laboratory accident revealed a new way to rescue dying corals.",
           "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
           "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
         ],
@@ -2636,365 +3058,15 @@
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Trump lashes out at Republicans as Ken P...",
+        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in How a laboratory accident revealed a new...",
         "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding trump lashes out at republicans as ken paxton struggles in texas.",
+          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding how a laboratory accident revealed a new way to rescue dying corals.",
           "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
           "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
         ],
         "talking_points": [
           "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
           "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161835-43",
-    "category": "Politics",
-    "title": "Mitch Daniels rebukes JD Vance over free-market retreat",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792095608,
-    "source": "Politico National \u2022 18 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Indiana_Governor_Mitch_Daniels.jpg/330px-Indiana_Governor_Mitch_Daniels.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Mitch Daniels \u2014 American politician and academic administrator (born 1949).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Mitch Daniels",
-    "neutral_summary": "Mitch Daniels rebukes JD Vance over free. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Mitch Daniels rebukes JD Vance over free...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding mitch daniels rebukes jd vance over free.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Mitch Daniels rebukes JD Vance over free...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage mitch daniels rebukes jd vance over free.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Mitch Daniels rebukes JD Vance over free...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding mitch daniels rebukes jd vance over free.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161828-39",
-    "category": "Tech & Free Speech",
-    "title": "Sony just canceled a promised Android 17 update for one of its Xperia phones - 9to5Google",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792094700,
-    "source": "Google News Tech \u2022 18 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Sony_headquaters_2.jpg/330px-Sony_headquaters_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Sony \u2014 Japanese multinational corporation.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Sony",
-    "neutral_summary": "Sony just canceled a promised Android 17 update for one of its Xperia phones. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Sony just canceled a promised Android 17 upda...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding sony just canceled a promised android 17 update for one of its xperia phones.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Sony just canceled a promised Android 17 u...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage sony just canceled a promised android 17 update for one of its xperia phones.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Sony just canceled a promised Android 17...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding sony just canceled a promised android 17 update for one of its xperia phones.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161837-44",
-    "category": "Politics",
-    "title": "2 women accuse Matt Gaetz of sex trafficking in new lawsuit",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792091507,
-    "source": "Politico National \u2022 19 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Matt_Gaetz_117th_Congress_portrait_%28crop%29.jpg/330px-Matt_Gaetz_117th_Congress_portrait_%28crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Matt Gaetz \u2014 American politician and TV host (born 1982).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Matt Gaetz",
-    "neutral_summary": "2 women accuse Matt Gaetz of sex trafficking in new lawsuit. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding 2 women accuse Matt Gaetz of sex trafficking ...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding 2 women accuse matt gaetz of sex trafficking in new lawsuit.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in 2 women accuse Matt Gaetz of sex trafficki...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage 2 women accuse matt gaetz of sex trafficking in new lawsuit.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in 2 women accuse Matt Gaetz of sex traffic...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding 2 women accuse matt gaetz of sex trafficking in new lawsuit.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161826-38",
-    "category": "Tech & Free Speech",
-    "title": "Google Updates Links In AI Mode & AI Overviews Again, Won't Show Click Data - Search Engine Roundtable",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792080000,
-    "source": "Google News Tech \u2022 22 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/330px-Googleplex_HQ_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Google \u2014 American multinational technology company.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Google",
-    "neutral_summary": "Google Updates Links In AI Mode & AI Overviews Again, Won't Show Click Data. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Google Updates Links In AI Mode & AI Overview...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding google updates links in ai mode & ai overviews again, won't show click data.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Google Updates Links In AI Mode & AI Overv...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage google updates links in ai mode & ai overviews again, won't show click data.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Google Updates Links In AI Mode & AI Ove...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding google updates links in ai mode & ai overviews again, won't show click data.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161785-18",
-    "category": "Politics",
-    "title": "Hegseth addresses Army convention amid leadership shake-up: 5 takeaways - The Hill",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792007700,
-    "source": "Google News Politics \u2022 Yesterday",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Pete_Hegseth_%2854669483222%29.jpg/800px-Pete_Hegseth_%2854669483222%29.jpg",
-    "caption": "Secretary of Defense nominee Pete Hegseth.",
-    "credit": "\ud83d\udcf8 Department of Defense / Wikimedia Commons",
-    "neutral_summary": "Hegseth addresses Army convention amid leadership shake-up: 5 takeaways. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding Hegseth addresses Army convention amid leader...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding hegseth addresses army convention amid leadership shake-up: 5 takeaways.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in Hegseth addresses Army convention amid lea...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage hegseth addresses army convention amid leadership shake-up: 5 takeaways.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in Hegseth addresses Army convention amid l...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding hegseth addresses army convention amid leadership shake-up: 5 takeaways.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161838-45",
-    "category": "Politics",
-    "title": "\u2018I think Alaska\u2019s turning blue\u2019: Republicans fret Sullivan\u2019s path to reelection",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792001917,
-    "source": "Politico National \u2022 Yesterday",
-    "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Financial market exchange trading floor and electronic index terminals.",
-    "credit": "\ud83d\udcf8 Financial Wire Pool",
-    "neutral_summary": "\u2018I think Alaska\u2019s turning blue\u2019: Republicans fret Sullivan\u2019s path to reelection. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability and Democratic Oversight Regarding \u2018I think Alaska\u2019s turning blue\u2019: Republicans ...",
-        "why_it_matters": [
-          "Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding \u2018i think alaska\u2019s turning blue\u2019: republicans fret sullivan\u2019s path to reelection.",
-          "Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.",
-          "Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges."
-        ],
-        "talking_points": [
-          "Public welfare, transparency, and institutional accountability must always take precedence over private interests.",
-          "We must protect the rights and safety of everyday citizens when addressing these critical issues."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Weighing Pragmatic Solutions and Operational Trade-Offs in \u2018I think Alaska\u2019s turning blue\u2019: Republica...",
-        "why_it_matters": [
-          "Assesses the realistic legal, operational, and administrative factors required to effectively manage \u2018i think alaska\u2019s turning blue\u2019: republicans fret sullivan\u2019s path to reelection.",
-          "Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.",
-          "Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus."
-        ],
-        "talking_points": [
-          "Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions.",
-          "Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Order, Free Enterprise, and Personal Responsibility in \u2018I think Alaska\u2019s turning blue\u2019: Republi...",
-        "why_it_matters": [
-          "Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding \u2018i think alaska\u2019s turning blue\u2019: republicans fret sullivan\u2019s path to reelection.",
-          "Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.",
-          "Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges."
-        ],
-        "talking_points": [
-          "Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes.",
-          "Protecting individual liberty, free enterprise, and the rule of law remains fundamental."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792161807-30",
-    "category": "Sports",
-    "title": "The single-most baffling element of NFL football has reared its ugly head again - New York Post",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1791840840,
-    "source": "Google News Sports \u2022 3 days ago",
-    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "caption": "NFL stadium under game day floodlights during conference competition.",
-    "credit": "\ud83d\udcf8 NFL Media Archive",
-    "neutral_summary": "The single-most baffling element of NFL football has reared its ugly head again. Team medical staff and franchise officials confirmed the roster status, initiating clinical recovery protocols ahead of upcoming game action.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Player Health Over Game Outcomes: Prioritizing Long-Term Vascular Safety in NFL Athletics",
-        "why_it_matters": [
-          "Prioritizes non-negotiable athlete welfare, stressing that dangerous conditions like blood clots must never be compromised for team standings.",
-          "Demands strict adherence to medical protocols over franchise commercial pressure or broadcast television priorities.",
-          "Reinforces collective bargaining health guarantees and independent medical oversight across professional athletic leagues."
-        ],
-        "talking_points": [
-          "No football game or playoff seed is worth gambling with an athlete's long-term health and future.",
-          "Professional sports leagues must always put medical science and player safety ahead of commercial interests."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Medical Caution Meets Tactical Adjustment: Navigating Starting Quarterback Absence in The single-most baffling element of NF...",
-        "why_it_matters": [
-          "Balances conservative medical management with offensive game-planning and critical conference playoff positioning.",
-          "Forces the coaching staff to adapt situational scheme packages and test second-string execution against Carolina.",
-          "Monitors clinical recovery timelines and conditioning windows ahead of high-leverage late-season matchups."
-        ],
-        "talking_points": [
-          "Smart franchises make cautious medical calls early to preserve their franchise quarterback for the postseason run.",
-          "Championship caliber teams must adapt to sudden injuries and execute sound situational football."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Next-Man-Up Accountability: Testing Roster Depth and Culture Under Competitive Pressure",
-        "why_it_matters": [
-          "Tests team resilience and backup quarterback preparation under high-leverage conference game pressure.",
-          "Demands disciplined offensive line protection, running game dominance, and error-free situational execution.",
-          "Demonstrates that championship-caliber football franchises rely on system execution, culture, and locker room grit rather than single-player dependence."
-        ],
-        "talking_points": [
-          "Championships aren't won on excuses; elite teams adapt, execute, and deliver next-man-up football.",
-          "Adversity reveals true team character; this game is the ultimate test of preparation and roster depth."
         ]
       }
     }
