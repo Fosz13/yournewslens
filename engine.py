@@ -1345,12 +1345,10 @@ def run_pipeline():
                 continue
 
             print(f"Processing wire item: {t[:65]}...")
-            cat_assigned = classify_article(t, it["description"])
+            cat_assigned, master_cat_assigned = classify_article(t, it["description"])
             synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
             img_info = resolve_story_image(t, cat_assigned, used_urls)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
-            
-            cat_assigned, master_cat_assigned = classify_article(t, it["description"])
             story_record = {
                 "id": story_id,
                 "category": cat_assigned,
