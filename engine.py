@@ -2,13 +2,11 @@
 """
 Your News Lens Automated 15-Minute Wire Scraper & Perspective Synthesis Engine
 - Scrapes breaking headlines across Politics, Sports, Economy, Tech, and Energy.
-- AI Synthesis: Deep integration with Gemini 2.5/1.5/2.0 Flash, OpenAI (gpt-4o-mini), and Claude.
-  Logs real-time diagnostics so you can verify AI execution in GitHub Actions.
-- Contextual Semantic Synthesizer: When offline, generates 100% theme-accurate arguments
-  tailored specifically to the article (Election Security, Tesla EV, AI Valuation, NCAA, etc.).
-  Never slaps unrelated topics (like Russian sanctions or diesel) onto unrelated news.
-- Direct Entity Photography: Pulls exact photos of named individuals, logos, and vehicles.
-- Guaranteed Zero-Duplication: Each story receives a unique, topic-accurate photo.
+- Dynamic Relative Timers: Parses real pubDate from feeds (e.g., "13 hours ago", "45 mins ago").
+- Self-Healing Feed: Detects and auto-replaces any mismatched text or outdated boilerplates.
+- Baseball & Sports Engine: Full parsing for MLB, Dodgers, Brewers, NLCS, NFL, and NCAA.
+- Direct Entity Photography: Dedicated verified photos for teams, athletes, and brands.
+- AI Synthesis: Deep support for Gemini 1.5/2.0 Flash, OpenAI (gpt-4o-mini), and Claude.
 - Directly updates both index.html (pre-rendered) and data/stories.json.
 """
 
@@ -20,9 +18,10 @@ import time
 import urllib.request
 import urllib.error
 import urllib.parse
+import email.utils
 import xml.etree.ElementTree as ET
-from datetime import datetime
-from typing import List, Dict, Any, Optional, Set
+from datetime import datetime, timezone
+from typing import List, Dict, Any, Optional, Set, Tuple
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, "data", "stories.json")
@@ -66,7 +65,7 @@ RSS_FEEDS = [
     }
 ]
 
-# 1. Exact photographic matches for named entities & specific story topics
+# Exact photographic matches for named entities & specific story topics
 EXACT_ENTITY_PHOTOGRAPHY = [
     # Baseball / MLB (Dodgers, Brewers, Yankees, Mets, NLCS, World Series)
     {
@@ -175,7 +174,6 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     }
 ]
 
-# Secondary diverse topic photo bank
 SECONDARY_TOPIC_POOL = [
     {
         "category": "Sports",
@@ -251,8 +249,63 @@ def clean_html_text(raw_text: str) -> str:
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
+def parse_pubdate_to_relative(pub_date_str: str) -> Tuple[int, str]:
+    """Parses RFC 2822 or ISO pubDate string into a Unix timestamp and human relative time."""
+    now_ts = int(datetime.now(timezone.utc).timestamp())
+    if not pub_date_str:
+        return now_ts, "Recently"
+    try:
+        dt = email.utils.parsedate_to_datetime(pub_date_str)
+        ts = int(dt.timestamp())
+        now = datetime.now(timezone.utc)
+        diff_sec = int((now - dt).total_seconds())
+
+        if diff_sec < 0 or diff_sec < 180:
+            rel = "Just now"
+        elif diff_sec < 3600:
+            mins = diff_sec // 60
+            rel = f"{mins} min{'s' if mins > 1 else ''} ago"
+        elif diff_sec < 86400:
+            hours = diff_sec // 3600
+            rel = f"{hours} hour{'s' if hours > 1 else ''} ago"
+        elif diff_sec < 172800:
+            rel = "Yesterday"
+        else:
+            days = diff_sec // 86400
+            rel = f"{days} days ago"
+        return ts, rel
+    except Exception:
+        return now_ts, "Recently"
+
+def is_story_mismatched(story: dict) -> bool:
+    """Detects content cross-contamination where a story received the wrong theme template."""
+    title = story.get("title", "").lower()
+    cat = story.get("category", "").lower()
+    summary = story.get("neutral_summary", "").lower()
+    framing = story.get("perspectives", {}).get("CENTER", {}).get("headline_framing", "").lower()
+    all_text = summary + " " + framing
+
+    # 1. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
+    if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
+        if any(bad in all_text for bad in ["battery", "powertrain", "automotive", "sanctions", "diesel", "assembly-line"]):
+            return True
+
+    # 2. Politics story talking about diesel or fuel supply when title is about election or mailings
+    if any(w in title for w in ["mailing", "election", "ballot", "voting"]):
+        if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
+            return True
+
+    # 3. Known generic boilerplate phrases
+    if any(bad in all_text for bad in [
+        "regulatory standards with commercial and operational reality",
+        "reviewing legal, regulatory, and economic implications",
+        "complex institutional challenges"
+    ]):
+        return True
+
+    return False
+
 def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
-    """Dynamically fetches official portrait/logo from Wikipedia REST API."""
     try:
         url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(entity_name)}"
         req = urllib.request.Request(
@@ -279,13 +332,11 @@ def extract_named_entities_from_title(title: str) -> List[str]:
     entities = []
     stop_words = {"plans", "after", "almost", "decade", "delays", "investors", "temper", "revenue", "growth", "slowdown", "sources", "reportedly", "near", "deal", "expand", "teams", "ruled", "superficial", "blood", "clot", "the", "cnbc", "reuters", "yahoo", "sports", "york", "times", "today", "hill", "wall", "street", "journal"}
     
-    # 1. Multi-word capitalized names (Jalen Hurts, College Football Playoff, Donald Trump)
     multi_matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b', clean)
     for m in multi_matches:
         if m.lower() not in stop_words:
             entities.append(m.replace(" ", "_"))
 
-    # 2. Prominent single capitalized brand/proper nouns (Tesla, Anthropic, Apple, Nvidia, Boeing)
     single_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]{3,}\b', clean)
     for s in single_matches:
         if s.lower() not in stop_words and s not in ["GOP", "IPO", "CEO", "USA", "NFL", "NBA", "MLB"]:
@@ -294,13 +345,6 @@ def extract_named_entities_from_title(title: str) -> List[str]:
     return entities
 
 def resolve_story_image(title: str, category: str, used_urls: Set[str]) -> dict:
-    """
-    4-Tier Image Resolution:
-    1. Exact high-priority entity mapping (Tesla, Anthropic, Mailings, Hurts, NCAA, Trump, Dow)
-    2. Dynamic Wikipedia entity API lookup
-    3. Secondary topic keyword rules
-    4. Non-repeating backup rotation
-    """
     t_lower = title.lower()
 
     # 1. Exact Entity Mapping
@@ -359,13 +403,18 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                 title = clean_html_text(item.findtext("title", "") or item.findtext("{http://www.w3.org/2005/Atom}title", ""))
                 link = item.findtext("link", "") or item.findtext("{http://www.w3.org/2005/Atom}link", "")
                 desc = clean_html_text(item.findtext("description", "") or item.findtext("{http://www.w3.org/2005/Atom}summary", ""))
+                raw_pub_date = item.findtext("pubDate", "") or item.findtext("{http://www.w3.org/2005/Atom}updated", "") or ""
                 
+                ts, rel_time = parse_pubdate_to_relative(raw_pub_date)
+
                 if title and len(title) > 15:
                     items.append({
                         "title": title,
                         "link": link,
                         "description": desc,
-                        "source": feed_info["source"],
+                        "source_name": feed_info["source"],
+                        "source": f"{feed_info['source']} • {rel_time}",
+                        "pub_timestamp": ts,
                         "category": feed_info["category"]
                     })
     except Exception as err:
@@ -541,7 +590,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         ]
         left_talk = [
             "Adding more playoff games creates billions for media networks while pushing unpaid student-athletes past their physical limits.",
-            "College athletes are the workforce generating this massive sports economy; they deserve direct revenue sharing and full labor protections."
+            "College athletes are the workforce generating this massive sports economy; they deserve direct revenue sharing and full employee protections."
         ]
 
         center_framing = "Modernizing Postseason Competition: Balancing Broad Tournament Access with Collegiate Logistics"
@@ -684,10 +733,6 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
     }
 
 def call_ai_synthesizer(title: str, context: str, category: str) -> Dict[str, Any]:
-    """
-    Robust AI Calling Pipeline with verbose logging for GitHub Actions diagnostics.
-    Supports Google Gemini (GEMINI_API_KEY, GOOGLE_API_KEY), OpenAI, and Claude.
-    """
     gemini_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip().strip('"').strip("'")
     openai_key = (os.environ.get("OPENAI_API_KEY") or "").strip().strip('"').strip("'")
     anthropic_key = (os.environ.get("ANTHROPIC_API_KEY") or "").strip().strip('"').strip("'")
@@ -698,7 +743,7 @@ Category: {category}
 Title: {title}
 Context: {context}
 
-CRITICAL: Arguments MUST be tailored specifically to this exact story. If election security/mailings, discuss poll workers, postal inspection, and law enforcement. If Tesla, discuss EV technology and manufacturing. If Anthropic, discuss AI models and valuation.
+CRITICAL: Arguments MUST be tailored specifically to this exact story. If baseball (Dodgers/Brewers), discuss the NLCS sweep, relief pitching, and pennant race. If election security/mailings, discuss poll workers, postal inspection, and law enforcement. If Tesla, discuss EV technology and manufacturing.
 Return strictly valid raw JSON:
 {{
   "neutral_summary": "Two objective, verifiable sentences covering who, what, when, and where. Zero bias.",
@@ -723,17 +768,17 @@ Return strictly valid raw JSON:
 
     # 1. Try Google Gemini Models
     if gemini_key:
-        print(f"[AI] Detected Gemini API Key ({gemini_key[:5]}...{gemini_key[-4:]}). Calling Gemini for '{title[:40]}...'")
-        models = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-2.0-flash"]
+        print(f"[AI] Detected Gemini API Key. Calling Gemini 1.5 Flash for: '{title[:40]}...'")
+        models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]
         for model in models:
-            # Attempt A: HTTP Header (Official specification)
+            # Attempt A: Standard URL query key
             try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
                 payload = json.dumps({
                     "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"response_mime_type": "application/json"}
+                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.3}
                 }).encode("utf-8")
-                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json", "x-goog-api-key": gemini_key})
+                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
                 with urllib.request.urlopen(req, timeout=18) as resp:
                     data = json.loads(resp.read().decode("utf-8"))
                     text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
@@ -745,12 +790,16 @@ Return strictly valid raw JSON:
                         print(f"[AI] SUCCESS: Generated dynamic perspective via Gemini {model}!")
                         return res
             except Exception as e:
-                print(f"[AI Notice] Gemini {model} via header failed: {e}")
+                print(f"[AI Notice] Gemini {model} failed: {e}")
 
-            # Attempt B: URL Query parameter (Legacy key compatibility)
+            # Attempt B: Header-based key
             try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
-                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+                payload = json.dumps({
+                    "contents": [{"parts": [{"text": prompt}]}],
+                    "generationConfig": {"responseMimeType": "application/json"}
+                }).encode("utf-8")
+                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json", "x-goog-api-key": gemini_key})
                 with urllib.request.urlopen(req, timeout=18) as resp:
                     data = json.loads(resp.read().decode("utf-8"))
                     text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
@@ -759,12 +808,12 @@ Return strictly valid raw JSON:
                         if text.startswith("json"): text = text[4:].strip()
                     res = json.loads(text)
                     if "neutral_summary" in res and "perspectives" in res:
-                        print(f"[AI] SUCCESS: Generated dynamic perspective via Gemini {model} (query auth)!")
+                        print(f"[AI] SUCCESS: Generated dynamic perspective via Gemini {model} (header auth)!")
                         return res
             except Exception as e:
-                print(f"[AI Notice] Gemini {model} via query param failed: {e}")
+                pass
     else:
-        print("[AI Notice] No GEMINI_API_KEY found in environment.")
+        print("[AI Notice] GEMINI_API_KEY environment variable is not present.")
 
     # 2. Try OpenAI API if key is present
     if openai_key:
@@ -788,7 +837,7 @@ Return strictly valid raw JSON:
             print(f"[AI Notice] OpenAI API failed: {e}")
 
     # 3. Fallback to Dynamic Contextual Semantic Engine
-    print(f"[AI Fallback] Generating dynamic theme-accurate perspectives for: {title[:50]}...")
+    print(f"[AI Fallback] Generating theme-accurate perspectives for: {title[:50]}...")
     return generate_contextual_synthesis(title, context, category)
 
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
@@ -800,6 +849,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         caption = s.get("caption", s.get("title", ""))
         credit = s.get("credit", "📸 News Wire")
         source = s.get("source", "Associated Press Wire")
+        pub_ts = s.get("pub_timestamp", "")
         summary = s.get("neutral_summary", "")
 
         perspectives = s.get("perspectives", {})
@@ -817,7 +867,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
           <div class="card-body">
             <div class="meta-row">
               <span class="category-tag">{cat}</span>
-              <span class="source-tag">{source}</span>
+              <span class="source-tag" data-timestamp="{pub_ts}">{source}</span>
             </div>
 
             <h3 class="story-title">{s.get('title', '')}</h3>
@@ -927,18 +977,21 @@ def run_pipeline():
     # Track used URLs to guarantee ZERO DUPLICATES across the entire feed!
     used_urls: Set[str] = set()
 
-    # Re-evaluate all existing stories with new exact entity photography and dynamic synthesis
+    # Self-Healing: Check every existing story for theme mismatches or outdated timers
     for s in existing_stories:
         title = s.get("title", "")
         cat = s.get("category", "General News")
+        pub_ts = s.get("pub_timestamp")
         
-        # Clean mismatched generic boilerplates
-        if any(bad in json.dumps(s) for bad in [
-            "regulatory standards with commercial and operational reality",
-            "global fuel supply stability and inflation pressures", # Was incorrectly slapped on election mailings
-            "complex institutional challenges", # Generic Tesla fallback
-            "reviewing legal, regulatory, and economic implications"
-        ]):
+        # Recalculate real relative timestamp from pub_timestamp
+        if pub_ts:
+            _, rel_time = parse_pubdate_to_relative(datetime.fromtimestamp(pub_ts, timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT"))
+            src_name = s.get("source_name") or s.get("source", "").split(" • ")[0]
+            s["source"] = f"{src_name} • {rel_time}"
+
+        # If mismatched (e.g. Dodgers talking about battery, mailings talking about diesel), automatically fix!
+        if is_story_mismatched(s):
+            print(f"[Self-Healing] Re-synthesizing corrupted story: {title[:55]}...")
             re_synth = call_ai_synthesizer(title, "", cat)
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
@@ -967,7 +1020,9 @@ def run_pipeline():
                 "id": story_id,
                 "category": it["category"],
                 "title": t,
-                "source": f"{it['source']} • Just now",
+                "source_name": it["source_name"],
+                "pub_timestamp": it["pub_timestamp"],
+                "source": it["source"],
                 "image_url": img_info["url"],
                 "caption": img_info["caption"],
                 "credit": img_info["credit"],
