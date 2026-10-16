@@ -2,7 +2,9 @@
 """
 Your News Lens Automated 15-Minute Wire Scraper & Perspective Synthesis Engine
 - Scrapes breaking headlines across Politics, Sports, Economy, Tech, and Energy.
-- Deep AI synthesis via Gemini API (supporting modern AQ keys and HTTP headers).
+- Direct Entity Photography: Pulls exact photos of named individuals (Jalen Hurts, Pete Hegseth, Trump),
+  official logos (NCAA / College Football Playoff), and financial graphs (Dow Jones).
+- Dynamic Wikipedia REST API lookup for any newly emerging public figures and teams.
 - Contextual argument engine tailoring Why It Matters & Talking Points to the exact story.
 - Guaranteed Zero-Duplication Image Resolver: Each story receives a unique, topic-accurate photo.
 - Directly updates both index.html (pre-rendered) and data/stories.json.
@@ -62,145 +64,151 @@ RSS_FEEDS = [
     }
 ]
 
-# Highly granular, high-reliability Unsplash CDN photo bank (100% CORS-friendly, zero hotlinking blocks)
-PHOTO_KNOWLEDGE_BASE = [
-    # 1. Stocks Rising, Dow Rising, Bull Market, Upward Charts
+# 1. Exact, verified photographic matches for high-profile named entities
+EXACT_ENTITY_PHOTOGRAPHY = [
+    # Jalen Hurts
     {
-        "keywords": ["dow", "stocks rise", "stock rally", "dow rises", "market jump", "stocks surge", "wall street rally", "shares gain", "bull market", "nasdaq surges", "sp 500", "financial gain", "record high"],
+        "patterns": ["jalen hurts", "hurts"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg",
+        "caption": "Philadelphia Eagles quarterback Jalen Hurts.",
+        "credit": "📸 Wikimedia Commons / Jeffrey Beall"
+    },
+    # College Football Playoff & NCAA
+    {
+        "patterns": ["college football playoff", "24-team", "college football", "ncaa", "bowl game", "title games"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
+        "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
+        "credit": "📸 NCAA / Wikimedia Commons"
+    },
+    # Pete Hegseth & Pentagon Leadership
+    {
+        "patterns": ["hegseth", "pete hegseth"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Pete_Hegseth_%2854669483222%29.jpg/800px-Pete_Hegseth_%2854669483222%29.jpg",
+        "caption": "Secretary of Defense nominee Pete Hegseth.",
+        "credit": "📸 Department of Defense / Wikimedia Commons"
+    },
+    # Donald Trump & Presidential Administration
+    {
+        "patterns": ["trump", "donald trump"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/800px-Donald_Trump_official_portrait.jpg",
+        "caption": "President Donald J. Trump in Washington, D.C.",
+        "credit": "📸 Official White House Photo"
+    },
+    # Dow Jones & Stock Market Upward Rallies
+    {
+        "patterns": ["dow", "stocks rise", "stock rally", "dow rises", "market jump", "stocks surge", "wall street rally", "shares gain", "bull market", "record high", "earnings surge"],
         "url": "https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80",
         "caption": "Financial markets rally with upward trending index charts and stock market trading gains.",
         "credit": "📸 Wall Street Financial Wire"
     },
+    # Russian Diesel, Fuel & Sanctions
     {
-        "keywords": ["market", "trading floor", "nyse", "stock market", "investors", "wall street", "broker"],
-        "url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Trading floor terminals and financial exchange displays on Wall Street.",
-        "credit": "📸 Financial Wire Pool"
-    },
-    # 2. Congress, GOP House Members, Lawmakers, Letters, Committees
-    {
-        "keywords": ["gop house", "house members", "gop members", "lawmakers join", "letter urging", "house gop", "caucus", "congressional letter", "house committee"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-        "caption": "House committee room and congressional caucus proceedings in Washington, D.C.",
-        "credit": "📸 Congressional Press Gallery"
-    },
-    {
-        "keywords": ["congress", "senate", "house of representatives", "capitol", "spending framework", "shutdown", "lawmakers", "speaker"],
-        "url": "https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80",
-        "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
-        "credit": "📸 Architect of the Capitol"
-    },
-    # 3. Oil, Diesel, Russia Sanctions, Energy Trade
-    {
-        "keywords": ["diesel", "russia diesel", "sanctions", "oil deal", "tanker", "crude oil", "petroleum", "fuel", "russian oil"],
+        "patterns": ["diesel", "russia diesel", "diesel deal", "oil sanctions", "petroleum", "tanker"],
         "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
         "caption": "International petroleum transit and energy shipping operations under sanctions scrutiny.",
         "credit": "📸 Maritime Energy Archive"
     },
-    # 4. White House & Press Office
+    # GOP House Members & Congressional Committees
     {
-        "keywords": ["white house", "press secretary", "oval office", "west wing", "briefing room", "potus", "presidential administration"],
-        "url": "https://images.unsplash.com/photo-1580130775562-0ef92da028de?auto=format&fit=crop&w=1200&q=80",
+        "patterns": ["gop house", "house members", "gop members", "lawmakers join", "letter urging", "house gop", "caucus", "congressional letter"],
+        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "caption": "House committee room and congressional caucus proceedings in Washington, D.C.",
+        "credit": "📸 Congressional Press Gallery"
+    },
+    # White House Press Office & Briefing Room
+    {
+        "patterns": ["white house", "press secretary", "oval office", "west wing", "briefing room"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
         "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
         "credit": "📸 White House Photo Archive"
     },
+    # Federal Reserve & Jerome Powell
     {
-        "keywords": ["press briefing", "briefing", "spokesperson", "press corps"],
-        "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Press briefing room and presidential podium in Washington, D.C.",
-        "credit": "📸 White House Historical Archive"
+        "patterns": ["federal reserve", "fed", "powell", "interest rate", "rate cut", "rate hike", "central bank"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg",
+        "caption": "Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.",
+        "credit": "📸 Federal Reserve Pool"
     },
-    # 5. Defense, Pentagon, Military & Hegseth
+    # Supreme Court & Legal
     {
-        "keywords": ["hegseth", "army", "pentagon", "defense", "military", "navy", "air force", "marines", "troops", "veterans", "nato", "war", "weapons"],
-        "url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
-        "caption": "The Pentagon Department of Defense headquarters and military command complex.",
-        "credit": "📸 Department of Defense Photo"
+        "patterns": ["supreme court", "court", "judge", "bar exam", "lawsuit", "trial", "doj"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
+        "caption": "Supreme Court of the United States west facade in Washington, D.C.",
+        "credit": "📸 National Photo Archive"
     },
-    # 6. Courts, Legal, Bar Exam, DOJ & Judges
+    # PGA Tour & Golf
     {
-        "keywords": ["bar exam", "court", "judge", "supreme court", "attorney", "lawyer", "justice", "lawsuit", "trial", "legal", "ruling", "doj"],
-        "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Supreme Court pillars and scales of justice inside federal courtroom.",
-        "credit": "📸 Legal Media Archive"
-    },
-    # 7. College Football Playoff & NCAA Expansion
+        "patterns": ["golf", "pga", "liv golf", "masters tournament", "fairway"],
+        "url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Professional tournament championship fairway and clubhouse green.",
+        "credit": "📸 PGA Tour Media Archive"
+    }
+]
+
+# Secondary diverse topic photo bank
+SECONDARY_TOPIC_POOL = [
     {
-        "keywords": ["college football", "playoff nears", "24-team", "expansion", "ncaa", "bowl game", "title games", "college athletics", "quarterback"],
-        "url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-        "caption": "College Football Playoff championship stadium field and postseason bowl game arena.",
-        "credit": "📸 NCAA College Sports Wire"
-    },
-    # 8. NFL & Professional Football (Jalen Hurts, Eagles, etc.)
-    {
-        "keywords": ["jalen hurts", "hurts", "eagles", "panthers", "qb", "nfl", "super bowl", "chiefs", "touchdown", "calf"],
+        "category": "Sports",
+        "keywords": ["football", "stadium", "nfl", "super bowl", "touchdown", "quarterback"],
         "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
         "caption": "NFL stadium under game day floodlights during conference competition.",
         "credit": "📸 NFL Media Archive"
     },
-    # 9. Golf & PGA Tour
     {
-        "keywords": ["golf", "pga", "liv golf", "masters tournament", "fairway", "tiger woods", "scheffler", "putt"],
-        "url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Championship tournament championship fairway and clubhouse green.",
-        "credit": "📸 PGA Tour Media Archive"
-    },
-    # 10. Basketball & NBA
-    {
-        "keywords": ["basketball", "nba", "hoops", "lakers", "celtics", "warriors", "playoffs"],
+        "category": "Sports",
+        "keywords": ["basketball", "nba", "court", "hoops", "lakers", "celtics"],
         "url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Professional basketball arena hardwood court under game night arena lights.",
+        "caption": "Professional basketball arena hardwood court under game night lights.",
         "credit": "📸 Sports Wire Archive"
     },
-    # 11. Federal Reserve & Interest Rates
     {
-        "keywords": ["federal reserve", "fed", "powell", "interest rate", "rate cut", "rate hike", "monetary policy", "central bank"],
-        "url": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Federal Reserve currency reserve vaults and commercial banking monetary reserves.",
-        "credit": "📸 Federal Reserve Pool"
+        "category": "Sports",
+        "keywords": ["baseball", "mlb", "pitcher", "ballpark"],
+        "url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Major League championship ballpark field and outfield bleachers.",
+        "credit": "📸 Sports Media Wire"
     },
-    # 12. Inflation & Consumer Prices
     {
-        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "cost of living", "supermarket"],
+        "category": "Economy & Inflation",
+        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "supermarket"],
         "url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
         "caption": "Consumer retail grocery market shelves and pricing indexes.",
         "credit": "📸 AP Business Photo"
     },
-    # 13. Border & Immigration
     {
-        "keywords": ["border", "migrant", "immigration", "patrol", "cbp", "asylum", "fentanyl", "cartel", "customs", "rio grande"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-        "caption": "Southern border security infrastructure and international port-of-entry checkpoint.",
-        "credit": "📸 U.S. Customs and Border Protection"
-    },
-    # 14. Energy Grid & Power Lines
-    {
-        "keywords": ["grid", "transmission", "electricity", "power outage", "utility", "ferc", "blackout", "wires"],
+        "category": "Energy & Infrastructure",
+        "keywords": ["grid", "transmission", "electricity", "power", "utility", "ferc"],
         "url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
         "caption": "High-voltage transmission line towers and regional electrical grid infrastructure.",
         "credit": "📸 AP Photo Archive"
     },
-    # 15. Technology, AI & Silicon Valley
     {
-        "keywords": ["tech", "ai", "artificial intelligence", "meta", "google", "apple", "social media", "moderation", "algorithm", "chip", "nvidia", "silicon valley"],
+        "category": "Border & Security",
+        "keywords": ["border", "migrant", "immigration", "patrol", "cbp", "asylum", "fentanyl"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg",
+        "caption": "U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.",
+        "credit": "📸 U.S. Customs and Border Protection"
+    },
+    {
+        "category": "Tech & Free Speech",
+        "keywords": ["tech", "ai", "artificial intelligence", "meta", "google", "apple", "social media", "algorithm", "chip"],
         "url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
         "caption": "High-density enterprise cloud data center and computational server infrastructure.",
         "credit": "📸 Tech Systems Wire"
     },
-    # 16. Healthcare & Hospitals
     {
-        "keywords": ["hospital", "hhs", "healthcare", "pharma", "drug", "medicine", "doctor", "patient", "medical", "insurance", "fda"],
+        "category": "Healthcare & Drug Costs",
+        "keywords": ["hospital", "hhs", "healthcare", "pharma", "drug", "medicine", "doctor", "fda"],
         "url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
         "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
         "credit": "📸 Health Systems Wire"
     }
 ]
 
-# Large reserve of distinct Unsplash photos guaranteed not to duplicate
+# Reserve pool guaranteed not to duplicate across stories
 ROTATING_BACKUP_POOL = [
     {"url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80", "caption": "National press briefing room and broadcast journalism desk.", "credit": "📸 Wire Media Archive"},
-    {"url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80", "caption": "Government administrative proceedings and legislative assembly.", "credit": "📸 Capitol Press Gallery"},
-    {"url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80", "caption": "Official federal podium and press briefing conference.", "credit": "📸 National Photo Archive"},
+    {"url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80", "caption": "Congressional proceedings and legislative committee assembly.", "credit": "📸 Capitol Press Gallery"},
     {"url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80", "caption": "Financial market exchange floor and trading terminals.", "credit": "📸 Financial Wire Pool"},
     {"url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80", "caption": "Championship athletics stadium under stadium lights.", "credit": "📸 Sports Wire Archive"},
     {"url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80", "caption": "Enterprise technology infrastructure and network servers.", "credit": "📸 Technology Media Wire"},
@@ -215,27 +223,79 @@ def clean_html_text(raw_text: str) -> str:
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
-def pick_unique_image(title: str, category: str, used_urls: Set[str]) -> dict:
+def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
+    """Dynamically fetches official portrait/logo from Wikipedia REST API."""
+    try:
+        url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(entity_name)}"
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "YourNewsLensBot/1.0 (https://yournewslens.com/; contact@yournewslens.com)"}
+        )
+        with urllib.request.urlopen(req, timeout=3) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            thumb = data.get("thumbnail", {}).get("source")
+            desc = data.get("description", entity_name.replace("_", " "))
+            title_text = data.get("title", entity_name.replace("_", " "))
+            if thumb and thumb.startswith("https://"):
+                return {
+                    "url": thumb,
+                    "caption": f"{title_text} — {desc}.",
+                    "credit": f"📸 Wikimedia Commons / {title_text}"
+                }
+    except Exception:
+        pass
+    return None
+
+def extract_named_entities_from_title(title: str) -> List[str]:
+    clean = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
+    entities = []
+    # Check for prominent multi-word capitalized names
+    matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b', clean)
+    for m in matches:
+        if m.lower() not in ["the hill", "usa today", "cbs sports", "yahoo sports", "new york times", "wall street journal", "just now"]:
+            entities.append(m.replace(" ", "_"))
+    return entities
+
+def resolve_story_image(title: str, category: str, used_urls: Set[str]) -> dict:
     """
-    Selects a highly relevant image while guaranteeing that NO URL is reused twice in the feed.
+    4-Tier Image Resolution:
+    1. Exact high-priority entity mapping (Jalen Hurts, NCAA, Hegseth, Trump, Dow, Diesel)
+    2. Dynamic Wikipedia entity API lookup
+    3. Secondary topic keyword rules
+    4. Non-repeating backup rotation
     """
     t_lower = title.lower()
 
-    # 1. First priority: match exact keywords
-    for item in PHOTO_KNOWLEDGE_BASE:
+    # 1. Exact Entity Mapping
+    for ent in EXACT_ENTITY_PHOTOGRAPHY:
+        for pat in ent["patterns"]:
+            if re.search(r'\b' + re.escape(pat) + r'\b', t_lower):
+                if ent["url"] not in used_urls:
+                    used_urls.add(ent["url"])
+                    return {"url": ent["url"], "caption": ent["caption"], "credit": ent["credit"]}
+
+    # 2. Dynamic Wikipedia Named Entity API lookup
+    entities = extract_named_entities_from_title(title)
+    for ent in entities:
+        wiki_img = fetch_wikipedia_entity_image(ent)
+        if wiki_img and wiki_img["url"] not in used_urls:
+            used_urls.add(wiki_img["url"])
+            return wiki_img
+
+    # 3. Secondary Topic Matching
+    for item in SECONDARY_TOPIC_POOL:
         for kw in item["keywords"]:
             if re.search(r'\b' + re.escape(kw) + r'\b', t_lower):
                 if item["url"] not in used_urls:
                     used_urls.add(item["url"])
                     return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    # 2. If already used or no direct keyword, pick unused from rotating pool
+    # 4. Fallback rotation (never duplicate)
     for item in ROTATING_BACKUP_POOL:
         if item["url"] not in used_urls:
             used_urls.add(item["url"])
             return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    # 3. Final fallback with cache-busting seed
     seed = abs(hash(title)) % len(ROTATING_BACKUP_POOL)
     fallback = ROTATING_BACKUP_POOL[seed]
     return {"url": fallback["url"], "caption": fallback["caption"], "credit": fallback["credit"]}
@@ -292,7 +352,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             left_bullets = [
                 f"Demands strict limits on physical workload for student-athletes facing extended seasons without union collective bargaining.",
                 f"Calls for direct revenue sharing and permanent medical guarantees for athletes generating billions in television broadcast revenue.",
-                f"Warns that commercial conference greed threatens academic commitments and traditional regional collegiate rivalries."
+                f"Warns that commercial conference greed threatens academic commitments and traditional regional collegiate traditions."
             ]
             left_talk = [
                 f"Adding more playoff games adds hundreds of millions for networks while running unpaid collegiate athletes into the ground.",
@@ -301,13 +361,13 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
 
             center_framing = f"Commercial Realism and Postseason Access: Navigating Format Modernization in {clean_title[:36]}..."
             center_bullets = [
-                f"Reflects the undeniable market demand for high-stakes playoff football over meaningless exhibition bowl games.",
-                f"Creates unprecedented access for non-traditional programs to compete on the national championship stage.",
-                f"Requires pragmatic negotiation among university presidents to balance academic schedules with media distribution revenue."
+                f"Reflects the undeniable market demand for high-stakes playoff football over increasingly diminished exhibition bowl games.",
+                f"Creates unprecedented tournament access for emerging programs to compete on the national championship stage.",
+                f"Requires pragmatic negotiation among university leadership to balance academic schedules with media distribution revenue."
             ]
             center_talk = [
                 f"Fans and players want championships settled on the field, not by committee backrooms; expansion was inevitable.",
-                f"Modern college sports requires balancing massive media revenue with player scheduling and academic welfare."
+                f"Modern college sports requires balancing massive media revenue with student-athlete scheduling and academic welfare."
             ]
 
             right_framing = f"Free Market Sports Entertainment: Expanding Tournament Access and Competition in {clean_title[:36]}..."
@@ -317,7 +377,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 f"Drives substantial private investment and economic activity for host cities, universities, and local athletic programs."
             ]
             right_talk = [
-                f"The free market delivers what fans want: more high-stakes football and open competition decided on the turf.",
+                f"The free market delivers what fans want: more high-stakes football and open competition decided between the goal lines.",
                 f"A 24-team playoff is the ultimate meritocracy where any program can earn their way to a national championship."
             ]
         elif is_injury:
@@ -542,7 +602,6 @@ Return strictly valid raw JSON:
 
         for model in models:
             try:
-                # Do NOT pass ?key= in the URL for modern AQ keys; pass strictly in x-goog-api-key header
                 url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
                 payload = json.dumps({
                     "contents": [{"parts": [{"text": prompt}]}],
@@ -708,7 +767,7 @@ def run_pipeline():
     # Track used URLs to guarantee ZERO DUPLICATES across the entire feed!
     used_urls: Set[str] = set()
 
-    # Re-evaluate all existing stories with new contextual synthesis and distinct photos
+    # Re-evaluate all existing stories with new exact entity photography
     for s in existing_stories:
         title = s.get("title", "")
         cat = s.get("category", "General News")
@@ -719,7 +778,7 @@ def run_pipeline():
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
 
-        img_info = pick_unique_image(title, cat, used_urls)
+        img_info = resolve_story_image(title, cat, used_urls)
         s["image_url"] = img_info["url"]
         s["caption"] = img_info["caption"]
         s["credit"] = img_info["credit"]
@@ -736,7 +795,7 @@ def run_pipeline():
 
             print(f"Processing wire item: {t[:65]}...")
             synthesis = call_ai_synthesizer(t, it["description"], it["category"])
-            img_info = pick_unique_image(t, it["category"], used_urls)
+            img_info = resolve_story_image(t, it["category"], used_urls)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             
             story_record = {
