@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="no-referrer">
   <title>Your News Lens — Multi-Perspective News & Debate Platform</title>
   <style>
     :root {
@@ -186,22 +187,24 @@
     .pill {
       background: #131b2e;
       border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 4px 10px;
+      color: #94a3b8;
+      padding: 5px 12px;
       border-radius: 14px;
-      font-size: 11px;
+      font-size: 11.5px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.15s ease;
     }
-
-        .pill.special-pol {
-      border-color: #6366f1;
-      color: #c7d2fe;
+    .pill:hover {
+      background: #1e293b;
+      color: #f8fafc;
     }
-    .pill.special-pol.active {
-      background: #4338ca;
-      color: #fff;
+    .pill.active {
+      background: #3b82f6 !important;
+      color: #ffffff !important;
+      border-color: #60a5fa !important;
+      font-weight: 700;
     }
 
 .pill.active {
@@ -623,8 +626,8 @@
         <div class="lens-selector-wrapper">
           <span class="lens-label">Lens:</span>
           <button type="button" class="lens-btn left" id="btnGlobalLeft" onclick="setGlobalPerspective('LEFT')">Left</button>
-          <button type="button" class="lens-btn center" id="btnGlobalCenter" onclick="setGlobalPerspective('CENTER')">Balanced</button>
-          <button type="button" class="lens-btn right active" id="btnGlobalRight" onclick="setGlobalPerspective('RIGHT')">Right</button>
+          <button type="button" class="lens-btn center active" id="btnGlobalCenter" onclick="setGlobalPerspective('CENTER')">Balanced</button>
+          <button type="button" class="lens-btn right" id="btnGlobalRight" onclick="setGlobalPerspective('RIGHT')">Right</button>
         </div>
 
         <button type="button" class="btn-quick primary" onclick="showLoungeTab()">💬 Lounge</button>
@@ -636,8 +639,8 @@
   <div class="filter-bar">
     <div class="category-pills">
       <button type="button" class="pill active" onclick="applyCategoryFilter(this, 'All')">All</button>
-      <button type="button" class="pill special-pol" onclick="applyCategoryFilter(this, 'Politics')">🏛️ Politics</button>
-      <button type="button" class="pill special" onclick="applyCategoryFilter(this, 'Sports')">🏆 Sports</button>
+      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Politics')">🏛️ Politics</button>
+      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Sports')">🏆 Sports</button>
       <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Energy & Infrastructure')">Energy</button>
       <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Economy & Inflation')">Economy</button>
       <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Border & Security')">Border</button>
@@ -656,9 +659,396 @@
     <!-- Streamlined Feed with Compact Real Photos -->
     <div id="storiesFeedView" class="feed-container">
 
+        <article class="compact-card" data-category="Politics" id="story-gop-1">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="House committee room and congressional caucus proceedings in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">House committee room and congressional caucus proceedings in Washington, D.C.</span>
+              <span class="credit-tag">📸 Congressional Press Gallery</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Politics</span>
+              <span class="source-tag">Google News Politics • Just now</span>
+            </div>
+
+            <h3 class="story-title">5 GOP House members join letter urging Trump to cancel Russia diesel deal, up sanctions - The Hill</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Five Republican House lawmakers signed a joint congressional letter urging President Donald Trump to terminate a proposed Russian diesel fuel arrangement and enforce expanded economic sanctions against Moscow.</div>
+            </div>
+            <div id="story-gop-1-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Geopolitical Strategy and Energy Security: Balancing Policy Realities in Russia Diesel Deal</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Balances national security objectives and sanctions enforcement against global fuel supply stability and domestic diesel prices.</li><li>Assesses whether diplomatic leverage or strict economic restrictions are more effective in achieving strategic foreign policy goals.</li><li>Requires coordinated bipartisan congressional oversight to maintain American credibility with European and NATO partners.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Foreign policy requires balancing firm national security resolve with realistic global energy market calculations."</div><div class="quote-row">"Maintaining a unified, credible sanctions posture is vital for American geopolitical leadership."</div>
+              </div>
+            </div>
+            <div id="story-gop-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Unleash American Energy: Stand Firm on Russian Sanctions and Expand Domestic Drilling</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Calls for total American energy dominance: the U.S. should be refining and drilling domestic fuel, not enabling adversaries through waiver loopholes.</li><li>Demands unyielding enforcement of economic sanctions against hostile foreign regimes threatening global stability.</li><li>Asserts congressional constitutional authority over foreign commerce, holding the administration accountable to statutory security mandates.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"America has the energy reserves to power the free world; we should be drilling our own oil, not cutting deals with adversaries."</div><div class="quote-row">"Weakness invites aggression; maximum pressure sanctions and domestic production are how America leads."</div>
+              </div>
+            </div>
+            <div id="story-gop-1-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-gop-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Global Accountability and Human Rights: Enforcing Strict Economic Sanctions Over Petro-Deals</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Demands strict international accountability, rejecting any backroom economic compromises that enrich autocratic foreign regimes.</li><li>Highlights the urgent necessity of accelerating the clean renewable transition to permanently end dependence on global petro-states.</li><li>Urges multilateral diplomacy to hold foreign human rights violators accountable through coordinated financial penalties.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"We cannot compromise on basic international law and human rights for short-term fossil fuel arrangements."</div><div class="quote-row">"True national security means breaking our dependence on foreign fossil fuel cartels once and for all."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Sports" id="story-cfb-1">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="College Football Playoff championship stadium field and postseason bowl game arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">College Football Playoff championship stadium field and postseason bowl game arena.</span>
+              <span class="credit-tag">📸 NCAA College Sports Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Sports</span>
+              <span class="source-tag">Google News Sports • Just now</span>
+            </div>
+
+            <h3 class="story-title">College Football Playoff nears agreement on 24-team expansion that could end title games - CBS Sports</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">College Football Playoff leaders and conference commissioners are finalizing a landmark framework to expand the postseason tournament to 24 teams, altering traditional bowl schedules and conference championship structures.</div>
+            </div>
+            <div id="story-cfb-1-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Commercial Realism Meets Postseason Access: Navigating Format Modernization in College Football</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Reflects the undeniable market demand for high-stakes playoff football over increasingly diminished exhibition bowl games.</li><li>Creates unprecedented postseason tournament access for emerging programs to compete on the national championship stage.</li><li>Requires pragmatic negotiation among university leadership to balance athlete academic schedules with media rights revenues.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Fans and players want championships settled on the field, not by committee backrooms; expansion was inevitable."</div><div class="quote-row">"Modern collegiate athletics requires balancing massive media revenue with student-athlete scheduling and welfare."</div>
+              </div>
+            </div>
+            <div id="story-cfb-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Meritocracy on the Turf: 24-Team Playoff Eliminates Committee Favoritism and Expands Competition</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Celebrates free market competition: expanding access allows on-field performance rather than boardroom rankings to determine champions.</li><li>Breaks up the historic closed-shop monopoly that previously locked smaller conferences out of national title contention.</li><li>Drives substantial private investment and economic activity for university athletic departments and host communities.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The free market delivers what fans want: more high-stakes football and open competition decided between the goal lines."</div><div class="quote-row">"A 24-team playoff is the ultimate meritocracy where any program can earn their way to a national championship."</div>
+              </div>
+            </div>
+            <div id="story-cfb-1-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-cfb-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Player Burden vs Television Billions: Questioning the Physical Toll of Postseason Expansion</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Demands strict limits on physical workload for student-athletes facing extended seasons without union collective bargaining.</li><li>Calls for direct revenue sharing and permanent medical coverage for athletes generating billions in media broadcast rights.</li><li>Warns that corporate conference greed threatens academic commitments and traditional regional collegiate traditions.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Adding more playoff games adds hundreds of millions for networks while running unpaid collegiate athletes into the ground."</div><div class="quote-row">"If college football expands the season, student-athletes must receive direct revenue sharing and full employee protections."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Economy & Inflation" id="story-dow-1">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets rally with upward trending index charts and stock market trading gains." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Financial markets rally with upward trending index charts and stock market trading gains.</span>
+              <span class="credit-tag">📸 Wall Street Financial Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Economy & Inflation</span>
+              <span class="source-tag">Google News Business • Just now</span>
+            </div>
+
+            <h3 class="story-title">Dow climbs to new record as tech rally and corporate earnings surge - Wall Street Journal</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">The Dow Jones Industrial Average and broader market indexes advanced to fresh record highs, propelled by robust quarterly technology earnings and resilient corporate capital spending.</div>
+            </div>
+            <div id="story-dow-1-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Economic Resilience and Corporate Momentum: Navigating Sustained Market Growth</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses corporate earnings strength, capital investment trends, and consumer spending data driving market performance.</li><li>Balances financial sector optimism with prudent monitoring of inflation indicators and central bank interest rate policy.</li><li>Encourages fiscal predictability and stable regulatory frameworks to support sustained economic expansion.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Market growth is a positive economic indicator, but sustaining it requires disciplined monetary and fiscal management."</div><div class="quote-row">"Steady corporate earnings and investment capital are vital drivers of broader economic employment."</div>
+              </div>
+            </div>
+            <div id="story-dow-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Capitalist Growth and Investor Confidence: Rewarding Enterprise and 401(k) Savers</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Celebrates free enterprise and capital investment: rising markets reflect business innovation, productivity, and economic optimism.</li><li>Protects retirement savings, 401(k) accounts, and pension funds held by tens of millions of hardworking American workers.</li><li>Rejects anti-business taxation and regulatory overreach that penalizes capital formation and economic job creation.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Strong markets empower everyday Americans whose retirements, pensions, and savings depend on economic growth."</div><div class="quote-row">"When you reward investment, innovation, and free enterprise, the entire American economy prospers."</div>
+              </div>
+            </div>
+            <div id="story-dow-1-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Wall Street Gains vs Main Street Reality: Examining Wealth Inequality in Market Rallies</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Highlights the persistent gap between soaring financial asset valuations and the everyday cost-of-living pressures facing working families.</li><li>Calls for tax fairness and corporate accountability to ensure stock market wealth translates into shared community prosperity.</li><li>Demands regulatory safeguards against predatory speculation that fuels housing and consumer price inflation.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Record highs on Wall Street mean nothing if working families still can't afford groceries, rent, and healthcare."</div><div class="quote-row">"An economy measured solely by stock indexes ignores the real financial health of everyday working Americans."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
         <article class="compact-card" data-category="Sports" id="story-hurts-1">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="NFL stadium under game day floodlights during conference competition." class="hero-photo" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="NFL stadium under game day floodlights during conference competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">NFL stadium under game day floodlights during conference competition.</span>
               <span class="credit-tag">📸 NFL Media Archive</span>
@@ -667,7 +1057,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-tag" >Sports</span>
+              <span class="category-tag">Sports</span>
               <span class="source-tag">Google News Sports • Just now</span>
             </div>
 
@@ -677,39 +1067,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">Philadelphia Eagles quarterback Jalen Hurts has been ruled out of the upcoming contest against the Carolina Panthers after being diagnosed with a calf blood clot, with team medical staff placing the starter under clinical recovery protocols.</div>
             </div>
-            <div id="story-hurts-1-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Next-Man-Up Accountability: Testing Eagles Roster Depth and Offensive Line Execution</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Tests team resilience and backup quarterback preparation under high-leverage conference game pressure.</li><li>Demands disciplined offensive line protection, running game dominance, and error-free situational execution.</li><li>Demonstrates that championship-caliber football franchises rely on system execution, culture, and locker room grit rather than single-player dependence.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Championships aren't won on excuses; elite teams adapt, execute, and deliver next-man-up football."</div><div class="quote-row">"Adversity reveals true team character; this game is the ultimate test of preparation and roster depth."</div>
-              </div>
-            </div>
-            <div id="story-hurts-1-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-hurts-1-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -739,6 +1097,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"Smart franchises make cautious medical calls early to preserve their franchise quarterback for the postseason run."</div><div class="quote-row">"Championship caliber teams must adapt to sudden injuries and execute sound situational football."</div>
+              </div>
+            </div>
+            <div id="story-hurts-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-hurts-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Next-Man-Up Accountability: Testing Eagles Roster Depth and Offensive Line Execution</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Tests team resilience and backup quarterback preparation under high-leverage conference game pressure.</li><li>Demands disciplined offensive line protection, running game dominance, and error-free situational execution.</li><li>Demonstrates that championship-caliber football franchises rely on system execution, culture, and locker room grit rather than single-player dependence.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Championships aren't won on excuses; elite teams adapt, execute, and deliver next-man-up football."</div><div class="quote-row">"Adversity reveals true team character; this game is the ultimate test of preparation and roster depth."</div>
               </div>
             </div>
             <div id="story-hurts-1-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -787,7 +1177,7 @@
 
         <article class="compact-card" data-category="Politics" id="story-live-1">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg" alt="The White House North Portico and Executive Mansion in Washington, D.C." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg" alt="The White House North Portico and Executive Mansion in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The White House North Portico and Executive Mansion in Washington, D.C.</span>
               <span class="credit-tag">📸 White House Photo Archive</span>
@@ -796,7 +1186,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-pol-tag" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-color:rgba(99,102,241,0.3);">Politics</span>
+              <span class="category-tag">Politics</span>
               <span class="source-tag">Google News Politics • Just now</span>
             </div>
 
@@ -806,39 +1196,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">White House press secretary Katie Zacharia confirmed she did not achieve a passing score on the District of Columbia bar examination, prompting congressional and legal ethics commentary regarding executive branch credentials.</div>
             </div>
-            <div id="story-live-1-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Credentialism vs Competence: Scrutinizing Administration Executive Standards</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Highlights administrative hiring priorities and merit-based qualification standards in executive communication roles.</li><li>Draws scrutiny toward executive branch vetting procedures for senior public-facing staff.</li><li>Reflects the ongoing national debate over professional licensing requirements and transparent qualifications.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Senior executive appointments require rigorous professional standards and full transparency."</div><div class="quote-row">"Voters expect top administration spokespersons to meet baseline professional credentials."</div>
-              </div>
-            </div>
-            <div id="story-live-1-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-live-1-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -868,6 +1226,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"Press secretaries communicate policy rather than argue cases, though credentials will always face partisan scrutiny."</div><div class="quote-row">"The administration must maintain transparency while keeping focus on federal governance priorities."</div>
+              </div>
+            </div>
+            <div id="story-live-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-live-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Credentialism vs Competence: Scrutinizing Administration Executive Standards</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Highlights administrative hiring priorities and merit-based qualification standards in executive communication roles.</li><li>Draws scrutiny toward executive branch vetting procedures for senior public-facing staff.</li><li>Reflects the ongoing national debate over professional licensing requirements and transparent qualifications.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Senior executive appointments require rigorous professional standards and full transparency."</div><div class="quote-row">"Voters expect top administration spokespersons to meet baseline professional credentials."</div>
               </div>
             </div>
             <div id="story-live-1-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -916,7 +1306,7 @@
 
         <article class="compact-card" data-category="Politics" id="story-live-2">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/The_Pentagon_January_2008.jpg" alt="The Pentagon military headquarters and Department of Defense in Arlington, Virginia." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/The_Pentagon_January_2008.jpg" alt="The Pentagon military headquarters and Department of Defense in Arlington, Virginia." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The Pentagon military headquarters and Department of Defense in Arlington, Virginia.</span>
               <span class="credit-tag">📸 Department of Defense Photo</span>
@@ -925,7 +1315,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-pol-tag" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-color:rgba(99,102,241,0.3);">Politics</span>
+              <span class="category-tag">Politics</span>
               <span class="source-tag">Google News Politics • Just now</span>
             </div>
 
@@ -935,39 +1325,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">Defense Secretary nominee Pete Hegseth delivered keynote remarks at the annual Association of the U.S. Army conference in Washington, outlining operational priorities and military readiness standards amidst ongoing Pentagon leadership transitions.</div>
             </div>
-            <div id="story-live-2-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Restoring Warfighting Focus: Rebuilding Traditional Lethality and Merit in the Armed Forces</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Signals a direct commitment to eliminating administrative politicization and refocusing defense resources entirely on combat readiness.</li><li>Restores traditional military standards, physical rigor, and combat lethality across officer and enlisted corps.</li><li>Emphasizes fiscal accountability in defense procurement and elimination of bureaucratic waste in military branches.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"The sole mission of the military is deterring and winning wars through superior lethality and merit."</div><div class="quote-row">"Our service members deserve leadership focused on battlefield readiness rather than political correctness."</div>
-              </div>
-            </div>
-            <div id="story-live-2-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-live-2-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -997,6 +1355,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"Modernizing defense infrastructure requires institutional continuity and bipartisan congressional coordination."</div><div class="quote-row">"Maintaining high recruitment numbers and operational readiness is essential for national defense deterrence."</div>
+              </div>
+            </div>
+            <div id="story-live-2-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-live-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Restoring Warfighting Focus: Rebuilding Traditional Lethality and Merit in the Armed Forces</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Signals a direct commitment to eliminating administrative politicization and refocusing defense resources entirely on combat readiness.</li><li>Restores traditional military standards, physical rigor, and combat lethality across officer and enlisted corps.</li><li>Emphasizes fiscal accountability in defense procurement and elimination of bureaucratic waste in military branches.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The sole mission of the military is deterring and winning wars through superior lethality and merit."</div><div class="quote-row">"Our service members deserve leadership focused on battlefield readiness rather than political correctness."</div>
               </div>
             </div>
             <div id="story-live-2-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1045,7 +1435,7 @@
 
         <article class="compact-card" data-category="Politics" id="story-8">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Capitol building and House chamber wing in Washington, D.C.</span>
               <span class="credit-tag">📸 Architect of the Capitol</span>
@@ -1054,7 +1444,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-pol-tag" style="background:rgba(99,102,241,0.15);color:#a5b4fc;border-color:rgba(99,102,241,0.3);">Politics</span>
+              <span class="category-tag">Politics</span>
               <span class="source-tag">Associated Press Congressional • 15 mins ago</span>
             </div>
 
@@ -1064,39 +1454,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">House and Senate leaders finalized a .65 trillion statutory discretionary spending agreement setting top-line allocations for defense and domestic programs, averting a looming partial federal government shutdown while leaving contentious policy riders to separate committee votes.</div>
             </div>
-            <div id="story-8-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Fiscal Capitulation: Washington Spendthrifts Balloon 5T Debt Without Mandatory Spending Cuts</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Continues catastrophic trillion-dollar annual deficit spending that devalues the dollar and fuels core consumer price inflation.</li><li>Surrenders the constitutional power of the purse by failing to attach mandatory southern border enforcement or roll back bloated agency bureaucracies.</li><li>Perpetuates closed-door omnibus packaging that sidelines conservative budget-cutters and prevents transparent single-subject floor amendments.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Adding another trillion dollars to our national debt isn't bipartisan governance—it's fiscal surrender."</div><div class="quote-row">"If Congress won't use spending deadlines to rein in reckless federal expansion, the bond market will eventually force it on us."</div>
-              </div>
-            </div>
-            <div id="story-8-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-8-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1126,6 +1484,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"In a divided government, compromise is a necessity; shutting down federal agencies costs taxpayers more money than it saves."</div><div class="quote-row">"Keeping our military funded and essential services running is basic constitutional governance, not an ideological defeat."</div>
+              </div>
+            </div>
+            <div id="story-8-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-8" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Fiscal Capitulation: Washington Spendthrifts Balloon 5T Debt Without Mandatory Spending Cuts</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Continues catastrophic trillion-dollar annual deficit spending that devalues the dollar and fuels core consumer price inflation.</li><li>Surrenders the constitutional power of the purse by failing to attach mandatory southern border enforcement or roll back bloated agency bureaucracies.</li><li>Perpetuates closed-door omnibus packaging that sidelines conservative budget-cutters and prevents transparent single-subject floor amendments.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Adding another trillion dollars to our national debt isn't bipartisan governance—it's fiscal surrender."</div><div class="quote-row">"If Congress won't use spending deadlines to rein in reckless federal expansion, the bond market will eventually force it on us."</div>
               </div>
             </div>
             <div id="story-8-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1174,7 +1564,7 @@
 
         <article class="compact-card" data-category="Sports" id="story-6">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Professional tournament championship fairway and clubhouse green." class="hero-photo" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Professional tournament championship fairway and clubhouse green." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional tournament championship fairway and clubhouse green.</span>
               <span class="credit-tag">📸 PGA Tour Media Archive</span>
@@ -1183,7 +1573,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-tag" >Sports</span>
+              <span class="category-tag">Sports</span>
               <span class="source-tag">Associated Press Sports • 30 mins ago</span>
             </div>
 
@@ -1193,39 +1583,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The PGA Tour and Saudi Arabia's Public Investment Fund advanced negotiations on an investment framework to unify commercial golf operations, terminating outstanding antitrust litigation while drawing regulatory scrutiny from the U.S. Senate.</div>
             </div>
-            <div id="story-6-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>PGA Tour Leadership Exposed for Corporate Hypocrisy and Monopoly Self-Preservation</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>PGA Tour executives publicly weaponized 9/11 families and patriotic loyalty to demonize rival golfers, only to execute a secret backroom cash deal.</li><li>Demonstrates how entrenched corporate sports monopolies will sacrifice traditional loyalty the second their market dominance is threatened.</li><li>Undermines player representation by cutting rank-and-file golfers out of multi-billion dollar governing decisions.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"PGA Tour leadership lectured players on morality and American tradition, and then sold out to the exact same fund behind closed doors."</div><div class="quote-row">"Golf was built on integrity and honor; Tour executives proved their only principle was maintaining executive monopoly control."</div>
-              </div>
-            </div>
-            <div id="story-6-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-6-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1255,6 +1613,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"Golf fans only care about seeing the best players compete together on Sunday; this business settlement was inevitable."</div><div class="quote-row">"Sovereign wealth is already in Apple, Uber, and Formula 1; singling out golf ignores the reality of global sports finance."</div>
+              </div>
+            </div>
+            <div id="story-6-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-6" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>PGA Tour Leadership Exposed for Corporate Hypocrisy and Monopoly Self-Preservation</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>PGA Tour executives publicly weaponized 9/11 families and patriotic loyalty to demonize rival golfers, only to execute a secret backroom cash deal.</li><li>Demonstrates how entrenched corporate sports monopolies will sacrifice traditional loyalty the second their market dominance is threatened.</li><li>Undermines player representation by cutting rank-and-file golfers out of multi-billion dollar governing decisions.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"PGA Tour leadership lectured players on morality and American tradition, and then sold out to the exact same fund behind closed doors."</div><div class="quote-row">"Golf was built on integrity and honor; Tour executives proved their only principle was maintaining executive monopoly control."</div>
               </div>
             </div>
             <div id="story-6-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1303,16 +1693,16 @@
 
         <article class="compact-card" data-category="Sports" id="story-7">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Collegiate football stadium under stadium lights during Saturday conference matchup." class="hero-photo" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80" alt="National press briefing room and broadcast journalism desk." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Collegiate football stadium under stadium lights during Saturday conference matchup.</span>
-              <span class="credit-tag">📸 NCAA Photo Archive</span>
+              <span class="caption-text">National press briefing room and broadcast journalism desk.</span>
+              <span class="credit-tag">📸 Wire Media Archive</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag special-tag" >Sports</span>
+              <span class="category-tag">Sports</span>
               <span class="source-tag">Reuters Sports • 1 hour ago</span>
             </div>
 
@@ -1322,39 +1712,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The NCAA and Power Five conferences approved a landmark class-action legal settlement committing over $2.7 billion in back-pay damages and establishing a framework allowing universities to directly share up to $22 million annually with student-athletes.</div>
             </div>
-            <div id="story-7-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Unregulated Free Agency Destroys Collegiate Amateurism, Academics, and School Loyalty</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Transforms amateur college sports into an unregulated semi-pro bidding war dominated by booster collective bankrolls.</li><li>Erodes academic standards and student-athlete graduation focus as players enter year-to-year transfer portal auctions.</li><li>Will force universities to defund Olympic and non-revenue sports (wrestling, golf, track) to pay football payrolls.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"College sports used to be about school pride, education, and development; now it's minor-league free agency with no salary cap."</div><div class="quote-row">"Turning 19-year-olds into mercenaries jumping schools every December ruins the core culture of college football."</div>
-              </div>
-            </div>
-            <div id="story-7-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-7-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1384,6 +1742,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"The NCAA was losing every court case 9-0; bringing revenue sharing in-house is the only pragmatic way to avoid total anarchy."</div><div class="quote-row">"Schools generate $100M+ TV contracts; sharing a percentage with the actual revenue-producing athletes was legally unavoidable."</div>
+              </div>
+            </div>
+            <div id="story-7-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-7" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Unregulated Free Agency Destroys Collegiate Amateurism, Academics, and School Loyalty</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Transforms amateur college sports into an unregulated semi-pro bidding war dominated by booster collective bankrolls.</li><li>Erodes academic standards and student-athlete graduation focus as players enter year-to-year transfer portal auctions.</li><li>Will force universities to defund Olympic and non-revenue sports (wrestling, golf, track) to pay football payrolls.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"College sports used to be about school pride, education, and development; now it's minor-league free agency with no salary cap."</div><div class="quote-row">"Turning 19-year-olds into mercenaries jumping schools every December ruins the core culture of college football."</div>
               </div>
             </div>
             <div id="story-7-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1432,7 +1822,7 @@
 
         <article class="compact-card" data-category="Energy & Infrastructure" id="story-1">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional grid infrastructure." class="hero-photo" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-voltage transmission line towers and regional grid infrastructure.</span>
               <span class="credit-tag">📸 AP Photo Archive</span>
@@ -1441,7 +1831,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag" >Energy & Infrastructure</span>
+              <span class="category-tag">Energy & Infrastructure</span>
               <span class="source-tag">Associated Press Wire • 25 mins ago</span>
             </div>
 
@@ -1451,39 +1841,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The Federal Energy Regulatory Commission authorized $8 billion in competitive grants to upgrade electrical transmission corridors across 12 states, while establishing expanded environmental and local impact review criteria for new interstate natural gas pipelines.</div>
             </div>
-            <div id="story-1-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>New Federal Red Tape Stifles Domestic Energy Independence and Risks Higher Consumer Bills</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Expanded pipeline review criteria will stall critical natural gas projects, directly increasing winter heating costs for families.</li><li>Prioritizes subsidized green energy transmission over reliable, affordable baseload natural gas infrastructure.</li><li>Expands the power of unelected federal bureaucrats to block state-level private energy investment.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Cheap, reliable domestic natural gas is what keeps American industry competitive; strangling pipelines hurts working families."</div><div class="quote-row">"Throwing billions in taxpayer dollars at favored transmission lines while tying up fossil fuels in endless lawsuits is bad economic policy."</div>
-              </div>
-            </div>
-            <div id="story-1-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-1-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1513,6 +1871,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"Our electrical grid is over 50 years old; upgrading transmission lines is a basic pragmatic necessity."</div><div class="quote-row">"Regulators are trying to find middle ground between permitting speed and environmental due diligence."</div>
+              </div>
+            </div>
+            <div id="story-1-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-1" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>New Federal Red Tape Stifles Domestic Energy Independence and Risks Higher Consumer Bills</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Expanded pipeline review criteria will stall critical natural gas projects, directly increasing winter heating costs for families.</li><li>Prioritizes subsidized green energy transmission over reliable, affordable baseload natural gas infrastructure.</li><li>Expands the power of unelected federal bureaucrats to block state-level private energy investment.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Cheap, reliable domestic natural gas is what keeps American industry competitive; strangling pipelines hurts working families."</div><div class="quote-row">"Throwing billions in taxpayer dollars at favored transmission lines while tying up fossil fuels in endless lawsuits is bad economic policy."</div>
               </div>
             </div>
             <div id="story-1-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1561,7 +1951,7 @@
 
         <article class="compact-card" data-category="Economy & Inflation" id="story-2">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
               <span class="credit-tag">📸 Federal Reserve Pool</span>
@@ -1570,7 +1960,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag" >Economy & Inflation</span>
+              <span class="category-tag">Economy & Inflation</span>
               <span class="source-tag">Reuters Financial • 1 hour ago</span>
             </div>
 
@@ -1580,39 +1970,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The Federal Reserve voted unanimously to maintain the benchmark federal funds rate at 4.75%–5.00%, noting that while core consumer price inflation moderated to 2.7% annually, labor market hiring and consumer spending remain resilient.</div>
             </div>
-            <div id="story-2-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Runaway Federal Deficit Spending Forces Fed to Keep Interest Rates Painfully Elevated</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Massive trillion-dollar federal government deficits continue to inject artificial stimulus into the economy, forcing the Fed to keep rates high.</li><li>Small businesses are crushed by elevated borrowing costs and restrictive commercial credit lines.</li><li>Cumulative price levels remain 20%+ higher than four years ago, steadily eroding household purchasing power.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"You cannot rein in inflation when Washington keeps running massive multi-trillion dollar budget deficits."</div><div class="quote-row">"Saying inflation slowed to 2.7% ignores that groceries, utilities, and insurance are already 20% to 30% more expensive than three years ago."</div>
-              </div>
-            </div>
-            <div id="story-2-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-2-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1642,6 +2000,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"A patient Fed avoids the stop-and-go mistakes of the 1970s while keeping the economy on track for a soft landing."</div><div class="quote-row">"Holding steady allows the full lag effect of previous rate hikes to finish working through the system."</div>
+              </div>
+            </div>
+            <div id="story-2-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-2" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Runaway Federal Deficit Spending Forces Fed to Keep Interest Rates Painfully Elevated</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Massive trillion-dollar federal government deficits continue to inject artificial stimulus into the economy, forcing the Fed to keep rates high.</li><li>Small businesses are crushed by elevated borrowing costs and restrictive commercial credit lines.</li><li>Cumulative price levels remain 20%+ higher than four years ago, steadily eroding household purchasing power.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"You cannot rein in inflation when Washington keeps running massive multi-trillion dollar budget deficits."</div><div class="quote-row">"Saying inflation slowed to 2.7% ignores that groceries, utilities, and insurance are already 20% to 30% more expensive than three years ago."</div>
               </div>
             </div>
             <div id="story-2-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1690,7 +2080,7 @@
 
         <article class="compact-card" data-category="Border & Security" id="story-3">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.</span>
               <span class="credit-tag">📸 U.S. Customs and Border Protection</span>
@@ -1699,7 +2089,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag" >Border & Security</span>
+              <span class="category-tag">Border & Security</span>
               <span class="source-tag">Associated Press Wire • 3 hours ago</span>
             </div>
 
@@ -1709,39 +2099,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">A bipartisan group of senators unveiled a compromise border security framework that funds 1,500 additional Border Patrol agents, deploys high-tech fentanyl detection systems at ports of entry, and establishes dedicated asylum adjudication centers aimed at resolving claims within 90 days.</div>
             </div>
-            <div id="story-3-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Compromise Bill Fails to Reinstate Deterrence and Leaves Release Loopholes Open</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Adding fast-track asylum centers does not stop unlawful entry if catch-and-release policies remain in effect.</li><li>Lacks mandatory nationwide E-Verify to cut off the illegal employment magnet drawing migrants north.</li><li>Does not mandate physical border wall construction or require asylum seekers to remain in third countries while claims are processed.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"More processing staff just processes illegal entries faster; what is needed is physical deterrence and immediate deportation."</div><div class="quote-row">"Without ending parole loopholes and reinstating Remain in Mexico, the border remains open for cartels to exploit."</div>
-              </div>
-            </div>
-            <div id="story-3-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-3-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1771,6 +2129,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"A multi-year wait for an asylum hearing serves nobody; 90-day adjudication brings order, fairness, and certainty."</div><div class="quote-row">"Both parties have to give ground: Democrats accept more enforcement, Republicans accept funded court infrastructure."</div>
+              </div>
+            </div>
+            <div id="story-3-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-3" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Compromise Bill Fails to Reinstate Deterrence and Leaves Release Loopholes Open</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Adding fast-track asylum centers does not stop unlawful entry if catch-and-release policies remain in effect.</li><li>Lacks mandatory nationwide E-Verify to cut off the illegal employment magnet drawing migrants north.</li><li>Does not mandate physical border wall construction or require asylum seekers to remain in third countries while claims are processed.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"More processing staff just processes illegal entries faster; what is needed is physical deterrence and immediate deportation."</div><div class="quote-row">"Without ending parole loopholes and reinstating Remain in Mexico, the border remains open for cartels to exploit."</div>
               </div>
             </div>
             <div id="story-3-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1819,7 +2209,7 @@
 
         <article class="compact-card" data-category="Healthcare & Drug Costs" id="story-4">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy services." class="hero-photo" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy services." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Regional hospital medical center pavilion and pharmacy services.</span>
               <span class="credit-tag">📸 Health Systems Wire</span>
@@ -1828,7 +2218,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag" >Healthcare & Drug Costs</span>
+              <span class="category-tag">Healthcare & Drug Costs</span>
               <span class="source-tag">Reuters Health • 4 hours ago</span>
             </div>
 
@@ -1838,39 +2228,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The Department of Health and Human Services finalized enforcement regulations requiring hospitals and insurance companies to publish standardized, upfront negotiated prices for all medical procedures and prescription drugs, imposing daily fines up to $10,000 for non-compliance.</div>
             </div>
-            <div id="story-4-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Free Market Transparency Empowers Patients Over Bureaucrats and Hospital Monopolies</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>True free-market competition requires transparent prices so patients and Health Savings Account (HSA) holders can shop freely.</li><li>Cuts through the cartel-like collusion between mega-hospital networks and corporate health maintenance organizations.</li><li>Proves that deregulation and transparent market forces deliver savings faster than government takeover of healthcare.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Hospital price transparency is the ultimate pro-consumer, free-market reform—it breaks up hospital monopoly pricing."</div><div class="quote-row">"When doctors and clinics compete openly on price and quality, costs plummet just like they did in LASIK and cosmetic surgery."</div>
-              </div>
-            </div>
-            <div id="story-4-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-4-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -1900,6 +2258,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"You wouldn't buy a car or groceries without knowing the price; healthcare shouldn't be the only secret market in America."</div><div class="quote-row">"Empowering employers and cash-paying patients with price data is common sense reform with broad bipartisan support."</div>
+              </div>
+            </div>
+            <div id="story-4-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-4" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Free Market Transparency Empowers Patients Over Bureaucrats and Hospital Monopolies</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>True free-market competition requires transparent prices so patients and Health Savings Account (HSA) holders can shop freely.</li><li>Cuts through the cartel-like collusion between mega-hospital networks and corporate health maintenance organizations.</li><li>Proves that deregulation and transparent market forces deliver savings faster than government takeover of healthcare.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Hospital price transparency is the ultimate pro-consumer, free-market reform—it breaks up hospital monopoly pricing."</div><div class="quote-row">"When doctors and clinics compete openly on price and quality, costs plummet just like they did in LASIK and cosmetic surgery."</div>
               </div>
             </div>
             <div id="story-4-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -1948,7 +2338,7 @@
 
         <article class="compact-card" data-category="Tech & Free Speech" id="story-5">
           <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="The Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="The Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The Supreme Court of the United States west facade in Washington, D.C.</span>
               <span class="credit-tag">📸 USDA Photo by Ken Hammond</span>
@@ -1957,7 +2347,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag" >Tech & Free Speech</span>
+              <span class="category-tag">Tech & Free Speech</span>
               <span class="source-tag">Associated Press Wire • 5 hours ago</span>
             </div>
 
@@ -1967,39 +2357,7 @@
               <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
               <div class="neutral-desc">The Supreme Court heard oral arguments regarding Texas and Florida statutes that restrict large social media platforms from removing, demoting, or banning political viewpoints, weighing the First Amendment rights of online platforms against state claims of common-carrier consumer protections.</div>
             </div>
-            <div id="story-5-view-RIGHT" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Big Tech Monopolies Function as Modern Public Squares and Cannot Censor Political Dissent</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Silicon Valley conglomerates wield unprecedented monopolistic control over American political discourse and election debates.</li><li>Social media platforms enjoy Section 230 liability immunity as neutral conduits, yet act as partisan censors suppressing conservative speech.</li><li>State common-carrier laws restore fairness by preventing tech gatekeepers from silencing citizens based on political viewpoint.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"When three companies in California control 90% of the public square, censorship of political viewpoints is an attack on democracy."</div><div class="quote-row">"Big Tech cannot claim to be neutral telephone wires to avoid lawsuits, and then turn around and silence viewpoints they dislike."</div>
-              </div>
-            </div>
-            <div id="story-5-view-CENTER" class="perspective-view-box" style="display: none;">
+            <div id="story-5-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
                 <div class="lens-chip emerald">
                   <span>🟢</span>
@@ -2029,6 +2387,38 @@
                   <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
                 </div>
                 <div class="quote-row">"The modern digital public square doesn't fit neatly into 18th-century newspaper rules or 20th-century telephone rules."</div><div class="quote-row">"The court must find a standard that prevents monopoly political censorship without destroying spam and safety moderation."</div>
+              </div>
+            </div>
+            <div id="story-5-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-5" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Big Tech Monopolies Function as Modern Public Squares and Cannot Censor Political Dissent</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Silicon Valley conglomerates wield unprecedented monopolistic control over American political discourse and election debates.</li><li>Social media platforms enjoy Section 230 liability immunity as neutral conduits, yet act as partisan censors suppressing conservative speech.</li><li>State common-carrier laws restore fairness by preventing tech gatekeepers from silencing citizens based on political viewpoint.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"When three companies in California control 90% of the public square, censorship of political viewpoints is an attack on democracy."</div><div class="quote-row">"Big Tech cannot claim to be neutral telephone wires to avoid lawsuits, and then turn around and silence viewpoints they dislike."</div>
               </div>
             </div>
             <div id="story-5-view-LEFT" class="perspective-view-box" style="display: none;">
@@ -2111,10 +2501,19 @@
   
 
   <script>
-    var currentGlobalPerspective = "RIGHT";
+    var currentGlobalPerspective = "CENTER";
+    try {
+      var savedPref = localStorage.getItem("userLensPreference");
+      if (savedPref && (savedPref === "LEFT" || savedPref === "CENTER" || savedPref === "RIGHT")) {
+        currentGlobalPerspective = savedPref;
+      }
+    } catch(e) {}
 
     function setGlobalPerspective(p) {
       currentGlobalPerspective = p;
+      try {
+        localStorage.setItem("userLensPreference", p);
+      } catch(e) {}
 
       var btnL = document.getElementById('btnGlobalLeft');
       var btnC = document.getElementById('btnGlobalCenter');
@@ -2412,7 +2811,10 @@
         });
     }
 
-    window.addEventListener("DOMContentLoaded", loadLiveStories);
+    window.addEventListener("DOMContentLoaded", function() {
+      setGlobalPerspective(currentGlobalPerspective);
+      loadLiveStories();
+    });
   </script>
 </body>
 </html>
