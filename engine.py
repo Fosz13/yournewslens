@@ -422,31 +422,49 @@ def parse_pubdate_to_relative(pub_date_str: str) -> Tuple[int, str]:
 
 def is_story_mismatched(story: dict) -> bool:
     """Detects content cross-contamination where a story received the wrong theme template."""
-    title = story.get("title", "").lower()
-    cat = story.get("category", "").lower()
-    summary = story.get("neutral_summary", "").lower()
-    framing = story.get("perspectives", {}).get("CENTER", {}).get("headline_framing", "").lower()
-    all_text = summary + " " + framing
+    try:
+        raw_title = story.get("title") or ""
+        title = str(raw_title).lower() if not isinstance(raw_title, (list, tuple)) else " ".join(map(str, raw_title)).lower()
 
-    # 1. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
-    if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
-        if any(bad in all_text for bad in ["battery", "powertrain", "automotive", "sanctions", "diesel", "assembly-line"]):
+        raw_cat = story.get("category") or ""
+        cat = str(raw_cat).lower() if not isinstance(raw_cat, (list, tuple)) else " ".join(map(str, raw_cat)).lower()
+
+        raw_summary = story.get("neutral_summary") or ""
+        summary = str(raw_summary).lower() if not isinstance(raw_summary, (list, tuple)) else " ".join(map(str, raw_summary)).lower()
+
+        center_p = story.get("perspectives", {})
+        if isinstance(center_p, dict):
+            raw_framing = center_p.get("CENTER", {})
+            if isinstance(raw_framing, dict):
+                framing = str(raw_framing.get("headline_framing", "")).lower()
+            else:
+                framing = str(raw_framing or "").lower()
+        else:
+            framing = ""
+
+        all_text = summary + " " + framing
+
+        # 1. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
+        if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
+            if any(bad in all_text for bad in ["battery", "powertrain", "automotive", "sanctions", "diesel", "assembly-line"]):
+                return True
+
+        # 2. Politics story talking about diesel or fuel supply when title is about election or mailings
+        if any(w in title for w in ["mailing", "election", "ballot", "voting"]):
+            if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
+                return True
+
+        # 3. Known generic boilerplate phrases
+        if any(bad in all_text for bad in [
+            "regulatory standards with commercial and operational reality",
+            "reviewing legal, regulatory, and economic implications",
+            "complex institutional challenges"
+        ]):
             return True
 
-    # 2. Politics story talking about diesel or fuel supply when title is about election or mailings
-    if any(w in title for w in ["mailing", "election", "ballot", "voting"]):
-        if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
-            return True
-
-    # 3. Known generic boilerplate phrases
-    if any(bad in all_text for bad in [
-        "regulatory standards with commercial and operational reality",
-        "reviewing legal, regulatory, and economic implications",
-        "complex institutional challenges"
-    ]):
-        return True
-
-    return False
+        return False
+    except Exception:
+        return False
 
 def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
     try:
@@ -1293,7 +1311,14 @@ def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60,
             selected.append(s)
             selected_ids.add(s.get("id"))
 
-    selected.sort(key=lambda x: x.get("pub_timestamp", 0), reverse=True)
+    def safe_ts(val):
+        if val is None:
+            return 0
+        try:
+            return int(float(val))
+        except Exception:
+            return 0
+    selected.sort(key=lambda x: safe_ts(x.get("pub_timestamp")), reverse=True)
     return selected
 
 def run_pipeline():
@@ -1312,15 +1337,33 @@ def run_pipeline():
 
     # Self-Healing: Check every existing story for theme mismatches or outdated timers
     for s in existing_stories:
-        title = s.get("title", "")
-        cat = s.get("category", "General News")
+        title = str(s.get("title") or "")
+        
+        raw_cat = s.get("category", "General News")
+        if isinstance(raw_cat, (list, tuple)):
+            cat = str(raw_cat[0]) if raw_cat else "General News"
+        else:
+            cat = str(raw_cat or "General News")
+        s["category"] = cat
+
+        raw_master = s.get("master_category", "National Headlines")
+        if isinstance(raw_master, (list, tuple)):
+            master_cat = str(raw_master[0]) if raw_master else "National Headlines"
+        else:
+            master_cat = str(raw_master or "National Headlines")
+        s["master_category"] = master_cat
+
         pub_ts = s.get("pub_timestamp")
         
         # Recalculate real relative timestamp from pub_timestamp
-        if pub_ts:
-            _, rel_time = parse_pubdate_to_relative(datetime.fromtimestamp(pub_ts, timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT"))
-            src_name = s.get("source_name") or s.get("source", "").split(" • ")[0]
-            s["source"] = f"{src_name} • {rel_time}"
+        if pub_ts is not None:
+            try:
+                ts_int = int(float(pub_ts))
+                _, rel_time = parse_pubdate_to_relative(datetime.fromtimestamp(ts_int, timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT"))
+                src_name = s.get("source_name") or s.get("source", "").split(" • ")[0]
+                s["source"] = f"{src_name} • {rel_time}"
+            except Exception as e:
+                pass
 
         # If mismatched (e.g. Dodgers talking about battery, mailings talking about diesel), automatically fix!
         if is_story_mismatched(s):
@@ -1334,7 +1377,7 @@ def run_pipeline():
         s["caption"] = img_info["caption"]
         s["credit"] = img_info["credit"]
 
-    existing_titles = {s.get("title", "").strip().lower() for s in existing_stories}
+    existing_titles = {str(s.get("title") or "").strip().lower() for s in existing_stories}
     new_stories = []
 
     for feed in RSS_FEEDS:
@@ -1378,4 +1421,10 @@ def run_pipeline():
     print(f"Pipeline complete. Total stories: {len(updated_feed)} (Added: {len(new_stories)})")
 
 if __name__ == "__main__":
-    run_pipeline()
+    try:
+        run_pipeline()
+    except Exception as e:
+        print(f"[ENGINE ERROR] Uncaught exception in run_pipeline: {e}")
+        import traceback
+        traceback.print_exc()
+        sys.exit(1)
