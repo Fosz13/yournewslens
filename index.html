@@ -165,46 +165,151 @@
       color: #fff;
     }
 
+    
     .filter-bar {
       max-width: 900px;
-      margin: 6px auto;
+      margin: 8px auto 6px;
       padding: 0 12px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
     }
 
-    .master-pills-row { display: flex; gap: 6px; overflow-x: auto; } .topic-pills-row { display: flex; gap: 5px; overflow-x: auto; }
+    /* Master Category Carousel (Top Division) */
+    .master-pills-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .master-pills-row::-webkit-scrollbar { display: none; }
 
-    .category-pills::-webkit-scrollbar { display: none; }
+    .pill-master {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #111a2e;
+      border: 1px solid #233352;
+      color: #94a3b8;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .pill-master .master-icon {
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      flex-shrink: 0;
+    }
+
+    .pill-master:hover {
+      background: #18243c;
+      border-color: #384e75;
+      color: #f1f5f9;
+      transform: translateY(-1px);
+    }
+
+    .pill-master.active {
+      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%) !important;
+      border-color: #60a5fa !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
+    }
+
+    .pill-master.active .master-icon {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* Subcategory Topic Row */
+    .topic-pills-row {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 2px 2px 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .topic-pills-row::-webkit-scrollbar { display: none; }
 
     .pill {
-      background: #131b2e;
-      border: 1px solid var(--border-color);
+      background: #090e1a;
+      border: 1px solid #1e293b;
       color: #94a3b8;
       padding: 5px 12px;
       border-radius: 14px;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
       cursor: pointer;
       white-space: nowrap;
       transition: all 0.15s ease;
     }
+
     .pill:hover {
-      background: #1e293b;
-      color: #f8fafc;
-    }
-    .pill.active {
-      background: #3b82f6 !important;
-      color: #ffffff !important;
-      border-color: #60a5fa !important;
-      font-weight: 700;
+      background: #131b2e;
+      color: #f1f5f9;
+      border-color: #334155;
     }
 
-.pill.active {
-      background: #24344d;
-      color: #fff;
-      border-color: #475569;
+    .pill.active {
+      background: #1e293b !important;
+      color: #38bdf8 !important;
+      border-color: #38bdf8 !important;
+      font-weight: 700;
+      box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+
+    .tags-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .master-tag {
+      background: rgba(99, 102, 241, 0.15);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .category-tag {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
     }
 
     .view-tabs {
@@ -629,16 +734,28 @@
     </div>
   </header>
 
-  <!-- Hierarchical Filter & Tab Bar -->
+    <!-- Hierarchical Filter & Tab Bar -->
   <div class="filter-bar">
     <!-- Level 1: Master Categories -->
     <div class="master-pills-row">
-      <button type="button" class="pill-master active" onclick="applyMasterFilter(this, 'All')">🌐 All Stories</button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'National Headlines')">🇺🇸 National Headlines</button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'World News')">🌍 World News</button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Science & Tech')">🔬 Science & Tech</button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Entertainment')">🎬 Entertainment</button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Sports')">🏆 Sports</button>
+      <button type="button" class="pill-master active" onclick="applyMasterFilter(this, 'All')">
+        <span class="master-icon">🌐</span><span>All Stories</span>
+      </button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'National Headlines')">
+        <span class="master-icon">🇺🇸</span><span>National</span>
+      </button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'World News')">
+        <span class="master-icon">🌍</span><span>World</span>
+      </button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Science & Tech')">
+        <span class="master-icon">🔬</span><span>Sci & Tech</span>
+      </button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Entertainment')">
+        <span class="master-icon">🎬</span><span>Entertainment</span>
+      </button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Sports')">
+        <span class="master-icon">🏆</span><span>Sports</span>
+      </button>
     </div>
 
     <!-- Level 2: Topic Subcategories -->
@@ -666,6 +783,138 @@
     <!-- Streamlined Feed with Compact Real Photos -->
     <div id="storiesFeedView" class="feed-container">
 
+        <article class="compact-card" data-category="Business & Economy" id="story-dow-nasdaq-ai-rotation">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets index board and Nasdaq exchange sector rotation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Financial markets index board and Nasdaq exchange sector rotation.</span>
+              <span class="credit-tag">📸 Wall Street Financial Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Business & Economy</span>
+              </div>
+              <span class="source-tag" data-timestamp="1729077600">CNBC Business • 10 mins ago</span>
+            </div>
+
+            <h3 class="story-title">Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates - CNBC</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">The Dow Jones Industrial Average rose more than 200 points while the tech-heavy Nasdaq declined as institutional investors rotated capital out of high-multiple artificial intelligence shares and into cyclical, industrial, and value equities.</div>
+            </div>
+            <div id="story-dow-nasdaq-ai-rotation-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Pragmatic Sector Rotation: Institutional Capital Shifts from High-Multiple Tech into Cyclical Value</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Reflects a rational market normalization where asset managers rebalance exposure between elevated tech multiples and dividend-yielding cyclicals.</li><li>Weighs Federal Reserve benchmark interest rate expectations against Treasury bond yield movements and macroeconomic liquidity.</li><li>Monitors corporate quarterly earnings guidance to ensure capital expenditures in enterprise computing yield tangible return on investment.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Capital rotating out of high-multiple tech into value equities is a healthy sign of market diversification."</div><div class="quote-row">"Investors are demanding real balance-sheet earnings and revenue delivery rather than speculative projections."</div>
+              </div>
+            </div>
+            <div id="story-dow-nasdaq-ai-rotation-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Market Efficiency in Action: Free Enterprise Price Discovery Allocates Capital to Productive Assets</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Demonstrates the strength of American capital markets, where decentralized price discovery naturally rebalances capital toward resilient balance sheets and productive enterprise.</li><li>Strengthens millions of American retirement 401(k) and pension accounts invested in broad-market index funds and core industrial firms.</li><li>Reaffirms that economic expansion thrives under private corporate investment, deregulation, and competitive capital allocation rather than government micromanagement.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Free markets naturally self-correct: investors reward disciplined, profitable businesses over speculative hype."</div><div class="quote-row">"A rising Dow strengthens retirement accounts for millions of hardworking American families who depend on private enterprise growth."</div>
+              </div>
+            </div>
+            <div id="story-dow-nasdaq-ai-rotation-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dow-nasdaq-ai-rotation" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Speculative Market Volatility: Extreme Tech Multiples Mask Everyday Working-Class Economic Strain</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Highlights that Wall Street stock swings disproportionately enrich hedge funds and corporate executives while median wages struggle against persistent cost-of-living expenses.</li><li>Warns that speculative euphoria around artificial intelligence equities creates concentrated financial market bubble risks.</li><li>Demands corporate tax accountability, financial transaction taxes on speculative trading, and parity between capital gains taxes and earned labor income.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Wall Street index gains don't pay the rent or lower grocery bills for everyday working Americans."</div><div class="quote-row">"Our economy needs productive investment in workers and wages, not unchecked speculative algorithms."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
         <article class="compact-card" data-category="Energy & Weather" id="story-weather-power-outage-pacific">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe windstorm downs electrical lines and triggers regional utility power outages." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
@@ -677,7 +926,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Energy & Weather</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Energy & Weather</span>
+              </div>
               <span class="source-tag" data-timestamp="1729074000">Associated Press Wire • 25 mins ago</span>
             </div>
 
@@ -806,7 +1058,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Entertainment</span>
+              <div class="tags-group">
+                <span class="master-tag">Entertainment</span>
+                <span class="category-tag">Entertainment</span>
+              </div>
               <span class="source-tag" data-timestamp="1729070400">Variety Film Wire • 1 hour ago</span>
             </div>
 
@@ -935,7 +1190,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Science & Tech</span>
+              <div class="tags-group">
+                <span class="master-tag">Science & Tech</span>
+                <span class="category-tag">Science & Tech</span>
+              </div>
               <span class="source-tag" data-timestamp="1729066800">Space Science Wire • 2 hours ago</span>
             </div>
 
@@ -1064,7 +1322,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Politics</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Politics</span>
+              </div>
               <span class="source-tag" data-timestamp="1792159895">Associated Press Congressional • 15 mins ago</span>
             </div>
 
@@ -1193,7 +1454,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Energy & Weather</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Energy & Weather</span>
+              </div>
               <span class="source-tag" data-timestamp="1792159295">Associated Press Wire • 25 mins ago</span>
             </div>
 
@@ -1322,7 +1586,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792158995">Associated Press Sports • 30 mins ago</span>
             </div>
 
@@ -1451,7 +1718,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Crime & Public Safety</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Crime & Public Safety</span>
+              </div>
               <span class="source-tag" data-timestamp="1792157195">CNN • 1 hour ago</span>
             </div>
 
@@ -1580,7 +1850,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Business & Economy</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Business & Economy</span>
+              </div>
               <span class="source-tag" data-timestamp="1792157195">Reuters Financial • 1 hour ago</span>
             </div>
 
@@ -1709,7 +1982,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792157195">Reuters Sports • 1 hour ago</span>
             </div>
 
@@ -1838,7 +2114,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792153595">The New York Times • 2 hours ago</span>
             </div>
 
@@ -1967,7 +2246,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792153595">ESPN Sports • 2 hours ago</span>
             </div>
 
@@ -2096,7 +2378,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792149995">Yahoo Sports • 3 hours ago</span>
             </div>
 
@@ -2225,7 +2510,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Border & Security</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Border & Security</span>
+              </div>
               <span class="source-tag" data-timestamp="1792149995">Associated Press Wire • 3 hours ago</span>
             </div>
 
@@ -2354,7 +2642,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Energy & Weather</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Energy & Weather</span>
+              </div>
               <span class="source-tag" data-timestamp="1792149995">Reuters Energy • 3 hours ago</span>
             </div>
 
@@ -2483,7 +2774,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Border & Security</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Border & Security</span>
+              </div>
               <span class="source-tag" data-timestamp="1792146395">Reuters National • 4 hours ago</span>
             </div>
 
@@ -2612,7 +2906,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">World News</span>
+              <div class="tags-group">
+                <span class="master-tag">World News</span>
+                <span class="category-tag">World News</span>
+              </div>
               <span class="source-tag" data-timestamp="1792146395">CNBC • 4 hours ago</span>
             </div>
 
@@ -2741,7 +3038,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Health</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Health</span>
+              </div>
               <span class="source-tag" data-timestamp="1792146395">Reuters Health • 4 hours ago</span>
             </div>
 
@@ -2870,7 +3170,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Science & Tech</span>
+              <div class="tags-group">
+                <span class="master-tag">Science & Tech</span>
+                <span class="category-tag">Science & Tech</span>
+              </div>
               <span class="source-tag" data-timestamp="1792142795">Associated Press Wire • 5 hours ago</span>
             </div>
 
@@ -2999,7 +3302,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Health</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Health</span>
+              </div>
               <span class="source-tag" data-timestamp="1792142795">Associated Press Health • 5 hours ago</span>
             </div>
 
@@ -3128,7 +3434,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Science & Tech</span>
+              <div class="tags-group">
+                <span class="master-tag">Science & Tech</span>
+                <span class="category-tag">Science & Tech</span>
+              </div>
               <span class="source-tag" data-timestamp="1792139195">Bloomberg Technology • 6 hours ago</span>
             </div>
 
@@ -3257,7 +3566,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Business & Economy</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Business & Economy</span>
+              </div>
               <span class="source-tag" data-timestamp="1792124795">CNBC Business • 10 hours ago</span>
             </div>
 
@@ -3386,7 +3698,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Science & Tech</span>
+              <div class="tags-group">
+                <span class="master-tag">Science & Tech</span>
+                <span class="category-tag">Science & Tech</span>
+              </div>
               <span class="source-tag" data-timestamp="1792121195">Reuters Business • 11 hours ago</span>
             </div>
 
@@ -3515,7 +3830,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Crime & Public Safety</span>
+              <div class="tags-group">
+                <span class="master-tag">National Headlines</span>
+                <span class="category-tag">Crime & Public Safety</span>
+              </div>
               <span class="source-tag" data-timestamp="1792117595">NPR News • 12 hours ago</span>
             </div>
 
@@ -3644,7 +3962,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Sports</span>
+              <div class="tags-group">
+                <span class="master-tag">Sports</span>
+                <span class="category-tag">Sports</span>
+              </div>
               <span class="source-tag" data-timestamp="1792113995">ESPN Sports • 13 hours ago</span>
             </div>
 
@@ -3773,7 +4094,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">World News</span>
+              <div class="tags-group">
+                <span class="master-tag">World News</span>
+                <span class="category-tag">World News</span>
+              </div>
               <span class="source-tag" data-timestamp="1729063200">Reuters World Wire • 3 hours ago</span>
             </div>
 
@@ -3902,7 +4226,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Entertainment</span>
+              <div class="tags-group">
+                <span class="master-tag">Entertainment</span>
+                <span class="category-tag">Entertainment</span>
+              </div>
               <span class="source-tag" data-timestamp="1729059600">The Hollywood Reporter • 4 hours ago</span>
             </div>
 
@@ -4031,7 +4358,10 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Science & Tech</span>
+              <div class="tags-group">
+                <span class="master-tag">Science & Tech</span>
+                <span class="category-tag">Science & Tech</span>
+              </div>
               <span class="source-tag" data-timestamp="1729056000">Nature Science Wire • 5 hours ago</span>
             </div>
 
@@ -4185,19 +4515,27 @@
   
 
   <script>
-    var currentGlobalPerspective = "CENTER";
+    function onImgError(img) {
+      if (img) {
+        img.onerror = null;
+        img.src = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';
+      }
+    }
+
+    var currentGlobalPerspective = 'CENTER';
     try {
-      var savedPref = localStorage.getItem("userLensPreference");
-      if (savedPref && (savedPref === "LEFT" || savedPref === "CENTER" || savedPref === "RIGHT")) {
+      var savedPref = localStorage.getItem('userLensPreference');
+      if (savedPref && (savedPref === 'LEFT' || savedPref === 'CENTER' || savedPref === 'RIGHT')) {
         currentGlobalPerspective = savedPref;
       }
-    } catch(e) {}
+    } catch (e) {}
 
     function setGlobalPerspective(p) {
+      if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
       currentGlobalPerspective = p;
       try {
-        localStorage.setItem("userLensPreference", p);
-      } catch(e) {}
+        localStorage.setItem('userLensPreference', p);
+      } catch (e) {}
 
       var btnL = document.getElementById('btnGlobalLeft');
       var btnC = document.getElementById('btnGlobalCenter');
@@ -4214,28 +4552,45 @@
       }
 
       updateLoungeTitle(p);
-      showToastNotification("Switched to " + (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced'));
+      showToastNotification('Switched to ' + (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced'));
     }
 
     function switchStoryPerspective(storyId, p) {
+      if (!storyId || !p) return;
       var views = ['RIGHT', 'CENTER', 'LEFT'];
       for (var i = 0; i < views.length; i++) {
         var el = document.getElementById(storyId + '-view-' + views[i]);
         if (el) el.style.display = (views[i] === p) ? 'block' : 'none';
       }
+
+      var card = document.getElementById(storyId);
+      if (card && card.querySelectorAll) {
+        var btns = card.querySelectorAll('.card-toggle-btn');
+        for (var b = 0; b < btns.length; b++) {
+          var btn = btns[b];
+          var txt = btn.textContent.trim().toUpperCase();
+          btn.classList.remove('active', 'left', 'center', 'right');
+          if (p === 'LEFT' && txt === 'LEFT') {
+            btn.classList.add('active', 'left');
+          } else if (p === 'CENTER' && (txt === 'BALANCED' || txt === 'CENTER')) {
+            btn.classList.add('active', 'center');
+          } else if (p === 'RIGHT' && txt === 'RIGHT') {
+            btn.classList.add('active', 'right');
+          }
+        }
+      }
     }
 
-            var currentMasterFilter = "All";
-    var currentTopicFilter = "All";
+    var currentMasterFilter = 'All';
+    var currentTopicFilter = 'All';
 
     function applyMasterFilter(btn, masterCategory) {
-      currentMasterFilter = masterCategory || "All";
+      currentMasterFilter = masterCategory || 'All';
       var masterPills = document.querySelectorAll('.master-pills-row .pill-master');
       for (var i = 0; i < masterPills.length; i++) masterPills[i].classList.remove('active');
       if (btn) btn.classList.add('active');
 
-      // Reset topic filter to All
-      currentTopicFilter = "All";
+      currentTopicFilter = 'All';
       var topicPills = document.querySelectorAll('.topic-pills-row .pill');
       for (var k = 0; k < topicPills.length; k++) topicPills[k].classList.remove('active');
       var allTopicBtn = document.getElementById('topic-pill-all');
@@ -4245,7 +4600,7 @@
     }
 
     function applyTopicFilter(btn, topicCategory) {
-      currentTopicFilter = topicCategory || "All";
+      currentTopicFilter = topicCategory || 'All';
       var topicPills = document.querySelectorAll('.topic-pills-row .pill');
       for (var i = 0; i < topicPills.length; i++) topicPills[i].classList.remove('active');
       if (btn) btn.classList.add('active');
@@ -4254,8 +4609,8 @@
     }
 
     function reapplyCategoryFilter() {
-      var masterKey = (currentMasterFilter || "All").toLowerCase().trim();
-      var topicKey = (currentTopicFilter || "All").toLowerCase().trim();
+      var masterKey = (currentMasterFilter || 'All').toLowerCase().trim();
+      var topicKey = (currentTopicFilter || 'All').toLowerCase().trim();
       var articles = document.querySelectorAll('.compact-card');
       var visibleCount = 0;
 
@@ -4264,10 +4619,9 @@
         var masterCat = (articles[j].getAttribute('data-master-category') || '').toLowerCase().trim();
         var match = true;
 
-        // 1. Check Master Category
         if (masterKey !== 'all') {
           if (masterKey.indexOf('national') !== -1) {
-            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
+            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
           } else if (masterKey.indexOf('world') !== -1) {
             match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
           } else if (masterKey.indexOf('science') !== -1 || masterKey.indexOf('tech') !== -1) {
@@ -4281,12 +4635,11 @@
           }
         }
 
-        // 2. Check Topic Subcategory
         if (match && topicKey !== 'all') {
           if (topicKey.indexOf('politic') !== -1) {
             match = (cat.indexOf('politic') !== -1);
           } else if (topicKey.indexOf('business') !== -1 || topicKey.indexOf('econom') !== -1) {
-            match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1);
+            match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
           } else if (topicKey.indexOf('energy') !== -1 || topicKey.indexOf('weather') !== -1) {
             match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
           } else if (topicKey.indexOf('health') !== -1) {
@@ -4316,13 +4669,16 @@
       var container = document.getElementById('storiesFeedView');
       if (!container || !stories || !stories.length) return;
 
+      var fallbackImg = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';
       var html = '';
       for (var s = 0; s < stories.length; s++) {
         var story = stories[s];
         var sId = story.id || ('story-dyn-' + s);
         var cat = story.category || 'General News';
+        if (Array.isArray(cat)) cat = cat[0] || 'General News';
         var masterCat = story.master_category || 'National Headlines';
-        var imgUrl = story.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';
+        if (Array.isArray(masterCat)) masterCat = masterCat[0] || 'National Headlines';
+        var imgUrl = story.image_url || fallbackImg;
         var caption = story.caption || story.title;
         var credit = story.credit || '📸 News Wire';
         var source = story.source || 'Associated Press Wire';
@@ -4331,7 +4687,7 @@
 
         html += '<article class="compact-card" data-category="' + cat + '" data-master-category="' + masterCat + '" id="' + sId + '">';
         html += '  <div class="hero-image-wrap">';
-        html += '    <img src="' + imgUrl + '" alt="' + caption + '" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';" />';
+        html += '    <img src="' + imgUrl + '" alt="' + caption + '" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="onImgError(this)" />';
         html += '    <div class="photo-caption-bar">';
         html += '      <span class="caption-text">' + caption + '</span>';
         html += '      <span class="credit-tag">' + credit + '</span>';
@@ -4340,7 +4696,7 @@
 
         html += '  <div class="card-body">';
         html += '    <div class="meta-row">';
-        html += '      <div style="display:flex; gap:5px; align-items:center;">';
+        html += '      <div class="tags-group">';
         html += '        <span class="master-tag">' + masterCat + '</span>';
         html += '        <span class="category-tag">' + cat + '</span>';
         html += '      </div>';
@@ -4375,9 +4731,9 @@
           html += '        </div>';
 
           html += '        <div class="card-toggle-group">';
-          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'LEFT' ? 'active left' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'LEFT')">Left</button>';
-          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'CENTER' ? 'active center' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'CENTER')">Balanced</button>';
-          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'RIGHT' ? 'active right' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'RIGHT')">Right</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'LEFT' ? 'active left' : '') + '" data-story="' + sId + '" onclick="switchStoryPerspective(this.dataset.story, &quot;LEFT&quot;)">Left</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'CENTER' ? 'active center' : '') + '" data-story="' + sId + '" onclick="switchStoryPerspective(this.dataset.story, &quot;CENTER&quot;)">Balanced</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'RIGHT' ? 'active right' : '') + '" data-story="' + sId + '" onclick="switchStoryPerspective(this.dataset.story, &quot;RIGHT&quot;)">Right</button>';
           html += '        </div>';
           html += '      </div>';
 
@@ -4401,7 +4757,7 @@
           html += '          <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>';
           html += '        </div>';
           for (var tp = 0; tp < talkingPoints.length; tp++) {
-            html += '        <div class="quote-row">"' + talkingPoints[tp] + '"</div>';
+            html += '        <div class="quote-row">"' + talkingPoints[tp].replace(/"/g, '&quot;') + '"</div>';
           }
           html += '      </div>';
           html += '    </div>';
@@ -4426,41 +4782,128 @@
     }
 
     function copyPointsFromCard(btn) {
-      var panel = btn.closest(".talking-points-panel");
+      var panel = btn.closest('.talking-points-panel');
       if (!panel) return;
-      var rows = panel.querySelectorAll(".quote-row");
+      var rows = panel.querySelectorAll('.quote-row');
       var list = [];
       for (var i = 0; i < rows.length; i++) {
-        list.push("• " + rows[i].textContent.replace(/^"|"$/g, ""));
+        list.push('• ' + rows[i].textContent.replace(/^"|"$/g, ''));
       }
-      var text = list.join("\n");
+      var text = list.join('\n');
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(function() {
-          showToastNotification("Talking points copied!");
+          showToastNotification('Talking points copied!');
         }).catch(function() { fallbackCopy(text); });
       } else {
         fallbackCopy(text);
       }
     }
 
+    function fallbackCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); showToastNotification('Talking points copied!'); }
+      catch (e) { showToastNotification('Copied!'); }
+      document.body.removeChild(ta);
+    }
+
+    function toggleSaveCard(btn) {
+      if (btn.classList.contains('active')) {
+        btn.classList.remove('active');
+        btn.innerHTML = '<span>🤍</span> <span>Save</span>';
+        showToastNotification('Removed from saved');
+      } else {
+        btn.classList.add('active');
+        btn.innerHTML = '<span>❤️</span> <span>Saved</span>';
+        showToastNotification('Saved to your toolkit!');
+      }
+    }
+
+    function showToastNotification(msg) {
+      var t = document.getElementById('toastBox');
+      if (!t) return;
+      t.textContent = '✓ ' + msg;
+      t.style.display = 'flex';
+      setTimeout(function() { t.style.display = 'none'; }, 2000);
+    }
+
+    function showStoriesTab() {
+      document.getElementById('storiesFeedView').style.display = 'flex';
+      document.getElementById('communityView').style.display = 'none';
+      document.getElementById('customStoryView').style.display = 'none';
+      document.getElementById('navStories').className = 'view-tab active';
+      document.getElementById('navLounge').className = 'view-tab';
+      document.getElementById('navCustom').className = 'view-tab';
+    }
+
+    function showLoungeTab() {
+      document.getElementById('storiesFeedView').style.display = 'none';
+      document.getElementById('communityView').style.display = 'flex';
+      document.getElementById('customStoryView').style.display = 'none';
+      document.getElementById('navStories').className = 'view-tab';
+      document.getElementById('navLounge').className = 'view-tab active';
+      document.getElementById('navCustom').className = 'view-tab';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showCustomTab() {
+      document.getElementById('storiesFeedView').style.display = 'none';
+      document.getElementById('communityView').style.display = 'none';
+      document.getElementById('customStoryView').style.display = 'block';
+      document.getElementById('navStories').className = 'view-tab';
+      document.getElementById('navLounge').className = 'view-tab';
+      document.getElementById('navCustom').className = 'view-tab active';
+    }
+
+    function updateLoungeTitle(p) {
+      var t = document.getElementById('loungeTitle');
+      if (!t) return;
+      t.textContent = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Centrist') + ' Discussion Lounge';
+    }
+
+    function submitPost() {
+      var input = document.getElementById('composerInput');
+      var text = input.value.trim();
+      if (!text) return;
+
+      var list = document.getElementById('communityPostsList');
+      var card = document.createElement('div');
+      card.style = 'background: #131b2e; border: 1px solid #6366f1; border-radius: 8px; padding: 10px; margin-bottom: 8px;';
+      card.innerHTML = '<div style="font-size: 11px; color: #fff; font-weight: 700; margin-bottom: 4px;">You • Member <span style="color:#38bdf8; font-size:10px;">• Just Now</span></div><div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">"' + text.replace(/</g, '&lt;') + '"</div><div style="display: flex; justify-content: flex-end;"><button type="button" class="btn-action-small active">👍 Agree (1)</button></div>';
+      list.insertBefore(card, list.firstChild);
+      input.value = '';
+      showToastNotification('Posted!');
+    }
+
+    function runCustomSynthesis() {
+      var box = document.getElementById('customOutputBox');
+      box.style.display = 'block';
+      box.innerHTML = '<div style="background: #090e1a; border: 1px solid #334155; border-radius: 8px; padding: 10px;"><div style="font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 4px;">⚖️ Factual Core: State compact restricts agricultural land purchases by non-allied foreign buyers near military corridors.</div><div style="font-size: 12px; color: #f87171; font-weight: 700; margin-top: 6px;">🔴 Conservative Talking Point:</div><div style="font-size: 11.5px; color: #cbd5e1; font-style: italic;">"Foreign adversaries should not own American food supply chains next to domestic bases."</div></div>';
+      showToastNotification('Synthesized!');
+    }
+
     function loadLiveStories() {
-      fetch("data/stories.json?t=" + Date.now())
+      fetch('data/stories.json?t=' + Date.now())
         .then(function(res) {
-          if (!res.ok) throw new Error("HTTP " + res.status);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
           return res.json();
         })
         .then(function(stories) {
           if (Array.isArray(stories) && stories.length > 0) {
-            console.log("Loaded " + stories.length + " stories from data/stories.json");
+            console.log('Loaded ' + stories.length + ' stories from data/stories.json');
             renderStoriesFeed(stories);
           }
         })
         .catch(function(err) {
-          console.log("Live feed not accessible or using static fallback:", err);
+          console.log('Live feed not accessible or using static fallback:', err);
         });
     }
 
-    window.addEventListener("DOMContentLoaded", function() {
+    window.addEventListener('DOMContentLoaded', function() {
       setGlobalPerspective(currentGlobalPerspective);
       reapplyCategoryFilter();
       loadLiveStories();

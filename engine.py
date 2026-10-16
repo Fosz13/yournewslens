@@ -331,7 +331,7 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
 
     def has_any(patterns):
         for pat in patterns:
-            if re.search(r'' + pat + r'', combined):
+            if re.search(r'\b' + pat + r'\b', combined):
                 return True
         return False
 
@@ -782,8 +782,42 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Constitutional elections require strict security, physical safety, and zero tolerance for unlawful intimidation."
         ]
 
+        # --- 4B. WALL STREET, DOW, NASDAQ, STOCK MARKET, ASSET ROTATION ---
+    elif has_any(["dow", "nasdaq", "s&p 500", "wall street", "stock market", "stocks rise", "stocks slide", "stocks jump", "stocks rally", "market rotation", "ai stocks", "rotate out of", "bull market", "bear market", "treasury yields"]):
+        neutral = f"{clean_title}. Financial market indices reflected sector rotation as institutional investors adjusted equity exposure between high-valuation technology shares and cyclical industrial equities."
+        left_framing = "Speculative Market Volatility: Extreme Tech Multiples Mask Everyday Working-Class Economic Strain"
+        left_bullets = [
+            "Highlights that Wall Street stock swings disproportionately enrich hedge funds and corporate executives while median wages struggle against persistent cost-of-living expenses.",
+            "Warns that speculative euphoria around artificial intelligence equities creates concentrated financial market bubble risks.",
+            "Demands corporate tax accountability, financial transaction taxes on speculative trading, and parity between capital gains taxes and earned labor income."
+        ]
+        left_talk = [
+            "Wall Street index gains don't pay the rent or lower grocery bills for everyday working Americans.",
+            "Our economy needs productive investment in workers and wages, not unchecked speculative algorithms."
+        ]
+        center_framing = f"Pragmatic Sector Rotation: Institutional Capital Shifts from High-Multiple Tech into Cyclical Value"
+        center_bullets = [
+            "Reflects a rational market normalization where asset managers rebalance exposure between elevated tech multiples and dividend-yielding cyclicals.",
+            "Weighs Federal Reserve benchmark interest rate expectations against Treasury bond yield movements and macroeconomic liquidity.",
+            "Monitors corporate quarterly earnings guidance to ensure capital expenditures in enterprise computing yield tangible return on investment."
+        ]
+        center_talk = [
+            "Capital rotating out of high-multiple tech into value equities is a healthy sign of market diversification.",
+            "Investors are demanding real balance-sheet earnings and revenue delivery rather than speculative projections."
+        ]
+        right_framing = "Market Efficiency in Action: Free Enterprise Price Discovery Allocates Capital to Productive Assets"
+        right_bullets = [
+            "Demonstrates the strength of American capital markets, where decentralized price discovery naturally rebalances capital toward resilient balance sheets and productive enterprise.",
+            "Strengthens millions of American retirement 401(k) and pension accounts invested in broad-market index funds and core industrial firms.",
+            "Reaffirms that economic expansion thrives under private corporate investment, deregulation, and competitive capital allocation rather than government micromanagement."
+        ]
+        right_talk = [
+            "Free markets naturally self-correct: investors reward disciplined, profitable businesses over speculative hype.",
+            "A rising Dow strengthens retirement accounts for millions of hardworking American families who depend on private enterprise growth."
+        ]
+
     # --- 5. ELECTRIC VEHICLES, TESLA, AUTOMOTIVE INNOVATION ---
-    elif has_any(["tesla", "roadster", "electric vehicle", "electric vehicles", "automotive", "ev", "musk", "elon musk", "automaker", "cybertruck"]):
+    elif has_any(["tesla", "roadster", "electric vehicle", "electric vehicles", "automotive", "automaker", "cybertruck", "musk", "elon musk"]):
         neutral = f"{clean_title}. Automotive industry analysts, engineering executives, and investors are evaluating technical battery specifications and scalable assembly-line production milestones."
         left_framing = "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity"
         left_bullets = [
@@ -1108,6 +1142,11 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     for s in stories[:30]:
         sId = s.get("id", "story-0")
         cat = s.get("category", "General News")
+        if isinstance(cat, (list, tuple)):
+            cat = cat[0] if len(cat) > 0 else "General News"
+        master_cat = s.get("master_category", "National Headlines")
+        if isinstance(master_cat, (list, tuple)):
+            master_cat = master_cat[0] if len(master_cat) > 0 else "National Headlines"
         imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80")
         caption = s.get("caption", s.get("title", ""))
         credit = s.get("credit", "📸 News Wire")
@@ -1129,7 +1168,10 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">{cat}</span>
+              <div class="tags-group">
+                <span class="master-tag">{master_cat}</span>
+                <span class="category-tag">{cat}</span>
+              </div>
               <span class="source-tag" data-timestamp="{pub_ts}">{source}</span>
             </div>
 
@@ -1308,10 +1350,11 @@ def run_pipeline():
             img_info = resolve_story_image(t, cat_assigned, used_urls)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             
-            cat_assigned = classify_article(t, it["description"])
+            cat_assigned, master_cat_assigned = classify_article(t, it["description"])
             story_record = {
                 "id": story_id,
                 "category": cat_assigned,
+                "master_category": master_cat_assigned,
                 "title": t,
                 "source_name": it["source_name"],
                 "pub_timestamp": it["pub_timestamp"],
