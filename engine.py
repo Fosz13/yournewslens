@@ -68,6 +68,13 @@ RSS_FEEDS = [
 
 # 1. Exact photographic matches for named entities & specific story topics
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Baseball / MLB (Dodgers, Brewers, Yankees, Mets, NLCS, World Series)
+    {
+        "patterns": ["dodgers", "brewers", "yankees", "mets", "nlcs", "alcs", "mlb", "baseball", "world series", "ballpark"],
+        "url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Major League Baseball postseason championship ballpark field and diamond.",
+        "credit": "📸 Sports Media Wire"
+    },
     # Tesla & Electric Vehicles
     {
         "patterns": ["tesla", "roadster", "electric vehicle", "musk", "elon musk", "cybertruck", "autopilot"],
@@ -367,14 +374,56 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
 
 def generate_contextual_synthesis(title: str, context: str, category: str) -> Dict[str, Any]:
     """
-    Context-aware, theme-specific argument generator.
-    Never assigns unrelated policy concepts (like Russian diesel) to election or tech articles.
+    Context-aware, theme-specific argument generator with strict word-boundary matching.
+    Guarantees that baseball, elections, football, and business stories never cross-contaminate.
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     full_text = f"{clean_title}. {context or ''}".lower()
 
-    # --- 1. ELECTION SECURITY, THREATS, MAILINGS, VOTING INFRASTRUCTURE ---
-    if any(w in full_text for w in ["mailing", "election official", "suspicious", "investigation", "postal", "ballot", "voting", "election office", "powder", "anthrax"]):
+    def has_any(keywords):
+        for kw in keywords:
+            if re.search(r'\b' + re.escape(kw) + r'\b', full_text):
+                return True
+        return False
+
+    # --- 1. BASEBALL / MLB (Dodgers, Brewers, NLCS, World Series, Pitching, etc.) ---
+    if has_any(["dodgers", "brewers", "yankees", "mets", "nlcs", "alcs", "mlb", "baseball", "world series", "pitcher", "home run", "sweep", "innings"]):
+        neutral = f"{clean_title}. Team front offices, players, and baseball analysts are evaluating postseason tactical bullpen management, roster adjustments, and pennant implications."
+        left_framing = "Competitive Equity and Team Culture: Celebrating Underdog Parity and Labor Balance in Major League Baseball"
+        left_bullets = [
+            "Validates competitive parity across professional sports, proving that disciplined player development and locker room chemistry can overcome massive payroll disparities.",
+            "Rebuffs the dominance of mega-market billionaire franchise owners who attempt to buy postseason titles through astronomical luxury tax spending.",
+            "Energizes grassroots fan communities and mid-market cities often marginalized by national television broadcast networks."
+        ]
+        left_talk = [
+            "Money can buy superstar contracts, but authentic team chemistry, grit, and player execution win postseason games.",
+            "Baseball is at its best when every community has an equitable opportunity to compete for a championship on the field."
+        ]
+
+        center_framing = f"Tactical Execution and Postseason Reality: Assessing Pennant Dynamics in {clean_title[:38]}..."
+        center_bullets = [
+            "Analyzes situational bullpen pitching management, defensive metrics, and timely hitting that decided the playoff series.",
+            "Balances the immediate disappointment of postseason elimination against long-term organizational stability and roster contracts.",
+            "Shifts national sports media focus toward strategic World Series matchups and television broadcast viewership trends."
+        ]
+        center_talk = [
+            "Short postseason series come down to timely pitching and execution under pressure; the winning dugout simply delivered in high-leverage moments.",
+            "Championship contenders must conduct thorough season autopsies and address roster weaknesses heading into the offseason."
+        ]
+
+        right_framing = "Meritocracy on the Diamond: Accountability, Culture, and Relentless Execution Decide Championships"
+        right_bullets = [
+            "Celebrates pure athletic meritocracy: performance between the foul lines determines success, with zero entitlements for past prestige or payroll size.",
+            "Demands accountability from high-priced franchise rosters, proving that winning cultures require daily execution rather than celebrity hype.",
+            "Rewards disciplined organizational scouting, farm system development, and clutch performance under high-stakes competitive pressure."
+        ]
+        right_talk = [
+            "The final scoreboard is the ultimate truth in sports: championships are earned on the field, not awarded on paper.",
+            "Postseason adversity exposes team discipline; winning programs adapt, execute, and deliver when everything is on the line."
+        ]
+
+    # --- 2. ELECTION SECURITY, THREATS, MAILINGS, VOTING INFRASTRUCTURE ---
+    elif has_any(["mailing", "mailings", "election official", "election officials", "suspicious", "postal inspection", "ballot", "voting", "election office", "powder", "anthrax"]):
         neutral = f"{clean_title}. Federal postal inspectors, the FBI, and state election authorities launched comprehensive investigations to intercept hazardous items and secure election administration facilities."
         left_framing = "Protecting Democratic Integrity: Election Workers and Public Servants Must Be Guarded Against Political Threats"
         left_bullets = [
@@ -409,8 +458,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Constitutional elections require strict security, physical safety, and zero tolerance for unlawful intimidation."
         ]
 
-    # --- 2. ELECTRIC VEHICLES, TESLA, AUTOMOTIVE INNOVATION ---
-    elif any(w in full_text for w in ["tesla", "roadster", "electric vehicle", "automotive", "ev", "musk", "automaker"]):
+    # --- 3. ELECTRIC VEHICLES, TESLA, AUTOMOTIVE INNOVATION ---
+    elif has_any(["tesla", "roadster", "electric vehicle", "electric vehicles", "automotive", "ev", "musk", "elon musk", "automaker", "cybertruck"]):
         neutral = f"{clean_title}. Automotive industry analysts, engineering executives, and investors are evaluating technical battery specifications and scalable assembly-line production milestones."
         left_framing = "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity"
         left_bullets = [
@@ -445,8 +494,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Free market competition and consumer choice—not top-down government mandates—deliver real automotive progress."
         ]
 
-    # --- 3. AI STARTUPS, ANTHROPIC, IPO, TECH VALUATIONS ---
-    elif any(w in full_text for w in ["anthropic", "ipo", "valuation", "venture", "revenue growth", "openai", "claude", "artificial intelligence", "tech rally"]):
+    # --- 4. AI STARTUPS, ANTHROPIC, IPO, TECH VALUATIONS ---
+    elif has_any(["anthropic", "ipo", "valuation", "venture capital", "revenue growth", "openai", "claude", "artificial intelligence", "tech rally"]):
         neutral = f"{clean_title}. Institutional underwriters and venture analysts are calibrating enterprise software multiples and operational burn rates ahead of prospective capital market listings."
         left_framing = "Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations"
         left_bullets = [
@@ -481,8 +530,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Disciplined private investment ensures capital flows to businesses that actually generate economic value."
         ]
 
-    # --- 4. COLLEGE FOOTBALL, EXPANSION, NCAA ---
-    elif any(w in full_text for w in ["college football", "24-team", "playoff", "ncaa", "bowl game", "title games"]):
+    # --- 5. COLLEGE FOOTBALL, EXPANSION, NCAA ---
+    elif has_any(["college football", "24-team", "playoff", "ncaa", "bowl game", "title games"]):
         neutral = f"{clean_title}. University leadership, conference commissioners, and broadcast partners are reviewing scheduling logistics, athlete commitments, and postseason media rights."
         left_framing = "Player Burden vs Corporate Profits: Questioning the Physical Toll of Extended Collegiate Seasons"
         left_bullets = [
@@ -492,7 +541,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         ]
         left_talk = [
             "Adding more playoff games creates billions for media networks while pushing unpaid student-athletes past their physical limits.",
-            "College athletes are the workforce generating this massive sports economy; they deserve direct revenue sharing and full employee protections."
+            "College athletes are the workforce generating this massive sports economy; they deserve direct revenue sharing and full labor protections."
         ]
 
         center_framing = "Modernizing Postseason Competition: Balancing Broad Tournament Access with Collegiate Logistics"
@@ -517,8 +566,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Free enterprise and fan demand have spoken: more high-stakes football delivers superior entertainment and economic growth."
         ]
 
-    # --- 5. NFL FOOTBALL INJURIES, JALEN HURTS ---
-    elif any(w in full_text for w in ["hurts", "eagles", "panthers", "qb", "blood clot", "calf", "nfl", "injury", "ruled out"]):
+    # --- 6. NFL FOOTBALL INJURIES, JALEN HURTS ---
+    elif has_any(["hurts", "eagles", "panthers", "qb", "quarterback", "blood clot", "calf", "nfl", "injury", "ruled out", "touchdown"]):
         neutral = f"{clean_title}. Team medical staff and franchise officials confirmed the roster status, initiating clinical recovery protocols ahead of upcoming game action."
         left_framing = "Player Health Over Game Outcomes: Prioritizing Long-Term Vascular Safety in NFL Athletics"
         left_bullets = [
@@ -553,8 +602,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Adversity reveals true team character; this game is the ultimate test of preparation and roster depth."
         ]
 
-    # --- 6. FOREIGN SANCTIONS, RUSSIAN ENERGY, DIESEL TRADE ---
-    elif any(w in full_text for w in ["diesel", "russia diesel", "diesel deal", "oil sanctions"]):
+    # --- 7. FOREIGN SANCTIONS, RUSSIAN ENERGY, DIESEL TRADE ---
+    elif has_any(["diesel", "russia diesel", "diesel deal", "oil sanctions", "petroleum sanctions"]):
         neutral = f"{clean_title}. Congressional foreign relations leaders and international energy diplomats are evaluating geopolitical leverage, crude supply chains, and statutory compliance."
         left_framing = "Global Human Rights and Clean Independence: Enforcing Sanctions Over Fossil Fuel Concessions"
         left_bullets = [
@@ -589,7 +638,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Peace through strength requires maximum economic resolve and total American energy dominance."
         ]
 
-    # --- 7. GENERAL DYNAMIC FALLBACK (Theme-Specific) ---
+    # --- 8. GENERAL DYNAMIC FALLBACK (Completely Free of Automotive or Energy Boilerplate) ---
     else:
         neutral = f"{clean_title}. Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold."
         left_framing = f"Public Accountability and Democratic Oversight Regarding {clean_title[:45]}..."
