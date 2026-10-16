@@ -59,6 +59,11 @@ RSS_FEEDS = [
         "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en"
     },
     {
+        "category": "Sports",
+        "source": "ESPN Wire",
+        "url": "https://www.espn.com/espn/rss/news"
+    },
+    {
         "category": "Tech & Free Speech",
         "source": "Google News Tech",
         "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"
@@ -1062,6 +1067,34 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 
+def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60, min_per_cat: int = 6) -> List[Dict[str, Any]]:
+    """Ensures balanced category distribution so buttons like Sports, Energy, and Healthcare are never empty."""
+    from collections import defaultdict
+    cat_buckets = defaultdict(list)
+    for s in stories:
+        c = s.get("category", "Politics")
+        cat_buckets[c].append(s)
+
+    selected = []
+    selected_ids = set()
+    # 1. Guarantee minimum quota per category
+    for c, items in cat_buckets.items():
+        for s in items[:min_per_cat]:
+            if s.get("id") not in selected_ids:
+                selected.append(s)
+                selected_ids.add(s.get("id"))
+
+    # 2. Fill remaining slots with newest stories
+    for s in stories:
+        if len(selected) >= max_total:
+            break
+        if s.get("id") not in selected_ids:
+            selected.append(s)
+            selected_ids.add(s.get("id"))
+
+    selected.sort(key=lambda x: x.get("pub_timestamp", 0), reverse=True)
+    return selected
+
 def run_pipeline():
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting Your News Lens Wire Scraper...")
     
@@ -1104,7 +1137,7 @@ def run_pipeline():
     new_stories = []
 
     for feed in RSS_FEEDS:
-        items = fetch_rss_items(feed, max_items=4)
+        items = fetch_rss_items(feed, max_items=8)
         for it in items:
             t = it["title"]
             if t.lower() in existing_titles:
@@ -1135,7 +1168,7 @@ def run_pipeline():
             time.sleep(1)
 
     updated_feed = new_stories + existing_stories
-    updated_feed = updated_feed[:40] # keep freshest 25
+    updated_feed = balance_feed_by_category(updated_feed, max_total=60, min_per_cat=6) # keep freshest 25
 
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
