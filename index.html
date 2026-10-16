@@ -174,13 +174,7 @@
       gap: 6px;
     }
 
-    .category-pills {
-      display: flex;
-      gap: 5px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      -webkit-overflow-scrolling: touch;
-    }
+    .master-pills-row { display: flex; gap: 6px; overflow-x: auto; } .topic-pills-row { display: flex; gap: 5px; overflow-x: auto; }
 
     .category-pills::-webkit-scrollbar { display: none; }
 
@@ -635,17 +629,30 @@
     </div>
   </header>
 
-  <!-- Filter & Tab Bar -->
+  <!-- Hierarchical Filter & Tab Bar -->
   <div class="filter-bar">
-    <div class="category-pills">
-      <button type="button" class="pill active" onclick="applyCategoryFilter(this, 'All')">All</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Politics')">🏛️ Politics</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Sports')">🏆 Sports</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Energy & Infrastructure')">Energy</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Economy & Inflation')">Economy</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Border & Security')">Border</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Healthcare & Drug Costs')">Healthcare</button>
-      <button type="button" class="pill" onclick="applyCategoryFilter(this, 'Tech & Free Speech')">Tech/Speech</button>
+    <!-- Level 1: Master Categories -->
+    <div class="master-pills-row">
+      <button type="button" class="pill-master active" onclick="applyMasterFilter(this, 'All')">🌐 All Stories</button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'National Headlines')">🇺🇸 National Headlines</button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'World News')">🌍 World News</button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Science & Tech')">🔬 Science & Tech</button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Entertainment')">🎬 Entertainment</button>
+      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Sports')">🏆 Sports</button>
+    </div>
+
+    <!-- Level 2: Topic Subcategories -->
+    <div class="topic-pills-row" id="topicPillsRow">
+      <button type="button" class="pill active" id="topic-pill-all" onclick="applyTopicFilter(this, 'All')">All Topics</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Politics')">🏛️ Politics</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Business & Economy')">📈 Business & Economy</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Energy & Weather')">⚡ Energy & Weather</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Health')">🩺 Health</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Space & Science')">🚀 Space & Science</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Tech & AI')">🤖 Tech & AI</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Entertainment')">🍿 Movies & Pop Culture</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Sports')">🏆 Sports</button>
+      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Border & Security')">🛡️ Border & Security</button>
     </div>
 
     <div class="view-tabs">
@@ -658,6 +665,393 @@
   <main>
     <!-- Streamlined Feed with Compact Real Photos -->
     <div id="storiesFeedView" class="feed-container">
+
+        <article class="compact-card" data-category="Energy & Weather" id="story-weather-power-outage-pacific">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe windstorm downs electrical lines and triggers regional utility power outages." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Severe windstorm downs electrical lines and triggers regional utility power outages.</span>
+              <span class="credit-tag">📸 Severe Weather Photo Pool</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Energy & Weather</span>
+              <span class="source-tag" data-timestamp="1729074000">Associated Press Wire • 25 mins ago</span>
+            </div>
+
+            <h3 class="story-title">High Winds Trigger Widespread Power Outages Across Pacific Northwest Utility Grids</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Severe wind gusts topping 65 mph downed transmission lines and utility poles across Oregon and Washington, leaving over 280,000 customers without electricity while emergency utility crews mobilize for circuit repairs.</div>
+            </div>
+            <div id="story-weather-power-outage-pacific-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Infrastructure Resilience and Emergency Response: Assessing Grid Performance Under Severe Winds</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Evaluates multi-state utility mutual aid agreements, crew deployment timelines, and substation backup protocols.</li><li>Balances the substantial capital expenses of subterranean line undergrounding against routine aerial line maintenance budgets.</li><li>Coordinates emergency shelter readiness, roadway clearing, and real-time public utility outage tracking systems.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Weather events will always test our infrastructure; the priority right now is rapid crew deployment and restoring power safely."</div><div class="quote-row">"Modernizing the grid requires practical trade-offs between long-term hardening investments and immediate ratepayer costs."</div>
+              </div>
+            </div>
+            <div id="story-weather-power-outage-pacific-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Energy Reliability and Commonsense Management: Clear Red Tape to Secure the Electrical Grid</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Demands commonsense regulatory permitting reform to allow swift forest management, brush clearing, and hazard tree removal along utility corridors.</li><li>Warns against over-relying on weather-dependent intermittent power, stressing the indispensable role of dependable baseload electricity.</li><li>Celebrates the relentless dedication of lineworkers and private utility technicians working around the clock in dangerous weather conditions.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Reliable power requires commonsense easement management; environmental red tape shouldn't prevent utilities from trimming dangerous trees."</div><div class="quote-row">"We owe a massive debt of gratitude to the fearless lineworkers braving freezing winds to restore power to our communities."</div>
+              </div>
+            </div>
+            <div id="story-weather-power-outage-pacific-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-weather-power-outage-pacific" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Climate Resilience and Public Accountability: Demanding Modernized Power Infrastructure</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Demands aggressive public investment to bury utility lines underground and insulate communities against increasingly violent climate weather events.</li><li>Holds investor-owned utility monopolies accountable for distributing billions in executive payouts rather than maintaining resilient power grids.</li><li>Prioritizes emergency heating, shelter, and medical power backups for vulnerable working-class neighborhoods and elderly residents.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Power is an essential public service, not a corporate luxury; private utilities must invest in resilient underground grids."</div><div class="quote-row">"Working families should not be left in freezing dark homes while utility executives collect record shareholder dividends."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Entertainment" id="story-entertainment-nolan-imax">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" alt="Major motion picture theatrical cinema and entertainment industry production." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Major motion picture theatrical cinema and entertainment industry production.</span>
+              <span class="credit-tag">📸 Entertainment News Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Entertainment</span>
+              <span class="source-tag" data-timestamp="1729070400">Variety Film Wire • 1 hour ago</span>
+            </div>
+
+            <h3 class="story-title">Christopher Nolan Begins Production on Next IMAX Feature with Star-Studded Ensemble Cast</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Director Christopher Nolan officially commenced principal photography on his highly anticipated universal theatrical project utilizing custom-engineered 70mm IMAX cameras and an ensemble international cast.</div>
+            </div>
+            <div id="story-entertainment-nolan-imax-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Evolving Theatrical Economics: Navigating Box Office Exhibition in the Streaming Era</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses consumer spending trends across premium large-format theatrical exhibition versus direct-to-consumer home streaming.</li><li>Weighs studio marketing budgets, global distribution agreements, and critical reception scores ahead of major release windows.</li><li>Analyzes shifting demographic engagement patterns across theatrical cinema, streaming subscription bundles, and physical media.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The entertainment industry is finding equilibrium between the communal magic of the theater and the convenience of streaming."</div><div class="quote-row">"Box office success requires delivering genuine high-quality storytelling that compels audiences to leave the couch."</div>
+              </div>
+            </div>
+            <div id="story-entertainment-nolan-imax-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Free Enterprise in Culture: Consumer Demand and Artistic Excellence Drive Success</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Celebrates pure free enterprise and audience sovereignty: ticket sales and viewer choice determine what thrives, not studio politics.</li><li>Rewards genuine cinematic craftsmanship, technical mastery, and entertainment that unites audiences without lecturing them.</li><li>Recognizes the massive economic engine of American cinema and cultural exports that entertain millions across the globe.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The box office is an open marketplace; when studios focus on exceptional storytelling and entertainment, audiences show up in droves."</div><div class="quote-row">"American cultural innovation leads the world when creators focus on inspiring and entertaining everyday people."</div>
+              </div>
+            </div>
+            <div id="story-entertainment-nolan-imax-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-nolan-imax" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Protecting Creative Labor and Cultural Diversity Against Corporate Studio Monopolies</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Champions fair compensation, residual protections, and health benefits for below-the-line film crews, writers, and working actors.</li><li>Resists corporate studio reliance on generative AI tools that devalue human artistic labor and replicate creative work without consent.</li><li>Advocates for authentic diverse storytelling that uplifts independent filmmakers over formulaic corporate franchise dominance.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Art and storytelling come from human experience, not cost-cutting corporate algorithms; we must stand with creative workers."</div><div class="quote-row">"Cinema is at its best when it reflects rich cultural diversity, not just recycled mega-corporate sequels."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Science & Tech" id="story-science-nasa-james-webb">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Deep space observation and advanced astronomical planetary science from the James Webb Space Telescope." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Deep space observation and advanced astronomical planetary science from the James Webb Space Telescope.</span>
+              <span class="credit-tag">📸 NASA / Scientific Photo Archive</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Science & Tech</span>
+              <span class="source-tag" data-timestamp="1729066800">Space Science Wire • 2 hours ago</span>
+            </div>
+
+            <h3 class="story-title">NASA James Webb Telescope Captures Unprecedented Atmospheric Data on Habitable-Zone Exoplanet</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Astrophysicists utilizing the James Webb Space Telescope detected atmospheric chemical signatures, including carbon dioxide and methane, in the atmosphere of an Earth-sized exoplanet orbiting within a nearby star’s habitable zone.</div>
+            </div>
+            <div id="story-science-nasa-james-webb-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Astronomical Milestone: Validating Advanced Optical Technology and Deep Space Observatories</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Validates the engineering precision of infrared spectrometers operating at cryogenic temperatures one million miles from Earth.</li><li>Establishes peer-reviewed baseline spectroscopy protocols for future habitable-world surveys by international observatories.</li><li>Maintains ongoing bipartisan congressional support for flagship scientific exploration missions with quantifiable scientific milestones.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The James Webb telescope is a triumphant feat of American engineering that pushes the frontiers of human discovery."</div><div class="quote-row">"Peer-reviewed spectroscopy is the rigorous gold standard for separating genuine planetary science from speculation."</div>
+              </div>
+            </div>
+            <div id="story-science-nasa-james-webb-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>American Technological Leadership and Deep Space Exploration Frontiers</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Solidifies American technological supremacy and aerospace leadership in cutting-edge scientific instrumentation.</li><li>Fosters vital public-private aerospace partnerships with domestic commercial suppliers and research universities.</li><li>Inspires national pride by demonstrating that American ingenuity and exploration continue to lead the world.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"American aerospace innovation remains the undisputed envy of the world; our pioneers continue to unlock the mysteries of the universe."</div><div class="quote-row">"Investing in cutting-edge aerospace engineering strengthens our domestic technological base and national pride."</div>
+              </div>
+            </div>
+            <div id="story-science-nasa-james-webb-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-nasa-james-webb" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Scientific Discovery for Humanity: Prioritizing Public Science Funding and Climate Awareness</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Demonstrates the transformative value of robust public research funding through NASA and international scientific coalitions.</li><li>Provides vital planetary data that deepens our understanding of Earth's unique biosphere and atmospheric vulnerability.</li><li>Encourages open, accessible public science education to inspire diverse next-generation STEM researchers.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Public science investments pay dividends for generations; exploring the cosmos expands our collective understanding of Earth's climate."</div><div class="quote-row">"Knowledge belongs to all humanity; James Webb discoveries show what global scientific cooperation can accomplish."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
 
         <article class="compact-card" data-category="Politics" id="story-budget-shutdown-deal">
           <div class="hero-image-wrap">
@@ -788,7 +1182,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Infrastructure" id="story-ferc-grid-grants">
+        <article class="compact-card" data-category="Energy & Weather" id="story-ferc-grid-grants">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -799,7 +1193,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Energy & Infrastructure</span>
+              <span class="category-tag">Energy & Weather</span>
               <span class="source-tag" data-timestamp="1792159295">Associated Press Wire • 25 mins ago</span>
             </div>
 
@@ -1046,7 +1440,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Border & Security" id="story-oregon-school-shooting">
+        <article class="compact-card" data-category="Crime & Public Safety" id="story-oregon-school-shooting">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Municipal first responders and law enforcement security perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1057,7 +1451,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Border & Security</span>
+              <span class="category-tag">Crime & Public Safety</span>
               <span class="source-tag" data-timestamp="1792157195">CNN • 1 hour ago</span>
             </div>
 
@@ -1175,7 +1569,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Economy & Inflation" id="story-fed-rates-steady">
+        <article class="compact-card" data-category="Business & Economy" id="story-fed-rates-steady">
           <div class="hero-image-wrap">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1186,7 +1580,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Economy & Inflation</span>
+              <span class="category-tag">Business & Economy</span>
               <span class="source-tag" data-timestamp="1792157195">Reuters Financial • 1 hour ago</span>
             </div>
 
@@ -1949,7 +2343,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Infrastructure" id="story-nuclear-modular-compact">
+        <article class="compact-card" data-category="Energy & Weather" id="story-nuclear-modular-compact">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Clean baseload nuclear power generation and cooling tower facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1960,7 +2354,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Energy & Infrastructure</span>
+              <span class="category-tag">Energy & Weather</span>
               <span class="source-tag" data-timestamp="1792149995">Reuters Energy • 3 hours ago</span>
             </div>
 
@@ -2207,7 +2601,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Tech & Free Speech" id="story-starlink-ukraine-cnbc">
+        <article class="compact-card" data-category="World News" id="story-starlink-ukraine-cnbc">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80" alt="Orbital satellite communications array and high-frequency defense telecommunications relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2218,7 +2612,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Tech & Free Speech</span>
+              <span class="category-tag">World News</span>
               <span class="source-tag" data-timestamp="1792146395">CNBC • 4 hours ago</span>
             </div>
 
@@ -2336,7 +2730,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Healthcare & Drug Costs" id="story-hhs-cash-prices">
+        <article class="compact-card" data-category="Health" id="story-hhs-cash-prices">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy healthcare complex." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2347,7 +2741,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Healthcare & Drug Costs</span>
+              <span class="category-tag">Health</span>
               <span class="source-tag" data-timestamp="1792146395">Reuters Health • 4 hours ago</span>
             </div>
 
@@ -2465,7 +2859,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Tech & Free Speech" id="story-supreme-court-speech">
+        <article class="compact-card" data-category="Science & Tech" id="story-supreme-court-speech">
           <div class="hero-image-wrap">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2476,7 +2870,7 @@
 
           <div class="card-body">
             <div class="meta-row">
-              <span class="category-tag">Tech & Free Speech</span>
+              <span class="category-tag">Science & Tech</span>
               <span class="source-tag" data-timestamp="1792142795">Associated Press Wire • 5 hours ago</span>
             </div>
 
@@ -2593,6 +2987,1167 @@
             </div>
           </div>
         </article>
+
+        <article class="compact-card" data-category="Health" id="story-medicare-negotiations">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Pharmaceutical manufacturing and clinical prescription medicine distribution." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Pharmaceutical manufacturing and clinical prescription medicine distribution.</span>
+              <span class="credit-tag">📸 Health Systems Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Health</span>
+              <span class="source-tag" data-timestamp="1792142795">Associated Press Health • 5 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Medicare Unveils 15 New Critical Medications Selected for Direct Federal Price Negotiations</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Federal healthcare administrators published the next tranche of 15 life-saving cardiovascular and oncology prescription drugs slated for statutory price negotiations under Medicare Part D, targeting billions in annual taxpayer savings.</div>
+            </div>
+            <div id="story-medicare-negotiations-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Medicare Unveils 15 New Critical Medicatio...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage medicare unveils 15 new critical medications selected for direct federal price negotiations.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
+              </div>
+            </div>
+            <div id="story-medicare-negotiations-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Medicare Unveils 15 New Critical Medicat...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding medicare unveils 15 new critical medications selected for direct federal price negotiations.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
+              </div>
+            </div>
+            <div id="story-medicare-negotiations-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-medicare-negotiations" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Public Accountability and Democratic Oversight Regarding Medicare Unveils 15 New Critical Medications ...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding medicare unveils 15 new critical medications selected for direct federal price negotiations.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Science & Tech" id="story-chip-export-controls">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Semiconductor cleanroom wafer production and advanced compute fabrication." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Semiconductor cleanroom wafer production and advanced compute fabrication.</span>
+              <span class="credit-tag">📸 Semiconductor Industry Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Science & Tech</span>
+              <span class="source-tag" data-timestamp="1792139195">Bloomberg Technology • 6 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Commerce Department Expands High-End Semiconductor Export Bans to Protect Domestic AI Lead</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">The U.S. Department of Commerce published updated export restriction directives barring international sales of cutting-edge artificial intelligence accelerator hardware to non-allied foreign technology conglomerates.</div>
+            </div>
+            <div id="story-chip-export-controls-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Commerce Department Expands High...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage commerce department expands high.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
+              </div>
+            </div>
+            <div id="story-chip-export-controls-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Commerce Department Expands High...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding commerce department expands high.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
+              </div>
+            </div>
+            <div id="story-chip-export-controls-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-chip-export-controls" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Public Accountability and Democratic Oversight Regarding Commerce Department Expands High...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding commerce department expands high.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Business & Economy" id="story-tesla-roadster">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80" alt="Tesla electric performance vehicle and high-technology automotive manufacturing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Tesla electric performance vehicle and high-technology automotive manufacturing.</span>
+              <span class="credit-tag">📸 Automotive News Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Business & Economy</span>
+              <span class="source-tag" data-timestamp="1792124795">CNBC Business • 10 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Tesla plans next-generation Roadster reveal after almost a decade of delays - CNBC</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Tesla announced plans to officially unveil the next-generation Roadster production design following extended engineering delays, aiming to commence commercial deliveries and demonstrate advanced electric vehicle propulsion capabilities.</div>
+            </div>
+            <div id="story-tesla-roadster-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Engineering Innovation Meets Commercial Delivery: Evaluating Production Feasibility for Tesla plans next-generation Roadster r...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses whether breakthrough battery density and powertrain engineering can be translated into reliable assembly-line manufacturing.</li><li>Balances consumer excitement and brand halo effects against past delivery delays and intensifying legacy automaker EV competition.</li><li>Monitors regulatory homologation and supply chain readiness ahead of commercial customer delivery windows.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Breakthrough vehicle concepts generate industry buzz, but consistent manufacturing execution determines long-term success."</div><div class="quote-row">"The automotive sector thrives when ambitious engineering benchmarks push the boundaries of electric propulsion."</div>
+              </div>
+            </div>
+            <div id="story-tesla-roadster-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>American Innovation and Free Enterprise: Private Engineering Disruption Drives Global EV Leadership</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Celebrates American private enterprise and engineering audacity that disrupted legacy global automotive cartels without relying on coercive government bans.</li><li>Proves that consumer enthusiasm, private capital investment, and technological competition drive green adoption far more effectively than Washington subsidies.</li><li>Strengthens domestic high-technology manufacturing and advanced battery intellectual property within the United States.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity."</div><div class="quote-row">"Free market competition and consumer choice—not top-down government mandates—deliver real automotive progress."</div>
+              </div>
+            </div>
+            <div id="story-tesla-roadster-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-tesla-roadster" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Highlights how automotive capital is channeled toward six-figure luxury sports vehicles rather than affordable, mass-market electric transit for working families.</li><li>Demands strict independent regulatory oversight on high-speed propulsion, battery safety, and advanced autonomous driver-assist systems.</li><li>Advocates for union protections, safe factory conditions, and fair wages across domestic electric vehicle manufacturing plants.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The electric transition should focus on affordable transit and clean vehicles for everyday families, not luxury toys for the wealthy."</div><div class="quote-row">"Automakers must be held to rigorous public road safety and labor standards, regardless of corporate brand power."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Science & Tech" id="story-anthropic-ipo">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence venture valuation and advanced neural computing technology." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Artificial intelligence venture valuation and advanced neural computing technology.</span>
+              <span class="credit-tag">📸 Tech Systems Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Science & Tech</span>
+              <span class="source-tag" data-timestamp="1792121195">Reuters Business • 11 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say - Reuters</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Financial investors and venture underwriters have reportedly tempered initial valuation targets for Anthropic ahead of prospective public market offerings, citing moderating enterprise software revenue expansion rates.</div>
+            </div>
+            <div id="story-anthropic-ipo-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Market Realism and Sustainable Growth: AI Enterprise Sector Shifts from Hype to Financial Fundamentals</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Signals a healthy market normalization where artificial intelligence startups are evaluated on sustainable revenue, margin quality, and enterprise unit economics.</li><li>Weighs astronomical cloud compute infrastructure expenses against recurring software revenue and enterprise customer retention.</li><li>Establishes realistic valuation baselines necessary for healthy, stable technology initial public offerings.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Sustainable artificial intelligence adoption depends on genuine enterprise utility and disciplined financial balance sheets."</div><div class="quote-row">"Calibrating valuations based on real revenue growth creates a much healthier, more durable technology ecosystem."</div>
+              </div>
+            </div>
+            <div id="story-anthropic-ipo-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Market Discipline at Work: Free Enterprise Price Discovery Separates Real Innovation from Speculation</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Validates the power of free-market price discovery: private investors naturally discipline over-hyped valuations and demand proven commercial viability.</li><li>Protects everyday 401(k) retirement accounts and retail investors from buying into artificial, inflated venture capital multiples.</li><li>Rewards technological innovation that delivers tangible productivity gains while penalizing corporate over-spending.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The free market always wins: real earnings, profitability, and customer value will always matter more than promotional Silicon Valley hype."</div><div class="quote-row">"Disciplined private investment ensures capital flows to businesses that actually generate economic value."</div>
+              </div>
+            </div>
+            <div id="story-anthropic-ipo-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-anthropic-ipo" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Exposes how speculative venture capital inflates tech valuations while proprietary AI companies operate with minimal public transparency or safety testing.</li><li>Demands strong consumer privacy safeguards, ethical guardrails, and prevention of monopoly model consolidation among a handful of Silicon Valley giants.</li><li>Protects creative artists, workers, and content producers whose intellectual property is absorbed to train commercial generative models without consent.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Artificial intelligence must serve the public interest and respect workers' rights, not just generate speculative billions for Silicon Valley insiders."</div><div class="quote-row">"We need independent safety oversight and transparent auditing on advanced AI systems before they are deployed across society."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Crime & Public Safety" id="story-election-mailings">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Federal law enforcement and postal screening security operations under active investigation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Federal law enforcement and postal screening security operations under active investigation.</span>
+              <span class="credit-tag">📸 Federal Law Enforcement Archive</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Crime & Public Safety</span>
+              <span class="source-tag" data-timestamp="1792117595">NPR News • 12 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Suspicious mailings to election officials, congressional offices under investigation - NPR News</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Federal postal inspectors, the FBI, and state election authorities launched comprehensive investigations to intercept hazardous items and secure election administration facilities.</div>
+            </div>
+            <div id="story-election-mailings-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Inter-Agency Security Mobilization: Federal Authorities Coordinate Threat Interdiction and Public Safety</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Prioritizes swift coordination among the FBI, U.S. Postal Inspection Service, and state election boards to neutralize security risks.</li><li>Balances rapid facility decontamination and threat verification with transparent updates to prevent voter disenfranchisement or panic.</li><li>Ensures standard operating protocols and mail screening standards are uniformly enforced across all government and election buildings.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Ensuring the physical safety of election personnel and postal workers is a fundamental non-partisan government duty."</div><div class="quote-row">"Law enforcement agencies must follow the evidence impartially and secure public offices without operational disruption."</div>
+              </div>
+            </div>
+            <div id="story-election-mailings-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Law and Order Must Prevail: Zero Tolerance for Intimidation Against Public Facilities and Election Infrastructure</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Demands aggressive law enforcement investigation and severe criminal prosecution for anyone sending illicit materials to government or election offices.</li><li>Emphasizes that public order, election integrity, and constitutional governance cannot function under criminal threats or disruption.</li><li>Calls for heightened surveillance, postal screening enforcement, and decisive judicial deterrence to prevent copycat crimes.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Law and order is non-negotiable: anyone threatening election officials or public offices belongs behind bars."</div><div class="quote-row">"Constitutional elections require strict security, physical safety, and zero tolerance for unlawful intimidation."</div>
+              </div>
+            </div>
+            <div id="story-election-mailings-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-election-mailings" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Protecting Democratic Integrity: Election Workers and Public Servants Must Be Guarded Against Political Threats</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Demands comprehensive federal security protection and legal safeguards for frontline election workers and public administrative staff facing intimidation.</li><li>Condemns extremist political rhetoric and violent harassment aimed at destabilizing democratic balloting and public trust in elections.</li><li>Urges immediate federal funding to harden local election facilities, postal screening technology, and inter-agency threat sharing.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Threats against election workers and public servants are attacks on our democracy itself; perpetrators must face maximum legal penalties."</div><div class="quote-row">"We must stand united in protecting the dedicated citizens who ensure our elections remain free, fair, and secure."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Sports" id="story-dodgers-brewers-nlcs">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80" alt="Major League Baseball postseason championship ballpark field and diamond." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Major League Baseball postseason championship ballpark field and diamond.</span>
+              <span class="credit-tag">📸 Sports Media Wire</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Sports</span>
+              <span class="source-tag" data-timestamp="1792113995">ESPN Sports • 13 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Dodgers tip cap to Brewers as title reign ends in NLCS sweep - ESPN</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">The Los Angeles Dodgers saw their championship title reign conclude following a four-game National League Championship Series sweep by the Milwaukee Brewers, with players and front-office executives assessing postseason bullpen execution and roster contracts ahead of the World Series.</div>
+            </div>
+            <div id="story-dodgers-brewers-nlcs-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Tactical Execution and Postseason Reality: Assessing Pennant Dynamics in Dodgers tip cap to Brewers as title re...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Analyzes situational bullpen pitching management, defensive metrics, and timely hitting that decided the playoff series.</li><li>Balances the immediate disappointment of postseason elimination against long-term organizational stability and roster contracts.</li><li>Shifts national sports media focus toward strategic World Series matchups and television broadcast viewership trends.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Short postseason series come down to timely pitching and execution under pressure; the winning dugout simply delivered in high-leverage moments."</div><div class="quote-row">"Championship contenders must conduct thorough season autopsies and address roster weaknesses heading into the offseason."</div>
+              </div>
+            </div>
+            <div id="story-dodgers-brewers-nlcs-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Meritocracy on the Diamond: Accountability, Culture, and Relentless Execution Decide Championships</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Celebrates pure athletic meritocracy: performance between the foul lines determines success, with zero entitlements for past prestige or payroll size.</li><li>Demands accountability from high-priced franchise rosters, proving that winning cultures require daily execution rather than celebrity hype.</li><li>Rewards disciplined organizational scouting, farm system development, and clutch performance under high-stakes competitive pressure.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"The final scoreboard is the ultimate truth in sports: championships are earned on the field, not awarded on paper."</div><div class="quote-row">"Postseason adversity exposes team discipline; winning programs adapt, execute, and deliver when everything is on the line."</div>
+              </div>
+            </div>
+            <div id="story-dodgers-brewers-nlcs-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-dodgers-brewers-nlcs" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Competitive Equity and Team Culture: Celebrating Underdog Parity and Labor Balance in Major League Baseball</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Validates competitive parity across professional sports, proving that disciplined player development and locker room chemistry can overcome massive payroll disparities.</li><li>Rebuffs the dominance of mega-market billionaire franchise owners who attempt to buy postseason titles through astronomical luxury tax spending.</li><li>Energizes grassroots fan communities and mid-market cities often marginalized by national television broadcast networks.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Money can buy superstar contracts, but authentic team chemistry, grit, and player execution win postseason games."</div><div class="quote-row">"Baseball is at its best when every community has an equitable opportunity to compete for a championship on the field."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="World News" id="story-world-geneva-maritime-talks">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="International diplomatic delegation and multilateral security summit in Geneva." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">International diplomatic delegation and multilateral security summit in Geneva.</span>
+              <span class="credit-tag">📸 Reuters Diplomatic Pool</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">World News</span>
+              <span class="source-tag" data-timestamp="1729063200">Reuters World Wire • 3 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Diplomatic Envoy Convenes Geneva Talks on Black Sea Maritime Security and Export Corridors</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Diplomats from 14 nations convened in Geneva to establish standardized international maritime escorts and de-escalate naval mine hazards across critical commercial grain and fertilizer shipping lanes in the Black Sea.</div>
+            </div>
+            <div id="story-world-geneva-maritime-talks-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Pragmatic Trade Security: Establishing Enforceable Naval Transit Protocols in Contested Waters</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Provides legal clarity and commercial insurance underwriting guarantees necessary for commercial shipping fleets.</li><li>Balances sovereign security claims against freedom of international navigation under the UN Convention on the Law of the Sea.</li><li>Reduces global agricultural commodity volatility and stabilizes global headline inflation indices.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Commercial shipping requires predictable maritime security guarantees to keep global supply chains moving."</div><div class="quote-row">"Diplomatic compromise on export corridors keeps international markets stable and prevents unnecessary price spikes."</div>
+              </div>
+            </div>
+            <div id="story-world-geneva-maritime-talks-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Peace Through Strength: Deterrence and Freedom of Navigation Outweigh Empty Paper Treaties</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Warns that autocratic regimes only respect firm naval deterrence, not unenforceable diplomatic communiques.</li><li>Reaffirms the vital principle of international freedom of navigation across contested global waters.</li><li>Protects American and allied commercial interests while ensuring foreign adversaries do not dictate international trade routes.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Freedom of the seas cannot be bartered away at diplomatic summits; paper treaties mean nothing without real naval deterrence."</div><div class="quote-row">"Securing critical trade lanes requires strength and resolve, not appeasing aggressive foreign regimes."</div>
+              </div>
+            </div>
+            <div id="story-world-geneva-maritime-talks-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-world-geneva-maritime-talks" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Preventing Global Hunger: Multilateral Diplomacy Protects Developing Nations from Food Insecurity</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Protects low-income nations across the Global South that rely on affordable grain and agricultural shipments from catastrophic famine.</li><li>Demonstrates that multilateral diplomatic corridors and United Nations coordination save lives without military escalation.</li><li>Demands strict international accountability for hostile powers weaponizing civilian food supplies and blockading merchant vessels.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Food should never be used as a weapon of war; securing shipping corridors protects millions of vulnerable people from starvation."</div><div class="quote-row">"Multilateral diplomacy and international law remain our best tools to protect global trade and human lives."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Entertainment" id="story-entertainment-box-office-rebound">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Cinema auditorium audience and community theatrical exhibition experience." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Cinema auditorium audience and community theatrical exhibition experience.</span>
+              <span class="credit-tag">📸 Cinema Exhibition Archive</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Entertainment</span>
+              <span class="source-tag" data-timestamp="1729059600">The Hollywood Reporter • 4 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Autumn Box Office Surges as Original Cinematic Releases Drive Family Theatrical Admissions</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">Domestic movie theater attendance surpassed pre-holiday box office projections by 18%, propelled by original storytelling, premium large-format auditorium ticket sales, and multi-generational family attendance.</div>
+            </div>
+            <div id="story-entertainment-box-office-rebound-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Theatrical Resilience: Strong Consumer Spending Validates Premium Cinema Investments</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Validates theater chain capital investments in premium seating, immersive sound, and gourmet dining amenities.</li><li>Signals resilient discretionary consumer spending across suburban and metropolitan leisure markets.</li><li>Provides Hollywood studios with high-margin theatrical release windows before downstream digital streaming licensing.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Movie theaters have weathered radio, television, and streaming; the big-screen experience remains fundamentally resilient."</div><div class="quote-row">"When exhibitors invest in comfort and technology, consumers show they are willing to spend on quality entertainment."</div>
+              </div>
+            </div>
+            <div id="story-entertainment-box-office-rebound-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Free Market Triumph: Rewarding Family-Friendly Entertainment Over Hollywood Ideology</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Demonstrates that audiences vote with their wallets for uplifting, high-craftsmanship entertainment that respects families.</li><li>Drives healthy commercial competition between independent cinema operators and studio distributors.</li><li>Celebrates the entrepreneurial innovation of theater owners who adapt menus and auditoriums to meet consumer demand.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"When Hollywood makes entertaining, family-friendly movies, Americans show up in record numbers."</div><div class="quote-row">"The box office is the ultimate democratic vote: quality entertainment wins every time."</div>
+              </div>
+            </div>
+            <div id="story-entertainment-box-office-rebound-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-entertainment-box-office-rebound" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Communal Arts Thrive: The Cultural Importance of Shared Public Storytelling</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Reaffirms the irreplaceable cultural and emotional value of shared community arts experiences over isolated personal screen time.</li><li>Supports hundreds of thousands of hospitality, projection, and theater staff jobs in local downtown commercial districts.</li><li>Proves that diverse, authentic original filmmaking resonates with audiences far more than soulless corporate IP franchises.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Cinema brings diverse communities together in shared empathy; we need vibrant cultural venues in every neighborhood."</div><div class="quote-row">"Audiences are hungry for fresh, meaningful human stories, not just another recycled corporate cash-grab."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Science & Tech" id="story-science-astronomy-water-vapor">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=80" alt="Interstellar molecular gas cloud and star-forming nebula in deep space." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Interstellar molecular gas cloud and star-forming nebula in deep space.</span>
+              <span class="credit-tag">📸 European Southern Observatory</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <span class="category-tag">Science & Tech</span>
+              <span class="source-tag" data-timestamp="1729056000">Nature Science Wire • 5 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Astronomers Detect Ancient Water Vapor Reservoirs in Early Universe Molecular Cloud</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
+              <div class="neutral-desc">An international astrophysics team observed spectral evidence of vast water vapor reservoirs encompassing a supermassive black hole located over 12 billion light-years from Earth, offering clues to early cosmic chemical evolution.</div>
+            </div>
+            <div id="story-science-astronomy-water-vapor-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Observational Breakthrough: Pushing the Technological Boundaries of Radio Astronomy</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Demonstrates the extraordinary resolution of millimeter-wave interferometer arrays operating at high altitude.</li><li>Refines cosmological models governing primordial star formation, molecular gas accretion, and early galactic mergers.</li><li>Provides peer-reviewed baseline empirical data to test competing gravitational and cosmological theories.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Detecting water 12 billion light-years away is a staggering testament to the power of modern radio astronomy."</div><div class="quote-row">"Rigorous empirical observation is what separates scientific breakthroughs from theoretical conjecture."</div>
+              </div>
+            </div>
+            <div id="story-science-astronomy-water-vapor-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Western Scientific Excellence: American and Allied Observatories Lead Global Discovery</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Highlights the enduring tradition of Western scientific inquiry and technological preeminence.</li><li>Inspires the next generation of American physicists, engineers, and data scientists to pursue challenging STEM careers.</li><li>Reinforces the value of targeted, accountable research investments that yield verifiable scientific breakthroughs.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Western civilization's commitment to truth and scientific discovery continues to lead humanity forward."</div><div class="quote-row">"American leadership in science and space exploration inspires wonder and strengthens our national capability."</div>
+              </div>
+            </div>
+            <div id="story-science-astronomy-water-vapor-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-science-astronomy-water-vapor" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Universal Origins: Scientific Cooperation Expands Humanity's Cosmic Perspective</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Reminds humanity of our shared origins in cosmic stardust and the fundamental unity of natural physical laws.</li><li>Highlights the power of global scientific partnerships transcending national borders and political divisions.</li><li>Reaffirms the essential role of public university funding in unlocking pure foundational science with no immediate corporate profit motive.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Discovering the cosmic ingredients of life reminds us of our shared place in a vast, interconnected universe."</div><div class="quote-row">"Pure basic research expands human horizons and lays the scientific foundation for future technological revolutions."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
     </div>
 
     <!-- Community Lounge -->
@@ -2670,275 +4225,202 @@
       }
     }
 
-        var currentCategoryFilter = "All";
+            var currentMasterFilter = "All";
+    var currentTopicFilter = "All";
 
-    function applyCategoryFilter(btn, category) {
-      currentCategoryFilter = category || "All";
-      var pills = document.querySelectorAll('.category-pills .pill');
-      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
+    function applyMasterFilter(btn, masterCategory) {
+      currentMasterFilter = masterCategory || "All";
+      var masterPills = document.querySelectorAll('.master-pills-row .pill-master');
+      for (var i = 0; i < masterPills.length; i++) masterPills[i].classList.remove('active');
+      if (btn) btn.classList.add('active');
+
+      // Reset topic filter to All
+      currentTopicFilter = "All";
+      var topicPills = document.querySelectorAll('.topic-pills-row .pill');
+      for (var k = 0; k < topicPills.length; k++) topicPills[k].classList.remove('active');
+      var allTopicBtn = document.getElementById('topic-pill-all');
+      if (allTopicBtn) allTopicBtn.classList.add('active');
+
+      reapplyCategoryFilter();
+    }
+
+    function applyTopicFilter(btn, topicCategory) {
+      currentTopicFilter = topicCategory || "All";
+      var topicPills = document.querySelectorAll('.topic-pills-row .pill');
+      for (var i = 0; i < topicPills.length; i++) topicPills[i].classList.remove('active');
       if (btn) btn.classList.add('active');
 
       reapplyCategoryFilter();
     }
 
     function reapplyCategoryFilter() {
-      var filterKey = (currentCategoryFilter || "All").toLowerCase().trim();
+      var masterKey = (currentMasterFilter || "All").toLowerCase().trim();
+      var topicKey = (currentTopicFilter || "All").toLowerCase().trim();
       var articles = document.querySelectorAll('.compact-card');
       var visibleCount = 0;
 
       for (var j = 0; j < articles.length; j++) {
         var cat = (articles[j].getAttribute('data-category') || '').toLowerCase().trim();
-        var match = false;
+        var masterCat = (articles[j].getAttribute('data-master-category') || '').toLowerCase().trim();
+        var match = true;
 
-        if (filterKey === 'all') {
-          match = true;
-        } else if (filterKey === 'sports' && cat.indexOf('sport') !== -1) {
-          match = true;
-        } else if (filterKey.indexOf('politic') !== -1 && cat.indexOf('politic') !== -1) {
-          match = true;
-        } else if (filterKey.indexOf('energy') !== -1 && cat.indexOf('energy') !== -1) {
-          match = true;
-        } else if (filterKey.indexOf('econom') !== -1 && (cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('business') !== -1)) {
-          match = true;
-        } else if (filterKey.indexOf('border') !== -1 && (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1 || cat.indexOf('crime') !== -1)) {
-          match = true;
-        } else if (filterKey.indexOf('health') !== -1 && cat.indexOf('health') !== -1) {
-          match = true;
-        } else if (filterKey.indexOf('tech') !== -1 && (cat.indexOf('tech') !== -1 || cat.indexOf('speech') !== -1)) {
-          match = true;
-        } else if (cat === filterKey || cat.indexOf(filterKey) !== -1 || filterKey.indexOf(cat) !== -1) {
-          match = true;
+        // 1. Check Master Category
+        if (masterKey !== 'all') {
+          if (masterKey.indexOf('national') !== -1) {
+            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
+          } else if (masterKey.indexOf('world') !== -1) {
+            match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
+          } else if (masterKey.indexOf('science') !== -1 || masterKey.indexOf('tech') !== -1) {
+            match = (masterCat.indexOf('science') !== -1 || masterCat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('tech') !== -1);
+          } else if (masterKey.indexOf('entertain') !== -1) {
+            match = (masterCat.indexOf('entertain') !== -1 || cat.indexOf('entertain') !== -1);
+          } else if (masterKey.indexOf('sport') !== -1) {
+            match = (masterCat.indexOf('sport') !== -1 || cat.indexOf('sport') !== -1);
+          } else {
+            match = (masterCat === masterKey || masterCat.indexOf(masterKey) !== -1);
+          }
+        }
+
+        // 2. Check Topic Subcategory
+        if (match && topicKey !== 'all') {
+          if (topicKey.indexOf('politic') !== -1) {
+            match = (cat.indexOf('politic') !== -1);
+          } else if (topicKey.indexOf('business') !== -1 || topicKey.indexOf('econom') !== -1) {
+            match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1);
+          } else if (topicKey.indexOf('energy') !== -1 || topicKey.indexOf('weather') !== -1) {
+            match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
+          } else if (topicKey.indexOf('health') !== -1) {
+            match = (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1);
+          } else if (topicKey.indexOf('space') !== -1 || topicKey.indexOf('science') !== -1) {
+            match = (cat.indexOf('science') !== -1 || cat.indexOf('space') !== -1 || cat.indexOf('nasa') !== -1);
+          } else if (topicKey.indexOf('tech') !== -1 || topicKey.indexOf('ai') !== -1) {
+            match = (cat.indexOf('tech') !== -1 || cat.indexOf('ai') !== -1);
+          } else if (topicKey.indexOf('entertain') !== -1 || topicKey.indexOf('movie') !== -1) {
+            match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1);
+          } else if (topicKey.indexOf('sport') !== -1) {
+            match = (cat.indexOf('sport') !== -1);
+          } else if (topicKey.indexOf('border') !== -1 || topicKey.indexOf('secur') !== -1) {
+            match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
+          } else {
+            match = (cat === topicKey || cat.indexOf(topicKey) !== -1);
+          }
         }
 
         articles[j].style.display = match ? 'block' : 'none';
         if (match) visibleCount++;
       }
-      console.log("Filtered category [" + currentCategoryFilter + "]: " + visibleCount + " stories displayed.");
-    }
-
-    function copyDirectText(btn, encodedText) {
-      var text = encodedText.replace(/\\n/g, '\n');
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(function() {
-          showToastNotification("Talking points copied!");
-        }).catch(function() { fallbackCopy(text); });
-      } else { fallbackCopy(text); }
-    }
-
-    function fallbackCopy(text) {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); showToastNotification("Talking points copied!"); }
-      catch (e) { showToastNotification("Copied!"); }
-      document.body.removeChild(ta);
-    }
-
-    function toggleSaveCard(btn) {
-      if (btn.classList.contains('active')) {
-        btn.classList.remove('active');
-        btn.innerHTML = '<span>🤍</span><span>Save</span>';
-        showToastNotification("Removed");
-      } else {
-        btn.classList.add('active');
-        btn.innerHTML = '<span>❤️</span><span>Saved</span>';
-        showToastNotification("Saved to toolkit!");
-      }
-    }
-
-    function showToastNotification(msg) {
-      var t = document.getElementById('toastBox');
-      if (!t) return;
-      t.textContent = '✓ ' + msg;
-      t.style.display = 'flex';
-      setTimeout(function() { t.style.display = 'none'; }, 2000);
-    }
-
-    function showStoriesTab() {
-      document.getElementById('storiesFeedView').style.display = 'flex';
-      document.getElementById('communityView').style.display = 'none';
-      document.getElementById('customStoryView').style.display = 'none';
-      document.getElementById('navStories').className = 'view-tab active';
-      document.getElementById('navLounge').className = 'view-tab';
-      document.getElementById('navCustom').className = 'view-tab';
-    }
-
-    function showLoungeTab() {
-      document.getElementById('storiesFeedView').style.display = 'none';
-      document.getElementById('communityView').style.display = 'flex';
-      document.getElementById('customStoryView').style.display = 'none';
-      document.getElementById('navStories').className = 'view-tab';
-      document.getElementById('navLounge').className = 'view-tab active';
-      document.getElementById('navCustom').className = 'view-tab';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showCustomTab() {
-      document.getElementById('storiesFeedView').style.display = 'none';
-      document.getElementById('communityView').style.display = 'none';
-      document.getElementById('customStoryView').style.display = 'block';
-      document.getElementById('navStories').className = 'view-tab';
-      document.getElementById('navLounge').className = 'view-tab';
-      document.getElementById('navCustom').className = 'view-tab active';
-    }
-
-    function updateLoungeTitle(p) {
-      var t = document.getElementById('loungeTitle');
-      if (!t) return;
-      t.textContent = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Centrist') + " Discussion Lounge";
-    }
-
-    function submitPost() {
-      var input = document.getElementById('composerInput');
-      var text = input.value.trim();
-      if (!text) return;
-
-      var list = document.getElementById('communityPostsList');
-      var card = document.createElement('div');
-      card.style = 'background: #131b2e; border: 1px solid #6366f1; border-radius: 8px; padding: 10px; margin-bottom: 8px;';
-      card.innerHTML = '<div style="font-size: 11px; color: #fff; font-weight: 700; margin-bottom: 4px;">You • Member <span style="color:#38bdf8; font-size:10px;">• Just Now</span></div><div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">"' + text.replace(/</g, '&lt;') + '"</div><div style="display: flex; justify-content: flex-end;"><button type="button" class="btn-action-small active">👍 Agree (1)</button></div>';
-      list.insertBefore(card, list.firstChild);
-      input.value = '';
-      showToastNotification("Posted!");
-    }
-
-    function runCustomSynthesis() {
-      var box = document.getElementById('customOutputBox');
-      box.style.display = 'block';
-      box.innerHTML = '<div style="background: #090e1a; border: 1px solid #334155; border-radius: 8px; padding: 10px;"><div style="font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 4px;">⚖️ Factual Core: State compact restricts agricultural land purchases by non-allied foreign buyers near military corridors.</div><div style="font-size: 12px; color: #f87171; font-weight: 700; margin-top: 6px;">🔴 Conservative Talking Point:</div><div style="font-size: 11.5px; color: #cbd5e1; font-style: italic;">"Foreign adversaries should not own American food supply chains next to domestic bases."</div></div>';
-      showToastNotification("Synthesized!");
-    }
-
-    function openQuizModal() { document.getElementById('modalQuiz').className = 'modal-backdrop show'; }
-    function closeQuizModal() { document.getElementById('modalQuiz').className = 'modal-backdrop'; }
-
-    function handleQuizSubmit(e) {
-      e.preventDefault();
-      var form = document.getElementById('quizFormElement');
-      var fd = new FormData(form);
-      var answers = [fd.get('q1'), fd.get('q2')];
-      var counts = { RIGHT: 0, CENTER: 0, LEFT: 0 };
-      for (var i = 0; i < answers.length; i++) { if (answers[i]) counts[answers[i]]++; }
-      var chosen = (counts.LEFT > counts.RIGHT) ? 'LEFT' : 'RIGHT';
-      closeQuizModal();
-      setGlobalPerspective(chosen);
+      console.log('Filtered [Master: ' + currentMasterFilter + ' | Topic: ' + currentTopicFilter + ']: ' + visibleCount + ' stories.');
     }
 
     function renderStoriesFeed(stories) {
-      var container = document.getElementById("storiesFeedView");
+      var container = document.getElementById('storiesFeedView');
       if (!container || !stories || !stories.length) return;
 
-      var out = [];
+      var html = '';
       for (var s = 0; s < stories.length; s++) {
         var story = stories[s];
-        var sId = story.id || ("story-dyn-" + s);
-        var cat = story.category || "General News";
-        var isSpecialPol = cat.toLowerCase().indexOf("politics") !== -1;
-        var isSpecialSport = cat.toLowerCase().indexOf("sports") !== -1;
-        var catTagClass = "category-tag" + (isSpecialPol ? " special-pol-tag" : isSpecialSport ? " special-tag" : "");
-        var catTagStyle = isSpecialPol ? "style=\"background:rgba(99,102,241,0.15);color:#a5b4fc;border-color:rgba(99,102,241,0.3);\"" : "";
-        var imgUrl = story.image_url || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80";
-        var caption = (story.caption || story.title || "").replace(/"/g, "&quot;");
-        var credit = (story.credit || "📸 News Wire").replace(/"/g, "&quot;");
-        var pubTs = story.pub_timestamp;
-        var relTime = pubTs ? formatRelativeTime(pubTs) : '';
-        var srcName = story.source_name || (story.source ? story.source.split(' • ')[0] : 'News Wire');
-        var source = relTime ? (srcName + ' • ' + relTime) : (story.source || 'Associated Press Wire');
-        var summary = story.neutral_summary || "";
+        var sId = story.id || ('story-dyn-' + s);
+        var cat = story.category || 'General News';
+        var masterCat = story.master_category || 'National Headlines';
+        var imgUrl = story.image_url || 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';
+        var caption = story.caption || story.title;
+        var credit = story.credit || '📸 News Wire';
+        var source = story.source || 'Associated Press Wire';
+        var pub_ts = story.pub_timestamp || '';
+        var summary = story.neutral_summary || '';
 
-        var card = "<article class=\"compact-card\" data-category=\"" + cat + "\" id=\"" + sId + "\">" +
-          "<div class=\"hero-image-wrap\">" +
-            "<img src=\"" + imgUrl + "\" alt=\"" + caption + "\" class=\"hero-photo\" loading=\"lazy\" />" +
-            "<div class=\"photo-caption-bar\">" +
-              "<span class=\"caption-text\">" + caption + "</span>" +
-              "<span class=\"credit-tag\">" + credit + "</span>" +
-            "</div>" +
-          "</div>" +
-          "<div class=\"card-body\">" +
-            "<div class=\"meta-row\">" +
-              "<span class=\"" + catTagClass + "\" " + catTagStyle + ">" + cat + "</span>" +
-              "<span class=\"source-tag\">" + source + "</span>" +
-            "</div>" +
-            "<h3 class=\"story-title\">" + story.title + "</h3>" +
-            "<div class=\"neutral-box\">" +
-              "<div class=\"neutral-title\">⚖️ The Core Facts (Neutral Event Summary)</div>" +
-              "<div class=\"neutral-desc\">" + summary + "</div>" +
-            "</div>";
+        html += '<article class="compact-card" data-category="' + cat + '" data-master-category="' + masterCat + '" id="' + sId + '">';
+        html += '  <div class="hero-image-wrap">';
+        html += '    <img src="' + imgUrl + '" alt="' + caption + '" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';" />';
+        html += '    <div class="photo-caption-bar">';
+        html += '      <span class="caption-text">' + caption + '</span>';
+        html += '      <span class="credit-tag">' + credit + '</span>';
+        html += '    </div>';
+        html += '  </div>';
+
+        html += '  <div class="card-body">';
+        html += '    <div class="meta-row">';
+        html += '      <div style="display:flex; gap:5px; align-items:center;">';
+        html += '        <span class="master-tag">' + masterCat + '</span>';
+        html += '        <span class="category-tag">' + cat + '</span>';
+        html += '      </div>';
+        html += '      <span class="source-tag" data-timestamp="' + pub_ts + '">' + source + '</span>';
+        html += '    </div>';
+
+        html += '    <h3 class="story-title">' + story.title + '</h3>';
+
+        html += '    <div class="neutral-box">';
+        html += '      <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>';
+        html += '      <div class="neutral-desc">' + summary + '</div>';
+        html += '    </div>';
 
         var perspectives = story.perspectives || {};
         var lensList = [
-          { key: "RIGHT", name: "Conservative Lens", icon: "🔴", chipClass: "red", bulletClass: "red" },
-          { key: "CENTER", name: "Centrist / Balanced", icon: "🟢", chipClass: "emerald", bulletClass: "emerald" },
-          { key: "LEFT", name: "Progressive Lens", icon: "🔵", chipClass: "blue", bulletClass: "blue" }
+          { key: 'CENTER', name: 'Centrist / Balanced', icon: '🟢', chipClass: 'emerald', bulletClass: 'emerald' },
+          { key: 'RIGHT', name: 'Conservative Lens', icon: '🔴', chipClass: 'red', bulletClass: 'red' },
+          { key: 'LEFT', name: 'Progressive Lens', icon: '🔵', chipClass: 'blue', bulletClass: 'blue' }
         ];
 
         for (var l = 0; l < lensList.length; l++) {
           var lens = lensList[l];
           var pData = perspectives[lens.key] || {};
           var isVisible = (lens.key === currentGlobalPerspective);
-          var displayStyle = isVisible ? "" : "style=\"display: none;\"";
+          var displayStyle = isVisible ? '' : 'style="display: none;"';
 
+          html += '    <div id="' + sId + '-view-' + lens.key + '" class="perspective-view-box" ' + displayStyle + '>';
+          html += '      <div class="lens-status-row">';
+          html += '        <div class="lens-chip ' + lens.chipClass + '">';
+          html += '          <span>' + lens.icon + '</span>';
+          html += '          <span>' + lens.name + '</span>';
+          html += '        </div>';
+
+          html += '        <div class="card-toggle-group">';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'LEFT' ? 'active left' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'LEFT')">Left</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'CENTER' ? 'active center' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'CENTER')">Balanced</button>';
+          html += '          <button type="button" class="card-toggle-btn ' + (lens.key === 'RIGHT' ? 'active right' : '') + '" onclick="switchStoryPerspective('' + sId + '', 'RIGHT')">Right</button>';
+          html += '        </div>';
+          html += '      </div>';
+
+          html += '      <div class="framing-headline">';
+          html += '        <span>📌</span>';
+          html += '        <span>' + (pData.headline_framing || 'Perspective Overview') + '</span>';
+          html += '      </div>';
+
+          html += '      <div class="label-heading">Why It Matters For Your Stance:</div>';
+          html += '      <ul class="compact-bullets ' + lens.bulletClass + '">';
           var bullets = pData.why_it_matters || [];
-          var bulletItems = "";
           for (var b = 0; b < bullets.length; b++) {
-            bulletItems += "<li>" + bullets[b] + "</li>";
+            html += '        <li>' + bullets[b] + '</li>';
           }
+          html += '      </ul>';
 
           var talkingPoints = pData.talking_points || [];
-          var quotes = "";
+          html += '      <div class="talking-points-panel">';
+          html += '        <div class="panel-header">';
+          html += '          <span class="panel-title">💬 Key Talking Points & Arguments</span>';
+          html += '          <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>';
+          html += '        </div>';
           for (var tp = 0; tp < talkingPoints.length; tp++) {
-            quotes += "<div class=\"quote-row\">\"" + talkingPoints[tp] + "\"</div>";
+            html += '        <div class="quote-row">"' + talkingPoints[tp] + '"</div>';
           }
-
-          card += "<div id=\"" + sId + "-view-" + lens.key + "\" class=\"perspective-view-box\" " + displayStyle + ">" +
-            "<div class=\"lens-status-row\">" +
-              "<div class=\"lens-chip " + lens.chipClass + "\">" +
-                "<span>" + lens.icon + "</span>" +
-                "<span>" + lens.name + "</span>" +
-              "</div>" +
-              "<div class=\"card-toggle-group\">" +
-                "<button type=\"button\" class=\"card-toggle-btn " + (lens.key === "LEFT" ? "active left" : "") + "\" data-story=\"" + sId + "\" onclick=\"switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')\">Left</button>" +
-                "<button type=\"button\" class=\"card-toggle-btn " + (lens.key === "CENTER" ? "active center" : "") + "\" data-story=\"" + sId + "\" onclick=\"switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')\">Balanced</button>" +
-                "<button type=\"button\" class=\"card-toggle-btn " + (lens.key === "RIGHT" ? "active right" : "") + "\" data-story=\"" + sId + "\" onclick=\"switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')\">Right</button>" +
-              "</div>" +
-            "</div>" +
-            "<div class=\"framing-headline\">" +
-              "<span>📌</span>" +
-              "<span>" + (pData.headline_framing || "Perspective Framing") + "</span>" +
-            "</div>" +
-            "<div class=\"label-heading\">Why It Matters For Your Stance:</div>" +
-            "<ul class=\"compact-bullets " + lens.bulletClass + "\">" +
-              bulletItems +
-            "</ul>" +
-            "<div class=\"talking-points-panel\">" +
-              "<div class=\"panel-header\">" +
-                "<span class=\"panel-title\">💬 Key Talking Points & Arguments</span>" +
-                "<button type=\"button\" class=\"btn-copy-chip\" onclick=\"copyPointsFromCard(this)\">📋 Copy</button>" +
-              "</div>" +
-              quotes +
-            "</div>" +
-          "</div>";
+          html += '      </div>';
+          html += '    </div>';
         }
 
-        card += "<div class=\"card-bottom-actions\">" +
-          "<button type=\"button\" class=\"btn-action-small\" onclick=\"toggleSaveCard(this)\">" +
-            "<span>🤍</span>" +
-            "<span>Save</span>" +
-          "</button>" +
-          "<button type=\"button\" class=\"btn-discuss-small\" onclick=\"showLoungeTab()\">" +
-            "<span>👥</span> Discuss" +
-          "</button>" +
-        "</div>" +
-        "</div>" +
-        "</article>";
+        html += '    <div class="card-bottom-actions">';
+        html += '      <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">';
+        html += '        <span>🤍</span> <span>Save</span>';
+        html += '      </button>';
+        html += '      <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">';
+        html += '        <span>👥</span> Discuss';
+        html += '      </button>';
+        html += '    </div>';
 
-        out.push(card);
+        html += '  </div>';
+        html += '</article>';
       }
 
-      container.innerHTML = out.join("");
+      container.innerHTML = html;
       setGlobalPerspective(currentGlobalPerspective);
       reapplyCategoryFilter();
     }

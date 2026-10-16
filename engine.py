@@ -30,62 +30,112 @@ HTML_FILE = os.path.join(BASE_DIR, "index.html")
 RSS_FEEDS = [
     {
         "category": "All",
+        "master_category": "All",
         "source": "Google News Top Headlines",
         "url": "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"
     },
     {
-        "category": "Border & Security",
+        "category": "National Headlines",
+        "master_category": "National Headlines",
         "source": "Google News U.S.",
         "url": "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
     },
     {
-        "category": "Politics",
+        "category": "World News",
+        "master_category": "World News",
         "source": "Google News World",
         "url": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
     },
     {
         "category": "Politics",
+        "master_category": "National Headlines",
         "source": "Google News Politics",
         "url": "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=en-US&gl=US&ceid=US:en"
     },
     {
-        "category": "Economy & Inflation",
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
         "source": "Google News Business",
         "url": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en"
     },
     {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "Google News Science",
+        "url": "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "Google News Tech",
+        "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+        "category": "Entertainment",
+        "master_category": "Entertainment",
+        "source": "Google News Entertainment",
+        "url": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en"
+    },
+    {
+        "category": "Health",
+        "master_category": "National Headlines",
+        "source": "Google News Health",
+        "url": "https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-US&gl=US&ceid=US:en"
+    },
+    {
         "category": "Sports",
+        "master_category": "Sports",
         "source": "Google News Sports",
         "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en"
     },
     {
         "category": "Sports",
+        "master_category": "Sports",
         "source": "ESPN Wire",
         "url": "https://www.espn.com/espn/rss/news"
     },
     {
-        "category": "Tech & Free Speech",
-        "source": "Google News Tech",
-        "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
         "category": "Politics",
+        "master_category": "National Headlines",
         "source": "Politico National",
         "url": "https://rss.politico.com/politics-news.xml"
     },
     {
         "category": "Politics",
+        "master_category": "National Headlines",
         "source": "Fox News Politics",
         "url": "https://moxie.foxnews.com/google-publisher/politics.xml"
     },
     {
-        "category": "Energy & Infrastructure",
+        "category": "National Headlines",
+        "master_category": "National Headlines",
         "source": "NPR News",
         "url": "https://feeds.npr.org/1001/rss.xml"
     }
 ]
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Severe Weather, High Winds & Power Outages
+    {
+        "patterns": ["power outage", "outages", "blackout", "high winds", "wind gust", "wind gusts", "storm", "blizzard", "hurricane", "tornado"],
+        "url": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Severe weather system with high winds and emergency utility grid repair operations.",
+        "credit": "📸 Severe Weather Photo Pool"
+    },
+    # Entertainment, Movies & Pop Culture
+    {
+        "patterns": ["movie", "box office", "film", "hollywood", "actor", "netflix", "oscar", "grammy", "concert", "taylor swift", "imax", "trailer"],
+        "url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Major motion picture theatrical cinema and entertainment industry production.",
+        "credit": "📸 Entertainment News Wire"
+    },
+    # Space, NASA & Astronomical Science
+    {
+        "patterns": ["nasa", "spacex", "telescope", "james webb", "asteroid", "astronomy", "exoplanet", "space exploration"],
+        "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Deep space observation and advanced astronomical planetary science.",
+        "credit": "📸 NASA / Scientific Photo Archive"
+    },
     # School Shootings, Law Enforcement & Campus Security
     {
         "patterns": ["shooter", "elementary school", "shooting", "gunfire", "bystander", "oregon elementary"],
@@ -275,24 +325,65 @@ ROTATING_BACKUP_POOL = [
     {"url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80", "caption": "National electrical transmission corridor and infrastructure.", "credit": "📸 Energy Photo Archive"}
 ]
 
-def auto_detect_category(title: str, text: str, default_cat: str = "Politics") -> str:
-    """Automatically categorizes incoming breaking headlines from Google News Top Headlines."""
-    if default_cat and default_cat != "All":
-        return default_cat
+def classify_article(title: str, text: str = "") -> Tuple[str, str]:
+    """Accurately classifies articles into specific topic category and hierarchical master category."""
     combined = (title + " " + (text or "")).lower()
-    if any(w in combined for w in ["dodgers", "brewers", "yankees", "mets", "nlcs", "alcs", "mlb", "nba", "nfl", "super bowl", "quarterback", "touchdown", "pga", "golf", "espn"]):
-        return "Sports"
-    if any(w in combined for w in ["starlink", "satellite", "ai", "artificial intelligence", "tech", "anthropic", "openai", "claude", "tesla", "software", "elon musk", "chip"]):
-        return "Tech & Free Speech"
-    if any(w in combined for w in ["ipo", "stocks", "dow", "nasdaq", "wall street", "inflation", "cpi", "interest rate", "federal reserve", "earnings", "valuation"]):
-        return "Economy & Inflation"
-    if any(w in combined for w in ["shooter", "shooting", "police", "fbi", "elementary school", "killed", "arrested", "investigation", "bystander", "gunfire", "border", "migrant"]):
-        return "Border & Security"
-    if any(w in combined for w in ["grid", "pipeline", "transmission", "diesel", "oil", "petroleum", "electricity"]):
-        return "Energy & Infrastructure"
-    if any(w in combined for w in ["hospital", "fda", "doctor", "medicine", "drug", "hhs", "pharmacy"]):
-        return "Healthcare & Drug Costs"
-    return "Politics"
+
+    def has_any(patterns):
+        for pat in patterns:
+            if re.search(r'' + pat + r'', combined):
+                return True
+        return False
+
+    # 1. Severe Weather, High Winds & Utility Power Outages
+    if has_any([r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?', r'storms?', r'hurricanes?', r'blizzards?', r'tornados?|tornadoes?', r'electrical grids?', r'transmission lines?', r'utilities|utility']):
+        return ("Energy & Weather", "National Headlines")
+
+    # 2. Sports (strictly bounded words to prevent 'inflation' matching 'nfl')
+    if has_any([r'dodgers?', r'brewers?', r'yankees?', r'mets?', r'nlcs', r'alcs', r'mlb', r'baseballs?', r'nfl', r'eagles?', r'panthers?', r'jalen hurts', r'touchdowns?', r'quarterbacks?', r'nba', r'lakers?', r'celtics?', r'pga', r'golf(?:ers?|ing)?', r'masters', r'saudi public investment fund', r'ncaa', r'college football playoff', r'super bowl', r'sports?']):
+        return ("Sports", "Sports")
+
+    # 3. Entertainment & Cinema
+    if has_any([r'box office', r'movies?', r'films?', r'hollywood', r'actors?', r'actress(?:es)?', r'directors?', r'imax', r'netflix', r'taylor swift', r'concerts?', r'grammys?', r'oscars?', r'theatrical', r'cinema', r'blockbusters?']):
+        return ("Entertainment", "Entertainment")
+
+    # 4. Space, NASA & Astronomy
+    if has_any([r'nasa', r'telescopes?', r'james webb', r'exoplanets?', r'asteroids?', r'astronomy', r'space exploration', r'spacex', r'quantum', r'physics']):
+        return ("Science & Tech", "Science & Tech")
+
+    # 5. Tech & AI
+    if has_any([r'artificial intelligence', r'openai', r'claude', r'anthropic', r'semiconductors?', r'microchips?', r'nvidia', r'cybersecurity', r'softwares?', r'social media', r'content moderation']):
+        return ("Science & Tech", "Science & Tech")
+
+    # 6. World News / International Geopolitics
+    if has_any([r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato']):
+        return ("World News", "World News")
+
+    # 7. Health & Medicine
+    if has_any([r'hhs', r'hospitals?', r'cash prices?', r'medicare', r'medicaid', r'fda', r'doctors?', r'medicines?', r'prescriptions?', r'pharmacy|pharmacies', r'drug costs?']):
+        return ("Health", "National Headlines")
+
+    # 8. Energy & Nuclear Infrastructure
+    if has_any([r'ferc', r'grid upgrades?', r'pipelines?', r'modular compact', r'nuclear reactors?', r'clean energy', r'natural gas', r'petroleum', r'crude oil']):
+        return ("Energy & Weather", "National Headlines")
+
+    # 9. Business, Economy & Inflation
+    if has_any([r'federal reserve', r'rates steady', r'inflation', r'cpi', r'stocks?', r'dow', r'nasdaq', r'wall street', r'tesla', r'roadsters?', r'ipo', r'valuations?', r'interest rates?']):
+        return ("Business & Economy", "National Headlines")
+
+    # 10. Crime & Public Safety
+    if has_any([r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'police', r'fbi']):
+        return ("Crime & Public Safety", "National Headlines")
+
+    # 11. Border & Security
+    if has_any([r'border patrol', r'cbp', r'fentanyl', r'asylum', r'border security', r'checkpoints?', r'migrants?']):
+        return ("Border & Security", "National Headlines")
+
+    # 12. Politics & Government
+    if has_any([r'spending frameworks?', r'federal shutdowns?', r'congress', r'senate', r'house of representatives', r'gop', r'democrats?', r'republicans?', r'white house', r'elections?', r'mailings', r'ballots?']):
+        return ("Politics", "National Headlines")
+
+    return ("National News", "National Headlines")
 
 def clean_html_text(raw_text: str) -> str:
     if not raw_text:
@@ -476,7 +567,7 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
 def generate_contextual_synthesis(title: str, context: str, category: str) -> Dict[str, Any]:
     """
     Context-aware, theme-specific argument generator with strict word-boundary matching.
-    Guarantees that baseball, elections, football, and breaking stories never cross-contaminate.
+    Guarantees that baseball, weather, entertainment, elections, and breaking stories never cross-contaminate.
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     full_text = f"{clean_title}. {context or ''}".lower()
@@ -486,6 +577,74 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             if re.search(r'\b' + re.escape(kw) + r'\b', full_text):
                 return True
         return False
+
+    # --- 0A. SEVERE WEATHER / POWER OUTAGES / GRID RELIABILITY ---
+    if has_any(["power outage", "power outages", "blackout", "blackouts", "high winds", "wind gust", "wind gusts", "storm", "storms", "blizzard"]):
+        neutral = f"{clean_title}. Regional utility emergency crews and municipal first responders mobilized across impacted corridors to restore transmission circuits and clear damaged electrical infrastructure."
+        left_framing = "Climate Resilience and Public Accountability: Demanding Modernized Power Infrastructure"
+        left_bullets = [
+            "Demands aggressive public investment to bury utility lines underground and insulate communities against increasingly violent climate weather events.",
+            "Holds investor-owned utility monopolies accountable for distributing billions in executive payouts rather than maintaining resilient power grids.",
+            "Prioritizes emergency heating, shelter, and medical power backups for vulnerable working-class neighborhoods and elderly residents."
+        ]
+        left_talk = [
+            "Power is an essential public service, not a corporate luxury; private utilities must invest in resilient underground grids.",
+            "Working families should not be left in freezing dark homes while utility executives collect record shareholder dividends."
+        ]
+        center_framing = "Infrastructure Resilience and Emergency Response: Assessing Grid Performance Under Severe Winds"
+        center_bullets = [
+            "Evaluates multi-state utility mutual aid agreements, crew deployment timelines, and substation backup protocols.",
+            "Balances the substantial capital expenses of subterranean line undergrounding against routine aerial line maintenance budgets.",
+            "Coordinates emergency shelter readiness, roadway clearing, and real-time public utility outage tracking systems."
+        ]
+        center_talk = [
+            "Weather events will always test our infrastructure; the priority right now is rapid crew deployment and restoring power safely.",
+            "Modernizing the grid requires practical trade-offs between long-term hardening investments and immediate ratepayer costs."
+        ]
+        right_framing = "Energy Reliability and Commonsense Management: Clear Red Tape to Secure the Electrical Grid"
+        right_bullets = [
+            "Demands commonsense regulatory permitting reform to allow swift forest management, brush clearing, and hazard tree removal along utility corridors.",
+            "Warns against over-relying on weather-dependent intermittent power, stressing the indispensable role of dependable baseload electricity.",
+            "Celebrates the relentless dedication of lineworkers and private utility technicians working around the clock in dangerous weather conditions."
+        ]
+        right_talk = [
+            "Reliable power requires commonsense easement management; environmental red tape shouldn't prevent utilities from trimming dangerous trees.",
+            "We owe a massive debt of gratitude to the fearless lineworkers braving freezing winds to restore power to our communities."
+        ]
+
+    # --- 0B. ENTERTAINMENT / CINEMA / POP CULTURE ---
+    elif has_any(["box office", "movie", "movies", "film", "films", "hollywood", "actor", "actress", "netflix", "imax", "concert", "taylor swift", "broadway"]):
+        neutral = f"{clean_title}. Theatrical exhibitors, studio executives, and creative guilds are tracking audience reception, release window strategies, and commercial distribution metrics."
+        left_framing = "Protecting Creative Labor and Cultural Diversity Against Corporate Studio Monopolies"
+        left_bullets = [
+            "Champions fair compensation, residual protections, and health benefits for below-the-line film crews, writers, and working actors.",
+            "Resists corporate studio reliance on generative AI tools that devalue human artistic labor and replicate creative work without consent.",
+            "Advocates for authentic diverse storytelling that uplifts independent filmmakers over formulaic corporate franchise dominance."
+        ]
+        left_talk = [
+            "Art and storytelling come from human experience, not cost-cutting corporate algorithms; we must stand with creative workers.",
+            "Cinema is at its best when it reflects rich cultural diversity, not just recycled mega-corporate sequels."
+        ]
+        center_framing = "Evolving Theatrical Economics: Navigating Box Office Exhibition in the Streaming Era"
+        center_bullets = [
+            "Assesses consumer spending trends across premium large-format theatrical exhibition versus direct-to-consumer home streaming.",
+            "Weighs studio marketing budgets, global distribution agreements, and critical reception scores ahead of major release windows.",
+            "Analyzes shifting demographic engagement patterns across theatrical cinema, streaming subscription bundles, and physical media."
+        ]
+        center_talk = [
+            "The entertainment industry is finding equilibrium between the communal magic of the theater and the convenience of streaming.",
+            "Box office success requires delivering genuine high-quality storytelling that compels audiences to leave the couch."
+        ]
+        right_framing = "Free Enterprise in Culture: Consumer Demand and Artistic Excellence Drive Success"
+        right_bullets = [
+            "Celebrates pure free enterprise and audience sovereignty: ticket sales and viewer choice determine what thrives, not studio politics.",
+            "Rewards genuine cinematic craftsmanship, technical mastery, and entertainment that unites audiences without lecturing them.",
+            "Recognizes the massive economic engine of American cinema and cultural exports that entertain millions across the globe."
+        ]
+        right_talk = [
+            "The box office is an open marketplace; when studios focus on exceptional storytelling and entertainment, audiences show up in droves.",
+            "American cultural innovation leads the world when creators focus on inspiring and entertaining everyday people."
+        ]
 
     # --- 1. SCHOOL SHOOTING / GUN SAFETY / ARMED BYSTANDERS ---
     if has_any(["shooter", "shooting", "elementary school", "bystander", "gunfire", "gunman", "killed 3 children", "teacher in oregon"]):
@@ -946,7 +1105,7 @@ Return strictly valid raw JSON:
 
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
-    for s in stories[:15]:
+    for s in stories[:30]:
         sId = s.get("id", "story-0")
         cat = s.get("category", "General News")
         imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80")
@@ -1144,12 +1303,12 @@ def run_pipeline():
                 continue
 
             print(f"Processing wire item: {t[:65]}...")
-            cat_assigned = auto_detect_category(t, it["description"], it["category"])
+            cat_assigned = classify_article(t, it["description"])
             synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
             img_info = resolve_story_image(t, cat_assigned, used_urls)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             
-            cat_assigned = auto_detect_category(t, it["description"], it["category"])
+            cat_assigned = classify_article(t, it["description"])
             story_record = {
                 "id": story_id,
                 "category": cat_assigned,
