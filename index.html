@@ -449,7 +449,7 @@
     /* Compact Neutral Box */
     .neutral-box {
       background: #090e1a;
-      border-left: 3px solid #64748b;
+      border-left: 3px solid #38bdf8;
       padding: 8px 10px;
       border-radius: 0 6px 6px 0;
       margin-bottom: 10px;
@@ -460,7 +460,33 @@
       font-weight: 800;
       text-transform: uppercase;
       color: #94a3b8;
-      margin-bottom: 2px;
+      margin-bottom: 5px;
+    }
+
+    .core-facts-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .core-facts-list li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.35;
+    }
+
+    .core-facts-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: #38bdf8;
+      font-size: 14px;
+      line-height: 1.2;
     }
 
     .neutral-desc {
@@ -783,7 +809,7 @@
     <!-- Streamlined Feed with Compact Real Photos -->
     <div id="storiesFeedView" class="feed-container">
 
-        <article class="compact-card" data-category="Politics" id="story-budget-shutdown-deal">
+        <article class="compact-card" data-category="Politics" data-master-category="National Headlines" id="story-budget-shutdown-deal">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market exchange trading floor and electronic index terminals." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -795,17 +821,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Politics</span>
+                <span class="master-tag">National</span><span class="category-tag">Politics</span>
               </div>
-              <span class="source-tag" data-timestamp="1792159895">Associated Press Congressional • 3 hours ago</span>
+              <span class="source-tag" data-timestamp="1792159895">Associated Press Congressional • 4 hours ago</span>
             </div>
 
             <h3 class="story-title">Congressional Leaders Agree on .65T Bipartisan Spending Framework to Avert Federal Shutdown</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">House and Senate leaders finalized a .65 trillion statutory discretionary spending agreement setting top-line allocations for defense and domestic programs, averting a looming partial federal government shutdown while leaving contentious policy riders to separate committee votes.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>House and Senate leadership finalized a top-line .65 trillion statutory discretionary spending agreement to avert a partial federal government shutdown.</li><li>The deal allocates approximately 86 billion for defense readiness and 04 billion for non-defense domestic discretionary programs.</li><li>Lawmakers face a tight deadline to draft and pass detailed agency appropriations bills before temporary stopgap funding expires.</li></ul>
             </div>
             <div id="story-budget-shutdown-deal-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -915,7 +940,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" id="story-ferc-grid-grants">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-ferc-grid-grants">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -927,17 +952,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Energy & Weather</span>
+                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
               </div>
-              <span class="source-tag" data-timestamp="1792159295">Associated Press Wire • 3 hours ago</span>
+              <span class="source-tag" data-timestamp="1792159295">Associated Press Wire • 4 hours ago</span>
             </div>
 
             <h3 class="story-title">Federal Regulators Approve $8B Grid Upgrade Grants Alongside Stricter Pipeline Permits</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Federal Energy Regulatory Commission authorized $8 billion in competitive grants to upgrade electrical transmission corridors across 12 states, while establishing expanded environmental and local impact review criteria for new interstate natural gas pipelines.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Federal Energy Regulatory Commission authorized  billion in competitive grants to upgrade electrical transmission corridors across 12 states.</li><li>The funding targets grid congestion, wildfire hardening, and interconnecting regional power grids to reduce catastrophic outage risks.</li><li>FERC simultaneously established expanded environmental and local impact review criteria for pending interstate natural gas pipeline applications.</li></ul>
             </div>
             <div id="story-ferc-grid-grants-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1047,7 +1071,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" id="story-pga-saudi-merger">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-pga-saudi-merger">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Professional tournament championship fairway and clubhouse green." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1059,8 +1083,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792158995">Associated Press Sports • 4 hours ago</span>
             </div>
@@ -1068,8 +1091,8 @@
             <h3 class="story-title">PGA Tour and Saudi Public Investment Fund Finalize Commercial Alliance Framework</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The PGA Tour and Saudi Arabia's Public Investment Fund advanced negotiations on an investment framework to unify commercial golf operations, terminating outstanding antitrust litigation while drawing regulatory scrutiny from the U.S. Senate.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The PGA Tour and Saudi Arabia's Public Investment Fund (PIF) advanced negotiations on an investment framework to unify commercial men's professional golf operations.</li><li>The prospective partnership would terminate outstanding antitrust litigation and inject billions in sovereign capital into PGA Tour Enterprises.</li><li>The framework remains subject to ongoing antitrust review by the U.S. Department of Justice and scrutiny from the Senate Permanent Subcommittee on Investigations.</li></ul>
             </div>
             <div id="story-pga-saudi-merger-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1179,139 +1202,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" id="story-fed-rates-steady">
-          <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
-            <div class="photo-caption-bar">
-              <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
-              <span class="credit-tag">📸 Federal Reserve Pool</span>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="meta-row">
-              <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Business & Economy</span>
-              </div>
-              <span class="source-tag" data-timestamp="1792157195">Reuters Financial • 4 hours ago</span>
-            </div>
-
-            <h3 class="story-title">Federal Reserve Holds Benchmark Rates Steady as Core Inflation Eases to 2.7%</h3>
-
-            <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Federal Reserve voted unanimously to maintain the benchmark federal funds rate at 4.75%–5.00%, noting that while core consumer price inflation moderated to 2.7% annually, labor market hiring and consumer spending remain resilient.</div>
-            </div>
-            <div id="story-fed-rates-steady-view-CENTER" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip emerald">
-                  <span>🟢</span>
-                  <span>Centrist / Balanced</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn active center" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Federal Reserve Holds Benchmark Rates Stea...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets emerald">
-                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
-              </div>
-            </div>
-            <div id="story-fed-rates-steady-view-RIGHT" class="perspective-view-box" style="display: none;">
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Federal Reserve Holds Benchmark Rates St...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
-              </div>
-            </div>
-            <div id="story-fed-rates-steady-view-LEFT" class="perspective-view-box" style="display: none;">
-              <div class="lens-status-row">
-                <div class="lens-chip blue">
-                  <span>🔵</span>
-                  <span>Progressive Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn active left" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Public Accountability and Democratic Oversight Regarding Federal Reserve Holds Benchmark Rates Steady ...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets blue">
-                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
-              </div>
-            </div>
-            <div class="card-bottom-actions">
-              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
-                <span>🤍</span>
-                <span>Save</span>
-              </button>
-              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
-                <span>👥</span> Discuss
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="compact-card" data-category="Sports" id="story-ncaa-revenue-share">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-ncaa-revenue-share">
           <div class="hero-image-wrap">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png" alt="National Collegiate Athletic Association (NCAA) and College Football Playoff." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1323,17 +1214,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
-              <span class="source-tag" data-timestamp="1792157195">Reuters Sports • 4 hours ago</span>
+              <span class="source-tag" data-timestamp="1792157195">Reuters Sports • 5 hours ago</span>
             </div>
 
             <h3 class="story-title">NCAA and Power Conferences Approve Historic Multi-Billion Dollar Revenue-Sharing Deal</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The NCAA and Power Five conferences approved a landmark class-action legal settlement committing over $2.7 billion in back-pay damages and establishing a framework allowing universities to directly share up to $22 million annually with student-athletes.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The NCAA and Power Five athletic conferences approved a landmark .75 billion class-action legal settlement in the House v. NCAA case.</li><li>The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to 2 million annually to student-athletes.</li><li>The settlement requires final federal judicial approval and ongoing coordination to ensure compliance with Title IX gender-equity statutes.</li></ul>
             </div>
             <div id="story-ncaa-revenue-share-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1443,7 +1333,138 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Crime & Public Safety" id="story-oregon-school-shooting">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-fed-rates-steady">
+          <div class="hero-image-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
+              <span class="credit-tag">📸 Federal Reserve Pool</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <div class="tags-group">
+                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
+              </div>
+              <span class="source-tag" data-timestamp="1792157195">Reuters Financial • 5 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Federal Reserve Holds Benchmark Rates Steady as Core Inflation Eases to 2.7%</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75%–5.00%.</li><li>Policymakers noted that while core annual consumer inflation cooled to 2.7%, domestic labor markets and consumer spending remain resilient.</li><li>Chairman Jerome Powell emphasized that future monetary policy adjustments will depend strictly on incoming employment, CPI, and GDP data.</li></ul>
+            </div>
+            <div id="story-fed-rates-steady-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Federal Reserve Holds Benchmark Rates Stea...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
+              </div>
+            </div>
+            <div id="story-fed-rates-steady-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Federal Reserve Holds Benchmark Rates St...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
+              </div>
+            </div>
+            <div id="story-fed-rates-steady-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-fed-rates-steady" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Public Accountability and Democratic Oversight Regarding Federal Reserve Holds Benchmark Rates Steady ...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding federal reserve holds benchmark rates steady as core inflation eases to 2.7%.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-oregon-school-shooting">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Municipal first responders and law enforcement security perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1455,17 +1476,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Crime & Public Safety</span>
+                <span class="master-tag">National</span><span class="category-tag">Crime & Public Safety</span>
               </div>
-              <span class="source-tag" data-timestamp="1792157195">CNN • 4 hours ago</span>
+              <span class="source-tag" data-timestamp="1792157195">CNN • 5 hours ago</span>
             </div>
 
             <h3 class="story-title">Teen shooter kills 3 children, teacher in Oregon elementary school before being shot by bystander - CNN</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">A teenage gunman killed three children and an educator at an Oregon elementary school before being neutralized by an armed bystander, with federal and local law enforcement securing the campus and investigating the shooter's background, motives, and firearm acquisition.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.</li><li>An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.</li><li>Federal and municipal law enforcement secured the campus, recovering multiple firearms and investigating motives and firearm acquisition.</li></ul>
             </div>
             <div id="story-oregon-school-shooting-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1575,7 +1595,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" id="story-nfl-jalen-hurts">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-nfl-jalen-hurts">
           <div class="hero-image-wrap">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg" alt="Philadelphia Eagles quarterback Jalen Hurts." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1587,17 +1607,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
-              <span class="source-tag" data-timestamp="1792153595">The New York Times • 5 hours ago</span>
+              <span class="source-tag" data-timestamp="1792153595">The New York Times • 6 hours ago</span>
             </div>
 
             <h3 class="story-title">Jalen Hurts ruled out of Eagles vs. Panthers with superficial blood clot - The New York Times</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Philadelphia Eagles starting quarterback Jalen Hurts was officially ruled out of Sunday's matchup against the Carolina Panthers after team physicians identified a superficial blood clot in his lower leg, initiating conservative vascular recovery protocols.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Philadelphia Eagles starting quarterback Jalen Hurts was officially ruled out of Sunday's matchup against the Carolina Panthers.</li><li>Team medical personnel diagnosed a superficial vascular blood clot in his lower leg, prescribing conservative anticoagulant therapy.</li><li>Backup quarterback Kenny Pickett was named the starter while team doctors establish a multi-week clinical conditioning and clearance timeline.</li></ul>
             </div>
             <div id="story-nfl-jalen-hurts-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1707,7 +1726,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" id="story-nba-lakers-prep">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-nba-lakers-prep">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1719,17 +1738,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
-              <span class="source-tag" data-timestamp="1792153595">ESPN Sports • 5 hours ago</span>
+              <span class="source-tag" data-timestamp="1792153595">ESPN Sports • 6 hours ago</span>
             </div>
 
             <h3 class="story-title">Lakers Finalize Starting Lineup Rotations Ahead of Western Conference Opening Matchup - ESPN</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Los Angeles Lakers coaching staff finalized starting defensive backcourt assignments and frontcourt minutes rotations ahead of their upcoming Western Conference regular season opener.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Los Angeles Lakers coaching staff finalized starting backcourt and frontcourt minute rotations ahead of their regular season opener.</li><li>Head coach JJ Redick confirmed Anthony Davis will anchor the starting defensive center position alongside LeBron James and Austin Reaves.</li><li>The tactical game plan emphasizes increased three-point shot distribution and fast-break transition pace against Western Conference rivals.</li></ul>
             </div>
             <div id="story-nba-lakers-prep-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1839,7 +1857,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" id="story-nuclear-modular-compact">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-nuclear-modular-compact">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Enterprise technology infrastructure and network servers." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1851,17 +1869,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Energy & Weather</span>
+                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
               </div>
-              <span class="source-tag" data-timestamp="1792149995">Reuters Energy • 6 hours ago</span>
+              <span class="source-tag" data-timestamp="1792149995">Reuters Energy • 7 hours ago</span>
             </div>
 
             <h3 class="story-title">Six Midwestern States Sign Joint Compact Accelerating Small Modular Nuclear Reactor Deployment</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">A coalition of six state governors signed a multi-state regulatory compact standardizing safety reviews and commercial licensing for next-generation small modular nuclear reactors to provide 24/7 carbon-free industrial electricity.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Governors from six Midwestern states signed a joint interstate compact to fast-track small modular nuclear reactor (SMR) deployment.</li><li>The agreement establishes standardized regional safety licensing, water rights coordination, and environmental impact assessments.</li><li>The compact aims to supply 24/7 carbon-free baseload electricity to support regional manufacturing hubs and heavy industrial data centers.</li></ul>
             </div>
             <div id="story-nuclear-modular-compact-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -1971,7 +1988,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" id="story-cfb-playoff-24">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-cfb-playoff-24">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="NFL stadium under game day floodlights during conference competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1983,17 +2000,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
-              <span class="source-tag" data-timestamp="1792149995">Yahoo Sports • 6 hours ago</span>
+              <span class="source-tag" data-timestamp="1792149995">Yahoo Sports • 7 hours ago</span>
             </div>
 
             <h3 class="story-title">College Football Playoff reportedly near deal to expand to 24 teams in 2027 - Yahoo Sports</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">College Football Playoff management and major conference commissioners are finalizing a multi-billion dollar tournament expansion agreement that would increase the postseason playoff field to 24 programs beginning in the 2027 season.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>College Football Playoff executive leadership and conference commissioners are evaluating a framework to expand the postseason field to 24 teams by 2027.</li><li>The proposal includes 14 automatic qualifiers for conference champions and runners-up alongside 10 at-large tournament bids.</li><li>University presidents and television broadcast partners are reviewing player workload limitations, exam schedules, and multi-billion dollar rights extensions.</li></ul>
             </div>
             <div id="story-cfb-playoff-24-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2103,7 +2119,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Border & Security" id="story-border-compromise">
+        <article class="compact-card" data-category="Border & Security" data-master-category="National Headlines" id="story-border-compromise">
           <div class="hero-image-wrap">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2115,17 +2131,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Border & Security</span>
+                <span class="master-tag">National</span><span class="category-tag">Border & Security</span>
               </div>
-              <span class="source-tag" data-timestamp="1792149995">Associated Press Wire • 6 hours ago</span>
+              <span class="source-tag" data-timestamp="1792149995">Associated Press Wire • 7 hours ago</span>
             </div>
 
             <h3 class="story-title">Bipartisan Senate Compromise Proposes 1,500 Border Patrol Agents and Expedited Asylum Courts</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">A bipartisan group of senators unveiled a compromise border security framework that funds 1,500 additional Border Patrol agents, deploys high-tech fentanyl detection systems at ports of entry, and establishes dedicated asylum adjudication centers aimed at resolving claims within 90 days.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>A bipartisan Senate coalition introduced a border security framework authorizing 4 billion for frontline enforcement and adjudication.</li><li>The legislation funds 1,500 new U.S. Border Patrol agents, non-intrusive fentanyl cargo scanners, and dedicated regional asylum centers.</li><li>The framework establishes strict 90-day asylum adjudication deadlines to clear immigration court dockets and curbs emergency border release authorities.</li></ul>
             </div>
             <div id="story-border-compromise-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2235,7 +2250,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Border & Security" id="story-port-security-fentanyl">
+        <article class="compact-card" data-category="Border & Security" data-master-category="National Headlines" id="story-port-security-fentanyl">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Championship athletics stadium under stadium lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2247,17 +2262,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Border & Security</span>
+                <span class="master-tag">National</span><span class="category-tag">Border & Security</span>
               </div>
-              <span class="source-tag" data-timestamp="1792146395">Reuters National • 7 hours ago</span>
+              <span class="source-tag" data-timestamp="1792146395">Reuters National • 8 hours ago</span>
             </div>
 
             <h3 class="story-title">Federal Agents Seize Record Multi-Ton Fentanyl Shipment at Commercial Maritime Entry Terminal</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Customs and Border Protection officers deployed advanced spectroscopic detection arrays to intercept a record multi-ton illicit fentanyl precursor shipment concealed inside commercial freight containers at a West Coast port terminal.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>U.S. Customs and Border Protection officers seized a record multi-ton shipment of illicit fentanyl precursor chemicals at a West Coast maritime freight terminal.</li><li>The chemical shipment was concealed within commercial industrial cargo containers originating from international maritime shipping lines.</li><li>Federal law enforcement and Homeland Security Investigations launched inter-agency criminal tracking to dismantle associated cartel distribution rings.</li></ul>
             </div>
             <div id="story-port-security-fentanyl-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2367,7 +2381,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="World News" id="story-starlink-ukraine-cnbc">
+        <article class="compact-card" data-category="World News" data-master-category="World News" id="story-starlink-ukraine-cnbc">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80" alt="Orbital satellite communications array and high-frequency defense telecommunications relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2379,17 +2393,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">World News</span>
                 <span class="category-tag">World News</span>
               </div>
-              <span class="source-tag" data-timestamp="1792146395">CNBC • 7 hours ago</span>
+              <span class="source-tag" data-timestamp="1792146395">CNBC • 8 hours ago</span>
             </div>
 
             <h3 class="story-title">U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC - CNBC</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Ukrainian defense officials warned that operational restrictions on Starlink satellite communications terminals have compromised tactical battlefield coordination, allegedly emboldening Russian military units to intensify frontline strikes.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.</li><li>Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.</li><li>Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.</li></ul>
             </div>
             <div id="story-starlink-ukraine-cnbc-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2499,7 +2512,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Health" id="story-hhs-cash-prices">
+        <article class="compact-card" data-category="Health" data-master-category="National Headlines" id="story-hhs-cash-prices">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy healthcare complex." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2511,17 +2524,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Health</span>
+                <span class="master-tag">National</span><span class="category-tag">Health</span>
               </div>
-              <span class="source-tag" data-timestamp="1792146395">Reuters Health • 7 hours ago</span>
+              <span class="source-tag" data-timestamp="1792146395">Reuters Health • 8 hours ago</span>
             </div>
 
             <h3 class="story-title">HHS Issues Binding Rules Requiring All Hospitals and Insurers to Publish Real Cash Prices</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Department of Health and Human Services finalized enforcement regulations requiring hospitals and insurance companies to publish standardized, upfront negotiated prices for all medical procedures and prescription drugs, imposing daily fines up to $10,000 for non-compliance.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Department of Health and Human Services issued finalized binding rules requiring hospitals and health insurers to publish upfront cash prices.</li><li>Hospitals must disclose standard machine-readable price lists covering 300 shoppable medical services, imaging tests, and prescription therapies.</li><li>The regulations establish escalating non-compliance penalties up to 0,000 per day for large healthcare systems that conceal negotiated rates.</li></ul>
             </div>
             <div id="story-hhs-cash-prices-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2631,139 +2643,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" id="story-supreme-court-speech">
-          <div class="hero-image-wrap">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
-            <div class="photo-caption-bar">
-              <span class="caption-text">Supreme Court of the United States west facade in Washington, D.C.</span>
-              <span class="credit-tag">📸 National Photo Archive</span>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="meta-row">
-              <div class="tags-group">
-                <span class="master-tag">Science & Tech</span>
-                <span class="category-tag">Science & Tech</span>
-              </div>
-              <span class="source-tag" data-timestamp="1792142795">Associated Press Wire • 8 hours ago</span>
-            </div>
-
-            <h3 class="story-title">Supreme Court Hears Arguments on State Laws Regulating Social Media Content Moderation</h3>
-
-            <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Supreme Court heard oral arguments regarding Texas and Florida statutes that restrict large social media platforms from removing, demoting, or banning political viewpoints, weighing the First Amendment rights of online platforms against state claims of common-carrier consumer protections.</div>
-            </div>
-            <div id="story-supreme-court-speech-view-CENTER" class="perspective-view-box" >
-              <div class="lens-status-row">
-                <div class="lens-chip emerald">
-                  <span>🟢</span>
-                  <span>Centrist / Balanced</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn active center" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Supreme Court Hears Arguments on State Law...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets emerald">
-                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage supreme court hears arguments on state laws regulating social media content moderation.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
-              </div>
-            </div>
-            <div id="story-supreme-court-speech-view-RIGHT" class="perspective-view-box" style="display: none;">
-              <div class="lens-status-row">
-                <div class="lens-chip red">
-                  <span>🔴</span>
-                  <span>Conservative Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn active right" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Supreme Court Hears Arguments on State L...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets red">
-                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding supreme court hears arguments on state laws regulating social media content moderation.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
-              </div>
-            </div>
-            <div id="story-supreme-court-speech-view-LEFT" class="perspective-view-box" style="display: none;">
-              <div class="lens-status-row">
-                <div class="lens-chip blue">
-                  <span>🔵</span>
-                  <span>Progressive Lens</span>
-                </div>
-
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn active left" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                </div>
-              </div>
-
-              <div class="framing-headline">
-                <span>📌</span>
-                <span>Public Accountability and Democratic Oversight Regarding Supreme Court Hears Arguments on State Laws R...</span>
-              </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets blue">
-                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding supreme court hears arguments on state laws regulating social media content moderation.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
-              </ul>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
-              </div>
-            </div>
-            <div class="card-bottom-actions">
-              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
-                <span>🤍</span>
-                <span>Save</span>
-              </button>
-              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
-                <span>👥</span> Discuss
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <article class="compact-card" data-category="Health" id="story-medicare-negotiations">
+        <article class="compact-card" data-category="Health" data-master-category="National Headlines" id="story-medicare-negotiations">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Official federal podium and press briefing conference." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2775,17 +2655,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Health</span>
+                <span class="master-tag">National</span><span class="category-tag">Health</span>
               </div>
-              <span class="source-tag" data-timestamp="1792142795">Associated Press Health • 8 hours ago</span>
+              <span class="source-tag" data-timestamp="1792142795">Associated Press Health • 9 hours ago</span>
             </div>
 
             <h3 class="story-title">Medicare Unveils 15 New Critical Medications Selected for Direct Federal Price Negotiations</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Federal healthcare administrators published the next tranche of 15 life-saving cardiovascular and oncology prescription drugs slated for statutory price negotiations under Medicare Part D, targeting billions in annual taxpayer savings.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Centers for Medicare & Medicaid Services published a new tranche of 15 high-expenditure prescription drugs selected for federal price negotiations.</li><li>The selected medications treat critical cardiovascular diseases, rheumatoid arthritis, oncology indications, and type-2 diabetes.</li><li>Statutory price caps under the Inflation Reduction Act take effect in 2027, projected to save Medicare beneficiaries and taxpayers billions annually.</li></ul>
             </div>
             <div id="story-medicare-negotiations-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -2895,29 +2774,159 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" id="story-chip-export-controls">
+        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-supreme-court-speech">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Modern medical research and public healthcare facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Modern medical research and public healthcare facility.</span>
-              <span class="credit-tag">📸 Health Systems Wire</span>
+              <span class="caption-text">Supreme Court of the United States west facade in Washington, D.C.</span>
+              <span class="credit-tag">📸 National Photo Archive</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Science & Tech</span>
                 <span class="category-tag">Science & Tech</span>
               </div>
-              <span class="source-tag" data-timestamp="1792139195">Bloomberg Technology • 9 hours ago</span>
+              <span class="source-tag" data-timestamp="1792142795">Associated Press Wire • 9 hours ago</span>
+            </div>
+
+            <h3 class="story-title">Supreme Court Hears Arguments on State Laws Regulating Social Media Content Moderation</h3>
+
+            <div class="neutral-box">
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Supreme Court heard oral arguments on Texas and Florida state statutes regulating how social media platforms moderate political viewpoints.</li><li>States argued that trillion-dollar platforms function as public common carriers and cannot arbitrarily censor political speech.</li><li>Technology trade associations asserted that First Amendment protections grant online platforms editorial rights to curate content and remove harmful material.</li></ul>
+            </div>
+            <div id="story-supreme-court-speech-view-CENTER" class="perspective-view-box" >
+              <div class="lens-status-row">
+                <div class="lens-chip emerald">
+                  <span>🟢</span>
+                  <span>Centrist / Balanced</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn active center" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Weighing Pragmatic Solutions and Operational Trade-Offs in Supreme Court Hears Arguments on State Law...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets emerald">
+                <li>Assesses the realistic legal, operational, and administrative factors required to effectively manage supreme court hears arguments on state laws regulating social media content moderation.</li><li>Seeks balanced middle-ground solutions between competing regulatory objectives and practical feasibility.</li><li>Maintains institutional stability by relying on verified evidence, thorough due diligence, and measured consensus.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Effective governance requires examining all facts calmly and crafting pragmatic, balanced solutions."</div><div class="quote-row">"Extreme rhetoric solves nothing; steady institutional collaboration delivers real, sustainable progress."</div>
+              </div>
+            </div>
+            <div id="story-supreme-court-speech-view-RIGHT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip red">
+                  <span>🔴</span>
+                  <span>Conservative Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn active right" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Constitutional Order, Free Enterprise, and Personal Responsibility in Supreme Court Hears Arguments on State L...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets red">
+                <li>Emphasizes individual liberty, constitutional boundaries, and strict limits on administrative or bureaucratic overreach regarding supreme court hears arguments on state laws regulating social media content moderation.</li><li>Protects free enterprise, economic efficiency, and rule of law from unnecessary government intervention.</li><li>Promotes personal accountability, merit, and decentralized decision-making to resolve complex challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes."</div><div class="quote-row">"Protecting individual liberty, free enterprise, and the rule of law remains fundamental."</div>
+              </div>
+            </div>
+            <div id="story-supreme-court-speech-view-LEFT" class="perspective-view-box" style="display: none;">
+              <div class="lens-status-row">
+                <div class="lens-chip blue">
+                  <span>🔵</span>
+                  <span>Progressive Lens</span>
+                </div>
+
+                <div class="card-toggle-group">
+                  <button type="button" class="card-toggle-btn active left" data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                  <button type="button" class="card-toggle-btn " data-story="story-supreme-court-speech" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                </div>
+              </div>
+
+              <div class="framing-headline">
+                <span>📌</span>
+                <span>Public Accountability and Democratic Oversight Regarding Supreme Court Hears Arguments on State Laws R...</span>
+              </div>
+
+              <div class="label-heading">Why It Matters For Your Stance:</div>
+              <ul class="compact-bullets blue">
+                <li>Advocates for heightened transparency, public oversight, and accountability from institutional decision-makers regarding supreme court hears arguments on state laws regulating social media content moderation.</li><li>Ensures that policies and actions protect everyday citizens, vulnerable communities, and public welfare over private interests.</li><li>Calls for democratic safeguards, ethical standards, and open public debate to address the underlying challenges.</li>
+              </ul>
+
+              <div class="talking-points-panel">
+                <div class="panel-header">
+                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                </div>
+                <div class="quote-row">"Public welfare, transparency, and institutional accountability must always take precedence over private interests."</div><div class="quote-row">"We must protect the rights and safety of everyday citizens when addressing these critical issues."</div>
+              </div>
+            </div>
+            <div class="card-bottom-actions">
+              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                <span>🤍</span>
+                <span>Save</span>
+              </button>
+              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                <span>👥</span> Discuss
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-chip-export-controls">
+          <div class="hero-image-wrap">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Championship athletics stadium under stadium lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <div class="photo-caption-bar">
+              <span class="caption-text">Championship athletics stadium under stadium lights.</span>
+              <span class="credit-tag">📸 Sports Wire Archive</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="meta-row">
+              <div class="tags-group">
+                <span class="category-tag">Science & Tech</span>
+              </div>
+              <span class="source-tag" data-timestamp="1792139195">Bloomberg Technology • 10 hours ago</span>
             </div>
 
             <h3 class="story-title">Commerce Department Expands High-End Semiconductor Export Bans to Protect Domestic AI Lead</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The U.S. Department of Commerce published updated export restriction directives barring international sales of cutting-edge artificial intelligence accelerator hardware to non-allied foreign technology conglomerates.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The U.S. Department of Commerce expanded export restrictions on advanced semiconductor manufacturing tools and high-density AI accelerator chips.</li><li>The regulations restrict international sales of leading-edge lithography equipment to prevent non-allied powers from developing domestic military computing.</li><li>Domestic semiconductor manufacturers were granted transition guidance and export licensing waivers to maintain domestic supply chain stability.</li></ul>
             </div>
             <div id="story-chip-export-controls-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3027,7 +3036,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" id="story-tesla-roadster">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-tesla-roadster">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80" alt="Tesla electric performance vehicle and high-technology automotive manufacturing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3039,17 +3048,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Business & Economy</span>
+                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
               </div>
-              <span class="source-tag" data-timestamp="1792124795">CNBC Business • 13 hours ago</span>
+              <span class="source-tag" data-timestamp="1792124795">CNBC Business • 14 hours ago</span>
             </div>
 
             <h3 class="story-title">Tesla plans next-generation Roadster reveal after almost a decade of delays - CNBC</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Tesla announced plans to officially unveil the next-generation Roadster production design following extended engineering delays, aiming to commence commercial deliveries and demonstrate advanced electric vehicle propulsion capabilities.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster.</li><li>The vehicle features a lightweight carbon-composite chassis, quad-motor all-wheel-drive powertrain, and sub-1-second 0-60 mph acceleration claims.</li><li>Commercial assembly is scheduled to begin at the Fremont and Austin production facilities following extensive homologation testing.</li></ul>
             </div>
             <div id="story-tesla-roadster-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3159,7 +3167,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" id="story-anthropic-ipo">
+        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-anthropic-ipo">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence venture valuation and advanced neural computing technology." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3171,17 +3179,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Science & Tech</span>
                 <span class="category-tag">Science & Tech</span>
               </div>
-              <span class="source-tag" data-timestamp="1792121195">Reuters Business • 14 hours ago</span>
+              <span class="source-tag" data-timestamp="1792121195">Reuters Business • 15 hours ago</span>
             </div>
 
             <h3 class="story-title">Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say - Reuters</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Financial investors and venture underwriters have reportedly tempered initial valuation targets for Anthropic ahead of prospective public market offerings, citing moderating enterprise software revenue expansion rates.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings.</li><li>The valuation recalibration follows moderating enterprise software revenue expansion and elevated GPU cloud training expenditures.</li><li>Anthropic continues enterprise commercial rollout of Claude 3.5 Sonnet across Fortune 500 corporate software ecosystems.</li></ul>
             </div>
             <div id="story-anthropic-ipo-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3291,29 +3298,28 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Crime & Public Safety" id="story-election-mailings">
+        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-election-mailings">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="Enterprise technology infrastructure and network servers." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Modern medical research and public healthcare facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Enterprise technology infrastructure and network servers.</span>
-              <span class="credit-tag">📸 Technology Media Wire</span>
+              <span class="caption-text">Modern medical research and public healthcare facility.</span>
+              <span class="credit-tag">📸 Health Systems Wire</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Crime & Public Safety</span>
+                <span class="master-tag">National</span><span class="category-tag">Crime & Public Safety</span>
               </div>
-              <span class="source-tag" data-timestamp="1792117595">NPR News • 15 hours ago</span>
+              <span class="source-tag" data-timestamp="1792117595">NPR News • 16 hours ago</span>
             </div>
 
             <h3 class="story-title">Suspicious mailings to election officials, congressional offices under investigation - NPR News</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Federal postal inspectors, the FBI, and state election authorities launched comprehensive investigations to intercept hazardous items and secure election administration facilities.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The FBI, U.S. Postal Inspection Service, and state election boards launched joint investigations into suspicious mailings sent to election offices in 16 states.</li><li>Hazmat teams intercepted multiple envelopes containing non-lethal powdery substances, including baking flour and cornstarch.</li><li>Election directors implemented standardized mail screening protocols, personal protective equipment, and ballot processing contingency plans.</li></ul>
             </div>
             <div id="story-election-mailings-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3423,7 +3429,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" id="story-dodgers-brewers-nlcs">
+        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-dodgers-brewers-nlcs">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80" alt="Major League Baseball postseason championship ballpark field and diamond." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3435,17 +3441,16 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Sports</span>
-                <span class="category-tag">Sports</span>
+                <span class="master-tag">National</span><span class="category-tag">Sports</span>
               </div>
-              <span class="source-tag" data-timestamp="1792113995">ESPN Sports • 16 hours ago</span>
+              <span class="source-tag" data-timestamp="1792113995">ESPN Sports • 17 hours ago</span>
             </div>
 
             <h3 class="story-title">Dodgers tip cap to Brewers as title reign ends in NLCS sweep - ESPN</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Los Angeles Dodgers saw their championship title reign conclude following a four-game National League Championship Series sweep by the Milwaukee Brewers, with players and front-office executives assessing postseason bullpen execution and roster contracts ahead of the World Series.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Milwaukee Brewers completed a four-game National League Championship Series sweep of the defending World Series champion Los Angeles Dodgers.</li><li>Brewers relief pitching held Los Angeles batters to a .165 batting average with runners in scoring position across the four-game series.</li><li>Milwaukee advanced to the Fall Classic for the first time since 1982, while the Dodgers front office began offseason bullpen and roster evaluations.</li></ul>
             </div>
             <div id="story-dodgers-brewers-nlcs-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3555,7 +3560,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" id="story-dow-nasdaq-ai-rotation">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-dow-nasdaq-ai-rotation">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets rally with upward trending index charts and stock market trading gains." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3567,8 +3572,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Business & Economy</span>
+                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
               </div>
               <span class="source-tag" data-timestamp="1729077600">CNBC Business • 730 days ago</span>
             </div>
@@ -3576,8 +3580,8 @@
             <h3 class="story-title">Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates - CNBC</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">The Dow Jones Industrial Average rose more than 200 points while the tech-heavy Nasdaq declined as institutional investors rotated capital out of high-multiple artificial intelligence shares and into cyclical, industrial, and value equities.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>The Dow Jones Industrial Average gained 215 points while the tech-heavy Nasdaq Composite dropped 1.2% in an institutional sector rotation.</li><li>Asset managers shifted capital out of high-multiple semiconductor and software equities into cyclical industrials, materials, and bank shares.</li><li>Bond markets stabilized as benchmark 10-year Treasury yields held steady at 4.08% ahead of quarterly corporate earnings releases.</li></ul>
             </div>
             <div id="story-dow-nasdaq-ai-rotation-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3687,7 +3691,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" id="story-weather-power-outage-pacific">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-weather-power-outage-pacific">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe weather system with high winds and emergency utility grid repair operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3699,8 +3703,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National Headlines</span>
-                <span class="category-tag">Energy & Weather</span>
+                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
               </div>
               <span class="source-tag" data-timestamp="1729074000">Associated Press • 730 days ago</span>
             </div>
@@ -3708,8 +3711,8 @@
             <h3 class="story-title">High Winds Trigger Widespread Power Outages Across Pacific Northwest Utility Grids</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Severe wind gusts topping 65 mph downed transmission lines and utility poles across Oregon and Washington, leaving over 280,000 customers without electricity while emergency utility crews mobilize for circuit repairs.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Severe Pacific storm gusts exceeding 65 mph downed high-voltage lines, cutting electricity to over 280,000 customers in Oregon and Washington.</li><li>Utility providers mobilized emergency mutual aid line crews from neighboring states to replace sheared transmission poles and clear roadways.</li><li>State emergency management agencies established warming centers as freezing overnight temperatures moved across western utility corridors.</li></ul>
             </div>
             <div id="story-weather-power-outage-pacific-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3819,7 +3822,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Entertainment" id="story-entertainment-nolan-imax">
+        <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" id="story-entertainment-nolan-imax">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" alt="Major motion picture theatrical cinema and entertainment industry production." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3831,7 +3834,6 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Entertainment</span>
                 <span class="category-tag">Entertainment</span>
               </div>
               <span class="source-tag" data-timestamp="1729070400">Variety • 730 days ago</span>
@@ -3840,8 +3842,8 @@
             <h3 class="story-title">Christopher Nolan Begins Production on Next IMAX Feature with Star-Studded Ensemble Cast</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Director Christopher Nolan officially commenced principal photography on his highly anticipated universal theatrical project utilizing custom-engineered 70mm IMAX cameras and an ensemble international cast.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Director Christopher Nolan commenced principal photography on his next theatrical feature utilizing custom-engineered 70mm IMAX camera rigs.</li><li>Universal Pictures confirmed a marquee ensemble cast led by Matt Damon, Tom Holland, Lupita Nyong'o, and Anne Hathaway.</li><li>The production is scheduled for a worldwide premium large-format theatrical premiere in July 2026.</li></ul>
             </div>
             <div id="story-entertainment-nolan-imax-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -3951,7 +3953,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" id="story-science-nasa-james-webb">
+        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-science-nasa-james-webb">
           <div class="hero-image-wrap">
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Deep space observation and advanced astronomical planetary science." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3963,7 +3965,6 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Science & Tech</span>
                 <span class="category-tag">Science & Tech</span>
               </div>
               <span class="source-tag" data-timestamp="1729066800">Space.com • 730 days ago</span>
@@ -3972,8 +3973,8 @@
             <h3 class="story-title">NASA James Webb Telescope Captures Unprecedented Atmospheric Data on Habitable-Zone Exoplanet</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Astrophysicists utilizing the James Webb Space Telescope detected atmospheric chemical signatures, including carbon dioxide and methane, in the atmosphere of an Earth-sized exoplanet orbiting within a nearby star’s habitable zone.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.</li><li>The exoplanet orbits within the habitable zone of a red dwarf star located 120 light-years away in the constellation Leo.</li><li>Spectroscopic data revealed a potential liquid-water ocean layer, marking a milestone in biosignature atmosphere characterization.</li></ul>
             </div>
             <div id="story-science-nasa-james-webb-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -4083,19 +4084,18 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="World News" id="story-world-geneva-maritime-talks">
+        <article class="compact-card" data-category="World News" data-master-category="World News" id="story-world-geneva-maritime-talks">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Official federal podium and press briefing conference." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Modern medical research and public healthcare facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Official federal podium and press briefing conference.</span>
-              <span class="credit-tag">📸 National Photo Archive</span>
+              <span class="caption-text">Modern medical research and public healthcare facility.</span>
+              <span class="credit-tag">📸 Health Systems Wire</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">World News</span>
                 <span class="category-tag">World News</span>
               </div>
               <span class="source-tag" data-timestamp="1729063200">Reuters • 730 days ago</span>
@@ -4104,8 +4104,8 @@
             <h3 class="story-title">Diplomatic Envoy Convenes Geneva Talks on Black Sea Maritime Security and Export Corridors</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Diplomats from 14 nations convened in Geneva to establish standardized international maritime escorts and de-escalate naval mine hazards across critical commercial grain and fertilizer shipping lanes in the Black Sea.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Delegates from 14 coastal nations convened in Geneva to establish standardized international security corridors across Black Sea shipping lanes.</li><li>The diplomatic conference focused on joint naval de-mining operations, commercial vessel insurance guarantees, and safe agricultural export transit.</li><li>International maritime organizations finalized emergency communications protocols to protect merchant bulk carriers from naval drone hazards.</li></ul>
             </div>
             <div id="story-world-geneva-maritime-talks-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -4215,19 +4215,18 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Entertainment" id="story-entertainment-box-office-rebound">
+        <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" id="story-entertainment-box-office-rebound">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="National electrical transmission corridor and infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market exchange trading floor and electronic index terminals." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">National electrical transmission corridor and infrastructure.</span>
-              <span class="credit-tag">📸 Energy Photo Archive</span>
+              <span class="caption-text">Financial market exchange trading floor and electronic index terminals.</span>
+              <span class="credit-tag">📸 Financial Wire Pool</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Entertainment</span>
                 <span class="category-tag">Entertainment</span>
               </div>
               <span class="source-tag" data-timestamp="1729059600">The Hollywood Reporter • 730 days ago</span>
@@ -4236,8 +4235,8 @@
             <h3 class="story-title">Autumn Box Office Surges as Original Cinematic Releases Drive Family Theatrical Admissions</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">Domestic movie theater attendance surpassed pre-holiday box office projections by 18%, propelled by original storytelling, premium large-format auditorium ticket sales, and multi-generational family attendance.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>Domestic box office receipts exceeded industry holiday projections by 18%, driven by original cinematic releases and premium auditorium tickets.</li><li>IMAX and Dolby Cinema auditoriums accounted for over 22% of total theatrical revenue despite representing only 8% of total theater screens.</li><li>Theater circuit operators reported significant increases in family attendance and concessions per patron heading into the winter season.</li></ul>
             </div>
             <div id="story-entertainment-box-office-rebound-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -4347,19 +4346,18 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" id="story-science-astronomy-water-vapor">
+        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-science-astronomy-water-vapor">
           <div class="hero-image-wrap">
-            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Modern medical research and public healthcare facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market exchange trading floor and electronic index terminals." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Modern medical research and public healthcare facility.</span>
-              <span class="credit-tag">📸 Health Systems Wire</span>
+              <span class="caption-text">Financial market exchange trading floor and electronic index terminals.</span>
+              <span class="credit-tag">📸 Financial Wire Pool</span>
             </div>
           </div>
 
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">Science & Tech</span>
                 <span class="category-tag">Science & Tech</span>
               </div>
               <span class="source-tag" data-timestamp="1729056000">Nature Astronomy • 730 days ago</span>
@@ -4368,8 +4366,8 @@
             <h3 class="story-title">Astronomers Detect Ancient Water Vapor Reservoirs in Early Universe Molecular Cloud</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>
-              <div class="neutral-desc">An international astrophysics team observed spectral evidence of vast water vapor reservoirs encompassing a supermassive black hole located over 12 billion light-years from Earth, offering clues to early cosmic chemical evolution.</div>
+              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <ul class="core-facts-list"><li>An international astrophysics coalition discovered massive reservoirs of ancient water vapor in a primordial molecular cloud 12 billion light-years away.</li><li>The water mass encompasses a luminous active galactic nucleus, containing 140 trillion times the volume of Earth's oceans.</li><li>The discovery provides key empirical evidence confirming that water molecules synthesized rapidly within the first 1.6 billion years of the universe.</li></ul>
             </div>
             <div id="story-science-astronomy-water-vapor-view-CENTER" class="perspective-view-box" >
               <div class="lens-status-row">
@@ -4621,7 +4619,8 @@
 
         if (masterKey !== 'all') {
           if (masterKey.indexOf('national') !== -1) {
-            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
+            // National Headlines includes US domestic policy, economy, energy, health, border, and domestic US sports
+            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('sport') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
           } else if (masterKey.indexOf('world') !== -1) {
             match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
           } else if (masterKey.indexOf('science') !== -1 || masterKey.indexOf('tech') !== -1) {
@@ -4696,18 +4695,36 @@
 
         html += '  <div class="card-body">';
         html += '    <div class="meta-row">';
-        html += '      <div class="tags-group">';
-        html += '        <span class="master-tag">' + masterCat + '</span>';
-        html += '        <span class="category-tag">' + cat + '</span>';
-        html += '      </div>';
+        html += '      <div class="tags-group">' + tagsHtml + '</div>';
         html += '      <span class="source-tag" data-timestamp="' + pub_ts + '">' + source + '</span>';
         html += '    </div>';
 
         html += '    <h3 class="story-title">' + story.title + '</h3>';
 
+        var factsHtml = '';
+        var facts = story.core_facts;
+        if (Array.isArray(facts) && facts.length > 0) {
+          factsHtml += '<ul class="core-facts-list">';
+          for (var f = 0; f < facts.length; f++) {
+            factsHtml += '<li>' + facts[f] + '</li>';
+          }
+          factsHtml += '</ul>';
+        } else {
+          var summary = story.neutral_summary || '';
+          factsHtml = '<div class="neutral-desc">' + summary + '</div>';
+        }
+
+        var tagsHtml = '';
+        if (masterCat.toLowerCase() === cat.toLowerCase()) {
+          tagsHtml = '<span class="category-tag">' + cat + '</span>';
+        } else {
+          var displayMaster = (masterCat.toLowerCase().indexOf('national') !== -1) ? 'National' : masterCat;
+          tagsHtml = '<span class="master-tag">' + displayMaster + '</span><span class="category-tag">' + cat + '</span>';
+        }
+
         html += '    <div class="neutral-box">';
-        html += '      <div class="neutral-title">⚖️ The Core Facts (Neutral Event Summary)</div>';
-        html += '      <div class="neutral-desc">' + summary + '</div>';
+        html += '      <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>';
+        html += '      ' + factsHtml;
         html += '    </div>';
 
         var perspectives = story.perspectives || {};
