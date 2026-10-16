@@ -1,12 +1,60 @@
 [
   {
+    "id": "story-1792115328-0",
+    "category": "Economy & Inflation",
+    "title": "Tesla plans next-generation Roadster reveal after almost a decade of delays - CNBC",
+    "source": "Google News Business \u2022 Just now",
+    "image_url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80",
+    "caption": "National press briefing room and broadcast journalism desk.",
+    "credit": "\ud83d\udcf8 Wire Media Archive",
+    "neutral_summary": "Tesla plans next-generation Roadster reveal after almost a decade of delays. Industry observers, policymakers, and civic leaders continue analyzing the situation as verified developments unfold.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability and Consumer Protections Regarding Tesla plans next-generation Roadster rev...",
+        "why_it_matters": [
+          "Advocates for public transparency, democratic safeguards, and community representation.",
+          "Ensures institutional decision-makers prioritize public safety and ethical responsibilities.",
+          "Guarantees that everyday citizens have an equal voice in civic and economic debates."
+        ],
+        "talking_points": [
+          "Public welfare and transparent governance must always come before private interests.",
+          "We need clear rules and accountability that protect the broader community."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Weighing Practical Solutions and Stakeholder Perspectives on Tesla plans next-generation Roadster rev...",
+        "why_it_matters": [
+          "Evaluates the practical trade-offs required to address complex institutional challenges.",
+          "Seeks realistic compromise between competing regulatory and commercial viewpoints.",
+          "Maintains civic stability through transparent, evidence-based policy assessments."
+        ],
+        "talking_points": [
+          "Sensible governance requires looking at all facts and finding pragmatic solutions.",
+          "Extreme rhetoric solves nothing; steady collaboration delivers real progress."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Market Principles and Constitutional Integrity in Tesla plans next-generation Roadster rev...",
+        "why_it_matters": [
+          "Emphasizes individual freedom, private enterprise, and constitutional limitations on authority.",
+          "Resists unnecessary bureaucratic intervention that burdens productive American citizens.",
+          "Promotes personal accountability, merit, and decentralized decision-making."
+        ],
+        "talking_points": [
+          "Freedom, personal responsibility, and open competition deliver the best outcomes.",
+          "Protecting individual liberty and limiting overreach remains essential."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792114979-0",
     "category": "Economy & Inflation",
     "title": "Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say - Reuters",
     "source": "Google News Business \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "image_url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80",
+    "caption": "National press briefing room and broadcast journalism desk.",
+    "credit": "\ud83d\udcf8 Wire Media Archive",
     "neutral_summary": "Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say. Financial institutions, market analysts, and economic policymakers are evaluating the monetary, corporate, and investor outlook.",
     "perspectives": {
       "LEFT": {
@@ -100,9 +148,9 @@
     "category": "Energy & Infrastructure",
     "title": "Suspicious mailings to election officials, congressional offices under investigation",
     "source": "NPR News \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Enterprise technology infrastructure and network servers.",
-    "credit": "\ud83d\udcf8 Technology Media Wire",
+    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Congressional proceedings and legislative committee assembly.",
+    "credit": "\ud83d\udcf8 Capitol Press Gallery",
     "neutral_summary": "Suspicious mailings to election officials, congressional offices under investigation. Congressional lawmakers and administration officials are reviewing the foreign policy, energy market, and statutory ramifications.",
     "perspectives": {
       "LEFT": {
@@ -148,9 +196,9 @@
     "category": "Politics",
     "title": "Katie Zacharia appears to confirm she didn\u2019t pass the bar exam - The Washington Post",
     "source": "Google News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Supreme Court pillars and scales of justice inside federal courtroom.",
-    "credit": "\ud83d\udcf8 Legal Media Archive",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
+    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
+    "credit": "\ud83d\udcf8 National Photo Archive",
     "neutral_summary": "Katie Zacharia appears to confirm she didn\u2019t pass the bar exam. Industry observers, policymakers, and civic leaders continue analyzing the situation as verified developments unfold.",
     "perspectives": {
       "LEFT": {
@@ -244,9 +292,9 @@
     "category": "Sports",
     "title": "College Football Playoff reportedly near deal to expand to 24 teams in 2027 - Yahoo Sports",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-    "caption": "College Football Playoff championship stadium field and postseason bowl game arena.",
-    "credit": "\ud83d\udcf8 NCAA College Sports Wire",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
+    "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
+    "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
     "neutral_summary": "College Football Playoff reportedly near deal to expand to 24 teams in 2027. League executives, franchise leadership, and players continue assessing competitive, commercial, and strategic ramifications.",
     "perspectives": {
       "LEFT": {
@@ -292,9 +340,9 @@
     "category": "Sports",
     "title": "Jalen Hurts ruled out of Eagles vs. Panthers with superficial blood clot - The New York Times",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "caption": "NFL stadium under game day floodlights during conference competition.",
-    "credit": "\ud83d\udcf8 NFL Media Archive",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg",
+    "caption": "Philadelphia Eagles quarterback Jalen Hurts.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Jeffrey Beall",
     "neutral_summary": "Jalen Hurts ruled out of Eagles vs. Panthers with superficial blood clot. Medical staff and team officials confirmed the roster designation ahead of the upcoming matchup, placing the athlete under clinical recovery protocols.",
     "perspectives": {
       "LEFT": {
@@ -388,9 +436,9 @@
     "category": "Politics",
     "title": "'Oh, shut up!': Democrat snaps at Collins after heckler drives Maine Senate debate off the rails",
     "source": "Fox News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80",
-    "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Architect of the Capitol",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Seal_of_Maine.svg/330px-Seal_of_Maine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Maine Senate \u2014 Upper house of the Maine Legislature.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Maine Senate",
     "neutral_summary": "'Oh, shut up!': Democrat snaps at Collins after heckler drives Maine Senate debate off the rails. Congressional lawmakers and administration officials are reviewing the foreign policy, energy market, and statutory ramifications.",
     "perspectives": {
       "LEFT": {
@@ -436,9 +484,9 @@
     "category": "Politics",
     "title": "5 GOP House members join letter urging Trump to cancel Russia diesel deal, up sanctions - The Hill",
     "source": "Google News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "House committee room and congressional caucus proceedings in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Congressional Press Gallery",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/800px-Donald_Trump_official_portrait.jpg",
+    "caption": "President Donald J. Trump in Washington, D.C.",
+    "credit": "\ud83d\udcf8 Official White House Photo",
     "neutral_summary": "5 GOP House members join letter urging Trump to cancel Russia diesel deal, up sanctions. Lawmakers, legal analysts, and administration officials are reviewing the statutory, ethical, and political implications.",
     "perspectives": {
       "LEFT": {
@@ -485,7 +533,7 @@
     "title": "EXCLUSIVE: Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say - Reuters",
     "source": "Google News Business \u2022 Just now",
     "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Trading floor terminals and financial exchange displays on Wall Street.",
+    "caption": "Financial market exchange floor and trading terminals.",
     "credit": "\ud83d\udcf8 Financial Wire Pool",
     "neutral_summary": "EXCLUSIVE: Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say. Financial institutions, market analysts, and economic policymakers are evaluating the monetary and fiscal outlook.",
     "perspectives": {
@@ -532,9 +580,9 @@
     "category": "Economy & Inflation",
     "title": "Cracks are beginning to show in the stock market as doubts about AI investments grow - NBC News",
     "source": "Google News Business \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80",
-    "caption": "National press briefing room and broadcast journalism desk.",
-    "credit": "\ud83d\udcf8 Wire Media Archive",
+    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Championship athletics stadium under stadium lights.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
     "neutral_summary": "Cracks are beginning to show in the stock market as doubts about AI investments grow. Financial institutions, market analysts, and economic policymakers are evaluating the monetary and fiscal outlook.",
     "perspectives": {
       "LEFT": {
@@ -580,9 +628,9 @@
     "category": "Sports",
     "title": "College Football Playoff nears agreement on 24-team expansion that could end title games - CBS Sports",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Logo_of_college_football_playoff.svg/330px-Logo_of_college_football_playoff.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "College Football Playoff \u2014 Playoff tournament in American college football.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / College Football Playoff",
     "neutral_summary": "College Football Playoff nears agreement on 24-team expansion that could end title games. League executives, franchise leadership, and players continue assessing competitive, commercial, and strategic ramifications.",
     "perspectives": {
       "LEFT": {
@@ -724,9 +772,9 @@
     "category": "Politics",
     "title": "Can cooking for terrorists bar asylum? Supreme Court takes up unusual case with broader immigration stakes",
     "source": "Fox News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Enterprise technology infrastructure and network servers.",
-    "credit": "\ud83d\udcf8 Technology Media Wire",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Panorama_of_United_States_Supreme_Court_Building_at_Dusk.jpg/330px-Panorama_of_United_States_Supreme_Court_Building_at_Dusk.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Supreme court \u2014 Highest court in a jurisdiction.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Supreme court",
     "neutral_summary": "Can cooking for terrorists bar asylum? Supreme Court takes up unusual case with broader immigration stakes. Lawmakers, legal analysts, and administration officials are reviewing the statutory, ethical, and political implications.",
     "perspectives": {
       "LEFT": {
@@ -772,9 +820,9 @@
     "category": "Politics",
     "title": "Trump lashes out at Republicans as Ken Paxton struggles in Texas",
     "source": "Politico National \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Enterprise technology infrastructure and network servers.",
-    "credit": "\ud83d\udcf8 Technology Media Wire",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Ken_Paxton_%2854816860552%29_%28cropped%29.jpg/330px-Ken_Paxton_%2854816860552%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Ken Paxton \u2014 American politician and lawyer (born 1962).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Ken Paxton",
     "neutral_summary": "Trump lashes out at Republicans as Ken Paxton struggles in Texas. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -820,9 +868,9 @@
     "category": "Energy & Infrastructure",
     "title": "Hit a midlife wall? This test identifies your strengths and what matters to you",
     "source": "NPR News \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Government administrative proceedings and legislative assembly.",
-    "credit": "\ud83d\udcf8 Capitol Press Gallery",
+    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Modern medical research and public healthcare facility.",
+    "credit": "\ud83d\udcf8 Health Systems Wire",
     "neutral_summary": "Hit a midlife wall? This test identifies your strengths and what matters to you. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -868,7 +916,7 @@
     "category": "Politics",
     "title": "The new White House press secretary failed the bar exam. She shared posts calling her an attorney anyway - CNN",
     "source": "Google News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1580130775562-0ef92da028de?auto=format&fit=crop&w=1200&q=80",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
     "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
     "credit": "\ud83d\udcf8 White House Photo Archive",
     "neutral_summary": "The new White House press secretary failed the bar exam. She shared posts calling her an attorney anyway - CNN. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
@@ -964,9 +1012,9 @@
     "category": "Sports",
     "title": "Guardians trail Rays 2-1 in Game 3 of ALCS - FOX 8 News",
     "source": "Google News Sports \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Championship athletics stadium under stadium lights.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Enterprise technology infrastructure and network servers.",
+    "credit": "\ud83d\udcf8 Technology Media Wire",
     "neutral_summary": "Guardians trail Rays 2-1 in Game 3 of ALCS - FOX 8 News. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -1012,9 +1060,9 @@
     "category": "Tech & Free Speech",
     "title": "I\u2019ve Tested Echo Shows and Nest Hubs. Here\u2019s How Apple\u2019s HomeView Display Stacks Up - CNET",
     "source": "Google News Tech \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Championship athletics stadium under stadium lights.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Modern medical research and public healthcare facility.",
+    "credit": "\ud83d\udcf8 Health Systems Wire",
     "neutral_summary": "I\u2019ve Tested Echo Shows and Nest Hubs. Here\u2019s How Apple\u2019s HomeView Display Stacks Up - CNET. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -1060,9 +1108,9 @@
     "category": "Tech & Free Speech",
     "title": "Amazon Debuts Revamped Bee AI Wearables, $12-a-Month Subscription Plan - Bloomberg.com",
     "source": "Google News Tech \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Official federal podium and press briefing conference.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "image_url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Championship athletics stadium under stadium lights.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
     "neutral_summary": "Amazon Debuts Revamped Bee AI Wearables, $12-a-Month Subscription Plan - Bloomberg.com. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -1108,9 +1156,9 @@
     "category": "Politics",
     "title": "Mitch Daniels rebukes JD Vance over free-market retreat",
     "source": "Politico National \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80",
-    "caption": "National press briefing room and broadcast journalism desk.",
-    "credit": "\ud83d\udcf8 Wire Media Archive",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Indiana_Governor_Mitch_Daniels.jpg/330px-Indiana_Governor_Mitch_Daniels.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Mitch Daniels \u2014 American politician and academic administrator (born 1949).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Mitch Daniels",
     "neutral_summary": "Mitch Daniels rebukes JD Vance over free-market retreat. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
     "perspectives": {
       "LEFT": {
@@ -1139,54 +1187,6 @@
       },
       "RIGHT": {
         "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Standards in Mitch Daniels rebukes JD Vance over free-market ...",
-        "why_it_matters": [
-          "Highlights the ongoing risks of bureaucratic overreach, credentialism, and administrative mismanagement.",
-          "Emphasizes the vital necessity of merit, individual accountability, and constitutional limits on agency power.",
-          "Calls for institutional reform, regulatory restraint, and protection of private enterprise."
-        ],
-        "talking_points": [
-          "Accountability and transparent standards solve problems faster than top-down bureaucratic excuses.",
-          "Protecting constitutional checks, merit, and fiscal discipline must remain the priority."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792098689-6",
-    "category": "Politics",
-    "title": "Ilhan Omar's husband snaps over rumors she fled US after federal immigration fraud raid",
-    "source": "Fox News Politics \u2022 Just now",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Government administrative proceedings and legislative assembly.",
-    "credit": "\ud83d\udcf8 Capitol Press Gallery",
-    "neutral_summary": "Ilhan Omar's husband snaps over rumors she fled US after federal immigration fraud raid. Federal and state authorities, legal analysts, and industry stakeholders are reviewing the statutory, administrative, and policy ramifications.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Advocates Demand Accountability and Ethics in Wake of Ilhan Omar's husband snaps over rumors she fled ...",
-        "why_it_matters": [
-          "Raises urgent questions regarding public accountability, institutional integrity, and citizen protections.",
-          "Demands strict oversight to prevent entrenched leadership from sidelining public transparency.",
-          "Highlights the necessity of defending statutory standards, ethical compliance, and consumer rights."
-        ],
-        "talking_points": [
-          "Public accountability must take precedence over political convenience.",
-          "We need transparent rules that protect everyday working families and ethical standards."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Stakeholders Weigh Institutional Impact of Ilhan Omar's husband snaps over rumors she fled ...",
-        "why_it_matters": [
-          "Reflects the ongoing necessity of balancing compliance with operational and political realities.",
-          "Highlights the practical trade-offs required to maintain institutional continuity and stability.",
-          "Requires pragmatic collaboration among decision-makers to prevent disruptive impasses."
-        ],
-        "talking_points": [
-          "Pragmatic governance requires balancing stability, compliance, and institutional reality.",
-          "Divided opinions require sensible middle-ground solutions over ideological posturing."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Conservative Realism: Scrutinizing Bureaucratic Standards in Ilhan Omar's husband snaps over rumors she fled ...",
         "why_it_matters": [
           "Highlights the ongoing risks of bureaucratic overreach, credentialism, and administrative mismanagement.",
           "Emphasizes the vital necessity of merit, individual accountability, and constitutional limits on agency power.",
