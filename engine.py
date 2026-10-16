@@ -66,6 +66,20 @@ RSS_FEEDS = [
 
 # 1. Exact, verified photographic matches for high-profile named entities
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Tesla & Electric Vehicles
+    {
+        "patterns": ["tesla", "roadster", "electric vehicle", "musk", "elon musk", "cybertruck", "autopilot"],
+        "url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Tesla electric performance vehicle and high-technology automotive manufacturing.",
+        "credit": "📸 Automotive News Wire"
+    },
+    # Anthropic & Generative AI Startups / IPO
+    {
+        "patterns": ["anthropic", "ipo", "valuation expectations", "claude", "artificial intelligence", "ai startup", "openai", "chatgpt"],
+        "url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Artificial intelligence venture valuation and advanced neural computing technology.",
+        "credit": "📸 Tech Systems Wire"
+    },
     # Jalen Hurts
     {
         "patterns": ["jalen hurts", "hurts"],
@@ -207,8 +221,8 @@ SECONDARY_TOPIC_POOL = [
 
 # Reserve pool guaranteed not to duplicate across stories
 ROTATING_BACKUP_POOL = [
-    {"url": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80", "caption": "National press briefing room and broadcast journalism desk.", "credit": "📸 Wire Media Archive"},
-    {"url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80", "caption": "Congressional proceedings and legislative committee assembly.", "credit": "📸 Capitol Press Gallery"},
+    {"url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80", "caption": "Financial market exchange trading floor and electronic index terminals.", "credit": "📸 Financial Wire Pool"},
+    {"url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80", "caption": "Enterprise technology infrastructure and network servers.", "credit": "📸 Technology Media Wire"},
     {"url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80", "caption": "Financial market exchange floor and trading terminals.", "credit": "📸 Financial Wire Pool"},
     {"url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80", "caption": "Championship athletics stadium under stadium lights.", "credit": "📸 Sports Wire Archive"},
     {"url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80", "caption": "Enterprise technology infrastructure and network servers.", "credit": "📸 Technology Media Wire"},
@@ -249,11 +263,20 @@ def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
 def extract_named_entities_from_title(title: str) -> List[str]:
     clean = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     entities = []
-    # Check for prominent multi-word capitalized names
-    matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b', clean)
-    for m in matches:
-        if m.lower() not in ["the hill", "usa today", "cbs sports", "yahoo sports", "new york times", "wall street journal", "just now"]:
+    stop_words = {"plans", "after", "almost", "decade", "delays", "investors", "temper", "revenue", "growth", "slowdown", "sources", "reportedly", "near", "deal", "expand", "teams", "ruled", "superficial", "blood", "clot", "the", "cnbc", "reuters", "yahoo", "sports", "york", "times", "today", "hill", "wall", "street", "journal"}
+    
+    # 1. Multi-word capitalized names (Jalen Hurts, College Football Playoff, Donald Trump)
+    multi_matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b', clean)
+    for m in multi_matches:
+        if m.lower() not in stop_words:
             entities.append(m.replace(" ", "_"))
+
+    # 2. Prominent single capitalized brand/proper nouns (Tesla, Anthropic, Apple, Nvidia, Boeing)
+    single_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]{3,}\b', clean)
+    for s in single_matches:
+        if s.lower() not in stop_words and s not in ["GOP", "IPO", "CEO", "USA", "NFL", "NBA", "MLB"]:
+            entities.append(s)
+
     return entities
 
 def resolve_story_image(title: str, category: str, used_urls: Set[str]) -> dict:
