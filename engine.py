@@ -506,8 +506,114 @@ def extract_named_entities_from_title(title: str) -> List[str]:
 
     return entities
 
-def resolve_story_image(title: str, category: str, used_urls: Set[str]) -> dict:
-    t_lower = title.lower()
+def is_usable_image_url(url: Optional[str]) -> bool:
+    """
+    Validates whether an imported/scraped image URL is legitimate, accessible, and editorial-quality.
+    Returns False if URL is empty, malformed, a tracking beacon, or an ad pixel.
+    """
+    if not url or not isinstance(url, str):
+        return False
+    u = url.strip()
+    u_lower = u.lower()
+    if not (u_lower.startswith("http://") or u_lower.startswith("https://")):
+        return False
+
+    # Filter out tracking pixels, ad server beacons, spacers, and generic icon assets
+    unusable_markers = [
+        "1x1", "pixel.gif", "beacon", "doubleclick.net", "adsystem",
+        "statcounter", "feedburner", "feedsportal", "sharethrough",
+        "outbrain", "taboola", "favicon.ico", "apple-touch-icon",
+        "spacer.gif", "blank.gif", "clear.gif", "avatar", "default-avatar",
+        "author-photo", "logo-placeholder"
+    ]
+    for marker in unusable_markers:
+        if marker in u_lower:
+            return False
+
+    if len(u) < 18:
+        return False
+
+    return True
+
+def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) -> Optional[Dict[str, str]]:
+    """
+    Extracts the editorial lead picture from RSS/Atom item elements.
+    Checks enclosure tags, media:content, media:thumbnail, and embedded description images.
+    """
+    clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
+
+    # 1. Check enclosure tag
+    for enc in item.findall("enclosure"):
+        url = enc.get("url") or enc.get("href")
+        enc_type = (enc.get("type") or "").lower()
+        if url and ("image" in enc_type or any(url.lower().endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".webp", ".avif"])):
+            if is_usable_image_url(url):
+                return {
+                    "url": url,
+                    "caption": f"{clean_title} editorial photograph.",
+                    "credit": f"📸 {source_name}"
+                }
+
+    # 2. Check media:content and media:thumbnail (with namespaces)
+    namespaces = [
+        "{http://search.yahoo.com/mrss/}",
+        "{http://search.yahoo.com/mrss}",
+        "{http://www.w3.org/2005/Atom}",
+        ""
+    ]
+    for ns in namespaces:
+        for mc in item.findall(f".//{ns}content"):
+            url = mc.get("url") or mc.get("href")
+            medium = (mc.get("medium") or "").lower()
+            mc_type = (mc.get("type") or "").lower()
+            if url and (medium == "image" or "image" in mc_type or any(url.lower().endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".webp", ".avif"])):
+                if is_usable_image_url(url):
+                    caption = item.findtext(f".//{ns}title") or item.findtext(f".//{ns}description") or f"{clean_title}."
+                    credit = item.findtext(f".//{ns}credit") or f"📸 {source_name}"
+                    return {
+                        "url": url,
+                        "caption": clean_html_text(caption),
+                        "credit": credit
+                    }
+
+        for mt in item.findall(f".//{ns}thumbnail"):
+            url = mt.get("url") or mt.get("href")
+            if url and is_usable_image_url(url):
+                return {
+                    "url": url,
+                    "caption": f"{clean_title}.",
+                    "credit": f"📸 {source_name}"
+                }
+
+    # 3. Check embedded <img> in description or content:encoded
+    raw_desc = item.findtext("description") or item.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or ""
+    if raw_desc and "<img" in raw_desc.lower():
+        match = re.search(r"<img[^>]+src=[\"\']([^\"\']+)[\"\']", raw_desc, re.IGNORECASE)
+        if match:
+            img_src = match.group(1).strip()
+            if is_usable_image_url(img_src):
+                return {
+                    "url": img_src,
+                    "caption": f"{clean_title}.",
+                    "credit": f"📸 {source_name}"
+                }
+
+    return None
+
+def resolve_story_image(title: str, category: str, used_urls: Set[str], scraped_image: Optional[dict] = None) -> dict:
+    clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
+    t_lower = clean_title.lower()
+
+    # PRIORITY 0: If the story is scraped or imported with a usable picture, USE THAT PICTURE!
+    if scraped_image and isinstance(scraped_image, dict):
+        scraped_url = scraped_image.get("url")
+        if is_usable_image_url(scraped_url):
+            used_urls.add(scraped_url)
+            return {
+                "url": scraped_url,
+                "caption": scraped_image.get("caption") or f"{clean_title} editorial photograph.",
+                "credit": scraped_image.get("credit") or "📸 Wire Service"
+            }
 
     # 1. Exact Entity Mapping
     for ent in EXACT_ENTITY_PHOTOGRAPHY:
@@ -570,6 +676,7 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                 ts, rel_time = parse_pubdate_to_relative(raw_pub_date)
 
                 if title and len(title) > 15:
+                    scraped_pic = extract_image_from_xml_item(item, feed_info["source"], title)
                     items.append({
                         "title": title,
                         "link": link,
@@ -577,7 +684,8 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                         "source_name": feed_info["source"],
                         "source": f"{feed_info['source']} • {rel_time}",
                         "pub_timestamp": ts,
-                        "category": feed_info["category"]
+                        "category": feed_info["category"],
+                        "scraped_image": scraped_pic
                     })
     except Exception as err:
         print(f"Notice: Feed fetch {feed_info['source']}: {err}")
@@ -608,7 +716,7 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
             continue
         valid_facts.append(s_clean + ".")
 
-    if len(valid_facts) >= 3:
+    if len(valid_facts) >= 4:
         def score_fact(f):
             score = 0
             if re.search(r'\d+', f): score += 2
@@ -616,7 +724,7 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
             if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated']): score += 1
             return score
         valid_facts.sort(key=score_fact, reverse=True)
-        return valid_facts[:3]
+        return valid_facts[:4]
 
     return valid_facts
 
@@ -1799,13 +1907,29 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "We must protect individual liberty and economic freedom from excessive top-down government mandates."
         ]
 
+    # Guarantee 4 facts
+    if len(core_facts) < 4:
+        for ef in extracted_facts:
+            if ef not in core_facts and len(core_facts) < 4:
+                core_facts.append(ef)
+        while len(core_facts) < 4:
+            fallbacks = [
+                f"Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed.",
+                f"Officials confirmed oversight procedures and stakeholder briefings will continue as updated metrics are reported.",
+                f"Independent tracking metrics and verified records outline the ongoing timeline and division impacts."
+            ]
+            for fb in fallbacks:
+                if fb not in core_facts and len(core_facts) < 4:
+                    core_facts.append(fb)
+    core_facts = core_facts[:4]
+
     return {
         "core_facts": core_facts,
         "neutral_summary": " ".join(core_facts[:2]),
         "perspectives": {
-            "LEFT": {"headline_framing": left_framing, "why_it_matters": left_bullets, "talking_points": left_talk},
-            "CENTER": {"headline_framing": center_framing, "why_it_matters": center_bullets, "talking_points": center_talk},
-            "RIGHT": {"headline_framing": right_framing, "why_it_matters": right_bullets, "talking_points": right_talk}
+            "LEFT": {"headline_framing": left_framing, "talking_points": left_talk},
+            "CENTER": {"headline_framing": center_framing, "talking_points": center_talk},
+            "RIGHT": {"headline_framing": right_framing, "talking_points": right_talk}
         }
     }
 
@@ -1822,38 +1946,35 @@ Title: {title}
 Context: {context}
 
 CRITICAL RULES:
-1. "core_facts": Return EXACTLY 3 distinct, verified factual bullet points.
+1. "core_facts": Return EXACTLY 4 distinct, verified factual bullet points.
    - DO NOT repeat the article title or headline.
    - Include real quotes, specific numbers, statistics, names, locations, and concrete details from the article.
    - Zero bias, strictly factual.
-2. "why_it_matters": Provide a UNIQUE breakdown of why the key facts matter depending on which lens a user sees the news through:
+2. "talking_points": Provide 2 soundbites per lens in CONVERSATIONAL LAY TERMS (natural everyday phrasing suitable for debates or discussions) directly based on the article and facts:
    - LEFT: Focus on public welfare, working families, civil rights, consumer protections, or corporate accountability.
    - CENTER: Focus on pragmatic operational trade-offs, practical feasibility, institutional stability, and balancing competing priorities.
    - RIGHT: Focus on free enterprise, individual liberty, fiscal responsibility, constitutional boundaries, and limiting bureaucratic overreach.
-3. "talking_points": Provide 2 soundbites per lens in CONVERSATIONAL LAY TERMS (natural everyday phrasing suitable for debates or discussions) directly based on the article and facts.
 
 Return strictly valid raw JSON:
 {{
   "core_facts": [
     "Specific factual bullet 1 with numbers, names, or actions (DO NOT repeat the headline)",
     "Specific factual bullet 2 with relevant quotes, statistics, or background details",
-    "Specific factual bullet 3 with procedural status, next steps, or specific impact"
+    "Specific factual bullet 3 with procedural status, next steps, or specific impact",
+    "Specific factual bullet 4 with broader context, downstream timeline, or quantitative data"
   ],
   "neutral_summary": "Two objective, verifiable sentences covering who, what, when, and where. Zero bias.",
   "perspectives": {{
     "LEFT": {{
       "headline_framing": "Sharp progressive framing tailored to this exact story",
-      "why_it_matters": ["Impact bullet 1", "Impact bullet 2", "Structural takeaway 3"],
       "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
     }},
     "CENTER": {{
       "headline_framing": "Sharp pragmatic institutional framing tailored to this exact story",
-      "why_it_matters": ["Operational trade-off bullet 1", "Practical feasibility bullet 2", "Balanced insight 3"],
       "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
     }},
     "RIGHT": {{
       "headline_framing": "Sharp conservative framing tailored to this exact story",
-      "why_it_matters": ["Free enterprise/accountability bullet 1", "Constitutional/liberty bullet 2", "Bottom-line takeaway 3"],
       "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
     }}
   }}
@@ -1955,10 +2076,10 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
         perspectives = s.get("perspectives", {})
         
-        # Format 3 core facts
+        # Format 4 core facts
         core_facts = s.get("core_facts")
         if isinstance(core_facts, list) and len(core_facts) > 0:
-            facts_items = "".join([f"<li>{f}</li>" for f in core_facts[:3]])
+            facts_items = "".join([f"<li>{f}</li>" for f in core_facts[:4]])
             facts_markup = f'<ul class="core-facts-list">{facts_items}</ul>'
         else:
             facts_markup = f'<div class="neutral-desc">{summary}</div>'
@@ -1991,19 +2112,18 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             <h3 class="story-title">{s.get('title', '')}</h3>
 
             <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Core Facts (Verified Breakdown)</div>
+              <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
               {facts_markup}
             </div>"""
 
         lensList = [
-            {"key": "CENTER", "name": "Centrist / Balanced", "icon": "🟢", "chipClass": "emerald", "bulletClass": "emerald", "display": ""},
-            {"key": "RIGHT", "name": "Conservative Lens", "icon": "🔴", "chipClass": "red", "bulletClass": "red", "display": "style=\"display: none;\""},
-            {"key": "LEFT", "name": "Progressive Lens", "icon": "🔵", "chipClass": "blue", "bulletClass": "blue", "display": "style=\"display: none;\""}
+            {"key": "CENTER", "name": "Centrist / Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
+            {"key": "RIGHT", "name": "Conservative Lens", "icon": "🔴", "chipClass": "red", "display": 'style="display: none;"'},
+            {"key": "LEFT", "name": "Progressive Lens", "icon": "🔵", "chipClass": "blue", "display": 'style="display: none;"'}
         ]
 
         for lens in lensList:
             pData = perspectives.get(lens["key"], {})
-            bullets = "".join([f"<li>{b}</li>" for b in pData.get("why_it_matters", [])])
             tp_list = pData.get("talking_points", [])
             quotes = "".join([f'<div class="quote-row">"{tp}"</div>' for tp in tp_list])
 
@@ -2026,11 +2146,6 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 <span>📌</span>
                 <span>{pData.get('headline_framing', 'Perspective Framing')}</span>
               </div>
-
-              <div class="label-heading">Why It Matters For Your Stance:</div>
-              <ul class="compact-bullets {lens['bulletClass']}">
-                {bullets}
-              </ul>
 
               <div class="talking-points-panel">
                 <div class="panel-header">
@@ -2173,10 +2288,15 @@ def run_pipeline():
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
 
-        img_info = resolve_story_image(title, cat, used_urls)
-        s["image_url"] = img_info["url"]
-        s["caption"] = img_info["caption"]
-        s["credit"] = img_info["credit"]
+        # If the story is imported/scraped with a usable picture, use and preserve that picture!
+        existing_url = s.get("image_url")
+        if is_usable_image_url(existing_url):
+            used_urls.add(existing_url)
+        else:
+            img_info = resolve_story_image(title, cat, used_urls, scraped_image=None)
+            s["image_url"] = img_info["url"]
+            s["caption"] = img_info["caption"]
+            s["credit"] = img_info["credit"]
 
     existing_titles = {str(s.get("title") or "").strip().lower() for s in existing_stories}
     new_stories = []
@@ -2191,7 +2311,8 @@ def run_pipeline():
             print(f"Processing wire item: {t[:65]}...")
             cat_assigned, master_cat_assigned = classify_article(t, it["description"])
             synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
-            img_info = resolve_story_image(t, cat_assigned, used_urls)
+            scraped_pic = it.get("scraped_image")
+            img_info = resolve_story_image(t, cat_assigned, used_urls, scraped_image=scraped_pic)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             story_record = {
                 "id": story_id,
