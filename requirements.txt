@@ -1,1 +1,2 @@
-# Standard library only
+# Standard library execution - zero external package dependencies required
+# Compatible with Python 3.9+
