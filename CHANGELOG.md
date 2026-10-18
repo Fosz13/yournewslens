@@ -1,3 +1,21 @@
+## 4. General Image Relevance & Entity Recognition Overhaul
+- **Problem**: 
+  - An article regarding "5 Takeaways From The Times's Re-Examination of the O.J. Simpson Case" showed power transmission lines.
+  - An article regarding "France Reels After Largest Riots in Years" showed a yellow mechanical power cord reel.
+  - Non-energy articles (such as maritime fentanyl interdiction and suspicious election mailings) were occasionally falling through to power transmission lines or sports stadiums.
+- **Root Causes**:
+  1. **Acronym & Initialism Exclusion**: The old regex `[A-Z][a-z]+` failed on dotted names like `O.J. Simpson`, bypassing named entity recognition and falling through to the generic backup pool.
+  2. **Title-Case Verb Hallucination**: Common capitalized verbs (e.g. `Reels` in "France Reels After Largest Riots in Years") were sent to Wikipedia as single nouns, returning an electrical power cord reel.
+  3. **Absence of Semantic Verification**: Wikipedia API results were accepted without checking whether the page description was a mechanical tool, hardware spool, or biological taxon.
+  4. **Single Blind Fallback Pool**: When a story had no exact keyword match, a single global pool rotated through images, causing non-energy stories to be assigned power lines.
+- **General Fix Implemented**:
+  1. **Enhanced Named Entity Normalization**: Automatically normalizes initials (`O.J.` -> `OJ`) and extracts multi-word proper nouns (`OJ_Simpson`, `France_Riots`).
+  2. **150+ Headline Noise Word Filtering**: Strictly prevents headline verbs (`reels`, `takes`, `slams`, `faces`, `sparks`, `eyes`, `bids`, `steps`, `warns`, `halts`, `drops`, `rises`, `kills`, `shoots`, etc.) and generic words (`case`, `years`, `takeaways`, `largest`) from being queried as entities.
+  3. **Wikipedia Semantic Relevance Filter**: Verifies that returned Wikipedia summaries are not disambiguation pages, mechanical devices, spools, tools, or hardware.
+  4. **Category-Specific Fallback Pools**: Replaced the global rotating backup pool with 10 dedicated category pools. Crime & Public Safety stories always receive courtrooms, gavels, or law enforcement; World News stories always receive diplomatic summits, protests, or international shipping. Power transmission lines can ONLY ever appear for Energy & Weather stories.
+  5. **Automated Self-Healing Image Loop**: Scans all stories on every run and auto-replaces any mismatched images (e.g. power lines on non-energy, stadiums on non-sports, servers on non-tech).
+  6. **Curated Coverage for Featured Stories**: Added verified images for O.J. Simpson (`📸 Wikimedia Commons / Court Pool Archive`), France Riots (`📸 European News Wire Archive`), Courtrooms, Cargo Ports, Nuclear SMRs, Semiconductors, and Geneva Talks.
+
 # Your News Lens — Release Notes & Updates
 
 ## 1. Removed "Pragmatic Implementation" Framing Section

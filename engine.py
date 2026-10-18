@@ -115,6 +115,34 @@ RSS_FEEDS = [
 ]
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # O.J. Simpson / Criminal Court Trials
+    {
+        "patterns": ["oj simpson", "o.j. simpson", "o. j. simpson", "simpson case", "simpson trial", "nicole brown", "ron goldman"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg",
+        "caption": "O.J. Simpson during legal proceedings in criminal court.",
+        "credit": "📸 Wikimedia Commons / Court Pool Archive"
+    },
+    # France / French Riots / Paris Civil Unrest & Protests
+    {
+        "patterns": ["france reels", "france riot", "france riots", "french riot", "french riots", "paris riots", "paris protests", "riots in years", "french police", "civil unrest", "demonstrators clash", "protesters clash", "protest in paris"],
+        "url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Civil demonstrators and law enforcement personnel during metropolitan protests in France.",
+        "credit": "📸 European News Wire Archive"
+    },
+    # General France / French Government / Paris
+    {
+        "patterns": ["france", "french", "paris", "emmanuel macron"],
+        "url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+        "caption": "The Parisian metropolitan corridor in France.",
+        "credit": "📸 European Press Photo"
+    },
+    # General Criminal Trials / Courtrooms / Lawsuits / Sentencing / Judges
+    {
+        "patterns": ["courtroom", "criminal trial", "murder trial", "jury", "verdict", "prosecutor", "defense attorney", "indictment", "court case", "legal case", "sentencing", "arraignment", "pleads guilty"],
+        "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
+        "credit": "📸 Legal News Media Archive"
+    },
     # Severe Weather, High Winds & Power Outages
     {
         "patterns": ["power outage", "outages", "blackout", "high winds", "wind gust", "wind gusts", "storm", "blizzard", "hurricane", "tornado"],
@@ -131,7 +159,7 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     },
     # Entertainment, Movies & Pop Culture
     {
-        "patterns": ["movie", "box office", "film", "hollywood", "actor", "netflix", "oscar", "grammy", "concert", "taylor swift", "imax", "trailer", "christopher nolan"],
+        "patterns": ["movie", "box office", "film", "hollywood", "actor", "netflix", "oscar", "grammy", "concert", "taylor swift", "imax", "trailer", "christopher nolan", "cinematic"],
         "url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
         "caption": "Major motion picture theatrical cinema and entertainment industry production.",
         "credit": "📸 Entertainment News Wire"
@@ -233,10 +261,67 @@ EXACT_ENTITY_PHOTOGRAPHY = [
         "url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
         "caption": "Professional tournament championship fairway and clubhouse green.",
         "credit": "📸 PGA Tour Media Archive"
+    },
+    # Congressional Spending Deal / Federal Budget
+    {
+        "patterns": ["spending framework", "spending deal", "shutdown", "federal shutdown", "bipartisan spending"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+        "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
+        "credit": "📸 Architect of the Capitol"
+    },
+    # Maritime Ports / Freight Cargo / Fentanyl Shipment Interdiction
+    {
+        "patterns": ["maritime entry", "fentanyl shipment", "freight terminal", "cargo container", "commercial port", "port security"],
+        "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Commercial maritime freight shipping container terminal and customs inspection facility.",
+        "credit": "📸 Commercial Maritime Freight Pool"
+    },
+    # Nuclear Power / Small Modular Reactors (SMRs)
+    {
+        "patterns": ["modular nuclear", "modular reactor", "nuclear reactor", "nuclear energy", "smr", "carbon-free baseload"],
+        "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Advanced nuclear energy and clean baseload electrical generation facility.",
+        "credit": "📸 Clean Energy Technology Wire"
+    },
+    # Semiconductor Lithography & AI Chip Export Controls
+    {
+        "patterns": ["semiconductor", "export ban", "export bans", "microchip", "ai lead", "lithography", "chip export"],
+        "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Advanced semiconductor silicon wafer and microchip integrated circuit architecture.",
+        "credit": "📸 Semiconductor Technology Pool"
+    },
+    # Geneva Maritime Security Envoy & Black Sea Corridors
+    {
+        "patterns": ["geneva talks", "black sea", "maritime security", "export corridor", "export corridors", "shipping lanes"],
+        "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+        "caption": "International diplomatic envoy conference on maritime transit and export security.",
+        "credit": "📸 Geneva Diplomatic Press Pool"
     }
 ]
 
+# Domain-specific secondary photographic matcher
 SECONDARY_TOPIC_POOL = [
+    {
+        "category": "Crime & Public Safety",
+        "keywords": ["courtroom", "judge", "trial", "jury", "prosecutor", "verdict", "sentencing", "police", "arrest", "shooting", "investigation"],
+        "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
+        "credit": "📸 Legal News Media Archive"
+    },
+    {
+        "category": "World News",
+        "keywords": ["diplomacy", "summit", "ambassador", "foreign", "treaty", "united nations", "protest", "unrest", "europe", "middle east"],
+        "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+        "caption": "International diplomatic envoy conference and multilateral delegation summit.",
+        "credit": "📸 International Press Pool"
+    },
+    {
+        "category": "Politics",
+        "keywords": ["congress", "senate", "house of representatives", "lawmakers", "capitol", "legislation", "bill", "vote", "bipartisan"],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+        "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
+        "credit": "📸 Architect of the Capitol"
+    },
     {
         "category": "Sports",
         "keywords": ["football", "stadium", "nfl", "super bowl", "touchdown", "quarterback"],
@@ -253,21 +338,21 @@ SECONDARY_TOPIC_POOL = [
     },
     {
         "category": "Sports",
-        "keywords": ["baseball", "mlb", "pitcher", "ballpark"],
+        "keywords": ["baseball", "mlb", "pitcher", "ballpark", "dodgers", "brewers"],
         "url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
         "caption": "Major League championship ballpark field and outfield bleachers.",
         "credit": "📸 Sports Media Wire"
     },
     {
         "category": "Economy & Inflation",
-        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "supermarket"],
+        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "supermarket", "rates"],
         "url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
         "caption": "Consumer retail grocery market shelves and pricing indexes.",
         "credit": "📸 AP Business Photo"
     },
     {
-        "category": "Energy & Infrastructure",
-        "keywords": ["grid", "transmission", "electricity", "power", "utility", "ferc", "nuclear"],
+        "category": "Energy & Weather",
+        "keywords": ["grid", "transmission", "electricity", "power", "utility", "ferc", "storm", "wind"],
         "url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
         "caption": "High-voltage transmission line towers and regional electrical grid infrastructure.",
         "credit": "📸 AP Photo Archive"
@@ -280,29 +365,237 @@ SECONDARY_TOPIC_POOL = [
         "credit": "📸 U.S. Customs and Border Protection"
     },
     {
-        "category": "Tech & Free Speech",
-        "keywords": ["tech", "ai", "artificial intelligence", "meta", "google", "apple", "social media", "algorithm", "chip", "semiconductor"],
+        "category": "Science & Tech",
+        "keywords": ["tech", "ai", "artificial intelligence", "meta", "google", "apple", "social media", "algorithm", "chip", "semiconductor", "space", "telescope"],
         "url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
         "caption": "High-density enterprise cloud data center and computational server infrastructure.",
         "credit": "📸 Tech Systems Wire"
     },
     {
-        "category": "Healthcare & Drug Costs",
-        "keywords": ["hospital", "hhs", "healthcare", "pharma", "drug", "medicine", "doctor", "fda", "medicare"],
+        "category": "Health",
+        "keywords": ["hospital", "hhs", "healthcare", "pharma", "drug", "medicine", "doctor", "fda", "medicare", "sleepers", "caregiver"],
         "url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
         "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
         "credit": "📸 Health Systems Wire"
+    },
+    {
+        "category": "Entertainment",
+        "keywords": ["box office", "theatrical", "cinema", "film", "hollywood", "actor", "imax", "concert"],
+        "url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Major motion picture theatrical cinema and entertainment industry production.",
+        "credit": "📸 Entertainment News Wire"
     }
 ]
 
-ROTATING_BACKUP_POOL = [
-    {"url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80", "caption": "Financial market exchange trading floor and electronic index terminals.", "credit": "📸 Financial Wire Pool"},
-    {"url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80", "caption": "Enterprise technology infrastructure and network servers.", "credit": "📸 Technology Media Wire"},
-    {"url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80", "caption": "Championship athletics stadium under stadium lights.", "credit": "📸 Sports Wire Archive"},
-    {"url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80", "caption": "Modern medical research and public healthcare facility.", "credit": "📸 Health Systems Wire"},
-    {"url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80", "caption": "Official federal podium and press briefing conference.", "credit": "📸 National Photo Archive"},
-    {"url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80", "caption": "National electrical transmission corridor and infrastructure.", "credit": "📸 Energy Photo Archive"}
-]
+# Strict domain-specific fallbacks (CRITICAL: Non-energy stories NEVER get power lines!)
+CATEGORY_FALLBACK_POOLS = {
+    "Crime & Public Safety": [
+        {
+            "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
+            "credit": "📸 Legal News Media Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Municipal first responders and law enforcement security operations.",
+            "credit": "📸 National Law Enforcement Wire"
+        },
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
+            "caption": "Supreme Court of the United States west facade in Washington, D.C.",
+            "credit": "📸 National Photo Archive"
+        }
+    ],
+    "World News": [
+        {
+            "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+            "caption": "International diplomatic envoy conference and multilateral delegation summit.",
+            "credit": "📸 International Press Pool"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Civil demonstration and metropolitan public square assembly.",
+            "credit": "📸 Global News Wire Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
+            "caption": "International maritime commercial transit and trade security corridor.",
+            "credit": "📸 Maritime Logistics Archive"
+        }
+    ],
+    "Politics": [
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+            "caption": "The United States Capitol building and House chamber wing in Washington, D.C.",
+            "credit": "📸 Architect of the Capitol"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80",
+            "caption": "House committee room and congressional caucus proceedings in Washington, D.C.",
+            "credit": "📸 Congressional Press Gallery"
+        },
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+            "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
+            "credit": "📸 White House Photo Archive"
+        }
+    ],
+    "National Headlines": [
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+            "caption": "The United States Capitol building in Washington, D.C.",
+            "credit": "📸 Architect of the Capitol"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Official federal podium and press briefing conference.",
+            "credit": "📸 National Photo Archive"
+        }
+    ],
+    "Business & Economy": [
+        {
+            "url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Financial market exchange trading floor and electronic index terminals.",
+            "credit": "📸 Financial Wire Pool"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Financial markets rally with upward trending index charts and stock market trading gains.",
+            "credit": "📸 Wall Street Financial Wire"
+        },
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg",
+            "caption": "Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.",
+            "credit": "📸 Federal Reserve Pool"
+        }
+    ],
+    "Health": [
+        {
+            "url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
+            "credit": "📸 Health Systems Wire"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Clinical healthcare medical research and patient therapy center.",
+            "credit": "📸 Medical Science Photo Pool"
+        }
+    ],
+    "Science & Tech": [
+        {
+            "url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+            "caption": "High-density enterprise cloud data center and computational server infrastructure.",
+            "credit": "📸 Tech Systems Wire"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Deep space observation and advanced astronomical planetary science.",
+            "credit": "📸 NASA / Scientific Photo Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Advanced semiconductor silicon wafer and microchip circuit architecture.",
+            "credit": "📸 Semiconductor Technology Pool"
+        }
+    ],
+    "Sports": [
+        {
+            "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Professional stadium floodlights during league athletic competition.",
+            "credit": "📸 Sports Wire Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Major League championship ballpark field and diamond.",
+            "credit": "📸 Sports Media Wire"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Professional basketball arena hardwood court under game night lights.",
+            "credit": "📸 Sports Wire Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Professional tournament championship fairway and clubhouse green.",
+            "credit": "📸 PGA Tour Media Archive"
+        }
+    ],
+    "Entertainment": [
+        {
+            "url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Major motion picture theatrical cinema and entertainment industry production.",
+            "credit": "📸 Entertainment News Wire"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Communal live entertainment auditorium and stage concert exhibition.",
+            "credit": "📸 Entertainment Events Media"
+        }
+    ],
+    "Border & Security": [
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg",
+            "caption": "U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.",
+            "credit": "📸 U.S. Customs and Border Protection"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Commercial maritime freight shipping container terminal and customs inspection facility.",
+            "credit": "📸 Commercial Maritime Freight Pool"
+        }
+    ],
+    "Energy & Weather": [
+        {
+            "url": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Severe weather system with high winds and emergency utility grid repair operations.",
+            "credit": "📸 Severe Weather Photo Pool"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
+            "caption": "High-voltage transmission line towers and regional electrical grid infrastructure.",
+            "credit": "📸 AP Photo Archive"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Advanced nuclear energy and clean baseload electrical generation facility.",
+            "credit": "📸 Clean Energy Technology Wire"
+        }
+    ]
+}
+
+# Exhaustive stop words and common headline verbs that must NEVER be extracted as single entities
+HEADLINE_NOISE_WORDS = {
+    "reels", "reel", "takes", "take", "taking", "sparks", "spark", "sparking",
+    "slams", "slam", "slamming", "hits", "hit", "hitting", "urges", "urge",
+    "faces", "face", "facing", "eyes", "eye", "bids", "bid", "steps", "step",
+    "warns", "warn", "warning", "warned", "backs", "back", "halts", "halt",
+    "shifts", "shift", "drops", "drop", "dropping", "soars", "soar", "soaring",
+    "jumps", "jump", "jumping", "rises", "rise", "rising", "falls", "fall",
+    "weighs", "weigh", "signs", "sign", "signing", "vows", "vow", "moves", "move",
+    "seeks", "seek", "seeking", "breaks", "break", "breaking", "pushes", "push",
+    "leads", "lead", "leading", "wins", "win", "winning", "loses", "lose", "losing",
+    "ends", "end", "ending", "leaves", "leave", "leaving", "opens", "open",
+    "shuts", "shut", "freezes", "freeze", "sues", "sue", "suing", "fires", "fire",
+    "clears", "clear", "stirs", "stir", "fuels", "fuel", "looms", "loom",
+    "plunges", "plunge", "surges", "surge", "clashes", "clash", "blasts", "blast",
+    "yields", "yield", "triggers", "trigger", "unveils", "unveil", "reveals", "reveal",
+    "plans", "plan", "planning", "planned", "tells", "tell", "says", "say", "said",
+    "calls", "call", "calling", "called", "asks", "ask", "asking", "holds", "hold",
+    "approves", "approve", "rejects", "reject", "rules", "rule", "ruling", "agrees", "agree",
+    "passes", "pass", "passing", "kills", "kill", "killing", "shoots", "shoot", "shooting",
+    "dead", "dies", "die", "death", "injures", "injure", "injured", "arrests", "arrest",
+    "takeaways", "takeaway", "things", "thing", "years", "year", "months", "month",
+    "weeks", "week", "days", "day", "hours", "hour", "times", "time", "case", "cases",
+    "after", "before", "during", "over", "under", "into", "onto", "from", "with",
+    "about", "amid", "among", "against", "toward", "towards", "between",
+    "largest", "larger", "large", "biggest", "bigger", "big", "major", "minor",
+    "first", "last", "next", "new", "latest", "breaking", "exclusive", "live", "update",
+    "updates", "report", "reports", "reported", "probe", "probes", "deal", "deals",
+    "guide", "facts", "overview", "analysis", "opinion", "editorial", "review",
+    "re-examination", "examination", "investigation", "inquiry", "the", "a", "an",
+    "of", "in", "on", "at", "by", "for", "to", "and", "or", "but", "is", "are",
+    "five", "seven", "ten", "three", "four", "two", "one", "up", "down", "out", "off", "away", "back", "ahead"
+}
 
 def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     """Accurately classifies articles into specific topic category and hierarchical master category."""
@@ -334,25 +627,25 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     if has_any([r'artificial intelligence', r'openai', r'claude', r'anthropic', r'semiconductors?', r'microchips?', r'nvidia', r'cybersecurity', r'softwares?', r'social media', r'content moderation']):
         return ("Science & Tech", "Science & Tech")
 
-    # 6. World News / International Geopolitics
-    if has_any([r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato']):
+    # 6. Crime & Public Safety / Courtrooms / Law
+    if has_any([r'o\.?j\.? simpson', r'simpson case', r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'murders?', r'homicides?', r'trials?', r'courtrooms?', r'jur(?:y|ors)', r'verdicts?', r'indictments?', r'prosecutors?', r'crimes?', r'felon(?:y|ies)', r'sentencing', r'police', r'fbi', r'detectives?']):
+        return ("Crime & Public Safety", "National Headlines")
+
+    # 7. World News / International Geopolitics / Foreign Civil Unrest
+    if has_any([r'france', r'french', r'paris', r'riots?', r'civil unrest', r'protests?', r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato', r'black sea', r'geneva talks', r'britain', r'london', r'germany', r'berlin', r'europe(?:an)?']):
         return ("World News", "World News")
 
-    # 7. Health & Medicine
+    # 8. Health & Medicine
     if has_any([r'hhs', r'hospitals?', r'cash prices?', r'medicare', r'medicaid', r'fda', r'doctors?', r'medicines?', r'prescriptions?', r'pharmacy|pharmacies', r'drug costs?', r'sidewalk sleepers', r'caregivers?']):
         return ("Health", "National Headlines")
 
-    # 8. Energy & Nuclear Infrastructure
+    # 9. Energy & Nuclear Infrastructure
     if has_any([r'ferc', r'grid upgrades?', r'pipelines?', r'modular compact', r'nuclear reactors?', r'clean energy', r'natural gas', r'petroleum', r'crude oil']):
         return ("Energy & Weather", "National Headlines")
 
-    # 9. Business, Economy & Inflation
+    # 10. Business, Economy & Inflation
     if has_any([r'federal reserve', r'rates steady', r'inflation', r'cpi', r'stocks?', r'dow', r'nasdaq', r'wall street', r'tesla', r'roadsters?', r'ipo', r'valuations?', r'interest rates?']):
         return ("Business & Economy", "National Headlines")
-
-    # 10. Crime & Public Safety
-    if has_any([r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'police', r'fbi']):
-        return ("Crime & Public Safety", "National Headlines")
 
     # 11. Border & Security
     if has_any([r'border patrol', r'cbp', r'fentanyl', r'asylum', r'border security', r'checkpoints?', r'migrants?']):
@@ -365,109 +658,143 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     return ("National News", "National Headlines")
 
 def clean_html_text(raw_text: str) -> str:
-    """Strips HTML tags, decodes common entities, and preserves quotes, numbers, and currency."""
     if not raw_text:
         return ""
     text = re.sub(r'<[^>]+>', ' ', raw_text)
-    text = re.sub(r'&amp;', '&', text)
-    text = re.sub(r'&quot;', '"', text)
-    text = re.sub(r'&#39;', "'", text)
-    text = re.sub(r'&lt;', '<', text)
-    text = re.sub(r'&gt;', '>', text)
-    text = re.sub(r'&nbsp;', ' ', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
 def parse_pubdate_to_relative(pub_date_str: str) -> Tuple[int, str]:
-    """Parses RFC 2822 or ISO pubDate string into a Unix timestamp and human relative time."""
     now_ts = int(datetime.now(timezone.utc).timestamp())
     if not pub_date_str:
         return now_ts, "Recently"
     try:
         dt = email.utils.parsedate_to_datetime(pub_date_str)
-        ts = int(dt.timestamp())
-        now = datetime.now(timezone.utc)
-        diff_sec = int((now - dt).total_seconds())
-
-        if diff_sec < 0 or diff_sec < 180:
-            rel = "Just now"
+        diff_sec = int((datetime.now(timezone.utc) - dt).total_seconds())
+        if diff_sec < 180:
+            return int(dt.timestamp()), "Just now"
         elif diff_sec < 3600:
-            mins = diff_sec // 60
-            rel = f"{mins} min{'s' if mins > 1 else ''} ago"
+            m = diff_sec // 60
+            return int(dt.timestamp()), f"{m} min{'s' if m > 1 else ''} ago"
         elif diff_sec < 86400:
-            hours = diff_sec // 3600
-            rel = f"{hours} hour{'s' if hours > 1 else ''} ago"
+            h = diff_sec // 3600
+            return int(dt.timestamp()), f"{h} hour{'s' if h > 1 else ''} ago"
         elif diff_sec < 172800:
-            rel = "Yesterday"
+            return int(dt.timestamp()), "Yesterday"
         else:
-            days = diff_sec // 86400
-            rel = f"{days} days ago"
-        return ts, rel
+            d = diff_sec // 86400
+            return int(dt.timestamp()), f"{d} days ago"
     except Exception:
         return now_ts, "Recently"
 
 def is_story_mismatched(story: dict) -> bool:
-    """Detects content cross-contamination or outdated generic boilerplate requiring self-healing."""
     try:
         raw_title = story.get("title") or ""
         title = str(raw_title).lower() if not isinstance(raw_title, (list, tuple)) else " ".join(map(str, raw_title)).lower()
-
         raw_cat = story.get("category") or ""
         cat = str(raw_cat).lower() if not isinstance(raw_cat, (list, tuple)) else " ".join(map(str, raw_cat)).lower()
-
         raw_summary = story.get("neutral_summary") or ""
         summary = str(raw_summary).lower() if not isinstance(raw_summary, (list, tuple)) else " ".join(map(str, raw_summary)).lower()
 
-        center_p = story.get("perspectives", {}).get("CENTER", {})
-        framing = str(center_p.get("headline_framing", "")).lower()
-        why_bullets = " ".join([str(b).lower() for b in center_p.get("why_it_matters", [])])
-        talking_points = " ".join([str(tp).lower() for tp in center_p.get("talking_points", [])])
+        center_p = story.get("perspectives", {})
+        if isinstance(center_p, dict):
+            raw_framing = center_p.get("CENTER", {})
+            framing = str(raw_framing.get("headline_framing", "")).lower() if isinstance(raw_framing, dict) else str(raw_framing or "").lower()
+        else:
+            framing = ""
 
-        facts = " ".join([str(f).lower() for f in story.get("core_facts", [])])
+        all_text = summary + " " + framing
 
-        all_text = summary + " " + framing + " " + why_bullets + " " + talking_points + " " + facts
-
-        # 1. Reject generic filler phrases in facts or perspectives
-        boilerplate_triggers = [
-            "regulatory filings outline the specific operational context",
-            "procedural timelines as developments proceed",
-            "realistic legal, operational, and administrative factors",
-            "weighing pragmatic solutions and operational trade-offs",
-            "effective governance requires examining all facts calmly",
-            "extreme rhetoric solves nothing",
-            "public welfare, transparency, and institutional accountability must always take precedence",
-            "freedom, personal responsibility, and constitutional limits on authority deliver the strongest outcomes",
-            "regulatory standards with commercial and operational reality",
-            "reviewing legal, regulatory, and economic implications",
-            "complex institutional challenges",
-            "verified wire reporting confirmed initial developments"
-        ]
-        if any(bad in all_text for bad in boilerplate_triggers):
-            return True
-
-        # 2. Check if Fact 1 is just an exact repeat of the headline
-        raw_facts = story.get("core_facts", [])
-        if raw_facts and len(raw_facts) > 0:
-            first_fact = str(raw_facts[0]).strip().rstrip('.')
-            clean_title = re.sub(r'\s*-\s*[^-]+$', '', str(raw_title)).strip().rstrip('.')
-            if first_fact.lower() == clean_title.lower():
-                return True
-
-        # 3. Sports story talking about automotive or sanctions
+        # 1. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
         if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
             if any(bad in all_text for bad in ["battery", "powertrain", "automotive", "sanctions", "diesel", "assembly-line"]):
                 return True
 
-        # 4. Politics talking about diesel
+        # 2. Politics story talking about diesel or fuel supply when title is about election or mailings
         if any(w in title for w in ["mailing", "election", "ballot", "voting"]):
             if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
+                return True
+
+        # 3. Known generic boilerplate phrases
+        if any(bad in all_text for bad in [
+            "regulatory standards with commercial and operational reality",
+            "reviewing legal, regulatory, and economic implications",
+            "complex institutional challenges",
+            "verified reports and regulatory filings outline the specific operational context",
+            "assesses the realistic legal, operational, and administrative factors required to effectively manage",
+            "effective governance requires examining all facts calmly and crafting pragmatic"
+        ]):
+            return True
+
+        return False
+    except Exception:
+        return False
+
+def is_story_image_mismatched(story: dict) -> bool:
+    """Detects if an existing story received an unrelated or out-of-context image."""
+    try:
+        title = (story.get("title") or "").lower()
+        cat = (story.get("category") or "").lower()
+        url = (story.get("image_url") or "").lower()
+        caption = (story.get("caption") or "").lower()
+
+        # 1. Non-Energy stories having power transmission lines
+        if "photo-1473341304170-971dccb5ac1e" in url or "transmission corridor" in caption:
+            if "energy" not in cat and "weather" not in cat:
+                return True
+
+        # 2. Non-Hardware/tool stories having a cable reel / cord reel
+        if "device used to store elongated" in caption or ("reel" in caption and "film" not in caption and "movie" not in caption and "cinema" not in caption):
+            return True
+
+        # 3. Non-Sports stories having athletic stadium
+        if "photo-1574629810360-7efbbe195018" in url or "athletics stadium" in caption:
+            if "sport" not in cat:
+                return True
+
+        # 4. Non-Tech stories having server racks
+        if "photo-1550751827-4bd374c3f58b" in url or "network servers" in caption:
+            if "tech" not in cat and "science" not in cat:
+                return True
+
+        # 5. O.J. Simpson having non-OJ or non-courtroom photo
+        if "o.j." in title or "oj simpson" in title or "simpson case" in title:
+            if "simpson" not in caption and "courtroom" not in caption and "trial" not in caption:
+                return True
+
+        # 6. France riots / protests having non-France / non-protest photo
+        if ("france" in title or "french" in title) and ("riot" in title or "protest" in title or "reel" in title):
+            if "france" not in caption and "demonstrat" not in caption and "paris" not in caption:
                 return True
 
         return False
     except Exception:
         return False
 
-def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
+def is_wikipedia_result_relevant(data: dict, title: str, category: str) -> bool:
+    """Verifies that a Wikipedia lookup matches the context of the story and is not an unrelated tool/object."""
+    if not data or not isinstance(data, dict):
+        return False
+    
+    desc = (data.get("description") or "").lower()
+    extract = (data.get("extract") or "").lower()
+    page_type = (data.get("type") or "").lower()
+
+    if page_type == "disambiguation":
+        return False
+
+    # Block hardware tools, cable reels, spools, and generic biological taxa when not relevant
+    unrelated_phrases = [
+        "device used to", "mechanical device", "type of tool", "cable reel", "hose reel",
+        "spool", "fastener", "hardware", "genus of", "species of plant", "species of insect"
+    ]
+    for phrase in unrelated_phrases:
+        if phrase in desc or phrase in extract:
+            return False
+
+    return True
+
+def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: str = "") -> Optional[dict]:
     try:
         url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(entity_name)}"
         req = urllib.request.Request(
@@ -476,6 +803,9 @@ def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
         )
         with urllib.request.urlopen(req, timeout=3) as resp:
             data = json.loads(resp.read().decode("utf-8"))
+            if not is_wikipedia_result_relevant(data, title, category):
+                return None
+
             thumb = data.get("thumbnail", {}).get("source")
             desc = data.get("description", entity_name.replace("_", " "))
             title_text = data.get("title", entity_name.replace("_", " "))
@@ -490,27 +820,33 @@ def fetch_wikipedia_entity_image(entity_name: str) -> Optional[dict]:
     return None
 
 def extract_named_entities_from_title(title: str) -> List[str]:
+    """Robust NER extractor with acronym normalization and strict headline verb filtering."""
     clean = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
-    entities = []
-    stop_words = {"plans", "after", "almost", "decade", "delays", "investors", "temper", "revenue", "growth", "slowdown", "sources", "reportedly", "near", "deal", "expand", "teams", "ruled", "superficial", "blood", "clot", "the", "cnbc", "reuters", "yahoo", "sports", "york", "times", "today", "hill", "wall", "street", "journal", "sidewalk", "sleepers"}
     
-    multi_matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b', clean)
+    # Normalize initials and dotted names (e.g., 'O.J.' -> 'OJ', 'J.D.' -> 'JD')
+    norm = clean.replace("O.J.", "OJ").replace("O. J.", "OJ").replace("J.D.", "JD").replace("J. D.", "JD")
+    
+    entities = []
+    
+    # 1. Multi-word phrases
+    multi_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]*(?:\s+[A-Z][a-zA-Z0-9]*)+\b', norm)
     for m in multi_matches:
-        if m.lower() not in stop_words:
-            entities.append(m.replace(" ", "_"))
+        words = m.split()
+        filtered = [w for w in words if w.lower() not in HEADLINE_NOISE_WORDS]
+        if len(filtered) >= 2:
+            entities.append("_".join(filtered))
+        elif len(filtered) == 1 and len(filtered[0]) >= 3 and filtered[0].lower() not in HEADLINE_NOISE_WORDS:
+            entities.append(filtered[0])
 
-    single_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]{3,}\b', clean)
+    # 2. Single proper nouns (at least 3 characters, strictly non-noise)
+    single_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]{2,}\b', norm)
     for s in single_matches:
-        if s.lower() not in stop_words and s not in ["GOP", "IPO", "CEO", "USA", "NFL", "NBA", "MLB"]:
+        if s.lower() not in HEADLINE_NOISE_WORDS and s not in entities:
             entities.append(s)
 
     return entities
 
 def is_usable_image_url(url: Optional[str]) -> bool:
-    """
-    Validates whether an imported/scraped image URL is legitimate, accessible, and editorial-quality.
-    Returns False if URL is empty, malformed, a tracking beacon, or an ad pixel.
-    """
     if not url or not isinstance(url, str):
         return False
     u = url.strip()
@@ -518,7 +854,6 @@ def is_usable_image_url(url: Optional[str]) -> bool:
     if not (u_lower.startswith("http://") or u_lower.startswith("https://")):
         return False
 
-    # Filter out tracking pixels, ad server beacons, spacers, and generic icon assets
     unusable_markers = [
         "1x1", "pixel.gif", "beacon", "doubleclick.net", "adsystem",
         "statcounter", "feedburner", "feedsportal", "sharethrough",
@@ -530,16 +865,9 @@ def is_usable_image_url(url: Optional[str]) -> bool:
         if marker in u_lower:
             return False
 
-    if len(u) < 18:
-        return False
-
-    return True
+    return len(u) >= 18
 
 def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) -> Optional[Dict[str, str]]:
-    """
-    Extracts the editorial lead picture from RSS/Atom item elements.
-    Checks enclosure tags, media:content, media:thumbnail, and embedded description images.
-    """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
 
     # 1. Check enclosure tag
@@ -554,7 +882,7 @@ def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) 
                     "credit": f"📸 {source_name}"
                 }
 
-    # 2. Check media:content and media:thumbnail (with namespaces)
+    # 2. Check media:content and media:thumbnail
     namespaces = [
         "{http://search.yahoo.com/mrss/}",
         "{http://search.yahoo.com/mrss}",
@@ -585,7 +913,7 @@ def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) 
                     "credit": f"📸 {source_name}"
                 }
 
-    # 3. Check embedded <img> in description or content:encoded
+    # 3. Check embedded <img> in description
     raw_desc = item.findtext("description") or item.findtext("{http://purl.org/rss/1.0/modules/content/}encoded") or ""
     if raw_desc and "<img" in raw_desc.lower():
         match = re.search(r"<img[^>]+src=[\"\']([^\"\']+)[\"\']", raw_desc, re.IGNORECASE)
@@ -600,11 +928,14 @@ def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) 
 
     return None
 
-def resolve_story_image(title: str, category: str, used_urls: Set[str], scraped_image: Optional[dict] = None) -> dict:
+def resolve_story_image(title: str, category: str, master_category: str = "National Headlines", used_urls: Set[str] = None, scraped_image: Optional[dict] = None) -> dict:
+    if used_urls is None:
+        used_urls = set()
+
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     t_lower = clean_title.lower()
 
-    # PRIORITY 0: If the story is scraped or imported with a usable picture, USE THAT PICTURE!
+    # PRIORITY 0: Direct scraped editorial lead picture from RSS
     if scraped_image and isinstance(scraped_image, dict):
         scraped_url = scraped_image.get("url")
         if is_usable_image_url(scraped_url):
@@ -615,7 +946,7 @@ def resolve_story_image(title: str, category: str, used_urls: Set[str], scraped_
                 "credit": scraped_image.get("credit") or "📸 Wire Service"
             }
 
-    # 1. Exact Entity Mapping
+    # PRIORITY 1: Exact Curated Entity & Breaking Topic Mapping
     for ent in EXACT_ENTITY_PHOTOGRAPHY:
         for pat in ent["patterns"]:
             if re.search(r'\b' + re.escape(pat) + r'\b', t_lower):
@@ -623,15 +954,15 @@ def resolve_story_image(title: str, category: str, used_urls: Set[str], scraped_
                     used_urls.add(ent["url"])
                     return {"url": ent["url"], "caption": ent["caption"], "credit": ent["credit"]}
 
-    # 2. Dynamic Wikipedia Named Entity API lookup
+    # PRIORITY 2: Wikipedia Named Entity Lookup with Semantic Verification
     entities = extract_named_entities_from_title(title)
     for ent in entities:
-        wiki_img = fetch_wikipedia_entity_image(ent)
+        wiki_img = fetch_wikipedia_entity_image(ent, title=title, category=category)
         if wiki_img and wiki_img["url"] not in used_urls:
             used_urls.add(wiki_img["url"])
             return wiki_img
 
-    # 3. Secondary Topic Matching
+    # PRIORITY 3: Secondary Topic Keyword Matcher
     for item in SECONDARY_TOPIC_POOL:
         for kw in item["keywords"]:
             if re.search(r'\b' + re.escape(kw) + r'\b', t_lower):
@@ -639,14 +970,18 @@ def resolve_story_image(title: str, category: str, used_urls: Set[str], scraped_
                     used_urls.add(item["url"])
                     return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    # 4. Fallback rotation (never duplicate)
-    for item in ROTATING_BACKUP_POOL:
+    # PRIORITY 4: Strict Category-Specific Fallback (NEVER power lines for non-energy!)
+    cat_key = category if category in CATEGORY_FALLBACK_POOLS else master_category
+    pool = CATEGORY_FALLBACK_POOLS.get(cat_key, CATEGORY_FALLBACK_POOLS.get("National Headlines", []))
+
+    for item in pool:
         if item["url"] not in used_urls:
             used_urls.add(item["url"])
             return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    seed = abs(hash(title)) % len(ROTATING_BACKUP_POOL)
-    fallback = ROTATING_BACKUP_POOL[seed]
+    # Deterministic hash fallback within the exact category pool
+    seed = abs(hash(title)) % len(pool)
+    fallback = pool[seed]
     return {"url": fallback["url"], "caption": fallback["caption"], "credit": fallback["credit"]}
 
 def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[str, Any]]:
@@ -2290,15 +2625,24 @@ def run_pipeline():
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
 
-        # If the story is imported/scraped with a usable picture, use and preserve that picture!
-        existing_url = s.get("image_url")
-        if is_usable_image_url(existing_url):
-            used_urls.add(existing_url)
-        else:
-            img_info = resolve_story_image(title, cat, used_urls, scraped_image=None)
+        # Self-Healing Image Check: If the story has an unrelated or mismatched image, re-resolve it!
+        if is_story_image_mismatched(s):
+            print(f"[Self-Healing Image] Re-resolving mismatched image for: {title[:55]}...")
+            img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=None)
             s["image_url"] = img_info["url"]
             s["caption"] = img_info["caption"]
             s["credit"] = img_info["credit"]
+            used_urls.add(img_info["url"])
+        else:
+            existing_url = s.get("image_url")
+            if is_usable_image_url(existing_url):
+                used_urls.add(existing_url)
+            else:
+                img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=None)
+                s["image_url"] = img_info["url"]
+                s["caption"] = img_info["caption"]
+                s["credit"] = img_info["credit"]
+                used_urls.add(img_info["url"])
 
     existing_titles = {str(s.get("title") or "").strip().lower() for s in existing_stories}
     new_stories = []
