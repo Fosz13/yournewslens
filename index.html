@@ -7,13 +7,16 @@
   <title>Your News Lens — Multi-Perspective News & Debate Platform</title>
   <style>
     :root {
-      --bg-main: #0a0f1d;
-      --bg-card: #131b2e;
-      --bg-subtle: #090e1a;
-      --border-color: #212c45;
+      --bg-main: #080c16;
+      --bg-card: #0e1626;
+      --bg-card-hover: #121d33;
+      --bg-subtle: #060911;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-color-hover: rgba(255, 255, 255, 0.16);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --accent-blue: #38bdf8;
+      --accent-indigo: #6366f1;
       --accent-red: #ef4444;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
@@ -30,85 +33,102 @@
     body {
       background-color: var(--bg-main);
       color: var(--text-main);
-      line-height: 1.4;
-      padding-bottom: 40px;
+      line-height: 1.45;
+      padding-bottom: 50px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    header {
-      background-color: #080c18;
+    /* Modern Glassmorphic Sticky Header */
+    header.app-header {
+      background: rgba(8, 12, 22, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 8px 12px;
+      padding: 10px 16px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     }
 
     .header-container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .header-container {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        gap: 14px;
       }
     }
 
     .brand-row {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .brand-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 7px;
-      background: linear-gradient(135deg, #ef4444 0%, #6366f1 50%, #38bdf8 100%);
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #ec4899 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
       color: white;
-      font-size: 16px;
+      font-size: 17px;
+      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
     }
 
     .brand-title {
       font-size: 17px;
       font-weight: 800;
-      color: #fff;
-      line-height: 1.1;
+      color: #ffffff;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
     }
 
     .brand-tagline {
-      font-size: 10px;
+      font-size: 10.5px;
       color: var(--text-muted);
+      font-weight: 500;
     }
 
     .header-controls {
       display: flex;
       align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .lens-selector-wrapper {
-      display: flex;
-      align-items: center;
-      background: #090e1a;
-      padding: 2px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      width: 100%;
+      gap: 8px;
       justify-content: space-between;
     }
 
-    @media (min-width: 768px) {
+    /* Sleek Segmented Lens Selector */
+    .lens-selector-wrapper {
+      display: flex;
+      align-items: center;
+      background: rgba(14, 22, 38, 0.9);
+      padding: 3px;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (min-width: 640px) {
       .lens-selector-wrapper {
         width: auto;
       }
@@ -118,33 +138,557 @@
       font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 0 6px;
+      color: #64748b;
+      padding: 0 8px;
+      letter-spacing: 0.05em;
     }
 
     .lens-btn {
-      padding: 5px 12px;
-      border-radius: 5px;
+      padding: 6px 14px;
+      border-radius: 9999px;
       border: none;
       background: transparent;
-      color: var(--text-muted);
-      font-size: 12px;
+      color: #94a3b8;
+      font-size: 11.5px;
       font-weight: 700;
       cursor: pointer;
       flex: 1;
       text-align: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
       .lens-btn {
         flex: initial;
       }
     }
 
-    .lens-btn.active.left { background: #2563eb; color: #fff; }
-    .lens-btn.active.center { background: #059669; color: #fff; }
-    .lens-btn.active.right { background: #dc2626; color: #fff; }
+    .lens-btn:hover {
+      color: #f1f5f9;
+    }
 
+    .lens-btn.active.left {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+    }
+
+    .lens-btn.active.center {
+      background: #059669;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(5, 150, 105, 0.4);
+    }
+
+    .lens-btn.active.right {
+      background: #dc2626;
+      color: #ffffff;
+      box-shadow: 0 2px 10px rgba(220, 38, 38, 0.4);
+    }
+
+    /* Sub-Nav Bar (Streamlined) */
+    .filter-bar {
+      max-width: 860px;
+      margin: 8px auto 14px;
+      padding: 0 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* View Switcher: Clean Pill Segment */
+    .view-tabs {
+      display: flex;
+      background: rgba(14, 22, 38, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 3px;
+      width: 100%;
+    }
+
+    .view-tab {
+      flex: 1;
+      text-align: center;
+      padding: 7px 10px;
+      border-radius: 7px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .view-tab:hover {
+      color: #f1f5f9;
+    }
+
+    .view-tab.active {
+      background: #1e293b;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Unified Single-Row Category Carousel */
+    .category-carousel-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .category-carousel {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding: 2px 2px 6px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .category-carousel::-webkit-scrollbar { display: none; }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14, 22, 38, 0.7);
+      border: 1px solid var(--border-color);
+      color: #94a3b8;
+      padding: 6px 13px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      flex-shrink: 0;
+    }
+
+    .cat-pill:hover {
+      background: #182338;
+      border-color: rgba(255, 255, 255, 0.15);
+      color: #f1f5f9;
+    }
+
+    .cat-pill.active {
+      background: #1e293b !important;
+      border-color: #38bdf8 !important;
+      color: #38bdf8 !important;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+    }
+
+    .cat-icon {
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 14px;
+    }
+
+    .feed-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Modern Story Card */
+    .compact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .compact-card:hover {
+      border-color: var(--border-color-hover);
+      box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Photo Header */
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+      height: 145px;
+      background: #090e1a;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .hero-image-wrap {
+        height: 175px;
+      }
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .compact-card:hover .hero-photo {
+      transform: scale(1.02);
+    }
+
+    .photo-caption-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.88) 75%, rgba(8, 12, 22, 0.98) 100%);
+      padding: 6px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 10.5px;
+      color: #cbd5e1;
+    }
+
+    .caption-text {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 72%;
+    }
+
+    .credit-tag {
+      color: #94a3b8;
+      font-size: 10px;
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 14px 16px 16px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+
+    .tags-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .master-tag {
+      background: rgba(99, 102, 241, 0.12);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    .category-tag {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    .source-tag {
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .story-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    /* Verified Facts Box */
+    .neutral-box {
+      background: rgba(10, 15, 29, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-left: 3px solid #38bdf8;
+      padding: 10px 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 12px;
+    }
+
+    .neutral-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .core-facts-list {
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .core-facts-list li {
+      position: relative;
+      padding-left: 15px;
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .core-facts-list li::before {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: 7px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #38bdf8;
+    }
+
+    .neutral-desc {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    /* Lens Switcher Row on Card */
+    .lens-status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .lens-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+    }
+
+    .lens-chip.blue { background: rgba(37, 99, 235, 0.18); color: #93c5fd; border: 1px solid rgba(37, 99, 235, 0.3); }
+    .lens-chip.emerald { background: rgba(16, 185, 129, 0.18); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .lens-chip.red { background: rgba(220, 38, 38, 0.18); color: #fca5a5; border: 1px solid rgba(220, 38, 38, 0.3); }
+
+    .card-toggle-group {
+      display: flex;
+      gap: 2px;
+      background: rgba(10, 15, 29, 0.8);
+      padding: 2px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .card-toggle-btn.active.left { background: #1e3a8a; color: #bfdbfe; }
+    .card-toggle-btn.active.center { background: #064e3b; color: #a7f3d0; }
+    .card-toggle-btn.active.right { background: #7f1d1d; color: #fecaca; }
+
+    /* Framing Headline (No Red Bullet Point!) */
+    .framing-headline {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 10px;
+      line-height: 1.45;
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      border-left: 3px solid #64748b;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .framing-headline.left, [id$="-view-LEFT"] .framing-headline {
+      border-left-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.06);
+    }
+
+    .framing-headline.center, [id$="-view-CENTER"] .framing-headline {
+      border-left-color: #10b981;
+      background: rgba(16, 185, 129, 0.06);
+    }
+
+    .framing-headline.right, [id$="-view-RIGHT"] .framing-headline {
+      border-left-color: #ef4444;
+      background: rgba(239, 68, 68, 0.06);
+    }
+
+    /* Talking Points Box */
+    .talking-points-panel {
+      background: rgba(10, 15, 29, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 8px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .panel-title {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #f59e0b;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-copy-chip {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f8fafc;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy-chip:hover {
+      background: #334155;
+    }
+
+    .quote-row {
+      font-size: 12px;
+      color: #f1f5f9;
+      font-style: italic;
+      padding: 5px 0;
+      line-height: 1.4;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .quote-row:last-child {
+      border-bottom: none;
+    }
+
+    .card-bottom-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-action-small {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-action-small:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+    }
+
+    .btn-action-small.active {
+      background: #1e293b;
+      color: #fff;
+    }
+
+    .btn-discuss-small {
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: #c7d2fe;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-discuss-small:hover {
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    /* Toast */
+    .toast-msg {
+      position: fixed;
+      bottom: 20px;
+      left: 16px;
+      right: 16px;
+      max-width: 320px;
+      margin: 0 auto;
+      background: #059669;
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+      text-align: center;
+      justify-content: center;
+      z-index: 200;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Quick button in header */
     .btn-quick {
       background: #131b2e;
       border: 1px solid var(--border-color);
@@ -164,644 +708,86 @@
       border-color: #6366f1;
       color: #fff;
     }
-
-    
-    .filter-bar {
-      max-width: 900px;
-      margin: 8px auto 6px;
-      padding: 0 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    /* Master Category Carousel (Top Division) */
-    .master-pills-row {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 4px 2px 8px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .master-pills-row::-webkit-scrollbar { display: none; }
-
-    .pill-master {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: #111a2e;
-      border: 1px solid #233352;
-      color: #94a3b8;
-      padding: 8px 14px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-    }
-
-    .pill-master .master-icon {
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 7px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      flex-shrink: 0;
-    }
-
-    .pill-master:hover {
-      background: #18243c;
-      border-color: #384e75;
-      color: #f1f5f9;
-      transform: translateY(-1px);
-    }
-
-    .pill-master.active {
-      background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%) !important;
-      border-color: #60a5fa !important;
-      color: #ffffff !important;
-      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.45) !important;
-    }
-
-    .pill-master.active .master-icon {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.35);
-    }
-
-    /* Subcategory Topic Row */
-    .topic-pills-row {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 2px 2px 6px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-    .topic-pills-row::-webkit-scrollbar { display: none; }
-
-    .pill {
-      background: #090e1a;
-      border: 1px solid #1e293b;
-      color: #94a3b8;
-      padding: 5px 12px;
-      border-radius: 14px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.15s ease;
-    }
-
-    .pill:hover {
-      background: #131b2e;
-      color: #f1f5f9;
-      border-color: #334155;
-    }
-
-    .pill.active {
-      background: #1e293b !important;
-      color: #38bdf8 !important;
-      border-color: #38bdf8 !important;
-      font-weight: 700;
-      box-shadow: 0 0 8px rgba(56, 189, 248, 0.25);
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 11px;
-    }
-
-    .tags-group {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-
-    .master-tag {
-      background: rgba(99, 102, 241, 0.15);
-      color: #a5b4fc;
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      font-size: 9.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.3px;
-    }
-
-    .category-tag {
-      background: rgba(56, 189, 248, 0.12);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: 4px;
-      letter-spacing: 0.3px;
-    }
-
-    .view-tabs {
-      display: flex;
-      background: #090e1a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 2px;
-      width: 100%;
-    }
-
-    .view-tab {
-      flex: 1;
-      text-align: center;
-      padding: 5px 8px;
-      border-radius: 5px;
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .view-tab.active {
-      background: #1e293b;
-      color: #fff;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 12px;
-    }
-
-    .feed-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Compact Story Card */
-    .compact-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-    }
-
-    /* Compact Photo Header */
-    .hero-image-wrap {
-      position: relative;
-      width: 100%;
-      height: 125px;
-      background: #090e1a;
-      overflow: hidden;
-    }
-
-    @media (min-width: 768px) {
-      .hero-image-wrap {
-        height: 150px;
-      }
-    }
-
-    .hero-photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .photo-caption-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(9, 14, 26, 0.95) 100%);
-      padding: 4px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      font-size: 10px;
-      color: #cbd5e1;
-    }
-
-    .caption-text {
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 70%;
-    }
-
-    .credit-tag {
-      color: #94a3b8;
-      font-size: 9.5px;
-    }
-
-    /* Card Body */
-    .card-body {
-      padding: 12px 14px;
-    }
-
-    .meta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-      font-size: 11px;
-    }
-
-    .category-tag {
-      background: rgba(56, 189, 248, 0.12);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    .source-tag {
-      color: #64748b;
-      font-size: 10.5px;
-    }
-
-    .story-title {
-      font-size: 16px;
-      font-weight: 800;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 8px;
-    }
-
-    /* Compact Neutral Box */
-    .neutral-box {
-      background: #090e1a;
-      border-left: 3px solid #38bdf8;
-      padding: 8px 10px;
-      border-radius: 0 6px 6px 0;
-      margin-bottom: 10px;
-    }
-
-    .neutral-title {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #94a3b8;
-      margin-bottom: 5px;
-    }
-
-    .core-facts-list {
-      list-style-type: none;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin: 0;
-      padding: 0;
-    }
-
-    .core-facts-list li {
-      position: relative;
-      padding-left: 14px;
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.35;
-    }
-
-    .core-facts-list li::before {
-      content: "•";
-      position: absolute;
-      left: 2px;
-      color: #38bdf8;
-      font-size: 14px;
-      line-height: 1.2;
-    }
-
-    .neutral-desc {
-      font-size: 12.5px;
-      color: #cbd5e1;
-      line-height: 1.4;
-    }
-
-    /* Lens Switcher Row */
-    .lens-status-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      padding-bottom: 6px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .lens-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 12px;
-    }
-
-    .lens-chip.blue { background: rgba(37, 99, 235, 0.2); color: #60a5fa; }
-    .lens-chip.emerald { background: rgba(16, 185, 129, 0.2); color: #34d399; }
-    .lens-chip.red { background: rgba(220, 38, 38, 0.2); color: #f87171; }
-
-    .card-toggle-group {
-      display: flex;
-      gap: 2px;
-      background: #090e1a;
-      padding: 2px;
-      border-radius: 5px;
-    }
-
-    .card-toggle-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 10.5px;
-      font-weight: 700;
-      padding: 3px 7px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .card-toggle-btn.active.left { background: #1e3a8a; color: #93c5fd; }
-    .card-toggle-btn.active.center { background: #064e3b; color: #6ee7b7; }
-    .card-toggle-btn.active.right { background: #7f1d1d; color: #fca5a5; }
-
-    .framing-headline {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: #e2e8f0;
-      margin-bottom: 8px;
-      line-height: 1.35;
-      display: flex;
-      align-items: flex-start;
-      gap: 5px;
-    }
-
-    .label-heading {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .compact-bullets {
-      list-style-type: none;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-
-    .compact-bullets li {
-      position: relative;
-      padding-left: 14px;
-      font-size: 12.5px;
-      color: #cbd5e1;
-      line-height: 1.35;
-    }
-
-    .compact-bullets li::before {
-      content: "•";
-      position: absolute;
-      left: 2px;
-      font-size: 16px;
-    }
-
-    .compact-bullets.blue li::before { color: #38bdf8; }
-    .compact-bullets.emerald li::before { color: #10b981; }
-    .compact-bullets.red li::before { color: #f43f5e; }
-
-    /* Talking Points Box */
-    .talking-points-panel {
-      background: #090e1a;
-      border: 1px solid var(--border-color);
-      border-radius: 7px;
-      padding: 8px 10px;
-      margin-top: 6px;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .panel-title {
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      color: #f59e0b;
-    }
-
-    .btn-copy-chip {
-      background: #1e293b;
-      border: 1px solid #475569;
-      color: #f8fafc;
-      font-size: 10px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .quote-row {
-      font-size: 12px;
-      color: #f1f5f9;
-      font-style: italic;
-      padding: 3px 0;
-      line-height: 1.35;
-      border-bottom: 1px dashed #1e293b;
-    }
-
-    .quote-row:last-child { border-bottom: none; }
-
-    .card-bottom-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .btn-action-small {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
-      padding: 4px 8px;
-      border-radius: 5px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .btn-action-small.active {
-      background: #24344d;
-      color: #fff;
-    }
-
-    .btn-discuss-small {
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      color: #c7d2fe;
-      padding: 4px 8px;
-      border-radius: 5px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* Toast */
-    .toast-msg {
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      max-width: 320px;
-      margin: 0 auto;
-      background: #059669;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      display: none;
-      text-align: center;
-      justify-content: center;
-      z-index: 200;
-    }
-
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      padding: 12px;
-    }
-
-    .modal-backdrop.show { display: flex; }
-
-    .modal-box {
-      background: #131b2e;
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      max-width: 500px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      padding: 18px;
-    }
-
-            .quiz-option {
-      background: #090e1a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      padding: 8px 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 5px;
-      font-size: 12px;
-      color: #cbd5e1;
-    }
-  </style>
+</style>
 </head>
 <body>
 
   <div id="toastBox" class="toast-msg">✓ Copied!</div>
 
-  <!-- Header -->
-  <header>
+    <!-- Header -->
+  <header class="app-header">
     <div class="header-container">
       <div class="brand-row">
         <div class="brand-icon">Y</div>
-        <div>
+        <div class="brand-text">
           <div class="brand-title">Your News Lens</div>
-          <div class="brand-tagline">Neutral facts. Targeted perspective. Debate arguments.</div>
+          <div class="brand-tagline">Neutral Facts • 3 Perspectives</div>
         </div>
       </div>
 
       <div class="header-controls">
-        <div class="lens-selector-wrapper">
+        <div class="lens-selector-wrapper" role="group" aria-label="Perspective Lens Selector">
           <span class="lens-label">Lens:</span>
           <button type="button" class="lens-btn left" id="btnGlobalLeft" onclick="setGlobalPerspective('LEFT')">Left</button>
           <button type="button" class="lens-btn center active" id="btnGlobalCenter" onclick="setGlobalPerspective('CENTER')">Balanced</button>
           <button type="button" class="lens-btn right" id="btnGlobalRight" onclick="setGlobalPerspective('RIGHT')">Right</button>
         </div>
-
-        <button type="button" class="btn-quick primary" onclick="showLoungeTab()">💬 Lounge</button>
       </div>
     </div>
   </header>
 
-    <!-- Hierarchical Filter & Tab Bar -->
+  <!-- Sub-Nav: Clean View Tabs & Single Carousel -->
   <div class="filter-bar">
-    <!-- Level 1: Master Categories -->
-    <div class="master-pills-row">
-      <button type="button" class="pill-master active" onclick="applyMasterFilter(this, 'All')">
-        <span class="master-icon">🌐</span><span>All Stories</span>
+    <!-- View Switcher -->
+    <div class="view-tabs" role="tablist">
+      <button type="button" class="view-tab active" id="navStories" onclick="showStoriesTab()">
+        <span>📰</span><span>Stories Feed</span>
       </button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'National Headlines')">
-        <span class="master-icon">🇺🇸</span><span>National</span>
+      <button type="button" class="view-tab" id="navLounge" onclick="showLoungeTab()">
+        <span>💬</span><span>Community Lounge</span>
       </button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'World News')">
-        <span class="master-icon">🌍</span><span>World</span>
-      </button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Science & Tech')">
-        <span class="master-icon">🔬</span><span>Sci & Tech</span>
-      </button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Entertainment')">
-        <span class="master-icon">🎬</span><span>Entertainment</span>
-      </button>
-      <button type="button" class="pill-master" onclick="applyMasterFilter(this, 'Sports')">
-        <span class="master-icon">🏆</span><span>Sports</span>
+      <button type="button" class="view-tab" id="navCustom" onclick="showCustomTab()">
+        <span>⚡</span><span>Custom Story AI</span>
       </button>
     </div>
 
-    <!-- Level 2: Topic Subcategories -->
-    <div class="topic-pills-row" id="topicPillsRow">
-      <button type="button" class="pill active" id="topic-pill-all" onclick="applyTopicFilter(this, 'All')">All Topics</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Politics')">🏛️ Politics</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Business & Economy')">📈 Business & Economy</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Energy & Weather')">⚡ Energy & Weather</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Health')">🩺 Health</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Space & Science')">🚀 Space & Science</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Tech & AI')">🤖 Tech & AI</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Entertainment')">🍿 Movies & Pop Culture</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Sports')">🏆 Sports</button>
-      <button type="button" class="pill" onclick="applyTopicFilter(this, 'Border & Security')">🛡️ Border & Security</button>
-    </div>
-
-    <div class="view-tabs">
-      <button type="button" class="view-tab active" id="navStories" onclick="showStoriesTab()">Stories Feed</button>
-      <button type="button" class="view-tab" id="navLounge" onclick="showLoungeTab()">Community Lounge</button>
-      <button type="button" class="view-tab" id="navCustom" onclick="showCustomTab()">Custom Story AI</button>
+    <!-- Unified Category Carousel -->
+    <div class="category-carousel-wrapper">
+      <div class="category-carousel" id="categoryCarousel">
+        <button type="button" class="cat-pill active" onclick="filterCategory(this, 'All')">
+          <span class="cat-icon">🌐</span><span>All Stories</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'National')">
+          <span class="cat-icon">🇺🇸</span><span>National</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Politics')">
+          <span class="cat-icon">🏛️</span><span>Politics</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Business')">
+          <span class="cat-icon">📈</span><span>Business & Economy</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Energy')">
+          <span class="cat-icon">⚡</span><span>Energy & Weather</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Health')">
+          <span class="cat-icon">🩺</span><span>Health</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Tech')">
+          <span class="cat-icon">🤖</span><span>Tech & AI</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'World')">
+          <span class="cat-icon">🌍</span><span>World News</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Sports')">
+          <span class="cat-icon">🏆</span><span>Sports</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Entertainment')">
+          <span class="cat-icon">🍿</span><span>Entertainment</span>
+        </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Border')">
+          <span class="cat-icon">🛡️</span><span>Border & Security</span>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -846,8 +832,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Public Hospital Lodging Logistics: Balancing Campus Space Constraints with Caregiver Welfare</span>
               </div>
 
@@ -873,8 +858,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Family Devotion Meets Community Charity: Mobilizing Civic and Religious Support to Aid Hospital Caregivers</span>
               </div>
 
@@ -900,8 +884,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Healthcare Dignity Requires Housing Caregivers: Exposing the Human Cost of Inadequate Public Hospital Infrastructure</span>
               </div>
 
@@ -962,8 +945,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Fiscal Compromise Averts Economic Chaos: Bipartisan Agreement Secures Predictable Government Funding</span>
               </div>
 
@@ -989,8 +971,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Fiscal Discipline Surrendered: $1.65T Top-Line Deal Continues Unchecked Federal Deficit Spending</span>
               </div>
 
@@ -1016,8 +997,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Defending Domestic Priorities: Bipartisan Framework Protects Vital Safety Nets and Federal Workers</span>
               </div>
 
@@ -1078,8 +1058,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Balancing Grid Reliability and Environmental Due Diligence in Modern Energy Infrastructure</span>
               </div>
 
@@ -1105,8 +1084,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Regulatory Overreach on Pipelines Threatens Baseload Energy Reliability and Hikes Consumer Bills</span>
               </div>
 
@@ -1132,8 +1110,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Modernizing the Clean Energy Grid: Transmission Upgrades Accelerate Renewable Integration</span>
               </div>
 
@@ -1194,8 +1171,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Commercial Realism Reunites Golf as Global Sovereign Capital Reshapes Professional Sports</span>
               </div>
 
@@ -1221,8 +1197,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>PGA Tour Leadership Exposed for Corporate Hypocrisy and Monopoly Self-Preservation</span>
               </div>
 
@@ -1248,8 +1223,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Brazen Sportswashing Deal Whitewashes Autocratic Human Rights Abuses for Corporate Billions</span>
               </div>
 
@@ -1310,8 +1284,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Modernizing Postseason Competition: Balancing Broad Tournament Access with Collegiate Logistics</span>
               </div>
 
@@ -1337,8 +1310,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Meritocracy and Free Competition: 24-Team Playoff Eliminates Committee Favoritism</span>
               </div>
 
@@ -1364,8 +1336,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Player Burden vs Corporate Profits: Questioning the Physical Toll of Extended Collegiate Seasons</span>
               </div>
 
@@ -1426,8 +1397,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Pragmatic Patience: Central Bank Holds Course Toward a Historic Economic Soft Landing</span>
               </div>
 
@@ -1453,8 +1423,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Reckless Federal Deficit Spending Forces the Fed to Keep Borrowing Costs Painfully High</span>
               </div>
 
@@ -1480,8 +1449,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Prolonged High Borrowing Rates Squeeze Working-Class Homeowners and Stifle Wage Gains</span>
               </div>
 
@@ -1542,8 +1510,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Campus Security Review and Rapid Response: Investigating the Oregon Elementary Tragedy</span>
               </div>
 
@@ -1569,8 +1536,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Second Amendment Self-Defense: Armed Citizen Stops Mass Shooter and Saves Innocent Lives</span>
               </div>
 
@@ -1596,8 +1562,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Urgent Call for Gun Safety Reforms and Assault Weapon Restrictions After School Tragedy</span>
               </div>
 
@@ -1658,8 +1623,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Medical Caution Meets Tactical Adjustment: Navigating Starting Quarterback Absence in Jalen Hurts ruled out of Eagles vs. Pa...</span>
               </div>
 
@@ -1685,8 +1649,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Next-Man-Up Accountability: Testing Roster Depth and Culture Under Competitive Pressure</span>
               </div>
 
@@ -1712,8 +1675,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Player Health Over Game Outcomes: Prioritizing Long-Term Vascular Safety in NFL Athletics</span>
               </div>
 
@@ -1774,8 +1736,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Tactical Evolution in the Modern NBA: Modernizing Offensive Spacing and Rotation Depth</span>
               </div>
 
@@ -1801,8 +1762,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Accountability and Roster Execution: Demanding Championship Standards Over Celebrity Hype</span>
               </div>
 
@@ -1828,8 +1788,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Workload Equity and Athlete Longevity: Balancing Superstar Demands with Player Welfare</span>
               </div>
 
@@ -1890,8 +1849,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Pragmatic Baseload Solution: Interstate SMR Compact Delivers Clean Power for Industrial Growth</span>
               </div>
 
@@ -1917,8 +1875,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>American Energy Dominance: Deregulation and Nuclear Innovation Power Heartland Manufacturing</span>
               </div>
 
@@ -1944,8 +1901,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Nuclear Expansion Demands Independent Safety Oversight, Waste Accountability, and Environmental Justice</span>
               </div>
 
@@ -2006,8 +1962,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Modernizing Postseason Competition: Balancing Broad Tournament Access with Collegiate Logistics</span>
               </div>
 
@@ -2033,8 +1988,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Meritocracy and Free Competition: 24-Team Playoff Eliminates Committee Favoritism</span>
               </div>
 
@@ -2060,8 +2014,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Player Burden vs Corporate Profits: Questioning the Physical Toll of Extended Collegiate Seasons</span>
               </div>
 
@@ -2122,8 +2075,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Comprehensive Border Compromise Combines Law Enforcement Resources with Judicial Adjudication</span>
               </div>
 
@@ -2149,8 +2101,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Processing Migrants Faster Is Not Deterrence: Framework Leaves Catch-and-Release Loopholes Open</span>
               </div>
 
@@ -2176,8 +2127,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Protecting Humanitarian Due Process: Fast-Track Asylum Timelines Must Not Deny Legal Rights</span>
               </div>
 
@@ -2238,8 +2188,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Inter-Agency Intelligence Interdiction: Coordinated Port Security Neutralizes Deadly Drug Influx</span>
               </div>
 
@@ -2265,8 +2214,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Total War on Cartels: Decisive Law Enforcement and International Pressure Required to Stop Fentanyl Poisoning</span>
               </div>
 
@@ -2292,8 +2240,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Targeting Chemical Cartel Supply Chains: Interdiction at Commercial Ports Protects Communities</span>
               </div>
 
@@ -2354,8 +2301,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications</span>
               </div>
 
@@ -2381,8 +2327,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression</span>
               </div>
 
@@ -2408,8 +2353,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims</span>
               </div>
 
@@ -2470,8 +2414,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Consumer Price Transparency Injects Real Competition into America's Most Opaque Market</span>
               </div>
 
@@ -2497,8 +2440,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Free Market Reform Over Bureaucracy: Transparent Prices Empower Patients and Break Hospital Cartels</span>
               </div>
 
@@ -2524,8 +2466,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Exposing Corporate Healthcare Greed: Price Transparency Validates Demands for Universal Public Health</span>
               </div>
 
@@ -2586,8 +2527,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Fiscally Responsible Healthcare: Medicare Negotiations Protect the Entitlement Trust Fund</span>
               </div>
 
@@ -2613,8 +2553,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Government Price Controls Threaten Medical R&D and Restrict Cures for Life-Threatening Diseases</span>
               </div>
 
@@ -2640,8 +2579,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Breaking Big Pharma's Monopoly: Medicare Price Negotiations Protect Seniors from Predatory Drug Costs</span>
               </div>
 
@@ -2702,8 +2640,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Defining the Digital Public Square: Balancing Private Editorial Rights with Monopolistic Platform Power</span>
               </div>
 
@@ -2729,8 +2666,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Big Tech Monopolies Must Be Reined In: Common Carrier Protections Restore Free Speech Online</span>
               </div>
 
@@ -2756,8 +2692,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>First Amendment Protects Platforms Against State-Mandated Extremism and Dangerous Disinformation</span>
               </div>
 
@@ -2818,8 +2753,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Strategic Tech Safeguards: Calibrating National Security Controls with Global Commercial Realities</span>
               </div>
 
@@ -2845,8 +2779,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Decisive Technological Deterrence: Cut Off Foreign Adversary Access to Advanced American Computing</span>
               </div>
 
@@ -2872,8 +2805,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>National Security Export Controls Must Be Paired with Robust Domestic Worker Protections</span>
               </div>
 
@@ -2934,8 +2866,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Engineering Innovation Meets Commercial Delivery: Evaluating Production Feasibility for Tesla plans next-generation Roadster r...</span>
               </div>
 
@@ -2961,8 +2892,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>American Innovation and Free Enterprise: Private Engineering Disruption Drives Global EV Leadership</span>
               </div>
 
@@ -2988,8 +2918,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity</span>
               </div>
 
@@ -3050,8 +2979,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Market Realism and Sustainable Growth: AI Enterprise Sector Shifts from Hype to Financial Fundamentals</span>
               </div>
 
@@ -3077,8 +3005,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Market Discipline at Work: Free Enterprise Price Discovery Separates Real Innovation from Speculation</span>
               </div>
 
@@ -3104,8 +3031,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations</span>
               </div>
 
@@ -3166,8 +3092,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Inter-Agency Security Mobilization: Federal Authorities Coordinate Threat Interdiction and Public Safety</span>
               </div>
 
@@ -3193,8 +3118,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Law and Order Must Prevail: Zero Tolerance for Intimidation Against Public Facilities and Election Infrastructure</span>
               </div>
 
@@ -3220,8 +3144,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Protecting Democratic Integrity: Election Workers and Public Servants Must Be Guarded Against Political Threats</span>
               </div>
 
@@ -3282,8 +3205,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Tactical Execution and Postseason Reality: Assessing Pennant Dynamics in Dodgers tip cap to Brewers as title re...</span>
               </div>
 
@@ -3309,8 +3231,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Meritocracy on the Diamond: Accountability, Culture, and Relentless Execution Decide Championships</span>
               </div>
 
@@ -3336,8 +3257,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Competitive Equity and Team Culture: Celebrating Underdog Parity and Labor Balance in Major League Baseball</span>
               </div>
 
@@ -3398,8 +3318,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Pragmatic Sector Rotation: Institutional Capital Shifts from High-Multiple Tech into Cyclical Value</span>
               </div>
 
@@ -3425,8 +3344,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Market Efficiency in Action: Free Enterprise Price Discovery Allocates Capital to Productive Assets</span>
               </div>
 
@@ -3452,8 +3370,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Speculative Market Volatility: Extreme Tech Multiples Mask Everyday Working-Class Economic Strain</span>
               </div>
 
@@ -3514,8 +3431,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Infrastructure Resilience and Emergency Response: Assessing Grid Performance Under Severe Winds</span>
               </div>
 
@@ -3541,8 +3457,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Energy Reliability and Commonsense Management: Clear Red Tape to Secure the Electrical Grid</span>
               </div>
 
@@ -3568,8 +3483,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Climate Resilience and Public Accountability: Demanding Modernized Power Infrastructure</span>
               </div>
 
@@ -3630,8 +3544,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Evolving Theatrical Economics: Navigating Box Office Exhibition in the Streaming Era</span>
               </div>
 
@@ -3657,8 +3570,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Free Enterprise in Culture: Consumer Demand and Artistic Excellence Drive Success</span>
               </div>
 
@@ -3684,8 +3596,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Protecting Creative Labor and Cultural Diversity Against Corporate Studio Monopolies</span>
               </div>
 
@@ -3746,8 +3657,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Astronomical Milestone: Validating Advanced Optical Technology and Deep Space Observatories</span>
               </div>
 
@@ -3773,8 +3683,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>American Technological Leadership and Deep Space Exploration Frontiers</span>
               </div>
 
@@ -3800,8 +3709,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Scientific Discovery for Humanity: Prioritizing Public Science Funding and Climate Awareness</span>
               </div>
 
@@ -3862,8 +3770,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Pragmatic Trade Security: Establishing Enforceable Naval Transit Protocols in Contested Waters</span>
               </div>
 
@@ -3889,8 +3796,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Peace Through Strength: Deterrence and Freedom of Navigation Outweigh Empty Paper Treaties</span>
               </div>
 
@@ -3916,8 +3822,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Preventing Global Hunger: Multilateral Diplomacy Protects Developing Nations from Food Insecurity</span>
               </div>
 
@@ -3978,8 +3883,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Theatrical Resilience: Strong Consumer Spending Validates Premium Cinema Investments</span>
               </div>
 
@@ -4005,8 +3909,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Free Market Triumph: Rewarding Family-Friendly Entertainment Over Hollywood Ideology</span>
               </div>
 
@@ -4032,8 +3935,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Communal Arts Thrive: The Cultural Importance of Shared Public Storytelling</span>
               </div>
 
@@ -4094,8 +3996,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline center">
                 <span>Observational Breakthrough: Pushing the Technological Boundaries of Radio Astronomy</span>
               </div>
 
@@ -4121,8 +4022,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline right">
                 <span>Western Scientific Excellence: American and Allied Observatories Lead Global Discovery</span>
               </div>
 
@@ -4148,8 +4048,7 @@
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline left">
                 <span>Universal Origins: Scientific Cooperation Expands Humanity's Cosmic Perspective</span>
               </div>
 
@@ -4208,7 +4107,7 @@
 
   
 
-  <script>
+    <script>
     function onImgError(img) {
       if (img) {
         img.onerror = null;
@@ -4275,89 +4174,55 @@
       }
     }
 
-    var currentMasterFilter = 'All';
-    var currentTopicFilter = 'All';
+    var currentFilterCategory = 'All';
 
-    function applyMasterFilter(btn, masterCategory) {
-      currentMasterFilter = masterCategory || 'All';
-      var masterPills = document.querySelectorAll('.master-pills-row .pill-master');
-      for (var i = 0; i < masterPills.length; i++) masterPills[i].classList.remove('active');
+    function filterCategory(btn, catKey) {
+      currentFilterCategory = catKey || 'All';
+      var pills = document.querySelectorAll('.cat-pill');
+      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('active');
       if (btn) btn.classList.add('active');
 
-      currentTopicFilter = 'All';
-      var topicPills = document.querySelectorAll('.topic-pills-row .pill');
-      for (var k = 0; k < topicPills.length; k++) topicPills[k].classList.remove('active');
-      var allTopicBtn = document.getElementById('topic-pill-all');
-      if (allTopicBtn) allTopicBtn.classList.add('active');
-
-      reapplyCategoryFilter();
-    }
-
-    function applyTopicFilter(btn, topicCategory) {
-      currentTopicFilter = topicCategory || 'All';
-      var topicPills = document.querySelectorAll('.topic-pills-row .pill');
-      for (var i = 0; i < topicPills.length; i++) topicPills[i].classList.remove('active');
-      if (btn) btn.classList.add('active');
-
-      reapplyCategoryFilter();
-    }
-
-    function reapplyCategoryFilter() {
-      var masterKey = (currentMasterFilter || 'All').toLowerCase().trim();
-      var topicKey = (currentTopicFilter || 'All').toLowerCase().trim();
+      var key = currentFilterCategory.toLowerCase().trim();
       var articles = document.querySelectorAll('.compact-card');
       var visibleCount = 0;
 
       for (var j = 0; j < articles.length; j++) {
         var cat = (articles[j].getAttribute('data-category') || '').toLowerCase().trim();
         var masterCat = (articles[j].getAttribute('data-master-category') || '').toLowerCase().trim();
-        var match = true;
+        var match = false;
 
-        if (masterKey !== 'all') {
-          if (masterKey.indexOf('national') !== -1) {
-            // National Headlines includes US domestic policy, economy, energy, health, border, and domestic US sports
-            match = (masterCat.indexOf('national') !== -1 || cat.indexOf('sport') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
-          } else if (masterKey.indexOf('world') !== -1) {
-            match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
-          } else if (masterKey.indexOf('science') !== -1 || masterKey.indexOf('tech') !== -1) {
-            match = (masterCat.indexOf('science') !== -1 || masterCat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('tech') !== -1);
-          } else if (masterKey.indexOf('entertain') !== -1) {
-            match = (masterCat.indexOf('entertain') !== -1 || cat.indexOf('entertain') !== -1);
-          } else if (masterKey.indexOf('sport') !== -1) {
-            match = (masterCat.indexOf('sport') !== -1 || cat.indexOf('sport') !== -1);
-          } else {
-            match = (masterCat === masterKey || masterCat.indexOf(masterKey) !== -1);
-          }
-        }
-
-        if (match && topicKey !== 'all') {
-          if (topicKey.indexOf('politic') !== -1) {
-            match = (cat.indexOf('politic') !== -1);
-          } else if (topicKey.indexOf('business') !== -1 || topicKey.indexOf('econom') !== -1) {
-            match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
-          } else if (topicKey.indexOf('energy') !== -1 || topicKey.indexOf('weather') !== -1) {
-            match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
-          } else if (topicKey.indexOf('health') !== -1) {
-            match = (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1);
-          } else if (topicKey.indexOf('space') !== -1 || topicKey.indexOf('science') !== -1) {
-            match = (cat.indexOf('science') !== -1 || cat.indexOf('space') !== -1 || cat.indexOf('nasa') !== -1);
-          } else if (topicKey.indexOf('tech') !== -1 || topicKey.indexOf('ai') !== -1) {
-            match = (cat.indexOf('tech') !== -1 || cat.indexOf('ai') !== -1);
-          } else if (topicKey.indexOf('entertain') !== -1 || topicKey.indexOf('movie') !== -1) {
-            match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1);
-          } else if (topicKey.indexOf('sport') !== -1) {
-            match = (cat.indexOf('sport') !== -1);
-          } else if (topicKey.indexOf('border') !== -1 || topicKey.indexOf('secur') !== -1) {
-            match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
-          } else {
-            match = (cat === topicKey || cat.indexOf(topicKey) !== -1);
-          }
+        if (key === 'all') {
+          match = true;
+        } else if (key === 'national') {
+          match = (masterCat.indexOf('national') !== -1 || cat.indexOf('sport') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
+        } else if (key === 'world') {
+          match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
+        } else if (key === 'business') {
+          match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
+        } else if (key === 'energy') {
+          match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
+        } else if (key === 'tech') {
+          match = (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1);
+        } else if (key === 'border') {
+          match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
+        } else if (key === 'entertainment') {
+          match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1);
+        } else {
+          match = (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1);
         }
 
         articles[j].style.display = match ? 'block' : 'none';
         if (match) visibleCount++;
       }
-      console.log('Filtered [Master: ' + currentMasterFilter + ' | Topic: ' + currentTopicFilter + ']: ' + visibleCount + ' stories.');
+      console.log('Filtered by [' + currentFilterCategory + ']: ' + visibleCount + ' stories.');
+    }
+
+    // Backward compatibility helpers
+    function applyMasterFilter(btn, masterCategory) { filterCategory(btn, masterCategory); }
+    function applyTopicFilter(btn, topicCategory) { filterCategory(btn, topicCategory); }
+    function reapplyCategoryFilter() {
+      var activePill = document.querySelector('.cat-pill.active');
+      filterCategory(activePill, currentFilterCategory);
     }
 
     function renderStoriesFeed(stories) {
@@ -4378,7 +4243,14 @@
         var credit = story.credit || '📸 News Wire';
         var source = story.source || 'Associated Press Wire';
         var pub_ts = story.pub_timestamp || '';
-        var summary = story.neutral_summary || '';
+
+        var displayMaster = (masterCat.toLowerCase().indexOf('national') !== -1) ? 'National' : masterCat;
+        var tagsHtml = '';
+        if (masterCat.toLowerCase() === cat.toLowerCase()) {
+          tagsHtml = '<span class="category-tag">' + cat + '</span>';
+        } else {
+          tagsHtml = '<span class="master-tag">' + displayMaster + '</span><span class="category-tag">' + cat + '</span>';
+        }
 
         html += '<article class="compact-card" data-category="' + cat + '" data-master-category="' + masterCat + '" id="' + sId + '">';
         html += '  <div class="hero-image-wrap">';
@@ -4401,21 +4273,13 @@
         var facts = story.core_facts;
         if (Array.isArray(facts) && facts.length > 0) {
           factsHtml += '<ul class="core-facts-list">';
-          for (var f = 0; f < facts.length; f++) {
+          for (var f = 0; f < facts.length && f < 4; f++) {
             factsHtml += '<li>' + facts[f] + '</li>';
           }
           factsHtml += '</ul>';
         } else {
           var summary = story.neutral_summary || '';
           factsHtml = '<div class="neutral-desc">' + summary + '</div>';
-        }
-
-        var tagsHtml = '';
-        if (masterCat.toLowerCase() === cat.toLowerCase()) {
-          tagsHtml = '<span class="category-tag">' + cat + '</span>';
-        } else {
-          var displayMaster = (masterCat.toLowerCase().indexOf('national') !== -1) ? 'National' : masterCat;
-          tagsHtml = '<span class="master-tag">' + displayMaster + '</span><span class="category-tag">' + cat + '</span>';
         }
 
         html += '    <div class="neutral-box">';
@@ -4425,9 +4289,9 @@
 
         var perspectives = story.perspectives || {};
         var lensList = [
-          { key: 'CENTER', name: 'Centrist / Balanced', icon: '🟢', chipClass: 'emerald', bulletClass: 'emerald' },
-          { key: 'RIGHT', name: 'Conservative Lens', icon: '🔴', chipClass: 'red', bulletClass: 'red' },
-          { key: 'LEFT', name: 'Progressive Lens', icon: '🔵', chipClass: 'blue', bulletClass: 'blue' }
+          { key: 'CENTER', name: 'Centrist / Balanced', icon: '🟢', chipClass: 'emerald' },
+          { key: 'RIGHT', name: 'Conservative Lens', icon: '🔴', chipClass: 'red' },
+          { key: 'LEFT', name: 'Progressive Lens', icon: '🔵', chipClass: 'blue' }
         ];
 
         for (var l = 0; l < lensList.length; l++) {
@@ -4450,12 +4314,9 @@
           html += '        </div>';
           html += '      </div>';
 
-          html += '      <div class="framing-headline">';
-          html += '        <span>📌</span>';
+          html += '      <div class="framing-headline ' + lens.key.toLowerCase() + '">';
           html += '        <span>' + (pData.headline_framing || 'Perspective Overview') + '</span>';
           html += '      </div>';
-
-
 
           var talkingPoints = pData.talking_points || [];
           html += '      <div class="talking-points-panel">';
@@ -4579,8 +4440,8 @@
 
       var list = document.getElementById('communityPostsList');
       var card = document.createElement('div');
-      card.style = 'background: #131b2e; border: 1px solid #6366f1; border-radius: 8px; padding: 10px; margin-bottom: 8px;';
-      card.innerHTML = '<div style="font-size: 11px; color: #fff; font-weight: 700; margin-bottom: 4px;">You • Member <span style="color:#38bdf8; font-size:10px;">• Just Now</span></div><div style="font-size: 12px; color: #cbd5e1; margin-bottom: 6px;">"' + text.replace(/</g, '&lt;') + '"</div><div style="display: flex; justify-content: flex-end;"><button type="button" class="btn-action-small active">👍 Agree (1)</button></div>';
+      card.style = 'background: #0e1626; border: 1px solid #6366f1; border-radius: 10px; padding: 12px; margin-bottom: 10px;';
+      card.innerHTML = '<div style="font-size: 11px; color: #fff; font-weight: 700; margin-bottom: 4px;">You • Member <span style="color:#38bdf8; font-size:10px;">• Just Now</span></div><div style="font-size: 12.5px; color: #cbd5e1; margin-bottom: 6px;">"' + text.replace(/</g, '&lt;') + '"</div><div style="display: flex; justify-content: flex-end;"><button type="button" class="btn-action-small active">👍 Agree (1)</button></div>';
       list.insertBefore(card, list.firstChild);
       input.value = '';
       showToastNotification('Posted!');
@@ -4589,7 +4450,7 @@
     function runCustomSynthesis() {
       var box = document.getElementById('customOutputBox');
       box.style.display = 'block';
-      box.innerHTML = '<div style="background: #090e1a; border: 1px solid #334155; border-radius: 8px; padding: 10px;"><div style="font-size: 11px; font-weight: 800; color: #94a3b8; margin-bottom: 4px;">⚖️ Factual Core: State compact restricts agricultural land purchases by non-allied foreign buyers near military corridors.</div><div style="font-size: 12px; color: #f87171; font-weight: 700; margin-top: 6px;">🔴 Conservative Talking Point:</div><div style="font-size: 11.5px; color: #cbd5e1; font-style: italic;">"Foreign adversaries should not own American food supply chains next to domestic bases."</div></div>';
+      box.innerHTML = '<div style="background: rgba(10, 15, 29, 0.9); border: 1px solid #334155; border-radius: 10px; padding: 12px;"><div style="font-size: 11px; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">⚖️ Factual Core: State compact restricts agricultural land purchases by non-allied foreign buyers near military corridors.</div><div style="font-size: 12px; color: #f87171; font-weight: 700; margin-top: 8px;">🔴 Conservative Talking Point:</div><div style="font-size: 12px; color: #cbd5e1; font-style: italic; margin-top: 3px;">"Foreign adversaries should not own American food supply chains next to domestic bases."</div></div>';
       showToastNotification('Synthesized!');
     }
 
@@ -4616,5 +4477,6 @@
       loadLiveStories();
     });
   </script>
+
 </body>
 </html>

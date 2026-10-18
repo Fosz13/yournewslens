@@ -2142,8 +2142,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
               </div>
 
-              <div class="framing-headline">
-                <span>📌</span>
+              <div class="framing-headline {lens['key'].lower()}">
                 <span>{pData.get('headline_framing', 'Perspective Framing')}</span>
               </div>
 
