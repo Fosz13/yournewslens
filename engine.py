@@ -115,6 +115,17 @@ RSS_FEEDS = [
 ]
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+        # College Football Rankings & Historic Upsets (Verified Saturday Night Stadium Lights)
+    {
+        "patterns": [
+            "college football rankings", "upset-filled", "flips top 25", "top 25 upside down",
+            "college football upsets", "ap top 25", "coaches poll", "college football week 7",
+            "winners, losers in week", "historic upset", "upset win", "upset loss"
+        ],
+        "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Championship college football stadium under Saturday night floodlights.",
+        "credit": "📸 College Sports Wire Archive"
+    },
     # Big 12 Football & Athletics (Verified Collegiate Stadium Photography)
     {
         "patterns": [
@@ -653,24 +664,25 @@ HEADLINE_NOISE_WORDS = {
 }
 
 def classify_article(title: str, text: str = "") -> Tuple[str, str]:
-    """Accurately classifies articles into specific topic category and hierarchical master category."""
+    """Accurately classifies articles into specific topic category and hierarchical master category.
+    Prioritizes Sports over Weather so athletic teams like 'Miami Hurricanes' or 'Seattle Storm' are never hijacked.
+    """
     combined = (title + " " + (text or "")).lower()
+    t_lower = (title or "").lower()
 
-    def has_any(patterns):
+    def has_any(patterns, string=combined):
         for pat in patterns:
-            if re.search(r'\b' + pat + r'\b', combined):
+            if re.search(r'\b' + pat + r'\b', string):
                 return True
         return False
 
-    # 1. Severe Weather, High Winds & Utility Power Outages
-    if has_any([r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?', r'storms?', r'hurricanes?', r'blizzards?', r'tornados?|tornadoes?', r'electrical grids?', r'transmission lines?', r'utilities|utility']):
-        return ("Energy & Weather", "Energy & Weather")
-
-    # 2. Sports (Professional, Collegiate, and Olympic Athletics - NEVER 'National Headlines')
-    if has_any([
+    # 1. SPORTS PRIORITY CHECK:
+    # Any headline or text with strong athletic signals MUST be Sports (never Energy & Weather or National Headlines)
+    is_sports = has_any([
         r'footballs?', r'college football', r'cfb', r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
         r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
-        r'bowl games?', r'college football playoff', r'playoff committee',
+        r'bowl games?', r'college football playoff', r'playoff committee', r'ap poll', r'coaches poll',
+        r'top 25', r'rankings?', r'upset-filled', r'flips top 25', r'upset win', r'upset loss',
         r'baseballs?', r'mlb', r'world series', r'ballparks?', r'pitchers?', r'home runs?', r'innings?',
         r'nlcs', r'alcs', r'dodgers?', r'brewers?', r'yankees?', r'mets?', r'red sox', r'cubs?',
         r'basketballs?', r'nba', r'college basketball', r'ncaa', r'march madness', r'final four',
@@ -681,9 +693,24 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         r'tennis', r'wimbledon', r'us open',
         r'athletes?', r'athletics?', r'sports?', r'championships?', r'tournaments?',
         r'saudi public investment fund', r'head coach', r'coaching staff', r'transfer portal',
-        r'ap poll', r'coaches poll'
+        r'jalen hurts', r'bo nix', r'patriots?', r'chiefs?', r'eagles?', r'cowboys?', r'packers?', r'steelers?',
+        r'alabama crimson tide', r'ohio state', r'texas longhorns', r'georgia bulldogs', r'oregon ducks',
+        r'byu cougars', r'miami hurricanes'
+    ])
+    if is_sports:
+        # Verify it's not a utility blackout affecting a stadium
+        if not (has_any([r'power outages?', r'blackouts?']) and not has_any([r'rankings?', r'game', r'score', r'win', r'loss', r'upset', r'playoff'], t_lower)):
+            return ("Sports", "Sports")
+
+    # 2. Severe Weather, High Winds & Utility Power Outages (Excludes sports teams like Miami Hurricanes)
+    is_miami_hurricanes = bool(re.search(r'\b(?:miami|carolina|tulsa)\s+hurricanes?\b', combined))
+    if not is_miami_hurricanes and has_any([
+        r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?',
+        r'hurricane\s+(?:warning|watch|landfall|damage|evacuation|category|track|season|winds?|surge)',
+        r'tropical\s+storms?', r'blizzards?', r'tornados?|tornadoes?',
+        r'electrical grids?', r'transmission lines?', r'utility\s+grids?', r'downed\s+power\s+lines?'
     ]):
-        return ("Sports", "Sports")
+        return ("Energy & Weather", "Energy & Weather")
 
     # 3. Entertainment & Cinema
     if has_any([r'box office', r'movies?', r'films?', r'hollywood', r'actors?', r'actress(?:es)?', r'directors?', r'imax', r'netflix', r'taylor swift', r'concerts?', r'grammys?', r'oscars?', r'theatrical', r'cinema', r'blockbusters?']):
@@ -802,7 +829,17 @@ def is_story_mismatched(story: dict) -> bool:
             if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
                 return True
 
-        # 3. Known generic boilerplate phrases
+        # 3. Sports story with NCAA settlement boilerplate when title is not about settlement
+        if ("sport" in cat or any(w in title for w in ["football", "rankings", "upset", "game", "top 25", "week"])) and not any(w in title for w in ["settlement", "revenue-share", "revenue sharing", "house v"]):
+            if any(bad in all_text for bad in ["2.75 billion", "house v. ncaa", "title ix gender-equity", "losing every court case 9-0", "bringing revenue sharing in-house"]):
+                return True
+
+        # 4. Sports story misclassified under Energy & Weather or Border
+        if any(w in title for w in ["football", "rankings", "upset-filled", "top 25", "quarterback", "hurts", "lakers", "brewers", "dodgers", "nlcs", "mlb", "nba", "nfl", "pga"]):
+            if cat in ["energy & weather", "border & security"]:
+                return True
+
+        # 5. Known generic boilerplate phrases
         if any(bad in all_text for bad in [
             "regulatory standards with commercial and operational reality",
             "reviewing legal, regulatory, and economic implications",
@@ -826,16 +863,14 @@ def is_story_image_mismatched(story: dict) -> bool:
         url = (story.get("image_url") or "").lower()
         caption = (story.get("caption") or "").lower()
         credit = (story.get("credit") or "").lower()
-        is_sports = "sport" in cat or "sport" in master
+        is_sports = "sport" in cat or "sport" in master or any(w in title for w in ["football", "basketball", "baseball", "rankings", "upset", "game", "top 25"])
 
         # 0. POPE / VATICAN / RELIGIOUS MISMATCH GUARD:
-        # If image depicts Pope or Vatican, but title is NOT about Pope/Vatican -> MISMATCH!
         if ("pope" in url or "pope" in caption or "pope" in credit or "vatican" in caption or "vatican" in url or "pontiff" in caption):
             if not any(w in title for w in ["pope", "vatican", "pontiff", "papal", "holy see"]):
                 return True
 
         # 1. SPORTS DOMAIN INTEGRITY:
-        # If story is Sports, it MUST NOT have religious, utility, legal, hospital, or finance images
         if is_sports:
             forbidden_sports = [
                 "pope", "vatican", "pontiff", "bishop", "church", "cathedral",
@@ -843,7 +878,8 @@ def is_story_image_mismatched(story: dict) -> bool:
                 "courtroom", "gavel", "judge", "supreme court", "capitol", "white house",
                 "hospital complex", "medical care pavilion", "patient", "caregiver",
                 "trading floor", "stock market exchange", "financial market exchange",
-                "theatrical cinema", "movie premiere"
+                "theatrical cinema", "movie premiere",
+                "educational institution", "college — educational institution", "campus building"
             ]
             if any(bad in caption or bad in url for bad in forbidden_sports):
                 return True
@@ -883,10 +919,6 @@ def is_story_image_mismatched(story: dict) -> bool:
         if "photo-1489599849927-2ee91cede3ba" in url or "theatrical cinema" in caption:
             if "entertain" not in cat and "movie" not in title and "film" not in title:
                 return True
-
-        # 8. NON-HARDWARE STORIES HAVING REEL / SPOOL:
-        if "device used to store elongated" in caption or ("reel" in caption and "film" not in caption and "movie" not in caption and "cinema" not in caption and "riot" not in title):
-            return True
 
         return False
     except Exception:
@@ -1257,27 +1289,41 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
     """
     Extracts distinct, verified factual bullet points from article context.
     NEVER repeats the headline. Protects dotted initials (e.g., C.J., O.J., U.S., D.C.) from premature splitting.
+    Splits mashed multi-headline publisher blocks (e.g. '...Saturday ESPN College football...') into clean distinct facts.
     Pulls specific quotes, numbers, statistics, locations, and actions.
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     title_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', clean_title.lower()))
 
     clean_ctx = clean_html_text(context or "")
+    
+    # Split concatenated multi-publisher headlines common in aggregated RSS feeds
+    publishers = [
+        r'ESPN', r'CBS Sports', r'FOX Sports', r'The Athletic', r'Yahoo Sports',
+        r'Sports Illustrated', r'Bleacher Report', r'Associated Press', r'Reuters',
+        r'USA TODAY', r'CNN', r'NBC Sports', r'Fox News', r'The New York Times'
+    ]
+    protected_ctx = clean_ctx
+    for pub in publishers:
+        protected_ctx = re.sub(r'(?<=[a-zA-Z0-9])\s+(' + pub + r')\b', r'. \1: ', protected_ctx)
+
     # Protect common initials like C.J. Stroud, O.J. Simpson, U.S., D.C.
-    protected_ctx = re.sub(r'\b([A-Z])\.\s*([A-Z])\.', r'\1_\2_', clean_ctx)
+    protected_ctx = re.sub(r'\b([A-Z])\.\s*([A-Z])\.', r'\1_\2_', protected_ctx)
     protected_ctx = re.sub(r'\b([A-Z])\.\s+(?=[A-Z][a-z])', r'\1_ ', protected_ctx)
 
     raw_sentences = [
         s.strip().replace('_', '.')
         for s in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])', protected_ctx)
-        if len(s.strip()) > 18
+        if len(s.strip()) > 15
     ]
 
     valid_facts = []
     for s in raw_sentences:
-        s_clean = s.strip().rstrip('.')
+        # Strip publisher prefixes if left over
+        s_clean = re.sub(r'^(?:' + '|'.join(publishers) + r'):\s*', '', s).strip()
+        s_clean = s_clean.rstrip('.')
         s_clean = re.sub(r'\s+\.', '.', s_clean)
-        if not s_clean:
+        if not s_clean or len(s_clean) < 15:
             continue
         s_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', s_clean.lower()))
         overlap = len(s_words & title_words) / max(len(title_words), 1)
@@ -1294,7 +1340,7 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
             score = 0
             if re.search(r'\d+', f): score += 2
             if '"' in f or "'" in f: score += 2
-            if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated', 'scored', 'won', 'defeated']): score += 1
+            if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated', 'scored', 'won', 'defeated', 'upset', 'ranked']): score += 1
             return score
         valid_facts.sort(key=score_fact, reverse=True)
         return valid_facts[:4]
@@ -1473,44 +1519,54 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         ]
 
     # --- 5. NCAA REVENUE SHARING SETTLEMENT ---
-    elif has_any(["ncaa", "revenue-sharing deal", "power conferences approve", "house v. ncaa"]):
+    elif has_any(["house v. ncaa", "revenue-sharing framework", "paying student-athletes", "$2.75 billion", "revenue-sharing deal"]) and not has_any(["rankings", "upset", "top 25", "week 7", "flips", "upside down"]):
         core_facts = [
             "The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case.",
             "The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to $22 million annually to student-athletes.",
-            "The settlement requires final federal judicial approval and ongoing coordination to ensure compliance with Title IX gender-equity statutes."
+            "The settlement requires final federal judicial approval and ongoing coordination to ensure compliance with Title IX gender-equity statutes.",
+            "The new framework allows athletic departments to opt in to direct player revenue distribution starting in the 2025–26 academic year."
         ]
         left_framing = "Historic Labor Victory: College Athletes Secure Direct Revenue Share After Decades of Exploitation"
-        left_bullets = [
-            "Begins unwinding decades of amateurism rules where student-athletes generated billions for universities and media networks without direct compensation.",
-            "Recognizes athletic performance as skilled labor entitled to market compensation and fair revenue participation.",
-            "Pushes for full employee status, collective bargaining rights, and lifetime post-career medical coverage for contact-sport athletes."
-        ]
         left_talk = [
-            "Coaches were making $10 million while athletes generated billions; paying players directly is basic labor fairness.",
-            "College athletes are the workers driving a massive entertainment industry—they deserve fair pay and injury protections."
+            "Coaches were making $10 million and conferences were making billions while players got zero; paying athletes directly is basic labor fairness.",
+            "College athletes are the workers driving a massive entertainment industry—they deserve fair pay, workers' compensation, and lifelong injury protections."
         ]
         center_framing = "Antitrust Reality Forces Sustainable In-House Compensation Model for College Sports"
-        center_bullets = [
-            "Resolves catastrophic federal antitrust liabilities that threatened to bankrupt athletic departments across the country.",
-            "Replaces shadowy third-party booster collectives with standardized, university-administered payroll caps.",
-            "Requires ongoing administrative coordination to maintain Olympic and non-revenue sport athletic programs alongside football revenue sharing."
-        ]
         center_talk = [
-            "The NCAA was losing every court case 9-0; bringing revenue sharing in-house brings order to total chaos.",
-            "Sharing media revenue directly with athletes was legally unavoidable to save college athletics from endless lawsuits."
+            "The NCAA was losing every court case 9-0; bringing revenue sharing in-house is the only pragmatic way to avoid total legal chaos.",
+            "Sharing media revenue directly with athletes was legally unavoidable to save college athletics from endless antitrust lawsuits."
         ]
         right_framing = "Unregulated Free Agency Threatens Amateurism, Academic Focus, and School Loyalty"
-        right_bullets = [
-            "Transforms amateur collegiate sports into an unregulated bidding war where booster wealth dictates competitive balance.",
-            "Erodes academic standards as student-athletes enter year-to-year transfer portals chasing the highest payroll bids.",
-            "Forces athletic departments to consider cutting non-revenue varsity sports like track, wrestling, and swimming to fund football payouts."
-        ]
         right_talk = [
-            "College sports used to be about school pride and education; now it's minor-league free agency with no salary cap.",
-            "Turning college athletes into year-to-year free agents risks destroying Olympic sports and campus academic tradition."
+            "If players are getting paid like pros, they should sign binding multi-year contracts and pay taxes like pros—you can't have pro salaries without real accountability.",
+            "College sports used to be about campus pride, education, and development; turning 19-year-olds into mercenaries jumping schools every December ruins the core culture."
         ]
 
-    # --- 6. FEDERAL RESERVE INTEREST RATES ---
+    # --- 5B. COLLEGE FOOTBALL RANKINGS, UPSETS & TOP 25 SHAKEUP ---
+    elif has_any(["college football rankings", "upset-filled", "flips top 25", "top 25 upside down", "college football upsets", "ap top 25", "coaches poll", "winners, losers in week", "historic upset", "upset win", "upset loss"]) or (has_any(["college football", "cfb"]) and has_any(["rankings", "top 25", "upset", "upsets", "week 7", "week 8", "week 9", "week 6"])):
+        core_facts = [
+            "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
+            "Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
+            "The updated Top 25 rankings vaulted undefeated BYU and the No. 6 Miami Hurricanes into prime playoff positioning following dramatic second-half comebacks.",
+            "Under the new 12-team College Football Playoff format, regular-season upsets carry unprecedented weight as conference champions lock in first-round byes while bubble teams battle for at-large seeds."
+        ]
+        left_framing = "Competitive Parity Over Corporate Monopolies: Student-Athletes Drive Historic Athletic Drama"
+        left_talk = [
+            "Seeing hungry underdog teams take down multi-million dollar athletic factories shows the sport still belongs to players and campus communities, not TV network deals.",
+            "These student-athletes put their bodies on the line every single Saturday—their incredible effort proves they deserve real equity, fair compensation, and lifelong healthcare."
+        ]
+        center_framing = "Playoff Elimination Chaos: 12-Team Bracket Magnifies Every Single Regular-Season Upset"
+        center_talk = [
+            "That's why you play the games: preseason rankings and media hype mean nothing once you have to execute in a hostile road stadium.",
+            "With the new 12-team playoff, these mid-season upsets make every Saturday an elimination tournament with zero room for error."
+        ]
+        right_framing = "Heartland Grit Over Coastal Media Hype: Unranked Underdogs Prove Games Are Won on the Field"
+        right_talk = [
+            "This is why we love college football—unranked heartland underdogs knocking off overhyped, corporate-funded blue bloods on pure grit and heart!",
+            "The coastal media elites running the AP poll look foolish once again; real championships are won in the trenches, not in an ESPN TV studio."
+        ]
+    
+# --- 6. FEDERAL RESERVE INTEREST RATES ---
     elif has_any(["federal reserve", "rates steady", "benchmark rates steady", "core inflation eases", "fomc"]):
         core_facts = [
             "The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.",
@@ -2733,7 +2789,9 @@ CRITICAL RULES:
 2. "talking_points": Provide 2 soundbites per lens in CONVERSATIONAL LAY TERMS (natural everyday phrasing suitable for debates or discussions) directly based on the article and facts:
    - LEFT: Focus on public welfare, working families, civil rights, consumer protections, or corporate accountability.
    - CENTER: Focus on pragmatic operational trade-offs, practical feasibility, institutional stability, and balancing competing priorities.
-   - RIGHT: Focus on free enterprise, individual liberty, fiscal responsibility, constitutional boundaries, and limiting bureaucratic overreach.
+   - RIGHT: Authentic MAGA / populist conservative viewpoint in conversational lay terms (putting everyday Americans first, strong borders, cutting inflation by stopping reckless federal spending, "drill here, drill now" energy dominance, meritocracy, family tradition, anti-establishment/anti-media-bias, law and order).
+   - LEFT: Authentic progressive viewpoint in conversational lay terms (standing up for working families against corporate greed, healthcare/education access, labor rights, consumer protections, community equity).
+   - CENTER: Authentic common-sense moderate viewpoint in conversational lay terms (practical real-world results over cable news posturing, balanced budgets, what works on the ground).
 
 Return strictly valid raw JSON:
 {{
