@@ -1,82 +1,41 @@
 [
   {
-    "id": "story-1792338146-24",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Column | The surprising way walking can benefit your brain -",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792335770,
-    "source": "Google News Science \u2022 39 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/National_Capitol_Columns_-_Washington%2C_D.C..jpg/330px-National_Capitol_Columns_-_Washington%2C_D.C..jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Column \u2014 Structural element that transmits weight from above to below.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Column",
+    "id": "story-1792338765-7",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "In Texas Senate race, Ted Cruz tries to push Ken Paxton across the finish line -",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792337724,
+    "source": "Google News U.S. \u2022 17 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Ted_Cruz_official_116th_portrait_%283x4_cropped%29.jpg/330px-Ted_Cruz_official_116th_portrait_%283x4_cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Ted Cruz \u2014 American politician and attorney (born 1970).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Ted Cruz",
     "core_facts": [
-      "People who walk more each day tend to score better on several brain tests.",
-      "Neuroscience Confirmed Steve Jobs\u2019s 10-Minute Rule Really Does Make You More Creative.",
-      "Administrative decision-makers scheduled follow-up reviews as proceedings advance."
+      "Getaway cars, affairs, Dubai fugitives: Trump\u2019s pick Ken Paxton brings baggage to Senate race in Texas. poll shows a Texas toss-up with Talarico, Paxton in tight Senate race.",
+      "New Texas poll shows Democrats leading nearly all statewide races.",
+      "In tight Texas Senate race, Trump's immigration crackdown tests Republicans' hold on voters."
     ],
-    "neutral_summary": "People who walk more each day tend to score better on several brain tests. Neuroscience Confirmed Steve Jobs\u2019s 10-Minute Rule Really Does Make You More Creative.",
+    "neutral_summary": "Getaway cars, affairs, Dubai fugitives: Trump\u2019s pick Ken Paxton brings baggage to Senate race in Texas. poll shows a Texas toss-up with Talarico, Paxton in tight Senate race. New Texas poll shows Democrats leading nearly all statewide races.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Column | The surprising way walking...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in In Texas Senate race, Ted Cruz trie...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Column | The surprising way walk...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in In Texas Senate race, Ted Cruz t...",
         "talking_points": [
           "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
           "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Column | The surprising way walk...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in In Texas Senate race, Ted Cruz t...",
         "talking_points": [
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
           "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338102-5",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Zelensky says Musk-owned satellite system still restricted in Ukraine - Axios",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792335704,
-    "source": "Google News U.S. \u2022 39 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/330px-Flag_of_Ukraine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Ukraine \u2014 Country in Eastern Europe.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Ukraine",
-    "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
-    ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
         ]
       }
     }
@@ -88,7 +47,7 @@
     "title": "Several dead or injured in major fire at Canada military base - BBC",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792335676,
-    "source": "Google News Top Headlines \u2022 40 mins ago",
+    "source": "Google News Top Headlines \u2022 51 mins ago",
     "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
     "caption": "Professional stadium floodlights during league athletic competition.",
     "credit": "\ud83d\udcf8 Sports Wire Archive",
@@ -123,42 +82,42 @@
     }
   },
   {
-    "id": "story-1792338098-3",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "2026 Midterm Elections: Trump Rallies Republicans -",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792334358,
-    "source": "Google News U.S. \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Election_MG_3455.JPG/330px-Election_MG_3455.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Election \u2014 Process by which a population chooses the holder of a public office.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Election",
+    "id": "story-1792338777-12",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "France in Shock After Protests Turn Into Riots, Damaging Buildings and Shops -",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792335443,
+    "source": "Google News World \u2022 55 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "France \u2014 Country primarily in Western Europe.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / France",
     "core_facts": [
-      "7 highlights from JD Vance's town hall: Iran, immigration, corruption and 2028 plans.",
-      "Vance says he\u2019ll \u2018have to make a decision\u2019 on 2028 presidential run after midterm elections.",
-      "Vance faces tough questions on Iran war, immigration and more in CBS town hall."
+      "Huge Riots and Anti-Government Protests Roil France: What to Know.",
+      "French government in crisis talks after \u2018colossal failure of the state\u2019.",
+      "In France's Limoges, the fire-ravaged town hall rekindles memories of Notre Dame. 'No place for violence,' Macron says, as protesters clash with police in cities across France."
     ],
-    "neutral_summary": "7 highlights from JD Vance's town hall: Iran, immigration, corruption and 2028 plans. Vance says he\u2019ll \u2018have to make a decision\u2019 on 2028 presidential run after midterm elections.",
+    "neutral_summary": "Huge Riots and Anti-Government Protests Roil France: What to Know. French government in crisis talks after \u2018colossal failure of the state\u2019.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in 2026 Midterm Elections: Trump Ralli...",
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in France in Shock After Protests Turn...",
         "talking_points": [
-          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians.",
-          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
         ]
       },
       "CENTER": {
-        "headline_framing": "Strategic Realism, Alliance Coordination, and Trade Security in 2026 Midterm Elections: Trump Ra...",
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in France in Shock After Protests T...",
         "talking_points": [
-          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key allies.",
-          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength, American Resolve, and Decisive Deterrence in 2026 Midterm Elections: Trump Ra...",
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in France in Shock After Protests T...",
         "talking_points": [
-          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence prevents global conflict.",
-          "American foreign policy must unapologetically defend our national interests and ensure adversaries cannot threaten global freedom."
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
         ]
       }
     }
@@ -197,6 +156,47 @@
       },
       "RIGHT": {
         "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Texans v Jaguars at Wembley: NFL we...",
+        "talking_points": [
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338763-6",
+    "category": "Sports",
+    "master_category": "Sports",
+    "title": "\u2018Heartbreaking day for Wichita\u2019: Truck drives through soccer field, killing 2, injuring 10 - NewsNation",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792333661,
+    "source": "Google News U.S. \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/2001_Ford_F-250_Super_Duty_XL_regular_cab_flatbed%2C_front_left%2C_05-17-2025.jpg/330px-2001_Ford_F-250_Super_Duty_XL_regular_cab_flatbed%2C_front_left%2C_05-17-2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Truck \u2014 Commercial or utilitarian motor vehicle.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Truck",
+    "core_facts": [
+      "2 dead, 11 injured after Kansas mother drives onto soccer field during game: Police.",
+      "Lawmakers issue statements after 2 killed, 11 injured at Wichita youth soccer game.",
+      "Police: 6-year-old boy, 35-year-old man killed in crash at Stryker Sports Complex."
+    ],
+    "neutral_summary": "2 dead, 11 injured after Kansas mother drives onto soccer field during game: Police. Lawmakers issue statements after 2 killed, 11 injured at Wichita youth soccer game.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Player Welfare, Teamwork, and Community Connection in \u2018Heartbreaking day for Wichita\u2019: Truck...",
+        "talking_points": [
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in \u2018Heartbreaking day for Wichita\u2019: Tr...",
+        "talking_points": [
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in \u2018Heartbreaking day for Wichita\u2019: Tr...",
         "talking_points": [
           "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
           "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
@@ -246,84 +246,83 @@
     }
   },
   {
-    "id": "story-1792336583-16",
-    "category": "Crime & Public Safety",
-    "master_category": "Crime & Public Safety",
-    "title": "Albanian PM says protests pose threat to EU membership, not government -",
+    "id": "story-1792338779-13",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Pope Leo pledges gradual return to duties in first event since cancer surgery -",
     "source_name": "Google News World",
-    "pub_timestamp": 1792331263,
+    "pub_timestamp": 1792332552,
     "source": "Google News World \u2022 1 hour ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
-    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "image_url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Civil demonstration and metropolitan public square assembly.",
+    "credit": "\ud83d\udcf8 Global News Wire Archive",
     "core_facts": [
-      "Albanian police fire rubber bullets as student protests rage.",
-      "Anti-government protesters battle with police in Albania.",
-      "Riots in Tirana enter a fifth day as Albania\u2019s anti-government protests escalate."
+      "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.",
+      "While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
+      "Local humanitarian organizations and civil society groups are urging municipal authorities to construct dedicated low-cost caregiver dormitories on hospital grounds."
     ],
-    "neutral_summary": "Albanian police fire rubber bullets as student protests rage. Anti-government protesters battle with police in Albania.",
+    "neutral_summary": "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment. While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in Albanian PM says protests pose thre...",
+        "headline_framing": "Healthcare Dignity Requires Housing Caregivers: Exposing the Human Cost of Inadequate Public Hospital Infrastructure",
         "talking_points": [
-          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
-          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+          "No family should have to sleep on concrete in the cold just to hold their sick child's hand in the hospital.",
+          "True healthcare access means providing basic human shelter for families traveling miles for life-saving care."
         ]
       },
       "CENTER": {
-        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in Albanian PM says protests pose t...",
+        "headline_framing": "Public Hospital Lodging Logistics: Balancing Campus Space Constraints with Caregiver Welfare",
         "talking_points": [
-          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
-          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+          "Hospitals need practical partnerships with local charities and city shelters to get patient families off sidewalks and into safe beds.",
+          "Solving caregiver homelessness requires coordination between municipal city planners, public transit, and hospital administrators."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in Albanian PM says protests pose t...",
+        "headline_framing": "Family Devotion Meets Community Charity: Mobilizing Civic and Religious Support to Aid Hospital Caregivers",
         "talking_points": [
-          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
-          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+          "The deep family loyalty shown by these caregivers is inspiring; community and religious charities should step up to provide food and shelter.",
+          "Rather than waiting on government red tape, private donors and hospital foundations can build affordable guest housing today."
         ]
       }
     }
   },
   {
-    "id": "story-1792335129-7",
-    "category": "Crime & Public Safety",
-    "master_category": "National Headlines",
-    "title": "Albanian PM says protests pose threat to EU membership, not government - Reuters",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792331263,
-    "source": "Google News World \u2022 1 hour ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
-    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
-    "credit": "\ud83d\udcf8 National Photo Archive",
+    "id": "story-1792338872-50",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Can Scott Colom win Mississippi Senate? Warnock is making a big bet on it.",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792332000,
+    "source": "Politico National \u2022 1 hour ago",
+    "image_url": "https://static.politico.com/c8/f8/f2ebd89549d88af936ac5951ec55/ap26286611436710.jpg",
+    "caption": "Sen. Raphael Warnock, D-Ga, talks with a voter outside a polling location during early voting in Decatur, Ga., Tuesday, Oct. 13, 2026.",
+    "credit": "Ben Hendren/Atlanta Journal-Constitution/AP",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian PM says protests pose threat to EU membership, not government.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+      "Warnock is testing a \u201cnew kind of Southern strategy\u201d for the Democratic Party.",
+      "Primary reporting documented specific operational context and verified official timelines.",
+      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian PM says protests pose threat to EU membership, not government. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Warnock is testing a \u201cnew kind of Southern strategy\u201d for the Democratic Party. Primary reporting documented specific operational context and verified official timelines.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Albanian PM says protests pose threat ...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Can Scott Colom win Mississippi Sen...",
         "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Albanian PM says protests pose threat ...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Can Scott Colom win Mississippi ...",
         "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Albanian PM says protests pose thre...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Can Scott Colom win Mississippi ...",
         "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
         ]
       }
     }
@@ -370,39 +369,162 @@
     }
   },
   {
-    "id": "story-1792338224-56",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "The nine key races that will decide who controls the Senate, and where they stand",
-    "source_name": "Fox News Politics",
-    "pub_timestamp": 1792328437,
-    "source": "Fox News Politics \u2022 2 hours ago",
-    "image_url": "https://static.foxnews.com/foxnews.com/content/uploads/2026/03/gillibrand-scott-split.gif",
-    "caption": "The nine key races that will decide who controls the Senate, and where they stand.",
-    "credit": "\ud83d\udcf8 Fox News Politics",
+    "id": "story-1792338755-2",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "U.S. taking Putin\u2019s side would be a \u2018historic mistake,\u2019 says Zelenskyy -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792330479,
+    "source": "Google News Top Headlines \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Vladimir_Putin_%282026_02_23%29.jpg/330px-Vladimir_Putin_%282026_02_23%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Vladimir Putin \u2014 Leader of Russia since 1999.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Vladimir Putin",
     "core_facts": [
-      "Democrats eye multiple paths to flip the Senate majority as six toss-up races across Alaska, Iowa, Maine, Ohio and Texas shape Election Day.",
-      "Primary reporting documented specific operational context and verified official timelines.",
-      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
     ],
-    "neutral_summary": "Democrats eye multiple paths to flip the Senate majority as six toss-up races across Alaska, Iowa, Maine, Ohio and Texas shape Election Day. Primary reporting documented specific operational context and verified official timelines.",
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in The nine key races that will decide...",
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338870-49",
+    "category": "Sports",
+    "master_category": "Sports",
+    "title": "Airman dies in rappelling accident at Alamodome before UTSA-Navy game - Texas Public Radio | TPR",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792330200,
+    "source": "Google News Sports \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Gfp-texas-san-antonio-large-complex_%281%29.jpg/330px-Gfp-texas-san-antonio-large-complex_%281%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Alamodome \u2014 Multi-purpose domed stadium in San Antonio, Texas, United States.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Alamodome",
+    "core_facts": [
+      "Air Force - Service member died from fall before Navy-UTSA game.",
+      "Nellis Air Force Base: Service member dies after rappelling fall at a UT San Antonio game.",
+      "Military member suffers life-threatening injuries in botched rappel before UTSA game."
+    ],
+    "neutral_summary": "Air Force - Service member died from fall before Navy-UTSA game. Nellis Air Force Base: Service member dies after rappelling fall at a UT San Antonio game.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Airman dies in rappelling accident at ...",
+        "talking_points": [
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Airman dies in rappelling accident ...",
+        "talking_points": [
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Airman dies in rappelling accident ...",
+        "talking_points": [
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338837-35",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "Taylor Swift Slips Into a Glittering Sheer Navy Tulle Gown for a Milestone Performance at the Academy Museum Gala - InStyle",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792328888,
+    "source": "Google News Entertainment \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Glitter_close_up.jpg/330px-Glitter_close_up.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Glitter \u2014 Shiny and small reflective particles.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Glitter",
+    "core_facts": [
+      "Academy Museum Gala 2026 Red Carpet: Taylor Swift, Inde Navarrette, Kate Hudson and More.",
+      "Taylor Swift, Charlize Theron, Colman Domingo and Many More Stars Help Academy Museum Gala Raise Over $14M.",
+      "Taylor Swift\u2019s Pale Blue Academy Museum Gala Gown Has a Subtle Link to Her Wedding."
+    ],
+    "neutral_summary": "Academy Museum Gala 2026 Red Carpet: Taylor Swift, Inde Navarrette, Kate Hudson and More. Taylor Swift, Charlize Theron, Colman Domingo and Many More Stars Help Academy Museum Gala Raise Over $14M.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Creative Labor Protections, Artistic Integrity, and Cultural Diversity in Taylor Swift Slips Into a Glitterin...",
+        "talking_points": [
+          "Creative arts must center on authentic human storytelling and fair wages for artists, writers, and crews, not corporate algorithms.",
+          "Great cinema and entertainment bring diverse communities together through shared empathy and cultural meaning."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Theatrical Exhibition Economics, Craftsmanship, and Audience Trends in Taylor Swift Slips Into a Glitte...",
+        "talking_points": [
+          "The entertainment industry flourishes when studios invest in genuine high-quality storytelling that brings audiences to theaters.",
+          "Balancing premium theatrical exhibition with streaming convenience is reshaping how creators and audiences connect."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence in Taylor Swift Slips Into a Glitte...",
+        "talking_points": [
+          "The entertainment marketplace is governed by audience choice\u2014when creators focus on inspiring and entertaining, audiences respond.",
+          "American creative culture leads the world when filmmakers focus on compelling storytelling rather than divisive corporate ideology."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338758-4",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Poll: Americans are anxious, pessimistic and deeply unhappy with Trump ahead of the midterms -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792328400,
+    "source": "Google News Top Headlines \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg/330px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Donald Trump \u2014 President of the United States (2017\u20132021; since 2025).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Donald Trump",
+    "core_facts": [
+      "Nearly 3-in-4 Americans say country is on the wrong track, poll says.",
+      "Trump approval hits record low, handing Democrats a clear midterm edge.",
+      "Ahead of the midterms, most voters cite the economy and cost of living as top issues and favor political change."
+    ],
+    "neutral_summary": "Nearly 3-in-4 Americans say country is on the wrong track, poll says. Trump approval hits record low, handing Democrats a clear midterm edge.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Poll: Americans are anxious, pessim...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in The nine key races that will dec...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Poll: Americans are anxious, pes...",
         "talking_points": [
           "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
           "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in The nine key races that will dec...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Poll: Americans are anxious, pes...",
         "talking_points": [
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
           "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
@@ -411,39 +533,39 @@
     }
   },
   {
-    "id": "story-1792338200-45",
+    "id": "story-1792338866-47",
     "category": "Sports",
     "master_category": "Sports",
-    "title": "Big 12 admits clock error at end of Notre Dame-BYU game - NBC Sports",
+    "title": "Fantasy football rankings, projections, lineups, sleepers for Week 6 from proven model - CBS Sports",
     "source_name": "Google News Sports",
-    "pub_timestamp": 1792327003,
+    "pub_timestamp": 1792327351,
     "source": "Google News Sports \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional basketball arena hardwood court under game night lights.",
+    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional stadium floodlights during league athletic competition.",
     "credit": "\ud83d\udcf8 Sports Wire Archive",
     "core_facts": [
-      "Big 12 admits error in Notre Dame-BYU, says Irish had time for one more play.",
-      "PFF Grades and Advanced Metric Breakdown From BYU Upset Over Notre Dame.",
-      "College football faces another clock controversy after BYU upsets Notre Dame | OutKick."
+      "NFL Week 6 Live Fantasy Football Start 'Em Sit 'Em Lineup Advice and Latest Injury Updates.",
+      "Matthew Berry's Week 6 Fantasy Football Rankings: Kyren Williams Is a Top-10 Play.",
+      "Fantasy playbook: NFL Week 6 Shadow Reports, lineup locks and projected scores."
     ],
-    "neutral_summary": "Big 12 admits error in Notre Dame-BYU, says Irish had time for one more play. PFF Grades and Advanced Metric Breakdown From BYU Upset Over Notre Dame.",
+    "neutral_summary": "NFL Week 6 Live Fantasy Football Start 'Em Sit 'Em Lineup Advice and Latest Injury Updates. Matthew Berry's Week 6 Fantasy Football Rankings: Kyren Williams Is a Top-10 Play.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Big 12 admits clock error at end of No...",
+        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Fantasy football rankings, projections...",
         "talking_points": [
           "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
           "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Big 12 admits clock error at end of...",
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Fantasy football rankings, projecti...",
         "talking_points": [
           "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
           "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Big 12 admits clock error at end of...",
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Fantasy football rankings, projecti...",
         "talking_points": [
           "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
           "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
@@ -535,16 +657,16 @@
     }
   },
   {
-    "id": "story-1792338105-6",
+    "id": "story-1792338769-9",
     "category": "World News",
     "master_category": "World News",
-    "title": "Ukraine strikes oil facility in St. Petersburg as part of \u2018massive\u2019 drone attack - POLITICO.eu",
+    "title": "Trump tries different approach with Russia to bring Americans relief amid ongoing war with Ukraine -",
     "source_name": "Google News U.S.",
-    "pub_timestamp": 1792323600,
-    "source": "Google News U.S. \u2022 4 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
-    "caption": "International maritime commercial transit and trade security corridor.",
-    "credit": "\ud83d\udcf8 Maritime Logistics Archive",
+    "pub_timestamp": 1792324813,
+    "source": "Google News U.S. \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/330px-Flag_of_Russia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Russia \u2014 Country in Eastern Europe and North Asia.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Russia",
     "core_facts": [
       "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
       "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
@@ -576,16 +698,16 @@
     }
   },
   {
-    "id": "story-1792338091-1",
+    "id": "story-1792338773-11",
     "category": "World News",
     "master_category": "World News",
-    "title": "St Petersburg endures biggest Ukrainian drone attack - Financial Times",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792321292,
-    "source": "Google News Top Headlines \u2022 4 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "International diplomatic envoy conference and multilateral delegation summit.",
-    "credit": "\ud83d\udcf8 International Press Pool",
+    "title": "Oil facilities hit in deadly overnight attack on St Petersburg - BBC",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792324669,
+    "source": "Google News U.S. \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/330px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Saint Petersburg \u2014 Second-largest city in Russia.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Saint Petersburg",
     "core_facts": [
       "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
       "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
@@ -617,42 +739,124 @@
     }
   },
   {
-    "id": "story-1792336558-6",
-    "category": "Crime & Public Safety",
-    "master_category": "Crime & Public Safety",
-    "title": "A compassionate teacher and her young students: What we know about the victims of the Bend school shooting -",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792319444,
-    "source": "Google News Top Headlines \u2022 5 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Municipal first responders and law enforcement security perimeter operations.",
-    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
+    "id": "story-1792338882-56",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "House panel warns Singham-linked nonprofits: Comply with subpoenas or face Congress",
+    "source_name": "Fox News Politics",
+    "pub_timestamp": 1792321273,
+    "source": "Fox News Politics \u2022 4 hours ago",
+    "image_url": "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2026/08/931/523/Jason-Smith-Ways-and-Means-subpoena-hearing2.jpg?ve=1&tl=1",
+    "caption": "House panel warns Singham.",
+    "credit": "\ud83d\udcf8 Fox News Politics",
     "core_facts": [
-      "School Shooting in Bend, Ore., Has Heroes and Pain, But Few Answers.",
-      "Oregon teacher fought school attacker before armed dad killed suspect.",
-      "Oregon father is the latest armed civilian to confront a gunman in a U.S. mass shooting."
+      "Neville Roy Singham and 20 others face potential depositions as the House Ways and Means Committee escalates its probe into nonprofit foreign funding.",
+      "Primary reporting documented specific operational context and verified official timelines.",
+      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
     ],
-    "neutral_summary": "School Shooting in Bend, Ore., Has Heroes and Pain, But Few Answers. Oregon teacher fought school attacker before armed dad killed suspect.",
+    "neutral_summary": "Neville Roy Singham and 20 others face potential depositions as the House Ways and Means Committee escalates its probe into nonprofit foreign funding. Primary reporting documented specific operational context and verified official timelines.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in A compassionate teacher and her you...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in House panel warns Singham...",
         "talking_points": [
-          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
-          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
         ]
       },
       "CENTER": {
-        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in A compassionate teacher and her ...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in House panel warns Singham...",
         "talking_points": [
-          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
-          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in A compassionate teacher and her ...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in House panel warns Singham...",
         "talking_points": [
-          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
-          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338805-24",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "How Coke Loosened Pepsi\u2019s Grip on KFC\u2019s Soda Fountains - WSJ",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792321200,
+    "source": "Google News Business \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pepsi_2023.svg/330px-Pepsi_2023.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Pepsi \u2014 Soft drink by PepsiCo.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Pepsi",
+    "core_facts": [
+      "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades.",
+      "KFC switch to Coke puts PepsiCo's food service ties in focus, analysts say.",
+      "Here's how much it could sting financially."
+    ],
+    "neutral_summary": "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades. KFC switch to Coke puts PepsiCo's food service ties in focus, analysts say.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in How Coke Loosened Pepsi\u2019s Grip on K...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in How Coke Loosened Pepsi\u2019s Grip o...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in How Coke Loosened Pepsi\u2019s Grip o...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338787-17",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "Katie Zacharia and the real problem with workers embellishing their credentials - Business Insider",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792320180,
+    "source": "Google News Politics \u2022 5 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Official federal podium and press briefing conference.",
+    "credit": "\ud83d\udcf8 National Photo Archive",
+    "core_facts": [
+      "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job.",
+      "A Five-Day Tour for Katie Zacharia.",
+      "Susie Wiles helped set up Fox interview ahead of press secretary\u2019s exit."
+    ],
+    "neutral_summary": "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job. A Five-Day Tour for Katie Zacharia.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Katie Zacharia and the real problem...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Katie Zacharia and the real prob...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Katie Zacharia and the real prob...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
         ]
       }
     }
@@ -783,6 +987,47 @@
     }
   },
   {
+    "id": "story-1792338757-3",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "A dramatic El Ni\u00f1o effect is headed for the West Coast -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792317780,
+    "source": "Google News Top Headlines \u2022 5 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Spring_Lake%2C_New_Jersey_Beach_at_Sunrise.jpg/330px-Spring_Lake%2C_New_Jersey_Beach_at_Sunrise.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Coast \u2014 Area where land meets the sea or ocean.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Coast",
+    "core_facts": [
+      "El Nino Effect: How the climate pattern could reshape California's winter possibly leading to more flooding, landslides and rain.",
+      "After devastating flooding almost a decade ago, is San Jose prepared for a \u2018Super El Ni\u00f1o?\u2019.",
+      "Thanks to El Ni\u00f1o, California is getting a grim preview of its climate change future."
+    ],
+    "neutral_summary": "El Nino Effect: How the climate pattern could reshape California's winter possibly leading to more flooding, landslides and rain. After devastating flooding almost a decade ago, is San Jose prepared for a \u2018Super El Ni\u00f1o?\u2019.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in A dramatic El Ni\u00f1o effect is headed...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in A dramatic El Ni\u00f1o effect is hea...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in A dramatic El Ni\u00f1o effect is hea...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792331928-52",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
@@ -790,77 +1035,118 @@
     "source_name": "Google News Sports",
     "pub_timestamp": 1792317763,
     "source": "Google News Sports \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Assumption_College_Bangkok_Thailand_%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%AA%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%8A%E0%B8%B1%E0%B8%8D_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81_06.jpg/330px-Assumption_College_Bangkok_Thailand_%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%AA%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%8A%E0%B8%B1%E0%B8%8D_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81_06.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "College \u2014 Educational institution.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / College",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
+    "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
+    "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
     "core_facts": [
-      "The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case.",
-      "The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to $22 million annually to student-athletes.",
-      "The settlement requires final federal judicial approval and ongoing coordination to ensure compliance with Title IX gender-equity statutes.",
-      "Impossible to choose on a wild Saturday &nbsp;&nbsp; ESPN College football winners, losers in Week 7: BYU is the toast of historic weekend, Texas has a Sark problem &nbsp;&nbsp; CBS Sports Hurricane warning: Miami poised for No."
+      "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
+      "Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
+      "The updated Top 25 rankings vaulted undefeated BYU and the No. 6 Miami Hurricanes into prime playoff positioning following dramatic second-half comebacks.",
+      "Under the new 12-team College Football Playoff format, regular-season upsets carry unprecedented weight as conference champions lock in first-round byes while bubble teams battle for at-large seeds."
     ],
-    "neutral_summary": "The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case. The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to $22 million annually to student-athletes.",
+    "neutral_summary": "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings. Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Historic Labor Victory: College Athletes Secure Direct Revenue Share After Decades of Exploitation",
+        "headline_framing": "Competitive Parity Over Corporate Monopolies: Student-Athletes Drive Historic Athletic Drama",
         "talking_points": [
-          "Coaches were making $10 million while athletes generated billions; paying players directly is basic labor fairness.",
-          "College athletes are the workers driving a massive entertainment industry\u2014they deserve fair pay and injury protections."
+          "Seeing hungry underdog teams take down multi-million dollar athletic factories shows the sport still belongs to players and campus communities, not TV network deals.",
+          "These student-athletes put their bodies on the line every single Saturday\u2014their incredible effort proves they deserve real equity, fair compensation, and lifelong healthcare."
         ]
       },
       "CENTER": {
-        "headline_framing": "Antitrust Reality Forces Sustainable In-House Compensation Model for College Sports",
+        "headline_framing": "Playoff Elimination Chaos: 12-Team Bracket Magnifies Every Single Regular-Season Upset",
         "talking_points": [
-          "The NCAA was losing every court case 9-0; bringing revenue sharing in-house brings order to total chaos.",
-          "Sharing media revenue directly with athletes was legally unavoidable to save college athletics from endless lawsuits."
+          "That's why you play the games: preseason rankings and media hype mean nothing once you have to execute in a hostile road stadium.",
+          "With the new 12-team playoff, these mid-season upsets make every Saturday an elimination tournament with zero room for error."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Unregulated Free Agency Threatens Amateurism, Academic Focus, and School Loyalty",
+        "headline_framing": "Heartland Grit Over Coastal Media Hype: Unranked Underdogs Prove Games Are Won on the Field",
         "talking_points": [
-          "College sports used to be about school pride and education; now it's minor-league free agency with no salary cap.",
-          "Turning college athletes into year-to-year free agents risks destroying Olympic sports and campus academic tradition."
+          "This is why we love college football\u2014unranked heartland underdogs knocking off overhyped, corporate-funded blue bloods on pure grit and heart!",
+          "The coastal media elites running the AP poll look foolish once again; real championships are won in the trenches, not in an ESPN TV studio."
         ]
       }
     }
   },
   {
-    "id": "story-1792338094-2",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "How Zelensky Decided to Take the Risk and Publicly Confront Trump - WSJ",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792315800,
-    "source": "Google News Top Headlines \u2022 6 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/3_Alarm_Building_Fire.jpg/330px-3_Alarm_Building_Fire.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Risk \u2014 Possibility of something bad happening.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Risk",
+    "id": "story-1792338868-48",
+    "category": "Sports",
+    "master_category": "Sports",
+    "title": "Dylan Raiola, one week after benching, rallies Oregon past former team Nebraska -",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792317480,
+    "source": "Google News Sports \u2022 5 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/2025-0722_Dylan_Raiola.jpg/330px-2025-0722_Dylan_Raiola.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Dylan Raiola \u2014 American football player (born 2005).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Dylan Raiola",
     "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
+      "Dylan Raiola Clutch After Benching, Top Box Score Stats & Highlights from Oregon's Win vs.",
+      "Nebraska Comes Up Short in Late Loss at Oregon - University of Nebraska - Official Athletics Website.",
+      "Oregon 17, Nebraska 14: Another Fourth Quarter, Another Nebraska Football Meltdown. 'Devastating night': Coach Rhule discusses offense, multiple injuries during Oregon game."
     ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "neutral_summary": "Dylan Raiola Clutch After Benching, Top Box Score Stats & Highlights from Oregon's Win vs. Nebraska Comes Up Short in Late Loss at Oregon - University of Nebraska - Official Athletics Website.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Dylan Raiola, one week after benching,...",
         "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
         ]
       },
       "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Dylan Raiola, one week after benchi...",
         "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Dylan Raiola, one week after benchi...",
         "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338760-5",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "O.J. Simpson, a Secret Informant and a Decades-Old Mystery -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792316719,
+    "source": "Google News Top Headlines \u2022 6 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg",
+    "caption": "O.J. Simpson during legal proceedings in criminal court.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Court Pool Archive",
+    "core_facts": [
+      "NYT : OJ's Friend May Have Helped Dispose of Evidence.",
+      "5 Takeaways From The Times\u2019s Re-Examination of the O.J. Simpson Case.",
+      "Brother of possible OJ Simpson accomplice claims he returned with bloody hands on night of murders: report."
+    ],
+    "neutral_summary": "NYT : OJ's Friend May Have Helped Dispose of Evidence. 5 Takeaways From The Times\u2019s Re-Examination of the O.J. Simpson Case.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in O.J. Simpson, a Secret Informant an...",
+        "talking_points": [
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in O.J. Simpson, a Secret Informant...",
+        "talking_points": [
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in O.J. Simpson, a Secret Informant...",
+        "talking_points": [
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
         ]
       }
     }
@@ -908,6 +1194,47 @@
     }
   },
   {
+    "id": "story-1792338854-41",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "At the center of the state\u2019s growing measles outbreak, it\u2019s business as usual - Inquirer.com",
+    "source_name": "Google News Health",
+    "pub_timestamp": 1792314060,
+    "source": "Google News Health \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Municipal first responders and law enforcement security operations.",
+    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
+    "core_facts": [
+      "US records 4,410 measles cases as outbreak grows.",
+      "Lancaster County measles cases reach 452 after biggest weekly increase since September.",
+      "CDC sends a \u2018disease detective\u2019 to Pennsylvania amid measles outbreak."
+    ],
+    "neutral_summary": "US records 4,410 measles cases as outbreak grows. Lancaster County measles cases reach 452 after biggest weekly increase since September.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in At the center of the state\u2019s growin...",
+        "talking_points": [
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in At the center of the state\u2019s gro...",
+        "talking_points": [
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in At the center of the state\u2019s gro...",
+        "talking_points": [
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792335156-17",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
@@ -950,43 +1277,42 @@
     }
   },
   {
-    "id": "story-1792323999-30",
-    "category": "Science & Tech",
-    "master_category": "Science & Tech",
-    "title": "Japan to launch world-first mission to collect samples from Martian moon - The Guardian",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792311120,
-    "source": "Google News Science \u2022 7 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa%2C_original_graphic_15.jpg/330px-The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa%2C_original_graphic_15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Mars in fiction \u2014 Depictions of the planet.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Mars in fiction",
+    "id": "story-1792338789-18",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "Alberta Independence: Winners and Losers if Province Leaves Canada - Newsweek",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792314000,
+    "source": "Google News Politics \u2022 6 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Alberta.svg/330px-Flag_of_Alberta.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Alberta \u2014 Province of Canada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Alberta",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Japan to launch world-first mission to collect samples from Martian moon.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+      "Alberta separatists say they\u2019ll keep fighting after independence vote.",
+      "Alberta Support for Canada Rises Ahead of Separation Referendum. \u2018The Switzerland of North America\u2019: Albertans vote on leaving Canada.",
+      "A Calgary Crowd Rallies for Canada as Alberta\u2019s Vote on Secession Nears."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Japan to launch world-first mission to collect samples from Martian moon. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Alberta separatists say they\u2019ll keep fighting after independence vote. Alberta Support for Canada Rises Ahead of Separation Referendum. \u2018The Switzerland of North America\u2019: Albertans vote on leaving Canada.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Japan to launch world-first mission to...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Alberta Independence: Winners and L...",
         "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Japan to launch world-first mission to...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Alberta Independence: Winners an...",
         "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Japan to launch world-first mission...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Alberta Independence: Winners an...",
         "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
         ]
       }
     }
@@ -998,7 +1324,7 @@
     "title": "\u2018SNL UK\u2019 Star Ania Magliano Goes Nuclear on MAGA-Friendly Host Shane Gillis - The Daily Beast",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792309926,
-    "source": "Google News Entertainment \u2022 7 hours ago",
+    "source": "Google News Entertainment \u2022 8 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/The_Sun_in_white_light.jpg/330px-The_Sun_in_white_light.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Star \u2014 Large self-illuminated object in space.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Star",
@@ -1034,83 +1360,42 @@
     }
   },
   {
-    "id": "story-1792338150-26",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Apple Store employees are warning potential iPhone Duo buyers not to do this - PhoneArena",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792308716,
-    "source": "Google News Tech \u2022 8 hours ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
-    "caption": "The United States Capitol building in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Architect of the Capitol",
+    "id": "story-1792338751-0",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "Arrests over France protests rise to 1,800, with whole streets in Paris \u2018devastated\u2019 \u2013 Europe live -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792309680,
+    "source": "Google News Top Headlines \u2022 8 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+    "caption": "The Parisian metropolitan corridor in France.",
+    "credit": "\ud83d\udcf8 European Press Photo",
     "core_facts": [
-      "Apple\u2019s $1,999 iPhone Duo puts the company's status-symbol power to the test.",
-      "Mark Gurman: Apple Made 'Major Mistake' With iPhone Duo Pre-Orders.",
-      "Apple blames \u2018extraordinary\u2019 demand as foldable iPhones sell out. iPhone Duo Shipping Estimates Have Already Been Pushed Back To 2027."
+      "Huge Riots and Anti-Government Protests Roil France: What to Know.",
+      "French government in crisis talks after \u2018colossal failure of the state\u2019.",
+      "In France's Limoges, the fire-ravaged town hall rekindles memories of Notre Dame. 'No place for violence,' Macron says, as protesters clash with police in cities across France."
     ],
-    "neutral_summary": "Apple\u2019s $1,999 iPhone Duo puts the company's status-symbol power to the test. Mark Gurman: Apple Made 'Major Mistake' With iPhone Duo Pre-Orders.",
+    "neutral_summary": "Huge Riots and Anti-Government Protests Roil France: What to Know. French government in crisis talks after \u2018colossal failure of the state\u2019.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Apple Store employees are warning p...",
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in Arrests over France protests rise t...",
         "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Apple Store employees are warnin...",
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in Arrests over France protests ris...",
         "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Apple Store employees are warnin...",
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in Arrests over France protests ris...",
         "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338127-16",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Consumer apprehension grows as US retailers adopt AI-assisted pricing tools - AP News",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792307220,
-    "source": "Google News Business \u2022 8 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/The_Kodak_Salesman_%281919%29_%2814597240757%29.jpg/330px-The_Kodak_Salesman_%281919%29_%2814597240757%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Consumer \u2014 User of a product or service.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Consumer",
-    "core_facts": [
-      "AP Business SummaryBrief at 9:03 a.m.",
-      "How to get the best prices online\u2014and fight back against companies that experiment on shoppers.",
-      "Are you paying more than other shoppers?."
-    ],
-    "neutral_summary": "AP Business SummaryBrief at 9:03 a.m. How to get the best prices online\u2014and fight back against companies that experiment on shoppers.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Consumer apprehension grows as US r...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Consumer apprehension grows as U...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Consumer apprehension grows as U...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
         ]
       }
     }
@@ -1127,32 +1412,155 @@
     "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
     "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
     "core_facts": [
-      "The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case.",
-      "The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to $22 million annually to student-athletes.",
-      "The settlement requires final federal judicial approval and ongoing coordination to ensure compliance with Title IX gender-equity statutes.",
-      "2 Notre Dame among top-eight teams to fall ESPN Hurricane warning: Miami poised for No."
+      "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
+      "Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
+      "The updated Top 25 rankings vaulted undefeated BYU and the No. 6 Miami Hurricanes into prime playoff positioning following dramatic second-half comebacks.",
+      "Under the new 12-team College Football Playoff format, regular-season upsets carry unprecedented weight as conference champions lock in first-round byes while bubble teams battle for at-large seeds."
     ],
-    "neutral_summary": "The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case. The agreement establishes a groundbreaking revenue-sharing framework allowing universities to directly pay up to $22 million annually to student-athletes.",
+    "neutral_summary": "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings. Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Historic Labor Victory: College Athletes Secure Direct Revenue Share After Decades of Exploitation",
+        "headline_framing": "Competitive Parity Over Corporate Monopolies: Student-Athletes Drive Historic Athletic Drama",
         "talking_points": [
-          "Coaches were making $10 million while athletes generated billions; paying players directly is basic labor fairness.",
-          "College athletes are the workers driving a massive entertainment industry\u2014they deserve fair pay and injury protections."
+          "Seeing hungry underdog teams take down multi-million dollar athletic factories shows the sport still belongs to players and campus communities, not TV network deals.",
+          "These student-athletes put their bodies on the line every single Saturday\u2014their incredible effort proves they deserve real equity, fair compensation, and lifelong healthcare."
         ]
       },
       "CENTER": {
-        "headline_framing": "Antitrust Reality Forces Sustainable In-House Compensation Model for College Sports",
+        "headline_framing": "Playoff Elimination Chaos: 12-Team Bracket Magnifies Every Single Regular-Season Upset",
         "talking_points": [
-          "The NCAA was losing every court case 9-0; bringing revenue sharing in-house brings order to total chaos.",
-          "Sharing media revenue directly with athletes was legally unavoidable to save college athletics from endless lawsuits."
+          "That's why you play the games: preseason rankings and media hype mean nothing once you have to execute in a hostile road stadium.",
+          "With the new 12-team playoff, these mid-season upsets make every Saturday an elimination tournament with zero room for error."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Unregulated Free Agency Threatens Amateurism, Academic Focus, and School Loyalty",
+        "headline_framing": "Heartland Grit Over Coastal Media Hype: Unranked Underdogs Prove Games Are Won on the Field",
         "talking_points": [
-          "College sports used to be about school pride and education; now it's minor-league free agency with no salary cap.",
-          "Turning college athletes into year-to-year free agents risks destroying Olympic sports and campus academic tradition."
+          "This is why we love college football\u2014unranked heartland underdogs knocking off overhyped, corporate-funded blue bloods on pure grit and heart!",
+          "The coastal media elites running the AP poll look foolish once again; real championships are won in the trenches, not in an ESPN TV studio."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338753-1",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "Zacharia posts altered photos of Trump\u2019s Oval Office desk -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792302853,
+    "source": "Google News Top Headlines \u2022 9 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/View_of_Oval_Office_in_2017.jpg/330px-View_of_Oval_Office_in_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Oval Office \u2014 US presidential office in the White House.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Oval Office",
+    "core_facts": [
+      "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job.",
+      "A Five-Day Tour for Katie Zacharia.",
+      "Susie Wiles helped set up Fox interview ahead of press secretary\u2019s exit."
+    ],
+    "neutral_summary": "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job. A Five-Day Tour for Katie Zacharia.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Zacharia posts altered photos of Tr...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Zacharia posts altered photos of...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Zacharia posts altered photos of...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338784-16",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "The Future of the Amazon Rainforest Could Depend on Brazil's Election -",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792299600,
+    "source": "Google News World \u2022 10 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Zeitpyramide_2023_B.jpg/330px-Zeitpyramide_2023_B.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Future \u2014 Time after the present.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Future",
+    "core_facts": [
+      "Brazil's election results could shape the Amazon rainforest and climate around the world.",
+      "Old Wine in New Wineskins: The Changing Face of Bolsonarism\u2019s Environmental Agenda.",
+      "Indigenous People Receive Audio Messages Threatening Invasion of Territory if Fl\u00e1vio Bolsonaro Wins Election."
+    ],
+    "neutral_summary": "Brazil's election results could shape the Amazon rainforest and climate around the world. Old Wine in New Wineskins: The Changing Face of Bolsonarism\u2019s Environmental Agenda.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in The Future of the Amazon Rainforest...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in The Future of the Amazon Rainfor...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in The Future of the Amazon Rainfor...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338800-23",
+    "category": "National News",
+    "master_category": "National News",
+    "title": "America\u2019s $10tn AI infrastructure boom is starting to fray - Financial Times",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792296047,
+    "source": "Google News Business \u2022 11 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg/330px-Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "United States \u2014 Country primarily in North America.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / United States",
+    "core_facts": [
+      "Banks are pulling back as AI's massive debt pile disconnects from economic reality.",
+      "Weak Links Start to Show in A.I. Borrowing.",
+      "The Risk I Feared Is Materializing (NYSEARCA:SPY)."
+    ],
+    "neutral_summary": "Banks are pulling back as AI's massive debt pile disconnects from economic reality. Weak Links Start to Show in A.I. Borrowing.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in America\u2019s $10tn AI infrastructure b...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in America\u2019s $10tn AI infrastructur...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in America\u2019s $10tn AI infrastructur...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
         ]
       }
     }
@@ -1164,7 +1572,7 @@
     "title": "Tesla Roadster owners to get \"Flying Stunt Mode\" and looping track access - Teslarati",
     "source_name": "Google News Business",
     "pub_timestamp": 1792295297,
-    "source": "Google News Business \u2022 11 hours ago",
+    "source": "Google News Business \u2022 12 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Stunt_Pyrotechnics_Luc_Viatour.jpg/330px-Stunt_Pyrotechnics_Luc_Viatour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Stunt \u2014 Unusual and difficult physical feat.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Stunt",
@@ -1237,47 +1645,6 @@
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338100-4",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Rubio says Trump to take up to 60 days to weigh Russia sanctions -",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792294680,
-    "source": "Google News U.S. \u2022 12 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Civil demonstration and metropolitan public square assembly.",
-    "credit": "\ud83d\udcf8 Global News Wire Archive",
-    "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
-    ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
         ]
       }
     }
@@ -1367,83 +1734,83 @@
     }
   },
   {
-    "id": "story-1792338153-27",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Three Important MacBook Pro Touch Release Dates - Forbes",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792284266,
-    "source": "Google News Tech \u2022 14 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/MacBook-Pro-13inch.jpg/330px-MacBook-Pro-13inch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "MacBook \u2014 Line of laptop computers by Apple.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / MacBook",
+    "id": "story-1792338767-8",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "\u2018Standing up for democracy\u2019: Atlanta \u2018No Kings\u2019 rally draws Trump critics ahead of midterms - France 24",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792288229,
+    "source": "Google News U.S. \u2022 14 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Yerevan%2C_Armenian_girls_posing_in_photo_shoot%2C_Acting%2C_Posture%2C_Body_language%2C_Armenia.jpg/330px-Yerevan%2C_Armenian_girls_posing_in_photo_shoot%2C_Acting%2C_Posture%2C_Body_language%2C_Armenia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Standing \u2014 Human position in which the body is held upright.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Standing",
     "core_facts": [
-      "OLED MacBook Pro Won't Get M7 Chips Until Late 2027.",
-      "Apple Invites Media to October 28 Launch Experience for New Macs and iPad Mini.",
-      "Touchscreen MacBook Pro and more launching at Apple event on Oct 28."
+      "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day.",
+      "No Kings rallies across U.S. urge voters to cast ballots early in the midterms.",
+      "No Kings rally urges Utahns to vote early."
     ],
-    "neutral_summary": "OLED MacBook Pro Won't Get M7 Chips Until Late 2027. Apple Invites Media to October 28 Launch Experience for New Macs and iPad Mini.",
+    "neutral_summary": "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day. No Kings rallies across U.S. urge voters to cast ballots early in the midterms.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Three Important MacBook Pro Touch R...",
+        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in \u2018Standing up for democracy\u2019: Atlant...",
         "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians.",
+          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Three Important MacBook Pro Touc...",
+        "headline_framing": "Strategic Realism, Alliance Coordination, and Trade Security in \u2018Standing up for democracy\u2019: Atl...",
         "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key allies.",
+          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Three Important MacBook Pro Touc...",
+        "headline_framing": "Peace Through Strength, American Resolve, and Decisive Deterrence in \u2018Standing up for democracy\u2019: Atl...",
         "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence prevents global conflict.",
+          "American foreign policy must unapologetically defend our national interests and ensure adversaries cannot threaten global freedom."
         ]
       }
     }
   },
   {
-    "id": "story-1792338208-48",
-    "category": "Sports",
-    "master_category": "Sports",
-    "title": "Auburn vs. Georgia recap, results: Top-ranked Bulldogs lose on late fumble, roughing the passer penalty - NBC Sports",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792282360,
-    "source": "Google News Sports \u2022 15 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional tournament championship fairway and clubhouse green.",
-    "credit": "\ud83d\udcf8 PGA Tour Media Archive",
+    "id": "story-1792338771-10",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "7 highlights from JD Vance's town hall: Iran, immigration, corruption and 2028 plans -",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792285260,
+    "source": "Google News U.S. \u2022 14 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_%28medium_crop%29_%282%29.jpg/330px-March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_%28medium_crop%29_%282%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "JD Vance \u2014 Vice President of the United States since 2025.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / JD Vance",
     "core_facts": [
-      "1 Georgia after Stockton's fumble leads to winning FG.",
-      "After overcoming severe colitis in 2024, Auburn's Alex McPherson kicks game-winner vs.",
-      "10 Thoughts From A Terrible, No-Good Day In Athens."
+      "2026 Midterm Elections: Trump Rallies Republicans.",
+      "Vance says he\u2019ll \u2018have to make a decision\u2019 on 2028 presidential run after midterm elections.",
+      "Vance explains why Trump was so livid with Kimberly Guilfoyle \u2014 and definitely booting her."
     ],
-    "neutral_summary": "1 Georgia after Stockton's fumble leads to winning FG. After overcoming severe colitis in 2024, Auburn's Alex McPherson kicks game-winner vs.",
+    "neutral_summary": "2026 Midterm Elections: Trump Rallies Republicans. Vance says he\u2019ll \u2018have to make a decision\u2019 on 2028 presidential run after midterm elections.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Auburn vs. Georgia recap, results: Top...",
+        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in 7 highlights from JD Vance's town h...",
         "talking_points": [
-          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
-          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
+          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians.",
+          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Auburn vs. Georgia recap, results: ...",
+        "headline_framing": "Strategic Realism, Alliance Coordination, and Trade Security in 7 highlights from JD Vance's tow...",
         "talking_points": [
-          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
-          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key allies.",
+          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Auburn vs. Georgia recap, results: ...",
+        "headline_framing": "Peace Through Strength, American Resolve, and Decisive Deterrence in 7 highlights from JD Vance's tow...",
         "talking_points": [
-          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
-          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence prevents global conflict.",
+          "American foreign policy must unapologetically defend our national interests and ensure adversaries cannot threaten global freedom."
         ]
       }
     }
@@ -1574,130 +1941,6 @@
     }
   },
   {
-    "id": "story-1792338246-67",
-    "category": "Crime & Public Safety",
-    "master_category": "Crime & Public Safety",
-    "title": "Oregon governor Tina Kotek reacts to Silver Rail Elementary school shooting",
-    "source_name": "NPR News",
-    "pub_timestamp": 1792277125,
-    "source": "NPR News \u2022 16 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Tina_Kotek_official_portrait_2021%283x4_cropped%29.jpg/330px-Tina_Kotek_official_portrait_2021%283x4_cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Tina Kotek \u2014 Governor of Oregon since 2023.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Tina Kotek",
-    "core_facts": [
-      "A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.",
-      "An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.",
-      "Federal and municipal law enforcement secured the campus, recovering multiple firearms and investigating motives and firearm acquisition."
-    ],
-    "neutral_summary": "A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander. An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Urgent Call for Gun Safety Reforms and Assault Weapon Restrictions After School Tragedy",
-        "talking_points": [
-          "Thoughts and prayers are not enough; children deserve the basic human right to attend school without the fear of gunfire.",
-          "Common-sense gun safety reforms save lives; we must close loopholes and keep weapons out of the hands of violent teens."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Campus Security Review and Rapid Response: Investigating the Oregon Elementary Tragedy",
-        "talking_points": [
-          "School safety requires practical, layered security measures and swift, decisive emergency response to protect innocent lives.",
-          "Law enforcement and school districts must work together to harden perimeters and maintain robust threat assessment protocols."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Second Amendment Self-Defense: Armed Citizen Stops Mass Shooter and Saves Innocent Lives",
-        "talking_points": [
-          "The only thing that stops a bad guy with a gun is a good guy with a gun; that brave armed citizen saved countless lives.",
-          "Gun control disarms the victims, not the criminals; protecting our schools requires armed deterrence and unwavering support for self-defense."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331900-39",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "'Dancing with the Stars' dancer Val Chmerkovskiy benched after 'inappropriate' social media post - ABC News - Breaking News, Latest News and Videos",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792276957,
-    "source": "Google News Entertainment \u2022 16 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Two_dancers.jpg/330px-Two_dancers.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Dance \u2014 Art form consisting of body movement.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Dance",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding 'Dancing with the Stars' dancer Val Chmerkovskiy benched after 'inappropriate' social media post - ABC News.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding 'Dancing with the Stars' dancer Val Chmerkovskiy benched after 'inappropriate' social media post - ABC News. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in 'Dancing with the Stars' dancer Val Ch...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in 'Dancing with the Stars' dancer Val Ch...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in 'Dancing with the Stars' dancer Val...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338205-47",
-    "category": "Sports",
-    "master_category": "Sports",
-    "title": "Indiana QB Josh Hoover blames himself for would-be TD to Nick Marsh vs Ohio State -",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792276680,
-    "source": "Google News Sports \u2022 17 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional stadium floodlights during league athletic competition.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
-    "core_facts": [
-      "Ohio State QB Julian Sayin out 'several weeks' with shoulder injury.",
-      "Players of the game from Ohio State\u2019s 19-15 win over Indiana.",
-      "Indiana\u2019s first loss in almost 2 years shows Hoosiers a new, painful side to being in college football\u2019s top tier."
-    ],
-    "neutral_summary": "Ohio State QB Julian Sayin out 'several weeks' with shoulder injury. Players of the game from Ohio State\u2019s 19-15 win over Indiana.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Indiana QB Josh Hoover blames himself ...",
-        "talking_points": [
-          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
-          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Indiana QB Josh Hoover blames himse...",
-        "talking_points": [
-          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
-          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Indiana QB Josh Hoover blames himse...",
-        "talking_points": [
-          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
-          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792279231-16",
     "category": "Health",
     "master_category": "National Headlines",
@@ -1782,47 +2025,6 @@
     }
   },
   {
-    "id": "story-1792338203-46",
-    "category": "Sports",
-    "master_category": "Sports",
-    "title": "Bears QB Caleb Williams (hamstring) expected to play vs. Falcons in Week 6 -",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792270344,
-    "source": "Google News Sports \u2022 18 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Major League championship ballpark field and diamond.",
-    "credit": "\ud83d\udcf8 Sports Media Wire",
-    "core_facts": [
-      "Sources: Bears plan to start QB Caleb Williams in Week 6 vs.",
-      "Bears QB injury update for Week 6.",
-      "Bears QB Caleb Williams (hamstring) expected to play vs."
-    ],
-    "neutral_summary": "Sources: Bears plan to start QB Caleb Williams in Week 6 vs. Bears QB injury update for Week 6.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Player Welfare, Teamwork, and Community Connection in Bears QB Caleb Williams (hamstring) ex...",
-        "talking_points": [
-          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
-          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Bears QB Caleb Williams (hamstring)...",
-        "talking_points": [
-          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
-          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Bears QB Caleb Williams (hamstring)...",
-        "talking_points": [
-          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
-          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792286793-14",
     "category": "Business & Economy",
     "master_category": "National Headlines",
@@ -1860,6 +2062,47 @@
         "talking_points": [
           "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
           "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338794-20",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "Clashes, fires and looting break out as protesters rally across France, joining students - AP News",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792267140,
+    "source": "Google News Politics \u2022 19 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
+    "credit": "\ud83d\udcf8 Legal News Media Archive",
+    "core_facts": [
+      "Huge Riots and Anti-Government Protests Roil France: What to Know.",
+      "French government in crisis talks after \u2018colossal failure of the state\u2019.",
+      "In France's Limoges, the fire-ravaged town hall rekindles memories of Notre Dame. 'No place for violence,' Macron says, as protesters clash with police in cities across France."
+    ],
+    "neutral_summary": "Huge Riots and Anti-Government Protests Roil France: What to Know. French government in crisis talks after \u2018colossal failure of the state\u2019.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in Clashes, fires and looting break ou...",
+        "talking_points": [
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in Clashes, fires and looting break...",
+        "talking_points": [
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in Clashes, fires and looting break...",
+        "talking_points": [
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
         ]
       }
     }
@@ -1955,7 +2198,7 @@
     "title": "Urgent warning as super-drug 10 times more powerful than fentanyl claims first LA victim - New York Post",
     "source_name": "Google News Health",
     "pub_timestamp": 1792259460,
-    "source": "Google News Health \u2022 21 hours ago",
+    "source": "Google News Health \u2022 22 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg",
     "caption": "U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.",
     "credit": "\ud83d\udcf8 U.S. Customs and Border Protection",
@@ -1991,42 +2234,83 @@
     }
   },
   {
-    "id": "story-1792338144-23",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Coral Bleaching Reversed at Record Speed Using New Stanford Method: \u2018Not a Lost Cause, at All\u2019 - Good News Network",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792257640,
-    "source": "Google News Science \u2022 22 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Confederate_Reunion_Parade_Richmond.jpg/330px-Confederate_Reunion_Parade_Richmond.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Lost Cause of the Confederacy \u2014 Negationist myth of the American Civil War.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Lost Cause of the Confederacy",
+    "id": "story-1792338898-65",
+    "category": "Crime & Public Safety",
+    "master_category": "Crime & Public Safety",
+    "title": "French police arrest 1,800 after violent clashes and looting mar protests",
+    "source_name": "NPR News",
+    "pub_timestamp": 1792252660,
+    "source": "NPR News \u2022 23 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Municipal first responders and law enforcement security operations.",
+    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
     "core_facts": [
-      "To Heal These Bleached Corals, All It Took Was a Little Touch.",
-      "How a laboratory accident revealed a new way to rescue dying corals.",
-      "Coral reefs are under threat, but bleached corals aren\u2019t a lost cause, study suggests."
+      "Police arrested at least 1,800 people across France after violent groups clashed with officers and looted shops during nationwide demonstrations that drew hundreds of thousands of people.",
+      "Investigative agencies and forensic specialists documented specific evidentiary findings.",
+      "Judicial authorities and local officials scheduled upcoming docket proceedings."
     ],
-    "neutral_summary": "To Heal These Bleached Corals, All It Took Was a Little Touch. How a laboratory accident revealed a new way to rescue dying corals.",
+    "neutral_summary": "Police arrested at least 1,800 people across France after violent groups clashed with officers and looted shops during nationwide demonstrations that drew hundreds of thousands of people. Investigative agencies and forensic specialists documented specific evidentiary findings.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Coral Bleaching Reversed at Record ...",
+        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in French police arrest 1,800 after vi...",
         "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Coral Bleaching Reversed at Reco...",
+        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in French police arrest 1,800 after...",
         "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Coral Bleaching Reversed at Reco...",
+        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in French police arrest 1,800 after...",
         "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338843-37",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "\u2018Street Fighter\u2019 Scoring $31M at Box Office as \u2018You Can See Everything\u2019 Rises and \u2018Whalefall\u2019 Sinks - The Hollywood Reporter",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792252575,
+    "source": "Google News Entertainment \u2022 23 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Ohio_Theatre_booth.jpg/330px-Ohio_Theatre_booth.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Box office \u2014 Office selling event tickets.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Box office",
+    "core_facts": [
+      "Box Office: 'Street Fighter' $31M, 'You Can See Everything' $12M+ Milestone.",
+      "Street Fighter First Reviews: Colorful, Weird, Noisy Nonsense Affectionately Made for Fans. 'Street Fighter' Cast Guide: Video Game vs.",
+      "Live-Action Fighters."
+    ],
+    "neutral_summary": "Box Office: 'Street Fighter' $31M, 'You Can See Everything' $12M+ Milestone. Street Fighter First Reviews: Colorful, Weird, Noisy Nonsense Affectionately Made for Fans. 'Street Fighter' Cast Guide: Video Game vs.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Creative Labor Protections, Artistic Integrity, and Cultural Diversity in \u2018Street Fighter\u2019 Scoring $31M at Bo...",
+        "talking_points": [
+          "Creative arts must center on authentic human storytelling and fair wages for artists, writers, and crews, not corporate algorithms.",
+          "Great cinema and entertainment bring diverse communities together through shared empathy and cultural meaning."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Theatrical Exhibition Economics, Craftsmanship, and Audience Trends in \u2018Street Fighter\u2019 Scoring $31M at...",
+        "talking_points": [
+          "The entertainment industry flourishes when studios invest in genuine high-quality storytelling that brings audiences to theaters.",
+          "Balancing premium theatrical exhibition with streaming convenience is reshaping how creators and audiences connect."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence in \u2018Street Fighter\u2019 Scoring $31M at...",
+        "talking_points": [
+          "The entertainment marketplace is governed by audience choice\u2014when creators focus on inspiring and entertaining, audiences respond.",
+          "American creative culture leads the world when filmmakers focus on compelling storytelling rather than divisive corporate ideology."
         ]
       }
     }
@@ -2074,288 +2358,42 @@
     }
   },
   {
-    "id": "story-1792338212-50",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Not all Republicans want to show Trump off",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792245600,
-    "source": "Politico National \u2022 Yesterday",
-    "image_url": "https://static.politico.com/4c/02/94cfb99249edb52570a7e9443de9/https-delivery-gettyimages.com/downloads/2300090765",
-    "caption": "Not all Republicans want to show Trump off.",
-    "credit": "\ud83d\udcf8 Politico National",
-    "core_facts": [
-      "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him.",
-      "Some don\u2019t even want to join him at events.",
-      "Administrative decision-makers scheduled follow-up reviews as proceedings advance."
-    ],
-    "neutral_summary": "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him. Some don\u2019t even want to join him at events.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Not all Republicans want to show Tr...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Not all Republicans want to show...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Not all Republicans want to show...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338148-25",
-    "category": "Crime & Public Safety",
-    "master_category": "Crime & Public Safety",
-    "title": "Orionid meteor shower set to dazzle as fast-moving fireballs streak across Southern Utah's night sky - St. George News",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792245600,
-    "source": "Google News Science \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Map_of_Utah_highlighting_Washington_County.svg/330px-Map_of_Utah_highlighting_Washington_County.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Utah's Dixie \u2014 Cultural region in the southwest of the U.S. state of Utah.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Utah's Dixie",
-    "core_facts": [
-      "22 to see meteors from Halley's Comet.",
-      "Rise Early on October 22nd for the Orionid Meteor Shower.",
-      "Astro Bob: Rise early on Oct."
-    ],
-    "neutral_summary": "22 to see meteors from Halley's Comet. Rise Early on October 22nd for the Orionid Meteor Shower.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in Orionid meteor shower set to dazzle...",
-        "talking_points": [
-          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
-          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in Orionid meteor shower set to daz...",
-        "talking_points": [
-          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
-          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in Orionid meteor shower set to daz...",
-        "talking_points": [
-          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
-          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338140-22",
+    "id": "story-1792338809-26",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
-    "title": "NASA\u2019s Roman Space Telescope exceeds expectations by nearly 30% - Science Daily",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792244764,
-    "source": "Google News Science \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/ROMANNewModelV8RomanStill00049.png/330px-ROMANNewModelV8RomanStill00049.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Nancy Grace Roman Space Telescope \u2014 NASA infrared space telescope launched in 2026.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Nancy Grace Roman Space Telescope",
+    "title": "Investors Disturbed by Anthropic\u2019s Financial Data - Futurism",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792234200,
+    "source": "Google News Business \u2022 Yesterday",
+    "image_url": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Artificial intelligence venture valuation and advanced neural computing technology.",
+    "credit": "\ud83d\udcf8 Tech Systems Wire",
     "core_facts": [
-      "NASA Nancy Grace Roman Space Telescope: The Best Inventions of 2026.",
-      "Astronomer leads global team on NASA mission to create unprecedented view of the early universe.",
-      "NASA Roman Team Checks Out Main Instrument, Sharpens Telescope\u2019s Focus."
+      "Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings.",
+      "The valuation recalibration follows moderating enterprise software revenue expansion and elevated GPU cloud training expenditures.",
+      "Anthropic continues enterprise commercial rollout of Claude 3.5 Sonnet across Fortune 500 corporate software ecosystems."
     ],
-    "neutral_summary": "NASA Nancy Grace Roman Space Telescope: The Best Inventions of 2026. Astronomer leads global team on NASA mission to create unprecedented view of the early universe.",
+    "neutral_summary": "Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings. The valuation recalibration follows moderating enterprise software revenue expansion and elevated GPU cloud training expenditures.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in NASA\u2019s Roman Space Telescope exceed...",
+        "headline_framing": "Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations",
         "talking_points": [
-          "Technological breakthroughs must be paired with strong public safeguards to protect user privacy, labor rights, and digital democracy.",
-          "We must ensure that advanced technology serves the common good and open public science, rather than concentrating monopoly power."
+          "Artificial intelligence must serve the public interest and respect workers' rights, not just generate speculative billions for Silicon Valley insiders.",
+          "We need independent safety oversight and transparent auditing on advanced AI systems before they are deployed across society."
         ]
       },
       "CENTER": {
-        "headline_framing": "Technological Feasibility, Scientific Peer Review, and Scalability in NASA\u2019s Roman Space Telescope exc...",
+        "headline_framing": "Market Realism and Sustainable Growth: AI Enterprise Sector Shifts from Hype to Financial Fundamentals",
         "talking_points": [
-          "Translating scientific innovation into real-world applications requires rigorous peer review, reliable engineering, and sustained investment.",
-          "Balancing rapid technological adoption with sensible security standards is critical for long-term technological resilience."
+          "Sustainable artificial intelligence adoption depends on genuine enterprise utility and disciplined financial balance sheets.",
+          "Calibrating valuations based on real revenue growth creates a much healthier, more durable technology ecosystem."
         ]
       },
       "RIGHT": {
-        "headline_framing": "American Innovation Preeminence, Free Enterprise, and Digital Leadership in NASA\u2019s Roman Space Telescope exc...",
+        "headline_framing": "Market Discipline at Work: Free Enterprise Price Discovery Separates Real Innovation from Speculation",
         "talking_points": [
-          "American private enterprise leads the world in cutting-edge innovation; burdensome regulations will only hand the advantage to foreign rivals.",
-          "Protecting intellectual property, supporting commercial research, and encouraging bold investment keep America at the technological frontier."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338173-35",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "Elizabeth Holmes's Social Media Feed Hits Different After Watching 'You Can See Everything' - Gizmodo",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792243435,
-    "source": "Google News Entertainment \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Elizabeth_Holmes_2014_%28cropped_2%29.jpg/330px-Elizabeth_Holmes_2014_%28cropped_2%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Elizabeth Holmes \u2014 American businesswoman (born 1984).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Elizabeth Holmes",
-    "core_facts": [
-      "The Reporter Who Exposed Elizabeth Holmes on Nathan Fielder\u2019s Documentary. \u2018You Can See Everything\u2019 Opens to a Staggering $15 Million, Securing A24\u2019s Place as Hollywood\u2019s Hottest Brand.",
-      "Box Office: \u2018You Can See Everything\u2019 Stuns With $15 Million Debut, \u2018Street Fighter\u2019 Leads With $31 Million.",
-      "How \u2018You Can See Everything\u2019 Exacts Hollywood\u2019s Revenge on Big Tech."
-    ],
-    "neutral_summary": "The Reporter Who Exposed Elizabeth Holmes on Nathan Fielder\u2019s Documentary. \u2018You Can See Everything\u2019 Opens to a Staggering $15 Million, Securing A24\u2019s Place as Hollywood\u2019s Hottest Brand. Box Office: \u2018You Can See Everything\u2019 Stuns With $15 Million Debut, \u2018Street Fighter\u2019 Leads With $31 Million.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Creative Labor Protections, Artistic Integrity, and Cultural Diversity in Elizabeth Holmes's Social Media Fee...",
-        "talking_points": [
-          "Creative arts must center on authentic human storytelling and fair wages for artists, writers, and crews, not corporate algorithms.",
-          "Great cinema and entertainment bring diverse communities together through shared empathy and cultural meaning."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Theatrical Exhibition Economics, Craftsmanship, and Audience Trends in Elizabeth Holmes's Social Media ...",
-        "talking_points": [
-          "The entertainment industry flourishes when studios invest in genuine high-quality storytelling that brings audiences to theaters.",
-          "Balancing premium theatrical exhibition with streaming convenience is reshaping how creators and audiences connect."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence in Elizabeth Holmes's Social Media ...",
-        "talking_points": [
-          "The entertainment marketplace is governed by audience choice\u2014when creators focus on inspiring and entertaining, audiences respond.",
-          "American creative culture leads the world when filmmakers focus on compelling storytelling rather than divisive corporate ideology."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338114-10",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Katie Zacharia ousted as White House press secretary - Axios",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792242047,
-    "source": "Google News Politics \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg/330px-Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Katie Zacharia \u2014 American political commentator.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Katie Zacharia",
-    "core_facts": [
-      "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job.",
-      "A Five-Day Tour for Katie Zacharia.",
-      "Susie Wiles helped set up Fox interview ahead of press secretary\u2019s exit."
-    ],
-    "neutral_summary": "President Trump\u2019s Press Secretary Katie Zacharia Out After 5 Days on the Job. A Five-Day Tour for Katie Zacharia.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Katie Zacharia ousted as White Hous...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Katie Zacharia ousted as White H...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Katie Zacharia ousted as White H...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338214-51",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "A sleeper Senate battleground has turned into a real Republican liability",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792234800,
-    "source": "Politico National \u2022 Yesterday",
-    "image_url": "https://static.politico.com/fb/0e/6f156ed744139f152f52175e7a93/vance-84125.jpg",
-    "caption": "Sen. Roger Marshall, R-Kan., listens as Vice President JD Vance speaks during an event at Webco Manufacturing, Monday, Sept. 14, 2026, in Olathe, Kan.",
-    "credit": "Mark Schiefelbein/AP",
-    "core_facts": [
-      "The newest addition to the Senate map is giving Republicans headaches.",
-      "Primary reporting documented specific operational context and verified official timelines.",
-      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
-    ],
-    "neutral_summary": "The newest addition to the Senate map is giving Republicans headaches. Primary reporting documented specific operational context and verified official timelines.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in A sleeper Senate battleground has t...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in A sleeper Senate battleground ha...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in A sleeper Senate battleground ha...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338118-12",
-    "category": "Crime & Public Safety",
-    "master_category": "Crime & Public Safety",
-    "title": "India news: CJP founder released a day after detention - DW.com",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792233107,
-    "source": "Google News Politics \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/330px-Flag_of_India.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "India \u2014 Country in South Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / India",
-    "core_facts": [
-      "Indian police detain \u2018cockroach\u2019 movement founder Dipke ahead of protest, video shows.",
-      "India\u2019s Cockroach Janta party leader arrested amid crackdown on protests.",
-      "Indian Gen Z Protest Leader Is Released on Bail After Arrest."
-    ],
-    "neutral_summary": "Indian police detain \u2018cockroach\u2019 movement founder Dipke ahead of protest, video shows. India\u2019s Cockroach Janta party leader arrested amid crackdown on protests.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Community Safety, Constitutional Due Process, and Justice Reform in India news: CJP founder released a ...",
-        "talking_points": [
-          "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
-          "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in India news: CJP founder released...",
-        "talking_points": [
-          "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
-          "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Law and Order, Decisive Justice, and Support for Law Enforcement in India news: CJP founder released...",
-        "talking_points": [
-          "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
-          "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+          "The free market always wins: real earnings, profitability, and customer value will always matter more than promotional Silicon Valley hype.",
+          "Disciplined private investment ensures capital flows to businesses that actually generate economic value."
         ]
       }
     }
@@ -2398,47 +2436,6 @@
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792338138-21",
-    "category": "National News",
-    "master_category": "National News",
-    "title": "Astronomers say they\u2019ve discovered the first green star - RNZ",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792195526,
-    "source": "Google News Science \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg/330px-IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Astronomer \u2014 Scientist in the field of astronomy.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Astronomer",
-    "core_facts": [
-      "Verified wire reporting confirmed key policy developments regarding Astronomers say they\u2019ve discovered the first green star.",
-      "Official spokespersons and institutional leadership published formal statements clarifying context.",
-      "Administrative teams established oversight schedules as operational next steps advance."
-    ],
-    "neutral_summary": "Verified wire reporting confirmed key policy developments regarding Astronomers say they\u2019ve discovered the first green star. Official spokespersons and institutional leadership published formal statements clarifying context.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Astronomers say they\u2019ve discovered ...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Astronomers say they\u2019ve discover...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Astronomers say they\u2019ve discover...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
         ]
       }
     }
@@ -2636,47 +2633,6 @@
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
       "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
     ]
-  },
-  {
-    "id": "story-1792338133-19",
-    "category": "Science & Tech",
-    "master_category": "Science & Tech",
-    "title": "SpaceX's spectrum deal still leaves it far from rivaling telecom giants -",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792165619,
-    "source": "Google News Business \u2022 Yesterday",
-    "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Deep space observation and advanced astronomical planetary science.",
-    "credit": "\ud83d\udcf8 NASA / Scientific Photo Archive",
-    "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
-    ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
-        ]
-      }
-    }
   },
   {
     "id": "story-1792161791-21",
@@ -3336,47 +3292,6 @@
     ]
   },
   {
-    "id": "story-1792338216-52",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Haley Stevens is everywhere \u2014 except on the trail for El-Sayed",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792144500,
-    "source": "Politico National \u2022 2 days ago",
-    "image_url": "https://static.politico.com/71/78/4f600d094e84bf45de84f6457bea/08-04-2026-michigan-stevens-020.jpg",
-    "caption": "Haley Stevens, a Democratic candidate for U.S. Senate in Michigan, speaks with reporters after casting her ballot on primary election day at the Baldwin Public Library in Birmingham, Michigan, on Aug. 4, 2026.",
-    "credit": "Jamie Kelter Davis for POLITICO",
-    "core_facts": [
-      "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same.",
-      "Primary reporting documented specific operational context and verified official timelines.",
-      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
-    ],
-    "neutral_summary": "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same. Primary reporting documented specific operational context and verified official timelines.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Haley Stevens is everywhere \u2014 excep...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Haley Stevens is everywhere \u2014 ex...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Haley Stevens is everywhere \u2014 ex...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161796-24",
     "category": "Economy & Inflation",
     "title": "IMF chief says AI risks may exceed opportunities without safeguards and ethical framework - Reuters",
@@ -3596,6 +3511,47 @@
     ]
   },
   {
+    "id": "story-1792338877-53",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Senate Republicans are getting smoked in fundraising",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792125458,
+    "source": "Politico National \u2022 2 days ago",
+    "image_url": "https://static.politico.com/fa/49/84a708c74fe0ae3c99524e8fee91/election-2-26-texas-43186.jpg",
+    "caption": "Democratic Senate candidate James Talarico speaks at a rally on July 13, 2026, in Eagle Pass, Texas.",
+    "credit": "Brenda Baz\u00e1n/AP",
+    "core_facts": [
+      "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months.",
+      "Primary reporting documented specific operational context and verified official timelines.",
+      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
+    ],
+    "neutral_summary": "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months. Primary reporting documented specific operational context and verified official timelines.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Senate Republicans are getting smok...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Senate Republicans are getting s...",
+        "talking_points": [
+          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Senate Republicans are getting s...",
+        "talking_points": [
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161794-23",
     "category": "Economy & Inflation",
     "title": "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades - Fox Business",
@@ -3652,47 +3608,6 @@
     ]
   },
   {
-    "id": "story-1792338220-54",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Inside the democratic socialists\u2019 plan to shake up Congress",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792123140,
-    "source": "Politico National \u2022 2 days ago",
-    "image_url": "https://cf-images.us-east-1.prod.boltdns.net/v1/static/1155968404/d72ee536-a1de-4f0a-87b2-8198a22b2629/89a75e6d-a81e-4373-bb8d-ae9999a13274/1280x720/match/image.jpg",
-    "caption": "Inside the democratic socialists\u2019 plan to shake up Congress.",
-    "credit": "\ud83d\udcf8 Politico National",
-    "core_facts": [
-      "Verified wire reporting confirmed key policy developments regarding Inside the democratic socialists\u2019 plan to shake up Congress.",
-      "Official spokespersons and institutional leadership published formal statements clarifying context.",
-      "Administrative teams established oversight schedules as operational next steps advance."
-    ],
-    "neutral_summary": "Verified wire reporting confirmed key policy developments regarding Inside the democratic socialists\u2019 plan to shake up Congress. Official spokespersons and institutional leadership published formal statements clarifying context.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Inside the democratic socialists\u2019 p...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Inside the democratic socialists...",
-        "talking_points": [
-          "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-          "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in Inside the democratic socialists...",
-        "talking_points": [
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-          "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161792-22",
     "category": "Economy & Inflation",
     "title": "Nasdaq futures edge lower as AI spending, Fed rate concerns weigh - Yahoo Finance",
@@ -3747,5 +3662,87 @@
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
       "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
     ]
+  },
+  {
+    "id": "story-1792338812-27",
+    "category": "Science & Tech",
+    "master_category": "Science & Tech",
+    "title": "ABC David Muir halts show and stresses 'what was that' live on air before dropping big news - The Mirror US",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792067100,
+    "source": "Google News Science \u2022 3 days ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/King_David%2C_the_King_of_Israel.jpg/330px-King_David%2C_the_King_of_Israel.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "David \u2014 Biblical figure and Israelite monarch.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / David",
+    "core_facts": [
+      "APOD: 2026 October 16 \u2013 Chasing the International Space Station.",
+      "GALLERY: SpaceX Falcon 9 launch lights up sky across Chattanooga area and beyond.",
+      "Bandwagon-5 Mission."
+    ],
+    "neutral_summary": "APOD: 2026 October 16 \u2013 Chasing the International Space Station. GALLERY: SpaceX Falcon 9 launch lights up sky across Chattanooga area and beyond.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in ABC David Muir halts show and stres...",
+        "talking_points": [
+          "Technological breakthroughs must be paired with strong public safeguards to protect user privacy, labor rights, and digital democracy.",
+          "We must ensure that advanced technology serves the common good and open public science, rather than concentrating monopoly power."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Technological Feasibility, Scientific Peer Review, and Scalability in ABC David Muir halts show and st...",
+        "talking_points": [
+          "Translating scientific innovation into real-world applications requires rigorous peer review, reliable engineering, and sustained investment.",
+          "Balancing rapid technological adoption with sensible security standards is critical for long-term technological resilience."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "American Innovation Preeminence, Free Enterprise, and Digital Leadership in ABC David Muir halts show and st...",
+        "talking_points": [
+          "American private enterprise leads the world in cutting-edge innovation; burdensome regulations will only hand the advantage to foreign rivals.",
+          "Protecting intellectual property, supporting commercial research, and encouraging bold investment keep America at the technological frontier."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792338816-28",
+    "category": "Science & Tech",
+    "master_category": "Science & Tech",
+    "title": "28 Miles and Counting: NASA\u2019s Perseverance Rover Sets a Mars Driving Record -",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1791854012,
+    "source": "Google News Science \u2022 5 days ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Milestone%2C_Knightsbridge%2C_London_-_geograph.org.uk_-_1590514.jpg/330px-Milestone%2C_Knightsbridge%2C_London_-_geograph.org.uk_-_1590514.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Mile \u2014 Unit of length.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Mile",
+    "core_facts": [
+      "NASA's Perseverance rover breaks record for off-planet driving on Mars.",
+      "NASA\u2019s Perseverance Sets Off-World Record for Total Distance Driven.",
+      "The Perseverance Rover Reaches Another Milestone."
+    ],
+    "neutral_summary": "NASA's Perseverance rover breaks record for off-planet driving on Mars. NASA\u2019s Perseverance Sets Off-World Record for Total Distance Driven.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in 28 Miles and Counting: NASA\u2019s Perse...",
+        "talking_points": [
+          "Technological breakthroughs must be paired with strong public safeguards to protect user privacy, labor rights, and digital democracy.",
+          "We must ensure that advanced technology serves the common good and open public science, rather than concentrating monopoly power."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Technological Feasibility, Scientific Peer Review, and Scalability in 28 Miles and Counting: NASA\u2019s Pe...",
+        "talking_points": [
+          "Translating scientific innovation into real-world applications requires rigorous peer review, reliable engineering, and sustained investment.",
+          "Balancing rapid technological adoption with sensible security standards is critical for long-term technological resilience."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "American Innovation Preeminence, Free Enterprise, and Digital Leadership in 28 Miles and Counting: NASA\u2019s Pe...",
+        "talking_points": [
+          "American private enterprise leads the world in cutting-edge innovation; burdensome regulations will only hand the advantage to foreign rivals.",
+          "Protecting intellectual property, supporting commercial research, and encouraging bold investment keep America at the technological frontier."
+        ]
+      }
+    }
   }
 ]
