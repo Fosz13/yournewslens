@@ -115,6 +115,20 @@ RSS_FEEDS = [
 ]
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Alamodome & Stadium Public Safety / Airman Investigation
+    {
+        "patterns": ["airman", "rappelling accident", "alamodome accident", "alamodome", "utsa-navy", "botched rappel"],
+        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Emergency first responders and municipal public safety perimeter operations.",
+        "credit": "📸 National Public Safety Wire"
+    },
+    # Military Base Incidents, Fires & Defense Installations (CFB Wainwright)
+    {
+        "patterns": ["cfb wainwright", "military base fire", "canada military base", "base explosion", "wainwright"],
+        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Emergency response and disaster investigation operations at defense installation.",
+        "credit": "📸 International Defense Wire"
+    },
         # College Football Rankings & Historic Upsets (Verified Saturday Night Stadium Lights)
     {
         "patterns": [
@@ -665,7 +679,7 @@ HEADLINE_NOISE_WORDS = {
 
 def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     """Accurately classifies articles into specific topic category and hierarchical master category.
-    Prioritizes Sports over Weather so athletic teams like 'Miami Hurricanes' or 'Seattle Storm' are never hijacked.
+    Strictly prevents fatal accidents, explosions, and military base disasters from being misclassified as Sports.
     """
     combined = (title + " " + (text or "")).lower()
     t_lower = (title or "").lower()
@@ -676,10 +690,30 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
                 return True
         return False
 
+    # 0. DISASTER, FATALITY, EXPLOSION, FIRE & MILITARY CASUALTY GUARD (HIGHEST PRIORITY)
+    # A tragedy where soldiers, airmen, or civilians are killed or injured is NEVER Sports,
+    # even if it occurs at a stadium, dome, or military facility!
+    is_casualty_disaster = has_any([
+        r'dead\s+or\s+injured', r'fatal\s+accident', r'fatal\s+fall', r'deadly\s+fire', r'major\s+fire',
+        r'explosion', r'blast', r'airm[ae]n\s+dies?', r'soldier\s+dies?', r'service\s+member\s+dies?',
+        r'rappelling\s+accident', r'dies\s+in\s+fall', r'killed\s+in\s+(?:incident|accident|blast|fire)',
+        r'cfb\s+wainwright', r'military\s+base\s+fire', r'fire\s+at\s+canada\s+military\s+base',
+        r'botched\s+rappel', r'life-threatening\s+injuries'
+    ])
+    if is_casualty_disaster:
+        # If it involves Canada or international entities -> World News
+        if has_any([r'canada', r'canadian', r'cfb', r'wainwright', r'alberta', r'bbc', r'ukraine', r'russia', r'britain', r'foreign', r'international']):
+            return ("World News", "World News")
+        # Domestic US public safety emergency / tragedy
+        return ("Crime & Public Safety", "National Headlines")
+
     # 1. SPORTS PRIORITY CHECK:
-    # Any headline or text with strong athletic signals MUST be Sports (never Energy & Weather or National Headlines)
-    is_sports = has_any([
-        r'footballs?', r'college football', r'cfb', r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
+    # Strictly requires actual athletic contests, leagues, or tournaments.
+    # Note: Bounded 'cfb' so Canadian military bases (CFB Wainwright) NEVER match!
+    is_military_base = has_any([r'military\s+base', r'air\s+force\s+base', r'naval\s+base', r'army\s+base', r'cfb\s+[a-z]+'])
+    is_sports = not is_military_base and has_any([
+        r'footballs?', r'college football', r'cfb\s+(?:playoffs?|rankings?|week\s+\d|top\s+25|poll|scores?|game|season)',
+        r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
         r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
         r'bowl games?', r'college football playoff', r'playoff committee', r'ap poll', r'coaches poll',
         r'top 25', r'rankings?', r'upset-filled', r'flips top 25', r'upset win', r'upset loss',
@@ -691,11 +725,8 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         r'golf(?:ers?|ing)?', r'pga(?: tour)?', r'liv golf', r'masters tournament', r'fairways?',
         r'soccers?', r'mls', r'premier league', r'champions league', r'world cup',
         r'tennis', r'wimbledon', r'us open',
-        r'athletes?', r'athletics?', r'sports?', r'championships?', r'tournaments?',
-        r'saudi public investment fund', r'head coach', r'coaching staff', r'transfer portal',
-        r'jalen hurts', r'bo nix', r'patriots?', r'chiefs?', r'eagles?', r'cowboys?', r'packers?', r'steelers?',
-        r'alabama crimson tide', r'ohio state', r'texas longhorns', r'georgia bulldogs', r'oregon ducks',
-        r'byu cougars', r'miami hurricanes'
+        r'jalen hurts', r'bo nix', r'alabama crimson tide', r'ohio state', r'texas longhorns',
+        r'georgia bulldogs', r'oregon ducks', r'byu cougars', r'miami hurricanes'
     ])
     if is_sports:
         # Verify it's not a utility blackout affecting a stadium
@@ -733,7 +764,7 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         return ("World News", "World News")
 
     # 8. World News / International Geopolitics / Foreign Civil Unrest
-    if has_any([r'france', r'french', r'paris', r'riots?', r'civil unrest', r'protests?', r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato', r'black sea', r'geneva talks', r'britain', r'london', r'germany', r'berlin', r'europe(?:an)?']):
+    if has_any([r'france', r'french', r'paris', r'riots?', r'civil unrest', r'protests?', r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato', r'black sea', r'geneva talks', r'britain', r'london', r'germany', r'berlin', r'europe(?:an)?', r'canada', r'canadian']):
         return ("World News", "World News")
 
     # 9. Health & Medicine
@@ -756,7 +787,7 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     if has_any([r'spending frameworks?', r'federal shutdowns?', r'congress', r'senate', r'house of representatives', r'gop', r'democrats?', r'republicans?', r'white house', r'elections?', r'mailings', r'ballots?']):
         return ("Politics", "Politics")
 
-    return ("National News", "National News")
+    return ("National News", "National Headlines")
 
 def clean_html_text(raw_text: str) -> str:
     if not raw_text:
@@ -834,12 +865,27 @@ def is_story_mismatched(story: dict) -> bool:
             if any(bad in all_text for bad in ["2.75 billion", "house v. ncaa", "title ix gender-equity", "losing every court case 9-0", "bringing revenue sharing in-house"]):
                 return True
 
-        # 4. Sports story misclassified under Energy & Weather or Border
-        if any(w in title for w in ["football", "rankings", "upset-filled", "top 25", "quarterback", "hurts", "lakers", "brewers", "dodgers", "nlcs", "mlb", "nba", "nfl", "pga"]):
+        # 4. Fatal accident, tragedy, or military death incorrectly given sports game / scoreboard quotes
+        if any(w in title for w in ["dies", "died", "dead", "fatal", "accident", "airman", "soldier", "rappelling", "fire", "explosion", "blast", "wainwright"]):
+            if any(bad in all_text for bad in [
+                "final scoreboard doesn't lie", "championships are earned",
+                "playoff contenders", "between the lines", "true competitors rise",
+                "meritocracy on the diamond", "winning requires preparation",
+                "tactical execution, roster depth"
+            ]):
+                return True
+
+        # 5. Military base disaster or fatal accident incorrectly categorized as Sports
+        if any(w in title for w in ["military base", "cfb", "wainwright", "airman", "rappelling", "fatal accident"]):
+            if cat == "sports":
+                return True
+
+        # 6. Sports story misclassified under Energy & Weather or Border
+        if any(w in title for w in ["rankings", "upset-filled", "quarterback", "hurts", "lakers", "brewers", "dodgers", "nlcs", "mlb", "nba", "nfl", "pga"]):
             if cat in ["energy & weather", "border & security"]:
                 return True
 
-        # 5. Known generic boilerplate phrases
+        # 7. Known generic boilerplate phrases
         if any(bad in all_text for bad in [
             "regulatory standards with commercial and operational reality",
             "reviewing legal, regulatory, and economic implications",
@@ -1542,7 +1588,55 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "College sports used to be about campus pride, education, and development; turning 19-year-olds into mercenaries jumping schools every December ruins the core culture."
         ]
 
-    # --- 5B. COLLEGE FOOTBALL RANKINGS, UPSETS & TOP 25 SHAKEUP ---
+        # --- 5C. ALAMODOME AIRMAN RAPPELLING TRAGEDY ---
+    elif has_any(["airman dies", "rappelling accident", "alamodome accident", "fatal rappel", "service member dies after rappelling", "utsa-navy game accident", "rappelling fall at a ut san antonio"]):
+        core_facts = [
+            "An active-duty U.S. Air Force airman tragically died following a fall while rappelling from the Alamodome rafters during a pregame military tribute before the UTSA vs. Navy football game in San Antonio.",
+            "First responders with the San Antonio Fire Department transported the airman to a local hospital as a Priority 1 patient with life-threatening trauma, where the service member later succumbed to their wounds.",
+            "Kickoff between UTSA and Navy proceeded after an approximate 10-minute delay, drawing sharp public criticism and emotional community debate over the decision to continue play.",
+            "The U.S. Air Force, military safety boards, and venue operators launched an immediate formal inquiry into equipment rigging, harness safety, and oversight protocols for stadium military demonstrations."
+        ]
+        left_framing = "Human Life Over Commercial Revenue: Questioning the Decision to Play On and Militarize Sports Stunts"
+        left_talk = [
+            "Resuming a football game just 10 minutes after a service member suffered a fatal fall shows how corporate sports prioritizes broadcast schedules and revenue over basic human decency.",
+            "Staging high-risk rappelling stunts and flyovers as commercial entertainment spectacles commodifies our service members without proper civilian and workplace safety protections."
+        ]
+        center_framing = "Urgent Safety Protocol Review: Investigating Rigging Standards and Crisis Management at Public Venues"
+        center_talk = [
+            "The Air Force and stadium operators must conduct an urgent, transparent investigation into rigging protocols before any more high-altitude stadium demonstrations are permitted.",
+            "Venue officials need clear crisis protocols on whether and when public sporting events should be suspended following catastrophic on-field tragedies."
+        ]
+        right_framing = "Honoring Military Sacrifice: Demanding Accountability and Solemnity Over Entertainment Spectacle"
+        right_talk = [
+            "An active-duty airman lost their life serving our country in uniform—playing a football game 10 minutes later was completely tone-deaf and disrespectful to that soldier's sacrifice.",
+            "Pregame stunts should never put service members at unnecessary risk; our military personnel deserve strict safety reviews, and the fallen airman's family deserves our deepest honor and support."
+        ]
+
+    # --- 5D. CANADA MILITARY BASE (CFB WAINWRIGHT) FIRE & EXPLOSION ---
+    elif has_any(["cfb wainwright", "fire at canada military base", "major fire at canada military base", "military base fire", "canada military base explosion"]):
+        core_facts = [
+            "Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.",
+            "Emergency base firefighters and regional medical teams evacuated damaged training facilities and mobilized burn trauma units across the region.",
+            "The Canadian Department of National Defence and military police launched a formal investigation into the origin of the blaze, focusing on munitions handling and facility safety standards.",
+            "Allied military liaisons and international defense leadership expressed condolences and offered specialized disaster response coordination as recovery efforts proceed."
+        ]
+        left_framing = "Worker Safety in Uniform: Demanding Transparency and Strict Environmental Safety at Defense Bases"
+        left_talk = [
+            "Service members risk their lives to protect us, and they deserve safe working conditions, well-maintained facilities, and transparent investigations into base hazards.",
+            "Defense authorities must be held fully accountable for military infrastructure maintenance and hazardous materials safety to protect soldiers and surrounding communities."
+        ]
+        center_framing = "Joint Allied Crisis Management: Investigating the Root Cause of the CFB Wainwright Tragedy"
+        center_talk = [
+            "A disaster of this scale demands a swift, independent technical inquiry to determine whether mechanical failure, munitions handling, or structural defects caused the blast.",
+            "Defense leadership must review emergency evacuation procedures and medical transport readiness across all regional military training centers."
+        ]
+        right_framing = "Standing with Allied Forces: Honoring Fallen Soldiers and Fortifying Military Base Infrastructure"
+        right_talk = [
+            "Our hearts and prayers are with our Canadian military allies; we must honor the brave personnel who lost their lives and ensure their families receive unconditional support.",
+            "Military installations require uncompromising safety protocols and infrastructure maintenance so our troops are never endangered by facility failures at home."
+        ]
+
+# --- 5B. COLLEGE FOOTBALL RANKINGS, UPSETS & TOP 25 SHAKEUP ---
     elif has_any(["college football rankings", "upset-filled", "flips top 25", "top 25 upside down", "college football upsets", "ap top 25", "coaches poll", "winners, losers in week", "historic upset", "upset win", "upset loss"]) or (has_any(["college football", "cfb"]) and has_any(["rankings", "top 25", "upset", "upsets", "week 7", "week 8", "week 9", "week 6"])):
         core_facts = [
             "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
@@ -2580,7 +2674,29 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 ]
 
         # Domain-Specific Perspectives & Talking Points
-        if "sport" in c_lower:
+        # Check if the story is about a fatality, accident, tragedy, or disaster
+        is_tragedy = any(w in full_text for w in [
+            "dies", "died", "death", "fatal", "accident", "killed", "casualt",
+            "injured", "injury", "airman", "soldier", "rappelling", "fire", "explosion", "blast"
+        ])
+
+        if is_tragedy:
+            left_framing = f"Human Life Over Commercial Interests: Demanding Full Safety Accountability in {clean_title[:35]}..."
+            left_talk = [
+                "Human lives must never be treated as secondary to event schedules or commercial revenue; safety protocols must be non-negotiable.",
+                "Institutions and authorities must be held fully accountable for safety oversight and preventing avoidable tragedies."
+            ]
+            center_framing = f"Rigorous Safety Investigation and Crisis Protocol Review for {clean_title[:35]}..."
+            center_talk = [
+                "A tragedy of this magnitude requires a thorough, transparent inquiry into equipment, rigging, and emergency procedures to ensure it never happens again.",
+                "Event planners and regulatory authorities must establish clear, standardized protocols for managing severe emergencies and protecting public safety."
+            ]
+            right_framing = f"Honoring the Fallen and Demanding Strict Accountability in {clean_title[:35]}..."
+            right_talk = [
+                "Our deepest prayers and honor go out to the victims and their families; we must ensure those who serve and sacrifice receive our utmost respect.",
+                "Real accountability means finding the exact procedural and mechanical failures that led to this disaster and holding responsible leadership to the highest standard."
+            ]
+        elif "sport" in c_lower:
             left_framing = f"Player Welfare, Teamwork, and Community Connection in {clean_title[:38]}..."
             left_talk = [
                 "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
