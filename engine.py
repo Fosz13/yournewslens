@@ -318,9 +318,19 @@ EXACT_ENTITY_PHOTOGRAPHY = [
         "caption": "Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.",
         "credit": "📸 Federal Reserve Pool"
     },
+    # East Potomac Golf Links & National Park Service Public Parkland
+    {
+        "patterns": [
+            "east potomac", "potomac golf", "potomac links", "park service removed trees",
+            "national park service golf", "d.c. golf course", "historic d.c. golf", "overhaul east potomac"
+        ],
+        "url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C.",
+        "credit": "📸 National Recreation Photo Pool"
+    },
     # Supreme Court & Legal
     {
-        "patterns": ["supreme court", "court", "judge", "bar exam", "lawsuit", "trial", "doj"],
+        "patterns": ["supreme court", "scotus", "high court hearing", "supreme court arguments", "bar exam", "federal appeals court", "doj lawsuit"],
         "url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
         "caption": "Supreme Court of the United States west facade in Washington, D.C.",
         "credit": "📸 National Photo Archive"
@@ -723,6 +733,16 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         # All other international news routes cleanly to World News
         return ("World News", "World News")
 
+    # 1B. PUBLIC LAND, MUNICIPAL RECREATION, PARK SERVICE & PROPERTY COURT DISPUTES
+    is_public_land_dispute = has_any([
+        r'east\s+potomac', r'potomac\s+(?:golf|links|course|park)',
+        r'park\s+service', r'national\s+park\s+service', r'felled\s+trees?', r'removed\s+trees?',
+        r'court\s+fight\s+over\s+land', r'land\s+dispute', r'public\s+park\s+land',
+        r'overhaul.*golf\s+course', r'close.*golf\s+course.*renovation', r'shuttering.*golf\s+course'
+    ])
+    if is_public_land_dispute:
+        return ("Politics", "National Headlines")
+
     # 2. DOMESTIC SPORTS PRIORITY CHECK:
     is_military_base = has_any([r'military\s+base', r'air\s+force\s+base', r'naval\s+base', r'army\s+base', r'cfb\s+[a-z]+'])
     is_sports = not is_military_base and has_any([
@@ -881,6 +901,14 @@ def is_story_mismatched(story: dict) -> bool:
         # 5. Sports story with NCAA settlement boilerplate when title is not about settlement
         if ("sport" in cat or any(w in title for w in ["football", "rankings", "upset", "game", "top 25", "week"])) and not any(w in title for w in ["settlement", "revenue-share", "revenue sharing", "house v"]):
             if any(bad in all_text for bad in ["2.75 billion", "house v. ncaa", "title ix gender-equity", "losing every court case 9-0", "bringing revenue sharing in-house"]):
+                return True
+
+        # 5B. Public lands, parks, golf course development, or zoning disputes given ballgame sports quotes
+        if any(w in title for w in ["east potomac", "potomac", "golf course", "park service", "national park", "court fight over land", "public land"]):
+            if any(bad in all_text for bad in [
+                "final scoreboard", "turnover differential", "locker-room chemistry", "player rotations",
+                "between the lines", "playoff contenders", "rest of the league", "commercial television broadcast deals"
+            ]):
                 return True
 
         # 6. Fatal accident, tragedy, or military death incorrectly given sports game / scoreboard quotes
@@ -1420,8 +1448,46 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
 
     extracted_facts = extract_facts_from_context_and_title(clean_title, context, category)
 
+    # --- 0. EAST POTOMAC GOLF LINKS / PUBLIC LAND & PARK SERVICE DISPUTES ---
+    if has_any(["east potomac", "potomac golf", "potomac links", "park service removed trees", "national park service", "court fight over land", "shuttering popular d.c. golf", "historic d.c. golf course", "felled trees in the middle of a golf course", "plan to overhaul east potomac"]):
+        core_facts = [
+            "Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations.",
+            "The planned overhaul would redevelop the flood-prone public course into a championship-grade facility dubbed 'East Potomac Links', drawing intense legal and community debate over municipal access.",
+            "Satellite imagery confirmed the National Park Service removed more than 400 trees from the peninsula, triggering lawsuits and environmental protests over public parkland management."
+        ]
+        left_framing = "Defending Public Parkland and Community Access: Opposing the Privatization of Historic D.C. Green Space"
+        left_bullets = [
+            "Condemns the clearing of more than 400 mature public trees along the Potomac tidal basin, calling it an environmental disaster that damages urban canopy and natural habitat.",
+            "Protects affordable public recreation, arguing that National Park Service parkland belongs to everyday local residents and seniors, not exclusive country-club developers.",
+            "Demands judicial enforcement of federal environmental review and historic preservation laws before public municipal assets can be converted for commercial prestige."
+        ]
+        left_talk = [
+            "Bulldozing hundreds of public trees to turn an affordable municipal golf course into an exclusive luxury playground takes public land away from everyday residents.",
+            "National Park Service land belongs to the entire community; public parks should never be privatized or stripped of green canopy for elite commercial interests."
+        ]
+        center_framing = "Balancing Necessary Flood Restoration with Environmental Preservation and Public Affordability"
+        center_bullets = [
+            "Recognizes that the low-lying East Potomac peninsula suffers from chronic waterlogging and severely decaying seawall infrastructure that requires urgent capital investment.",
+            "Analyzes the ongoing legal challenges to determine whether executive concession overhauls comply with federal historic preservation statutes and public contracting procedures.",
+            "Seeks a middle ground that welcomes private-sector turf and drainage modernization while contractually preserving low-cost tee times for district golfers."
+        ]
+        center_talk = [
+            "East Potomac desperately needs flood mitigation and seawall repairs, but the Park Service must balance major infrastructure upgrades with environmental protections.",
+            "The court fight centers on whether federal contracting and environmental rules were properly followed before greenlighting an overhaul on historic national parkland."
+        ]
+        right_framing = "Revitalizing Neglected Federal Property: Transforming Decaying Municipal Parkland into a World-Class Asset"
+        right_bullets = [
+            "Applauds bringing premier design and private efficiency to restore a swampy, neglected public course that federal bureaucrats left deteriorating for decades.",
+            "Champions cutting through burdensome environmental litigation and red tape to build a world-class championship facility that elevates Washington, D.C.'s global profile.",
+            "Demonstrates that private-sector vision and capital investment can revive tired municipal recreation facilities without burdening American taxpayers."
+        ]
+        right_talk = [
+            "East Potomac has been flooded, muddy, and neglected under federal bureaucracy for decades; bringing in championship golf design will create a premier destination D.C. can be proud of.",
+            "Cutting through government red tape to upgrade public recreation with private efficiency delivers real results for golfers instead of letting historic land decay."
+        ]
+
     # --- 1. HOSPITAL CAREGIVERS / SIDEWALK SLEEPERS / HEALTHCARE ACCESS ---
-    if has_any(["sidewalk sleepers", "nowhere else to stay", "hospital caregiver", "hospital", "patient care", "delhi"]):
+    elif has_any(["sidewalk sleepers", "nowhere else to stay", "hospital caregiver", "hospital", "patient care", "delhi"]):
         core_facts = [
             "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.",
             "While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
