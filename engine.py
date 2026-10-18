@@ -115,6 +115,51 @@ RSS_FEEDS = [
 ]
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Big 12 Football & Athletics (Verified Collegiate Stadium Photography)
+    {
+        "patterns": [
+            "big 12", "big twelve", "big 12 football", "big 12 championship",
+            "byu cougars", "utah utes", "colorado buffaloes", "tcu horned frogs",
+            "baylor bears", "kansas state wildcats", "iowa state cyclones",
+            "texas tech red raiders", "oklahoma state cowboys", "west virginia mountaineers",
+            "arizona wildcats", "arizona state sun devils", "ucf knights",
+            "cincinnati bearcats", "houston cougars"
+        ],
+        "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Collegiate football stadium under stadium lights during Big 12 conference matchup.",
+        "credit": "📸 Big 12 / College Sports Wire"
+    },
+    # College Football & Major Conferences (NCAA / CFP / SEC / Big Ten / ACC)
+    {
+        "patterns": [
+            "college football", "cfb", "college football playoff", "24-team", "ncaa football",
+            "sec football", "southeastern conference", "big ten football", "big 10", "acc football",
+            "pac-12", "heisman", "heisman trophy", "bowl game", "fbs football", "college gameday",
+            "transfer portal", "college athletics", "ap poll football"
+        ],
+        "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Collegiate football stadium under stadium floodlights during conference competition.",
+        "credit": "📸 NCAA / College Football Media"
+    },
+    # College Basketball & NCAA Tournament (March Madness / Mark Pope)
+    {
+        "patterns": [
+            "college basketball", "ncaa basketball", "march madness", "final four",
+            "ncaa tournament", "mark pope", "coach pope"
+        ],
+        "url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Collegiate basketball arena hardwood court under game night lights.",
+        "credit": "📸 NCAA / College Basketball Wire"
+    },
+    # Pope Francis & The Vatican (Strictly Restricted to Non-Sports Religion/Diplomacy Coverage)
+    {
+        "patterns": [
+            "pope francis", "the pope", "vatican", "pontiff", "holy see", "papal audience", "papal visit"
+        ],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Pope_Francis_in_2021.jpg/800px-Pope_Francis_in_2021.jpg",
+        "caption": "Pope Francis during papal audience at St. Peter's Square in the Vatican.",
+        "credit": "📸 Vatican Media / Wikimedia Commons"
+    },
     # O.J. Simpson / Criminal Court Trials
     {
         "patterns": ["oj simpson", "o.j. simpson", "o. j. simpson", "simpson case", "simpson trial", "nicole brown", "ron goldman"],
@@ -145,7 +190,7 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     },
     # Severe Weather, High Winds & Power Outages
     {
-        "patterns": ["power outage", "outages", "blackout", "high winds", "wind gust", "wind gusts", "storm", "blizzard", "hurricane", "tornado"],
+        "patterns": ["power outage", "power outages", "blackout", "blackouts", "high winds", "wind gust", "wind gusts", "blizzard", "hurricane", "tornado"],
         "url": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80",
         "caption": "Severe weather system with high winds and emergency utility grid repair operations.",
         "credit": "📸 Severe Weather Photo Pool"
@@ -298,8 +343,6 @@ EXACT_ENTITY_PHOTOGRAPHY = [
         "credit": "📸 Geneva Diplomatic Press Pool"
     }
 ]
-
-# Domain-specific secondary photographic matcher
 SECONDARY_TOPIC_POOL = [
     {
         "category": "Crime & Public Safety",
@@ -324,35 +367,35 @@ SECONDARY_TOPIC_POOL = [
     },
     {
         "category": "Sports",
-        "keywords": ["football", "stadium", "nfl", "super bowl", "touchdown", "quarterback"],
+        "keywords": ["football", "stadium", "nfl", "super bowl", "touchdown", "quarterback", "cfb", "big 12", "sec", "big ten", "heisman"],
         "url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-        "caption": "NFL stadium under game day floodlights during conference competition.",
-        "credit": "📸 NFL Media Archive"
+        "caption": "Collegiate and professional football stadium under competition lights.",
+        "credit": "📸 Sports Wire Archive"
     },
     {
         "category": "Sports",
-        "keywords": ["basketball", "nba", "court", "hoops", "lakers", "celtics"],
+        "keywords": ["basketball", "nba", "basketball court", "hoops", "lakers", "celtics", "march madness"],
         "url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
         "caption": "Professional basketball arena hardwood court under game night lights.",
         "credit": "📸 Sports Wire Archive"
     },
     {
         "category": "Sports",
-        "keywords": ["baseball", "mlb", "pitcher", "ballpark", "dodgers", "brewers"],
+        "keywords": ["baseball", "mlb", "pitcher", "ballpark", "dodgers", "brewers", "world series"],
         "url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
         "caption": "Major League championship ballpark field and outfield bleachers.",
         "credit": "📸 Sports Media Wire"
     },
     {
         "category": "Economy & Inflation",
-        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "supermarket", "rates"],
+        "keywords": ["inflation", "consumer price", "groceries", "retail", "cpi", "supermarket", "interest rates", "borrowing costs"],
         "url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
         "caption": "Consumer retail grocery market shelves and pricing indexes.",
         "credit": "📸 AP Business Photo"
     },
     {
         "category": "Energy & Weather",
-        "keywords": ["grid", "transmission", "electricity", "power", "utility", "ferc", "storm", "wind"],
+        "keywords": ["power outage", "power outages", "electrical grid", "transmission line", "transmission towers", "power grid", "electric utility", "blackout", "storm", "wind gust", "wind gusts"],
         "url": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80",
         "caption": "High-voltage transmission line towers and regional electrical grid infrastructure.",
         "credit": "📸 AP Photo Archive"
@@ -386,8 +429,6 @@ SECONDARY_TOPIC_POOL = [
         "credit": "📸 Entertainment News Wire"
     }
 ]
-
-# Strict domain-specific fallbacks (CRITICAL: Non-energy stories NEVER get power lines!)
 CATEGORY_FALLBACK_POOLS = {
     "National News": [
         {
@@ -589,24 +630,26 @@ HEADLINE_NOISE_WORDS = {
     "ends", "end", "ending", "leaves", "leave", "leaving", "opens", "open",
     "shuts", "shut", "freezes", "freeze", "sues", "sue", "suing", "fires", "fire",
     "clears", "clear", "stirs", "stir", "fuels", "fuel", "looms", "loom",
-    "plunges", "plunge", "surges", "surge", "clashes", "clash", "blasts", "blast",
-    "yields", "yield", "triggers", "trigger", "unveils", "unveil", "reveals", "reveal",
-    "plans", "plan", "planning", "planned", "tells", "tell", "says", "say", "said",
-    "calls", "call", "calling", "called", "asks", "ask", "asking", "holds", "hold",
-    "approves", "approve", "rejects", "reject", "rules", "rule", "ruling", "agrees", "agree",
-    "passes", "pass", "passing", "kills", "kill", "killing", "shoots", "shoot", "shooting",
-    "dead", "dies", "die", "death", "injures", "injure", "injured", "arrests", "arrest",
-    "takeaways", "takeaway", "things", "thing", "years", "year", "months", "month",
-    "weeks", "week", "days", "day", "hours", "hour", "times", "time", "case", "cases",
-    "after", "before", "during", "over", "under", "into", "onto", "from", "with",
-    "about", "amid", "among", "against", "toward", "towards", "between",
-    "largest", "larger", "large", "biggest", "bigger", "big", "major", "minor",
-    "first", "last", "next", "new", "latest", "breaking", "exclusive", "live", "update",
-    "updates", "report", "reports", "reported", "probe", "probes", "deal", "deals",
-    "guide", "facts", "overview", "analysis", "opinion", "editorial", "review",
-    "re-examination", "examination", "investigation", "inquiry", "the", "a", "an",
-    "of", "in", "on", "at", "by", "for", "to", "and", "or", "but", "is", "are",
-    "five", "seven", "ten", "three", "four", "two", "one", "up", "down", "out", "off", "away", "back", "ahead"
+    "plunges", "plunge", "surges", "surge", "nears", "near", "eyes", "eye",
+    "taps", "tap", "calls", "call", "pulls", "pull", "blocks", "block",
+    "readies", "ready", "braces", "brace", "targets", "target", "launches", "launch",
+    "plans", "after", "almost", "decade", "delays", "investors", "temper", "revenue",
+    "growth", "slowdown", "sources", "reportedly", "deal", "expand", "teams", "team",
+    "ruled", "superficial", "blood", "clot", "the", "cnbc", "reuters", "yahoo",
+    "sports", "sport", "york", "times", "today", "hill", "wall", "street", "journal",
+    "morning", "evening", "weekly", "daily", "update", "updates", "live", "watch",
+    "story", "stories", "report", "reports", "coach", "coaches", "player", "players",
+    "head", "chief", "top", "big", "ten", "twelve", "four", "five", "east", "west",
+    "north", "south", "week", "bowl", "game", "games", "state", "national", "american",
+    "conference", "division", "league", "playoff", "playoffs", "championship", "preview",
+    "review", "season", "draft", "pick", "poll", "pollsters", "voters", "fans",
+    "pope", "king", "queen", "prince", "lord", "lady", "father", "bishop", "cardinal",
+    "saint", "saints", "angel", "angels", "magic", "heat", "jazz", "wild", "twins",
+    "lightning", "thunder", "avalanche", "rays", "stars", "sun", "giants", "canadians",
+    "commanders", "patriots", "capitals", "bill", "mark", "major", "general", "hall",
+    "power", "rankings", "standings", "hero", "bystander", "official", "officials",
+    "leader", "leaders", "house", "senate", "court", "judge", "board", "agency",
+    "can", "anyone", "stop", "remains", "unbeaten", "surges", "climbs", "falls"
 }
 
 def classify_article(title: str, text: str = "") -> Tuple[str, str]:
@@ -623,8 +666,23 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     if has_any([r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?', r'storms?', r'hurricanes?', r'blizzards?', r'tornados?|tornadoes?', r'electrical grids?', r'transmission lines?', r'utilities|utility']):
         return ("Energy & Weather", "National Headlines")
 
-    # 2. Sports
-    if has_any([r'dodgers?', r'brewers?', r'yankees?', r'mets?', r'nlcs', r'alcs', r'mlb', r'baseballs?', r'nfl', r'eagles?', r'panthers?', r'jalen hurts', r'touchdowns?', r'quarterbacks?', r'nba', r'lakers?', r'celtics?', r'pga', r'golf(?:ers?|ing)?', r'masters', r'saudi public investment fund', r'ncaa', r'college football playoff', r'super bowl', r'sports?']):
+    # 2. Sports (Professional, Collegiate, and Olympic Athletics)
+    if has_any([
+        r'footballs?', r'college football', r'cfb', r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
+        r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
+        r'bowl games?', r'college football playoff', r'playoff committee',
+        r'baseballs?', r'mlb', r'world series', r'ballparks?', r'pitchers?', r'home runs?', r'innings?',
+        r'nlcs', r'alcs', r'dodgers?', r'brewers?', r'yankees?', r'mets?', r'red sox', r'cubs?',
+        r'basketballs?', r'nba', r'college basketball', r'ncaa', r'march madness', r'final four',
+        r'lakers?', r'celtics?', r'warriors?', r'knicks?',
+        r'hockeys?', r'nhl', r'stanley cup',
+        r'golf(?:ers?|ing)?', r'pga(?: tour)?', r'liv golf', r'masters tournament', r'fairways?',
+        r'soccers?', r'mls', r'premier league', r'champions league', r'world cup',
+        r'tennis', r'wimbledon', r'us open',
+        r'athletes?', r'athletics?', r'sports?', r'championships?', r'tournaments?',
+        r'saudi public investment fund', r'head coach', r'coaching staff', r'transfer portal',
+        r'ap poll', r'coaches poll'
+    ]):
         return ("Sports", "National Headlines")
 
     # 3. Entertainment & Cinema
@@ -640,30 +698,34 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         return ("Science & Tech", "Science & Tech")
 
     # 6. Crime & Public Safety / Courtrooms / Law
-    if has_any([r'o\.?j\.? simpson', r'simpson case', r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'murders?', r'homicides?', r'trials?', r'courtrooms?', r'jur(?:y|ors)', r'verdicts?', r'indictments?', r'prosecutors?', r'crimes?', r'felon(?:y|ies)', r'sentencing', r'police', r'fbi', r'detectives?']):
+    if has_any([r'o\.?[jJ]\.? simpson', r'simpson case', r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'murders?', r'homicides?', r'trials?', r'courtrooms?', r'jur(?:y|ors)', r'verdicts?', r'indictments?', r'prosecutors?', r'crimes?', r'felon(?:y|ies)', r'sentencing', r'police', r'fbi', r'detectives?']):
         return ("Crime & Public Safety", "National Headlines")
 
-    # 7. World News / International Geopolitics / Foreign Civil Unrest
+    # 7. Faith, Religion, Vatican & Papacy (Only when not sports/tech)
+    if has_any([r'pope francis', r'the pope', r'vatican', r'papal', r'pontiff', r'holy see', r'catholic church', r'archdiocese', r'cardinal of the catholic', r'canonization']):
+        return ("World News", "World News")
+
+    # 8. World News / International Geopolitics / Foreign Civil Unrest
     if has_any([r'france', r'french', r'paris', r'riots?', r'civil unrest', r'protests?', r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato', r'black sea', r'geneva talks', r'britain', r'london', r'germany', r'berlin', r'europe(?:an)?']):
         return ("World News", "World News")
 
-    # 8. Health & Medicine
+    # 9. Health & Medicine
     if has_any([r'hhs', r'hospitals?', r'cash prices?', r'medicare', r'medicaid', r'fda', r'doctors?', r'medicines?', r'prescriptions?', r'pharmacy|pharmacies', r'drug costs?', r'sidewalk sleepers', r'caregivers?']):
         return ("Health", "National Headlines")
 
-    # 9. Energy & Nuclear Infrastructure
+    # 10. Energy & Nuclear Infrastructure
     if has_any([r'ferc', r'grid upgrades?', r'pipelines?', r'modular compact', r'nuclear reactors?', r'clean energy', r'natural gas', r'petroleum', r'crude oil']):
         return ("Energy & Weather", "National Headlines")
 
-    # 10. Business, Economy & Inflation
+    # 11. Business, Economy & Inflation
     if has_any([r'federal reserve', r'rates steady', r'inflation', r'cpi', r'stocks?', r'dow', r'nasdaq', r'wall street', r'tesla', r'roadsters?', r'ipo', r'valuations?', r'interest rates?']):
         return ("Business & Economy", "National Headlines")
 
-    # 11. Border & Security
+    # 12. Border & Security
     if has_any([r'border patrol', r'cbp', r'fentanyl', r'asylum', r'border security', r'checkpoints?', r'migrants?']):
         return ("Border & Security", "National Headlines")
 
-    # 12. Politics & Government
+    # 13. Politics & Government
     if has_any([r'spending frameworks?', r'federal shutdowns?', r'congress', r'senate', r'house of representatives', r'gop', r'democrats?', r'republicans?', r'white house', r'elections?', r'mailings', r'ballots?']):
         return ("Politics", "National Headlines")
 
@@ -747,66 +809,149 @@ def is_story_image_mismatched(story: dict) -> bool:
     try:
         title = (story.get("title") or "").lower()
         cat = (story.get("category") or "").lower()
+        master = (story.get("master_category") or "").lower()
         url = (story.get("image_url") or "").lower()
         caption = (story.get("caption") or "").lower()
+        credit = (story.get("credit") or "").lower()
+        is_sports = "sport" in cat or "sport" in master
 
-        # 1. Non-Energy stories having power transmission lines
-        if "photo-1473341304170-971dccb5ac1e" in url or "transmission corridor" in caption:
+        # 0. POPE / VATICAN / RELIGIOUS MISMATCH GUARD:
+        # If image depicts Pope or Vatican, but title is NOT about Pope/Vatican -> MISMATCH!
+        if ("pope" in url or "pope" in caption or "pope" in credit or "vatican" in caption or "vatican" in url or "pontiff" in caption):
+            if not any(w in title for w in ["pope", "vatican", "pontiff", "papal", "holy see"]):
+                return True
+
+        # 1. SPORTS DOMAIN INTEGRITY:
+        # If story is Sports, it MUST NOT have religious, utility, legal, hospital, or finance images
+        if is_sports:
+            forbidden_sports = [
+                "pope", "vatican", "pontiff", "bishop", "church", "cathedral",
+                "transmission line", "transmission tower", "electrical grid", "power outage", "utility grid",
+                "courtroom", "gavel", "judge", "supreme court", "capitol", "white house",
+                "hospital complex", "medical care pavilion", "patient", "caregiver",
+                "trading floor", "stock market exchange", "financial market exchange",
+                "theatrical cinema", "movie premiere"
+            ]
+            if any(bad in caption or bad in url for bad in forbidden_sports):
+                return True
+
+        # 2. NON-SPORTS STORIES HAVING SPORTS IMAGERY:
+        if not is_sports:
+            sports_markers = [
+                "photo-1574629810360-7efbbe195018", "photo-1508098682722-e99c43a406b2",
+                "photo-1508344928928-7165b67de128", "photo-1546519638-68e109498ffc",
+                "photo-1535131749006-b7f58c99034b", "athletics stadium", "ballpark",
+                "hardwood court", "quarterback", "pga tour", "ncaa logo"
+            ]
+            if any(bad in url or bad in caption for bad in sports_markers):
+                return True
+
+        # 3. NON-ENERGY STORIES HAVING TRANSMISSION LINES:
+        if "photo-1473341304170-971dccb5ac1e" in url or "transmission line" in caption or "transmission corridor" in caption:
             if "energy" not in cat and "weather" not in cat:
                 return True
 
-        # 2. Non-Hardware/tool stories having a cable reel / cord reel
-        if "device used to store elongated" in caption or ("reel" in caption and "film" not in caption and "movie" not in caption and "cinema" not in caption):
-            return True
-
-        # 3. Non-Sports stories having athletic stadium
-        if "photo-1574629810360-7efbbe195018" in url or "athletics stadium" in caption:
-            if "sport" not in cat:
+        # 4. NON-HEALTH STORIES HAVING HOSPITAL COMPLEX:
+        if "photo-1586773860418-d37222d8fce3" in url or "hospital complex" in caption or "medical care pavilion" in caption:
+            if "health" not in cat and "sleepers" not in title and "caregiver" not in title and "hospital" not in title:
                 return True
 
-        # 4. Non-Tech stories having server racks
-        if "photo-1550751827-4bd374c3f58b" in url or "network servers" in caption:
+        # 5. NON-BUSINESS STORIES HAVING TRADING FLOOR:
+        if "photo-1611974789855-9c2a0a7236a3" in url or "trading floor" in caption:
+            if "business" not in cat and "econom" not in cat:
+                return True
+
+        # 6. NON-TECH STORIES HAVING SERVER RACKS:
+        if "photo-1550751827-4bd374c3f58b" in url or "network servers" in caption or "cloud data center" in caption:
             if "tech" not in cat and "science" not in cat:
                 return True
 
-        # 5. O.J. Simpson having non-OJ or non-courtroom photo
-        if "o.j." in title or "oj simpson" in title or "simpson case" in title:
-            if "simpson" not in caption and "courtroom" not in caption and "trial" not in caption:
+        # 7. NON-ENTERTAINMENT STORIES HAVING CINEMA:
+        if "photo-1489599849927-2ee91cede3ba" in url or "theatrical cinema" in caption:
+            if "entertain" not in cat and "movie" not in title and "film" not in title:
                 return True
 
-        # 6. France riots / protests having non-France / non-protest photo
-        if ("france" in title or "french" in title) and ("riot" in title or "protest" in title or "reel" in title):
-            if "france" not in caption and "demonstrat" not in caption and "paris" not in caption:
-                return True
+        # 8. NON-HARDWARE STORIES HAVING REEL / SPOOL:
+        if "device used to store elongated" in caption or ("reel" in caption and "film" not in caption and "movie" not in caption and "cinema" not in caption and "riot" not in title):
+            return True
 
         return False
     except Exception:
         return False
 
-def is_wikipedia_result_relevant(data: dict, title: str, category: str) -> bool:
-    """Verifies that a Wikipedia lookup matches the context of the story and is not an unrelated tool/object."""
+def is_wikipedia_result_relevant(data: dict, title: str, category: str, master_category: str = "National Headlines") -> bool:
+    """Verifies that a Wikipedia lookup matches the context of the story and enforces strict domain boundaries."""
     if not data or not isinstance(data, dict):
         return False
     
     desc = (data.get("description") or "").lower()
     extract = (data.get("extract") or "").lower()
     page_type = (data.get("type") or "").lower()
+    t_lower = (title or "").lower()
+    c_lower = (category or "").lower()
+    m_lower = (master_category or "").lower()
+    is_sports = "sport" in c_lower or "sport" in m_lower
 
     if page_type == "disambiguation":
         return False
 
-    # Block hardware tools, cable reels, spools, and generic biological taxa when not relevant
+    # 1. Block hardware tools, cable reels, spools, and generic biological taxa
     unrelated_phrases = [
         "device used to", "mechanical device", "type of tool", "cable reel", "hose reel",
-        "spool", "fastener", "hardware", "genus of", "species of plant", "species of insect"
+        "spool", "fastener", "hardware", "genus of", "species of plant", "species of insect",
+        "taxonomic rank", "flowering plant in the family"
     ]
     for phrase in unrelated_phrases:
         if phrase in desc or phrase in extract:
             return False
 
+    # 2. STRICT RELIGIOUS / POPE GATEWAY:
+    # A Wikipedia entity about the Pope, Vatican, or Catholic clergy is ONLY allowed if the story
+    # is explicitly religious (and NEVER for Sports, Tech, or Energy).
+    religious_markers = [
+        "the pope", "pope francis", "papal", "papacy", "pontiff", "bishop of rome",
+        "holy see", "vatican", "catholic church", "clergy", "archbishop", "priest",
+        "monk", "nun", "theologian", "diocese", "monastery", "patriarch of the",
+        "canonized", "cardinal of the catholic"
+    ]
+    wiki_title_lower = (data.get("title") or "").strip().lower()
+    is_wiki_religious = (wiki_title_lower == "pope") or any(rm in desc or rm in extract for rm in religious_markers)
+    title_has_religion = any(rw in t_lower for rw in ["pope", "vatican", "papal", "pontiff", "catholic", "holy see", "bishop", "priest", "clergy", "religion", "faith"])
+    
+    if is_wiki_religious:
+        # If the story is Sports, Energy, Tech, or does not explicitly have religious keywords in the title, REJECT!
+        if is_sports or "tech" in c_lower or "energy" in c_lower or "weather" in c_lower:
+            return False
+        if not title_has_religion:
+            return False
+
+    # 3. STRICT SPORTS GATEWAY:
+    # If the story is categorized under Sports, the Wikipedia entity MUST be verified sports-related!
+    if is_sports:
+        sports_affinity_markers = [
+            "sport", "athlete", "player", "coach", "football", "basketball", "baseball",
+            "soccer", "racing", "driver", "golf", "tennis", "championship", "tournament",
+            "league", "team", "club", "stadium", "arena", "ncaa", "nfl", "nba", "mlb",
+            "nhl", "pga", "nascar", "olympic", "division", "quarterback", "pitcher",
+            "athletics", "boxer", "ballpark", "collegiate", "conference", "heisman",
+            "touchdown", "playoff", "defensive", "offensive", "guard", "forward", "center",
+            "striker", "pitching", "batting", "wicket", "hockey", "curling", "skater", "swimmer"
+        ]
+        has_sports_affinity = any(sam in desc or sam in extract for sam in sports_affinity_markers)
+        if not has_sports_affinity:
+            # If a Wikipedia entity has zero sports context, reject it for a Sports story!
+            return False
+
+    # 4. CROSS-DOMAIN ANTI-POLLUTION:
+    # A non-Sports story should not get sports players/stadiums
+    if not is_sports:
+        stadium_markers = ["stadium", "ballpark", "basketball team", "football team", "baseball team", "professional sports team"]
+        if any(sm in desc for sm in stadium_markers) and not any(sw in t_lower for sw in ["stadium", "arena", "team"]):
+            return False
+
     return True
 
-def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: str = "") -> Optional[dict]:
+def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: str = "", master_category: str = "National Headlines") -> Optional[dict]:
     try:
         url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(entity_name)}"
         req = urllib.request.Request(
@@ -815,7 +960,7 @@ def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: st
         )
         with urllib.request.urlopen(req, timeout=3) as resp:
             data = json.loads(resp.read().decode("utf-8"))
-            if not is_wikipedia_result_relevant(data, title, category):
+            if not is_wikipedia_result_relevant(data, title, category, master_category):
                 return None
 
             thumb = data.get("thumbnail", {}).get("source")
@@ -832,7 +977,7 @@ def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: st
     return None
 
 def extract_named_entities_from_title(title: str) -> List[str]:
-    """Robust NER extractor with acronym normalization and strict headline verb filtering."""
+    """Robust NER extractor with acronym normalization and strict headline noise word filtering."""
     clean = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     
     # Normalize initials and dotted names (e.g., 'O.J.' -> 'OJ', 'J.D.' -> 'JD')
@@ -840,7 +985,7 @@ def extract_named_entities_from_title(title: str) -> List[str]:
     
     entities = []
     
-    # 1. Multi-word phrases
+    # 1. Multi-word phrases (prefer multi-word specific entities)
     multi_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]*(?:\s+[A-Z][a-zA-Z0-9]*)+\b', norm)
     for m in multi_matches:
         words = m.split()
@@ -954,63 +1099,105 @@ def resolve_story_image(title: str, category: str, master_category: Any = "Natio
 
     clean_category = str(category or "National News")
     clean_master = str(master_category or "National Headlines")
+    is_sports = "sport" in clean_category.lower() or "sport" in clean_master.lower()
 
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     t_lower = clean_title.lower()
 
-    # PRIORITY 0: Direct scraped editorial lead picture from RSS
+    # PRIORITY 0: Direct scraped editorial lead picture from RSS (with domain integrity check)
     if scraped_image and isinstance(scraped_image, dict):
         scraped_url = scraped_image.get("url")
         if is_usable_image_url(scraped_url):
-            used_urls.add(scraped_url)
-            return {
-                "url": scraped_url,
-                "caption": scraped_image.get("caption") or f"{clean_title} editorial photograph.",
-                "credit": scraped_image.get("credit") or "📸 Wire Service"
-            }
+            # Verify no cross-domain pollution in scraped image caption/credit
+            sc_cap = (scraped_image.get("caption") or "").lower()
+            sc_cred = (scraped_image.get("credit") or "").lower()
+            scraped_valid = True
+            
+            # If Sports, reject Pope/religious or power lines in scraped image
+            if is_sports and any(b in sc_cap or b in sc_cred for b in ["pope", "vatican", "transmission line", "courtroom", "hospital"]):
+                scraped_valid = False
+            # If not Pope story, reject Pope in scraped image
+            if any(b in sc_cap or b in sc_cred for b in ["pope", "vatican", "pontiff"]) and not any(w in t_lower for w in ["pope", "vatican", "pontiff", "papal"]):
+                scraped_valid = False
+
+            if scraped_valid:
+                used_urls.add(scraped_url)
+                return {
+                    "url": scraped_url,
+                    "caption": scraped_image.get("caption") or f"{clean_title} editorial photograph.",
+                    "credit": scraped_image.get("credit") or "📸 Wire Service"
+                }
 
     # PRIORITY 1: Exact Curated Entity & Breaking Topic Mapping
     for ent in EXACT_ENTITY_PHOTOGRAPHY:
+        # Strict guard: Pope/Vatican patterns NEVER match Sports stories
+        if any(pat in ent["patterns"] for pat in ["pope francis", "the pope", "vatican", "pontiff"]) and is_sports:
+            continue
+
         for pat in ent["patterns"]:
             if re.search(r'\b' + re.escape(pat) + r'\b', t_lower):
                 if ent["url"] not in used_urls:
                     used_urls.add(ent["url"])
                     return {"url": ent["url"], "caption": ent["caption"], "credit": ent["credit"]}
 
-    # PRIORITY 2: Wikipedia Named Entity Lookup with Semantic Verification
+    # PRIORITY 2: Wikipedia Named Entity Lookup with Strict Domain Verification
     entities = extract_named_entities_from_title(title)
     for ent in entities:
-        wiki_img = fetch_wikipedia_entity_image(ent, title=title, category=category)
+        wiki_img = fetch_wikipedia_entity_image(ent, title=title, category=clean_category, master_category=clean_master)
         if wiki_img and wiki_img["url"] not in used_urls:
             used_urls.add(wiki_img["url"])
             return wiki_img
 
-    # PRIORITY 3: Secondary Topic Keyword Matcher
+    # PRIORITY 3: Secondary Topic Keyword Matcher (Strictly Domain-Aligned)
     for item in SECONDARY_TOPIC_POOL:
+        item_cat = (item.get("category") or "").lower()
+        
+        # Domain alignment check: Sports only matches Sports; Non-sports never matches Sports
+        if is_sports and "sport" not in item_cat:
+            continue
+        if not is_sports and "sport" in item_cat:
+            continue
+        if "energy" in clean_category.lower() and "energy" not in item_cat:
+            continue
+
         for kw in item["keywords"]:
             if re.search(r'\b' + re.escape(kw) + r'\b', t_lower):
                 if item["url"] not in used_urls:
                     used_urls.add(item["url"])
                     return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    # PRIORITY 4: Strict Category-Specific Fallback (NEVER power lines for non-energy!)
+    # PRIORITY 4: Strict Category-Specific Fallback (NEVER Cross-Domain!)
     cat_key = clean_category if clean_category in CATEGORY_FALLBACK_POOLS else clean_master
     pool = CATEGORY_FALLBACK_POOLS.get(cat_key)
     if not pool:
-        pool = CATEGORY_FALLBACK_POOLS.get("National Headlines", [])
-    if not pool:
-        pool = CATEGORY_FALLBACK_POOLS.get("Politics", [])
+        if is_sports:
+            pool = CATEGORY_FALLBACK_POOLS.get("Sports", [])
+        elif "energy" in clean_category.lower() or "weather" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Energy & Weather", [])
+        elif "world" in clean_category.lower() or "world" in clean_master.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("World News", [])
+        elif "health" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Health", [])
+        elif "entertain" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Entertainment", [])
+        elif "crime" in clean_category.lower() or "public safety" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Crime & Public Safety", [])
+        elif "business" in clean_category.lower() or "econom" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Business & Economy", [])
+        elif "science" in clean_category.lower() or "tech" in clean_category.lower():
+            pool = CATEGORY_FALLBACK_POOLS.get("Science & Tech", [])
+        else:
+            pool = CATEGORY_FALLBACK_POOLS.get("Politics", [])
 
     for item in pool:
         if item["url"] not in used_urls:
             used_urls.add(item["url"])
             return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
-    # Deterministic hash fallback within the exact category pool
+    # Deterministic hash fallback strictly within the exact category pool
     seed = abs(hash(title)) % len(pool)
     fallback = pool[seed]
     return {"url": fallback["url"], "caption": fallback["caption"], "credit": fallback["credit"]}
-
 def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[str, Any]]:
     items = []
     try:
