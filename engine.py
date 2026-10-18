@@ -679,7 +679,8 @@ HEADLINE_NOISE_WORDS = {
 
 def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     """Accurately classifies articles into specific topic category and hierarchical master category.
-    Strictly prevents fatal accidents, explosions, and military base disasters from being misclassified as Sports.
+    Strictly separates domestic US issues from international foreign affairs and prevents tragedies
+    from colliding with sports.
     """
     combined = (title + " " + (text or "")).lower()
     t_lower = (title or "").lower()
@@ -690,26 +691,39 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
                 return True
         return False
 
-    # 0. DISASTER, FATALITY, EXPLOSION, FIRE & MILITARY CASUALTY GUARD (HIGHEST PRIORITY)
-    # A tragedy where soldiers, airmen, or civilians are killed or injured is NEVER Sports,
-    # even if it occurs at a stadium, dome, or military facility!
-    is_casualty_disaster = has_any([
-        r'dead\s+or\s+injured', r'fatal\s+accident', r'fatal\s+fall', r'deadly\s+fire', r'major\s+fire',
-        r'explosion', r'blast', r'airm[ae]n\s+dies?', r'soldier\s+dies?', r'service\s+member\s+dies?',
-        r'rappelling\s+accident', r'dies\s+in\s+fall', r'killed\s+in\s+(?:incident|accident|blast|fire)',
-        r'cfb\s+wainwright', r'military\s+base\s+fire', r'fire\s+at\s+canada\s+military\s+base',
-        r'botched\s+rappel', r'life-threatening\s+injuries'
+    # Check for international foreign entities
+    is_international = has_any([
+        r'france', r'french', r'paris', r'limoges', r'macron',
+        r'pakistan', r'pakistani', r'khyber', r'pakhtunkhwa', r'imran\s+khan', r'islamabad',
+        r'india', r'indian', r'delhi', r'mumbai', r'the\s+times\s+of\s+india',
+        r'ukraine', r'kyiv', r'kiev', r'russia', r'russian', r'kremlin', r'moscow', r'putin', r'zelenskyy?',
+        r'israel', r'israeli', r'gaza', r'hamas', r'netanyahu', r'hezbollah', r'lebanon', r'beirut', r'iran', r'iranian', r'tehran',
+        r'china', r'chinese', r'beijing', r'taiwan', r'taipei',
+        r'britain', r'british', r'u\.k\.', r'london', r'scotland', r'prime\s+minister\s+starmer',
+        r'germany', r'german', r'berlin', r'scholz',
+        r'canada', r'canadian', r'ottawa', r'alberta', r'wainwright', r'cfb', r'trudeau',
+        r'mexico', r'mexican', r'sheinbaum',
+        r'europe', r'european\s+union', r'nato', r'united\s+nations', r'un\s+security\s+council',
+        r'geneva\s+talks', r'black\s+sea', r'afp', r'reuters\s+world', r'bbc\s+news', r'al\s+jazeera'
     ])
-    if is_casualty_disaster:
-        # If it involves Canada or international entities -> World News
-        if has_any([r'canada', r'canadian', r'cfb', r'wainwright', r'alberta', r'bbc', r'ukraine', r'russia', r'britain', r'foreign', r'international']):
-            return ("World News", "World News")
-        # Domestic US public safety emergency / tragedy
+
+    # 0. DISASTER, FATALITY, EXPLOSION & MILITARY CASUALTY GUARD (HIGHEST PRIORITY)
+    if has_any([r'airm[ae]n\s+dies?', r'soldier\s+dies?', r'service\s+member\s+dies?', r'rappelling\s+accident', r'alamodome', r'botched\s+rappel']):
         return ("Crime & Public Safety", "National Headlines")
 
-    # 1. SPORTS PRIORITY CHECK:
-    # Strictly requires actual athletic contests, leagues, or tournaments.
-    # Note: Bounded 'cfb' so Canadian military bases (CFB Wainwright) NEVER match!
+    if has_any([r'cfb\s+wainwright', r'military\s+base\s+fire', r'fire\s+at\s+canada\s+military\s+base']):
+        return ("World News", "World News")
+
+    # 1. INTERNATIONAL ROUTING:
+    # Any civil unrest, riots, protests, government crises, emergency rule, or foreign diplomacy
+    if is_international:
+        # Check if it is an international sports match (e.g. World Cup, Premier League)
+        if has_any([r'premier league', r'champions league', r'world cup', r'fifa', r'wimbledon', r'olympics?']):
+            return ("Sports", "Sports")
+        # All other international news routes cleanly to World News
+        return ("World News", "World News")
+
+    # 2. DOMESTIC SPORTS PRIORITY CHECK:
     is_military_base = has_any([r'military\s+base', r'air\s+force\s+base', r'naval\s+base', r'army\s+base', r'cfb\s+[a-z]+'])
     is_sports = not is_military_base and has_any([
         r'footballs?', r'college football', r'cfb\s+(?:playoffs?|rankings?|week\s+\d|top\s+25|poll|scores?|game|season)',
@@ -723,17 +737,16 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         r'lakers?', r'celtics?', r'warriors?', r'knicks?',
         r'hockeys?', r'nhl', r'stanley cup',
         r'golf(?:ers?|ing)?', r'pga(?: tour)?', r'liv golf', r'masters tournament', r'fairways?',
-        r'soccers?', r'mls', r'premier league', r'champions league', r'world cup',
-        r'tennis', r'wimbledon', r'us open',
+        r'soccers?', r'mls',
+        r'tennis', r'us open',
         r'jalen hurts', r'bo nix', r'alabama crimson tide', r'ohio state', r'texas longhorns',
         r'georgia bulldogs', r'oregon ducks', r'byu cougars', r'miami hurricanes'
     ])
     if is_sports:
-        # Verify it's not a utility blackout affecting a stadium
         if not (has_any([r'power outages?', r'blackouts?']) and not has_any([r'rankings?', r'game', r'score', r'win', r'loss', r'upset', r'playoff'], t_lower)):
             return ("Sports", "Sports")
 
-    # 2. Severe Weather, High Winds & Utility Power Outages (Excludes sports teams like Miami Hurricanes)
+    # 3. Severe Weather & Utility Grids
     is_miami_hurricanes = bool(re.search(r'\b(?:miami|carolina|tulsa)\s+hurricanes?\b', combined))
     if not is_miami_hurricanes and has_any([
         r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?',
@@ -743,47 +756,39 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     ]):
         return ("Energy & Weather", "Energy & Weather")
 
-    # 3. Entertainment & Cinema
+    # 4. Entertainment & Cinema
     if has_any([r'box office', r'movies?', r'films?', r'hollywood', r'actors?', r'actress(?:es)?', r'directors?', r'imax', r'netflix', r'taylor swift', r'concerts?', r'grammys?', r'oscars?', r'theatrical', r'cinema', r'blockbusters?']):
         return ("Entertainment", "Entertainment")
 
-    # 4. Space, NASA & Astronomy
+    # 5. Space, NASA & Astronomy
     if has_any([r'nasa', r'telescopes?', r'james webb', r'exoplanets?', r'asteroids?', r'astronomy', r'space exploration', r'spacex', r'quantum', r'physics']):
         return ("Science & Tech", "Science & Tech")
 
-    # 5. Tech & AI
+    # 6. Tech & AI
     if has_any([r'artificial intelligence', r'openai', r'claude', r'anthropic', r'semiconductors?', r'microchips?', r'nvidia', r'cybersecurity', r'softwares?', r'social media', r'content moderation']):
         return ("Science & Tech", "Science & Tech")
 
-    # 6. Crime & Public Safety / Courtrooms / Law
+    # 7. Domestic Crime, Courtrooms & Public Safety
     if has_any([r'o\.?[jJ]\.? simpson', r'simpson case', r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'murders?', r'homicides?', r'trials?', r'courtrooms?', r'jur(?:y|ors)', r'verdicts?', r'indictments?', r'prosecutors?', r'crimes?', r'felon(?:y|ies)', r'sentencing', r'police', r'fbi', r'detectives?']):
         return ("Crime & Public Safety", "Crime & Public Safety")
 
-    # 7. Faith, Religion, Vatican & Papacy (Only when not sports/tech)
-    if has_any([r'pope francis', r'the pope', r'vatican', r'papal', r'pontiff', r'holy see', r'catholic church', r'archdiocese', r'cardinal of the catholic', r'canonization']):
-        return ("World News", "World News")
-
-    # 8. World News / International Geopolitics / Foreign Civil Unrest
-    if has_any([r'france', r'french', r'paris', r'riots?', r'civil unrest', r'protests?', r'starlink curbs', r'embolden russia', r'ukraine', r'russia', r'gaza', r'israel', r'lebanon', r'hezbollah', r'iran', r'taiwan', r'china', r'foreign ministers?', r'prime ministers?', r'kremlin', r'zelenskyy', r'netanyahu', r'nato', r'black sea', r'geneva talks', r'britain', r'london', r'germany', r'berlin', r'europe(?:an)?', r'canada', r'canadian']):
-        return ("World News", "World News")
-
-    # 9. Health & Medicine
+    # 8. Health & Medicine
     if has_any([r'hhs', r'hospitals?', r'cash prices?', r'medicare', r'medicaid', r'fda', r'doctors?', r'medicines?', r'prescriptions?', r'pharmacy|pharmacies', r'drug costs?', r'sidewalk sleepers', r'caregivers?']):
         return ("Health", "Health")
 
-    # 10. Energy & Nuclear Infrastructure
+    # 9. Energy & Nuclear Infrastructure
     if has_any([r'ferc', r'grid upgrades?', r'pipelines?', r'modular compact', r'nuclear reactors?', r'clean energy', r'natural gas', r'petroleum', r'crude oil']):
         return ("Energy & Weather", "Energy & Weather")
 
-    # 11. Business, Economy & Inflation
+    # 10. Business, Economy & Inflation
     if has_any([r'federal reserve', r'rates steady', r'inflation', r'cpi', r'stocks?', r'dow', r'nasdaq', r'wall street', r'tesla', r'roadsters?', r'ipo', r'valuations?', r'interest rates?']):
         return ("Business & Economy", "Business & Economy")
 
-    # 12. Border & Security
+    # 11. Border & Security
     if has_any([r'border patrol', r'cbp', r'fentanyl', r'asylum', r'border security', r'checkpoints?', r'migrants?']):
         return ("Border & Security", "Border & Security")
 
-    # 13. Politics & Government
+    # 12. Politics & Government
     if has_any([r'spending frameworks?', r'federal shutdowns?', r'congress', r'senate', r'house of representatives', r'gop', r'democrats?', r'republicans?', r'white house', r'elections?', r'mailings', r'ballots?']):
         return ("Politics", "Politics")
 
@@ -833,6 +838,7 @@ def parse_pubdate_to_relative(pub_date_str: str) -> Tuple[int, str]:
         return now_ts, "Recently"
 
 def is_story_mismatched(story: dict) -> bool:
+    """Detects content cross-contamination where a story received the wrong theme template."""
     try:
         raw_title = story.get("title") or ""
         title = str(raw_title).lower() if not isinstance(raw_title, (list, tuple)) else " ".join(map(str, raw_title)).lower()
@@ -845,44 +851,46 @@ def is_story_mismatched(story: dict) -> bool:
         if isinstance(center_p, dict):
             raw_framing = center_p.get("CENTER", {})
             framing = str(raw_framing.get("headline_framing", "")).lower() if isinstance(raw_framing, dict) else str(raw_framing or "").lower()
+            talking = " ".join([str(tp) for tp in center_p.get("RIGHT", {}).get("talking_points", [])] + [str(tp) for tp in center_p.get("CENTER", {}).get("talking_points", [])]).lower()
         else:
             framing = ""
+            talking = ""
 
-        all_text = summary + " " + framing
+        all_text = summary + " " + framing + " " + talking
 
-        # 1. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
+        # 1. Civil unrest, riots, or protests receiving military casualty or mechanical failure quotes
+        if any(w in title for w in ["riot", "riots", "protest", "protests", "looting", "clashes", "civil unrest"]):
+            if any(bad in all_text for bad in ["serve and sacrifice", "mechanical failures", "scoreboard doesn't lie", "airman", "rappelling"]):
+                return True
+
+        # 2. International / foreign story receiving US domestic quotes ('American people', 'divided government')
+        if any(w in title for w in ["pakistan", "khyber", "imran khan", "france", "paris", "canada", "wainwright", "ukraine", "russia", "china", "gaza", "israel", "delhi", "india"]):
+            if any(bad in all_text for bad in ["american people", "divided government", "for the american people"]):
+                return True
+
+        # 3. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
         if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
             if any(bad in all_text for bad in ["battery", "powertrain", "automotive", "sanctions", "diesel", "assembly-line"]):
                 return True
 
-        # 2. Politics story talking about diesel or fuel supply when title is about election or mailings
+        # 4. Politics story talking about diesel or fuel supply when title is about election or mailings
         if any(w in title for w in ["mailing", "election", "ballot", "voting"]):
             if any(bad in all_text for bad in ["diesel", "fuel supply", "oil sanctions", "petroleum"]):
                 return True
 
-        # 3. Sports story with NCAA settlement boilerplate when title is not about settlement
+        # 5. Sports story with NCAA settlement boilerplate when title is not about settlement
         if ("sport" in cat or any(w in title for w in ["football", "rankings", "upset", "game", "top 25", "week"])) and not any(w in title for w in ["settlement", "revenue-share", "revenue sharing", "house v"]):
             if any(bad in all_text for bad in ["2.75 billion", "house v. ncaa", "title ix gender-equity", "losing every court case 9-0", "bringing revenue sharing in-house"]):
                 return True
 
-        # 4. Fatal accident, tragedy, or military death incorrectly given sports game / scoreboard quotes
-        if any(w in title for w in ["dies", "died", "dead", "fatal", "accident", "airman", "soldier", "rappelling", "fire", "explosion", "blast", "wainwright"]):
+        # 6. Fatal accident, tragedy, or military death incorrectly given sports game / scoreboard quotes
+        if any(w in title for w in ["dies", "died", "dead", "fatal", "accident", "airman", "soldier", "rappelling", "wainwright"]):
             if any(bad in all_text for bad in [
                 "final scoreboard doesn't lie", "championships are earned",
                 "playoff contenders", "between the lines", "true competitors rise",
                 "meritocracy on the diamond", "winning requires preparation",
                 "tactical execution, roster depth"
             ]):
-                return True
-
-        # 5. Military base disaster or fatal accident incorrectly categorized as Sports
-        if any(w in title for w in ["military base", "cfb", "wainwright", "airman", "rappelling", "fatal accident"]):
-            if cat == "sports":
-                return True
-
-        # 6. Sports story misclassified under Energy & Weather or Border
-        if any(w in title for w in ["rankings", "upset-filled", "quarterback", "hurts", "lakers", "brewers", "dodgers", "nlcs", "mlb", "nba", "nfl", "pga"]):
-            if cat in ["energy & weather", "border & security"]:
                 return True
 
         # 7. Known generic boilerplate phrases
@@ -2673,34 +2681,86 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                     f"Administrative teams established oversight schedules as operational next steps advance."
                 ]
 
-        # Domain-Specific Perspectives & Talking Points
-        # Check if the story is about a fatality, accident, tragedy, or disaster
-        is_tragedy = any(w in full_text for w in [
-            "dies", "died", "death", "fatal", "accident", "killed", "casualt",
-            "injured", "injury", "airman", "soldier", "rappelling", "fire", "explosion", "blast"
+                # Domain-Specific Perspectives & Authentic Layperson Debate Arguments
+        # Detect geographical and thematic context
+        is_international = any(w in full_text for w in [
+            "france", "french", "paris", "limoges", "macron",
+            "pakistan", "pakistani", "khyber", "pakhtunkhwa", "imran khan", "islamabad",
+            "india", "indian", "delhi", "mumbai", "ukraine", "kyiv", "russia", "kremlin", "putin",
+            "israel", "gaza", "netanyahu", "hezbollah", "lebanon", "iran", "china", "taiwan",
+            "britain", "london", "germany", "berlin", "canada", "wainwright", "cfb", "europe", "nato"
         ])
 
-        if is_tragedy:
-            left_framing = f"Human Life Over Commercial Interests: Demanding Full Safety Accountability in {clean_title[:35]}..."
+        # 1. Civil Unrest, Rioting, Protests & Street Clashes
+        if any(w in full_text for w in [
+            "riot", "riots", "rioting", "protest", "protests", "protesters", "protesting",
+            "unrest", "civil unrest", "clashes", "looting", "tear gas", "barricades",
+            "curfew", "student-led protests", "chaotic protests"
+        ]):
+            left_framing = f"Addressing Root Causes: Mass Unrest Reflects Deep Social Inequality and Police Accountability Crises"
             left_talk = [
-                "Human lives must never be treated as secondary to event schedules or commercial revenue; safety protocols must be non-negotiable.",
-                "Institutions and authorities must be held fully accountable for safety oversight and preventing avoidable tragedies."
+                "Thousands of people don't clash with police in the streets unless there is deep, systemic social inequality and communities feel completely unheard by political leaders.",
+                "Flooding neighborhoods with riot gear and tear gas won't fix the underlying economic despair and lack of opportunity driving this public anger."
             ]
-            center_framing = f"Rigorous Safety Investigation and Crisis Protocol Review for {clean_title[:35]}..."
+            center_framing = f"De-escalating Public Unrest: Balancing Firm Law Enforcement with Civic Dialogue"
             center_talk = [
-                "A tragedy of this magnitude requires a thorough, transparent inquiry into equipment, rigging, and emergency procedures to ensure it never happens again.",
-                "Event planners and regulatory authorities must establish clear, standardized protocols for managing severe emergencies and protecting public safety."
+                "Quelling street violence and protecting public safety is the immediate priority, but lasting peace requires addressing the underlying socioeconomic grievances.",
+                "Authorities have to enforce the law firmly against violent agitators while keeping transparent lines of communication open with community and civic leaders."
             ]
-            right_framing = f"Honoring the Fallen and Demanding Strict Accountability in {clean_title[:35]}..."
+            right_framing = f"Law and Order Must Prevail: Zero Tolerance for Mob Violence, Looting, and Street Anarchy"
             right_talk = [
-                "Our deepest prayers and honor go out to the victims and their families; we must ensure those who serve and sacrifice receive our utmost respect.",
-                "Real accountability means finding the exact procedural and mechanical failures that led to this disaster and holding responsible leadership to the highest standard."
+                "Burning down public buildings and looting storefronts isn't protesting—it's lawless criminal destruction, and authorities need to back the police and restore order with decisive force.",
+                "When governments hesitate to enforce the law and make excuses for violent rioters, it's the law-abiding citizens and small business owners who end up paying the price."
             ]
-        elif "sport" in c_lower:
-            left_framing = f"Player Welfare, Teamwork, and Community Connection in {clean_title[:38]}..."
+
+        # 2. Foreign Governance Crisis / Emergency Rule / State Terrorism & Counter-Terror
+        elif is_international and any(w in full_text for w in [
+            "emergency rule", "provincial government", "parliament suspended", "backing terror",
+            "state-sponsored terror", "imran khan", "khyber pakhtunkhwa", "coup",
+            "opposition-led province", "seizes control of", "martial law", "dissolved parliament",
+            "reiterates emergency", "prime minister reiterates"
+        ]):
+            left_framing = f"Defending Constitutional Democracy: Condemning Emergency Rule and Suppression of Opposition"
             left_talk = [
-                "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
-                "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
+                "Suspending an elected provincial government and jailing political opposition leaders is a direct attack on democracy that will only spark deeper civil unrest.",
+                "You cannot build national security by stripping millions of citizens of their constitutional rights and replacing local self-governance with federal decree."
+            ]
+            center_framing = f"Regional Security Dilemma: Balancing Anti-Terror Operations with Constitutional Autonomy"
+            center_talk = [
+                "The federal government faces an acute dilemma: containing severe insurgent threats while preserving fragile provincial democratic institutions.",
+                "Emergency security measures may provide temporary control, but long-term regional stability depends on restoring constitutional governance and the rule of law."
+            ]
+            right_framing = f"Appeasement Blows Back: State Complicity with Extremism Inevitably Destabilizes National Governance"
+            right_talk = [
+                "Decades of harboring and playing political games with radical extremist groups always blows back; a government cannot appease terror networks without destroying its own stability.",
+                "Suspending local democracy and imposing emergency rule is the hallmark of a failing regime trying to crush political opposition instead of securing its borders."
+            ]
+
+        # 3. Military Service Member Fatal Casualty (Strictly Active-Duty Demonstration/Training Fatalities)
+        elif (any(w in full_text for w in ["airman", "soldier", "marine", "sailor", "service member"]) and
+              any(w in full_text for w in ["dies", "died", "fatal", "killed", "rappelling accident", "training accident", "pregame tribute", "alamodome"])):
+            left_framing = f"Human Life Over Commercial Entertainment: Questioning Stadium Stunts and Rushed Kickoffs"
+            left_talk = [
+                "Resuming a football game right after a service member suffered a fatal fall shows how corporate athletics prioritizes broadcast revenue over basic human decency.",
+                "Turning high-risk military rappelling and flyovers into commercial entertainment spectacles commodifies our troops without adequate civilian safety protections."
+            ]
+            center_framing = f"Rigorous Safety Inquiry: Investigating High-Altitude Rigging and Stadium Crisis Protocols"
+            center_talk = [
+                "The Air Force and venue operators must conduct an urgent, transparent investigation into rigging standards before any more stadium demonstrations are permitted.",
+                "Sports leagues and venue directors need clear, mandatory crisis protocols on event suspension following catastrophic on-field fatalities."
+            ]
+            right_framing = f"Honoring Fallen Service Members: Demanding Military Accountability and Solemnity Over Spectacle"
+            right_talk = [
+                "An active-duty airman lost their life serving our country in uniform—kicking off a football game 10 minutes later was completely tone-deaf and disrespectful to that sacrifice.",
+                "Our military personnel put their lives on the line every day; pregame stunts should never endanger troops, and commanders must enforce the strictest safety oversight."
+            ]
+
+        # 4. Sports Contests, Competitions & Standings
+        elif "sport" in c_lower or any(w in full_text for w in ["football", "baseball", "basketball", "nfl", "mlb", "nba", "ncaa", "quarterback", "touchdown", "rankings", "upset", "playoff"]):
+            left_framing = f"Competitive Parity and Player Welfare in {clean_title[:38]}..."
+            left_talk = [
+                "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
+                "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
             ]
             center_framing = f"Tactical Execution, Roster Depth, and Matchup Dynamics in {clean_title[:35]}..."
             center_talk = [
@@ -2713,157 +2773,112 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 "True competitors rise to the occasion when the stakes are highest—winning requires preparation, grit, and zero excuses."
             ]
 
-        elif "business" in c_lower or "econom" in c_lower:
+        # 5. International Affairs & Sovereign World News (Zero US Domestic Jargon)
+        elif is_international or "world" in c_lower:
+            left_framing = f"Diplomatic De-Escalation, Human Rights, and Multilateral Security in {clean_title[:35]}..."
+            left_talk = [
+                "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians over armed escalation.",
+                "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
+            ]
+            center_framing = f"Strategic Realism, Regional Balance, and Trade Stability in {clean_title[:32]}..."
+            center_talk = [
+                "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key regional allies.",
+                "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
+            ]
+            right_framing = f"Peace Through Strength, National Sovereignty, and Decisive Deterrence in {clean_title[:32]}..."
+            right_talk = [
+                "Peace through strength is the only language hostile adversaries understand—decisive military deterrence and firm resolve prevent conflict.",
+                "National foreign policy must unapologetically defend strategic trade routes and ensure adversaries cannot threaten sovereign allies."
+            ]
+
+        # 6. Business, Economy, Inflation & Markets
+        elif "business" in c_lower or "econom" in c_lower or any(w in full_text for w in ["inflation", "federal reserve", "interest rate", "stock market", "dow", "nasdaq"]):
             left_framing = f"Working-Class Economic Security and Corporate Accountability in {clean_title[:35]}..."
             left_talk = [
                 "Economic policy must protect working families' purchasing power and ensure corporate leadership is accountable to everyday consumers.",
-                "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term profits."
+                "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term corporate profits."
             ]
             center_framing = f"Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in {clean_title[:32]}..."
             center_talk = [
                 "Predictable monetary policy, balanced government budgets, and capital market stability are essential to keep inflation in check.",
-                "Navigating economic cycles requires monitoring real data—balancing investment incentives with sustainable fiscal health."
+                "Navigating economic cycles requires monitoring real data—balancing business investment incentives with sustainable fiscal health."
             ]
             right_framing = f"Free Enterprise, Deregulation, and Private Capital Growth in {clean_title[:35]}..."
             right_talk = [
-                "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of American prosperity.",
+                "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of economic prosperity.",
                 "Government overreach and excessive spending only distort markets—free competition delivers lower costs and greater opportunity."
             ]
 
-        elif "science" in c_lower or "tech" in c_lower:
+        # 7. Energy, Infrastructure & Severe Weather
+        elif "energy" in c_lower or "weather" in c_lower or any(w in full_text for w in ["power grid", "outage", "pipeline", "transmission", "nuclear"]):
+            left_framing = f"Climate Resilience and Public Infrastructure Modernization in {clean_title[:35]}..."
+            left_talk = [
+                "Upgrading our electrical infrastructure and investing in clean energy protects working families from extreme climate disasters.",
+                "Utility monopolies shouldn't be handing billions to executives while leaving everyday families in the dark during severe weather."
+            ]
+            center_framing = f"Grid Reliability and Modernization Logistics in {clean_title[:32]}..."
+            center_talk = [
+                "Our electrical grid is decades old; investing in transmission hardening is a basic common-sense measure to stop rolling blackouts.",
+                "Keep the lights on by upgrading transmission corridors while maintaining dependable baseload natural gas and nuclear power."
+            ]
+            right_framing = f"Abundant Energy Independence and Commonsense Regulation in {clean_title[:32]}..."
+            right_talk = [
+                "Drill here, drill now—cheap, abundant domestic energy powers our economy and lowers electric bills for working folks.",
+                "Cut the environmental red tape and let utilities maintain their easements and clear dangerous brush to keep the lights on."
+            ]
+
+        # 8. Healthcare, Drug Pricing & Patient Care
+        elif "health" in c_lower or any(w in full_text for w in ["hospital", "prescription", "medicare", "fda", "doctor", "medicine"]):
+            left_framing = f"Healthcare as a Human Right and Capping Prescription Drug Costs in {clean_title[:35]}..."
+            left_talk = [
+                "Healthcare is a basic human right, not a corporate commodity; we need direct federal price caps on all life-saving medications.",
+                "Private insurance middlemen and hospital conglomerates shouldn't be skimming billions in profits off sick and vulnerable people."
+            ]
+            center_framing = f"Consumer Pricing Transparency and Healthcare Market Discipline in {clean_title[:32]}..."
+            center_talk = [
+                "You wouldn't buy a car without knowing the price; requiring upfront hospital cash prices gives families real bargaining power.",
+                "Lowering prescription drug costs requires a balanced approach that protects consumer affordability without killing medical innovation."
+            ]
+            right_framing = f"Free Market Price Transparency and Patient Empowerment in {clean_title[:32]}..."
+            right_talk = [
+                "Price transparency is a huge win for free enterprise—when hospitals compete openly, prices drop just like in LASIK surgery.",
+                "Empowering patients and health savings accounts breaks up corporate hospital monopolies far better than government red tape."
+            ]
+
+        # 9. Technology, AI & Free Speech
+        elif "science" in c_lower or "tech" in c_lower or any(w in full_text for w in ["artificial intelligence", "algorithms", "social media", "semiconductor", "chips"]):
             left_framing = f"Public Accountability, Digital Ethics, and Worker Protections in {clean_title[:35]}..."
             left_talk = [
-                "Technological breakthroughs must be paired with strong public safeguards to protect user privacy, labor rights, and digital democracy.",
-                "We must ensure that advanced technology serves the common good and open public science, rather than concentrating monopoly power."
+                "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
+                "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
             ]
-            center_framing = f"Technological Feasibility, Scientific Peer Review, and Scalability in {clean_title[:32]}..."
+            center_framing = f"Balanced Digital Governance and Platform Transparency in {clean_title[:32]}..."
             center_talk = [
-                "Translating scientific innovation into real-world applications requires rigorous peer review, reliable engineering, and sustained investment.",
-                "Balancing rapid technological adoption with sensible security standards is critical for long-term technological resilience."
+                "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
+                "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
             ]
-            right_framing = f"American Innovation Preeminence, Free Enterprise, and Digital Leadership in {clean_title[:32]}..."
+            right_framing = f"Protecting Free Speech and Innovation in the Digital Public Square in {clean_title[:32]}..."
             right_talk = [
-                "American private enterprise leads the world in cutting-edge innovation; burdensome regulations will only hand the advantage to foreign rivals.",
-                "Protecting intellectual property, supporting commercial research, and encouraging bold investment keep America at the technological frontier."
+                "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
+                "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
             ]
 
-        elif "energy" in c_lower or "weather" in c_lower:
-            left_framing = f"Clean Energy Acceleration, Climate Resilience, and Grid Justice in {clean_title[:35]}..."
-            left_talk = [
-                "Modernizing our power grid and accelerating clean energy is an urgent public safety necessity to protect communities from extreme weather.",
-                "Public utility providers must be held strictly accountable for investing in resilient infrastructure rather than corporate payouts."
-            ]
-            center_framing = f"Grid Hardening, Baseload Power Reliability, and Infrastructure Planning in {clean_title[:32]}..."
-            center_talk = [
-                "Keeping the lights on requires practical planning—upgrading transmission lines while maintaining dependable baseload power generation.",
-                "Balancing long-term environmental objectives with affordable, reliable daily power is the central mission for energy planners."
-            ]
-            right_framing = f"American Energy Independence, Baseload Reliability, and Permitting Reform in {clean_title[:32]}..."
-            right_talk = [
-                "America needs abundant, affordable domestic energy—cutting red tape on pipelines, nuclear power, and natural gas powers our economy.",
-                "Dependable baseload electricity is non-negotiable for American manufacturing; we cannot gamble our power grid on top-down mandates."
-            ]
-
-        elif "health" in c_lower:
-            left_framing = f"Healthcare Dignity, Affordable Prescription Access, and Patient Rights in {clean_title[:35]}..."
-            left_talk = [
-                "Quality healthcare and affordable medication must be accessible to all Americans, free from predatory corporate price markups.",
-                "No family should face financial ruin because of illness; protecting public health and lowering prescription prices must be non-negotiable."
-            ]
-            center_framing = f"Evidence-Based Clinical Practice, Price Transparency, and Healthcare Logistics in {clean_title[:32]}..."
-            center_talk = [
-                "Improving healthcare outcomes requires transparent pricing, clinical due diligence, and practical coordination across medical systems.",
-                "Balancing medical innovation with sustainable, affordable patient care is essential to keeping health programs solvent."
-            ]
-            right_framing = f"Patient Empowerment, Medical Innovation, and Free-Market Healthcare Choice in {clean_title[:32]}..."
-            right_talk = [
-                "Cutting FDA red tape, expanding Health Savings Accounts, and enabling price competition empower patients to make their own medical decisions.",
-                "Private biomedical research and free-market competition create breakthrough treatments far faster than government bureaucracy."
-            ]
-
-        elif "entertain" in c_lower:
-            left_framing = f"Creative Labor Protections, Artistic Integrity, and Cultural Diversity in {clean_title[:35]}..."
-            left_talk = [
-                "Creative arts must center on authentic human storytelling and fair wages for artists, writers, and crews, not corporate algorithms.",
-                "Great cinema and entertainment bring diverse communities together through shared empathy and cultural meaning."
-            ]
-            center_framing = f"Theatrical Exhibition Economics, Craftsmanship, and Audience Trends in {clean_title[:32]}..."
-            center_talk = [
-                "The entertainment industry flourishes when studios invest in genuine high-quality storytelling that brings audiences to theaters.",
-                "Balancing premium theatrical exhibition with streaming convenience is reshaping how creators and audiences connect."
-            ]
-            right_framing = f"Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence in {clean_title[:32]}..."
-            right_talk = [
-                "The entertainment marketplace is governed by audience choice—when creators focus on inspiring and entertaining, audiences respond.",
-                "American creative culture leads the world when filmmakers focus on compelling storytelling rather than divisive corporate ideology."
-            ]
-
-        elif "crime" in c_lower or "safety" in c_lower:
-            left_framing = f"Community Safety, Constitutional Due Process, and Justice Reform in {clean_title[:35]}..."
-            left_talk = [
-                "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
-                "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
-            ]
-            center_framing = f"Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in {clean_title[:32]}..."
-            center_talk = [
-                "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
-                "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
-            ]
-            right_framing = f"Law and Order, Decisive Justice, and Support for Law Enforcement in {clean_title[:32]}..."
-            right_talk = [
-                "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
-                "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
-            ]
-
-        elif "border" in c_lower or "secur" in c_lower:
-            left_framing = f"Humane Due Process, Port Inspection Technology, and Legal Pathways in {clean_title[:35]}..."
-            left_talk = [
-                "Smart border security focuses high-tech screening at commercial ports to stop illicit narcotics while protecting humanitarian asylum rights.",
-                "Establishing orderly, legal immigration channels reduces border strain far more effectively than punitive measures."
-            ]
-            center_framing = f"Comprehensive Border Management, Fast-Track Courts, and Port Security in {clean_title[:32]}..."
-            center_talk = [
-                "An effective border system pairs frontline enforcement with fast-track adjudication courts to eliminate multi-year legal backlogs.",
-                "Securing our border requires practical bipartisan policy that stops drug trafficking while maintaining orderly legal procedures."
-            ]
-            right_framing = f"National Sovereignty, Physical Deterrence, and Strict Border Enforcement in {clean_title[:32]}..."
-            right_talk = [
-                "A nation without secure borders is not sovereign—enforcing our immigration laws and stopping cartel smuggling is our highest constitutional duty.",
-                "Physical deterrence, ending catch-and-release loopholes, and strict enforcement are the only proven ways to restore border integrity."
-            ]
-
-        elif "world" in c_lower:
-            left_framing = f"Diplomatic De-Escalation, Human Rights, and Multilateral Security in {clean_title[:35]}..."
-            left_talk = [
-                "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians.",
-                "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
-            ]
-            center_framing = f"Strategic Realism, Alliance Coordination, and Trade Security in {clean_title[:32]}..."
-            center_talk = [
-                "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key allies.",
-                "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
-            ]
-            right_framing = f"Peace Through Strength, American Resolve, and Decisive Deterrence in {clean_title[:32]}..."
-            right_talk = [
-                "Peace through strength is the only language hostile adversaries understand—decisive military deterrence prevents global conflict.",
-                "American foreign policy must unapologetically defend our national interests and ensure adversaries cannot threaten global freedom."
-            ]
-
-        else: # Politics / National News
+        # 10. Domestic Politics & Governance (Default for US Domestic)
+        else:
             left_framing = f"Democratic Accountability, Ethics, and Public Welfare in {clean_title[:35]}..."
             left_talk = [
                 "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-                "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+                "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
             ]
             center_framing = f"Bipartisan Compromise, Institutional Stability, and Practical Governance in {clean_title[:32]}..."
             center_talk = [
-                "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
-                "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+                "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+                "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
             ]
-            right_framing = f"Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in {clean_title[:32]}..."
+            right_framing = f"Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in {clean_title[:32]}..."
             right_talk = [
-                "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
-                "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+                "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+                "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
             ]
 
     # Clean up and ensure 3 to 4 facts
@@ -2898,16 +2913,18 @@ Title: {title}
 Context: {context}
 
 CRITICAL RULES:
-1. "core_facts": Return EXACTLY 4 distinct, verified factual bullet points.
+1. "core_facts": Return EXACTLY 4 distinct, verified factual bullet points extracted from the article.
    - DO NOT repeat the article title or headline.
-   - Include real quotes, specific numbers, statistics, names, locations, and concrete details from the article.
+   - Include real quotes, specific numbers, statistics, names, locations, and concrete actions.
    - Zero bias, strictly factual.
-2. "talking_points": Provide 2 soundbites per lens in CONVERSATIONAL LAY TERMS (natural everyday phrasing suitable for debates or discussions) directly based on the article and facts:
-   - LEFT: Focus on public welfare, working families, civil rights, consumer protections, or corporate accountability.
-   - CENTER: Focus on pragmatic operational trade-offs, practical feasibility, institutional stability, and balancing competing priorities.
-   - RIGHT: Authentic MAGA / populist conservative viewpoint in conversational lay terms (putting everyday Americans first, strong borders, cutting inflation by stopping reckless federal spending, "drill here, drill now" energy dominance, meritocracy, family tradition, anti-establishment/anti-media-bias, law and order).
-   - LEFT: Authentic progressive viewpoint in conversational lay terms (standing up for working families against corporate greed, healthcare/education access, labor rights, consumer protections, community equity).
-   - CENTER: Authentic common-sense moderate viewpoint in conversational lay terms (practical real-world results over cable news posturing, balanced budgets, what works on the ground).
+2. "talking_points": Provide 2 soundbites per lens in AUTHENTIC CONVERSATIONAL LAY TERMS reflecting what everyday news viewers actually gather from watching news stories:
+   - RIGHT (Fox News / OAN style): conversational, direct, focused on law & order, individual accountability, national sovereignty, anti-terror deterrence, free enterprise, and practical results.
+   - LEFT (MSNBC / CNN style): conversational, empathetic, focused on civil rights, systemic reform, human dignity over corporate spectacle, and democratic norms.
+   - CENTER (AP / Reuters / BBC style): conversational, pragmatic, focused on institutional stability, evidence, operational trade-offs, and balanced solutions.
+   CRITICAL CONSTRAINTS:
+   - Every single talking point MUST be unique to this specific article, entities, and facts.
+   - NEVER use military service member quotes ("serve and sacrifice", "mechanical failures") for civil unrest, riots, or non-military stories.
+   - NEVER use US-specific terms like "the American people" or "divided government in Washington" for international foreign stories.
 
 Return strictly valid raw JSON:
 {{
