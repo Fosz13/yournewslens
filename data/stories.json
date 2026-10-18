@@ -1,56 +1,15 @@
 [
   {
-    "id": "story-1792364460-5",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "All cattle accounted for after semi-truck crashes, overturns in downtown Kansas City - KSHB 41 Kansas City",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792360570,
-    "source": "Google News Top Headlines \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Kansas_City_-_Downtown_-_panoramio_%2815%29.jpg/330px-Kansas_City_-_Downtown_-_panoramio_%2815%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Kansas City, Missouri \u2014 City in Missouri, United States.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Kansas City, Missouri",
-    "core_facts": [
-      "Cows loose, roads closed after crash near downtown Kansas City, Missouri.",
-      "Truck overturns in Kansas City, killing dozens of cows and causing dozens more to roam streets.",
-      "Semi-Truck Rollover Spills Dozens of Cattle Across Downtown Kansas City."
-    ],
-    "neutral_summary": "Cows loose, roads closed after crash near downtown Kansas City, Missouri. Truck overturns in Kansas City, killing dozens of cows and causing dozens more to roam streets.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Working-Class Economic Security and Corporate Accountability in All cattle accounted for after semi...",
-        "talking_points": [
-          "Economic policy must protect working families' purchasing power and ensure corporate leadership is accountable to everyday consumers.",
-          "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term corporate profits."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in All cattle accounted for after s...",
-        "talking_points": [
-          "Predictable monetary policy, balanced government budgets, and capital market stability are essential to keep inflation in check.",
-          "Navigating economic cycles requires monitoring real data\u2014balancing business investment incentives with sustainable fiscal health."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Deregulation, and Private Capital Growth in All cattle accounted for after semi...",
-        "talking_points": [
-          "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of economic prosperity.",
-          "Government overreach and excessive spending only distort markets\u2014free competition delivers lower costs and greater opportunity."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364466-7",
+    "id": "story-1792366405-10",
     "category": "World News",
     "master_category": "World News",
-    "title": "4 dead, dozens wounded after large fire breaks out at Canadian military base, officials say -",
+    "title": "Alberta premier says 39 people hospitalized, at least 19 critical after fire at Canada military base - AP News",
     "source_name": "Google News World",
-    "pub_timestamp": 1792360118,
-    "source": "Google News World \u2022 1 hour ago",
-    "image_url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Civil demonstration and metropolitan public square assembly.",
-    "credit": "\ud83d\udcf8 Global News Wire Archive",
+    "pub_timestamp": 1792363680,
+    "source": "Google News World \u2022 45 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Alberta.svg/330px-Flag_of_Alberta.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Alberta \u2014 Province of Canada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Alberta",
     "core_facts": [
       "Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.",
       "Emergency base firefighters and regional medical teams evacuated damaged training facilities and mobilized burn trauma units across the region.",
@@ -83,42 +42,206 @@
     }
   },
   {
+    "id": "story-1792366380-0",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Huge Riots and Anti-Government Protests in France: What to Know -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792362566,
+    "source": "Google News Top Headlines \u2022 1 hour ago",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+    "caption": "The Parisian metropolitan corridor in France.",
+    "credit": "\ud83d\udcf8 European Press Photo",
+    "core_facts": [
+      "In France's Limoges, the fire-ravaged town hall rekindles memories of Notre Dame.",
+      "Macron rails at \u2018ultra left\u2019 as riots lead to 2,400 arrests.",
+      "Macron urges calm as France counts the cost of worst unrest in years."
+    ],
+    "neutral_summary": "In France's Limoges, the fire-ravaged town hall rekindles memories of Notre Dame. Macron rails at \u2018ultra left\u2019 as riots lead to 2,400 arrests.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Addressing Root Causes: Mass Unrest Reflects Deep Social Inequality and Police Accountability Crises",
+        "talking_points": [
+          "Thousands of people don't clash with police in the streets unless there is deep, systemic social inequality and communities feel completely unheard by political leaders.",
+          "Flooding neighborhoods with riot gear and tear gas won't fix the underlying economic despair and lack of opportunity driving this public anger."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "De-escalating Public Unrest: Balancing Firm Law Enforcement with Civic Dialogue",
+        "talking_points": [
+          "Quelling street violence and protecting public safety is the immediate priority, but lasting peace requires addressing the underlying socioeconomic grievances.",
+          "Authorities have to enforce the law firmly against violent agitators while keeping transparent lines of communication open with community and civic leaders."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Law and Order Must Prevail: Zero Tolerance for Mob Violence, Looting, and Street Anarchy",
+        "talking_points": [
+          "Burning down public buildings and looting storefronts isn't protesting\u2014it's lawless criminal destruction, and authorities need to back the police and restore order with decisive force.",
+          "When governments hesitate to enforce the law and make excuses for violent rioters, it's the law-abiding citizens and small business owners who end up paying the price."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366413-14",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Priest in Ecuador dies after crucifix falls on him during livestreamed Mass -",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792360928,
+    "source": "Google News World \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Flag_of_Ecuador.svg/330px-Flag_of_Ecuador.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Ecuador \u2014 Country in South America.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Ecuador",
+    "core_facts": [
+      "Priest killed by falling crucifix during livestreamed Mass as worshippers rush to help.",
+      "Catholic priest killed by falling cross during livestreamed Mass in Ecuador.",
+      "Priest Crushed to Death When Giant Crucifix Falls on Him During Livestreamed Mass."
+    ],
+    "neutral_summary": "Priest killed by falling crucifix during livestreamed Mass as worshippers rush to help. Catholic priest killed by falling cross during livestreamed Mass in Ecuador.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Priest in Ecuador dies after crucif...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Priest in Ecuador dies after cru...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Priest in Ecuador dies after cru...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366475-36",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "Elizabeth Holmes Film Opens to Over 2,000 Sold-Out Shows -",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792360514,
+    "source": "Google News Entertainment \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Le_Voyage_dans_la_Lune_%281902%29.webm/330px--Le_Voyage_dans_la_Lune_%281902%29.webm.jpg",
+    "caption": "Film \u2014 Visual art consisting of moving images.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Film",
+    "core_facts": [
+      "Box Office: 'Street Fighter' $31M, 'You Can See Everything' $15M Milestone.",
+      "Elizabeth Holmes documentary You Can See Everything debuts with huge $15m opening weekend.",
+      "Elizabeth Holmes Is Not the Problem With 'You Can See Everything'."
+    ],
+    "neutral_summary": "Box Office: 'Street Fighter' $31M, 'You Can See Everything' $15M Milestone. Elizabeth Holmes documentary You Can See Everything debuts with huge $15m opening weekend.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Elizabeth Holmes Film Opens to Over...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Elizabeth Holmes Film Opens to O...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Elizabeth Holmes Film Opens to O...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792364449-0",
     "category": "Sports",
     "master_category": "Sports",
     "title": "Trump shares plan to overhaul East Potomac golf course amid court fight over land -",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792358984,
-    "source": "Google News Top Headlines \u2022 1 hour ago",
+    "source": "Google News Top Headlines \u2022 2 hours ago",
     "image_url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
     "caption": "Professional tournament championship fairway and clubhouse green.",
     "credit": "\ud83d\udcf8 PGA Tour Media Archive",
     "core_facts": [
-      "Trump says he will close historic DC golf course for 15 months of renovations.",
-      "Judge blasts Trump's DOJ over 'inexcusable' tree removal at DC golf course.",
-      "Trump Outlines Rapid Plan to Close and Overhaul D.C. Golf Course."
+      "Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations.",
+      "The planned overhaul would redevelop the flood-prone public course into a championship-grade facility dubbed 'East Potomac Links', drawing intense legal and community debate over municipal access.",
+      "Satellite imagery confirmed the National Park Service removed more than 400 trees from the peninsula, triggering lawsuits and environmental protests over public parkland management."
     ],
-    "neutral_summary": "Trump says he will close historic DC golf course for 15 months of renovations. Judge blasts Trump's DOJ over 'inexcusable' tree removal at DC golf course.",
+    "neutral_summary": "Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations. The planned overhaul would redevelop the flood-prone public course into a championship-grade facility dubbed 'East Potomac Links', drawing intense legal and community debate over municipal access.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Competitive Parity and Player Welfare in Trump shares plan to overhaul East Pot...",
+        "headline_framing": "Defending Public Parkland and Community Access: Opposing the Privatization of Historic D.C. Green Space",
         "talking_points": [
-          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
-          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
+          "Bulldozing hundreds of public trees to turn an affordable municipal golf course into an exclusive luxury playground takes public land away from everyday residents.",
+          "National Park Service land belongs to the entire community; public parks should never be privatized or stripped of green canopy for elite commercial interests."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Trump shares plan to overhaul East ...",
+        "headline_framing": "Balancing Necessary Flood Restoration with Environmental Preservation and Public Affordability",
         "talking_points": [
-          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
-          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+          "East Potomac desperately needs flood mitigation and seawall repairs, but the Park Service must balance major infrastructure upgrades with environmental protections.",
+          "The court fight centers on whether federal contracting and environmental rules were properly followed before greenlighting an overhaul on historic national parkland."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Trump shares plan to overhaul East ...",
+        "headline_framing": "Revitalizing Neglected Federal Property: Transforming Decaying Municipal Parkland into a World-Class Asset",
         "talking_points": [
-          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
-          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+          "East Potomac has been flooded, muddy, and neglected under federal bureaucracy for decades; bringing in championship golf design will create a premier destination D.C. can be proud of.",
+          "Cutting through government red tape to upgrade public recreation with private efficiency delivers real results for golfers instead of letting historic land decay."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366482-39",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "RJ Mitte's mom opens up about 'red flag' before finding her son dead -",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792358520,
+    "source": "Google News Entertainment \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Berlin_Bezirk_Mitte_%28labeled%29.svg/330px-Berlin_Bezirk_Mitte_%28labeled%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Mitte \u2014 Borough of Berlin in Germany.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Mitte",
+    "core_facts": [
+      "R.J. Mitte\u2019s Mother Opens Up About His Tragic Passing to Help Other Families (While Clarifying Speculation About His Finances, Career and Fianc\u00e9e).",
+      "Aaron Paul Remembers Last Time He Saw 'Breaking Bad' Co-Star RJ Mitte: 'I Kept Calling You Superman'.",
+      "What to Know About \u2018Breaking Bad\u2019 Actor RJ Mitte\u2019s Cause of Death and Cerebral Palsy Diagnosis. 'Breaking Bad' fans, family gather to celebrate RJ Mitte\u2019s life."
+    ],
+    "neutral_summary": "R.J. Mitte\u2019s Mother Opens Up About His Tragic Passing to Help Other Families (While Clarifying Speculation About His Finances, Career and Fianc\u00e9e). Aaron Paul Remembers Last Time He Saw 'Breaking Bad' Co-Star RJ Mitte: 'I Kept Calling You Superman'.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in RJ Mitte's mom opens up about 'red ...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in RJ Mitte's mom opens up about 'r...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in RJ Mitte's mom opens up about 'r...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -130,7 +253,7 @@
     "title": "Taylor Swift Traveled From L.A. to Travis Kelce\u2019s Chiefs-Chargers Game\u2014and Brought 2 Famous Friends - Yahoo",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792358082,
-    "source": "Google News Entertainment \u2022 1 hour ago",
+    "source": "Google News Entertainment \u2022 2 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Travis_Kelce_in_the_Oval_Office_of_the_White_House_on_June_5%2C_2023_-_P20230605AS-0902_%28cropped%29.jpg/330px-Travis_Kelce_in_the_Oval_Office_of_the_White_House_on_June_5%2C_2023_-_P20230605AS-0902_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Travis Kelce \u2014 American football player (born 1989).",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Travis Kelce",
@@ -165,16 +288,57 @@
     }
   },
   {
-    "id": "story-1792364451-1",
+    "id": "story-1792366393-6",
+    "category": "Sports",
+    "master_category": "Sports",
+    "title": "Trump says he will close historic DC golf course for 15 months of renovations - AP News",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792357560,
+    "source": "Google News U.S. \u2022 2 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional basketball arena hardwood court under game night lights.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "core_facts": [
+      "Verified wire reporting confirmed initial match developments regarding Trump says he will close historic DC golf course for 15 months of renovations.",
+      "Team front offices and coaching staff confirmed tactical game-planning and roster management.",
+      "Athletic coordinators and medical trainers continue monitoring player conditioning and tournament standings."
+    ],
+    "neutral_summary": "Verified wire reporting confirmed initial match developments regarding Trump says he will close historic DC golf course for 15 months of renovations. Team front offices and coaching staff confirmed tactical game-planning and roster management.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Competitive Parity and Player Welfare in Trump says he will close historic DC g...",
+        "talking_points": [
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Trump says he will close historic D...",
+        "talking_points": [
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Trump says he will close historic D...",
+        "talking_points": [
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366382-1",
     "category": "World News",
     "master_category": "World News",
-    "title": "At least 4 killed in major fire at Canadian military base -",
+    "title": "Four killed after high winds turn grass fire deadly at Canadian military base, report says -",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792357365,
-    "source": "Google News Top Headlines \u2022 1 hour ago",
-    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
-    "caption": "International diplomatic envoy conference and multilateral delegation summit.",
-    "credit": "\ud83d\udcf8 International Press Pool",
+    "source": "Google News Top Headlines \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Canada_%28Pantone%29.svg/330px-Flag_of_Canada_%28Pantone%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Canadians \u2014 People of Canada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Canadians",
     "core_facts": [
       "Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.",
       "Emergency base firefighters and regional medical teams evacuated damaged training facilities and mobilized burn trauma units across the region.",
@@ -207,166 +371,83 @@
     }
   },
   {
-    "id": "story-1792364472-10",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Priest killed by falling crucifix during livestreamed Mass as worshippers rush to help -",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792357255,
-    "source": "Google News World \u2022 2 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Priests_rome.jpg/330px-Priests_rome.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Priest \u2014 Person authorized to lead the sacred rituals of a religion.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Priest",
+    "id": "story-1792366401-8",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Trump endorses Netanyahu in close Israeli election -",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792356947,
+    "source": "Google News U.S. \u2022 2 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Benjamin_Netanyahu%2C_February_2023.jpg/330px-Benjamin_Netanyahu%2C_February_2023.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Benjamin Netanyahu \u2014 Prime Minister of Israel (1996\u20131999; 2009\u20132021; 2022\u2013present).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Benjamin Netanyahu",
     "core_facts": [
-      "Priest in Ecuador dies after crucifix falls on him during livestreamed Mass.",
-      "Catholic priest killed by falling cross during livestreamed Mass in Ecuador.",
-      "Priest Crushed to Death When Giant Crucifix Falls on Him During Livestreamed Mass."
+      "Trump tells Axios why he endorsed Netanyahu's reelection in Israel.",
+      "Trump says Netanyahu needs to be re-elected, or else US will have to 'finish the job\u2019 against Iran alone.",
+      "Nine days before Israeli elections, Trump finally endorses Netanyahu."
     ],
-    "neutral_summary": "Priest in Ecuador dies after crucifix falls on him during livestreamed Mass. Catholic priest killed by falling cross during livestreamed Mass in Ecuador.",
+    "neutral_summary": "Trump tells Axios why he endorsed Netanyahu's reelection in Israel. Trump says Netanyahu needs to be re-elected, or else US will have to 'finish the job\u2019 against Iran alone.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Priest killed by falling crucifix d...",
+        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in Trump endorses Netanyahu in close I...",
         "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians over armed escalation.",
+          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Priest killed by falling crucifi...",
+        "headline_framing": "Strategic Realism, Regional Balance, and Trade Stability in Trump endorses Netanyahu in clos...",
         "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key regional allies.",
+          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Priest killed by falling crucifi...",
+        "headline_framing": "Peace Through Strength, National Sovereignty, and Decisive Deterrence in Trump endorses Netanyahu in clos...",
         "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence and firm resolve prevent conflict.",
+          "National foreign policy must unapologetically defend strategic trade routes and ensure adversaries cannot threaten sovereign allies."
         ]
       }
     }
   },
   {
-    "id": "story-1792364574-46",
+    "id": "story-1792366505-50",
     "category": "Sports",
     "master_category": "Sports",
-    "title": "AP Top 25 poll: Miami takes over at No. 1, BYU surges to No. 2 in college football rankings - CBS Sports",
+    "title": "Saints survive J.J. McCarthy, Giants in 34-27 win - NBC Sports",
     "source_name": "Google News Sports",
-    "pub_timestamp": 1792353480,
-    "source": "Google News Sports \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional tournament championship fairway and clubhouse green.",
-    "credit": "\ud83d\udcf8 PGA Tour Media Archive",
-    "core_facts": [
-      "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
-      "Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
-      "The updated Top 25 rankings vaulted undefeated BYU and the No. 6 Miami Hurricanes into prime playoff positioning following dramatic second-half comebacks.",
-      "Under the new 12-team College Football Playoff format, regular-season upsets carry unprecedented weight as conference champions lock in first-round byes while bubble teams battle for at-large seeds."
-    ],
-    "neutral_summary": "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings. Key shockers included unranked Vanderbilt stunning No. 1 Alabama 40-35, Arkansas toppling No. 4 Tennessee 19-14, and No. 3 Oregon edging No. 2 Ohio State 32-31 in a 63-point classic.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Competitive Parity Over Corporate Monopolies: Student-Athletes Drive Historic Athletic Drama",
-        "talking_points": [
-          "Seeing hungry underdog teams take down multi-million dollar athletic factories shows the sport still belongs to players and campus communities, not TV network deals.",
-          "These student-athletes put their bodies on the line every single Saturday\u2014their incredible effort proves they deserve real equity, fair compensation, and lifelong healthcare."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Playoff Elimination Chaos: 12-Team Bracket Magnifies Every Single Regular-Season Upset",
-        "talking_points": [
-          "That's why you play the games: preseason rankings and media hype mean nothing once you have to execute in a hostile road stadium.",
-          "With the new 12-team playoff, these mid-season upsets make every Saturday an elimination tournament with zero room for error."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Heartland Grit Over Coastal Media Hype: Unranked Underdogs Prove Games Are Won on the Field",
-        "talking_points": [
-          "This is why we love college football\u2014unranked heartland underdogs knocking off overhyped, corporate-funded blue bloods on pure grit and heart!",
-          "The coastal media elites running the AP poll look foolish once again; real championships are won in the trenches, not in an ESPN TV studio."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364454-2",
-    "category": "Sports",
-    "master_category": "Sports",
-    "title": "95% of MAGA Republicans approve of Trump. For non-MAGA Republicans, it's 47%. - Axios",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792353426,
-    "source": "Google News Top Headlines \u2022 3 hours ago",
+    "pub_timestamp": 1792355991,
+    "source": "Google News Sports \u2022 2 hours ago",
     "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
     "caption": "Professional stadium floodlights during league athletic competition.",
     "credit": "\ud83d\udcf8 Sports Wire Archive",
     "core_facts": [
-      "For non-MAGA Republicans, it's 47%.",
-      "Nearly 3 in 4 Americans say country is on the wrong track, poll says. poll shows Trump approval at new low ahead of midterms.",
-      "Trump\u2019s approval rating slips again, and a deadly incident at a youth soccer game: Weekend Rundown."
+      "NFL Week 6 grades for every team that played so far: Browns, Steelers earn high marks, Colts get 'F'.",
+      "McCarthy nearly rallies Giants after Winston benched; Skattebo logs no carries.",
+      "JJ McCarthy steps up as Giants potential starting quarterback while running back Cam Skattebo sits on bench."
     ],
-    "neutral_summary": "For non-MAGA Republicans, it's 47%. Nearly 3 in 4 Americans say country is on the wrong track, poll says. poll shows Trump approval at new low ahead of midterms.",
+    "neutral_summary": "NFL Week 6 grades for every team that played so far: Browns, Steelers earn high marks, Colts get 'F'. McCarthy nearly rallies Giants after Winston benched; Skattebo logs no carries.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Competitive Parity and Player Welfare in 95% of MAGA Republicans approve of Tru...",
+        "headline_framing": "Competitive Parity and Player Welfare in Saints survive J.J. McCarthy, Giants i...",
         "talking_points": [
           "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
           "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in 95% of MAGA Republicans approve of ...",
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Saints survive J.J. McCarthy, Giant...",
         "talking_points": [
           "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
           "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in 95% of MAGA Republicans approve of ...",
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Saints survive J.J. McCarthy, Giant...",
         "talking_points": [
           "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
           "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364522-29",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Apple Store plans reveal when the OLED iPad mini will likely go on sale - PhoneArena",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792353233,
-    "source": "Google News Tech \u2022 3 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Samsung_OLED_TV.jpg/330px-Samsung_OLED_TV.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "OLED \u2014 Diode that emits light from an organic compound.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / OLED",
-    "core_facts": [
-      "Oops, Apple's Website Just Hinted at iPad Mini 8.",
-      "Gurman: Apple tested 120Hz and 60Hz displays for OLED iPad.",
-      "Best Apple deal: Save $29.01 on the 128GB iPad mini (A17 Pro, WiFi)."
-    ],
-    "neutral_summary": "Oops, Apple's Website Just Hinted at iPad Mini 8. Gurman: Apple tested 120Hz and 60Hz displays for OLED iPad.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Apple Store plans reveal when the O...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Apple Store plans reveal when th...",
-        "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Apple Store plans reveal when th...",
-        "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -413,83 +494,83 @@
     }
   },
   {
-    "id": "story-1792364458-4",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Rep. Turner calls for congressional probe into Starlink disruption in Ukraine: \"Lives are at risk\" -",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792349002,
-    "source": "Google News Top Headlines \u2022 4 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/330px-Flag_of_Ukraine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Ukraine \u2014 Country in Eastern Europe.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Ukraine",
+    "id": "story-1792366403-9",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Massachusetts Republican lieutenant governor candidate suspends campaign after OUI arrest -",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792351389,
+    "source": "Google News U.S. \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Flag_of_Massachusetts.svg/330px-Flag_of_Massachusetts.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Massachusetts \u2014 U.S. state.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Massachusetts",
     "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
+      "Massachusetts Republican Shawn Oliver suspends campaign after arrest.",
+      "Shawn Oliver arrested on OUI charge, suspends campaign for Lt. governor.",
+      "Shawn Oliver, GOP nominee for lieutenant governor, suspends campaign after OUI charge."
     ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "neutral_summary": "Massachusetts Republican Shawn Oliver suspends campaign after arrest. Shawn Oliver arrested on OUI charge, suspends campaign for Lt. governor.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Massachusetts Republican lieutenant...",
         "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Massachusetts Republican lieuten...",
         "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Massachusetts Republican lieuten...",
         "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
   },
   {
-    "id": "story-1792364464-6",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "2026 Midterm Elections: Trump Rallies Republicans -",
+    "id": "story-1792366399-7",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Semi-Truck Rollover Spills Dozens of Cattle Across Downtown Kansas City -",
     "source_name": "Google News U.S.",
-    "pub_timestamp": 1792348042,
+    "pub_timestamp": 1792350356,
     "source": "Google News U.S. \u2022 4 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Election_MG_3455.JPG/330px-Election_MG_3455.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Election \u2014 Process by which a population chooses the holder of a public office.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Election",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/2001_Ford_F-250_Super_Duty_XL_regular_cab_flatbed%2C_front_left%2C_05-17-2025.jpg/330px-2001_Ford_F-250_Super_Duty_XL_regular_cab_flatbed%2C_front_left%2C_05-17-2025.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Truck \u2014 Commercial or utilitarian motor vehicle.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Truck",
     "core_facts": [
-      "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day.",
-      "Seattle 'No Kings' protesters push for change in midterms.",
-      "No Kings draws crowds with focus on early voting."
+      "All cattle accounted for after semi-truck crashes, overturns in downtown Kansas City.",
+      "Cows loose, roads closed after crash near downtown Kansas City, Missouri.",
+      "Cows spotted from Crown Center to KCK after downtown KC semi crash."
     ],
-    "neutral_summary": "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day. Seattle 'No Kings' protesters push for change in midterms.",
+    "neutral_summary": "All cattle accounted for after semi-truck crashes, overturns in downtown Kansas City. Cows loose, roads closed after crash near downtown Kansas City, Missouri.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Addressing Root Causes: Mass Unrest Reflects Deep Social Inequality and Police Accountability Crises",
+        "headline_framing": "Working-Class Economic Security and Corporate Accountability in Semi-Truck Rollover Spills Dozens o...",
         "talking_points": [
-          "Thousands of people don't clash with police in the streets unless there is deep, systemic social inequality and communities feel completely unheard by political leaders.",
-          "Flooding neighborhoods with riot gear and tear gas won't fix the underlying economic despair and lack of opportunity driving this public anger."
+          "Economic policy must protect working families' purchasing power and ensure corporate leadership is accountable to everyday consumers.",
+          "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term corporate profits."
         ]
       },
       "CENTER": {
-        "headline_framing": "De-escalating Public Unrest: Balancing Firm Law Enforcement with Civic Dialogue",
+        "headline_framing": "Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in Semi-Truck Rollover Spills Dozen...",
         "talking_points": [
-          "Quelling street violence and protecting public safety is the immediate priority, but lasting peace requires addressing the underlying socioeconomic grievances.",
-          "Authorities have to enforce the law firmly against violent agitators while keeping transparent lines of communication open with community and civic leaders."
+          "Predictable monetary policy, balanced government budgets, and capital market stability are essential to keep inflation in check.",
+          "Navigating economic cycles requires monitoring real data\u2014balancing business investment incentives with sustainable fiscal health."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Law and Order Must Prevail: Zero Tolerance for Mob Violence, Looting, and Street Anarchy",
+        "headline_framing": "Free Enterprise, Deregulation, and Private Capital Growth in Semi-Truck Rollover Spills Dozens o...",
         "talking_points": [
-          "Burning down public buildings and looting storefronts isn't protesting\u2014it's lawless criminal destruction, and authorities need to back the police and restore order with decisive force.",
-          "When governments hesitate to enforce the law and make excuses for violent rioters, it's the law-abiding citizens and small business owners who end up paying the price."
+          "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of economic prosperity.",
+          "Government overreach and excessive spending only distort markets\u2014free competition delivers lower costs and greater opportunity."
         ]
       }
     }
@@ -501,7 +582,7 @@
     "title": "NASA\u2019s Mars rover reaches major milestone with record-breaking journey - FOX Weather",
     "source_name": "Google News Science",
     "pub_timestamp": 1792347802,
-    "source": "Google News Science \u2022 4 hours ago",
+    "source": "Google News Science \u2022 5 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png/330px-Mars_-_August_30_2021_-_Flickr_-_Kevin_M._Gill.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Mars \u2014 Fourth planet from the Sun.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Mars",
@@ -536,42 +617,83 @@
     }
   },
   {
-    "id": "story-1792364456-3",
+    "id": "story-1792366389-4",
     "category": "Sports",
     "master_category": "Sports",
-    "title": "2 dead, 11 injured after woman in truck drives through soccer game in Wichita, Kansas: Police - ABC News - Breaking News, Latest News and Videos",
+    "title": "Driver released from custody, no charges filed after deadly incident at Stryker Sports Complex - KWCH",
     "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792347134,
-    "source": "Google News Top Headlines \u2022 4 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional basketball arena hardwood court under game night lights.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "pub_timestamp": 1792347300,
+    "source": "Google News Top Headlines \u2022 5 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Major League championship ballpark field and diamond.",
+    "credit": "\ud83d\udcf8 Sports Media Wire",
     "core_facts": [
-      "Driver released after pickup kills 2 and injures 10 during a youth soccer game in Kansas, police say.",
       "No charges filed against driver who killed 2, injured 11 at Stryker Sports Complex, police say.",
-      "Police: 6-year-old boy, 35-year-old man killed in crash at Stryker Sports Complex."
+      "6-year-old boy, 35-year-old man identified as victims killed when truck drove through soccer game.",
+      "Kansas driver who allegedly killed two and hurt 10 at soccer game is released from custody."
     ],
-    "neutral_summary": "Driver released after pickup kills 2 and injures 10 during a youth soccer game in Kansas, police say. No charges filed against driver who killed 2, injured 11 at Stryker Sports Complex, police say.",
+    "neutral_summary": "No charges filed against driver who killed 2, injured 11 at Stryker Sports Complex, police say. 6-year-old boy, 35-year-old man identified as victims killed when truck drove through soccer game.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Competitive Parity and Player Welfare in 2 dead, 11 injured after woman in truc...",
+        "headline_framing": "Competitive Parity and Player Welfare in Driver released from custody, no charg...",
         "talking_points": [
           "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
           "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in 2 dead, 11 injured after woman in t...",
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Driver released from custody, no ch...",
         "talking_points": [
           "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
           "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in 2 dead, 11 injured after woman in t...",
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Driver released from custody, no ch...",
         "talking_points": [
           "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
           "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366478-37",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "Taylor Swift Fires Up Academy Gala With Four Songs in Her First Band Performance Since the Eras Tour - Variety",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792346700,
+    "source": "Google News Entertainment \u2022 5 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/en/7/75/The_Eras_Tour_Poster_%28updated%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "caption": "The Eras Tour \u2014 2023\u20132024 concert tour by Taylor Swift.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / The Eras Tour",
+    "core_facts": [
+      "Academy Museum Gala 2026 Inside Photos: Taylor Swift Performs, Curry Barker Chats With John Carpenter & More.",
+      "Exclusive: See Taylor Swift, Jacob Elordi, Teyana Taylor, and More at the 2026 Academy Museum Gala.",
+      "Taylor Swift Dazzles in Romantic Dior Gown and Jaw-Dropping Diamonds at 2026 Academy Museum Gala."
+    ],
+    "neutral_summary": "Academy Museum Gala 2026 Inside Photos: Taylor Swift Performs, Curry Barker Chats With John Carpenter & More. Exclusive: See Taylor Swift, Jacob Elordi, Teyana Taylor, and More at the 2026 Academy Museum Gala.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Taylor Swift Fires Up Academy Gala ...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Taylor Swift Fires Up Academy Ga...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Taylor Swift Fires Up Academy Ga...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -583,7 +705,7 @@
     "title": "Physicists prove a long-suspected quantum speed limit for thermalization - Phys.org",
     "source_name": "Google News Science",
     "pub_timestamp": 1792344001,
-    "source": "Google News Science \u2022 5 hours ago",
+    "source": "Google News Science \u2022 6 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Albert_Einstein_1947.jpg/330px-Albert_Einstein_1947.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Physicist \u2014 Scientist specializing in the field of physics.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Physicist",
@@ -618,13 +740,54 @@
     }
   },
   {
+    "id": "story-1792366384-2",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Trump \u2018border czar\u2019 says Ilhan Omar could be \u2018of course\u2019 denaturalized and deported -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792343760,
+    "source": "Google News Top Headlines \u2022 6 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Ilhan_Omar%2C_official_portrait%2C_116th_Congress_%28cropped%29_A.jpg/330px-Ilhan_Omar%2C_official_portrait%2C_116th_Congress_%28cropped%29_A.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Ilhan Omar \u2014 American politician (born 1982).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Ilhan Omar",
+    "core_facts": [
+      "Ilhan Omar accuse DOJ of violating judge's orders to follow protocols to protect her rights as member of Congress.",
+      "Trump once questioned Obama's citizenship.",
+      "Ilhan Omar\u2019s sister reportedly cancels Minnesota book tour stop amid federal investigation."
+    ],
+    "neutral_summary": "Ilhan Omar accuse DOJ of violating judge's orders to follow protocols to protect her rights as member of Congress. Trump once questioned Obama's citizenship.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Trump \u2018border czar\u2019 says Ilhan Omar...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Trump \u2018border czar\u2019 says Ilhan O...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Trump \u2018border czar\u2019 says Ilhan O...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792347206-54",
     "category": "Crime & Public Safety",
     "master_category": "National Headlines",
     "title": "Service member dies after falling from Alamodome rafters in skills demo before UTSA game - San Antonio Express-News",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792343698,
-    "source": "Google News Sports \u2022 5 hours ago",
+    "source": "Google News Sports \u2022 6 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/en/9/9b/San_Antonio_Express-News_2012.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
     "caption": "San Antonio Express-News \u2014 American newspaper, founded 1865.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / San Antonio Express-News",
@@ -660,13 +823,54 @@
     }
   },
   {
+    "id": "story-1792366512-52",
+    "category": "Sports",
+    "master_category": "Sports",
+    "title": "Travis Hunter Makes Rare NFL History with Unique Stat in Breakout Game for Jaguars vs. Texans - Bleacher Report",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792343559,
+    "source": "Google News Sports \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional tournament championship fairway and clubhouse green.",
+    "credit": "\ud83d\udcf8 PGA Tour Media Archive",
+    "core_facts": [
+      "Travis Hunter stars in Jaguars' loss, is 1st with INT and TD catch since 2002.",
+      "Travis Hunter first player since 2002 to pull off this two-way NFL feat.",
+      "Travis Hunter becomes first player in 24 years to have an INT and receiving TD in the same game."
+    ],
+    "neutral_summary": "Travis Hunter stars in Jaguars' loss, is 1st with INT and TD catch since 2002. Travis Hunter first player since 2002 to pull off this two-way NFL feat.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Competitive Parity and Player Welfare in Travis Hunter Makes Rare NFL History w...",
+        "talking_points": [
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Travis Hunter Makes Rare NFL Histor...",
+        "talking_points": [
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Travis Hunter Makes Rare NFL Histor...",
+        "talking_points": [
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792364559-39",
     "category": "Entertainment",
     "master_category": "Entertainment",
     "title": "Box Office: \u2018La Bola Negra\u2019 Scores $277,500 From Four Theaters as Netflix Reports Grosses for First Time Ever - Variety",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792343520,
-    "source": "Google News Entertainment \u2022 5 hours ago",
+    "source": "Google News Entertainment \u2022 6 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Ohio_Theatre_booth.jpg/330px-Ohio_Theatre_booth.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Box office \u2014 Office selling event tickets.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Box office",
@@ -701,39 +905,39 @@
     }
   },
   {
-    "id": "story-1792364469-8",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Pope Leo tells faithful in St. Peter's Square he will gradually resume duties after cancer surgery - AP News",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792343400,
-    "source": "Google News World \u2022 5 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Square_with_offset_tick_marks.svg/330px-Square_with_offset_tick_marks.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Square \u2014 Shape with four equal sides and angles.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Square",
+    "id": "story-1792366517-54",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Democrats\u2019 Tejano star sings to swing South Texas",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792343156,
+    "source": "Politico National \u2022 6 hours ago",
+    "image_url": "https://static.politico.com/f9/31/3c28090247a986cab0a6f1267bb5/img-7212.jpg",
+    "caption": "Bobby Pulido performs his final show, \"La Ultima Desvelada,\" at Bert Ogden Arena in Edinburg, Texas on Oct. 17, 2026.",
+    "credit": "Ali Bianco/POLITICO",
     "core_facts": [
-      "Pope Leo tells faithful in St.",
-      "Peter's Square he will gradually resume duties after cancer surgery See more headlines & perspectives on Google News.",
+      "Bobby Pulido is trying to flip a district that\u2019s slipped from Democrats.",
+      "The Tejano singer might be the answer to winning culturally conservative Latino voters.",
       "Administrative decision-makers scheduled follow-up reviews as proceedings advance."
     ],
-    "neutral_summary": "Pope Leo tells faithful in St. Peter's Square he will gradually resume duties after cancer surgery See more headlines & perspectives on Google News.",
+    "neutral_summary": "Bobby Pulido is trying to flip a district that\u2019s slipped from Democrats. The Tejano singer might be the answer to winning culturally conservative Latino voters.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Pope Leo tells faithful in St. Pete...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Democrats\u2019 Tejano star sings to swi...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Pope Leo tells faithful in St. P...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Democrats\u2019 Tejano star sings to ...",
         "talking_points": [
           "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
           "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Pope Leo tells faithful in St. P...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Democrats\u2019 Tejano star sings to ...",
         "talking_points": [
           "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
@@ -742,80 +946,39 @@
     }
   },
   {
-    "id": "story-1792347161-38",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "Val Chmerkovskiy suspended from 'Dancing With the Stars' over Will Smith Oscars slap reference -",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792342760,
-    "source": "Google News Entertainment \u2022 6 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Communal live entertainment auditorium and stage concert exhibition.",
-    "credit": "\ud83d\udcf8 Entertainment Events Media",
+    "id": "story-1792366432-23",
+    "category": "Business & Economy",
+    "master_category": "Business & Economy",
+    "title": "Saudi Arabia sends skyscraper employees home amid Houthi threats - DW.com",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792341362,
+    "source": "Google News Business \u2022 6 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/330px-Flag_of_Saudi_Arabia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Saudi Arabia \u2014 Country in West Asia.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Saudi Arabia",
     "core_facts": [
-      "Jenna Dewan\u2019s Fianc\u00e9 Steve Kazee Speaks Out After Her DWTS Partner Val Chmerkovskiy Is Suspended Mid-Season.",
-      "Val Chmerkovskiy Hit With One-Week Suspension on \u2018Dancing With The Stars\u2019. 'DWTS' pro Val Chmerkovskiy addresses suspension \u2013 See who's replacing him now.",
-      "Administrative decision-makers scheduled follow-up reviews as proceedings advance."
+      "Exclusive | Some Wall Street Leaders are Weighing Bailing on \u2018Davos in the Desert\u2019 After Attacks on Riyadh.",
+      "Attacks in Saudi Arabia prompt finance firms to let staff work from home, sources say.",
+      "Saudi coalition, Houthis trade strikes as disruption spreads."
     ],
-    "neutral_summary": "Jenna Dewan\u2019s Fianc\u00e9 Steve Kazee Speaks Out After Her DWTS Partner Val Chmerkovskiy Is Suspended Mid-Season. Val Chmerkovskiy Hit With One-Week Suspension on \u2018Dancing With The Stars\u2019. 'DWTS' pro Val Chmerkovskiy addresses suspension \u2013 See who's replacing him now.",
+    "neutral_summary": "Exclusive | Some Wall Street Leaders are Weighing Bailing on \u2018Davos in the Desert\u2019 After Attacks on Riyadh. Attacks in Saudi Arabia prompt finance firms to let staff work from home, sources say.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in Val Chmerkovskiy suspended from 'Da...",
-        "talking_points": [
-          "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
-          "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balanced Digital Governance and Platform Transparency in Val Chmerkovskiy suspended from ...",
-        "talking_points": [
-          "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
-          "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Protecting Free Speech and Innovation in the Digital Public Square in Val Chmerkovskiy suspended from ...",
-        "talking_points": [
-          "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
-          "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792357229-46",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "Academy Museum Gala 2026 Inside Photos: Taylor Swift Performs, Curry Barker Chats With John Carpenter & More - Deadline",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792342200,
-    "source": "Google News Entertainment \u2022 6 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Archiginnasio_ora_blu_Bologna.jpg/330px-Archiginnasio_ora_blu_Bologna.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Academy \u2014 Institution of higher learning.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Academy",
-    "core_facts": [
-      "Taylor Swift Dazzles in Romantic Dior Gown and Jaw-Dropping Diamonds at 2026 Academy Museum Gala.",
-      "Exclusive: See Taylor Swift, Jacob Elordi, Teyana Taylor, and More at the 2026 Academy Museum Gala.",
-      "The Best-Dressed Stars at the Academy Museum Gala, Including Inde Navarrette and Taylor Swift."
-    ],
-    "neutral_summary": "Taylor Swift Dazzles in Romantic Dior Gown and Jaw-Dropping Diamonds at 2026 Academy Museum Gala. Exclusive: See Taylor Swift, Jacob Elordi, Teyana Taylor, and More at the 2026 Academy Museum Gala.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Working-Class Economic Security and Corporate Accountability in Academy Museum Gala 2026 Inside Pho...",
+        "headline_framing": "Working-Class Economic Security and Corporate Accountability in Saudi Arabia sends skyscraper emplo...",
         "talking_points": [
           "Economic policy must protect working families' purchasing power and ensure corporate leadership is accountable to everyday consumers.",
           "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term corporate profits."
         ]
       },
       "CENTER": {
-        "headline_framing": "Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in Academy Museum Gala 2026 Inside ...",
+        "headline_framing": "Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in Saudi Arabia sends skyscraper em...",
         "talking_points": [
           "Predictable monetary policy, balanced government budgets, and capital market stability are essential to keep inflation in check.",
           "Navigating economic cycles requires monitoring real data\u2014balancing business investment incentives with sustainable fiscal health."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Deregulation, and Private Capital Growth in Academy Museum Gala 2026 Inside Pho...",
+        "headline_framing": "Free Enterprise, Deregulation, and Private Capital Growth in Saudi Arabia sends skyscraper emplo...",
         "talking_points": [
           "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of economic prosperity.",
           "Government overreach and excessive spending only distort markets\u2014free competition delivers lower costs and greater opportunity."
@@ -824,39 +987,39 @@
     }
   },
   {
-    "id": "story-1792357235-49",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "Curtain Up: \u2018La Bola Negra\u2019 Shines As Netflix Shares Grosses In Historic First \u2014 Specialty Box Office - Deadline",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792341960,
-    "source": "Google News Entertainment \u2022 6 hours ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/en/0/07/%22Curtain_Up%22.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-    "caption": "Curtain Up \u2014 1952 British film by Ralph Smart.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Curtain Up",
+    "id": "story-1792366434-24",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Disney agrees to hire the majority of Character.AI\u2019s workforce - TechCrunch",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792341000,
+    "source": "Google News Business \u2022 7 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/The_Walt_Disney_company_logo.svg/330px-The_Walt_Disney_company_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "The Walt Disney Company \u2014 American media and entertainment conglomerate.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / The Walt Disney Company",
     "core_facts": [
-      "Box Office: \u2018La Bola Negra\u2019 Scores $277,500 From Four Theaters as Netflix Reports Grosses for First Time Ever.",
-      "Netflix reports box office numbers for the first time with \u2018La Bola Negra\u2019. \u2018La Bola Negra\u2019 Earns $277,500 in Limited Release as Netflix Reports Box Office Results for the First Time in History.",
-      "Netflix Enters Box Office Era With \u2018La Bola Negra\u2019; \u2018You Can See Everything\u2019 & \u2018Musk\u2019 Face Off \u2013 Specialty Preview."
+      "Disney Offers $180 Million Soft Landing to Staff at Bankrupt AI Firm.",
+      "Character.ai files for bankruptcy following lawsuits alleging ties to teen suicides.",
+      "The Week AI Blinked?."
     ],
-    "neutral_summary": "Box Office: \u2018La Bola Negra\u2019 Scores $277,500 From Four Theaters as Netflix Reports Grosses for First Time Ever. Netflix reports box office numbers for the first time with \u2018La Bola Negra\u2019. \u2018La Bola Negra\u2019 Earns $277,500 in Limited Release as Netflix Reports Box Office Results for the First Time in History.",
+    "neutral_summary": "Disney Offers $180 Million Soft Landing to Staff at Bankrupt AI Firm. Character.ai files for bankruptcy following lawsuits alleging ties to teen suicides.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Curtain Up: \u2018La Bola Negra\u2019 Shines ...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Disney agrees to hire the majority ...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Curtain Up: \u2018La Bola Negra\u2019 Shin...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Disney agrees to hire the majori...",
         "talking_points": [
           "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
           "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Curtain Up: \u2018La Bola Negra\u2019 Shin...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Disney agrees to hire the majori...",
         "talking_points": [
           "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
@@ -871,7 +1034,7 @@
     "title": "Pope Leo Addresses the Faithful a Day After Leaving the Hospital -",
     "source_name": "Google News World",
     "pub_timestamp": 1792340984,
-    "source": "Google News World \u2022 6 hours ago",
+    "source": "Google News World \u2022 7 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Lit_up_address.webp/330px-Lit_up_address.webp?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Address \u2014 Information that locates a structure.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Address",
@@ -906,80 +1069,39 @@
     }
   },
   {
-    "id": "story-1792364519-28",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Video game ownership bill introduced in Congress - The Verge",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792340871,
-    "source": "Google News Tech \u2022 6 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/How_to_make_video.webm/330px--How_to_make_video.webm.jpg",
-    "caption": "Video \u2014 Electronic moving image.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Video",
+    "id": "story-1792366446-29",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Scientists discover a way to reverse coral bleaching at record speed - Phys.org",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792339201,
+    "source": "Google News Science \u2022 7 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Pierre_and_Marie_Curie.jpg/330px-Pierre_and_Marie_Curie.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Scientist \u2014 Person who conducts scientific research.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Scientist",
     "core_facts": [
-      "US Rep proposes bill to give video game buyers \"ownership,\" not \"a license\".",
-      "Ritchie Torres Announces Congressional Legislation To Protect Video Game Ownership: 'If You Pay For It, You Own It'.",
-      "Torres Announces Power To The Players Act, Legislation to Ensure Gamers Own Their Games."
+      "To Heal These Bleached Corals, All It Took Was a Little Touch.",
+      "How a laboratory accident revealed a new way to rescue dying corals.",
+      "Coral Bleaching Reversed at Record Speed Using New Stanford Method: \u2018Not a Lost Cause, at All\u2019."
     ],
-    "neutral_summary": "US Rep proposes bill to give video game buyers \"ownership,\" not \"a license\". Ritchie Torres Announces Congressional Legislation To Protect Video Game Ownership: 'If You Pay For It, You Own It'.",
+    "neutral_summary": "To Heal These Bleached Corals, All It Took Was a Little Touch. How a laboratory accident revealed a new way to rescue dying corals.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Video game ownership bill introduce...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Scientists discover a way to revers...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Video game ownership bill introd...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Scientists discover a way to rev...",
         "talking_points": [
           "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
           "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Video game ownership bill introd...",
-        "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364557-38",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "RJ Mitte\u2019s story offers insight into life with cerebral palsy and mental health issues | Letters -",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792340400,
-    "source": "Google News Entertainment \u2022 6 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/15131-Mayo_Speaker_Series-_RJ_Mitte-0143_%2816531434123%29_%28cropped%29.jpg/330px-15131-Mayo_Speaker_Series-_RJ_Mitte-0143_%2816531434123%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "RJ Mitte \u2014 American actor and activist (1992\u20132026).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / RJ Mitte",
-    "core_facts": [
-      "R.J. Mitte\u2019s Mother Opens Up About His Tragic Passing to Help Other Families (While Clarifying Speculation About His Finances, Career and Fianc\u00e9e).",
-      "Aaron Paul Remembers Last Time He Saw 'Breaking Bad' Co-Star RJ Mitte: 'I Kept Calling You Superman'.",
-      "What to Know About \u2018Breaking Bad\u2019 Actor RJ Mitte\u2019s Cause of Death and Cerebral Palsy Diagnosis. 'Breaking Bad' fans, family gather to celebrate RJ Mitte\u2019s life."
-    ],
-    "neutral_summary": "R.J. Mitte\u2019s Mother Opens Up About His Tragic Passing to Help Other Families (While Clarifying Speculation About His Finances, Career and Fianc\u00e9e). Aaron Paul Remembers Last Time He Saw 'Breaking Bad' Co-Star RJ Mitte: 'I Kept Calling You Superman'.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in RJ Mitte\u2019s story offers insight int...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in RJ Mitte\u2019s story offers insight ...",
-        "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in RJ Mitte\u2019s story offers insight ...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Scientists discover a way to rev...",
         "talking_points": [
           "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
@@ -1117,7 +1239,7 @@
     "title": "Tesla Roadster flies, flips and hits 60 mph in a flash -",
     "source_name": "Google News Business",
     "pub_timestamp": 1792336588,
-    "source": "Google News Business \u2022 7 hours ago",
+    "source": "Google News Business \u2022 8 hours ago",
     "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
     "caption": "Deep space observation and advanced astronomical planetary science.",
     "credit": "\ud83d\udcf8 NASA / Scientific Photo Archive",
@@ -1147,6 +1269,47 @@
         "talking_points": [
           "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
           "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366487-41",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "\u2018La Bola Negra\u2019 Earns $277,500 in Limited Release as Netflix Reports Box Office Results for the First Time in History - IndieWire",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792335745,
+    "source": "Google News Entertainment \u2022 8 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/en/1/15/La_Bola_Negra_Teaser.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "caption": "La bola negra \u2014 2026 film by Javier Calvo and Javier Ambrossi.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / La bola negra",
+    "core_facts": [
+      "Box Office: \u2018La Bola Negra\u2019 Scores $277,500 From Four Theaters as Netflix Reports Grosses for First Time Ever.",
+      "Curtain Up: \u2018La Bola Negra\u2019 Shines As Netflix Shares Grosses In Historic First \u2014 Specialty Box Office.",
+      "Netflix Is Finally Reporting Box Office Data."
+    ],
+    "neutral_summary": "Box Office: \u2018La Bola Negra\u2019 Scores $277,500 From Four Theaters as Netflix Reports Grosses for First Time Ever. Curtain Up: \u2018La Bola Negra\u2019 Shines As Netflix Shares Grosses In Historic First \u2014 Specialty Box Office.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in \u2018La Bola Negra\u2019 Earns $277,500 in L...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in \u2018La Bola Negra\u2019 Earns $277,500 i...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in \u2018La Bola Negra\u2019 Earns $277,500 i...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -1193,13 +1356,95 @@
     }
   },
   {
+    "id": "story-1792366391-5",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Bessent warns Zelenskyy to 'be very careful' about claims U.S. is throttling Starlink -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792334256,
+    "source": "Google News Top Headlines \u2022 8 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg/330px-Volodymyr_Zelensky_2022_official_portrait_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Volodymyr Zelenskyy \u2014 President of Ukraine since 2019.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Volodymyr Zelenskyy",
+    "core_facts": [
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
+    ],
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366486-40",
+    "category": "Science & Tech",
+    "master_category": "Science & Tech",
+    "title": "Jenna Dewan's DWTS Dedication Night Partner Revealed After Val Chmerkovskiy Suspension - E! News",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792333380,
+    "source": "Google News Entertainment \u2022 9 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Savault_Chapel_Under_Milky_Way_BLS.jpg/330px-Savault_Chapel_Under_Milky_Way_BLS.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Night \u2014 Period of darkness.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Night",
+    "core_facts": [
+      "Jenna Dewan\u2019s fianc\u00e9 shows support after Val Chmerkovskiy \u201cDWTS \u201dcontroversy: \u2018We got you!\u2019. 'Dancing with the Stars' pro Val Chmerkovskiy pulled after Carrie Ann Inaba remark.",
+      "Gleb Savchenko Has Blunt Take on Jenna Dewan\u2019s New \u2018DWTS\u2019 Partner After Val Chmerkovskiy Suspension.",
+      "Engineering teams and researchers scheduled follow-up technical reviews as evaluations proceed."
+    ],
+    "neutral_summary": "Jenna Dewan\u2019s fianc\u00e9 shows support after Val Chmerkovskiy \u201cDWTS \u201dcontroversy: \u2018We got you!\u2019. 'Dancing with the Stars' pro Val Chmerkovskiy pulled after Carrie Ann Inaba remark. Gleb Savchenko Has Blunt Take on Jenna Dewan\u2019s New \u2018DWTS\u2019 Partner After Val Chmerkovskiy Suspension.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in Jenna Dewan's DWTS Dedication Night...",
+        "talking_points": [
+          "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
+          "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balanced Digital Governance and Platform Transparency in Jenna Dewan's DWTS Dedication Ni...",
+        "talking_points": [
+          "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
+          "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Protecting Free Speech and Innovation in the Digital Public Square in Jenna Dewan's DWTS Dedication Ni...",
+        "talking_points": [
+          "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
+          "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792357231-47",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
     "title": "'DWTS' Val Chmerkovskiy Speaks Out on Suspension as Jenna Dewan's New Partner Revealed - TV Insider",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792333262,
-    "source": "Google News Entertainment \u2022 8 hours ago",
+    "source": "Google News Entertainment \u2022 9 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Dancing_with_the_Stars_Title_Logo.svg/330px-Dancing_with_the_Stars_Title_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Dancing with the Stars \u2014 International celebrity talent show franchise.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Dancing with the Stars",
@@ -1240,7 +1485,7 @@
     "title": "4 red flags \u2013 and 1 truth \u2013 amid the peptide hype -",
     "source_name": "Google News Business",
     "pub_timestamp": 1792332900,
-    "source": "Google News Business \u2022 8 hours ago",
+    "source": "Google News Business \u2022 9 hours ago",
     "image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
     "caption": "Clinical healthcare medical research and patient therapy center.",
     "credit": "\ud83d\udcf8 Medical Science Photo Pool",
@@ -1270,6 +1515,47 @@
         "talking_points": [
           "Cutting FDA red tape, expanding Health Savings Accounts, and enabling price competition empower patients to make their own medical decisions.",
           "Private biomedical research and free-market competition create breakthrough treatments far faster than government bureaucracy."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366519-55",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Can Scott Colom win Mississippi Senate? Warnock is making a big bet on it.",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792332000,
+    "source": "Politico National \u2022 9 hours ago",
+    "image_url": "https://static.politico.com/c8/f8/f2ebd89549d88af936ac5951ec55/ap26286611436710.jpg",
+    "caption": "Sen. Raphael Warnock, D-Ga, talks with a voter outside a polling location during early voting in Decatur, Ga., Tuesday, Oct. 13, 2026.",
+    "credit": "Ben Hendren/Atlanta Journal-Constitution/AP",
+    "core_facts": [
+      "Warnock is testing a \u201cnew kind of Southern strategy\u201d for the Democratic Party.",
+      "Primary reporting documented specific operational context and verified official timelines.",
+      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
+    ],
+    "neutral_summary": "Warnock is testing a \u201cnew kind of Southern strategy\u201d for the Democratic Party. Primary reporting documented specific operational context and verified official timelines.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Can Scott Colom win Mississippi Sen...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Can Scott Colom win Mississippi ...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Can Scott Colom win Mississippi ...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -1357,39 +1643,80 @@
     }
   },
   {
-    "id": "story-1792364511-24",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Japan to launch spacecraft on a mission to get samples from a Martian moon - AP News",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792327030,
-    "source": "Google News Science \u2022 10 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/330px-Flag_of_Japan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Japan \u2014 Country in East Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Japan",
+    "id": "story-1792366407-11",
+    "category": "Health",
+    "master_category": "Health",
+    "title": "Pope Leo says he will gradually resume duties after cancer surgery -",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792328101,
+    "source": "Google News World \u2022 10 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Clinical healthcare medical research and patient therapy center.",
+    "credit": "\ud83d\udcf8 Medical Science Photo Pool",
     "core_facts": [
-      "Returning the first samples from a Martian moon: Inside the science of Japan's bold MMX mission to Mars.",
-      "Japan to launch historic round-trip mission to Mars moon.",
-      "The New Phobos Martian Moon Rover That Weighs In At Only 15 Grams."
+      "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.",
+      "While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
+      "Local humanitarian organizations and civil society groups are urging municipal authorities to construct dedicated low-cost caregiver dormitories on hospital grounds."
     ],
-    "neutral_summary": "Returning the first samples from a Martian moon: Inside the science of Japan's bold MMX mission to Mars. Japan to launch historic round-trip mission to Mars moon.",
+    "neutral_summary": "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment. While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Japan to launch spacecraft on a mis...",
+        "headline_framing": "Healthcare Dignity Requires Housing Caregivers: Exposing the Human Cost of Inadequate Public Hospital Infrastructure",
+        "talking_points": [
+          "No family should have to sleep on concrete in the cold just to hold their sick child's hand in the hospital.",
+          "True healthcare access means providing basic human shelter for families traveling miles for life-saving care."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Public Hospital Lodging Logistics: Balancing Campus Space Constraints with Caregiver Welfare",
+        "talking_points": [
+          "Hospitals need practical partnerships with local charities and city shelters to get patient families off sidewalks and into safe beds.",
+          "Solving caregiver homelessness requires coordination between municipal city planners, public transit, and hospital administrators."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Family Devotion Meets Community Charity: Mobilizing Civic and Religious Support to Aid Hospital Caregivers",
+        "talking_points": [
+          "The deep family loyalty shown by these caregivers is inspiring; community and religious charities should step up to provide food and shelter.",
+          "Rather than waiting on government red tape, private donors and hospital foundations can build affordable guest housing today."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792366427-20",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "McGill's accuse Swinney of behaving like a dictator over bus plans - BBC",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792326830,
+    "source": "Google News Politics \u2022 10 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/2/29/McGill_University_CoA.svg/330px-McGill_University_CoA.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "McGill University \u2014 Public university in Montreal, Canada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / McGill University",
+    "core_facts": [
+      "Verified wire reporting confirmed key policy developments regarding McGill's accuse Swinney of behaving like a dictator over bus plans.",
+      "Official spokespersons and institutional leadership published formal statements clarifying context.",
+      "Administrative teams established oversight schedules as operational next steps advance."
+    ],
+    "neutral_summary": "Verified wire reporting confirmed key policy developments regarding McGill's accuse Swinney of behaving like a dictator over bus plans. Official spokespersons and institutional leadership published formal statements clarifying context.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in McGill's accuse Swinney of behaving...",
         "talking_points": [
           "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
           "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Japan to launch spacecraft on a ...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in McGill's accuse Swinney of behav...",
         "talking_points": [
           "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
           "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Japan to launch spacecraft on a ...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in McGill's accuse Swinney of behav...",
         "talking_points": [
           "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
           "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
@@ -1404,7 +1731,7 @@
     "title": "Pope Leo pledges gradual return to duties in first event since cancer surgery - Reuters",
     "source_name": "Google News World",
     "pub_timestamp": 1792326755,
-    "source": "Google News World \u2022 10 hours ago",
+    "source": "Google News World \u2022 11 hours ago",
     "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
     "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
     "credit": "\ud83d\udcf8 Health Systems Wire",
@@ -1440,124 +1767,83 @@
     }
   },
   {
-    "id": "story-1792364471-9",
+    "id": "story-1792366386-3",
     "category": "World News",
     "master_category": "World News",
-    "title": "European diplomats attacked by Israeli settlers in West Bank - BBC",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792325774,
-    "source": "Google News World \u2022 10 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/London.bankofengland.arp.jpg/330px-London.bankofengland.arp.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Bank \u2014 Financial institution that accepts deposits.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Bank",
+    "title": "Trump tries different approach with Russia to bring Americans relief amid ongoing war with Ukraine -",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792324813,
+    "source": "Google News Top Headlines \u2022 11 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg/330px-Official_Presidential_Portrait_of_President_Donald_J._Trump_%282025%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Donald Trump \u2014 President of the United States (2017\u20132021; since 2025).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Donald Trump",
     "core_facts": [
-      "Photographer attacked by settlers in the West Bank feels insulted by Netanyahu.",
-      "U.S. Officials Condemn West Bank Attacks as Netanyahu Casts Doubt on Them.",
-      "European diplomats attacked in West Bank a day after beating of Post photographer."
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
     ],
-    "neutral_summary": "Photographer attacked by settlers in the West Bank feels insulted by Netanyahu. U.S. Officials Condemn West Bank Attacks as Netanyahu Casts Doubt on Them.",
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in European diplomats attacked by Isra...",
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
         "talking_points": [
-          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians over armed escalation.",
-          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
         ]
       },
       "CENTER": {
-        "headline_framing": "Strategic Realism, Regional Balance, and Trade Stability in European diplomats attacked by I...",
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
         "talking_points": [
-          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key regional allies.",
-          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength, National Sovereignty, and Decisive Deterrence in European diplomats attacked by I...",
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
         "talking_points": [
-          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence and firm resolve prevent conflict.",
-          "National foreign policy must unapologetically defend strategic trade routes and ensure adversaries cannot threaten sovereign allies."
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
         ]
       }
     }
   },
   {
-    "id": "story-1792364584-50",
-    "category": "Sports",
-    "master_category": "Sports",
-    "title": "Big 12 says BYU-Notre Dame refs, replay crew erred in not putting 1 second back on clock - The Salt Lake Tribune",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792325011,
-    "source": "Google News Sports \u2022 10 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Professional stadium floodlights during league athletic competition.",
-    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "id": "story-1792366417-16",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Katie Zacharia and the real problem with workers embellishing their credentials - Business Insider",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792320180,
+    "source": "Google News Politics \u2022 12 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg/330px-Press_Secretary_Katie_Zacharia_holds_first_press_briefing_in_the_James_S_Brady_Press_Briefing_Room%2C_October_13%2C_2026_%28P20261013AH-0626%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Katie Zacharia \u2014 American political commentator.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Katie Zacharia",
     "core_facts": [
-      "Kalani Sitake, 'a BYU fan first,' emotional after Cougars' upset of Notre Dame.",
-      "BYU beat Notre Dame, but the Big 12 now admits something went wrong.",
-      "8 Cougars Hold on to Win All-Timer over No."
+      "Katie Zacharia Is Ousted After 5 Days as White House Press Secretary.",
+      "Capehart and Continetti on the White House press secretary's quick exit.",
+      "Susie Wiles helped set up Fox interview ahead of press secretary\u2019s exit."
     ],
-    "neutral_summary": "Kalani Sitake, 'a BYU fan first,' emotional after Cougars' upset of Notre Dame. BYU beat Notre Dame, but the Big 12 now admits something went wrong.",
+    "neutral_summary": "Katie Zacharia Is Ousted After 5 Days as White House Press Secretary. Capehart and Continetti on the White House press secretary's quick exit.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Competitive Parity and Player Welfare in Big 12 says BYU-Notre Dame refs, repla...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Katie Zacharia and the real problem...",
         "talking_points": [
-          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
-          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Big 12 says BYU-Notre Dame refs, re...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Katie Zacharia and the real prob...",
         "talking_points": [
-          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
-          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Big 12 says BYU-Notre Dame refs, re...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Katie Zacharia and the real prob...",
         "talking_points": [
-          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
-          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364513-25",
-    "category": "Science & Tech",
-    "master_category": "Science & Tech",
-    "title": "Margaret Hamilton obituary -",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792322040,
-    "source": "Google News Science \u2022 11 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/St._Margaret_of_Antioch.jpg/330px-St._Margaret_of_Antioch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Margaret \u2014 Female given name.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Margaret",
-    "core_facts": [
-      "Margaret Hamilton, software engineer, 1936-2026.",
-      "Computer scientist Margaret Hamilton was a problem-solver for the ages (op-ed).",
-      "Remembering Margaret Heafield Hamilton."
-    ],
-    "neutral_summary": "Margaret Hamilton, software engineer, 1936-2026. Computer scientist Margaret Hamilton was a problem-solver for the ages (op-ed).",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in Margaret Hamilton obituary -...",
-        "talking_points": [
-          "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
-          "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balanced Digital Governance and Platform Transparency in Margaret Hamilton obituary -...",
-        "talking_points": [
-          "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
-          "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Protecting Free Speech and Innovation in the Digital Public Square in Margaret Hamilton obituary -...",
-        "talking_points": [
-          "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
-          "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -1569,7 +1855,7 @@
     "title": "Pope Leo leads Sunday prayers in first major public appearance since lung cancer surgery - CNN",
     "source_name": "Google News World",
     "pub_timestamp": 1792318589,
-    "source": "Google News World \u2022 12 hours ago",
+    "source": "Google News World \u2022 13 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Pierre-Le-Moyne-De-l%27art-de-regner_MGG_0910.tif/lossy-page1-330px-Pierre-Le-Moyne-De-l%27art-de-regner_MGG_0910.tif.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Sunday \u2014 Day of the week.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Sunday",
@@ -1605,54 +1891,13 @@
     }
   },
   {
-    "id": "story-1792364505-22",
-    "category": "Science & Tech",
-    "master_category": "Science & Tech",
-    "title": "Why Warren Buffett's Berkshire Hathaway is betting nearly $1 billion on Bending Spoons - Business Insider",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792318080,
-    "source": "Google News Business \u2022 12 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/OmahaKiewitPlaza.jpg/330px-OmahaKiewitPlaza.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Berkshire Hathaway \u2014 American multinational conglomerate holding company.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Berkshire Hathaway",
-    "core_facts": [
-      "Berkshire Hathaway Has Piled $930 Million Into This Stock Since Its IPO.",
-      "Software\u2019s new consolidator gets big vote of confidence from Berkshire.",
-      "Should Investors Follow?."
-    ],
-    "neutral_summary": "Berkshire Hathaway Has Piled $930 Million Into This Stock Since Its IPO. Software\u2019s new consolidator gets big vote of confidence from Berkshire.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in Why Warren Buffett's Berkshire Hath...",
-        "talking_points": [
-          "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
-          "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balanced Digital Governance and Platform Transparency in Why Warren Buffett's Berkshire H...",
-        "talking_points": [
-          "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
-          "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Protecting Free Speech and Innovation in the Digital Public Square in Why Warren Buffett's Berkshire H...",
-        "talking_points": [
-          "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
-          "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792331928-52",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
     "title": "College Football Rankings: Historic Upset-Filled Week 7 Flips Top 25 Upside Down - FOX Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792317763,
-    "source": "Google News Sports \u2022 12 hours ago",
+    "source": "Google News Sports \u2022 13 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
     "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
     "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
@@ -1688,54 +1933,13 @@
     }
   },
   {
-    "id": "story-1792364476-12",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Mexico\u2019s beleaguered Pacific coast braces for another storm in record hurricane year - Los Angeles Times",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792317600,
-    "source": "Google News World \u2022 13 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/330px-Flag_of_Mexico.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Mexico \u2014 Country in North America.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Mexico",
-    "core_facts": [
-      "Hurricane Trudy strengthens to category 2 as it heads toward Mexico.",
-      "Hurricane Trudy gains strength near Mexico's coast, but is expected to weaken by Sunday.",
-      "Hurricane Trudy may bring \"life-threatening\" flooding, mudslides to Mexico's Pacific coast."
-    ],
-    "neutral_summary": "Hurricane Trudy strengthens to category 2 as it heads toward Mexico. Hurricane Trudy gains strength near Mexico's coast, but is expected to weaken by Sunday.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in Mexico\u2019s beleaguered Pacific coast ...",
-        "talking_points": [
-          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians over armed escalation.",
-          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Strategic Realism, Regional Balance, and Trade Stability in Mexico\u2019s beleaguered Pacific coa...",
-        "talking_points": [
-          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key regional allies.",
-          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength, National Sovereignty, and Decisive Deterrence in Mexico\u2019s beleaguered Pacific coa...",
-        "talking_points": [
-          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence and firm resolve prevent conflict.",
-          "National foreign policy must unapologetically defend strategic trade routes and ensure adversaries cannot threaten sovereign allies."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792331865-26",
     "category": "Business & Economy",
     "master_category": "National Headlines",
     "title": "Brace Yourself for the Priciest Holiday Travel Season in Years - WSJ",
     "source_name": "Google News Business",
     "pub_timestamp": 1792315800,
-    "source": "Google News Business \u2022 13 hours ago",
+    "source": "Google News Business \u2022 14 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Lathmar_Holi_2022_in_Nandgaon%2C_Uttar_Pradesh_%28edited%29.jpg/330px-Lathmar_Holi_2022_in_Nandgaon%2C_Uttar_Pradesh_%28edited%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Holiday \u2014 Festive day set aside by custom or by law.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Holiday",
@@ -1819,7 +2023,7 @@
     "title": "College football scores, results: Auburn upsets Georgia, Florida takes down Texas, BYU knocks off Notre Dame during wild Week 7 - Yahoo Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792304040,
-    "source": "Google News Sports \u2022 16 hours ago",
+    "source": "Google News Sports \u2022 17 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
     "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
     "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
@@ -1855,55 +2059,13 @@
     }
   },
   {
-    "id": "story-1792331859-24",
-    "category": "Business & Economy",
-    "master_category": "National Headlines",
-    "title": "Tesla Roadster owners to get \"Flying Stunt Mode\" and looping track access - Teslarati",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792295297,
-    "source": "Google News Business \u2022 19 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Stunt_Pyrotechnics_Luc_Viatour.jpg/330px-Stunt_Pyrotechnics_Luc_Viatour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Stunt \u2014 Unusual and difficult physical feat.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Stunt",
-    "core_facts": [
-      "Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster.",
-      "The vehicle features a lightweight carbon-composite chassis, quad-motor all-wheel-drive powertrain, and sub-1-second 0-60 mph acceleration claims.",
-      "Commercial assembly is scheduled to begin at the Fremont and Austin production facilities following extensive homologation testing.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster. The vehicle features a lightweight carbon-composite chassis, quad-motor all-wheel-drive powertrain, and sub-1-second 0-60 mph acceleration claims.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity",
-        "talking_points": [
-          "The electric transition should focus on affordable transit and clean vehicles for everyday families, not luxury toys for the wealthy.",
-          "Automakers must be held to rigorous public road safety and labor standards, regardless of corporate brand power."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Engineering Innovation Meets Commercial Delivery: Evaluating Production Feasibility for Next-Gen Electric Roadster",
-        "talking_points": [
-          "Breakthrough vehicle concepts generate industry buzz, but consistent manufacturing execution determines long-term success.",
-          "The automotive sector thrives when ambitious engineering benchmarks push the boundaries of electric propulsion."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "American Innovation and Free Enterprise: Private Engineering Disruption Drives Global EV Leadership",
-        "talking_points": [
-          "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
-          "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792324072-61",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
     "title": "Miami survives two Hail Marys, leaving FSU without answers in 2OT thriller - ESPN",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792292760,
-    "source": "Google News Sports \u2022 19 hours ago",
+    "source": "Google News Sports \u2022 20 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Miami%2C_Florida%2C_Skyline_4.jpg/330px-Miami%2C_Florida%2C_Skyline_4.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Miami \u2014 City in Florida, United States.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Miami",
@@ -1939,42 +2101,42 @@
     }
   },
   {
-    "id": "story-1792364474-11",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Iran says two tankers catch fire after hitting mines in Strait of Hormuz - Al Jazeera",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792288964,
-    "source": "Google News World \u2022 20 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Flag_of_Iran_%28official%29.svg/330px-Flag_of_Iran_%28official%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Iran \u2014 Country in West Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Iran",
+    "id": "story-1792366444-28",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Kilauea lava fountaining ends after nearly 6 hours in Halemaumau crater - Honolulu Star-Advertiser",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792284688,
+    "source": "Google News Science \u2022 22 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/Honolulu_Star-Bulletin_March_12%2C_1959_front_page.jpg/330px-Honolulu_Star-Bulletin_March_12%2C_1959_front_page.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Honolulu Star-Bulletin \u2014 Daily newspaper.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Honolulu Star-Bulletin",
     "core_facts": [
-      "Iran war live: \u2018Violating\u2019 vessel on fire in Hormuz after sea mine blast.",
-      "Iran\u2019s IRGC navy says oil tanker hits mine, catches fire in Strait of Hormuz.",
-      "Gulf Oil Is Still Flowing Despite a Surge in Attacks on Ships."
+      "See it: Hawaii's Kilauea volcano erupts for 55th time since 2024 after rare two-month pause.",
+      "Episode 55 of ongoing K\u012blauea eruption lasted less than 6 hours on Saturday morning.",
+      "High Lava Fountains Return To K\u012blauea Volcano Summit."
     ],
-    "neutral_summary": "Iran war live: \u2018Violating\u2019 vessel on fire in Hormuz after sea mine blast. Iran\u2019s IRGC navy says oil tanker hits mine, catches fire in Strait of Hormuz.",
+    "neutral_summary": "See it: Hawaii's Kilauea volcano erupts for 55th time since 2024 after rare two-month pause. Episode 55 of ongoing K\u012blauea eruption lasted less than 6 hours on Saturday morning.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Diplomatic De-Escalation, Human Rights, and Multilateral Security in Iran says two tankers catch fire af...",
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Kilauea lava fountaining ends after...",
         "talking_points": [
-          "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians over armed escalation.",
-          "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
         ]
       },
       "CENTER": {
-        "headline_framing": "Strategic Realism, Regional Balance, and Trade Stability in Iran says two tankers catch fire...",
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Kilauea lava fountaining ends af...",
         "talking_points": [
-          "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key regional allies.",
-          "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Peace Through Strength, National Sovereignty, and Decisive Deterrence in Iran says two tankers catch fire...",
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Kilauea lava fountaining ends af...",
         "talking_points": [
-          "Peace through strength is the only language hostile adversaries understand\u2014decisive military deterrence and firm resolve prevent conflict.",
-          "National foreign policy must unapologetically defend strategic trade routes and ensure adversaries cannot threaten sovereign allies."
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -1986,7 +2148,7 @@
     "title": "Hurricane Trudy strengthens to category 2 as it heads toward Mexico -",
     "source_name": "Google News World",
     "pub_timestamp": 1792279440,
-    "source": "Google News World \u2022 23 hours ago",
+    "source": "Google News World \u2022 Yesterday",
     "image_url": "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80",
     "caption": "Severe weather system with high winds and emergency utility grid repair operations.",
     "credit": "\ud83d\udcf8 Severe Weather Photo Pool",
@@ -2027,7 +2189,7 @@
     "title": "Hurricane Trudy strengthens to category 2 as it heads toward Mexico - The Guardian",
     "source_name": "Google News World",
     "pub_timestamp": 1792279440,
-    "source": "Google News World \u2022 23 hours ago",
+    "source": "Google News World \u2022 Yesterday",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828603210%29_%28cropped%29.jpg/330px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828603210%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Tropical cyclone \u2014 Rapidly rotating storm system.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Tropical cyclone",
@@ -2069,7 +2231,7 @@
     "title": "Renowned cancer researcher dies from disease she dedicated life to defeating - NewsNation",
     "source_name": "Google News Health",
     "pub_timestamp": 1792278450,
-    "source": "Google News Health \u2022 23 hours ago",
+    "source": "Google News Health \u2022 Yesterday",
     "image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
     "caption": "Clinical healthcare medical research and patient therapy center.",
     "credit": "\ud83d\udcf8 Medical Science Photo Pool",
@@ -2146,48 +2308,6 @@
     }
   },
   {
-    "id": "story-1792286822-26",
-    "category": "Business & Economy",
-    "master_category": "National Headlines",
-    "title": "Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases - MacRumors",
-    "source_name": "Google News Tech",
-    "pub_timestamp": 1792272645,
-    "source": "Google News Tech \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Women_walking_in_Hyderabad_street.jpg/330px-Women_walking_in_Hyderabad_street.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Walking \u2014 Gait of locomotion among legged animals.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Walking",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Apple Retail Staff Told to Warn Agains...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Apple Retail Staff Told to Warn Agains...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Apple Retail Staff Told to Warn Aga...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792357168-17",
     "category": "Crime & Public Safety",
     "master_category": "Crime & Public Safety",
@@ -2204,47 +2324,6 @@
       "Anti-government protesters battle with police in Albania."
     ],
     "neutral_summary": "Albanian PM says protests pose threat to EU membership, not government. Albania\u2019s Leader, Edi Rama, Denounces Violent Protests.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Addressing Root Causes: Mass Unrest Reflects Deep Social Inequality and Police Accountability Crises",
-        "talking_points": [
-          "Thousands of people don't clash with police in the streets unless there is deep, systemic social inequality and communities feel completely unheard by political leaders.",
-          "Flooding neighborhoods with riot gear and tear gas won't fix the underlying economic despair and lack of opportunity driving this public anger."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "De-escalating Public Unrest: Balancing Firm Law Enforcement with Civic Dialogue",
-        "talking_points": [
-          "Quelling street violence and protecting public safety is the immediate priority, but lasting peace requires addressing the underlying socioeconomic grievances.",
-          "Authorities have to enforce the law firmly against violent agitators while keeping transparent lines of communication open with community and civic leaders."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Law and Order Must Prevail: Zero Tolerance for Mob Violence, Looting, and Street Anarchy",
-        "talking_points": [
-          "Burning down public buildings and looting storefronts isn't protesting\u2014it's lawless criminal destruction, and authorities need to back the police and restore order with decisive force.",
-          "When governments hesitate to enforce the law and make excuses for violent rioters, it's the law-abiding citizens and small business owners who end up paying the price."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364490-17",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Hundreds take to Nebraska State Capitol for Lincoln's fourth No Kings protest - Lincoln Journal Star",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792267200,
-    "source": "Google News Politics \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Nebraska_State_Capitol%2C_July_2026.jpg/330px-Nebraska_State_Capitol%2C_July_2026.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Nebraska State Capitol \u2014 State capitol building of the U.S. state of Nebraska.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Nebraska State Capitol",
-    "core_facts": [
-      "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day.",
-      "Seattle 'No Kings' protesters push for change in midterms.",
-      "No Kings draws crowds with focus on early voting."
-    ],
-    "neutral_summary": "4 Takeaways From a Voting-Focused \u2018No Kings\u2019 Day. Seattle 'No Kings' protesters push for change in midterms.",
     "perspectives": {
       "LEFT": {
         "headline_framing": "Addressing Root Causes: Mass Unrest Reflects Deep Social Inequality and Police Accountability Crises",
@@ -2312,83 +2391,42 @@
     }
   },
   {
-    "id": "story-1792364596-54",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Not all Republicans want to show Trump off",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792245600,
-    "source": "Politico National \u2022 Yesterday",
-    "image_url": "https://static.politico.com/4c/02/94cfb99249edb52570a7e9443de9/https-delivery-gettyimages.com/downloads/2300090765",
-    "caption": "Not all Republicans want to show Trump off.",
-    "credit": "\ud83d\udcf8 Politico National",
+    "id": "story-1792366436-25",
+    "category": "Business & Economy",
+    "master_category": "Business & Economy",
+    "title": "Vanguard economist says sticky inflation will test your patience - TheStreet",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792227780,
+    "source": "Google News Business \u2022 Yesterday",
+    "image_url": "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Consumer retail grocery market shelves and pricing indexes.",
+    "credit": "\ud83d\udcf8 AP Business Photo",
     "core_facts": [
-      "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him.",
-      "Some don\u2019t even want to join him at events.",
-      "Administrative decision-makers scheduled follow-up reviews as proceedings advance."
+      "Gas prices surge 9.1% in one month, pushing CPI to 3.7% \u2014 and the Fed may hike rates again by December.",
+      "Wholesale prices jumped 6.3% annually in September, biggest gain since 2022.",
+      "A Perfect Economic Storm."
     ],
-    "neutral_summary": "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him. Some don\u2019t even want to join him at events.",
+    "neutral_summary": "Gas prices surge 9.1% in one month, pushing CPI to 3.7% \u2014 and the Fed may hike rates again by December. Wholesale prices jumped 6.3% annually in September, biggest gain since 2022.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Not all Republicans want to show Tr...",
+        "headline_framing": "Competitive Parity and Player Welfare in Vanguard economist says sticky inflati...",
         "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+          "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television broadcast deals.",
+          "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive financial payrolls."
         ]
       },
       "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Not all Republicans want to show...",
+        "headline_framing": "Tactical Execution, Roster Depth, and Matchup Dynamics in Vanguard economist says sticky infl...",
         "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+          "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+          "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Not all Republicans want to show...",
+        "headline_framing": "Athletic Meritocracy, Relentless Effort, and Accountability in Vanguard economist says sticky infl...",
         "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364598-55",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "A sleeper Senate battleground has turned into a real Republican liability",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792234800,
-    "source": "Politico National \u2022 Yesterday",
-    "image_url": "https://static.politico.com/fb/0e/6f156ed744139f152f52175e7a93/vance-84125.jpg",
-    "caption": "Sen. Roger Marshall, R-Kan., listens as Vice President JD Vance speaks during an event at Webco Manufacturing, Monday, Sept. 14, 2026, in Olathe, Kan.",
-    "credit": "Mark Schiefelbein/AP",
-    "core_facts": [
-      "The newest addition to the Senate map is giving Republicans headaches.",
-      "Primary reporting documented specific operational context and verified official timelines.",
-      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
-    ],
-    "neutral_summary": "The newest addition to the Senate map is giving Republicans headaches. Primary reporting documented specific operational context and verified official timelines.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in A sleeper Senate battleground has t...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in A sleeper Senate battleground ha...",
-        "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in A sleeper Senate battleground ha...",
-        "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+          "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+          "True competitors rise to the occasion when the stakes are highest\u2014winning requires preparation, grit, and zero excuses."
         ]
       }
     }
@@ -2431,47 +2469,6 @@
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792364517-27",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Astronomers say they\u2019ve discovered the first green star - RNZ",
-    "source_name": "Google News Science",
-    "pub_timestamp": 1792195526,
-    "source": "Google News Science \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg/330px-IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Astronomer \u2014 Scientist in the field of astronomy.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Astronomer",
-    "core_facts": [
-      "Verified wire reporting confirmed key policy developments regarding Astronomers say they\u2019ve discovered the first green star.",
-      "Official spokespersons and institutional leadership published formal statements clarifying context.",
-      "Administrative teams established oversight schedules as operational next steps advance."
-    ],
-    "neutral_summary": "Verified wire reporting confirmed key policy developments regarding Astronomers say they\u2019ve discovered the first green star. Official spokespersons and institutional leadership published formal statements clarifying context.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Astronomers say they\u2019ve discovered ...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Astronomers say they\u2019ve discover...",
-        "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Astronomers say they\u2019ve discover...",
-        "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
         ]
       }
     }
@@ -2572,47 +2569,6 @@
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
       "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
     ]
-  },
-  {
-    "id": "story-1792364564-41",
-    "category": "Health",
-    "master_category": "Health",
-    "title": "Hot flashes, night sweats, insomnia \u2013 OB-GYNS set new rules for menopause treatment -",
-    "source_name": "Google News Health",
-    "pub_timestamp": 1792172716,
-    "source": "Google News Health \u2022 2 days ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
-    "core_facts": [
-      "Here's what to know.",
-      "New Guidelines Strongly Support Hormone Therapy for Common Menopause Symptoms.",
-      "New guidelines back use of hormone therapy for menopause, perimenopause symptoms."
-    ],
-    "neutral_summary": "Here's what to know. New Guidelines Strongly Support Hormone Therapy for Common Menopause Symptoms.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Healthcare as a Human Right and Capping Prescription Drug Costs in Hot flashes, night sweats, insomnia...",
-        "talking_points": [
-          "Healthcare is a basic human right, not a corporate commodity; we need direct federal price caps on all life-saving medications.",
-          "Private insurance middlemen and hospital conglomerates shouldn't be skimming billions in profits off sick and vulnerable people."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Consumer Pricing Transparency and Healthcare Market Discipline in Hot flashes, night sweats, insom...",
-        "talking_points": [
-          "You wouldn't buy a car without knowing the price; requiring upfront hospital cash prices gives families real bargaining power.",
-          "Lowering prescription drug costs requires a balanced approach that protects consumer affordability without killing medical innovation."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Market Price Transparency and Patient Empowerment in Hot flashes, night sweats, insom...",
-        "talking_points": [
-          "Price transparency is a huge win for free enterprise\u2014when hospitals compete openly, prices drop just like in LASIK surgery.",
-          "Empowering patients and health savings accounts breaks up corporate hospital monopolies far better than government red tape."
-        ]
-      }
-    }
   },
   {
     "id": "story-1792183792-8",
@@ -3369,47 +3325,6 @@
     ]
   },
   {
-    "id": "story-1792364599-56",
-    "category": "Politics",
-    "master_category": "Politics",
-    "title": "Haley Stevens is everywhere \u2014 except on the trail for El-Sayed",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792144500,
-    "source": "Politico National \u2022 2 days ago",
-    "image_url": "https://static.politico.com/71/78/4f600d094e84bf45de84f6457bea/08-04-2026-michigan-stevens-020.jpg",
-    "caption": "Haley Stevens, a Democratic candidate for U.S. Senate in Michigan, speaks with reporters after casting her ballot on primary election day at the Baldwin Public Library in Birmingham, Michigan, on Aug. 4, 2026.",
-    "credit": "Jamie Kelter Davis for POLITICO",
-    "core_facts": [
-      "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same.",
-      "Primary reporting documented specific operational context and verified official timelines.",
-      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
-    ],
-    "neutral_summary": "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same. Primary reporting documented specific operational context and verified official timelines.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Haley Stevens is everywhere \u2014 excep...",
-        "talking_points": [
-          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Haley Stevens is everywhere \u2014 ex...",
-        "talking_points": [
-          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Haley Stevens is everywhere \u2014 ex...",
-        "talking_points": [
-          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161796-24",
     "category": "Economy & Inflation",
     "title": "IMF chief says AI risks may exceed opportunities without safeguards and ethical framework - Reuters",
@@ -3629,6 +3544,47 @@
     ]
   },
   {
+    "id": "story-1792366524-58",
+    "category": "Politics",
+    "master_category": "Politics",
+    "title": "Senate Republicans are getting smoked in fundraising",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792125458,
+    "source": "Politico National \u2022 2 days ago",
+    "image_url": "https://static.politico.com/fa/49/84a708c74fe0ae3c99524e8fee91/election-2-26-texas-43186.jpg",
+    "caption": "Democratic Senate candidate James Talarico speaks at a rally on July 13, 2026, in Eagle Pass, Texas.",
+    "credit": "Brenda Baz\u00e1n/AP",
+    "core_facts": [
+      "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months.",
+      "Primary reporting documented specific operational context and verified official timelines.",
+      "Organizational leadership confirmed administrative reviews will continue as updates proceed."
+    ],
+    "neutral_summary": "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months. Primary reporting documented specific operational context and verified official timelines.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Democratic Accountability, Ethics, and Public Welfare in Senate Republicans are getting smok...",
+        "talking_points": [
+          "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+          "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Bipartisan Compromise, Institutional Stability, and Practical Governance in Senate Republicans are getting s...",
+        "talking_points": [
+          "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
+          "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in Senate Republicans are getting s...",
+        "talking_points": [
+          "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
+          "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161794-23",
     "category": "Economy & Inflation",
     "title": "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades - Fox Business",
@@ -3739,5 +3695,46 @@
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
       "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
     ]
+  },
+  {
+    "id": "story-1792366442-27",
+    "category": "Science & Tech",
+    "master_category": "Science & Tech",
+    "title": "ABC David Muir halts show and stresses 'what was that' live on air before dropping big news - The Mirror US",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792067100,
+    "source": "Google News Science \u2022 3 days ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/King_David%2C_the_King_of_Israel.jpg/330px-King_David%2C_the_King_of_Israel.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "David \u2014 Biblical figure and Israelite monarch.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / David",
+    "core_facts": [
+      "Live coverage: SpaceX to launch Starfall reentry capsule, 31 customer payloads on Bandwagon-5 rideshare mission.",
+      "APOD: 2026 October 16 \u2013 Chasing the International Space Station.",
+      "GALLERY: SpaceX Falcon 9 launch lights up sky across Chattanooga area and beyond."
+    ],
+    "neutral_summary": "Live coverage: SpaceX to launch Starfall reentry capsule, 31 customer payloads on Bandwagon-5 rideshare mission. APOD: 2026 October 16 \u2013 Chasing the International Space Station.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Public Accountability, Digital Ethics, and Worker Protections in ABC David Muir halts show and stres...",
+        "talking_points": [
+          "Giant tech monopolies shouldn't be allowed to profit off algorithmic hate speech and privacy exploitation without public oversight.",
+          "Technological advancement must serve the public interest and respect workers' rights, not just enrich a handful of Silicon Valley insiders."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balanced Digital Governance and Platform Transparency in ABC David Muir halts show and st...",
+        "talking_points": [
+          "Find a modern legal standard that stops arbitrary political censorship while preserving basic spam and fraud moderation.",
+          "Regulating digital platforms requires balancing First Amendment publisher rights with consumer access to the online public square."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Protecting Free Speech and Innovation in the Digital Public Square in ABC David Muir halts show and st...",
+        "talking_points": [
+          "Unelected Silicon Valley billionaires have no right to censor American citizens and silence political opinions they dislike.",
+          "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
+        ]
+      }
+    }
   }
 ]
