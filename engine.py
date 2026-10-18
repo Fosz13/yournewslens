@@ -2093,7 +2093,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
         card = f"""
         <article class="compact-card" data-category="{cat}" data-master-category="{master_cat}" id="{sId}">
-          <div class="hero-image-wrap">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">{caption}</span>
@@ -2109,12 +2109,18 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <span class="source-tag" data-timestamp="{pub_ts}">{source}</span>
             </div>
 
-            <h3 class="story-title">{s.get('title', '')}</h3>
+            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')">{s.get('title', '')}</h3>
 
-            <div class="neutral-box">
-              <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
-              {facts_markup}
-            </div>"""
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
+              <span class="expand-label">Tap to view Key Facts & Perspectives</span>
+              <span class="expand-chevron">▾</span>
+            </div>
+
+            <div class="card-details">
+              <div class="neutral-box">
+                <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
+                {facts_markup}
+              </div>"""
 
         lensList = [
             {"key": "CENTER", "name": "Centrist / Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
@@ -2128,42 +2134,39 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             quotes = "".join([f'<div class="quote-row">"{tp}"</div>' for tp in tp_list])
 
             card += f"""
-            <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
-              <div class="lens-status-row">
-                <div class="lens-chip {lens['chipClass']}">
-                  <span>{lens['icon']}</span>
-                  <span>{lens['name']}</span>
+              <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
+                <div class="lens-status-row">
+                  <div class="lens-chip {lens['chipClass']}">
+                    <span>{lens['icon']}</span>
+                    <span>{lens['name']}</span>
+                  </div>
+
+                  <div class="card-toggle-group">
+                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
+                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
+                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                  </div>
                 </div>
 
-                <div class="card-toggle-group">
-                  <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                  <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                  <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
+                <div class="talking-points-panel">
+                  <div class="panel-header">
+                    <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                    <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
+                  </div>
+                  {quotes}
                 </div>
-              </div>
-
-              <div class="framing-headline {lens['key'].lower()}">
-                <span>{pData.get('headline_framing', 'Perspective Framing')}</span>
-              </div>
-
-              <div class="talking-points-panel">
-                <div class="panel-header">
-                  <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                  <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                </div>
-                {quotes}
-              </div>
-            </div>"""
+              </div>"""
 
         card += """
-            <div class="card-bottom-actions">
-              <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
-                <span>🤍</span>
-                <span>Save</span>
-              </button>
-              <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
-                <span>👥</span> Discuss
-              </button>
+              <div class="card-bottom-actions">
+                <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                  <span>🤍</span>
+                  <span>Save</span>
+                </button>
+                <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                  <span>👥</span> Discuss
+                </button>
+              </div>
             </div>
           </div>
         </article>"""
