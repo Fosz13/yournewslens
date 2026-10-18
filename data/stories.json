@@ -1,39 +1,39 @@
 [
   {
-    "id": "story-1792331824-8",
-    "category": "Politics",
+    "id": "story-1792335222-40",
+    "category": "Sports",
     "master_category": "National Headlines",
-    "title": "In Texas Senate race, Ted Cruz tries to push Ken Paxton across the finish line - The Washington Post",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792330372,
-    "source": "Google News U.S. \u2022 24 mins ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Seal_of_State_Senate_of_Texas.svg/330px-Seal_of_State_Senate_of_Texas.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Texas Senate \u2014 Upper house of the Texas Legislature.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Texas Senate",
+    "title": "Texans v Jaguars at Wembley: NFL week six \u2013 live - The Guardian",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792333841,
+    "source": "Google News Sports \u2022 23 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/330px-National_Football_League_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "National Football League \u2014 Professional American football league.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / National Football League",
     "core_facts": [
-      "&nbsp;&nbsp; The Guardian New Texas poll shows Democrats leading nearly all statewide races &nbsp;&nbsp; WFAA In tight Texas Senate race, Trump's immigration crackdown tests Republicans' hold on voters &nbsp;&nbsp; Los Angeles Times.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
+      "Jaguars: Three must-know storylines for NFL Week 6 London game &nbsp;&nbsp; NFL.com Texans lead as C.J.",
+      "Stroud throws touchdown pass, Trevor Lawrence throws interception &nbsp;&nbsp; Yahoo Sports Know Your Foe: Texans vs.",
+      "Jaguars Week 6 Preview at Wembley Stadium &nbsp;&nbsp; Houston Texans Traveling Texans fans bring H-Town to London &nbsp;&nbsp; ABC13 Houston.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "&nbsp;&nbsp; The Guardian New Texas poll shows Democrats leading nearly all statewide races &nbsp;&nbsp; WFAA In tight Texas Senate race, Trump's immigration crackdown tests Republicans' hold on voters &nbsp;&nbsp; Los Angeles Times. Wire reporting identified key institutional stakeholders and documented specific operational data.",
+    "neutral_summary": "Jaguars: Three must-know storylines for NFL Week 6 London game &nbsp;&nbsp; NFL.com Texans lead as C.J. Stroud throws touchdown pass, Trevor Lawrence throws interception &nbsp;&nbsp; Yahoo Sports Know Your Foe: Texans vs.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in In Texas Senate race, Ted Cruz tries t...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Texans v Jaguars at Wembley: NFL week ...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in In Texas Senate race, Ted Cruz tries t...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Texans v Jaguars at Wembley: NFL week ...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in In Texas Senate race, Ted Cruz trie...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Texans v Jaguars at Wembley: NFL we...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -42,16 +42,16 @@
     }
   },
   {
-    "id": "story-1792331831-12",
+    "id": "story-1792335114-1",
     "category": "National News",
     "master_category": "National Headlines",
-    "title": "Major fire breaks out in Alberta after deadly incident at Canadian military base - AP News",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792329900,
-    "source": "Google News World \u2022 32 mins ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
-    "caption": "The United States Capitol building in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Architect of the Capitol",
+    "title": "Major fire breaks out in Alberta after deadly incident at Canadian military base - NBC News",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792333620,
+    "source": "Google News Top Headlines \u2022 24 mins ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Alberta.svg/330px-Flag_of_Alberta.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Alberta \u2014 Province of Canada.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Alberta",
     "core_facts": [
       "Primary developments confirmed key policy actions and verified stakeholder responses regarding Major fire breaks out in Alberta after deadly incident at Canadian military base.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
@@ -84,13 +84,139 @@
     }
   },
   {
+    "id": "story-1792335232-44",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "Warnock wants Democrats to focus on the South. He\u2019s starting in Mississippi.",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792332000,
+    "source": "Politico National \u2022 53 mins ago",
+    "image_url": "https://static.politico.com/c8/f8/f2ebd89549d88af936ac5951ec55/ap26286611436710.jpg",
+    "caption": "Sen. Raphael Warnock, D-Ga, talks with a voter outside a polling location during early voting in Decatur, Ga., Tuesday, Oct. 13, 2026.",
+    "credit": "Ben Hendren/Atlanta Journal-Constitution/AP",
+    "core_facts": [
+      "The Georgia senator is working hard to get Democrat Scott Colom elected \u2014 as he weighs his own political future.",
+      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
+      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "The Georgia senator is working hard to get Democrat Scott Colom elected \u2014 as he weighs his own political future. Wire reporting identified key institutional stakeholders and documented specific operational data.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Warnock wants Democrats to focus on th...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Warnock wants Democrats to focus on th...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Warnock wants Democrats to focus on...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335129-7",
+    "category": "Crime & Public Safety",
+    "master_category": "National Headlines",
+    "title": "Albanian PM says protests pose threat to EU membership, not government - Reuters",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792331263,
+    "source": "Google News World \u2022 1 hour ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg",
+    "caption": "Supreme Court of the United States west facade in Washington, D.C.",
+    "credit": "\ud83d\udcf8 National Photo Archive",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian PM says protests pose threat to EU membership, not government.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian PM says protests pose threat to EU membership, not government. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Albanian PM says protests pose threat ...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Albanian PM says protests pose threat ...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Albanian PM says protests pose thre...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335121-4",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "U.S. taking Putin\u2019s side would be a \u2018historic mistake,\u2019 says Zelenskyy - NBC News",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792330479,
+    "source": "Google News U.S. \u2022 1 hour ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Vladimir_Putin_%282026_02_23%29.jpg/330px-Vladimir_Putin_%282026_02_23%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Vladimir Putin \u2014 Leader of Russia since 1999.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Vladimir Putin",
+    "core_facts": [
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792331922-51",
     "category": "Sports",
     "master_category": "National Headlines",
     "title": "Big 12 admits clock error at end of Notre Dame-BYU game - NBC Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792327003,
-    "source": "Google News Sports \u2022 1 hour ago",
+    "source": "Google News Sports \u2022 2 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Dame2022.jpg/330px-Dame2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Dame \u2014 Title in British Commonwealth honours systems.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Dame",
@@ -132,7 +258,7 @@
     "title": "Pope Leo pledges gradual return to duties in first event since cancer surgery - Reuters",
     "source_name": "Google News World",
     "pub_timestamp": 1792326755,
-    "source": "Google News World \u2022 1 hour ago",
+    "source": "Google News World \u2022 2 hours ago",
     "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
     "caption": "Regional hospital medical center pavilion and pharmacy healthcare complex.",
     "credit": "\ud83d\udcf8 Health Systems Wire",
@@ -168,82 +294,40 @@
     }
   },
   {
-    "id": "story-1792331829-11",
-    "category": "Politics",
-    "master_category": "National Headlines",
-    "title": "16 days until midterms, Trump rallies GOP as Johnson predicts Republicans will hold House - Fox News",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792326329,
-    "source": "Google News U.S. \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Katsura_Imperial_Villa_in_Spring.jpg/330px-Katsura_Imperial_Villa_in_Spring.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "House \u2014 Building comprising a single dwelling.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / House",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding 16 days until midterms, Trump rallies GOP as Johnson predicts Republicans will hold House.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding 16 days until midterms, Trump rallies GOP as Johnson predicts Republicans will hold House. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in 16 days until midterms, Trump rallies ...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in 16 days until midterms, Trump rallies ...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in 16 days until midterms, Trump ralli...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331810-0",
+    "id": "story-1792335131-8",
     "category": "World News",
     "master_category": "World News",
-    "title": "France protests: Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting - BBC",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792325251,
-    "source": "Google News Top Headlines \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "France \u2014 Country primarily in Western Europe.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / France",
+    "title": "European diplomats attacked by Israeli settlers in West Bank - BBC",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792325774,
+    "source": "Google News World \u2022 2 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80",
+    "caption": "International maritime commercial transit and trade security corridor.",
+    "credit": "\ud83d\udcf8 Maritime Logistics Archive",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding France protests: Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting.",
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding European diplomats attacked by Israeli settlers in West Bank.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding France protests: Burnt out cars and shattered glass on Paris streets after protests turn to riots and looting. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding European diplomats attacked by Israeli settlers in West Bank. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in France protests: Burnt out cars and sh...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in European diplomats attacked by Israeli...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in France protests: Burnt out cars and sh...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in European diplomats attacked by Israeli...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in France protests: Burnt out cars and...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in European diplomats attacked by Isra...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -258,7 +342,7 @@
     "title": "One word explains how Tennessee upset Alabama. Josh Heuepl says it out loud - USA Today",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792324920,
-    "source": "Google News Sports \u2022 1 hour ago",
+    "source": "Google News Sports \u2022 2 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_Alabama.svg/330px-Flag_of_Alabama.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Alabama \u2014 U.S. state.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Alabama",
@@ -294,21 +378,21 @@
     }
   },
   {
-    "id": "story-1792331816-3",
+    "id": "story-1792335123-5",
     "category": "World News",
     "master_category": "World News",
-    "title": "Oil facilities hit in deadly overnight attack on St Petersburg - BBC",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792324669,
-    "source": "Google News Top Headlines \u2022 1 hour ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg/330px-Spb_06-2017_img20_StMichael_Castle_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Saint Petersburg \u2014 Second-largest city in Russia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Saint Petersburg",
+    "title": "Ukraine strikes oil facility in St. Petersburg as part of \u2018massive\u2019 drone attack - POLITICO.eu",
+    "source_name": "Google News U.S.",
+    "pub_timestamp": 1792323600,
+    "source": "Google News U.S. \u2022 3 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Ukraine.svg/330px-Flag_of_Ukraine.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Ukraine \u2014 Country in Eastern Europe.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Ukraine",
     "core_facts": [
       "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
       "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
       "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
-      "Petersburg &nbsp;&nbsp; ABC News - Breaking News, Latest News and Videos Ukraine Strikes Russian Oil Terminal, as Starshield Disruptions Persist &nbsp;&nbsp; The New York Times."
+      "Ukraine strikes oil facility in St."
     ],
     "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
     "perspectives": {
@@ -331,174 +415,6 @@
         "talking_points": [
           "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
           "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331819-5",
-    "category": "Politics",
-    "master_category": "National Headlines",
-    "title": "Trump approval hits record low, handing Democrats a clear midterm edge - The Washington Post",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792321260,
-    "source": "Google News Top Headlines \u2022 2 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80",
-    "caption": "House committee room and congressional caucus proceedings in Washington, D.C.",
-    "credit": "\ud83d\udcf8 Congressional Press Gallery",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Trump approval hits record low, handing Democrats a clear midterm edge.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Trump approval hits record low, handing Democrats a clear midterm edge. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Trump approval hits record low, handin...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Trump approval hits record low, handin...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Trump approval hits record low, han...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331856-23",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "How Coke Loosened Pepsi\u2019s Grip on KFC\u2019s Soda Fountains - WSJ",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792321200,
-    "source": "Google News Business \u2022 2 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pepsi_2023.svg/330px-Pepsi_2023.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Pepsi \u2014 Soft drink by PepsiCo.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Pepsi",
-    "core_facts": [
-      "restaurants for the first time in decades &nbsp;&nbsp; CNBC PepsiCo just lost the KFC US business\u2014here's how much it could sting financially &nbsp;&nbsp; Yahoo Finance KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades &nbsp;&nbsp; Fox Business.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "restaurants for the first time in decades &nbsp;&nbsp; CNBC PepsiCo just lost the KFC US business\u2014here's how much it could sting financially &nbsp;&nbsp; Yahoo Finance KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades &nbsp;&nbsp; Fox Business. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in How Coke Loosened Pepsi\u2019s Grip on KFC\u2019...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in How Coke Loosened Pepsi\u2019s Grip on KFC\u2019...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in How Coke Loosened Pepsi\u2019s Grip on K...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331813-1",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Zelensky Takes a Risk by Publicly Confronting Trump Over Russia - WSJ",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792320960,
-    "source": "Google News Top Headlines \u2022 3 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/La_Foule_illuminee_03.jpg/330px-La_Foule_illuminee_03.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Public \u2014 Grouping of individual people.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Public",
-    "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
-      "taking Putin\u2019s side would be a \u2018historic mistake,\u2019 says Zelenskyy &nbsp;&nbsp; NBC News Volodymyr Zelenskyy feels \u2018betrayed\u2019 by Donald Trump over Starlink access &nbsp;&nbsp; The Guardian The new unequivocal Zelenskyy &nbsp;&nbsp; Financial Times Politics chat: Zelenskyy on Trump, Democrats bring in the money for midterms &nbsp;&nbsp; NPR."
-    ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331821-6",
-    "category": "Crime & Public Safety",
-    "master_category": "National Headlines",
-    "title": "A compassionate teacher and her young students: What we know about the victims of the Bend school shooting - CNN",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792319444,
-    "source": "Google News Top Headlines \u2022 3 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Municipal first responders and law enforcement security perimeter operations.",
-    "credit": "\ud83d\udcf8 National Law Enforcement Wire",
-    "core_facts": [
-      "I Was at a Workout Class on Thursday.",
-      "Then I Heard the Sirens.",
-      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "I Was at a Workout Class on Thursday. Then I Heard the Sirens.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in A compassionate teacher and her young ...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in A compassionate teacher and her young ...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in A compassionate teacher and her you...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
         ]
       }
     }
@@ -510,7 +426,7 @@
     "title": "Pope Leo leads Sunday prayers in first major public appearance since lung cancer surgery - CNN",
     "source_name": "Google News World",
     "pub_timestamp": 1792318589,
-    "source": "Google News World \u2022 3 hours ago",
+    "source": "Google News World \u2022 4 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/Pierre-Le-Moyne-De-l%27art-de-regner_MGG_0910.tif/lossy-page1-330px-Pierre-Le-Moyne-De-l%27art-de-regner_MGG_0910.tif.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Sunday \u2014 Day of the week.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Sunday",
@@ -546,13 +462,55 @@
     }
   },
   {
+    "id": "story-1792335149-14",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "Imran Khan gets notice from Foreigners Regional Registration Office asking him to show cause why his OCI tag should not be cancelled | Bollywood - Hindustan Times",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792318209,
+    "source": "Google News Politics \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Prime_Minister_Imran_Khan_Adresses_the_Forum_01.jpg/330px-Prime_Minister_Imran_Khan_Adresses_the_Forum_01.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Imran Khan \u2014 Prime Minister of Pakistan from 2018 to 2022.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Imran Khan",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Imran Khan gets notice from Foreigners Regional Registration Office asking him to show cause why his OCI tag should not be cancelled | Bollywood.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Imran Khan gets notice from Foreigners Regional Registration Office asking him to show cause why his OCI tag should not be cancelled | Bollywood. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Imran Khan gets notice from Foreigners...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Imran Khan gets notice from Foreigners...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Imran Khan gets notice from Foreign...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792331928-52",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
     "title": "College Football Rankings: Historic Upset-Filled Week 7 Flips Top 25 Upside Down - FOX Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792317763,
-    "source": "Google News Sports \u2022 3 hours ago",
+    "source": "Google News Sports \u2022 4 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Assumption_College_Bangkok_Thailand_%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%AA%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%8A%E0%B8%B1%E0%B8%8D_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81_06.jpg/330px-Assumption_College_Bangkok_Thailand_%E0%B9%82%E0%B8%A3%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%99%E0%B8%AD%E0%B8%B1%E0%B8%AA%E0%B8%AA%E0%B8%B1%E0%B8%A1%E0%B8%8A%E0%B8%B1%E0%B8%8D_%E0%B8%9A%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%81_06.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "College \u2014 Educational institution.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / College",
@@ -588,40 +546,124 @@
     }
   },
   {
-    "id": "story-1792331822-7",
-    "category": "Crime & Public Safety",
+    "id": "story-1792335162-19",
+    "category": "National News",
     "master_category": "National Headlines",
-    "title": "O.J. Simpson, a Secret Informant and a Decades-Old Mystery - The New York Times",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792316719,
-    "source": "Google News U.S. \u2022 4 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/O.J._Simpson_1990_%C2%B7_DN-ST-91-03444_crop.JPEG/330px-O.J._Simpson_1990_%C2%B7_DN-ST-91-03444_crop.JPEG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "O. J. Simpson \u2014 American football player and actor (1947\u20132024).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / O. J. Simpson",
+    "title": "'It was jaw-dropping': The shocking lessons from an infamous experiment in obedience - BBC",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792317625,
+    "source": "Google News Science \u2022 4 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Official federal podium and press briefing conference.",
+    "credit": "\ud83d\udcf8 National Photo Archive",
     "core_facts": [
-      "Simpson Case &nbsp;&nbsp; The New York Times O.J.\u2019s Accomplice?.",
-      "&nbsp;&nbsp; The New York Times Unsealed Records Add New Leads to O.J.",
-      "Simpson Murder Case &nbsp;&nbsp; Demokratis.co.id.",
+      "'It was jaw-dropping': The shocking lessons from an infamous experiment in obedience &nbsp;&nbsp; BBC.",
+      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
+      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Simpson Case &nbsp;&nbsp; The New York Times O.J.\u2019s Accomplice?. &nbsp;&nbsp; The New York Times Unsealed Records Add New Leads to O.J.",
+    "neutral_summary": "'It was jaw-dropping': The shocking lessons from an infamous experiment in obedience &nbsp;&nbsp; BBC. Wire reporting identified key institutional stakeholders and documented specific operational data.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in O.J. Simpson, a Secret Informant and a...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in 'It was jaw-dropping': The shocking le...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in O.J. Simpson, a Secret Informant and a...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in 'It was jaw-dropping': The shocking le...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in O.J. Simpson, a Secret Informant an...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in 'It was jaw-dropping': The shocking...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335117-2",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "Could Republicans prove the pollsters wrong in the midterms? - Financial Times",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792317609,
+    "source": "Google News Top Headlines \u2022 4 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Bookman_Ornament_9617_%28bookshelf%29.svg/330px-Bookman_Ornament_9617_%28bookshelf%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "English modal auxiliary verbs \u2014 Class of auxiliary verbs in English that lack untensed forms.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / English modal auxiliary verbs",
+    "core_facts": [
+      "&nbsp;&nbsp; Financial Times \u2018These are really tough times\u2019: House Republicans confront voter fury over Trump\u2019s Washington in final midterm stretch &nbsp;&nbsp; CNN The GOP\u2019s midterm lifeline: Maybe the polls are wrong &nbsp;&nbsp; Politico As Trump\u2019s 2024 Coalition Splinters, These Are the House GOP Candidates in the Most Danger &nbsp;&nbsp; Cook Political Report Concerning economic data pose issues for GOP down midterm stretch &nbsp;&nbsp; The Hill.",
+      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
+      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "&nbsp;&nbsp; Financial Times \u2018These are really tough times\u2019: House Republicans confront voter fury over Trump\u2019s Washington in final midterm stretch &nbsp;&nbsp; CNN The GOP\u2019s midterm lifeline: Maybe the polls are wrong &nbsp;&nbsp; Politico As Trump\u2019s 2024 Coalition Splinters, These Are the House GOP Candidates in the Most Danger &nbsp;&nbsp; Cook Political Report Concerning economic data pose issues for GOP down midterm stretch &nbsp;&nbsp; The Hill. Wire reporting identified key institutional stakeholders and documented specific operational data.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Could Republicans prove the pollsters ...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Could Republicans prove the pollsters ...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Could Republicans prove the pollste...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335119-3",
+    "category": "Crime & Public Safety",
+    "master_category": "National Headlines",
+    "title": "5 Takeaways From The Times\u2019s Re-Examination of the O.J. Simpson Case - The New York Times",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792316708,
+    "source": "Google News Top Headlines \u2022 5 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg",
+    "caption": "O.J. Simpson during legal proceedings in criminal court.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Court Pool Archive",
+    "core_facts": [
+      "Simpson, a Secret Informant and a Decades-Old Mystery &nbsp;&nbsp; The New York Times NYT : OJ's Friend May Have Helped Dispose of Evidence &nbsp;&nbsp; Newser O.J.\u2019s Accomplice?.",
+      "Simpson Case &nbsp;&nbsp; The New York Times O.J.",
+      "&nbsp;&nbsp; The New York Times Unsealed Records Add New Leads to O.J.",
+      "Simpson Murder Case &nbsp;&nbsp; Demokratis.co.id."
+    ],
+    "neutral_summary": "Simpson, a Secret Informant and a Decades-Old Mystery &nbsp;&nbsp; The New York Times NYT : OJ's Friend May Have Helped Dispose of Evidence &nbsp;&nbsp; Newser O.J.\u2019s Accomplice?. Simpson Case &nbsp;&nbsp; The New York Times O.J.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in 5 Takeaways From The Times\u2019s Re-Examin...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in 5 Takeaways From The Times\u2019s Re-Examin...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in 5 Takeaways From The Times\u2019s Re-Exa...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -636,7 +678,7 @@
     "title": "Brace Yourself for the Priciest Holiday Travel Season in Years - WSJ",
     "source_name": "Google News Business",
     "pub_timestamp": 1792315800,
-    "source": "Google News Business \u2022 4 hours ago",
+    "source": "Google News Business \u2022 5 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Lathmar_Holi_2022_in_Nandgaon%2C_Uttar_Pradesh_%28edited%29.jpg/330px-Lathmar_Holi_2022_in_Nandgaon%2C_Uttar_Pradesh_%28edited%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Holiday \u2014 Festive day set aside by custom or by law.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Holiday",
@@ -672,40 +714,124 @@
     }
   },
   {
-    "id": "story-1792331849-20",
-    "category": "National News",
+    "id": "story-1792335156-17",
+    "category": "Energy & Weather",
     "master_category": "National Headlines",
-    "title": "Alberta Independence: Winners and Losers if Province Leaves Canada - Newsweek",
-    "source_name": "Google News Politics",
-    "pub_timestamp": 1792314000,
-    "source": "Google News Politics \u2022 4 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Declaration_of_Independence_%281819%29%2C_by_John_Trumbull.jpg/330px-Declaration_of_Independence_%281819%29%2C_by_John_Trumbull.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Independence \u2014 Condition of a nation with self-governance.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Independence",
+    "title": "This Is What America\u2019s Utility Bill Crisis Looks Like - The New York Times",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792314033,
+    "source": "Google News Business \u2022 5 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/EXCOMM_meeting%2C_Cuban_Missile_Crisis%2C_29_October_1962.jpg/330px-EXCOMM_meeting%2C_Cuban_Missile_Crisis%2C_29_October_1962.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Crisis \u2014 Any event causing instability and danger.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Crisis",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Alberta Independence: Winners and Losers if Province Leaves Canada.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Energy Information Administration (EIA) (.gov) Record Electricity Demand Hits U.S.",
+      "Grid Amid Hottest Summer Ever &nbsp;&nbsp; Small Business Trends Texas\u2019 ERCOT Grid Passed the Reliability Test This Summer &nbsp;&nbsp; Texas 2036 Oklahoma Families Struggle With Record Heat and Rising Power Bills &nbsp;&nbsp; Demokratis.co.id.",
+      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Alberta Independence: Winners and Losers if Province Leaves Canada. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Energy Information Administration (EIA) (.gov) Record Electricity Demand Hits U.S. Grid Amid Hottest Summer Ever &nbsp;&nbsp; Small Business Trends Texas\u2019 ERCOT Grid Passed the Reliability Test This Summer &nbsp;&nbsp; Texas 2036 Oklahoma Families Struggle With Record Heat and Rising Power Bills &nbsp;&nbsp; Demokratis.co.id.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Alberta Independence: Winners and Lose...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in This Is What America\u2019s Utility Bill Cr...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Alberta Independence: Winners and Lose...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in This Is What America\u2019s Utility Bill Cr...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Alberta Independence: Winners and L...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in This Is What America\u2019s Utility Bill...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335125-6",
+    "category": "Crime & Public Safety",
+    "master_category": "National Headlines",
+    "title": "France Reels After Largest Riots in Years - The New York Times",
+    "source_name": "Google News World",
+    "pub_timestamp": 1792313066,
+    "source": "Google News World \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Civil demonstrators and law enforcement personnel during metropolitan protests in France.",
+    "credit": "\ud83d\udcf8 European News Wire Archive",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding France Reels After Largest Riots in Years.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding France Reels After Largest Riots in Years. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in France Reels After Largest Riots in Ye...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in France Reels After Largest Riots in Ye...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in France Reels After Largest Riots in...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335230-43",
+    "category": "Sports",
+    "master_category": "National Headlines",
+    "title": "Three Things We Learned in Nebraska's 17-14 Loss to Oregon - Sports Illustrated",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792312829,
+    "source": "Google News Sports \u2022 6 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Professional stadium floodlights during league athletic competition.",
+    "credit": "\ud83d\udcf8 Sports Wire Archive",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Three Things We Learned in Nebraska's 17-14 Loss to Oregon.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Three Things We Learned in Nebraska's 17-14 Loss to Oregon. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Three Things We Learned in Nebraska's ...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Three Things We Learned in Nebraska's ...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Three Things We Learned in Nebraska...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -720,7 +846,7 @@
     "title": "Japan to launch world-first mission to collect samples from Martian moon - The Guardian",
     "source_name": "Google News Science",
     "pub_timestamp": 1792311120,
-    "source": "Google News Science \u2022 5 hours ago",
+    "source": "Google News Science \u2022 6 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa%2C_original_graphic_15.jpg/330px-The_War_of_the_Worlds_by_Henrique_Alvim_Corr%C3%AAa%2C_original_graphic_15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Mars in fiction \u2014 Depictions of the planet.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Mars in fiction",
@@ -798,40 +924,82 @@
     }
   },
   {
-    "id": "story-1792331935-55",
-    "category": "Sports",
+    "id": "story-1792335112-0",
+    "category": "Crime & Public Safety",
     "master_category": "National Headlines",
-    "title": "Oregon 17, Nebraska 14: Another Fourth Quarter, Another Nebraska Football Meltdown - Corn Nation",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792307999,
-    "source": "Google News Sports \u2022 6 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Flag_of_Nebraska.svg/330px-Flag_of_Nebraska.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Nebraska \u2014 U.S. state.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Nebraska",
+    "title": "Arrests over France protests rise to 1,800, with whole streets in Paris \u2018devastated\u2019 \u2013 Europe live - The Guardian",
+    "source_name": "Google News Top Headlines",
+    "pub_timestamp": 1792309680,
+    "source": "Google News Top Headlines \u2022 7 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80",
+    "caption": "The Parisian metropolitan corridor in France.",
+    "credit": "\ud83d\udcf8 European Press Photo",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Oregon 17, Nebraska 14: Another Fourth Quarter, Another Nebraska Football Meltdown.",
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Arrests over France protests rise to 1,800, with whole streets in Paris \u2018devastated\u2019 \u2013 Europe live.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Oregon 17, Nebraska 14: Another Fourth Quarter, Another Nebraska Football Meltdown. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Arrests over France protests rise to 1,800, with whole streets in Paris \u2018devastated\u2019 \u2013 Europe live. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Oregon 17, Nebraska 14: Another Fourth...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Arrests over France protests rise to 1...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Oregon 17, Nebraska 14: Another Fourth...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Arrests over France protests rise to 1...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Oregon 17, Nebraska 14: Another Fou...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Arrests over France protests rise t...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335151-15",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Consumer apprehension grows as US retailers adopt AI-assisted pricing tools - AP News",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792307220,
+    "source": "Google News Business \u2022 7 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/69/The_Kodak_Salesman_%281919%29_%2814597240757%29.jpg/330px-The_Kodak_Salesman_%281919%29_%2814597240757%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Consumer \u2014 User of a product or service.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Consumer",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Consumer apprehension grows as US retailers adopt AI-assisted pricing tools.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Consumer apprehension grows as US retailers adopt AI-assisted pricing tools. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Consumer apprehension grows as US reta...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Consumer apprehension grows as US reta...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Consumer apprehension grows as US r...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -846,7 +1014,7 @@
     "title": "College football scores, results: Auburn upsets Georgia, Florida takes down Texas, BYU knocks off Notre Dame during wild Week 7 - Yahoo Sports",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792304040,
-    "source": "Google News Sports \u2022 7 hours ago",
+    "source": "Google News Sports \u2022 8 hours ago",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png",
     "caption": "National Collegiate Athletic Association (NCAA) and College Football Playoff.",
     "credit": "\ud83d\udcf8 NCAA / Wikimedia Commons",
@@ -882,181 +1050,13 @@
     }
   },
   {
-    "id": "story-1792331814-2",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "Zacharia posts altered photos of Trump\u2019s Oval Office desk - The Washington Post",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792302853,
-    "source": "Google News Top Headlines \u2022 8 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/View_of_Oval_Office_in_2017.jpg/330px-View_of_Oval_Office_in_2017.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Oval Office \u2014 US presidential office in the White House.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Oval Office",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Zacharia posts altered photos of Trump\u2019s Oval Office desk.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Zacharia posts altered photos of Trump\u2019s Oval Office desk. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Zacharia posts altered photos of Trump...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Zacharia posts altered photos of Trump...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Zacharia posts altered photos of Tr...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331827-10",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Trump faces bipartisan backlash over Russia sanctions waiver, causing top Republicans to break ranks - Fox Business",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792300560,
-    "source": "Google News U.S. \u2022 8 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/330px-Flag_of_Russia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Russia \u2014 Country in Eastern Europe and North Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Russia",
-    "core_facts": [
-      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
-      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
-        "talking_points": [
-          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
-          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
-        "talking_points": [
-          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
-          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
-        "talking_points": [
-          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
-          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331837-16",
-    "category": "Politics",
-    "master_category": "National Headlines",
-    "title": "The Future of the Amazon Rainforest Could Depend on Brazil's Election - The New York Times",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792299600,
-    "source": "Google News World \u2022 8 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Zeitpyramide_2023_B.jpg/330px-Zeitpyramide_2023_B.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Future \u2014 Time after the present.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Future",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding The Future of the Amazon Rainforest Could Depend on Brazil's Election.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding The Future of the Amazon Rainforest Could Depend on Brazil's Election. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in The Future of the Amazon Rainforest Co...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in The Future of the Amazon Rainforest Co...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in The Future of the Amazon Rainforest...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331852-22",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "America\u2019s $10tn AI infrastructure boom is starting to fray - Financial Times",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792296047,
-    "source": "Google News Business \u2022 9 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg/330px-Flag_of_the_United_States_%28DDD-F-416E_specifications%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "United States \u2014 Country primarily in North America.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / United States",
-    "core_facts": [
-      "Borrowing &nbsp;&nbsp; The New York Times The Risk I Feared Is Materializing (NYSEARCA:SPY) &nbsp;&nbsp; Seeking Alpha Central bankers eye higher rates as AI boom fuels scramble for cash &nbsp;&nbsp; Reuters Banks are pulling back as AI's massive debt pile disconnects from economic reality &nbsp;&nbsp; Axios.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Borrowing &nbsp;&nbsp; The New York Times The Risk I Feared Is Materializing (NYSEARCA:SPY) &nbsp;&nbsp; Seeking Alpha Central bankers eye higher rates as AI boom fuels scramble for cash &nbsp;&nbsp; Reuters Banks are pulling back as AI's massive debt pile disconnects from economic reality &nbsp;&nbsp; Axios. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in America\u2019s $10tn AI infrastructure boom...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in America\u2019s $10tn AI infrastructure boom...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in America\u2019s $10tn AI infrastructure b...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792331859-24",
     "category": "Business & Economy",
     "master_category": "National Headlines",
     "title": "Tesla Roadster owners to get \"Flying Stunt Mode\" and looping track access - Teslarati",
     "source_name": "Google News Business",
     "pub_timestamp": 1792295297,
-    "source": "Google News Business \u2022 10 hours ago",
+    "source": "Google News Business \u2022 11 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Stunt_Pyrotechnics_Luc_Viatour.jpg/330px-Stunt_Pyrotechnics_Luc_Viatour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Stunt \u2014 Unusual and difficult physical feat.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Stunt",
@@ -1098,7 +1098,7 @@
     "title": "The Best Dressed Stars From the 2026 Academy Museum Gala - Vogue",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792294813,
-    "source": "Google News Entertainment \u2022 10 hours ago",
+    "source": "Google News Entertainment \u2022 11 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/6/67/Academy_Museum_logo.svg/330px-Academy_Museum_logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Academy Museum of Motion Pictures \u2014 American museum.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Academy Museum of Motion Pictures",
@@ -1140,7 +1140,7 @@
     "title": "Selma Blair \u2018did not intend to harm anyone\u2019 during airplane incident, representatives say - The Guardian",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792293540,
-    "source": "Google News Entertainment \u2022 10 hours ago",
+    "source": "Google News Entertainment \u2022 11 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/2024_Selma_Blair_%28cropped%29.jpg/330px-2024_Selma_Blair_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Selma Blair \u2014 American actress (born 1972).",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Selma Blair",
@@ -1176,13 +1176,55 @@
     }
   },
   {
+    "id": "story-1792335226-42",
+    "category": "Sports",
+    "master_category": "National Headlines",
+    "title": "\u2018His mouthpiece flew about 20 feet\u2019: Pros react to Mike Malott\u2019s vicious UFC Edmonton knockout - MMA Fighting",
+    "source_name": "Google News Sports",
+    "pub_timestamp": 1792292880,
+    "source": "Google News Sports \u2022 11 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Mike-malott-2023-ufc-fighter-canada.png/330px-Mike-malott-2023-ufc-fighter-canada.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Mike Malott \u2014 Canadian mixed martial artist (born 1991).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Mike Malott",
+    "core_facts": [
+      "Malott\u2019 play-by-play, results & round scoring &nbsp;&nbsp; Sherdog UFC Fight Night: Buckley vs.",
+      "Malott Live Updates, Highlights and Results &nbsp;&nbsp; Bleacher Report UFC Edmonton results: Mike Malott viciously folds Joaquin Buckley; Jasmine Jasudavicius shocks Erin Blanchfield &nbsp;&nbsp; Yahoo Sports.",
+      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Malott\u2019 play-by-play, results & round scoring &nbsp;&nbsp; Sherdog UFC Fight Night: Buckley vs. Malott Live Updates, Highlights and Results &nbsp;&nbsp; Bleacher Report UFC Edmonton results: Mike Malott viciously folds Joaquin Buckley; Jasmine Jasudavicius shocks Erin Blanchfield &nbsp;&nbsp; Yahoo Sports.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in \u2018His mouthpiece flew about 20 feet\u2019: P...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in \u2018His mouthpiece flew about 20 feet\u2019: P...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in \u2018His mouthpiece flew about 20 feet\u2019...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792324072-61",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
     "title": "Miami survives two Hail Marys, leaving FSU without answers in 2OT thriller - ESPN",
     "source_name": "Google News Sports",
     "pub_timestamp": 1792292760,
-    "source": "Google News Sports \u2022 10 hours ago",
+    "source": "Google News Sports \u2022 11 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Miami%2C_Florida%2C_Skyline_4.jpg/330px-Miami%2C_Florida%2C_Skyline_4.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Miami \u2014 City in Florida, United States.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Miami",
@@ -1218,97 +1260,13 @@
     }
   },
   {
-    "id": "story-1792331818-4",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "\u2018Standing up for democracy\u2019: Atlanta \u2018No Kings\u2019 rally draws Trump critics ahead of midterms - France 24",
-    "source_name": "Google News Top Headlines",
-    "pub_timestamp": 1792288229,
-    "source": "Google News Top Headlines \u2022 12 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Yerevan%2C_Armenian_girls_posing_in_photo_shoot%2C_Acting%2C_Posture%2C_Body_language%2C_Armenia.jpg/330px-Yerevan%2C_Armenian_girls_posing_in_photo_shoot%2C_Acting%2C_Posture%2C_Body_language%2C_Armenia.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Standing \u2014 Human position in which the body is held upright.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Standing",
-    "core_facts": [
-      "urge voters to cast ballots early in the midterms &nbsp;&nbsp; NBC News 'No Kings' rallies shift focus to voter participation ahead of midterm elections &nbsp;&nbsp; 6abc Philadelphia No Kings rally urges Utahns to vote early &nbsp;&nbsp; KSL News.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "urge voters to cast ballots early in the midterms &nbsp;&nbsp; NBC News 'No Kings' rallies shift focus to voter participation ahead of midterm elections &nbsp;&nbsp; 6abc Philadelphia No Kings rally urges Utahns to vote early &nbsp;&nbsp; KSL News. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in \u2018Standing up for democracy\u2019: Atlanta \u2018...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in \u2018Standing up for democracy\u2019: Atlanta \u2018...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in \u2018Standing up for democracy\u2019: Atlant...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331930-53",
-    "category": "Sports",
-    "master_category": "National Headlines",
-    "title": "Ryan Day built his name on QB excellence. With no Julian Sayin, he faces his toughest test - The New York Times",
-    "source_name": "Google News Sports",
-    "pub_timestamp": 1792286110,
-    "source": "Google News Sports \u2022 12 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/2026-0729_Big_Ten_MD_Julian_Sayin.jpeg/330px-2026-0729_Big_Ten_MD_Julian_Sayin.jpeg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Julian Sayin \u2014 American football player (born 2005).",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Julian Sayin",
-    "core_facts": [
-      "Ryan Day built his name on QB excellence.",
-      "With no Julian Sayin, he faces his toughest test &nbsp;&nbsp; The New York Times Indiana\u2019s first loss in almost 2 years shows Hoosiers a new, painful side to being in college football\u2019s top tier &nbsp;&nbsp; CNN Major USC takeaways from Ohio State's close win over Indiana &nbsp;&nbsp; Yahoo Sports Ohio State QB Julian Sayin out 'several weeks' with shoulder injury &nbsp;&nbsp; ESPN Coach Ryan Day addresses injury of QB Julian Sayin after big win against Indiana &nbsp;&nbsp; WSYX.",
-      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Ryan Day built his name on QB excellence. With no Julian Sayin, he faces his toughest test &nbsp;&nbsp; The New York Times Indiana\u2019s first loss in almost 2 years shows Hoosiers a new, painful side to being in college football\u2019s top tier &nbsp;&nbsp; CNN Major USC takeaways from Ohio State's close win over Indiana &nbsp;&nbsp; Yahoo Sports Ohio State QB Julian Sayin out 'several weeks' with shoulder injury &nbsp;&nbsp; ESPN Coach Ryan Day addresses injury of QB Julian Sayin after big win against Indiana &nbsp;&nbsp; WSYX.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Ryan Day built his name on QB excellen...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Ryan Day built his name on QB excellen...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Ryan Day built his name on QB excel...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792331841-18",
     "category": "Energy & Weather",
     "master_category": "National Headlines",
     "title": "Hurricane Trudy strengthens to category 2 as it heads toward Mexico - The Guardian",
     "source_name": "Google News World",
     "pub_timestamp": 1792279440,
-    "source": "Google News World \u2022 14 hours ago",
+    "source": "Google News World \u2022 15 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828603210%29_%28cropped%29.jpg/330px-Dramatic_Views_of_Hurricane_Florence_from_the_International_Space_Station_From_9_12_%2842828603210%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Tropical cyclone \u2014 Rapidly rotating storm system.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Tropical cyclone",
@@ -1350,10 +1308,10 @@
     "title": "Renowned cancer researcher dies from disease she dedicated life to defeating - NewsNation",
     "source_name": "Google News Health",
     "pub_timestamp": 1792278450,
-    "source": "Google News Health \u2022 14 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Financial market exchange trading floor and electronic index terminals.",
-    "credit": "\ud83d\udcf8 Financial Wire Pool",
+    "source": "Google News Health \u2022 15 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Clinical healthcare medical research and patient therapy center.",
+    "credit": "\ud83d\udcf8 Medical Science Photo Pool",
     "core_facts": [
       "This Was Her 1st Symptom TODAY.com Dedicated Arizona doctor and cancer researcher remembered for her impact ABC15 Arizona Trailblazing doctor, 47, dies of the cancer she was working to cure WMUR.",
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
@@ -1386,13 +1344,55 @@
     }
   },
   {
+    "id": "story-1792335265-62",
+    "category": "Crime & Public Safety",
+    "master_category": "National Headlines",
+    "title": "Oregon governor Tina Kotek reacts to Silver Rail Elementary school shooting",
+    "source_name": "NPR News",
+    "pub_timestamp": 1792277125,
+    "source": "NPR News \u2022 16 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Tina_Kotek_official_portrait_2021%283x4_cropped%29.jpg/330px-Tina_Kotek_official_portrait_2021%283x4_cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Tina Kotek \u2014 Governor of Oregon since 2023.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Tina Kotek",
+    "core_facts": [
+      "A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.",
+      "An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.",
+      "Federal and municipal law enforcement secured the campus, recovering multiple firearms and investigating motives and firearm acquisition.",
+      "NPR's Joel Rose talks with Oregon Governor Tina Kotek about the shooting at Silver Rail Elementary in Bend, Oregon."
+    ],
+    "neutral_summary": "A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander. An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Urgent Call for Gun Safety Reforms and Assault Weapon Restrictions After School Tragedy",
+        "talking_points": [
+          "Thoughts and prayers are not enough; children deserve the basic human right to attend school without the fear of gunfire.",
+          "Common-sense gun safety reforms save lives; we must close loopholes and keep weapons out of the hands of violent teens."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Campus Security Review and Rapid Response: Investigating the Oregon Elementary Tragedy",
+        "talking_points": [
+          "School safety requires practical, layered security measures and swift, decisive emergency response to protect innocent lives.",
+          "Law enforcement and school districts must work together to harden perimeters and maintain robust threat assessment protocols."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Second Amendment Self-Defense: Armed Citizen Stops Mass Shooter and Saves Innocent Lives",
+        "talking_points": [
+          "The only thing that stops a bad guy with a gun is a good guy with a gun; that brave armed citizen saved countless lives.",
+          "Gun control disarms the victims, not the criminals; protecting our schools requires armed deterrence and unwavering support for self-defense."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792331900-39",
     "category": "Entertainment",
     "master_category": "Entertainment",
     "title": "'Dancing with the Stars' dancer Val Chmerkovskiy benched after 'inappropriate' social media post - ABC News - Breaking News, Latest News and Videos",
     "source_name": "Google News Entertainment",
     "pub_timestamp": 1792276957,
-    "source": "Google News Entertainment \u2022 15 hours ago",
+    "source": "Google News Entertainment \u2022 16 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Two_dancers.jpg/330px-Two_dancers.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Dance \u2014 Art form consisting of body movement.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Dance",
@@ -1428,97 +1428,13 @@
     }
   },
   {
-    "id": "story-1792331834-14",
-    "category": "World News",
-    "master_category": "World News",
-    "title": "Huckabee condemns Israeli settlers\u2019 attack on Washington Post photojournalist - The Hill",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792276500,
-    "source": "Google News World \u2022 15 hours ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/en/5/57/The-Washington-Post-10-June-2020.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-    "caption": "The Washington Post \u2014 American daily newspaper.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / The Washington Post",
-    "core_facts": [
-      "ambassador to Israel calls for \"arrest and prosecution\" of Heidi Levine's West Bank settler attackers &nbsp;&nbsp; CBS News Israeli Settlers Attack Palestinians and Washington Post Journalist in West Bank &nbsp;&nbsp; The New York Times US wants Israel to 'crack down' on settler violence in West Bank, Rubio says &nbsp;&nbsp; Reuters.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "ambassador to Israel calls for \"arrest and prosecution\" of Heidi Levine's West Bank settler attackers &nbsp;&nbsp; CBS News Israeli Settlers Attack Palestinians and Washington Post Journalist in West Bank &nbsp;&nbsp; The New York Times US wants Israel to 'crack down' on settler violence in West Bank, Rubio says &nbsp;&nbsp; Reuters. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Huckabee condemns Israeli settlers\u2019 at...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Huckabee condemns Israeli settlers\u2019 at...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Huckabee condemns Israeli settlers\u2019...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331826-9",
-    "category": "Sports",
-    "master_category": "National Headlines",
-    "title": "Boy among 2 killed after truck drives onto Wichita soccer field, 11 others injured, police say - CBS News",
-    "source_name": "Google News U.S.",
-    "pub_timestamp": 1792276020,
-    "source": "Google News U.S. \u2022 15 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/Smiling_little_boy_of_Laos.jpg/330px-Smiling_little_boy_of_Laos.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Boy \u2014 Young male human.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Boy",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Boy among 2 killed after truck drives onto Wichita soccer field, 11 others injured, police say.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Boy among 2 killed after truck drives onto Wichita soccer field, 11 others injured, police say. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Boy among 2 killed after truck drives ...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Boy among 2 killed after truck drives ...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Boy among 2 killed after truck driv...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792295490-24",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
     "title": "Japan to launch Martian moon mission on Tuesday | NHK WORLD-JAPAN News - NHK\u30cb\u30e5\u30fc\u30b9",
     "source_name": "Google News Science",
     "pub_timestamp": 1792273184,
-    "source": "Google News Science \u2022 16 hours ago",
+    "source": "Google News Science \u2022 17 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/330px-Flag_of_Japan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Japan \u2014 Country in East Asia.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Japan",
@@ -1560,7 +1476,7 @@
     "title": "Pope returns to Vatican days after surgery; surgeon says he should be fit for Latin America tour - AP News",
     "source_name": "Google News World",
     "pub_timestamp": 1792272900,
-    "source": "Google News World \u2022 16 hours ago",
+    "source": "Google News World \u2022 17 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Latin_America_%28orthographic_projection%29.svg/330px-Latin_America_%28orthographic_projection%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Latin America \u2014 Region of the Americas.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Latin America",
@@ -1602,7 +1518,7 @@
     "title": "Apple Retail Staff Told to Warn Against iPhone Duo Walk-In Purchases - MacRumors",
     "source_name": "Google News Tech",
     "pub_timestamp": 1792272645,
-    "source": "Google News Tech \u2022 16 hours ago",
+    "source": "Google News Tech \u2022 17 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Women_walking_in_Hyderabad_street.jpg/330px-Women_walking_in_Hyderabad_street.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Walking \u2014 Gait of locomotion among legged animals.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Walking",
@@ -1638,40 +1554,40 @@
     }
   },
   {
-    "id": "story-1792331932-54",
+    "id": "story-1792335224-41",
     "category": "Sports",
     "master_category": "National Headlines",
-    "title": "Bears QB Caleb Williams (hamstring) expected to play vs. Falcons in Week 6 - Yahoo Sports",
+    "title": "Bears expected to start Caleb Williams vs. Falcons, per report - CBS Sports",
     "source_name": "Google News Sports",
-    "pub_timestamp": 1792270344,
-    "source": "Google News Sports \u2022 17 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Ours_brun_parcanimalierpyrenees_1.jpg/330px-Ours_brun_parcanimalierpyrenees_1.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Bear \u2014 Family of carnivoran mammals.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Bear",
+    "pub_timestamp": 1792270200,
+    "source": "Google News Sports \u2022 18 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/87/Caleb_Williams_%2854858668366%29_%28cropped%29.jpg/330px-Caleb_Williams_%2854858668366%29_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Caleb Williams \u2014 American football player (born 2001).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Caleb Williams",
     "core_facts": [
-      "Falcons in Week 6 &nbsp;&nbsp; Yahoo Sports Sources: Bears plan to start QB Caleb Williams in Week 6 vs.",
-      "Falcons &nbsp;&nbsp; NFL.com Injury Update: Caleb Williams questionable for Sunday's game vs.",
-      "Bears QB Caleb Williams (hamstring) expected to play vs.",
-      "Falcons &nbsp;&nbsp; ESPN NFL Network: Bears QB Caleb Williams (hamstring) expected to start Sunday vs."
+      "Bears expected to start Caleb Williams vs.",
+      "Falcons &nbsp;&nbsp; ESPN Is Caleb Williams playing today?.",
+      "Bears QB injury update for Week 6 &nbsp;&nbsp; USA Today NFL Network: Bears QB Caleb Williams (hamstring) expected to start Sunday vs.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Falcons in Week 6 &nbsp;&nbsp; Yahoo Sports Sources: Bears plan to start QB Caleb Williams in Week 6 vs. Falcons &nbsp;&nbsp; NFL.com Injury Update: Caleb Williams questionable for Sunday's game vs.",
+    "neutral_summary": "Bears expected to start Caleb Williams vs. Falcons &nbsp;&nbsp; ESPN Is Caleb Williams playing today?.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Bears QB Caleb Williams (hamstring) ex...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Bears expected to start Caleb Williams...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Bears QB Caleb Williams (hamstring) ex...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Bears expected to start Caleb Williams...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Bears QB Caleb Williams (hamstring)...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Bears expected to start Caleb Willi...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -1686,7 +1602,7 @@
     "title": "Flying car company \u2018welcomes Tesla to flying car race\u2019 with tongue-in-cheek video - KTLA",
     "source_name": "Google News Business",
     "pub_timestamp": 1792268830,
-    "source": "Google News Business \u2022 17 hours ago",
+    "source": "Google News Business \u2022 18 hours ago",
     "image_url": "https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80",
     "caption": "Tesla electric performance vehicle and high-technology automotive manufacturing.",
     "credit": "\ud83d\udcf8 Automotive News Wire",
@@ -1717,6 +1633,48 @@
         "talking_points": [
           "American private enterprise leads the world in cutting-edge vehicle innovation and manufacturing ingenuity.",
           "Free market competition and consumer choice\u2014not top-down government mandates\u2014deliver real automotive progress."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335135-9",
+    "category": "Crime & Public Safety",
+    "master_category": "National Headlines",
+    "title": "Clashes, fires and looting break out as protesters rally across France, joining students - AP News",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792267140,
+    "source": "Google News Politics \u2022 18 hours ago",
+    "image_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
+    "credit": "\ud83d\udcf8 Legal News Media Archive",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Clashes, fires and looting break out as protesters rally across France, joining students.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Clashes, fires and looting break out as protesters rally across France, joining students. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Clashes, fires and looting break out a...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Clashes, fires and looting break out a...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Clashes, fires and looting break ou...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
         ]
       }
     }
@@ -1764,40 +1722,40 @@
     }
   },
   {
-    "id": "story-1792331836-15",
-    "category": "Crime & Public Safety",
+    "id": "story-1792335160-18",
+    "category": "National News",
     "master_category": "National Headlines",
-    "title": "Albanian police fire rubber bullets as protests against Rama escalate - Al Jazeera",
-    "source_name": "Google News World",
-    "pub_timestamp": 1792265448,
-    "source": "Google News World \u2022 18 hours ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Rama_in_Adhyatma_Ramayana.jpg/330px-Rama_in_Adhyatma_Ramayana.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Rama \u2014 Major deity in Hinduism.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Rama",
+    "title": "High Lava Fountains Return To K\u012blauea Volcano Summit - Big Island Video News",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792261211,
+    "source": "Google News Science \u2022 20 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/001_Volcano_eruption_of_Litli-Hr%C3%BAtur_in_Iceland_in_2023_Photo_by_Giles_Laurent.jpg/330px-001_Volcano_eruption_of_Litli-Hr%C3%BAtur_in_Iceland_in_2023_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Lava \u2014 Molten rock expelled by a volcano during an eruption.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Lava",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian police fire rubber bullets as protests against Rama escalate.",
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding High Lava Fountains Return To K\u012blauea Volcano Summit.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Albanian police fire rubber bullets as protests against Rama escalate. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding High Lava Fountains Return To K\u012blauea Volcano Summit. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Albanian police fire rubber bullets as...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in High Lava Fountains Return To K\u012blauea ...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Albanian police fire rubber bullets as...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in High Lava Fountains Return To K\u012blauea ...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Albanian police fire rubber bullets...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in High Lava Fountains Return To K\u012blau...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -1812,7 +1770,7 @@
     "title": "Bank of America CEO addresses a troubling banking problem - TheStreet",
     "source_name": "Google News Business",
     "pub_timestamp": 1792260180,
-    "source": "Google News Business \u2022 19 hours ago",
+    "source": "Google News Business \u2022 20 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/London.bankofengland.arp.jpg/330px-London.bankofengland.arp.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Bank \u2014 Financial institution that accepts deposits.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Bank",
@@ -1854,10 +1812,10 @@
     "title": "Urgent warning as super-drug 10 times more powerful than fentanyl claims first LA victim - New York Post",
     "source_name": "Google News Health",
     "pub_timestamp": 1792259460,
-    "source": "Google News Health \u2022 20 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Financial market exchange trading floor and electronic index terminals.",
-    "credit": "\ud83d\udcf8 Financial Wire Pool",
+    "source": "Google News Health \u2022 21 hours ago",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg",
+    "caption": "U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.",
+    "credit": "\ud83d\udcf8 U.S. Customs and Border Protection",
     "core_facts": [
       "County reports first death from opioid called more potent than fentanyl KTLA Health officials warn of emerging synthetic opioid after fatal overdoses cbs8.com Drug Claimed to Be 10 Times More Potent Than Fentanyl Sparks Warning Among Colorado Students Yahoo Texas senator plans to file legislation to address emergence of cychlorphine KXAN Austin.",
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
@@ -1890,13 +1848,97 @@
     }
   },
   {
+    "id": "story-1792335144-12",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Sen. Jeanne Shaheen leads push for answers into Starlink outages in Ukraine - WMUR",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792257120,
+    "source": "Google News Politics \u2022 21 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Shaheen_Senate_Portrait.jpg/330px-Shaheen_Senate_Portrait.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Jeanne Shaheen \u2014 American politician (born 1947).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Jeanne Shaheen",
+    "core_facts": [
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335153-16",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "US debt interest costs hit $3 billion a day and jumped 8% in 2026\u2014faster than spending, revenue, GDP - Fortune",
+    "source_name": "Google News Business",
+    "pub_timestamp": 1792255800,
+    "source": "Google News Business \u2022 22 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Gdp_worldbank%2C_World%2C_2024_%28cropped%29.svg/330px-Gdp_worldbank%2C_World%2C_2024_%28cropped%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Gross domestic product \u2014 Total market value of goods and services produced within a country.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Gross domestic product",
+    "core_facts": [
+      "It\u2019s $1.992 trillion.",
+      "&nbsp;&nbsp; Yahoo Finance A $2 trillion deficit looms over the midterms &nbsp;&nbsp; CNN US Posts $1.99 Trillion Budget Gap for 2026 on Spending Rise &nbsp;&nbsp; Bloomberg U.S.",
+      "Budget Deficit Nears $2 Trillion, a Reality Check for Trump\u2019s Cost Cutting &nbsp;&nbsp; The New York Times.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "It\u2019s $1.992 trillion. &nbsp;&nbsp; Yahoo Finance A $2 trillion deficit looms over the midterms &nbsp;&nbsp; CNN US Posts $1.99 Trillion Budget Gap for 2026 on Spending Rise &nbsp;&nbsp; Bloomberg U.S.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in US debt interest costs hit $3 billion ...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in US debt interest costs hit $3 billion ...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in US debt interest costs hit $3 billi...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792254510-9",
     "category": "Health",
     "master_category": "National Headlines",
     "title": "Pope Leo leaves hospital after lung cancer operation - The Washington Post",
     "source_name": "Google News World",
     "pub_timestamp": 1792252672,
-    "source": "Google News World \u2022 21 hours ago",
+    "source": "Google News World \u2022 22 hours ago",
     "image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80",
     "caption": "Clinical healthcare medical research and patient therapy center.",
     "credit": "\ud83d\udcf8 Medical Science Photo Pool",
@@ -1932,97 +1974,13 @@
     }
   },
   {
-    "id": "story-1792331966-75",
-    "category": "Crime & Public Safety",
-    "master_category": "National Headlines",
-    "title": "French police arrest 1,800 after violent clashes and looting mar protests",
-    "source_name": "NPR News",
-    "pub_timestamp": 1792252660,
-    "source": "NPR News \u2022 22 hours ago",
-    "image_url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Judicial courtroom bench, gavel, and legal trial proceedings.",
-    "credit": "\ud83d\udcf8 Legal News Media Archive",
-    "core_facts": [
-      "Police arrested at least 1,800 people across France after violent groups clashed with officers and looted shops during nationwide demonstrations that drew hundreds of thousands of people.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Police arrested at least 1,800 people across France after violent groups clashed with officers and looted shops during nationwide demonstrations that drew hundreds of thousands of people. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in French police arrest 1,800 after viole...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in French police arrest 1,800 after viole...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in French police arrest 1,800 after vi...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331902-40",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "\u2018Street Fighter\u2019 Scoring $31M at Box Office as \u2018You Can See Everything\u2019 Rises and \u2018Whalefall\u2019 Sinks - The Hollywood Reporter",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1792252575,
-    "source": "Google News Entertainment \u2022 22 hours ago",
-    "image_url": "https://upload.wikimedia.org/wikipedia/en/e/e9/Street_Fighter_Logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
-    "caption": "Street Fighter \u2014 Japanese media franchise.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Street Fighter",
-    "core_facts": [
-      "Live-Action Fighters &nbsp;&nbsp; Variety Street Fighter First Reviews: Colorful, Weird, Noisy Nonsense Affectionately Made for Fans &nbsp;&nbsp; Rotten Tomatoes Weekend Preview: Can STREET FIGHTER Rekindle Millennial Nostalgia to a $30M+ Debut?.",
-      "&nbsp;&nbsp; Boxoffice Pro.",
-      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Live-Action Fighters &nbsp;&nbsp; Variety Street Fighter First Reviews: Colorful, Weird, Noisy Nonsense Affectionately Made for Fans &nbsp;&nbsp; Rotten Tomatoes Weekend Preview: Can STREET FIGHTER Rekindle Millennial Nostalgia to a $30M+ Debut?. &nbsp;&nbsp; Boxoffice Pro.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in \u2018Street Fighter\u2019 Scoring $31M at Box O...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in \u2018Street Fighter\u2019 Scoring $31M at Box O...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in \u2018Street Fighter\u2019 Scoring $31M at Bo...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792272136-17",
     "category": "Business & Economy",
     "master_category": "National Headlines",
     "title": "Tesla Flying Car\u2019s 4 Thrusters Meet Aerospace\u2019s Bar [2026] - https://tech-insider.org/",
     "source_name": "Google News Business",
     "pub_timestamp": 1792250663,
-    "source": "Google News Business \u2022 22 hours ago",
+    "source": "Google News Business \u2022 23 hours ago",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Top_of_Atmosphere.jpg/330px-Top_of_Atmosphere.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Aerospace \u2014 Term used to collectively refer to the atmosphere and outer space.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Aerospace",
@@ -2058,13 +2016,55 @@
     }
   },
   {
+    "id": "story-1792335146-13",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Thousands rally for biggest protest in years against Tunisia\u2019s Saied - Al Jazeera",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792249199,
+    "source": "Google News Politics \u2022 23 hours ago",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Tunisia.svg/330px-Flag_of_Tunisia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Tunisia \u2014 Country in North Africa.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Tunisia",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Thousands rally for biggest protest in years against Tunisia\u2019s Saied.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Thousands rally for biggest protest in years against Tunisia\u2019s Saied. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Thousands rally for biggest protest in...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Thousands rally for biggest protest in...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Thousands rally for biggest protest...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792262817-18",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
     "title": "CoreWeave Woes Risk Shutting Down AI Junk Market: Credit Weekly - Bloomberg.com",
     "source_name": "Google News Business",
     "pub_timestamp": 1792247233,
-    "source": "Google News Business \u2022 23 hours ago",
+    "source": "Google News Business \u2022 Yesterday",
     "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/3_Alarm_Building_Fire.jpg/330px-3_Alarm_Building_Fire.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "caption": "Risk \u2014 Possibility of something bad happening.",
     "credit": "\ud83d\udcf8 Wikimedia Commons / Risk",
@@ -2092,6 +2092,90 @@
       },
       "RIGHT": {
         "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in CoreWeave Woes Risk Shutting Down A...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335235-46",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "Not all Republicans want to show Trump off",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792245600,
+    "source": "Politico National \u2022 Yesterday",
+    "image_url": "https://static.politico.com/4c/02/94cfb99249edb52570a7e9443de9/https-delivery-gettyimages.com/downloads/2300090765",
+    "caption": "Not all Republicans want to show Trump off.",
+    "credit": "\ud83d\udcf8 Politico National",
+    "core_facts": [
+      "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him.",
+      "Some don\u2019t even want to join him at events.",
+      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "GOP candidates are avoiding talking about Trump in their ads, including in deep-red districts where they used to feature him. Some don\u2019t even want to join him at events.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Not all Republicans want to show Trump...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Not all Republicans want to show Trump...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Not all Republicans want to show Tr...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335169-22",
+    "category": "Science & Tech",
+    "master_category": "Science & Tech",
+    "title": "NASA\u2019s Roman Space Telescope exceeds expectations by nearly 30% - Science Daily",
+    "source_name": "Google News Science",
+    "pub_timestamp": 1792244764,
+    "source": "Google News Science \u2022 Yesterday",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/ROMANNewModelV8RomanStill00049.png/330px-ROMANNewModelV8RomanStill00049.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Nancy Grace Roman Space Telescope \u2014 NASA infrared space telescope launched in 2026.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Nancy Grace Roman Space Telescope",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding NASA\u2019s Roman Space Telescope exceeds expectations by nearly 30%.",
+      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding NASA\u2019s Roman Space Telescope exceeds expectations by nearly 30%. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in NASA\u2019s Roman Space Telescope exceeds e...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in NASA\u2019s Roman Space Telescope exceeds e...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in NASA\u2019s Roman Space Telescope exceed...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -2142,6 +2226,48 @@
     }
   },
   {
+    "id": "story-1792335200-31",
+    "category": "Entertainment",
+    "master_category": "Entertainment",
+    "title": "Elizabeth Holmes's Social Media Feed Hits Different After Watching 'You Can See Everything' - Gizmodo",
+    "source_name": "Google News Entertainment",
+    "pub_timestamp": 1792243435,
+    "source": "Google News Entertainment \u2022 Yesterday",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Elizabeth_Holmes_2014_%28cropped_2%29.jpg/330px-Elizabeth_Holmes_2014_%28cropped_2%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Elizabeth Holmes \u2014 American businesswoman (born 1984).",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Elizabeth Holmes",
+    "core_facts": [
+      "But Her Partner Is the Star.",
+      "&nbsp;&nbsp; WSJ \u2018You Can See Everything\u2019 Earns Largest Doc Opening in 13 Years With $15 Million at Indie Box Office &nbsp;&nbsp; Yahoo.",
+      "Official representatives confirmed active implementation schedules while monitoring regional community impacts.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "But Her Partner Is the Star. &nbsp;&nbsp; WSJ \u2018You Can See Everything\u2019 Earns Largest Doc Opening in 13 Years With $15 Million at Indie Box Office &nbsp;&nbsp; Yahoo.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Elizabeth Holmes's Social Media Feed H...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Elizabeth Holmes's Social Media Feed H...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Elizabeth Holmes's Social Media Fee...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792331861-25",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
@@ -2184,166 +2310,124 @@
     }
   },
   {
-    "id": "story-1792331868-27",
-    "category": "National News",
-    "master_category": "National Headlines",
-    "title": "US Interest Costs Hit Record $1 Trillion, Risking Debt Snowball - Bloomberg",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792238400,
-    "source": "Google News Business \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Visualisation_1_Trillion.svg/330px-Visualisation_1_Trillion.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Trillion \u2014 12th or 18th power of ten.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Trillion",
-    "core_facts": [
-      "It\u2019s $1.992 trillion.",
-      "&nbsp;&nbsp; Yahoo Finance A $2 trillion deficit looms over the midterms &nbsp;&nbsp; CNN U.S.",
-      "budget deficit swells to almost $2 trillion for fiscal 2026, up 12% in a single year &nbsp;&nbsp; CNBC.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "It\u2019s $1.992 trillion. &nbsp;&nbsp; Yahoo Finance A $2 trillion deficit looms over the midterms &nbsp;&nbsp; CNN U.S.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in US Interest Costs Hit Record $1 Trilli...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in US Interest Costs Hit Record $1 Trilli...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in US Interest Costs Hit Record $1 Tri...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331913-45",
-    "category": "Crime & Public Safety",
-    "master_category": "National Headlines",
-    "title": "CDC to send \u2018disease detective\u2019 to help tackle Pennsylvania measles outbreak - The Guardian",
-    "source_name": "Google News Health",
-    "pub_timestamp": 1792238400,
-    "source": "Google News Health \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/CDC_logo_2024.svg/330px-CDC_logo_2024.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Centers for Disease Control and Prevention \u2014 United States government public health agency.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Centers for Disease Control and Prevention",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding CDC to send \u2018disease detective\u2019 to help tackle Pennsylvania measles outbreak.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding CDC to send \u2018disease detective\u2019 to help tackle Pennsylvania measles outbreak. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in CDC to send \u2018disease detective\u2019 to hel...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in CDC to send \u2018disease detective\u2019 to hel...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in CDC to send \u2018disease detective\u2019 to ...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792254542-21",
-    "category": "Energy & Weather",
-    "master_category": "National Headlines",
-    "title": "Susan Dell is the one running the Dells\u2019 $10 billion giving operation - Fortune",
-    "source_name": "Google News Business",
-    "pub_timestamp": 1792234080,
-    "source": "Google News Business \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Susan_Dell_in_December_2025_%28cropped%29.jpg/330px-Susan_Dell_in_December_2025_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Susan Dell \u2014 American philanthropist.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Susan Dell",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Susan Dell is the one running the Dells\u2019 $10 billion giving operation.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Susan Dell is the one running the Dells\u2019 $10 billion giving operation. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Susan Dell is the one running the Dell...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Susan Dell is the one running the Dell...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Susan Dell is the one running the D...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331851-21",
-    "category": "Crime & Public Safety",
-    "master_category": "National Headlines",
-    "title": "India news: CJP founder released a day after detention - DW.com",
+    "id": "story-1792335142-11",
+    "category": "World News",
+    "master_category": "World News",
+    "title": "Week in Politics: Trump\u2019s Russian diesel deal update; why the DOJ is suing California - NPR",
     "source_name": "Google News Politics",
-    "pub_timestamp": 1792233107,
+    "pub_timestamp": 1792237388,
     "source": "Google News Politics \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/330px-Flag_of_India.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "India \u2014 Country in South Asia.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / India",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/24.09.2024_-_Abertura_do_Debate_Geral_da_79%C2%AA_Sess%C3%A3o_da_Assembleia_Geral_das_Na%C3%A7%C3%B5es_Unidas_%2854018866744%29.jpg/330px-24.09.2024_-_Abertura_do_Debate_Geral_da_79%C2%AA_Sess%C3%A3o_da_Assembleia_Geral_das_Na%C3%A7%C3%B5es_Unidas_%2854018866744%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Politics \u2014 Activities associated with group decisions.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Politics",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding India news: CJP founder released a day after detention.",
+      "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
+      "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+      "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination. Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims",
+        "talking_points": [
+          "Sovereign nations defending their democracy cannot have their vital military communications held hostage by private corporate interests.",
+          "We must ensure that allied defense operations have reliable, public-backed satellite technology that no single CEO can switch off."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Balancing Commercial Contracts with Military Realities in Wartime Satellite Communications",
+        "talking_points": [
+          "Modern warfare requires reliable satellite relays; defense ministries must establish clear, enforceable agreements with commercial aerospace providers.",
+          "Navigating dual-use civilian technologies in wartime requires careful strategic coordination between military commands and private vendors."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Peace Through Strength: Unwavering Satellite Support and Deterrence Against Russian Aggression",
+        "talking_points": [
+          "American aerospace innovation is the backbone of global freedom; we must give our allies the decisive tools they need to win.",
+          "Deterrence requires consistency: any hesitation or communication blackout invites aggression from hostile foreign powers."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335140-10",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "Katie Zachariah: White House Press Secretary wey US President Trump fire - BBC",
+    "source_name": "Google News Politics",
+    "pub_timestamp": 1792235376,
+    "source": "Google News Politics \u2022 Yesterday",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e2/Delphinapterus_leucas_2.jpg/330px-Delphinapterus_leucas_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "White \u2014 Lightest color.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / White",
+    "core_facts": [
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Katie Zachariah: White House Press Secretary wey US President Trump fire.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding India news: CJP founder released a day after detention. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Katie Zachariah: White House Press Secretary wey US President Trump fire. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in India news: CJP founder released a day...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Katie Zachariah: White House Press Sec...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in India news: CJP founder released a day...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Katie Zachariah: White House Press Sec...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in India news: CJP founder released a ...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Katie Zachariah: White House Press ...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
+    "id": "story-1792335237-47",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "A sleeper Senate battleground has turned into a real Republican liability",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792234800,
+    "source": "Politico National \u2022 Yesterday",
+    "image_url": "https://static.politico.com/fb/0e/6f156ed744139f152f52175e7a93/vance-84125.jpg",
+    "caption": "Sen. Roger Marshall, R-Kan., listens as Vice President JD Vance speaks during an event at Webco Manufacturing, Monday, Sept. 14, 2026, in Olathe, Kan.",
+    "credit": "Mark Schiefelbein/AP",
+    "core_facts": [
+      "The newest addition to the Senate map is giving Republicans headaches.",
+      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
+      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "The newest addition to the Senate map is giving Republicans headaches. Wire reporting identified key institutional stakeholders and documented specific operational data.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in A sleeper Senate battleground has turn...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in A sleeper Senate battleground has turn...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in A sleeper Senate battleground has t...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -2394,40 +2478,40 @@
     }
   },
   {
-    "id": "story-1792331876-31",
-    "category": "Science & Tech",
-    "master_category": "Science & Tech",
-    "title": "Margaret Hamilton, software engineer, 1936-2026 - Financial Times",
+    "id": "story-1792335164-20",
+    "category": "National News",
+    "master_category": "National Headlines",
+    "title": "Astronomers say they\u2019ve discovered the first green star - RNZ",
     "source_name": "Google News Science",
-    "pub_timestamp": 1792209667,
+    "pub_timestamp": 1792195526,
     "source": "Google News Science \u2022 Yesterday",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/St._Margaret_of_Antioch.jpg/330px-St._Margaret_of_Antioch.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Margaret \u2014 Female given name.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Margaret",
+    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg/330px-IAU_2006_General_Assembly-_Result_of_the_IAU_Resolution_Votes_%28iau0603g%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "caption": "Astronomer \u2014 Scientist in the field of astronomy.",
+    "credit": "\ud83d\udcf8 Wikimedia Commons / Astronomer",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Margaret Hamilton, software engineer, 1936-2026.",
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Astronomers say they\u2019ve discovered the first green star.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Margaret Hamilton, software engineer, 1936-2026. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Astronomers say they\u2019ve discovered the first green star. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Margaret Hamilton, software engineer, ...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Astronomers say they\u2019ve discovered the...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Margaret Hamilton, software engineer, ...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Astronomers say they\u2019ve discovered the...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Margaret Hamilton, software enginee...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Astronomers say they\u2019ve discovered ...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
@@ -2637,7 +2721,7 @@
     "title": "Dow jumps 150 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates - CNBC",
     "source_name": "Google News Business",
     "pub_timestamp": 1792160400,
-    "source": "Google News Business \u2022 Yesterday",
+    "source": "Google News Business \u2022 2 days ago",
     "image_url": "https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80",
     "caption": "Financial markets rally with upward trending index charts and stock market trading gains.",
     "credit": "\ud83d\udcf8 Wall Street Financial Wire",
@@ -2693,7 +2777,7 @@
     "title": "CoreWeave bond rout tests market's math on AI buildout - Reuters",
     "source_name": "Google News Business",
     "pub_timestamp": 1792159780,
-    "source": "Google News Business \u2022 Yesterday",
+    "source": "Google News Business \u2022 2 days ago",
     "image_url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
     "caption": "Financial market exchange trading floor and electronic index terminals.",
     "credit": "\ud83d\udcf8 Financial Wire Pool",
@@ -2744,7 +2828,7 @@
     "title": "Bystander 'heroically intervened' after three children and teacher killed in US school shooting in Bend, Oregon - BBC",
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792159772,
-    "source": "Google News Top Headlines \u2022 Yesterday",
+    "source": "Google News Top Headlines \u2022 2 days ago",
     "image_url": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
     "caption": "Enterprise technology infrastructure and network servers.",
     "credit": "\ud83d\udcf8 Technology Media Wire",
@@ -2908,9 +2992,9 @@
     "source_name": "Google News Top Headlines",
     "pub_timestamp": 1792153057,
     "source": "Google News Top Headlines \u2022 2 days ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "image_url": "https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Orbital satellite communications array and high-frequency defense telecommunications relay.",
+    "credit": "\ud83d\udcf8 Aerospace Defense Media",
     "neutral_summary": "Trump says Ukraine resuming strikes on Russian oil sites is a \u2018disgrace\u2019. Defense officials, international security experts, and aerospace contractors are evaluating military satellite connectivity, private technology contracts, and frontline communication reliability.",
     "perspectives": {
       "LEFT": {
@@ -3289,6 +3373,48 @@
     ]
   },
   {
+    "id": "story-1792335239-48",
+    "category": "Politics",
+    "master_category": "National Headlines",
+    "title": "Haley Stevens is everywhere \u2014 except on the trail for El-Sayed",
+    "source_name": "Politico National",
+    "pub_timestamp": 1792144500,
+    "source": "Politico National \u2022 2 days ago",
+    "image_url": "https://static.politico.com/71/78/4f600d094e84bf45de84f6457bea/08-04-2026-michigan-stevens-020.jpg",
+    "caption": "Haley Stevens, a Democratic candidate for U.S. Senate in Michigan, speaks with reporters after casting her ballot on primary election day at the Baldwin Public Library in Birmingham, Michigan, on Aug. 4, 2026.",
+    "credit": "Jamie Kelter Davis for POLITICO",
+    "core_facts": [
+      "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same.",
+      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
+      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
+      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
+    ],
+    "neutral_summary": "The former Senate candidate has endorsed her former primary foe \u2014 but is not pushing hard for former backers to do the same. Wire reporting identified key institutional stakeholders and documented specific operational data.",
+    "perspectives": {
+      "LEFT": {
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Haley Stevens is everywhere \u2014 except o...",
+        "talking_points": [
+          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
+          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
+        ]
+      },
+      "CENTER": {
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Haley Stevens is everywhere \u2014 except o...",
+        "talking_points": [
+          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
+          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
+        ]
+      },
+      "RIGHT": {
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Haley Stevens is everywhere \u2014 excep...",
+        "talking_points": [
+          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
+          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
+        ]
+      }
+    }
+  },
+  {
     "id": "story-1792161796-24",
     "category": "Economy & Inflation",
     "title": "IMF chief says AI risks may exceed opportunities without safeguards and ethical framework - Reuters",
@@ -3351,9 +3477,9 @@
     "source_name": "NPR News",
     "pub_timestamp": 1792141200,
     "source": "NPR News \u2022 2 days ago",
-    "image_url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
-    "caption": "Modern medical research and public healthcare facility.",
-    "credit": "\ud83d\udcf8 Health Systems Wire",
+    "image_url": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Major motion picture theatrical cinema and entertainment industry production.",
+    "credit": "\ud83d\udcf8 Entertainment News Wire",
     "neutral_summary": "Relevant authorities, industry stakeholders, and affected communities are evaluating the situation as verified developments unfold. Wire reporting identified key institutional stakeholders and documented specific operational data.",
     "perspectives": {
       "LEFT": {
@@ -3508,48 +3634,6 @@
     ]
   },
   {
-    "id": "story-1792331943-60",
-    "category": "Politics",
-    "master_category": "National Headlines",
-    "title": "Senate Republicans are getting smoked in fundraising",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792125458,
-    "source": "Politico National \u2022 2 days ago",
-    "image_url": "https://static.politico.com/fa/49/84a708c74fe0ae3c99524e8fee91/election-2-26-texas-43186.jpg",
-    "caption": "Democratic Senate candidate James Talarico speaks at a rally on July 13, 2026, in Eagle Pass, Texas.",
-    "credit": "Brenda Baz\u00e1n/AP",
-    "core_facts": [
-      "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months.",
-      "Wire reporting identified key institutional stakeholders and documented specific operational data.",
-      "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "James Talarico alone outraised ten of the top GOP Senate candidates combined over the past three months. Wire reporting identified key institutional stakeholders and documented specific operational data.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Senate Republicans are getting smoked ...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Senate Republicans are getting smoked ...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Senate Republicans are getting smok...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
     "id": "story-1792161794-23",
     "category": "Economy & Inflation",
     "title": "KFC replacing Pepsi with Coca-Cola at 3,700 US restaurants after nearly four decades - Fox Business",
@@ -3604,48 +3688,6 @@
       "Wire reporting identified key institutional stakeholders and documented specific operational data.",
       "Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
     ]
-  },
-  {
-    "id": "story-1792331944-61",
-    "category": "Politics",
-    "master_category": "National Headlines",
-    "title": "Inside the democratic socialists\u2019 plan to shake up Congress",
-    "source_name": "Politico National",
-    "pub_timestamp": 1792123140,
-    "source": "Politico National \u2022 2 days ago",
-    "image_url": "https://cf-images.us-east-1.prod.boltdns.net/v1/static/1155968404/d72ee536-a1de-4f0a-87b2-8198a22b2629/89a75e6d-a81e-4373-bb8d-ae9999a13274/1280x720/match/image.jpg",
-    "caption": "Inside the democratic socialists\u2019 plan to shake up Congress.",
-    "credit": "\ud83d\udcf8 Politico National",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Inside the democratic socialists\u2019 plan to shake up Congress.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Inside the democratic socialists\u2019 plan to shake up Congress. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Inside the democratic socialists\u2019 plan...",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Inside the democratic socialists\u2019 plan...",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Inside the democratic socialists\u2019 p...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
   },
   {
     "id": "story-1792161792-22",
@@ -3704,82 +3746,40 @@
     ]
   },
   {
-    "id": "story-1792331872-28",
+    "id": "story-1792335167-21",
     "category": "Science & Tech",
     "master_category": "Science & Tech",
-    "title": "Photographers Capture \u2018Space Jellyfish\u2019 Left Behind by Rocket Plume - PetaPixel",
+    "title": "28 Miles and Counting: NASA\u2019s Perseverance Rover Sets a Mars Driving Record - The New York Times",
     "source_name": "Google News Science",
-    "pub_timestamp": 1792054268,
-    "source": "Google News Science \u2022 3 days ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Deixados_para_tras.png/330px-Deixados_para_tras.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Left Behind \u2014 Multimedia franchise based on the novels by Tim LaHaye and Jerry B. Jenkins.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Left Behind",
+    "pub_timestamp": 1791854012,
+    "source": "Google News Science \u2022 5 days ago",
+    "image_url": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    "caption": "Deep space observation and advanced astronomical planetary science.",
+    "credit": "\ud83d\udcf8 NASA / Scientific Photo Archive",
     "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Photographers Capture \u2018Space Jellyfish\u2019 Left Behind by Rocket Plume.",
+      "Primary developments confirmed key policy actions and verified stakeholder responses regarding 28 Miles and Counting: NASA\u2019s Perseverance Rover Sets a Mars Driving Record.",
       "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
       "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
       "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
     ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Photographers Capture \u2018Space Jellyfish\u2019 Left Behind by Rocket Plume. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
+    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding 28 Miles and Counting: NASA\u2019s Perseverance Rover Sets a Mars Driving Record. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
     "perspectives": {
       "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Photographers Capture \u2018Space Jellyfish...",
+        "headline_framing": "Prioritizing Public Welfare and Worker Protections in 28 Miles and Counting: NASA\u2019s Persever...",
         "talking_points": [
           "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
           "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
         ]
       },
       "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Photographers Capture \u2018Space Jellyfish...",
+        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in 28 Miles and Counting: NASA\u2019s Persever...",
         "talking_points": [
           "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
           "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
         ]
       },
       "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Photographers Capture \u2018Space Jellyf...",
-        "talking_points": [
-          "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-          "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-      }
-    }
-  },
-  {
-    "id": "story-1792331911-44",
-    "category": "Entertainment",
-    "master_category": "Entertainment",
-    "title": "Shane Gillis Faces Backlash Over \u2018S.N.L.\u2019 Monologue - The New York Times",
-    "source_name": "Google News Entertainment",
-    "pub_timestamp": 1791834544,
-    "source": "Google News Entertainment \u2022 5 days ago",
-    "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Christopher_Walken_-_1984.jpg/330px-Christopher_Walken_-_1984.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "caption": "Monologue \u2014 Speech presented by a single character.",
-    "credit": "\ud83d\udcf8 Wikimedia Commons / Monologue",
-    "core_facts": [
-      "Primary developments confirmed key policy actions and verified stakeholder responses regarding Shane Gillis Faces Backlash Over \u2018S.N.L.\u2019 Monologue.",
-      "Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-      "Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases.",
-      "Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed."
-    ],
-    "neutral_summary": "Primary developments confirmed key policy actions and verified stakeholder responses regarding Shane Gillis Faces Backlash Over \u2018S.N.L.\u2019 Monologue. Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-    "perspectives": {
-      "LEFT": {
-        "headline_framing": "Prioritizing Public Welfare and Worker Protections in Shane Gillis Faces Backlash Over \u2018S.N....",
-        "talking_points": [
-          "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-          "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-      },
-      "CENTER": {
-        "headline_framing": "Pragmatic Implementation and Trade-Off Analysis in Shane Gillis Faces Backlash Over \u2018S.N....",
-        "talking_points": [
-          "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-          "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-      },
-      "RIGHT": {
-        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in Shane Gillis Faces Backlash Over \u2018S...",
+        "headline_framing": "Free Enterprise, Personal Accountability, and Constitutional Order in 28 Miles and Counting: NASA\u2019s Perse...",
         "talking_points": [
           "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
           "We must protect individual liberty and economic freedom from excessive top-down government mandates."
