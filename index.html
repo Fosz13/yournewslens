@@ -792,9 +792,6 @@
         <button type="button" class="cat-pill active" onclick="filterCategory(this, 'All')">
           <span class="cat-icon">🌐</span><span>All Stories</span>
         </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'National')">
-          <span class="cat-icon">🇺🇸</span><span>National</span>
-        </button>
         <button type="button" class="cat-pill" onclick="filterCategory(this, 'Politics')">
           <span class="cat-icon">🏛️</span><span>Politics</span>
         </button>
@@ -822,6 +819,9 @@
         <button type="button" class="cat-pill" onclick="filterCategory(this, 'Border')">
           <span class="cat-icon">🛡️</span><span>Border & Security</span>
         </button>
+        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Crime')">
+          <span class="cat-icon">⚖️</span><span>Crime & Safety</span>
+        </button>
       </div>
     </div>
   </div>
@@ -830,7 +830,7 @@
     <!-- Streamlined Feed with Compact Real Photos -->
     <div id="storiesFeedView" class="feed-container">
 
-        <article class="compact-card" data-category="Health" data-master-category="National Headlines" id="story-npr-sidewalk-sleepers">
+        <article class="compact-card" data-category="Health" data-master-category="Health" id="story-npr-sidewalk-sleepers">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional public hospital medical complex and caregiver reception grounds." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -842,7 +842,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Health</span>
+                <span class="category-tag">Health</span>
               </div>
               <span class="source-tag" data-timestamp="1792230577">NPR News • Yesterday</span>
             </div>
@@ -938,7 +938,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-oj-simpson-case">
+        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" id="story-oj-simpson-case">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oj-simpson-case')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg" alt="O.J. Simpson during legal proceedings in criminal court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -950,7 +950,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Crime & Public Safety</span>
+                <span class="category-tag">Crime & Public Safety</span>
               </div>
               <span class="source-tag" data-timestamp="1792160400">The New York Times • Yesterday</span>
             </div>
@@ -1046,7 +1046,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Politics" data-master-category="National Headlines" id="story-budget-shutdown-deal">
+        <article class="compact-card" data-category="Politics" data-master-category="Politics" id="story-budget-shutdown-deal">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1058,7 +1058,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Politics</span>
+                <span class="category-tag">Politics</span>
               </div>
               <span class="source-tag" data-timestamp="1792159895">Associated Press Congressional • Yesterday</span>
             </div>
@@ -1154,7 +1154,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-ferc-grid-grants">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" id="story-ferc-grid-grants">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ferc-grid-grants')">
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1166,7 +1166,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
+                <span class="category-tag">Energy & Weather</span>
               </div>
               <span class="source-tag" data-timestamp="1792159295">Associated Press Wire • Yesterday</span>
             </div>
@@ -1262,7 +1262,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-pga-saudi-merger">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-pga-saudi-merger">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pga-saudi-merger')">
             <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Professional tournament championship fairway and clubhouse green." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1274,7 +1274,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792158995">Associated Press Sports • Yesterday</span>
             </div>
@@ -1370,7 +1370,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-oregon-school-shooting">
+        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" id="story-oregon-school-shooting">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oregon-school-shooting')">
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Municipal first responders and law enforcement security perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1382,7 +1382,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Crime & Public Safety</span>
+                <span class="category-tag">Crime & Public Safety</span>
               </div>
               <span class="source-tag" data-timestamp="1792157195">CNN • 2 days ago</span>
             </div>
@@ -1478,7 +1478,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-ncaa-revenue-share">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-ncaa-revenue-share">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png" alt="National Collegiate Athletic Association (NCAA) and College Football Playoff." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1490,7 +1490,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792157195">Reuters Sports • 2 days ago</span>
             </div>
@@ -1586,7 +1586,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-fed-rates-steady">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" id="story-fed-rates-steady">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fed-rates-steady')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1598,7 +1598,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
+                <span class="category-tag">Business & Economy</span>
               </div>
               <span class="source-tag" data-timestamp="1792157195">Reuters Financial • 2 days ago</span>
             </div>
@@ -1802,7 +1802,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-nfl-jalen-hurts">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-nfl-jalen-hurts">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg" alt="Philadelphia Eagles quarterback Jalen Hurts." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1814,7 +1814,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792153595">The New York Times • 2 days ago</span>
             </div>
@@ -1910,7 +1910,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-nba-lakers-prep">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-nba-lakers-prep">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-lakers-prep')">
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -1922,7 +1922,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792153595">ESPN Sports • 2 days ago</span>
             </div>
@@ -2018,7 +2018,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-nuclear-modular-compact">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" id="story-nuclear-modular-compact">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
             <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Advanced nuclear energy and clean baseload electrical generation facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2030,7 +2030,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
+                <span class="category-tag">Energy & Weather</span>
               </div>
               <span class="source-tag" data-timestamp="1792149995">Reuters Energy • 2 days ago</span>
             </div>
@@ -2126,7 +2126,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-cfb-playoff-24">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-cfb-playoff-24">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-playoff-24')">
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="NFL stadium under game day floodlights during conference competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2138,7 +2138,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792149995">Yahoo Sports • 2 days ago</span>
             </div>
@@ -2234,7 +2234,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Border & Security" data-master-category="National Headlines" id="story-border-compromise">
+        <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" id="story-border-compromise">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-border-compromise')">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2246,7 +2246,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Border & Security</span>
+                <span class="category-tag">Border & Security</span>
               </div>
               <span class="source-tag" data-timestamp="1792149995">Associated Press Wire • 2 days ago</span>
             </div>
@@ -2450,7 +2450,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Health" data-master-category="National Headlines" id="story-hhs-cash-prices">
+        <article class="compact-card" data-category="Health" data-master-category="Health" id="story-hhs-cash-prices">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-hhs-cash-prices')">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy healthcare complex." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2462,7 +2462,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Health</span>
+                <span class="category-tag">Health</span>
               </div>
               <span class="source-tag" data-timestamp="1792146395">Reuters Health • 2 days ago</span>
             </div>
@@ -2558,7 +2558,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Border & Security" data-master-category="National Headlines" id="story-port-security-fentanyl">
+        <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" id="story-port-security-fentanyl">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-port-security-fentanyl')">
             <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80" alt="Commercial maritime freight shipping container terminal and customs inspection facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2570,7 +2570,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Border & Security</span>
+                <span class="category-tag">Border & Security</span>
               </div>
               <span class="source-tag" data-timestamp="1792146395">Reuters National • 2 days ago</span>
             </div>
@@ -2666,7 +2666,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Health" data-master-category="National Headlines" id="story-medicare-negotiations">
+        <article class="compact-card" data-category="Health" data-master-category="Health" id="story-medicare-negotiations">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-medicare-negotiations')">
             <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Official federal podium and press briefing conference." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -2678,7 +2678,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Health</span>
+                <span class="category-tag">Health</span>
               </div>
               <span class="source-tag" data-timestamp="1792142795">Associated Press Health • 2 days ago</span>
             </div>
@@ -2990,7 +2990,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-tesla-roadster">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" id="story-tesla-roadster">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-tesla-roadster')">
             <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80" alt="Tesla electric performance vehicle and high-technology automotive manufacturing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3002,7 +3002,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
+                <span class="category-tag">Business & Economy</span>
               </div>
               <span class="source-tag" data-timestamp="1792124795">CNBC Business • 2 days ago</span>
             </div>
@@ -3206,7 +3206,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-election-mailings">
+        <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" id="story-election-mailings">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-election-mailings')">
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Federal law enforcement and postal screening security operations under active investigation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3218,7 +3218,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Crime & Public Safety</span>
+                <span class="category-tag">Crime & Public Safety</span>
               </div>
               <span class="source-tag" data-timestamp="1792117595">NPR News • 2 days ago</span>
             </div>
@@ -3314,7 +3314,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="National Headlines" id="story-dodgers-brewers-nlcs">
+        <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-dodgers-brewers-nlcs">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">
             <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80" alt="Major League Baseball postseason championship ballpark field and diamond." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3326,7 +3326,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Sports</span>
+                <span class="category-tag">Sports</span>
               </div>
               <span class="source-tag" data-timestamp="1792113995">ESPN Sports • 2 days ago</span>
             </div>
@@ -3422,7 +3422,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-dow-nasdaq-ai-rotation">
+        <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" id="story-dow-nasdaq-ai-rotation">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')">
             <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets rally with upward trending index charts and stock market trading gains." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3434,7 +3434,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Business & Economy</span>
+                <span class="category-tag">Business & Economy</span>
               </div>
               <span class="source-tag" data-timestamp="1729077600">CNBC Business • 732 days ago</span>
             </div>
@@ -3530,7 +3530,7 @@
           </div>
         </article>
 
-        <article class="compact-card" data-category="Energy & Weather" data-master-category="National Headlines" id="story-weather-power-outage-pacific">
+        <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" id="story-weather-power-outage-pacific">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-weather-power-outage-pacific')">
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe weather system with high winds and emergency utility grid repair operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
@@ -3542,7 +3542,7 @@
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="master-tag">National</span><span class="category-tag">Energy & Weather</span>
+                <span class="category-tag">Energy & Weather</span>
               </div>
               <span class="source-tag" data-timestamp="1729074000">Associated Press • 732 days ago</span>
             </div>
@@ -4314,19 +4314,28 @@
         if (key === 'all') {
           match = true;
         } else if (key === 'national') {
-          match = (masterCat.indexOf('national') !== -1 || cat.indexOf('sport') !== -1 || cat.indexOf('politic') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('business') !== -1 || cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('health') !== -1 || cat.indexOf('border') !== -1 || cat.indexOf('crime') !== -1);
-        } else if (key === 'world') {
-          match = (masterCat.indexOf('world') !== -1 || cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1);
+          // Strictly filter for National News only: never include Sports, Tech, Business, etc.
+          match = (cat === 'national news' || cat === 'national' || cat === 'us news' || (masterCat === 'national news' && cat.indexOf('sport') === -1 && cat.indexOf('politic') === -1 && cat.indexOf('business') === -1 && cat.indexOf('energy') === -1 && cat.indexOf('health') === -1));
+        } else if (key === 'politics') {
+          match = (cat.indexOf('politic') !== -1 || masterCat.indexOf('politic') !== -1);
+        } else if (key === 'sports') {
+          match = (cat.indexOf('sport') !== -1 || masterCat.indexOf('sport') !== -1);
         } else if (key === 'business') {
           match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
         } else if (key === 'energy') {
           match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
+        } else if (key === 'health') {
+          match = (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1);
         } else if (key === 'tech') {
           match = (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1);
+        } else if (key === 'world') {
+          match = (cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1 || masterCat.indexOf('world') !== -1);
+        } else if (key === 'entertainment') {
+          match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1 || masterCat.indexOf('entertain') !== -1);
         } else if (key === 'border') {
           match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
-        } else if (key === 'entertainment') {
-          match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1);
+        } else if (key === 'crime') {
+          match = (cat.indexOf('crime') !== -1 || cat.indexOf('safety') !== -1 || cat.indexOf('law') !== -1 || cat.indexOf('court') !== -1);
         } else {
           match = (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1);
         }
@@ -4364,13 +4373,7 @@
         var source = story.source || 'Associated Press Wire';
         var pub_ts = story.pub_timestamp || '';
 
-        var displayMaster = (masterCat.toLowerCase().indexOf('national') !== -1) ? 'National' : masterCat;
-        var tagsHtml = '';
-        if (masterCat.toLowerCase() === cat.toLowerCase()) {
-          tagsHtml = '<span class="category-tag">' + cat + '</span>';
-        } else {
-          tagsHtml = '<span class="master-tag">' + displayMaster + '</span><span class="category-tag">' + cat + '</span>';
-        }
+        var tagsHtml = '<span class="category-tag">' + cat + '</span>';
 
         html += '<article class="compact-card" data-category="' + cat + '" data-master-category="' + masterCat + '" id="' + sId + '">';
         html += '  <div class="hero-image-wrap" onclick="toggleStoryDetails(&quot;' + sId + '&quot;)">';

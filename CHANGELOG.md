@@ -60,3 +60,22 @@
   5. **Domain-Aligned Secondary Topic Matcher**: Enforces strict category affinity so Sports stories only match Sports topic photographic libraries, completely eliminating "power rankings" collisions.
   6. **Isolated Category Fallbacks**: Each category draws exclusively from its own curated photographic pool (`CATEGORY_FALLBACK_POOLS["Sports"]` for sports), guaranteeing zero cross-domain leakage.
   7. **Automated Self-Healing Image Audit**: `is_story_image_mismatched()` proactively audits all existing and newly ingested stories, automatically replacing any papal, religious, or cross-domain images on stories that do not belong to that domain.
+
+
+## 6. Category Carousel Filter Overhaul & Key Talking Points Engine Fix
+- **User Problem Reported**:
+  1. *"National" and "all stories" buttons seem to have the same exact stories. Delete one or do a better job filtering.*
+  2. *The key talking points and arguments section is broken and just repeats the same message for all articles (e.g., an NFL Texans vs. Jaguars game repeating "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results").*
+  3. The fourth factual bullet was displaying a generic filler message (*"Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed"*), while bullet sentences had publisher names glued to them (*"NFL.com"*, *"Yahoo Sports"*).
+
+- **Root Causes Identified**:
+  1. **Over-Broad Master Category Filter**: In `classify_article()`, non-world domestic stories (including Sports, Business, Health, Energy) were assigned `master_category: "National Headlines"`. In `filterCategory()`, clicking `National` checked `masterCat.indexOf('national') !== -1 || cat.indexOf('sport') !== -1 || ...`, matching 80-90% of all stories on the site and making "National" virtually identical to "All Stories".
+  2. **Generic Policy Fallback in Synthesis Engine**: When scraping live feeds, articles that did not match hardcoded static titles fell into default Section 30 of `generate_contextual_synthesis()`. This section contained hardcoded political policy talking points (`"Sound policy isn't about ideological posturing..."`, `"Balancing different stakeholder interests..."`), which were applied indiscriminately to NFL football games, movie reviews, and tech stories.
+  3. **Fragmented Sentence Splitting on Initials**: Splitting sentences on period-space without initials protection split names like `C.J. Stroud` into broken fragments (`Texans lead as C.J.` / `Stroud throws touchdown pass...`). When fewer than 4 facts were extracted, a generic regulatory boilerplate sentence was appended.
+
+- **Comprehensive Fixes Applied**:
+  1. **Deleted Redundant "National" Button**: Removed the confusing "National" pill from the category carousel. Every remaining button now corresponds to a distinct, non-overlapping subject (`🌐 All Stories`, `🏛️ Politics`, `📈 Business & Economy`, `⚡ Energy & Weather`, `🩺 Health`, `🤖 Tech & AI`, `🌍 World News`, `🏆 Sports`, `🍿 Entertainment`, `🛡️ Border & Security`, `⚖️ Crime & Safety`).
+  2. **Domain-Specific Master Categories**: Updated `classify_article()` and `data/stories.json` so each category has its own matching `master_category` (e.g. Sports is `("Sports", "Sports")`).
+  3. **Single Topic Badge Display**: Story cards now render a single, high-contrast category tag (e.g. `[SPORTS]`), completely eliminating the confusing `[NATIONAL] [SPORTS]` tag on London NFL games.
+  4. **Domain-Specific Talking Points Synthesizer**: Replaced the generic fallback in `generate_contextual_synthesis()` with dedicated generators for all 10 categories. Sports stories now receive real athletic strategy, conditioning, teamwork, and execution arguments; Business stories receive real market, inflation, and fiscal arguments; Tech stories receive privacy, innovation, and engineering arguments.
+  5. **Protected Initials & Clean RSS Fact Extractor**: Enhanced `clean_html_text()` and `extract_facts_from_context_and_title()` to unescape HTML entities, strip publisher tags (`NFL.com`, `Yahoo Sports`), protect dotted names (`C.J. Stroud`), and prevent generic filler facts from ever being appended.

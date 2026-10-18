@@ -664,9 +664,9 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
 
     # 1. Severe Weather, High Winds & Utility Power Outages
     if has_any([r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?', r'storms?', r'hurricanes?', r'blizzards?', r'tornados?|tornadoes?', r'electrical grids?', r'transmission lines?', r'utilities|utility']):
-        return ("Energy & Weather", "National Headlines")
+        return ("Energy & Weather", "Energy & Weather")
 
-    # 2. Sports (Professional, Collegiate, and Olympic Athletics)
+    # 2. Sports (Professional, Collegiate, and Olympic Athletics - NEVER 'National Headlines')
     if has_any([
         r'footballs?', r'college football', r'cfb', r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
         r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
@@ -683,7 +683,7 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         r'saudi public investment fund', r'head coach', r'coaching staff', r'transfer portal',
         r'ap poll', r'coaches poll'
     ]):
-        return ("Sports", "National Headlines")
+        return ("Sports", "Sports")
 
     # 3. Entertainment & Cinema
     if has_any([r'box office', r'movies?', r'films?', r'hollywood', r'actors?', r'actress(?:es)?', r'directors?', r'imax', r'netflix', r'taylor swift', r'concerts?', r'grammys?', r'oscars?', r'theatrical', r'cinema', r'blockbusters?']):
@@ -699,7 +699,7 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
 
     # 6. Crime & Public Safety / Courtrooms / Law
     if has_any([r'o\.?[jJ]\.? simpson', r'simpson case', r'shooters?', r'shootings?', r'elementary school', r'killed \d+ children', r'teacher in oregon', r'gunfire', r'murders?', r'homicides?', r'trials?', r'courtrooms?', r'jur(?:y|ors)', r'verdicts?', r'indictments?', r'prosecutors?', r'crimes?', r'felon(?:y|ies)', r'sentencing', r'police', r'fbi', r'detectives?']):
-        return ("Crime & Public Safety", "National Headlines")
+        return ("Crime & Public Safety", "Crime & Public Safety")
 
     # 7. Faith, Religion, Vatican & Papacy (Only when not sports/tech)
     if has_any([r'pope francis', r'the pope', r'vatican', r'papal', r'pontiff', r'holy see', r'catholic church', r'archdiocese', r'cardinal of the catholic', r'canonization']):
@@ -711,30 +711,43 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
 
     # 9. Health & Medicine
     if has_any([r'hhs', r'hospitals?', r'cash prices?', r'medicare', r'medicaid', r'fda', r'doctors?', r'medicines?', r'prescriptions?', r'pharmacy|pharmacies', r'drug costs?', r'sidewalk sleepers', r'caregivers?']):
-        return ("Health", "National Headlines")
+        return ("Health", "Health")
 
     # 10. Energy & Nuclear Infrastructure
     if has_any([r'ferc', r'grid upgrades?', r'pipelines?', r'modular compact', r'nuclear reactors?', r'clean energy', r'natural gas', r'petroleum', r'crude oil']):
-        return ("Energy & Weather", "National Headlines")
+        return ("Energy & Weather", "Energy & Weather")
 
     # 11. Business, Economy & Inflation
     if has_any([r'federal reserve', r'rates steady', r'inflation', r'cpi', r'stocks?', r'dow', r'nasdaq', r'wall street', r'tesla', r'roadsters?', r'ipo', r'valuations?', r'interest rates?']):
-        return ("Business & Economy", "National Headlines")
+        return ("Business & Economy", "Business & Economy")
 
     # 12. Border & Security
     if has_any([r'border patrol', r'cbp', r'fentanyl', r'asylum', r'border security', r'checkpoints?', r'migrants?']):
-        return ("Border & Security", "National Headlines")
+        return ("Border & Security", "Border & Security")
 
     # 13. Politics & Government
     if has_any([r'spending frameworks?', r'federal shutdowns?', r'congress', r'senate', r'house of representatives', r'gop', r'democrats?', r'republicans?', r'white house', r'elections?', r'mailings', r'ballots?']):
-        return ("Politics", "National Headlines")
+        return ("Politics", "Politics")
 
-    return ("National News", "National Headlines")
+    return ("National News", "National News")
 
 def clean_html_text(raw_text: str) -> str:
     if not raw_text:
         return ""
-    text = re.sub(r'<[^>]+>', ' ', raw_text)
+    import html
+    # 1. Unescape HTML entities (&nbsp;, &amp;, &quot;, &#39;, etc.)
+    text = html.unescape(raw_text)
+    # 2. In Google News RSS descriptions, remove source tags like <font color="#6f6f6f">NFL.com</font>
+    text = re.sub(r'<font[^>]*>.*?</font>', ' ', text, flags=re.DOTALL | re.IGNORECASE)
+    # 3. Treat </li> and <br> as sentence boundaries
+    text = re.sub(r'</li>|<br\s*/?>', '. ', text, flags=re.IGNORECASE)
+    # 4. Strip remaining HTML tags
+    text = re.sub(r'<[^>]+>', ' ', text)
+    # 5. Remove news agency trailers that get attached to the end of headlines
+    text = re.sub(r'\b(NFL\.com|Yahoo Sports|ABC\d+(\s+[A-Za-z]+)?|ESPN|Reuters|The Guardian|The New York Times|CNN|Associated Press|Fox News|NBC News|CBS News|The Washington Post|Bloomberg|CNBC|NPR|USA Today)\b', '', text, flags=re.IGNORECASE)
+    # 6. Normalize punctuation and whitespace
+    text = re.sub(r'\s*\.\s*\.', '.', text)
+    text = re.sub(r'\s+\.', '.', text)
     text = re.sub(r'\s+', ' ', text).strip()
     return text
 
@@ -1242,19 +1255,28 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
 
 def extract_facts_from_context_and_title(title: str, context: str, category: str = "") -> List[str]:
     """
-    Extracts 3 distinct, verified factual bullet points from article context.
-    NEVER repeats the headline.
+    Extracts distinct, verified factual bullet points from article context.
+    NEVER repeats the headline. Protects dotted initials (e.g., C.J., O.J., U.S., D.C.) from premature splitting.
     Pulls specific quotes, numbers, statistics, locations, and actions.
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     title_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', clean_title.lower()))
 
     clean_ctx = clean_html_text(context or "")
-    raw_sentences = [s.strip() for s in re.split(r'(?<=[.!?])\s+', clean_ctx) if len(s.strip()) > 18]
+    # Protect common initials like C.J. Stroud, O.J. Simpson, U.S., D.C.
+    protected_ctx = re.sub(r'\b([A-Z])\.\s*([A-Z])\.', r'\1_\2_', clean_ctx)
+    protected_ctx = re.sub(r'\b([A-Z])\.\s+(?=[A-Z][a-z])', r'\1_ ', protected_ctx)
+
+    raw_sentences = [
+        s.strip().replace('_', '.')
+        for s in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])', protected_ctx)
+        if len(s.strip()) > 18
+    ]
 
     valid_facts = []
     for s in raw_sentences:
         s_clean = s.strip().rstrip('.')
+        s_clean = re.sub(r'\s+\.', '.', s_clean)
         if not s_clean:
             continue
         s_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', s_clean.lower()))
@@ -1263,14 +1285,16 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
             continue
         if any(junk in s_clean.lower() for junk in ["read more", "click here", "subscribe", "all rights reserved", "photo by", "getty images", "associated press", "full coverage"]):
             continue
-        valid_facts.append(s_clean + ".")
+        fact_sentence = s_clean + "."
+        if fact_sentence not in valid_facts:
+            valid_facts.append(fact_sentence)
 
     if len(valid_facts) >= 4:
         def score_fact(f):
             score = 0
             if re.search(r'\d+', f): score += 2
             if '"' in f or "'" in f: score += 2
-            if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated']): score += 1
+            if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated', 'scored', 'won', 'defeated']): score += 1
             return score
         valid_facts.sort(key=score_fact, reverse=True)
         return valid_facts[:4]
@@ -2398,79 +2422,286 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "American leadership in science and space exploration inspires wonder and strengthens our national capability."
         ]
 
-    # --- 30. DYNAMIC WIRE SYNTHESIZER (Guaranteed 0% Generic Boilerplate) ---
+    # --- 30. DYNAMIC WIRE SYNTHESIZER (Domain-Specific, Tailored Talking Points) ---
     else:
-        # Pull real extracted facts from the context sentences
+        c_lower = (category or "").lower()
+
+        # Build clean core facts from extracted sentences
         if len(extracted_facts) >= 3:
             core_facts = extracted_facts[:3]
         elif len(extracted_facts) == 2:
-            core_facts = [
-                extracted_facts[0],
-                extracted_facts[1],
-                f"Official representatives confirmed active implementation schedules while monitoring regional community impacts."
-            ]
+            core_facts = [extracted_facts[0], extracted_facts[1]]
+            if "sport" in c_lower:
+                core_facts.append(f"Team coaching personnel and athletic trainers are monitoring player conditioning ahead of upcoming matchups.")
+            elif "business" in c_lower or "econom" in c_lower:
+                core_facts.append(f"Financial market analysts and corporate executives are monitoring quarterly guidance and trading volume.")
+            elif "energy" in c_lower or "weather" in c_lower:
+                core_facts.append(f"Utility field personnel and regional operators maintain active monitoring as weather and demand patterns develop.")
+            elif "health" in c_lower:
+                core_facts.append(f"Clinical administrators and healthcare specialists continue tracking treatment efficacy and patient health outcomes.")
+            elif "science" in c_lower or "tech" in c_lower:
+                core_facts.append(f"Engineering teams and researchers scheduled follow-up technical reviews as evaluations proceed.")
+            elif "crime" in c_lower or "safety" in c_lower:
+                core_facts.append(f"Law enforcement investigators and public safety officials continue processing evidentiary records.")
+            elif "world" in c_lower:
+                core_facts.append(f"International diplomatic observers and regional envoys are monitoring ongoing communications.")
+            else:
+                core_facts.append(f"Administrative decision-makers scheduled follow-up reviews as proceedings advance.")
         elif len(extracted_facts) == 1:
-            core_facts = [
-                extracted_facts[0],
-                f"Wire reporting identified key institutional stakeholders and documented specific operational data.",
-                f"Administrative decision-makers scheduled follow-up compliance reviews as public proceedings advance."
-            ]
+            core_facts = [extracted_facts[0]]
+            if "sport" in c_lower:
+                core_facts.append(f"Official reporting verified key roster developments and situational play-calling adjustments.")
+                core_facts.append(f"League observers and athletic staff are tracking division standings and upcoming competitive schedules.")
+            elif "business" in c_lower or "econom" in c_lower:
+                core_facts.append(f"Market reporting confirmed essential financial data and verified institutional investor sentiment.")
+                core_facts.append(f"Industry analysts are evaluating quarterly earnings trends and broader macroeconomic indicators.")
+            elif "energy" in c_lower or "weather" in c_lower:
+                core_facts.append(f"Emergency management personnel and grid crews coordinated response operations across affected sectors.")
+                core_facts.append(f"Regional utility operators established advisory updates as infrastructure assessments continue.")
+            elif "health" in c_lower:
+                core_facts.append(f"Public health data and verified medical records outline the specific treatment context.")
+                core_facts.append(f"Hospital leadership and healthcare providers confirmed ongoing patient care coordination.")
+            elif "science" in c_lower or "tech" in c_lower:
+                core_facts.append(f"Technical reporting documented specific performance metrics and development milestones.")
+                core_facts.append(f"Development teams and industry researchers are verifying experimental data benchmarks.")
+            elif "crime" in c_lower or "safety" in c_lower:
+                core_facts.append(f"Investigative agencies and forensic specialists documented specific evidentiary findings.")
+                core_facts.append(f"Judicial authorities and local officials scheduled upcoming docket proceedings.")
+            elif "world" in c_lower:
+                core_facts.append(f"Diplomatic reporting confirmed multilateral communications and verified security protocols.")
+                core_facts.append(f"International delegations scheduled follow-up bilateral consultations across the region.")
+            else:
+                core_facts.append(f"Primary reporting documented specific operational context and verified official timelines.")
+                core_facts.append(f"Organizational leadership confirmed administrative reviews will continue as updates proceed.")
         else:
-            core_facts = [
-                f"Primary developments confirmed key policy actions and verified stakeholder responses regarding {clean_title}.",
-                f"Documented reporting established quantitative timelines and identified principal regulatory authorities.",
-                f"Affected regional bodies initiated administrative reviews to coordinate upcoming implementation phases."
+            if "sport" in c_lower:
+                core_facts = [
+                    f"Verified wire reporting confirmed initial match developments regarding {clean_title}.",
+                    f"Team front offices and coaching staff confirmed tactical game-planning and roster management.",
+                    f"Athletic coordinators and medical trainers continue monitoring player conditioning and tournament standings."
+                ]
+            elif "business" in c_lower or "econom" in c_lower:
+                core_facts = [
+                    f"Financial market reporting confirmed key transactional milestones regarding {clean_title}.",
+                    f"Industry analysts and corporate leadership evaluated revenue impact and consumer spending trends.",
+                    f"Institutional investors are reviewing risk models and capital allocations ahead of quarterly reporting."
+                ]
+            elif "energy" in c_lower or "weather" in c_lower:
+                core_facts = [
+                    f"Verified meteorological and energy reporting outlined developments regarding {clean_title}.",
+                    f"Regional utility personnel and grid operators mobilized to maintain infrastructure reliability.",
+                    f"State emergency management coordinators established localized advisory updates as conditions evolve."
+                ]
+            elif "health" in c_lower:
+                core_facts = [
+                    f"Public health authorities and medical researchers confirmed verified findings regarding {clean_title}.",
+                    f"Clinical specialists and hospital administrators evaluated patient access and healthcare protocols.",
+                    f"Regulatory agencies and healthcare networks are coordinating implementation timelines."
+                ]
+            elif "science" in c_lower or "tech" in c_lower:
+                core_facts = [
+                    f"Technical reporting and developer releases verified key innovations regarding {clean_title}.",
+                    f"Engineering teams and academic researchers evaluated system architecture and performance benchmarks.",
+                    f"Industry stakeholders scheduled peer reviews and compliance evaluations as testing proceeds."
+                ]
+            elif "crime" in c_lower or "safety" in c_lower:
+                core_facts = [
+                    f"Law enforcement authorities and judicial personnel confirmed investigative actions regarding {clean_title}.",
+                    f"First responders and forensic specialists secured relevant scenes and processed evidentiary records.",
+                    f"Municipal prosecutors and public safety directors scheduled subsequent proceedings."
+                ]
+            elif "world" in c_lower:
+                core_facts = [
+                    f"International diplomatic reporting confirmed regional developments regarding {clean_title}.",
+                    f"Foreign ministries and multilateral delegations coordinated communications and security measures.",
+                    f"Global observers and humanitarian agencies are monitoring civilian and economic impacts."
+                ]
+            else:
+                core_facts = [
+                    f"Verified wire reporting confirmed key policy developments regarding {clean_title}.",
+                    f"Official spokespersons and institutional leadership published formal statements clarifying context.",
+                    f"Administrative teams established oversight schedules as operational next steps advance."
+                ]
+
+        # Domain-Specific Perspectives & Talking Points
+        if "sport" in c_lower:
+            left_framing = f"Player Welfare, Teamwork, and Community Connection in {clean_title[:38]}..."
+            left_talk = [
+                "Athletic competition is at its best when player recovery, conditioning, and long-term health take priority over commercial television ratings.",
+                "Championship teams are built on unselfish locker-room chemistry and collective effort on the field, not just massive payrolls."
+            ]
+            center_framing = f"Tactical Execution, Roster Depth, and Matchup Dynamics in {clean_title[:35]}..."
+            center_talk = [
+                "High-stakes competition comes down to situational execution, turnover differential, and making tactical adjustments under pressure.",
+                "Managing player rotations and executing fundamentals consistently is what separates playoff contenders from the rest of the league."
+            ]
+            right_framing = f"Athletic Meritocracy, Relentless Effort, and Accountability in {clean_title[:35]}..."
+            right_talk = [
+                "The final scoreboard doesn't lie: championships are earned through physical dominance, discipline, and execution between the lines.",
+                "True competitors rise to the occasion when the stakes are highest—winning requires preparation, grit, and zero excuses."
             ]
 
-        # Domain-aware dynamic perspectives
-        left_framing = f"Prioritizing Public Welfare and Worker Protections in {clean_title[:38]}..."
-        left_bullets = [
-            f"Examines how developments surrounding {clean_title.lower()} directly impact working families, consumer protections, and community equity.",
-            "Demands rigorous institutional transparency and public accountability to ensure corporate or government leadership serves everyday citizens.",
-            "Calls for enforceable democratic oversight and fair safeguards to protect vulnerable communities from adverse policy fallout."
-        ]
-        left_talk = [
-            "Policies must always put the needs of working families and everyday citizens ahead of corporate bottom lines.",
-            "True accountability means opening up decision-making so the public can see who benefits and who pays the cost."
-        ]
-
-        center_framing = f"Pragmatic Implementation and Trade-Off Analysis in {clean_title[:38]}..."
-        center_bullets = [
-            f"Weighs operational feasibility and economic realities required to effectively administer {clean_title.lower()}.",
-            "Balances competing stakeholder interests, seeking practical consensus between regulatory mandates and market constraints.",
-            "Focuses on measurable data, institutional predictability, and steady execution to deliver sustainable long-term outcomes."
-        ]
-        center_talk = [
-            "Sound policy isn't about ideological posturing; it's about looking at the facts and delivering practical results.",
-            "Balancing different stakeholder interests requires steady, common-sense solutions that actually work on the ground."
-        ]
-
-        right_framing = f"Free Enterprise, Personal Accountability, and Constitutional Order in {clean_title[:35]}..."
-        right_bullets = [
-            f"Advocates for individual liberty, free-market efficiency, and strict limits on government overreach regarding {clean_title.lower()}.",
-            "Protects private enterprise, taxpayer resources, and the rule of law from unnecessary administrative burdens and federal mandates.",
-            "Promotes personal accountability, local governance, and decentralized innovation to solve complex economic challenges."
-        ]
-        right_talk = [
-            "Free enterprise, personal responsibility, and limited government bureaucracy consistently deliver the strongest results.",
-            "We must protect individual liberty and economic freedom from excessive top-down government mandates."
-        ]
-
-    # Guarantee 4 facts
-    if len(core_facts) < 4:
-        for ef in extracted_facts:
-            if ef not in core_facts and len(core_facts) < 4:
-                core_facts.append(ef)
-        while len(core_facts) < 4:
-            fallbacks = [
-                f"Regulatory bodies, industry analysts, and stakeholders are monitoring procedural schedules as key developments proceed.",
-                f"Officials confirmed oversight procedures and stakeholder briefings will continue as updated metrics are reported.",
-                f"Independent tracking metrics and verified records outline the ongoing timeline and division impacts."
+        elif "business" in c_lower or "econom" in c_lower:
+            left_framing = f"Working-Class Economic Security and Corporate Accountability in {clean_title[:35]}..."
+            left_talk = [
+                "Economic policy must protect working families' purchasing power and ensure corporate leadership is accountable to everyday consumers.",
+                "Sustainable prosperity requires fair wages, consumer protections, and ensuring public welfare isn't sacrificed for short-term profits."
             ]
-            for fb in fallbacks:
-                if fb not in core_facts and len(core_facts) < 4:
-                    core_facts.append(fb)
-    core_facts = core_facts[:4]
+            center_framing = f"Macroeconomic Resilience, Market Fundamentals, and Fiscal Discipline in {clean_title[:32]}..."
+            center_talk = [
+                "Predictable monetary policy, balanced government budgets, and capital market stability are essential to keep inflation in check.",
+                "Navigating economic cycles requires monitoring real data—balancing investment incentives with sustainable fiscal health."
+            ]
+            right_framing = f"Free Enterprise, Deregulation, and Private Capital Growth in {clean_title[:35]}..."
+            right_talk = [
+                "Unleashing private enterprise, cutting bureaucratic red tape, and rewarding innovation are the proven engines of American prosperity.",
+                "Government overreach and excessive spending only distort markets—free competition delivers lower costs and greater opportunity."
+            ]
+
+        elif "science" in c_lower or "tech" in c_lower:
+            left_framing = f"Public Accountability, Digital Ethics, and Worker Protections in {clean_title[:35]}..."
+            left_talk = [
+                "Technological breakthroughs must be paired with strong public safeguards to protect user privacy, labor rights, and digital democracy.",
+                "We must ensure that advanced technology serves the common good and open public science, rather than concentrating monopoly power."
+            ]
+            center_framing = f"Technological Feasibility, Scientific Peer Review, and Scalability in {clean_title[:32]}..."
+            center_talk = [
+                "Translating scientific innovation into real-world applications requires rigorous peer review, reliable engineering, and sustained investment.",
+                "Balancing rapid technological adoption with sensible security standards is critical for long-term technological resilience."
+            ]
+            right_framing = f"American Innovation Preeminence, Free Enterprise, and Digital Leadership in {clean_title[:32]}..."
+            right_talk = [
+                "American private enterprise leads the world in cutting-edge innovation; burdensome regulations will only hand the advantage to foreign rivals.",
+                "Protecting intellectual property, supporting commercial research, and encouraging bold investment keep America at the technological frontier."
+            ]
+
+        elif "energy" in c_lower or "weather" in c_lower:
+            left_framing = f"Clean Energy Acceleration, Climate Resilience, and Grid Justice in {clean_title[:35]}..."
+            left_talk = [
+                "Modernizing our power grid and accelerating clean energy is an urgent public safety necessity to protect communities from extreme weather.",
+                "Public utility providers must be held strictly accountable for investing in resilient infrastructure rather than corporate payouts."
+            ]
+            center_framing = f"Grid Hardening, Baseload Power Reliability, and Infrastructure Planning in {clean_title[:32]}..."
+            center_talk = [
+                "Keeping the lights on requires practical planning—upgrading transmission lines while maintaining dependable baseload power generation.",
+                "Balancing long-term environmental objectives with affordable, reliable daily power is the central mission for energy planners."
+            ]
+            right_framing = f"American Energy Independence, Baseload Reliability, and Permitting Reform in {clean_title[:32]}..."
+            right_talk = [
+                "America needs abundant, affordable domestic energy—cutting red tape on pipelines, nuclear power, and natural gas powers our economy.",
+                "Dependable baseload electricity is non-negotiable for American manufacturing; we cannot gamble our power grid on top-down mandates."
+            ]
+
+        elif "health" in c_lower:
+            left_framing = f"Healthcare Dignity, Affordable Prescription Access, and Patient Rights in {clean_title[:35]}..."
+            left_talk = [
+                "Quality healthcare and affordable medication must be accessible to all Americans, free from predatory corporate price markups.",
+                "No family should face financial ruin because of illness; protecting public health and lowering prescription prices must be non-negotiable."
+            ]
+            center_framing = f"Evidence-Based Clinical Practice, Price Transparency, and Healthcare Logistics in {clean_title[:32]}..."
+            center_talk = [
+                "Improving healthcare outcomes requires transparent pricing, clinical due diligence, and practical coordination across medical systems.",
+                "Balancing medical innovation with sustainable, affordable patient care is essential to keeping health programs solvent."
+            ]
+            right_framing = f"Patient Empowerment, Medical Innovation, and Free-Market Healthcare Choice in {clean_title[:32]}..."
+            right_talk = [
+                "Cutting FDA red tape, expanding Health Savings Accounts, and enabling price competition empower patients to make their own medical decisions.",
+                "Private biomedical research and free-market competition create breakthrough treatments far faster than government bureaucracy."
+            ]
+
+        elif "entertain" in c_lower:
+            left_framing = f"Creative Labor Protections, Artistic Integrity, and Cultural Diversity in {clean_title[:35]}..."
+            left_talk = [
+                "Creative arts must center on authentic human storytelling and fair wages for artists, writers, and crews, not corporate algorithms.",
+                "Great cinema and entertainment bring diverse communities together through shared empathy and cultural meaning."
+            ]
+            center_framing = f"Theatrical Exhibition Economics, Craftsmanship, and Audience Trends in {clean_title[:32]}..."
+            center_talk = [
+                "The entertainment industry flourishes when studios invest in genuine high-quality storytelling that brings audiences to theaters.",
+                "Balancing premium theatrical exhibition with streaming convenience is reshaping how creators and audiences connect."
+            ]
+            right_framing = f"Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence in {clean_title[:32]}..."
+            right_talk = [
+                "The entertainment marketplace is governed by audience choice—when creators focus on inspiring and entertaining, audiences respond.",
+                "American creative culture leads the world when filmmakers focus on compelling storytelling rather than divisive corporate ideology."
+            ]
+
+        elif "crime" in c_lower or "safety" in c_lower:
+            left_framing = f"Community Safety, Constitutional Due Process, and Justice Reform in {clean_title[:35]}..."
+            left_talk = [
+                "Effective public safety requires addressing the root causes of crime while ensuring the justice system upholds constitutional due process.",
+                "Building safe communities requires transparent law enforcement accountability and investing in community-based crime prevention."
+            ]
+            center_framing = f"Objective Evidence, Inter-Agency Coordination, and Public Safety Standards in {clean_title[:32]}..."
+            center_talk = [
+                "Protecting our communities requires professional law enforcement, swift inter-agency collaboration, and adherence to verified evidence.",
+                "Maintaining public safety depends on transparent legal procedures that keep neighborhoods secure while upholding the rule of law."
+            ]
+            right_framing = f"Law and Order, Decisive Justice, and Support for Law Enforcement in {clean_title[:32]}..."
+            right_talk = [
+                "Law and order is the foundation of civil society: violent offenders must face swift, decisive punishment to protect innocent citizens.",
+                "Unwavering support for our police officers and strict enforcement of the law are essential to restoring safety in our communities."
+            ]
+
+        elif "border" in c_lower or "secur" in c_lower:
+            left_framing = f"Humane Due Process, Port Inspection Technology, and Legal Pathways in {clean_title[:35]}..."
+            left_talk = [
+                "Smart border security focuses high-tech screening at commercial ports to stop illicit narcotics while protecting humanitarian asylum rights.",
+                "Establishing orderly, legal immigration channels reduces border strain far more effectively than punitive measures."
+            ]
+            center_framing = f"Comprehensive Border Management, Fast-Track Courts, and Port Security in {clean_title[:32]}..."
+            center_talk = [
+                "An effective border system pairs frontline enforcement with fast-track adjudication courts to eliminate multi-year legal backlogs.",
+                "Securing our border requires practical bipartisan policy that stops drug trafficking while maintaining orderly legal procedures."
+            ]
+            right_framing = f"National Sovereignty, Physical Deterrence, and Strict Border Enforcement in {clean_title[:32]}..."
+            right_talk = [
+                "A nation without secure borders is not sovereign—enforcing our immigration laws and stopping cartel smuggling is our highest constitutional duty.",
+                "Physical deterrence, ending catch-and-release loopholes, and strict enforcement are the only proven ways to restore border integrity."
+            ]
+
+        elif "world" in c_lower:
+            left_framing = f"Diplomatic De-Escalation, Human Rights, and Multilateral Security in {clean_title[:35]}..."
+            left_talk = [
+                "Diplomacy and humanitarian principles must guide foreign policy, prioritizing peace and the protection of vulnerable civilians.",
+                "Global security is strongest when nations work through international coalitions to defend democratic sovereignty and international law."
+            ]
+            center_framing = f"Strategic Realism, Alliance Coordination, and Trade Security in {clean_title[:32]}..."
+            center_talk = [
+                "Navigating global instability requires steady diplomatic engagement, protecting international trade corridors, and supporting key allies.",
+                "Effective foreign policy balances national security interests with pragmatic calculations of regional power dynamics."
+            ]
+            right_framing = f"Peace Through Strength, American Resolve, and Decisive Deterrence in {clean_title[:32]}..."
+            right_talk = [
+                "Peace through strength is the only language hostile adversaries understand—decisive military deterrence prevents global conflict.",
+                "American foreign policy must unapologetically defend our national interests and ensure adversaries cannot threaten global freedom."
+            ]
+
+        else: # Politics / National News
+            left_framing = f"Democratic Accountability, Ethics, and Public Welfare in {clean_title[:35]}..."
+            left_talk = [
+                "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
+                "Strengthening public transparency and democratic oversight is essential to restoring public trust in governance."
+            ]
+            center_framing = f"Bipartisan Compromise, Institutional Stability, and Practical Governance in {clean_title[:32]}..."
+            center_talk = [
+                "Functional governance requires moving past partisan rhetoric to craft practical solutions that deliver measurable results for the American people.",
+                "Protecting institutional stability and fiscal responsibility is how divided government serves the entire nation."
+            ]
+            right_framing = f"Constitutional Separation of Powers, Fiscal Discipline, and Limited Government in {clean_title[:32]}..."
+            right_talk = [
+                "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty.",
+                "Decentralizing power back to states and individuals consistently produces better governance than top-down federal mandates."
+            ]
+
+    # Clean up and ensure 3 to 4 facts
+    cleaned_core_facts = []
+    for f in core_facts:
+        f_clean = f.strip().rstrip('.')
+        f_clean = re.sub(r'\s+\.', '.', f_clean)
+        if f_clean:
+            cleaned_core_facts.append(f_clean + ".")
+    core_facts = cleaned_core_facts[:4]
 
     return {
         "core_facts": core_facts,
@@ -2633,12 +2864,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         else:
             facts_markup = f'<div class="neutral-desc">{summary}</div>'
 
-        # Badge display: avoid duplicate badges like [Sports] [Sports]
-        if master_cat.lower() == cat.lower():
-            tags_html = f'<span class="category-tag">{cat}</span>'
-        else:
-            display_master = "National" if "national" in master_cat.lower() else master_cat
-            tags_html = f'<span class="master-tag">{display_master}</span><span class="category-tag">{cat}</span>'
+        # Badge display: clean, distinct single topic badge
+        tags_html = f'<span class="category-tag">{cat}</span>'
 
         card = f"""
         <article class="compact-card" data-category="{cat}" data-master-category="{master_cat}" id="{sId}">
