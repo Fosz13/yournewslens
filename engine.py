@@ -389,6 +389,18 @@ SECONDARY_TOPIC_POOL = [
 
 # Strict domain-specific fallbacks (CRITICAL: Non-energy stories NEVER get power lines!)
 CATEGORY_FALLBACK_POOLS = {
+    "National News": [
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG",
+            "caption": "The United States Capitol building in Washington, D.C.",
+            "credit": "📸 Architect of the Capitol"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Official federal podium and press briefing conference.",
+            "credit": "📸 National Photo Archive"
+        }
+    ],
     "Crime & Public Safety": [
         {
             "url": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80",
@@ -928,9 +940,20 @@ def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) 
 
     return None
 
-def resolve_story_image(title: str, category: str, master_category: str = "National Headlines", used_urls: Set[str] = None, scraped_image: Optional[dict] = None) -> dict:
+def resolve_story_image(title: str, category: str, master_category: Any = "National Headlines", used_urls: Optional[Set[str]] = None, scraped_image: Optional[dict] = None) -> dict:
+    # Polymorphic argument guard: if caller passes used_urls as 3rd parameter
+    if isinstance(master_category, set):
+        used_urls = master_category
+        master_category = "National Headlines"
+    elif isinstance(master_category, dict):
+        scraped_image = master_category
+        master_category = "National Headlines"
+
     if used_urls is None:
         used_urls = set()
+
+    clean_category = str(category or "National News")
+    clean_master = str(master_category or "National Headlines")
 
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     t_lower = clean_title.lower()
@@ -971,8 +994,12 @@ def resolve_story_image(title: str, category: str, master_category: str = "Natio
                     return {"url": item["url"], "caption": item["caption"], "credit": item["credit"]}
 
     # PRIORITY 4: Strict Category-Specific Fallback (NEVER power lines for non-energy!)
-    cat_key = category if category in CATEGORY_FALLBACK_POOLS else master_category
-    pool = CATEGORY_FALLBACK_POOLS.get(cat_key, CATEGORY_FALLBACK_POOLS.get("National Headlines", []))
+    cat_key = clean_category if clean_category in CATEGORY_FALLBACK_POOLS else clean_master
+    pool = CATEGORY_FALLBACK_POOLS.get(cat_key)
+    if not pool:
+        pool = CATEGORY_FALLBACK_POOLS.get("National Headlines", [])
+    if not pool:
+        pool = CATEGORY_FALLBACK_POOLS.get("Politics", [])
 
     for item in pool:
         if item["url"] not in used_urls:
@@ -2658,7 +2685,7 @@ def run_pipeline():
             cat_assigned, master_cat_assigned = classify_article(t, it["description"])
             synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
             scraped_pic = it.get("scraped_image")
-            img_info = resolve_story_image(t, cat_assigned, used_urls, scraped_image=scraped_pic)
+            img_info = resolve_story_image(t, cat_assigned, master_cat_assigned, used_urls, scraped_image=scraped_pic)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             story_record = {
                 "id": story_id,
