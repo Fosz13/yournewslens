@@ -1379,6 +1379,21 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
         print(f"Notice: Feed fetch {feed_info['source']}: {err}")
     return items
 
+
+def fetch_all_feeds_concurrently(feeds: List[Dict[str, str]], max_items_per_feed: int = 12, max_workers: int = 12) -> List[Dict[str, Any]]:
+    """Concurrently fetches all configured RSS feeds using ThreadPoolExecutor for sub-5s throughput."""
+    all_items = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_feed = {executor.submit(fetch_rss_items, feed, max_items_per_feed): feed for feed in feeds}
+        for future in as_completed(future_to_feed):
+            feed = future_to_feed[future]
+            try:
+                items = future.result()
+                all_items.extend(items)
+            except Exception as exc:
+                print(f"Notice: Feed {feed.get('source', '')} fetch error: {exc}")
+    return all_items
+
 def extract_facts_from_context_and_title(title: str, context: str, category: str = "") -> List[str]:
     """
     Extracts exactly 4 distinct, information-dense, verified factual bullet points.
