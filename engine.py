@@ -26,6 +26,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import config
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 DATA_FILE = os.path.join(BASE_DIR, "data", "stories.json")
 HTML_FILE = os.path.join(BASE_DIR, "index.html")
 
@@ -642,6 +644,10 @@ def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[s
         return False
 
     # Check for international foreign entities
+        # DOMESTIC U.S. IMMIGRATION & MIDTERM POLICY GATEKEEPER
+    if has_any([r'immigration\s+policy', r'trump\s+officials?\s+soften', r'workplace\s+raids?', r'ice\s+raids?', r'border\s+enforcement', r'border\s+security', r'migrant\s+crossings?'], string=t_lower):
+        return ("Politics", "National Headlines")
+
     is_international = has_any([
         r'france', r'french', r'paris', r'limoges', r'macron',
         r'pakistan', r'pakistani', r'khyber', r'pakhtunkhwa', r'imran\s+khan', r'islamabad',
@@ -1473,9 +1479,10 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     full_text = f"{clean_title}. {context or ''}".lower()
 
-    def has_any(keywords):
+    def has_any(keywords, string=None):
+        target = full_text if string is None else string
         for kw in keywords:
-            if re.search(r'\b' + re.escape(kw) + r'\b', full_text):
+            if re.search(r"" + re.escape(kw) + r"", target):
                 return True
         return False
 
@@ -2081,7 +2088,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         ]
 
     # --- 14. STARLINK TERMINAL RESTRICTIONS IN UKRAINE ---
-    elif has_any(["starlink", "satellite curbs", "embolden russia", "ukraine"]):
+    elif (has_any(["starlink", "satellite curbs"], string=clean_title.lower()) or (has_any(["starlink", "satellite curbs"]) and not has_any(["immigration", "border", "golf", "midterms", "election"], string=clean_title.lower()))):
         core_facts = [
             "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
             "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
