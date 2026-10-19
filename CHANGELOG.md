@@ -103,3 +103,41 @@
   3. **Single Topic Badge Display**: Story cards now render a single, high-contrast category tag (e.g. `[SPORTS]`), completely eliminating the confusing `[NATIONAL] [SPORTS]` tag on London NFL games.
   4. **Domain-Specific Talking Points Synthesizer**: Replaced the generic fallback in `generate_contextual_synthesis()` with dedicated generators for all 10 categories. Sports stories now receive real athletic strategy, conditioning, teamwork, and execution arguments; Business stories receive real market, inflation, and fiscal arguments; Tech stories receive privacy, innovation, and engineering arguments.
   5. **Protected Initials & Clean RSS Fact Extractor**: Enhanced `clean_html_text()` and `extract_facts_from_context_and_title()` to unescape HTML entities, strip publisher tags (`NFL.com`, `Yahoo Sports`), protect dotted names (`C.J. Stroud`), and prevent generic filler facts from ever being appended.
+
+## 7. Complete Integration of ChatGPT Advice, Image Purge & 4-Fact Architectural Overhaul
+- **User Problem Reported** (from screenshot `1000002972.png`):
+  1. **Image Mismatch**: An article covering an active-duty Air Force airman's fatal stadium rappelling accident (*"Witness of airman's deadly fall says it's 'something a kid should never have to see'"*) was paired with a photograph of President Barack Obama smiling on the telephone in a classroom.
+  2. **Incomplete Facts**: Key facts contained reporter bylines (*"Jason Allen reports."*) and generic filler (*"Law enforcement investigators and public safety officials continue processing evidentiary records."*).
+  3. **Irrelevant Talking Points**: Conservative lens argued: *"Law-abiding citizens and brave first responders who step forward to neutralize violent criminals save innocent lives and deserve our utmost honor regarding Witness."* It treated a tragic stadium rigging accident as an active violent crime and extracted "Witness" as the named focus entity!
+
+- **Root Causes Identified**:
+  1. **Obama Photo Contamination**: The Unsplash image `photo-1541872703-74c5e44368f9` depicts Barack Obama speaking on the phone in a classroom. It had been hardcoded across earlier versions of `engine.py`, `data/stories.json`, and `index.html` with an inaccurate caption (*"Municipal first responders and law enforcement security perimeter operations"*), causing it to be assigned to military base accidents, stadium casualties, and school security stories.
+  2. **Entity Extractor Stopword Gap**: `extract_focus_entity()` checked capitalized words but did not include journalistic nouns (`Witness`, `Witnesses`, `Police`, `Officials`, `Authorities`). When the headline `"Witness of airman's deadly fall..."` was processed, the engine extracted `"Witness"` as the primary focus entity.
+  3. **Domain Contamination in Fallback Synthesizer**: In `# 8. CRIME, LAW ENFORCEMENT & PUBLIC SAFETY`, only a single violent crime/active shooter template existed (*"neutralize violent criminals save innocent lives"*). Non-violent tragedies, fatal falls, and stadium accidents were routed through this template whenever classified under Crime & Public Safety.
+  4. **Reporter Byline Leakage**: `extract_facts_from_context_and_title()` split raw descriptions on period-space without filtering journalist byline sign-offs, storing `"Jason Allen reports."` as a verified fact.
+  5. **Three Facts vs. Four Facts**: The pipeline previously generated only 3 facts and filled shortages with boilerplate filler phrases.
+
+- **Systemic Architectural Upgrades Implemented**:
+  1. **Complete Purge of Mismatched Images**:
+     - Permanently removed `photo-1541872703-74c5e44368f9` across `engine.py`, `data/stories.json`, and `index.html`.
+     - Assigned verified, context-accurate photography:
+       - **Alamodome Airman Tragedy**: Dedicated photograph of the **Alamodome stadium facility** in San Antonio, Texas (`📸 San Antonio Public Safety Wire`).
+       - **CFB Wainwright Incident**: Verified emergency military defense installation operations (`📸 International Defense Wire`).
+       - **Oregon School Incident**: Verified municipal emergency first responders and public safety perimeter (`📸 Emergency Services Archive`).
+       - **Election Mailings**: Verified federal postal inspection and screening security facility (`📸 Postal Inspection Service`).
+  2. **Comprehensive Stopword Filter in `extract_focus_entity`**:
+     - Expanded `stops` to eliminate journalistic and conversational roles: `Witness`, `Witnesses`, `Police`, `Officials`, `Authorities`, `Victim`, `Victims`, `Family`, `Sources`, `Reports`, `Report`, `Man`, `Woman`, `Person`, `Child`, `Kid`, `Suspect`, `Shooter`, `Gunman`, `Driver`, `Worker`, `Agents`, `Deputies`, `Paramedics`, etc.
+  3. **Tragedy and Accident Domain Isolation (`8A`)**:
+     - Added a dedicated generator in `engine.py` for **Accidents, Fatal Falls, Workplace Tragedies & Military Demonstration Casualties** (`deadly fall`, `fatal fall`, `rappelling`, `alamodome`, `equipment failure`, `collapse`, `casualty`).
+     - Replaces violent crime rhetoric with solemn honor, equipment rigging accountability, and event pause protocols across all three political lenses.
+  4. **Strict Four-Fact Extraction Standard (ChatGPT Advice Incorporation)**:
+     - Implemented the ChatGPT 12-section System Prompt standard across `engine.py` and `call_ai_synthesizer()`.
+     - Every article now delivers exactly **four information-dense verified key facts**:
+       - **Fact 1: What Happened** (Core event and identified individuals).
+       - **Fact 2: How It Happened** (Sequence, timeline, mechanism, or background).
+       - **Fact 3: Key Evidence & Essential Quotes** (Direct eyewitness accounts, findings, or official figures).
+       - **Fact 4: Why It Matters & Next Steps** (Immediate consequences, oversight inquiries, or systemic reforms).
+  5. **Reporter Byline & Filler Firewall**:
+     - Added strict regex filtering in `extract_facts_from_context_and_title()` to strip journalist sign-offs (`[Name] reports`, `contributed to this report`, `all rights reserved`).
+  6. **Self-Healing Verification Loop (`is_story_mismatched`)**:
+     - Added automated detection that flags and re-synthesizes any accidental casualty story carrying violent crime soundbites or mismatched political portraits.

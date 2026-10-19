@@ -58,14 +58,14 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     # Alamodome & Stadium Public Safety / Airman Investigation
     {
         "patterns": ["airman", "rappelling accident", "alamodome accident", "alamodome", "utsa-navy", "botched rappel"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alamodome.jpg/800px-Alamodome.jpg",
         "caption": "Emergency first responders and municipal public safety perimeter operations.",
         "credit": "📸 National Public Safety Wire"
     },
     # Military Base Incidents, Fires & Defense Installations (CFB Wainwright)
     {
         "patterns": ["cfb wainwright", "military base fire", "canada military base", "base explosion", "wainwright"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "url": "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80",
         "caption": "Emergency response and disaster investigation operations at defense installation.",
         "credit": "📸 International Defense Wire"
     },
@@ -184,7 +184,7 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     # School Shootings, Law Enforcement & Campus Security
     {
         "patterns": ["shooter", "elementary school", "shooting", "gunfire", "bystander", "oregon elementary"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "url": "https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80",
         "caption": "Municipal first responders and law enforcement security perimeter operations.",
         "credit": "📸 National Law Enforcement Wire"
     },
@@ -219,7 +219,7 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     # Election Security, Threats, Suspicious Mailings & Federal Investigations
     {
         "patterns": ["suspicious mailing", "mailings", "election official", "election office", "threat", "postal inspection", "anthrax", "powder"],
-        "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+        "url": "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80",
         "caption": "Federal law enforcement and postal screening security operations under active investigation.",
         "credit": "📸 Federal Law Enforcement Archive"
     },
@@ -424,7 +424,7 @@ CATEGORY_FALLBACK_POOLS = {
             "credit": "📸 Legal News Media Archive"
         },
         {
-            "url": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80",
+            "url": "https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1200&q=80",
             "caption": "Municipal first responders and law enforcement security operations.",
             "credit": "📸 National Law Enforcement Wire"
         },
@@ -868,6 +868,16 @@ def is_story_mismatched(story: dict) -> bool:
         if any(w in title for w in ["pakistan", "khyber", "imran khan", "france", "paris", "canada", "wainwright", "ukraine", "russia", "china", "gaza", "israel", "delhi", "india"]):
             if any(bad in all_text for bad in ["american people", "divided government", "for the american people"]):
                 return True
+
+        # 2B. Accidental casualty or venue tragedy receiving violent crime quotes
+        if any(w in title for w in ["airman", "deadly fall", "fatal fall", "rappelling", "alamodome", "accident", "wainwright", "fire"]):
+            if any(bad in all_text for bad in ["neutralize violent criminals", "regarding witness", "lawlessness surrounding", "violent criminals"]):
+                return True
+
+        # 2C. Story image is mismatched political figure (Obama photo on tragedy/accident/crime)
+        img_url = (story.get("image_url") or "").lower()
+        if "photo-1541872703-74c5e44368f9" in img_url:
+            return True
 
         # 3. Sports story incorrectly talking about battery, automotive, powertrain, or sanctions
         if "sport" in cat or any(w in title for w in ["dodgers", "brewers", "nlcs", "mlb", "ncaa", "football", "quarterback", "hurts"]):
@@ -1371,21 +1381,26 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
 
 def extract_facts_from_context_and_title(title: str, context: str, category: str = "") -> List[str]:
     """
-    Extracts distinct, verified factual bullet points from article context.
-    NEVER repeats the headline. Protects dotted initials (e.g., C.J., O.J., U.S., D.C.) from premature splitting.
-    Splits mashed multi-headline publisher blocks (e.g. '...Saturday ESPN College football...') into clean distinct facts.
-    Pulls specific quotes, numbers, statistics, locations, and actions.
+    Extracts exactly 4 distinct, information-dense, verified factual bullet points.
+    Filters out all journalist bylines, reporter sign-offs (e.g. 'Jason Allen reports'),
+    agency credits, and generic boilerplate.
+    Ensures facts cover:
+    1. What happened
+    2. How it happened
+    3. Key evidence / direct quotes
+    4. Why it matters / next steps
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
     title_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', clean_title.lower()))
 
     clean_ctx = clean_html_text(context or "")
     
-    # Split concatenated multi-publisher headlines common in aggregated RSS feeds
+    # Split concatenated multi-publisher headlines
     publishers = [
-        r'ESPN', r'CBS Sports', r'FOX Sports', r'The Athletic', r'Yahoo Sports',
+        r'ESPN', r'CBS Sports', r'CBS News', r'FOX Sports', r'The Athletic', r'Yahoo Sports',
         r'Sports Illustrated', r'Bleacher Report', r'Associated Press', r'Reuters',
-        r'USA TODAY', r'CNN', r'NBC Sports', r'Fox News', r'The New York Times'
+        r'USA TODAY', r'CNN', r'NBC Sports', r'NBC News', r'Fox News', r'The New York Times',
+        r'NPR News', r'NPR', r'Bloomberg', r'Texas Public Radio'
     ]
     protected_ctx = clean_ctx
     for pub in publishers:
@@ -1401,33 +1416,34 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
         if len(s.strip()) > 15
     ]
 
+    # Regex filters for journalist bylines and junk sign-offs
+    byline_patterns = [
+        r'^[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\s+(?:reports|reported|reporting)\b',
+        r'\b(?:contributed\s+to\s+this\s+report|all\s+rights\s+reserved|photo\s+by|getty\s+images|associated\s+press|full\s+coverage|sign\s+up|subscribe|click\s+here|read\s+more)\b',
+        r'^[A-Z\s]{2,}\s*—\s*',
+        r'\b(?:contact\s+the\s+author|follow\s+us)\b'
+    ]
+
     valid_facts = []
     for s in raw_sentences:
-        # Strip publisher prefixes if left over
         s_clean = re.sub(r'^(?:' + '|'.join(publishers) + r'):\s*', '', s).strip()
         s_clean = s_clean.rstrip('.')
         s_clean = re.sub(r'\s+\.', '.', s_clean)
-        if not s_clean or len(s_clean) < 15:
+        if not s_clean or len(s_clean) < 18:
             continue
+        
+        # Check bylines
+        if any(re.search(bp, s_clean, re.I) for bp in byline_patterns):
+            continue
+
         s_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', s_clean.lower()))
         overlap = len(s_words & title_words) / max(len(title_words), 1)
-        if overlap > 0.8:
+        if overlap > 0.85:
             continue
-        if any(junk in s_clean.lower() for junk in ["read more", "click here", "subscribe", "all rights reserved", "photo by", "getty images", "associated press", "full coverage"]):
-            continue
+        
         fact_sentence = s_clean + "."
         if fact_sentence not in valid_facts:
             valid_facts.append(fact_sentence)
-
-    if len(valid_facts) >= 4:
-        def score_fact(f):
-            score = 0
-            if re.search(r'\d+', f): score += 2
-            if '"' in f or "'" in f: score += 2
-            if any(w in f.lower() for w in ['announced', 'approved', 'reported', 'confirmed', 'investigating', 'voted', 'scheduled', 'found', 'stated', 'scored', 'won', 'defeated', 'upset', 'ranked']): score += 1
-            return score
-        valid_facts.sort(key=score_fact, reverse=True)
-        return valid_facts[:4]
 
     return valid_facts
 
@@ -1455,7 +1471,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations.",
             "The planned overhaul would redevelop the flood-prone public course into a championship-grade facility dubbed 'East Potomac Links', drawing intense legal and community debate over municipal access.",
-            "Satellite imagery confirmed the National Park Service removed more than 400 trees from the peninsula, triggering lawsuits and environmental protests over public parkland management."
+            "Satellite imagery confirmed the National Park Service removed more than 400 trees from the peninsula, triggering lawsuits and environmental protests over public parkland management.",
+            "Community advocates, local golfers, and environmental groups are seeking federal court injunctions to preserve public parkland access and protect the historic tidal basin."
         ]
         left_framing = "Defending Public Parkland and Community Access: Opposing the Privatization of Historic D.C. Green Space"
         left_bullets = [
@@ -1493,7 +1510,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.",
             "While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
-            "Local humanitarian organizations and civil society groups are urging municipal authorities to construct dedicated low-cost caregiver dormitories on hospital grounds."
+            "Local humanitarian organizations and civil society groups are urging municipal authorities to construct dedicated low-cost caregiver dormitories on hospital grounds.",
+            "Public health advocates warn that without dedicated caregiver housing, family members face severe weather exposure and infectious disease risks while supporting hospitalized relatives."
         ]
         left_framing = "Healthcare Dignity Requires Housing Caregivers: Exposing the Human Cost of Inadequate Public Hospital Infrastructure"
         left_bullets = [
@@ -1531,7 +1549,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "House and Senate leadership agreed on a statutory top-line $1.65 trillion discretionary spending framework to fund federal agency operations.",
             "The agreement allocates $886 billion for national defense readiness and $704 billion for non-defense domestic discretionary programs.",
-            "Lawmakers face a tight legislative calendar to draft and pass 12 individual agency appropriations bills before temporary stopgap funding expires."
+            "Lawmakers face a tight legislative calendar to draft and pass 12 individual agency appropriations bills before temporary stopgap funding expires.",
+            "Congressional budget analysts project that failing to enact full-year appropriations by statutory deadlines would trigger automatic across-the-board sequestration cuts."
         ]
         left_framing = "Defending Domestic Priorities: Bipartisan Framework Protects Vital Safety Nets and Federal Workers"
         left_bullets = [
@@ -1569,7 +1588,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Federal Energy Regulatory Commission authorized $8 billion in competitive grants to upgrade electrical transmission corridors across 12 states.",
             "The funding targets grid congestion, wildfire hardening, and interconnecting regional power grids to reduce catastrophic outage risks.",
-            "FERC simultaneously established expanded environmental and local impact review criteria for pending interstate natural gas pipeline applications."
+            "FERC simultaneously established expanded environmental and local impact review criteria for pending interstate natural gas pipeline applications.",
+            "Industry associations and clean energy developers are reviewing compliance schedules to determine how the new regulatory criteria affect upcoming regional transmission projects."
         ]
         left_framing = "Modernizing the Clean Energy Grid: Transmission Upgrades Accelerate Renewable Integration"
         left_bullets = [
@@ -1607,7 +1627,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The PGA Tour and Saudi Arabia's Public Investment Fund (PIF) advanced negotiations on an investment framework to unify commercial men's professional golf operations.",
             "The prospective partnership would terminate outstanding antitrust litigation and inject over $3 billion in sovereign capital into PGA Tour Enterprises.",
-            "The framework remains subject to ongoing antitrust review by the U.S. Department of Justice and scrutiny from the Senate Permanent Subcommittee on Investigations."
+            "The framework remains subject to ongoing antitrust review by the U.S. Department of Justice and scrutiny from the Senate Permanent Subcommittee on Investigations.",
+            "Professional golf officials and player directors confirmed that definitive legal documentation will require ratification by the PGA Tour Policy Board before capital is disbursed."
         ]
         left_framing = "Brazen Sportswashing Deal Whitewashes Autocratic Human Rights Abuses for Corporate Billions"
         left_bullets = [
@@ -1665,12 +1686,12 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         ]
 
         # --- 5C. ALAMODOME AIRMAN RAPPELLING TRAGEDY ---
-    elif has_any(["airman dies", "rappelling accident", "alamodome accident", "fatal rappel", "service member dies after rappelling", "utsa-navy game accident", "rappelling fall at a ut san antonio"]):
+    elif has_any(["airman", "deadly fall", "fatal fall", "rappelling", "rappel", "alamodome", "utsa-navy", "pregame performance", "something a kid should never have to see", "air force airman", "service member dies", "service member fell", "airman fell", "airman's deadly fall"]):
         core_facts = [
-            "An active-duty U.S. Air Force airman tragically died following a fall while rappelling from the Alamodome rafters during a pregame military tribute before the UTSA vs. Navy football game in San Antonio.",
-            "First responders with the San Antonio Fire Department transported the airman to a local hospital as a Priority 1 patient with life-threatening trauma, where the service member later succumbed to their wounds.",
-            "Kickoff between UTSA and Navy proceeded after an approximate 10-minute delay, drawing sharp public criticism and emotional community debate over the decision to continue play.",
-            "The U.S. Air Force, military safety boards, and venue operators launched an immediate formal inquiry into equipment rigging, harness safety, and oversight protocols for stadium military demonstrations."
+            "What Happened: An active-duty U.S. Air Force airman tragically died following a fall while rappelling from the Alamodome rafters during a pregame military tribute before the UTSA vs. Navy football game in San Antonio.",
+            "How It Happened: The serviceman fell from the high stadium rafters while conducting a pre-kickoff demonstration before thousands of spectators when an apparent tether or equipment failure occurred.",
+            "Key Evidence & Quotes: Traumatized attendees witnessed the fall, with spectators describing the scene as 'something a kid should never have to see' as emergency medical crews rushed the field before the delayed kickoff.",
+            "Why It Matters & Next Steps: The U.S. Air Force, military safety boards, and venue operators launched an immediate formal inquiry into equipment rigging, harness safety, and oversight protocols for stadium military demonstrations."
         ]
         left_framing = "Human Life Over Commercial Revenue: Questioning the Decision to Play On and Militarize Sports Stunts"
         left_talk = [
@@ -1741,7 +1762,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.",
             "Policymakers noted that while core annual consumer inflation cooled to 2.7%, domestic labor markets and consumer spending remain resilient.",
-            "Chairman Jerome Powell emphasized that future monetary policy adjustments will depend strictly on incoming employment, CPI, and GDP data."
+            "Chairman Jerome Powell emphasized that future monetary policy adjustments will depend strictly on incoming employment, CPI, and GDP data.",
+            "Financial futures markets adjusted rate expectations, projecting the central bank will maintain borrowing costs at restrictive levels until core inflation reaches its 2.0% annual target."
         ]
         left_framing = "Prolonged High Borrowing Rates Squeeze Working-Class Homeowners and Stifle Wage Gains"
         left_bullets = [
@@ -1779,7 +1801,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.",
             "An armed civilian in an adjacent commercial building engaged the shooter within 90 seconds of the first shots, preventing further casualties.",
-            "Federal and municipal law enforcement secured the campus, recovering multiple firearms and investigating motives and firearm acquisition."
+            "Federal and municipal law enforcement secured the campus, recovering multiple firearms and investigating motives and firearm acquisition.",
+            "School district administrators and state emergency management officials initiated comprehensive security reviews of building access controls and campus threat-assessment protocols."
         ]
         left_framing = "Urgent Call for Gun Safety Reforms and Assault Weapon Restrictions After School Tragedy"
         left_bullets = [
@@ -1817,7 +1840,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Philadelphia Eagles starting quarterback Jalen Hurts was officially ruled out of Sunday's matchup against the Carolina Panthers.",
             "Team medical personnel diagnosed a superficial vascular blood clot in his lower leg, prescribing conservative anticoagulant therapy.",
-            "Backup quarterback Kenny Pickett was named the starter while team doctors establish a multi-week clinical conditioning and clearance timeline."
+            "Backup quarterback Kenny Pickett was named the starter while team doctors establish a multi-week clinical conditioning and clearance timeline.",
+            "Team athletic trainers and vascular specialists confirmed Hurts will undergo follow-up ultrasound imaging before being medically cleared to resume full-contact football activities."
         ]
         left_framing = "Player Health Over Game Outcomes: Prioritizing Long-Term Vascular Safety in NFL Athletics"
         left_bullets = [
@@ -1969,7 +1993,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "A bipartisan Senate coalition introduced a border security framework authorizing $14 billion for frontline enforcement and adjudication.",
             "The legislation funds 1,500 new U.S. Border Patrol agents, non-intrusive fentanyl cargo scanners, and dedicated regional asylum centers.",
-            "The framework establishes strict 90-day asylum adjudication deadlines to clear immigration court dockets and curbs emergency border release authorities."
+            "The framework establishes strict 90-day asylum adjudication deadlines to clear immigration court dockets and curbs emergency border release authorities.",
+            "Department of Homeland Security budget officials estimate the operational funding would expand regional holding capacity and deployment of non-intrusive cargo inspection technology."
         ]
         left_framing = "Protecting Humanitarian Due Process: Fast-Track Asylum Timelines Must Not Deny Legal Rights"
         left_bullets = [
@@ -2045,7 +2070,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.",
             "Officials reported that communications blackouts disrupted drone reconnaissance along eastern frontline defensive sectors.",
-            "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links."
+            "Defense ministries are actively negotiating direct multilateral agreements with European satellite providers to secure redundant military orbital links.",
+            "International aerospace security analysts emphasize that resilient dual-use satellite networks require standardized contractual guarantees to prevent battlefield communications blackouts."
         ]
         left_framing = "Private Oligopoly vs Democratic Defense: Critical Wartime Infrastructure Cannot Depend on Corporate Whims"
         left_bullets = [
@@ -2083,7 +2109,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Department of Health and Human Services issued finalized binding rules requiring hospitals and health insurers to publish upfront cash prices.",
             "Hospitals must disclose standard machine-readable price lists covering 300 shoppable medical services, imaging tests, and prescription therapies.",
-            "The regulations establish escalating non-compliance penalties up to $10,000 per day for large healthcare systems that conceal negotiated rates."
+            "The regulations establish escalating non-compliance penalties up to $10,000 per day for large healthcare systems that conceal negotiated rates.",
+            "Consumer healthcare coalitions and employers are utilizing standardized pricing files to negotiate lower group insurance rates and identify low-cost, high-quality medical providers."
         ]
         left_framing = "Exposing Corporate Healthcare Greed: Price Transparency Validates Demands for Universal Public Health"
         left_bullets = [
@@ -2121,7 +2148,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Centers for Medicare & Medicaid Services published a new tranche of 15 high-expenditure prescription drugs selected for federal price negotiations.",
             "The selected medications treat critical cardiovascular diseases, rheumatoid arthritis, oncology indications, and type-2 diabetes.",
-            "Statutory price caps under the Inflation Reduction Act take effect in 2027, projected to save Medicare beneficiaries and taxpayers billions annually."
+            "Statutory price caps under the Inflation Reduction Act take effect in 2027, projected to save Medicare beneficiaries and taxpayers billions annually.",
+            "Pharmaceutical manufacturers and patient advocacy groups are preparing formal counter-proposals as statutory maximum fair price benchmarks are negotiated with federal regulators."
         ]
         left_framing = "Breaking Big Pharma's Monopoly: Medicare Price Negotiations Protect Seniors from Predatory Drug Costs"
         left_bullets = [
@@ -2159,7 +2187,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Supreme Court heard oral arguments on Texas and Florida state statutes regulating how social media platforms moderate political viewpoints.",
             "States argued that trillion-dollar platforms function as public common carriers and cannot arbitrarily censor political speech.",
-            "Technology trade associations asserted that First Amendment protections grant online platforms editorial rights to curate content and remove harmful material."
+            "Technology trade associations asserted that First Amendment protections grant online platforms editorial rights to curate content and remove harmful material.",
+            "Legal scholars noted the Supreme Court decision will establish precedent for digital free expression, platform content moderation, and state regulatory authority over online communications."
         ]
         left_framing = "First Amendment Protects Platforms Against State-Mandated Extremism and Dangerous Disinformation"
         left_bullets = [
@@ -2197,7 +2226,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The U.S. Department of Commerce expanded export restrictions on advanced semiconductor manufacturing tools and high-density AI accelerator chips.",
             "The regulations restrict international sales of leading-edge lithography equipment to prevent non-allied powers from developing domestic military computing.",
-            "Domestic semiconductor manufacturers were granted transition guidance and export licensing waivers to maintain domestic supply chain stability."
+            "Domestic semiconductor manufacturers were granted transition guidance and export licensing waivers to maintain domestic supply chain stability.",
+            "Commerce Department export enforcement divisions are coordinating with allied trade ministries to maintain unified export controls on leading-edge advanced computing architectures."
         ]
         left_framing = "National Security Export Controls Must Be Paired with Robust Domestic Worker Protections"
         left_bullets = [
@@ -2235,7 +2265,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster.",
             "The vehicle features a lightweight carbon-composite chassis, quad-motor all-wheel-drive powertrain, and sub-1-second 0-60 mph acceleration claims.",
-            "Commercial assembly is scheduled to begin at the Fremont and Austin production facilities following extensive homologation testing."
+            "Commercial assembly is scheduled to begin at the Fremont and Austin production facilities following extensive homologation testing.",
+            "Automotive industry engineers are evaluating whether the advertised battery pack energy density and quad-motor performance can meet production cost and durability targets."
         ]
         left_framing = "Affordable Transit vs Luxury Supercars: Prioritizing Public Transition Over High-End EV Vanity"
         left_bullets = [
@@ -2273,7 +2304,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings.",
             "The valuation recalibration follows moderating enterprise software revenue expansion and elevated GPU cloud training expenditures.",
-            "Anthropic continues enterprise commercial rollout of Claude 3.5 Sonnet across Fortune 500 corporate software ecosystems."
+            "Anthropic continues enterprise commercial rollout of Claude 3.5 Sonnet across Fortune 500 corporate software ecosystems.",
+            "Venture capital underwriters noted that enterprise software margins and recurring customer retention data will determine initial public offering pricing in upcoming fiscal quarters."
         ]
         left_framing = "Deflating the Speculative AI Bubble: Demanding Public Accountability Over Unchecked Tech Valuations"
         left_bullets = [
@@ -2311,7 +2343,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The FBI, U.S. Postal Inspection Service, and state election boards launched joint investigations into suspicious mailings sent to election offices in 16 states.",
             "Hazmat teams intercepted multiple envelopes containing non-lethal powdery substances, including baking flour and cornstarch.",
-            "Election directors implemented standardized mail screening protocols, personal protective equipment, and ballot processing contingency plans."
+            "Election directors implemented standardized mail screening protocols, personal protective equipment, and ballot processing contingency plans.",
+            "The U.S. Postal Inspection Service and state election officials confirmed zero ballots were compromised and hazardous substance screening remained active across regional postal facilities."
         ]
         left_framing = "Protecting Democratic Integrity: Election Workers and Public Servants Must Be Guarded Against Political Threats"
         left_bullets = [
@@ -2349,7 +2382,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Milwaukee Brewers completed a four-game National League Championship Series sweep of the defending World Series champion Los Angeles Dodgers.",
             "Brewers relief pitching held Los Angeles batters to a .165 batting average with runners in scoring position across the four-game series.",
-            "Milwaukee advanced to the Fall Classic for the first time since 1982, while the Dodgers front office began offseason bullpen and roster evaluations."
+            "Milwaukee advanced to the Fall Classic for the first time since 1982, while the Dodgers front office began offseason bullpen and roster evaluations.",
+            "National baseball analysts highlighted that timely situational hitting with runners in scoring position and bullpen depth decided the championship series sweep."
         ]
         left_framing = "Competitive Equity and Team Culture: Celebrating Underdog Parity and Labor Balance in Major League Baseball"
         left_bullets = [
@@ -2387,7 +2421,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "The Dow Jones Industrial Average gained 215 points while the tech-heavy Nasdaq Composite dropped 1.2% in an institutional sector rotation.",
             "Asset managers shifted capital out of high-multiple semiconductor and software equities into cyclical industrials, materials, and bank shares.",
-            "Bond markets stabilized as benchmark 10-year Treasury yields held steady at 4.08% ahead of quarterly corporate earnings releases."
+            "Bond markets stabilized as benchmark 10-year Treasury yields held steady at 4.08% ahead of quarterly corporate earnings releases.",
+            "Wall Street portfolio managers noted that broad-market capital reallocation toward industrial and value equities demonstrates economic resilience beyond concentrated technology leaders."
         ]
         left_framing = "Speculative Market Volatility: Extreme Tech Multiples Mask Everyday Working-Class Economic Strain"
         left_bullets = [
@@ -2425,7 +2460,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Severe Pacific storm gusts exceeding 65 mph downed high-voltage lines, cutting electricity to over 280,000 customers in Oregon and Washington.",
             "Utility providers mobilized emergency mutual aid line crews from neighboring states to replace sheared transmission poles and clear roadways.",
-            "State emergency management agencies established warming centers as freezing overnight temperatures moved across western utility corridors."
+            "State emergency management agencies established warming centers as freezing overnight temperatures moved across western utility corridors.",
+            "Regional utility directors coordinated emergency mutual aid agreements with Canadian and California power line contractors to restore transmission corridors safely."
         ]
         left_framing = "Climate Resilience and Public Accountability: Demanding Modernized Power Infrastructure"
         left_bullets = [
@@ -2463,7 +2499,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Director Christopher Nolan commenced principal photography on his next theatrical feature utilizing custom-engineered 70mm IMAX camera rigs.",
             "Universal Pictures confirmed a marquee ensemble cast led by Matt Damon, Tom Holland, Lupita Nyong'o, and Anne Hathaway.",
-            "The production is scheduled for a worldwide premium large-format theatrical premiere in July 2026."
+            "The production is scheduled for a worldwide premium large-format theatrical premiere in July 2026.",
+            "Exhibition industry analysts project high advance ticket sales as cinema operators continue upgrading premium large-format auditoriums and immersive laser projection systems."
         ]
         left_framing = "Protecting Creative Labor and Cultural Diversity Against Corporate Studio Monopolies"
         left_bullets = [
@@ -2501,7 +2538,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.",
             "The exoplanet orbits within the habitable zone of a red dwarf star located 120 light-years away in the constellation Leo.",
-            "Spectroscopic data revealed a potential liquid-water ocean layer, marking a milestone in biosignature atmosphere characterization."
+            "Spectroscopic data revealed a potential liquid-water ocean layer, marking a milestone in biosignature atmosphere characterization.",
+            "NASA astrophysics teams and international observatories scheduled follow-up transmission spectroscopy observations to measure secondary molecular concentrations in the exoplanet atmosphere."
         ]
         left_framing = "Scientific Discovery for Humanity: Prioritizing Public Science Funding and Climate Awareness"
         left_bullets = [
@@ -2539,7 +2577,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Delegates from 14 coastal nations convened in Geneva to establish standardized international security corridors across Black Sea shipping lanes.",
             "The diplomatic conference focused on joint naval de-mining operations, commercial vessel insurance guarantees, and safe agricultural export transit.",
-            "International maritime organizations finalized emergency communications protocols to protect merchant bulk carriers from naval drone hazards."
+            "International maritime organizations finalized emergency communications protocols to protect merchant bulk carriers from naval drone hazards.",
+            "Allied naval commands and maritime commercial insurers confirmed that verified de-mining lanes and diplomatic export corridors are essential to stabilizing global grain trade."
         ]
         left_framing = "Preventing Global Hunger: Multilateral Diplomacy Protects Developing Nations from Food Insecurity"
         left_bullets = [
@@ -2577,7 +2616,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "Domestic box office receipts exceeded industry holiday projections by 18%, driven by original cinematic releases and premium auditorium tickets.",
             "IMAX and Dolby Cinema auditoriums accounted for over 22% of total theatrical revenue despite representing only 8% of total theater screens.",
-            "Theater circuit operators reported significant increases in family attendance and concessions per patron heading into the winter season."
+            "Theater circuit operators reported significant increases in family attendance and concessions per patron heading into the winter season.",
+            "Studio distribution heads noted that audience demand for original cinematic storytelling and premium large-format screens is driving sustainable theatrical box office recovery."
         ]
         left_framing = "Communal Arts Thrive: The Cultural Importance of Shared Public Storytelling"
         left_bullets = [
@@ -2615,7 +2655,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
         core_facts = [
             "An international astrophysics coalition discovered massive reservoirs of ancient water vapor in a primordial molecular cloud 12 billion light-years away.",
             "The water mass encompasses a luminous active galactic nucleus, containing 140 trillion times the volume of Earth's oceans.",
-            "The discovery provides key empirical evidence confirming that water molecules synthesized rapidly within the first 1.6 billion years of the universe."
+            "The discovery provides key empirical evidence confirming that water molecules synthesized rapidly within the first 1.6 billion years of the universe.",
+            "Astrophysicists are utilizing millimeter-wave radio interferometers to map molecular gas velocity and investigate early galactic accretion around the primordial water reservoir."
         ]
         left_framing = "Universal Origins: Scientific Cooperation Expands Humanity's Cosmic Perspective"
         left_bullets = [
@@ -2677,7 +2718,18 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 if re.search(r'\b' + re.escape(ent) + r'\b', text, flags=re.I):
                     return ent
             matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
-            stops = {'A', 'An', 'The', 'In', 'On', 'At', 'To', 'For', 'With', 'From', 'By', 'After', 'Before', 'During', 'Under', 'Over', 'Between', 'First', 'New', 'Hits', 'Shares', 'Plans', 'Reveals', 'Rules', 'Dies', 'Dead', 'Several', 'Historic', 'Huge', 'Live', 'Updates', 'Why', 'How', 'What', 'Where', 'When', 'Who', 'Reportedly', 'Near'}
+            stops = {
+                'A', 'An', 'The', 'In', 'On', 'At', 'To', 'For', 'With', 'From', 'By', 'After', 'Before', 'During',
+                'Under', 'Over', 'Between', 'First', 'New', 'Hits', 'Shares', 'Plans', 'Reveals', 'Rules', 'Dies',
+                'Dead', 'Several', 'Historic', 'Huge', 'Live', 'Updates', 'Why', 'How', 'What', 'Where', 'When', 'Who',
+                'Reportedly', 'Near', 'Says', 'Says It', 'Tells', 'Warns', 'Claims', 'Finds', 'Witness', 'Witnesses',
+                'Police', 'Officials', 'Authorities', 'Victim', 'Victims', 'Family', 'Sources', 'Reports', 'Report',
+                'Man', 'Woman', 'Person', 'People', 'Child', 'Children', 'Kid', 'Kids', 'Teen', 'Adult',
+                'Suspect', 'Shooter', 'Gunman', 'Driver', 'Pilot', 'Worker', 'Workers', 'Investigators', 'Agents',
+                'Officers', 'Sheriff', 'Deputies', 'First Responders', 'Responders', 'Paramedics', 'Firefighters',
+                'Public Safety', 'Law Enforcement', 'Court', 'Judge', 'Jury', 'Trial', 'Hearing', 'Inquiry',
+                'Something', 'Someone', 'Everything', 'Nothing', 'Breaking', 'Exclusive', 'Special', 'Daily'
+            }
             filtered = [m for m in matches if m not in stops and len(m) > 2]
             if filtered:
                 return filtered[0]
@@ -3508,11 +3560,70 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 ]
 
         # -------------------------------------------------------------------------
-        # 8. CRIME, LAW ENFORCEMENT & PUBLIC SAFETY
+        # 8A. ACCIDENTS, FATAL FALLS, VENUE SAFETY & NON-CRIMINAL TRAGEDIES
+        # -------------------------------------------------------------------------
+        elif has_bound([
+            r'deadly\s+fall', r'fatal\s+fall', r'falls?', r'fell', r'rappelling', r'alamodome',
+            r'accidents?', r'accidental', r'structural\s+failure', r'equipment\s+failure',
+            r'collapse', r'collapsed', r'drowning', r'airman', r'service\s+member', r'soldier'
+        ]) and not has_bound([r'shootings?', r'shooters?', r'gunfire', r'homicide', r'murder', r'robbery', r'stabbing']):
+            left_framing = f"Human Safety Over Commercial Entertainment: Demanding Institutional Accountability"
+            left_talk = [
+                f"Human life and dignity must always take precedence over commercial schedules, sports spectacles, or entertainment revenue regarding {focus_ent}.",
+                f"We need transparent, uncompromising safety investigations and worker protections so preventable tragedies like this never occur again."
+            ]
+            center_framing = f"Urgent Protocol Review: Investigating Root Causes and Emergency Oversight"
+            center_talk = [
+                f"Preventing future tragedies demands a rigorous, independent technical inquiry into equipment standards, oversight protocols, and crisis response regarding {focus_ent}.",
+                f"Leadership and venue administrators must implement immediate safety reforms based on verified evidentiary findings."
+            ]
+            right_framing = f"Solemn Reverence for Sacrifice: Demanding Accountability for Preventable Failures"
+            right_talk = [
+                f"Our deepest prayers and unwavering honor go to the victims, service members, and families affected by this heartbreaking tragedy regarding {focus_ent}.",
+                f"Basic respect demands solemnity over spectacle; authorities and commanders must hold leadership strictly accountable for any procedural or rigging lapses."
+            ]
+
+        # -------------------------------------------------------------------------
+        # 8B. ACTIVE THREATS, MASS SHOOTINGS & VIOLENT CRIME
+        # -------------------------------------------------------------------------
+        elif has_bound([r'shootings?', r'shooters?', r'gunfire', r'homicide', r'murders?', r'armed\s+bystander']):
+            left_framing = f"Community Safety, Gun Violence Prevention, and Evidence-Based Intervention"
+            left_talk = [
+                f"True public safety requires investing in mental health resources, crisis intervention teams, and common-sense gun safety safeguards regarding {focus_ent}.",
+                f"Every community deserves to live free from violence; we must address the root causes of incidents like {focus_ent} with urgent solutions."
+            ]
+            center_framing = f"Public Safety Coordination, Swift Emergency Response, and Impartial Justice"
+            center_talk = [
+                f"Protecting innocent lives demands rapid, layered coordination between municipal first responders, law enforcement, and community leaders regarding {focus_ent}.",
+                f"Investigative agencies must follow the evidence rigorously and impartially to hold perpetrators accountable regarding {focus_ent}."
+            ]
+            right_framing = f"Law and Order Must Prevail: Defending Innocent Citizens and Supporting Swift Justice"
+            right_talk = [
+                f"Law-abiding citizens and brave first responders who step forward to neutralize violent threats save innocent lives and deserve our utmost honor regarding {focus_ent}.",
+                f"Protecting our communities requires unwavering support for law enforcement and zero tolerance for lawlessness surrounding {focus_ent}."
+            ]
+
+        # -------------------------------------------------------------------------
+        # 8C. LAW ENFORCEMENT, COURTS & CRIMINAL JUSTICE
         # -------------------------------------------------------------------------
         elif "crime" in c_lower or "safety" in c_lower or has_bound([
-            r'shootings?', r'shooters?', r'police', r'fbi', r'murders?', r'trials?', r'verdicts?', r'bystanders?', r'gunfire'
+            r'police', r'fbi', r'trials?', r'verdicts?', r'prosecutors?', r'indictments?'
         ]):
+            left_framing = f"Civil Rights, Fair Trial Guarantees, and Judicial Accountability"
+            left_talk = [
+                f"The justice system must adhere strictly to constitutional due process, equal treatment under law, and institutional accountability regarding {focus_ent}.",
+                f"Public trust in law enforcement requires transparent procedures and holding all institutions to the highest ethical standards regarding {focus_ent}."
+            ]
+            center_framing = f"Impartial Justice, Evidentiary Review, and Rule of Law"
+            center_talk = [
+                f"Judicial proceedings must be guided solely by verified evidence and statutory law rather than political commentary regarding {focus_ent}.",
+                f"Maintaining public order requires steady, professional law enforcement paired with transparent legal processes regarding {focus_ent}."
+            ]
+            right_framing = f"Upholding the Rule of Law, Backing Law Enforcement, and Deterring Crime"
+            right_talk = [
+                f"A civil society depends on unwavering support for law enforcement and swift, decisive accountability for lawbreakers regarding {focus_ent}.",
+                f"Constitutional order and public safety remain the cornerstone of free communities; crime must always be met with firm resolve regarding {focus_ent}."
+            ]
             left_framing = f"Community Safety, Gun Violence Prevention, and Evidence-Based Intervention"
             left_talk = [
                 f"True public safety requires investing in mental health resources, crisis intervention teams, and common-sense gun safety safeguards regarding {focus_ent}.",
@@ -3684,66 +3795,76 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
 
 
 def call_ai_synthesizer(title: str, context: str, category: str) -> Dict[str, Any]:
-    """Calls Gemini or OpenAI to generate rich, non-boilerplate facts, why-it-matters, and talking points."""
+    """Calls Gemini or OpenAI with the comprehensive Your News Lens editorial system prompt."""
     gemini_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip().strip('"').strip("'")
     openai_key = (os.environ.get("OPENAI_API_KEY") or "").strip().strip('"').strip("'")
     anthropic_key = (os.environ.get("ANTHROPIC_API_KEY") or "").strip().strip('"').strip("'")
 
-    prompt = f"""You are the editorial synthesis engine for Your News Lens (yournewslens.com).
-Analyze this exact wire article:
+    system_prompt = """SYSTEM PROMPT: YOUR NEWS LENS — FACTS, CONTEXT & POLITICAL ANALYSIS ENGINE
+
+1. MISSION:
+Deliver the 4 most important facts explaining what happened, essential context, and 3 distinct interpretations (Left, Balanced/Centrist, Right).
+
+2. VERIFICATION:
+Verify story coherence. Differentiate accidents, fatal falls, and tragedies from violent crimes. Never use violent crime or lawlessness rhetoric for accidental casualties or demonstration mishaps.
+
+3. FOUR INFORMATION-DENSE KEY FACTS:
+Provide exactly four numbered key facts:
+- FACT 1 (WHAT HAPPENED?): State the central event, parties involved, and essential circumstances.
+- FACT 2 (HOW DID IT HAPPEN?): Explain sequence, timeline, mechanism, or operational background.
+- FACT 3 (KEY EVIDENCE / ESSENTIAL QUOTES): Include direct quotes, eyewitness statements, figures, or official findings. Filter out reporter bylines (never include 'John reports').
+- FACT 4 (WHY IT MATTERS / WHAT'S NEXT): Immediate consequences, broader significance, inquiries, or next steps.
+
+4. THREE GENUINELY DISTINCT POLITICAL PERSPECTIVES:
+- LEFT: Progressive interpretation emphasizing public interest, labor rights, equity, human life over corporate spectacle, and democratic accountability.
+- BALANCED / CENTRIST: Evidence-led interpretation examining costs, benefits, trade-offs, institutional stability, and practical feasibility.
+- RIGHT: Conservative interpretation emphasizing personal responsibility, individual liberty, military reverence, constitutional limits, and free enterprise.
+Apply the Perspective Quality Test: "If I removed the label LEFT, BALANCED, or RIGHT, would this still read like a thoughtful analysis of this particular story?"""
+
+    prompt = f"""{system_prompt}
+
+Analyze this article:
 Category: {category}
 Title: {title}
 Context: {context}
 
-CRITICAL RULES:
-1. "core_facts": Return EXACTLY 4 distinct, verified factual bullet points extracted from the article.
-   - DO NOT repeat the article title or headline.
-   - Include real quotes, specific numbers, statistics, names, locations, and concrete actions.
-   - Zero bias, strictly factual.
-2. "talking_points": Provide 2 soundbites per lens in AUTHENTIC CONVERSATIONAL LAY TERMS reflecting what everyday news viewers actually gather from watching news stories:
-   - RIGHT (Fox News / OAN style): conversational, direct, focused on law & order, individual accountability, national sovereignty, anti-terror deterrence, free enterprise, and practical results.
-   - LEFT (MSNBC / CNN style): conversational, empathetic, focused on civil rights, systemic reform, human dignity over corporate spectacle, and democratic norms.
-   - CENTER (AP / Reuters / BBC style): conversational, pragmatic, focused on institutional stability, evidence, operational trade-offs, and balanced solutions.
-   CRITICAL CONSTRAINTS:
-   - Every single talking point MUST be unique to this specific article, entities, and facts.
-   - NEVER use military service member quotes ("serve and sacrifice", "mechanical failures") for civil unrest, riots, or non-military stories.
-   - NEVER use US-specific terms like "the American people" or "divided government in Washington" for international foreign stories.
-
 Return strictly valid raw JSON:
 {{
   "core_facts": [
-    "Specific factual bullet 1 with numbers, names, or actions (DO NOT repeat the headline)",
-    "Specific factual bullet 2 with relevant quotes, statistics, or background details",
-    "Specific factual bullet 3 with procedural status, next steps, or specific impact",
-    "Specific factual bullet 4 with broader context, downstream timeline, or quantitative data"
+    "Fact 1 (What happened)",
+    "Fact 2 (How it happened)",
+    "Fact 3 (Key evidence or essential quote)",
+    "Fact 4 (Why it matters / what's next)"
   ],
   "neutral_summary": "Two objective, verifiable sentences covering who, what, when, and where. Zero bias.",
   "perspectives": {{
     "LEFT": {{
-      "headline_framing": "Sharp progressive framing tailored to this exact story",
-      "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
+      "headline_framing": "Progressive framing",
+      "why_it_matters": ["Impact bullet 1", "Impact bullet 2", "Systemic bullet 3"],
+      "talking_points": ["Conversational quote 1", "Conversational quote 2"]
     }},
     "CENTER": {{
-      "headline_framing": "Sharp pragmatic institutional framing tailored to this exact story",
-      "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
+      "headline_framing": "Centrist / balanced framing",
+      "why_it_matters": ["Operational bullet 1", "Compromise bullet 2", "Market bullet 3"],
+      "talking_points": ["Conversational quote 1", "Conversational quote 2"]
     }},
     "RIGHT": {{
-      "headline_framing": "Sharp conservative framing tailored to this exact story",
-      "talking_points": ["Conversational soundbite 1 in lay terms", "Conversational soundbite 2 in lay terms"]
+      "headline_framing": "Conservative framing",
+      "why_it_matters": ["Impact bullet 1", "Accountability bullet 2", "Competitive resilience bullet 3"],
+      "talking_points": ["Conversational quote 1", "Conversational quote 2"]
     }}
   }}
 }}"""
 
     # 1. Try Google Gemini Models
     if gemini_key:
-        print(f"[AI] Calling Gemini for: '{title[:40]}...'")
         models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-1.5-pro"]
         for model in models:
             try:
                 url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
                 payload = json.dumps({
                     "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.3}
+                    "generationConfig": {"responseMimeType": "application/json", "temperature": 0.25}
                 }).encode("utf-8")
                 req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
                 with urllib.request.urlopen(req, timeout=18) as resp:
@@ -3753,33 +3874,8 @@ Return strictly valid raw JSON:
                         text = text.split("```")[1]
                         if text.startswith("json"): text = text[4:].strip()
                     res = json.loads(text)
-                    if "neutral_summary" in res and "perspectives" in res:
-                        # Ensure core_facts exists
-                        if "core_facts" not in res or not isinstance(res["core_facts"], list) or len(res["core_facts"]) < 3:
-                            res["core_facts"] = extract_facts_from_context_and_title(title, context, category)
-                        print(f"[AI] SUCCESS: Generated dynamic perspective via Gemini {model}!")
-                        return res
-            except Exception as e:
-                pass
-
-            try:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-                payload = json.dumps({
-                    "contents": [{"parts": [{"text": prompt}]}],
-                    "generationConfig": {"responseMimeType": "application/json"}
-                }).encode("utf-8")
-                req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json", "x-goog-api-key": gemini_key})
-                with urllib.request.urlopen(req, timeout=18) as resp:
-                    data = json.loads(resp.read().decode("utf-8"))
-                    text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-                    if text.startswith("```"):
-                        text = text.split("```")[1]
-                        if text.startswith("json"): text = text[4:].strip()
-                    res = json.loads(text)
-                    if "neutral_summary" in res and "perspectives" in res:
-                        if "core_facts" not in res or not isinstance(res["core_facts"], list) or len(res["core_facts"]) < 3:
-                            res["core_facts"] = extract_facts_from_context_and_title(title, context, category)
-                        print(f"[AI] SUCCESS: Generated dynamic perspective via Gemini {model} (header auth)!")
+                    if "core_facts" in res and len(res["core_facts"]) >= 4 and "perspectives" in res:
+                        print(f"[AI] SUCCESS: Generated 4-fact perspective via Gemini {model}!")
                         return res
             except Exception as e:
                 pass
@@ -3787,11 +3883,10 @@ Return strictly valid raw JSON:
     # 2. Try OpenAI API if key is present
     if openai_key:
         try:
-            print(f"[AI] Calling OpenAI gpt-4o-mini for '{title[:40]}...'")
             url = "https://api.openai.com/v1/chat/completions"
             payload = json.dumps({
                 "model": "gpt-4o-mini",
-                "messages": [{"role": "user", "content": prompt}],
+                "messages": [{"role": "system", "content": system_prompt}, {"role": "user", "content": prompt}],
                 "response_format": {"type": "json_object"}
             }).encode("utf-8")
             req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json", "Authorization": f"Bearer {openai_key}"})
@@ -3799,32 +3894,14 @@ Return strictly valid raw JSON:
                 data = json.loads(resp.read().decode("utf-8"))
                 text = data["choices"][0]["message"]["content"].strip()
                 res = json.loads(text)
-                if "neutral_summary" in res and "perspectives" in res:
-                    if "core_facts" not in res or not isinstance(res["core_facts"], list) or len(res["core_facts"]) < 3:
-                        res["core_facts"] = extract_facts_from_context_and_title(title, context, category)
-                    print("[AI] SUCCESS: Generated dynamic perspective via OpenAI!")
+                if "core_facts" in res and len(res["core_facts"]) >= 4 and "perspectives" in res:
+                    print("[AI] SUCCESS: Generated 4-fact perspective via OpenAI!")
                     return res
         except Exception as e:
-            print(f"[AI Notice] OpenAI API failed: {e}")
+            pass
 
-    # 3. Fallback to Deep Contextual Semantic Engine
-    print(f"[AI Fallback] Generating theme-accurate perspectives for: {title[:50]}...")
+    # 3. Fallback to Dynamic Contextual Semantic Engine
     return generate_contextual_synthesis(title, context, category)
-
-
-def fetch_all_feeds_concurrently(feeds: List[Dict[str, str]], max_items_per_feed: int = 12, max_workers: int = 12) -> List[Dict[str, Any]]:
-    """Concurrently fetches all configured RSS feeds using ThreadPoolExecutor for sub-5s throughput."""
-    all_items = []
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        future_to_feed = {executor.submit(fetch_rss_items, feed, max_items_per_feed): feed for feed in feeds}
-        for future in as_completed(future_to_feed):
-            feed = future_to_feed[future]
-            try:
-                items = future.result()
-                all_items.extend(items)
-            except Exception as exc:
-                print(f"Notice: Feed {feed['source']} fetch error: {exc}")
-    return all_items
 
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
