@@ -32,6 +32,29 @@ HTML_FILE = os.path.join(BASE_DIR, "index.html")
 RSS_FEEDS = config.RSS_FEEDS
 
 EXACT_ENTITY_PHOTOGRAPHY = [
+    # Donald Trump, White House & Presidential Polling
+    {
+        "patterns": [
+            "trump approval", "approval hits record low", "trump", "donald trump",
+            "white house", "oval office", "presidential poll", "approval rating",
+            "approval ratings", "midterm edge", "clear midterm", "democrats clear midterm"
+        ],
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg",
+        "caption": "The White House North Portico and Executive Mansion in Washington, D.C.",
+        "credit": "📸 White House Photo Archive"
+    },
+    # Cindy Crawford, Kaia Gerber & Presley Gerber Memorial Tributes
+    {
+        "patterns": [
+            "cindy crawford", "kaia gerber", "rande gerber", "presley gerber",
+            "beyond heartbroken", "share tributes to presley", "tributes to presley",
+            "tribute to presley", "death of son presley", "presley's death at 27"
+        ],
+        "url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Memorial floral tribute honoring family remembrance and bereavement.",
+        "credit": "📸 Entertainment Press Archive"
+    },
+
     # Alamodome & Stadium Public Safety / Airman Investigation
     {
         "patterns": ["airman", "rappelling accident", "alamodome accident", "alamodome", "utsa-navy", "botched rappel"],
@@ -660,6 +683,38 @@ def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[s
     if is_public_land_dispute:
         return ("Politics", "National Headlines")
 
+    # 1C. DOMESTIC POLITICS, ELECTIONS & POLLING GATEKEEPER (PRIORITY OVER SPORTS)
+    is_politics_elections = has_any([
+        r'trump\s+(?:approval|shares|plan|campaign|rally|admin|white\s+house|hush\s+money|trial|court|indictment|memo|picks)',
+        r'approval\s+(?:ratings?|poll|hits?|drops?|slumps?|low|numbers?)',
+        r'midterm\s+(?:edge|races?|elections?|polls?|gains?|control|sweep|battle|momentum)',
+        r'presidential\s+(?:race|campaign|poll|election|approval|debate|transition)',
+        r'democrats?\s+(?:a\s+clear\s+midterm|gain|lead|control|edge|congress|senate|house|poll|margin)',
+        r'republicans?\s+(?:midterm|lead|control|edge|congress|senate|house|poll|margin)',
+        r'gop\s+(?:midterm|lead|control|edge|congress|senate|house|poll|margin)',
+        r'congressional\s+(?:race|districts?|elections?|midterms?)',
+        r'senate\s+(?:race|majority|control|filibuster)',
+        r'white\s+house', r'kamala\s+harris', r'joe\s+biden',
+        r'elections?', r'electoral\s+college', r'voters?\s+(?:turnout|registration|sentiment|backlash)',
+        r'spending\s+frameworks?', r'federal\s+shutdowns?'
+    ])
+    if is_politics_elections:
+        return ("Politics", "Politics")
+
+    # 1D. ENTERTAINMENT, CELEBRITY, CULTURE & BEREAVEMENT GATEKEEPER
+    hint_lower = (feed_hint or "").lower()
+    is_entertainment_bereavement = has_any([
+        r'cindy\s+crawford', r'kaia\s+gerber', r'rande\s+gerber', r'presley\s+gerber',
+        r'beyond\s+heartbroken', r'share\s+tributes?', r'break\s+silence\s+on.*death',
+        r'raw\s+tribute', r'older\s+brother.*death', r'death\s+of\s+son', r'death\s+of\s+daughter',
+        r'actor\s+dies?', r'actress\s+dies?', r'musician\s+dies?', r'singer\s+dies?', r'celebrity\s+dies?',
+        r'hollywood', r'celebrity', r'celebrities', r'box\s+office', r'movies?', r'films?',
+        r'directors?', r'imax', r'netflix', r'taylor\s+swift', r'concerts?', r'grammys?',
+        r'oscars?', r'theatrical', r'cinema', r'blockbusters?', r'tv\s+series', r'emmys?'
+    ]) or "entertainment" in hint_lower
+    if is_entertainment_bereavement:
+        return ("Entertainment", "Entertainment")
+
     # 1C. SPORTS FEED HINT CHECK & WEATHER-SPORTS TEAM SHIELD
     hint_lower = (feed_hint or "").lower()
     is_sports_feed = any(h in hint_lower for h in ["sport", "espn", "athletics", "football", "baseball", "basketball"])
@@ -675,8 +730,8 @@ def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[s
     is_sports = not is_military_base and (is_sports_team_weather or is_sports_feed or has_any([
         r'footballs?', r'college football', r'cfb\s+(?:playoffs?|rankings?|week\s+\d|top\s+25|poll|scores?|game|season)',
         r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
-        r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
-        r'bowl games?', r'college football playoff', r'playoff committee', r'ap poll', r'coaches poll',
+        r'big 12', r'big twelve', r'big ten', r'big 10', r'sec\s+(?:championship|football|basketball|standings|rivalry|teams?)', r'acc\s+(?:championship|football|basketball|standings|teams?)', r'pac-12', r'fbs', r'fcs',
+        r'bowl games?', r'college football playoff', r'playoff committee', r'ap\s+(?:top\s+25|football|basketball)\s+poll', r'ap\s+poll\s+rankings?', r'coaches poll',
         r'top 25', r'rankings?', r'upset-filled', r'flips top 25', r'upset win', r'upset loss',
         r'baseballs?', r'mlb', r'world series', r'ballparks?', r'pitchers?', r'home runs?', r'innings?',
         r'nlcs', r'alcs', r'dodgers?', r'brewers?', r'yankees?', r'mets?', r'red sox', r'cubs?',
@@ -845,6 +900,27 @@ def is_story_mismatched(story: dict) -> bool:
                 "meritocracy on the diamond", "winning requires preparation",
                 "tactical execution, roster depth"
             ]):
+                return True
+
+        # 6B. Political Polling, Approval, Presidential, or Midterm Stories Misclassified as Sports
+        if any(w in title for w in ["approval", "midterm", "poll", "trump", "democrats", "republicans", "gop", "election", "voter"]):
+            if "sport" in cat or any(bad in all_text for bad in [
+                "final scoreboard", "turnover differential", "locker-room", "player rotations",
+                "ballpark", "touchdown", "quarterback", "between the lines"
+            ]):
+                return True
+
+        # 6C. Memorials, Bereavement, Family Grief, or Entertainment Given Political Budget Boilerplate
+        if any(w in title for w in ["heartbroken", "presley", "cindy crawford", "kaia gerber", "tribute", "mourn", "death of son", "memorial"]):
+            if any(bad in all_text for bad in [
+                "federal budget", "partisan brinkmanship", "cable news rhetoric",
+                "public services", "trillions we don't have", "scoreboard", "turnover"
+            ]):
+                return True
+
+        # 6D. Universal Budget Soundbite Collision Protection
+        if "stop the partisan brinkmanship and balance the federal budget" in all_text:
+            if not any(w in title for w in ["budget", "shutdown", "spending", "appropriations", "debt ceiling", "fiscal"]):
                 return True
 
         # 7. Known generic boilerplate phrases
@@ -2747,6 +2823,72 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 "Our military personnel put their lives on the line every day; pregame stunts should never endanger troops, and commanders must enforce the strictest safety oversight."
             ]
 
+        # 3B. Bereavement, Memorials, Grief & Family Loss (Cindy Crawford, public figure tributes, family heartbreak)
+        elif any(w in full_text for w in [
+            "heartbroken", "presley", "cindy crawford", "kaia gerber", "rande gerber",
+            "tribute", "tributes", "mourns", "mourning", "bereavement", "death of son",
+            "death of daughter", "passes away", "passed away", "dead at 27", "dies at 27",
+            "dead at", "dies at", "condolences", "grieving parent"
+        ]):
+            left_framing = f"Honoring Loved Ones and Grieving Families: Supporting Compassion, Community Empathy, and Mental Health"
+            left_talk = [
+                "Losing a child is every parent's worst nightmare; behind the celebrity status, this family deserves our deepest sympathy and complete privacy to grieve.",
+                "Opening up about grief and honoring a loved one's memory reminds us of our shared humanity and the importance of checking in on the people we love."
+            ]
+            center_framing = f"Remembering Presley Gerber: Respecting Family Bereavement and Celebrating a Life Cut Short"
+            center_talk = [
+                "No parent should ever have to bury their child; the outpouring of love and condolences shows how deeply this sudden tragedy touches everyone.",
+                "In moments of unimaginable family loss, public discourse should step back and allow grieving parents and siblings to heal with dignity."
+            ]
+            right_framing = f"Standing with Grieving Families: The Sacred Bond of Family and the Fragility of Life"
+            right_talk = [
+                "A family's grief transcends all politics and celebrity; our hearts and prayers are with Cindy Crawford and her family as they mourn the loss of their son.",
+                "Family is the foundation of our lives, and the sudden loss of a young child or sibling is a heartbreaking cross that no mother or father should ever have to bear."
+            ]
+
+        # 3C. Political Polling, Approval Ratings & Midterm / Presidential Elections
+        elif any(w in full_text for w in [
+            "approval hits", "approval rating", "approval poll", "midterm edge", "clear midterm",
+            "democrats a clear", "midterm elections", "presidential poll", "trump approval",
+            "handing democrats", "voter backlash", "record low approval", "electoral edge"
+        ]):
+            left_framing = f"Voter Backlash Against Divisive Policies: Declining Approval Signals Broad Demand for Accountability"
+            left_talk = [
+                "Voters are clearly signaling that they are exhausted by constant chaos and divisiveness—they want leaders focused on real working-class solutions.",
+                "These poll numbers prove that when we run on protecting reproductive freedom and economic fairness, everyday Americans show up to reject extremism."
+            ]
+            center_framing = f"Shifting Midterm Landscape: Analyzing Swing-Voter Volatility, Inflation Fatigue, and Polling Realities"
+            center_talk = [
+                "Historical midterm trends always punish incumbent power when voters feel squeezed by the cost of living and political polarization.",
+                "Polls reflect legitimate voter frustration right now, but November elections come down to ground game, independent voters, and district-by-district turnout."
+            ]
+            right_framing = f"Media Polling Skepticism: Grassroots Momentum and Real-World Track Records Defy Establishment Surveys"
+            right_talk = [
+                "Mainstream media pollsters have spent years underestimating conservative enthusiasm; the only poll that counts is the one on Election Day.",
+                "Everyday families care about grocery bills, secure borders, and safe streets—they're not going to be swayed by biased polling designed to suppress turnout."
+            ]
+
+        # 3D. Entertainment, Cinema, Box Office & Theatrical Arts
+        elif "entertain" in c_lower or any(w in full_text for w in [
+            "box office", "movie", "movies", "film", "films", "hollywood", "actor", "actress",
+            "director", "cinema", "theatrical", "imax", "netflix", "taylor swift", "broadway", "grammy", "oscar"
+        ]):
+            left_framing = f"Creative Labor Protections and Cultural Diversity in {clean_title[:35]}..."
+            left_talk = [
+                "Artistic storytelling comes from human creative labor, not algorithmic corporate shortcuts; we must protect writers, actors, and crew members.",
+                "Cinema is at its best when it reflects rich, diverse human experiences rather than formulaic multi-million dollar franchise recycling."
+            ]
+            center_framing = f"Evolving Entertainment Economics and Cultural Reach in {clean_title[:35]}..."
+            center_talk = [
+                "The entertainment industry is finding its footing between the communal theatrical experience and the convenience of streaming at home.",
+                "Box office success and audience acclaim require genuine storytelling quality that compels people to disconnect and engage."
+            ]
+            right_framing = f"Free Enterprise in Entertainment: Consumer Choice and Artistic Excellence Drive Success in {clean_title[:32]}..."
+            right_talk = [
+                "The entertainment marketplace is simple: when studios deliver inspiring, high-craftsmanship storytelling that respects audiences, people show up.",
+                "American cultural ingenuity leads the world when creators focus on great entertainment rather than ideological lecturing."
+            ]
+
         # 4. Sports Contests, Competitions & Standings
         elif "sport" in c_lower or any(w in full_text for w in ["football", "baseball", "basketball", "nfl", "mlb", "nba", "ncaa", "quarterback", "touchdown", "rankings", "upset", "playoff"]):
             left_framing = f"Competitive Parity and Player Welfare in {clean_title[:38]}..."
@@ -2855,22 +2997,22 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 "Big Tech cannot claim to be neutral conduits to avoid lawsuits, and then turn around and act like partisan publishers."
             ]
 
-        # 10. Domestic Politics & Governance (Default for US Domestic)
+        # 10. General Institutional, Civic & Regional Fallback (Strictly Universal & Non-Boilerplate)
         else:
-            left_framing = f"Democratic Accountability, Ethics, and Public Welfare in {clean_title[:35]}..."
+            left_framing = f"Public Accountability, Transparency, and Everyday Community Welfare in {clean_title[:35]}..."
             left_talk = [
-                "Government institutions must be held accountable to everyday citizens, ensuring public policy protects working families over special interests.",
-                "Billionaires and giant corporations need to pay their fair share so working families can afford healthcare and housing."
+                "Institutional decision-makers must operate with full public transparency and answer directly to the everyday citizens they represent.",
+                "We have to ensure that policies and actions protect community welfare and basic human dignity over entrenched corporate or bureaucratic interests."
             ]
-            center_framing = f"Bipartisan Compromise, Institutional Stability, and Practical Governance in {clean_title[:32]}..."
+            center_framing = f"Evidence-Based Analysis, Practical Solutions, and Measured Progress in {clean_title[:32]}..."
             center_talk = [
-                "Stop the partisan brinkmanship and balance the federal budget without gutting essential public services.",
-                "Functional governance requires moving past cable news rhetoric to craft practical solutions that deliver real results."
+                "Complex challenges require stepping back from heated rhetoric and examining verified facts with intellectual honesty.",
+                "Sustainable progress happens when reasonable stakeholders focus on practical, balanced solutions that can actually be implemented."
             ]
-            right_framing = f"Constitutional Separation of Powers, Fiscal Discipline, and American Prosperity in {clean_title[:32]}..."
+            right_framing = f"Individual Responsibility, Proven Principles, and Practical Efficiency in {clean_title[:32]}..."
             right_talk = [
-                "Washington politicians keep blowing trillions we don't have, and everyday families are getting crushed at the grocery checkout.",
-                "Constitutional checks and balances, fiscal discipline, and limiting federal overreach are fundamental to American liberty."
+                "Common sense, personal accountability, and clear operational boundaries deliver far better outcomes than top-down micromanagement.",
+                "Lasting success comes from adhering to core principles, rewarding merit, and respecting everyday working families."
             ]
 
     # Clean up and ensure 3 to 4 facts
@@ -3251,9 +3393,13 @@ def run_pipeline():
             except Exception as e:
                 pass
 
-        # If mismatched or containing generic boilerplates, automatically re-synthesize!
+        # If mismatched or containing generic boilerplates, automatically re-classify and re-synthesize!
         if is_story_mismatched(s):
-            print(f"[Self-Healing] Re-synthesizing corrupted/boilerplate story: {title[:55]}...")
+            print(f"[Self-Healing] Re-classifying and re-synthesizing corrupted/boilerplate story: {title[:55]}...")
+            cat_assigned, master_cat_assigned = classify_article(title, s.get("description", ""), s.get("source_name", feed_hint if 'feed_hint' in locals() else ""))
+            s["category"] = cat_assigned
+            s["master_category"] = master_cat_assigned
+            cat = cat_assigned
             ctx = s.get("description") or s.get("neutral_summary") or ""
             re_synth = call_ai_synthesizer(title, ctx, cat)
             s["core_facts"] = re_synth.get("core_facts", [
@@ -3263,6 +3409,11 @@ def run_pipeline():
             ])
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
+            # Re-resolve image with corrected category
+            img_info = resolve_story_image(title, cat, used_urls)
+            s["image_url"] = img_info["url"]
+            s["caption"] = img_info["caption"]
+            s["credit"] = img_info["credit"]
 
         # Self-Healing Image Check: If the story has an unrelated or mismatched image, re-resolve it!
         if is_story_image_mismatched(s):
