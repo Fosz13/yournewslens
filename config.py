@@ -44,6 +44,7 @@ MASTER_CATEGORIES = {
 }
 
 RSS_FEEDS = [
+    # --- GOOGLE NEWS MASTER SECTIONS ---
     {
         "category": "All",
         "master_category": "All",
@@ -114,6 +115,73 @@ RSS_FEEDS = [
         "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en",
         "description": "Major League Baseball, NFL, NBA, college athletics, and golf."
     },
+
+    # --- GOOGLE NEWS TARGETED TOPIC FEEDS ---
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Google News College Football",
+        "url": "https://news.google.com/rss/search?q=college+football+rankings+OR+CFP+OR+AP+poll&hl=en-US&gl=US&ceid=US:en",
+        "description": "NCAA college football top 25 rankings, games, and playoff developments."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Google News NFL",
+        "url": "https://news.google.com/rss/search?q=NFL+football+OR+quarterback+OR+touchdown&hl=en-US&gl=US&ceid=US:en",
+        "description": "NFL games, injury reports, trades, and playoff standings."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Google News MLB",
+        "url": "https://news.google.com/rss/search?q=MLB+baseball+OR+World+Series+OR+NLCS+OR+ALCS&hl=en-US&gl=US&ceid=US:en",
+        "description": "Major League Baseball championship pennants and scores."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Google News NBA",
+        "url": "https://news.google.com/rss/search?q=NBA+basketball+OR+Lakers+OR+Celtics&hl=en-US&gl=US&ceid=US:en",
+        "description": "NBA basketball scores, player rotations, and trade deadlines."
+    },
+    {
+        "category": "Energy & Weather",
+        "master_category": "National Headlines",
+        "source": "Google News Energy & Grid",
+        "url": "https://news.google.com/rss/search?q=energy+OR+power+grid+OR+utilities+OR+FERC+OR+nuclear+reactor&hl=en-US&gl=US&ceid=US:en",
+        "description": "Power grid infrastructure, pipelines, nuclear energy compacts, and utilities."
+    },
+    {
+        "category": "Energy & Weather",
+        "master_category": "National Headlines",
+        "source": "Google News Severe Weather",
+        "url": "https://news.google.com/rss/search?q=severe+weather+OR+storm+warning+OR+power+outage+OR+blizzard&hl=en-US&gl=US&ceid=US:en",
+        "description": "High winds, blizzard alerts, downed lines, and emergency outages."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "Google News Economy",
+        "url": "https://news.google.com/rss/search?q=Federal+Reserve+OR+inflation+OR+interest+rates+OR+CPI+OR+jobs+report&hl=en-US&gl=US&ceid=US:en",
+        "description": "Federal Reserve monetary policy, inflation data, and labor statistics."
+    },
+    {
+        "category": "Border & Security",
+        "master_category": "National Headlines",
+        "source": "Google News Border & Security",
+        "url": "https://news.google.com/rss/search?q=Border+Patrol+OR+immigration+asylum+OR+fentanyl+seizure+OR+CBP&hl=en-US&gl=US&ceid=US:en",
+        "description": "Border enforcement, port fentanyl interdictions, and immigration courts."
+    },
+    {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "Google News AI & Chips",
+        "url": "https://news.google.com/rss/search?q=artificial+intelligence+OR+semiconductors+OR+OpenAI+OR+Anthropic+OR+Nvidia&hl=en-US&gl=US&ceid=US:en",
+        "description": "AI enterprise models, GPU computing, and semiconductor supply chains."
+    },
+
+    # --- DEDICATED SPORTS DESKS ---
     {
         "category": "Sports",
         "master_category": "Sports",
@@ -122,32 +190,135 @@ RSS_FEEDS = [
         "description": "Dedicated 24/7 sports wire coverage across major American leagues."
     },
     {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN College Football",
+        "url": "https://www.espn.com/espn/rss/ncf/news",
+        "description": "ESPN breaking college football scores, rankings, and analysis."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN NFL",
+        "url": "https://www.espn.com/espn/rss/nfl/news",
+        "description": "ESPN NFL wire and franchise updates."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN MLB",
+        "url": "https://www.espn.com/espn/rss/mlb/news",
+        "description": "ESPN baseball pennant and World Series reports."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "CBS Sports",
+        "url": "https://www.cbssports.com/rss/headlines/",
+        "description": "CBS Sports wire breaking headlines."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Fox Sports",
+        "url": "https://moxie.foxnews.com/google-publisher/sports.xml",
+        "description": "Fox Sports national athletics coverage."
+    },
+
+    # --- PREMIER POLITICAL DESKS ---
+    {
         "category": "Politics",
         "master_category": "National Headlines",
         "source": "Politico National",
         "url": "https://rss.politico.com/politics-news.xml",
-        "description": "Capitol Hill and White House political journalism."
+        "description": "Capitol Hill, Congress, and White House political journalism."
     },
     {
         "category": "Politics",
         "master_category": "National Headlines",
         "source": "Fox News Politics",
         "url": "https://moxie.foxnews.com/google-publisher/politics.xml",
-        "description": "Conservative national political reporting."
+        "description": "National political and congressional news from Fox."
     },
+    {
+        "category": "Politics",
+        "master_category": "National Headlines",
+        "source": "The Hill",
+        "url": "https://thehill.com/feed/",
+        "description": "Bipartisan Capitol Hill legislative and policy wire."
+    },
+
+    # --- WIRE SERVICES & NATIONAL BROADCASTERS ---
     {
         "category": "National Headlines",
         "master_category": "National Headlines",
         "source": "NPR News",
         "url": "https://feeds.npr.org/1001/rss.xml",
-        "description": "National public radio investigative and infrastructure reporting."
+        "description": "National public radio top investigative reporting."
+    },
+    {
+        "category": "National Headlines",
+        "master_category": "National Headlines",
+        "source": "NPR National",
+        "url": "https://feeds.npr.org/1003/rss.xml",
+        "description": "NPR domestic and municipal community coverage."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "NPR Business",
+        "url": "https://feeds.npr.org/1006/rss.xml",
+        "description": "NPR markets, workplace, and economy reporting."
+    },
+    {
+        "category": "National Headlines",
+        "master_category": "National Headlines",
+        "source": "CBS News Latest",
+        "url": "https://www.cbsnews.com/latest/rss/main",
+        "description": "CBS News domestic news wire."
+    },
+    {
+        "category": "World News",
+        "master_category": "World News",
+        "source": "BBC News US & Canada",
+        "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+        "description": "BBC News North American international bureau coverage."
+    },
+    {
+        "category": "World News",
+        "master_category": "World News",
+        "source": "BBC News World",
+        "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+        "description": "BBC News global diplomatic and security affairs."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "CNBC Top News",
+        "url": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+        "description": "CNBC financial markets, Wall Street, and corporate earnings."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "CNBC Markets",
+        "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
+        "description": "CNBC stock exchange, interest rates, and bond yields."
+    },
+    {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "CNBC Tech",
+        "url": "https://www.cnbc.com/id/19854910/device/rss/rss.html",
+        "description": "CNBC Silicon Valley technology, semiconductor, and AI news."
     }
 ]
 
 INGESTION_SETTINGS = {
-    "max_items_per_feed": 8,
-    "feed_retention_limit": 60,
-    "min_stories_per_category": 4,
+    "max_items_per_feed": 12,
+    "feed_retention_limit": 120,
+    "min_stories_per_category": 8,
     "feed_timeout_seconds": 12,
-    "ai_timeout_seconds": 25
+    "ai_timeout_seconds": 25,
+    "max_workers": 12
 }

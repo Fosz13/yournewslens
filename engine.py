@@ -22,97 +22,14 @@ import email.utils
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional, Set, Tuple
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import config
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_FILE = os.path.join(BASE_DIR, "data", "stories.json")
 HTML_FILE = os.path.join(BASE_DIR, "index.html")
 
-RSS_FEEDS = [
-    {
-        "category": "All",
-        "master_category": "All",
-        "source": "Google News Top Headlines",
-        "url": "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "National Headlines",
-        "master_category": "National Headlines",
-        "source": "Google News U.S.",
-        "url": "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "World News",
-        "master_category": "World News",
-        "source": "Google News World",
-        "url": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Politics",
-        "master_category": "National Headlines",
-        "source": "Google News Politics",
-        "url": "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Business & Economy",
-        "master_category": "National Headlines",
-        "source": "Google News Business",
-        "url": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Science & Tech",
-        "master_category": "Science & Tech",
-        "source": "Google News Science",
-        "url": "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Science & Tech",
-        "master_category": "Science & Tech",
-        "source": "Google News Tech",
-        "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Entertainment",
-        "master_category": "Entertainment",
-        "source": "Google News Entertainment",
-        "url": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Health",
-        "master_category": "National Headlines",
-        "source": "Google News Health",
-        "url": "https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Google News Sports",
-        "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en"
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "ESPN Wire",
-        "url": "https://www.espn.com/espn/rss/news"
-    },
-    {
-        "category": "Politics",
-        "master_category": "National Headlines",
-        "source": "Politico National",
-        "url": "https://rss.politico.com/politics-news.xml"
-    },
-    {
-        "category": "Politics",
-        "master_category": "National Headlines",
-        "source": "Fox News Politics",
-        "url": "https://moxie.foxnews.com/google-publisher/politics.xml"
-    },
-    {
-        "category": "National Headlines",
-        "master_category": "National Headlines",
-        "source": "NPR News",
-        "url": "https://feeds.npr.org/1001/rss.xml"
-    }
-]
+RSS_FEEDS = config.RSS_FEEDS
 
 EXACT_ENTITY_PHOTOGRAPHY = [
     # Alamodome & Stadium Public Safety / Airman Investigation
@@ -687,7 +604,7 @@ HEADLINE_NOISE_WORDS = {
     "can", "anyone", "stop", "remains", "unbeaten", "surges", "climbs", "falls"
 }
 
-def classify_article(title: str, text: str = "") -> Tuple[str, str]:
+def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[str, str]:
     """Accurately classifies articles into specific topic category and hierarchical master category.
     Strictly separates domestic US issues from international foreign affairs and prevents tragedies
     from colliding with sports.
@@ -743,9 +660,19 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
     if is_public_land_dispute:
         return ("Politics", "National Headlines")
 
+    # 1C. SPORTS FEED HINT CHECK & WEATHER-SPORTS TEAM SHIELD
+    hint_lower = (feed_hint or "").lower()
+    is_sports_feed = any(h in hint_lower for h in ["sport", "espn", "athletics", "football", "baseball", "basketball"])
+
+    # Protect sports teams using nature/weather words (Hurricanes, Thunder, Lightning, Suns, Avalanche, Heat, Flames)
+    is_sports_team_weather = bool(re.search(
+        r'(?:miami|carolina|tulsa|college\s+football|cfb|nfl|nhl|nba|acc|sec|ncaa|ap\s+poll|top\s+25|rankings?|upset|touchdown|quarterback|coach|playoffs?|oklahoma\s+city|okc|tampa\s+bay|colorado|phoenix)\s+(?:hurricanes?|thunder|lightning|avalanche|suns?|heat|flames?)|(?:hurricanes?|thunder|lightning|avalanche|suns?|heat|flames?)\s+(?:rankings?|standings?|scores?|game|win|loss|coach|roster|playoffs?|upset|defense|quarterback)',
+        combined
+    ))
+
     # 2. DOMESTIC SPORTS PRIORITY CHECK:
     is_military_base = has_any([r'military\s+base', r'air\s+force\s+base', r'naval\s+base', r'army\s+base', r'cfb\s+[a-z]+'])
-    is_sports = not is_military_base and has_any([
+    is_sports = not is_military_base and (is_sports_team_weather or is_sports_feed or has_any([
         r'footballs?', r'college football', r'cfb\s+(?:playoffs?|rankings?|week\s+\d|top\s+25|poll|scores?|game|season)',
         r'nfl', r'super bowl', r'touchdowns?', r'quarterbacks?', r'heisman',
         r'big 12', r'big twelve', r'big ten', r'big 10', r'sec', r'acc', r'pac-12', r'fbs', r'fcs',
@@ -761,14 +688,13 @@ def classify_article(title: str, text: str = "") -> Tuple[str, str]:
         r'tennis', r'us open',
         r'jalen hurts', r'bo nix', r'alabama crimson tide', r'ohio state', r'texas longhorns',
         r'georgia bulldogs', r'oregon ducks', r'byu cougars', r'miami hurricanes'
-    ])
+    ]))
     if is_sports:
         if not (has_any([r'power outages?', r'blackouts?']) and not has_any([r'rankings?', r'game', r'score', r'win', r'loss', r'upset', r'playoff'], t_lower)):
             return ("Sports", "Sports")
 
     # 3. Severe Weather & Utility Grids
-    is_miami_hurricanes = bool(re.search(r'\b(?:miami|carolina|tulsa)\s+hurricanes?\b', combined))
-    if not is_miami_hurricanes and has_any([
+    if not is_sports_team_weather and not is_sports and has_any([
         r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?',
         r'hurricane\s+(?:warning|watch|landfall|damage|evacuation|category|track|season|winds?|surge)',
         r'tropical\s+storms?', r'blizzards?', r'tornados?|tornadoes?',
@@ -899,7 +825,7 @@ def is_story_mismatched(story: dict) -> bool:
                 return True
 
         # 5. Sports story with NCAA settlement boilerplate when title is not about settlement
-        if ("sport" in cat or any(w in title for w in ["football", "rankings", "upset", "game", "top 25", "week"])) and not any(w in title for w in ["settlement", "revenue-share", "revenue sharing", "house v"]):
+        if ("sport" in cat or any(w in title for w in ["football", "rankings", "upset", "game", "top 25", "week"])) and not any(w in title for w in ["settlement", "revenue-share", "revenue-sharing", "revenue sharing", "house v"]):
             if any(bad in all_text for bad in ["2.75 billion", "house v. ncaa", "title ix gender-equity", "losing every court case 9-0", "bringing revenue sharing in-house"]):
                 return True
 
@@ -967,7 +893,7 @@ def is_story_image_mismatched(story: dict) -> bool:
                 return True
 
         # 2. NON-SPORTS STORIES HAVING SPORTS IMAGERY:
-        if not is_sports:
+        if not is_sports and not any(w in title for w in ["golf course", "east potomac", "potomac links", "municipal golf"]):
             sports_markers = [
                 "photo-1574629810360-7efbbe195018", "photo-1508098682722-e99c43a406b2",
                 "photo-1508344928928-7165b67de128", "photo-1546519638-68e109498ffc",
@@ -3094,6 +3020,21 @@ Return strictly valid raw JSON:
     print(f"[AI Fallback] Generating theme-accurate perspectives for: {title[:50]}...")
     return generate_contextual_synthesis(title, context, category)
 
+
+def fetch_all_feeds_concurrently(feeds: List[Dict[str, str]], max_items_per_feed: int = 12, max_workers: int = 12) -> List[Dict[str, Any]]:
+    """Concurrently fetches all configured RSS feeds using ThreadPoolExecutor for sub-5s throughput."""
+    all_items = []
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_feed = {executor.submit(fetch_rss_items, feed, max_items_per_feed): feed for feed in feeds}
+        for future in as_completed(future_to_feed):
+            feed = future_to_feed[future]
+            try:
+                items = future.result()
+                all_items.extend(items)
+            except Exception as exc:
+                print(f"Notice: Feed {feed['source']} fetch error: {exc}")
+    return all_items
+
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
     for s in stories[:35]:
@@ -3345,15 +3286,19 @@ def run_pipeline():
     existing_titles = {str(s.get("title") or "").strip().lower() for s in existing_stories}
     new_stories = []
 
-    for feed in RSS_FEEDS:
-        items = fetch_rss_items(feed, max_items=8)
-        for it in items:
+    max_items = getattr(config, 'INGESTION_SETTINGS', {}).get('max_items_per_feed', 12)
+    max_workers = getattr(config, 'INGESTION_SETTINGS', {}).get('max_workers', 12)
+    print(f"Fetching from {len(RSS_FEEDS)} feeds concurrently (max {max_items} items/feed)...")
+    incoming_items = fetch_all_feeds_concurrently(RSS_FEEDS, max_items_per_feed=max_items, max_workers=max_workers)
+    print(f"Retrieved {len(incoming_items)} total wire items across all sources.")
+
+    for it in incoming_items:
             t = it["title"]
             if t.lower() in existing_titles:
                 continue
 
             print(f"Processing wire item: {t[:65]}...")
-            cat_assigned, master_cat_assigned = classify_article(t, it["description"])
+            cat_assigned, master_cat_assigned = classify_article(t, it["description"], feed_hint=it.get("source_name") or it.get("category", ""))
             synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
             scraped_pic = it.get("scraped_image")
             img_info = resolve_story_image(t, cat_assigned, master_cat_assigned, used_urls, scraped_image=scraped_pic)
@@ -3378,7 +3323,9 @@ def run_pipeline():
             time.sleep(1)
 
     updated_feed = new_stories + existing_stories
-    updated_feed = balance_feed_by_category(updated_feed, max_total=60, min_per_cat=6)
+    retention_cap = getattr(config, 'INGESTION_SETTINGS', {}).get('feed_retention_limit', 120)
+    min_quota = getattr(config, 'INGESTION_SETTINGS', {}).get('min_stories_per_category', 8)
+    updated_feed = balance_feed_by_category(updated_feed, max_total=retention_cap, min_per_cat=min_quota)
 
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, "w", encoding="utf-8") as f:
