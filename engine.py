@@ -1740,6 +1740,41 @@ def extract_facts_from_context_and_title(title: str, context: str, category: str
 
     return valid_facts
 
+
+# Extract primary entity or subject phrase from headline
+def extract_focus_entity(text: str) -> str:
+    known_entities = [
+        "Germie Bernard", "Steelers", "Bucs", "Buccaneers", "Jalen Hurts", "Eagles", "Panthers",
+        "Dodgers", "Brewers", "Lakers", "Celtics", "Chiefs", "Bills", "Cowboys", "Knicks",
+        "Anthony Davis", "LeBron James", "JJ Redick", "Patrick Mahomes", "PGA Tour", "LIV Golf",
+        "NCAA", "Alabama", "Vanderbilt", "Tennessee", "Arkansas", "Oregon", "Ohio State", "BYU",
+        "Miami Hurricanes", "Georgia", "Texas Longhorns", "Donald Trump", "Trump", "Kamala Harris",
+        "Biden", "Jerome Powell", "Federal Reserve", "Tesla", "Roadster", "Elon Musk", "Anthropic",
+        "Claude", "Cindy Crawford", "Kaia Gerber", "Presley Gerber", "Christopher Nolan", "James Webb",
+        "NASA", "Starlink", "Ukraine", "Russia", "France", "Paris", "Pakistan", "Imran Khan", "Khyber Pakhtunkhwa"
+    ]
+    for ent in known_entities:
+        if re.search(r'\b' + re.escape(ent) + r'\b', text, flags=re.I):
+            return ent
+    matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
+    stops = {
+        'A', 'An', 'The', 'In', 'On', 'At', 'To', 'For', 'With', 'From', 'By', 'After', 'Before', 'During',
+        'Under', 'Over', 'Between', 'First', 'New', 'Hits', 'Shares', 'Plans', 'Reveals', 'Rules', 'Dies',
+        'Dead', 'Several', 'Historic', 'Huge', 'Live', 'Updates', 'Why', 'How', 'What', 'Where', 'When', 'Who',
+        'Reportedly', 'Near', 'Says', 'Says It', 'Tells', 'Warns', 'Claims', 'Finds', 'Witness', 'Witnesses',
+        'Police', 'Officials', 'Authorities', 'Victim', 'Victims', 'Family', 'Sources', 'Reports', 'Report',
+        'Man', 'Woman', 'Person', 'People', 'Child', 'Children', 'Kid', 'Kids', 'Teen', 'Adult',
+        'Suspect', 'Shooter', 'Gunman', 'Driver', 'Pilot', 'Worker', 'Workers', 'Investigators', 'Agents',
+        'Officers', 'Sheriff', 'Deputies', 'First Responders', 'Responders', 'Paramedics', 'Firefighters',
+        'Public Safety', 'Law Enforcement', 'Court', 'Judge', 'Jury', 'Trial', 'Hearing', 'Inquiry',
+        'Something', 'Someone', 'Everything', 'Nothing', 'Breaking', 'Exclusive', 'Special', 'Daily'
+    }
+    filtered = [m for m in matches if m not in stops and len(m) > 2]
+    if filtered:
+        return filtered[0]
+    words = text.split()
+    return " ".join(words[:3]) if len(words) >= 3 else text
+
 def generate_contextual_synthesis(title: str, context: str, category: str) -> Dict[str, Any]:
     """
     Deep, theme-specific fact, perspective, and debate argument generator.
@@ -1749,6 +1784,8 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
     3. Conversational lay-term Key Talking Points tailored to the story facts.
     """
     clean_title = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
+    t_clean = clean_title.strip()
+    focus_ent = extract_focus_entity(t_clean)
     full_text = f"{clean_title}. {context or ''}".lower()
 
     def has_any(keywords, string=None):
@@ -2210,16 +2247,31 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "The new framework allows athletic departments to opt in to direct player revenue distribution starting in the 2025–26 academic year."
         ]
         left_framing = "Historic Labor Victory: College Athletes Secure Direct Revenue Share After Decades of Exploitation"
+        left_bullets = [
+            "Recognizes student-athletes as the primary workforce driving multi-billion dollar collegiate athletic revenues, deserving direct equity.",
+            "Challenges decades of exploitative amateurism that enriched administrative bureaucracies while denying players fair compensation.",
+            "Demands comprehensive collective bargaining rights, workers' compensation, and guaranteed lifetime healthcare coverage for athletes."
+        ]
         left_talk = [
             "Coaches were making $10 million and conferences were making billions while players got zero; paying athletes directly is basic labor fairness.",
             "College athletes are the workers driving a massive entertainment industry—they deserve fair pay, workers' compensation, and lifelong injury protections."
         ]
         center_framing = "Antitrust Reality Forces Sustainable In-House Compensation Model for College Sports"
+        center_bullets = [
+            "Brings structural order to collegiate athletics by replacing unregulated booster collectives with standardized institutional payroll caps.",
+            "Resolves severe antitrust legal exposure that threatened to bankrupt the NCAA across multiple federal courtrooms.",
+            "Requires ongoing federal and judicial oversight to ensure compliance with Title IX gender-equity mandates."
+        ]
         center_talk = [
             "The NCAA was losing every court case 9-0; bringing revenue sharing in-house is the only pragmatic way to avoid total legal chaos.",
             "Sharing media revenue directly with athletes was legally unavoidable to save college athletics from endless antitrust lawsuits."
         ]
         right_framing = "Unregulated Free Agency Threatens Amateurism, Academic Focus, and School Loyalty"
+        right_bullets = [
+            "Warns that transforming college sports into semi-pro free agency erodes traditional collegiate culture and school loyalty.",
+            "Demands binding multi-year contracts and tax accountability if student-athletes receive direct professional-tier compensation.",
+            "Raises concerns over whether athletic departments will defund Olympic and non-revenue sports to finance football payrolls."
+        ]
         right_talk = [
             "If players are getting paid like pros, they should sign binding multi-year contracts and pay taxes like pros—you can't have pro salaries without real accountability.",
             "College sports used to be about campus pride, education, and development; turning 19-year-olds into mercenaries jumping schools every December ruins the core culture."
@@ -2234,22 +2286,37 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Why It Matters & Next Steps: The U.S. Air Force, military safety boards, and venue operators launched an immediate formal inquiry into equipment rigging, harness safety, and oversight protocols for stadium military demonstrations."
         ]
         left_framing = "Human Life Over Commercial Revenue: Questioning the Decision to Play On and Militarize Sports Stunts"
+        left_bullets = [
+            "Questions the decision to continue an entertainment event immediately following a fatal active-duty military tragedy on the field.",
+            "Demands a thorough civilian and workplace safety investigation into why high-risk rappelling stunts are authorized for pregame sporting entertainment.",
+            "Advocates for the family of the fallen airman, calling for institutional accountability and grief counseling for traumatized spectators."
+        ]
         left_talk = [
             "Resuming a football game just 10 minutes after a service member suffered a fatal fall shows how corporate sports prioritizes broadcast schedules and revenue over basic human decency.",
             "Staging high-risk rappelling stunts and flyovers as commercial entertainment spectacles commodifies our service members without proper civilian and workplace safety protections."
         ]
         center_framing = "Urgent Safety Protocol Review: Investigating Rigging Standards and Crisis Management at Public Venues"
+        center_bullets = [
+            "Assesses the mechanical, procedural, and tether rigging inspection logs leading up to the stadium demonstration.",
+            "Examines venue crisis response protocols to establish clear standards for event suspension following catastrophic on-site fatalities.",
+            "Coordinates inquiries between the U.S. Air Force safety investigation board, the Department of Defense, and local municipal venue operators."
+        ]
         center_talk = [
             "The Air Force and stadium operators must conduct an urgent, transparent investigation into rigging protocols before any more high-altitude stadium demonstrations are permitted.",
             "Venue officials need clear crisis protocols on whether and when public sporting events should be suspended following catastrophic on-field tragedies."
         ]
         right_framing = "Honoring Military Sacrifice: Demanding Accountability and Solemnity Over Entertainment Spectacle"
+        right_bullets = [
+            "Demands the highest level of solemnity and reverence for fallen active-duty military personnel who give their lives in service.",
+            "Calls for strict accountability from commanders and demonstration planners to ensure troops are never placed at needless risk for public spectacles.",
+            "Extends unconditional prayers and national support to the fallen airman's family, colleagues, and broader military community."
+        ]
         right_talk = [
             "An active-duty airman lost their life serving our country in uniform—playing a football game 10 minutes later was completely tone-deaf and disrespectful to that soldier's sacrifice.",
             "Pregame stunts should never put service members at unnecessary risk; our military personnel deserve strict safety reviews, and the fallen airman's family deserves our deepest honor and support."
         ]
 
-    # --- 5D. CANADA MILITARY BASE (CFB WAINWRIGHT) FIRE & EXPLOSION ---
+        # --- 5D. CANADA MILITARY BASE (CFB WAINWRIGHT) FIRE & EXPLOSION ---
     elif has_any(["cfb wainwright", "fire at canada military base", "major fire at canada military base", "military base fire", "canada military base explosion"]):
         core_facts = [
             "Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.",
@@ -2258,22 +2325,37 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Allied military liaisons and international defense leadership expressed condolences and offered specialized disaster response coordination as recovery efforts proceed."
         ]
         left_framing = "Worker Safety in Uniform: Demanding Transparency and Strict Environmental Safety at Defense Bases"
+        left_bullets = [
+            "Demands independent safety oversight and transparent public reporting into defense facility maintenance and munitions handling hazards.",
+            "Advocates for strict workplace safety protections and rapid trauma care for military service members serving at domestic training bases.",
+            "Calls for institutional accountability from defense leadership to prevent industrial and munitions failures at military installations."
+        ]
         left_talk = [
             "Service members risk their lives to protect us, and they deserve safe working conditions, well-maintained facilities, and transparent investigations into base hazards.",
             "Defense authorities must be held fully accountable for military infrastructure maintenance and hazardous materials safety to protect soldiers and surrounding communities."
         ]
         center_framing = "Joint Allied Crisis Management: Investigating the Root Cause of the CFB Wainwright Tragedy"
+        center_bullets = [
+            "Coordinates technical investigation protocols between Canadian military police, defense engineering boards, and regional emergency services.",
+            "Reviews facility evacuation timelines, munitions storage safety guidelines, and burn trauma transport coordination.",
+            "Maintains allied defense cooperation while investigators isolate the technical origin and mechanical causes of the blaze."
+        ]
         center_talk = [
             "A disaster of this scale demands a swift, independent technical inquiry to determine whether mechanical failure, munitions handling, or structural defects caused the blast.",
             "Defense leadership must review emergency evacuation procedures and medical transport readiness across all regional military training centers."
         ]
         right_framing = "Standing with Allied Forces: Honoring Fallen Soldiers and Fortifying Military Base Infrastructure"
+        right_bullets = [
+            "Honors the bravery and sacrifice of allied Canadian military personnel and demands unconditional support for their families.",
+            "Stresses the non-negotiable need for modern, secure defense base infrastructure to protect soldiers during domestic operations.",
+            "Calls for swift, decisive remedial measures to ensure military readiness and base security remain uncompromised."
+        ]
         right_talk = [
             "Our hearts and prayers are with our Canadian military allies; we must honor the brave personnel who lost their lives and ensure their families receive unconditional support.",
             "Military installations require uncompromising safety protocols and infrastructure maintenance so our troops are never endangered by facility failures at home."
         ]
 
-# --- 5B. COLLEGE FOOTBALL RANKINGS, UPSETS & TOP 25 SHAKEUP ---
+    # --- 5B. COLLEGE FOOTBALL RANKINGS, UPSETS & TOP 25 SHAKEUP ---
     elif has_any(["college football rankings", "upset-filled", "flips top 25", "top 25 upside down", "college football upsets", "ap top 25", "coaches poll", "winners, losers in week", "historic upset", "upset win", "upset loss"]) or (has_any(["college football", "cfb"]) and has_any(["rankings", "top 25", "upset", "upsets", "week 7", "week 8", "week 9", "week 6"])):
         core_facts = [
             "Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.",
@@ -2282,22 +2364,37 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "Under the new 12-team College Football Playoff format, regular-season upsets carry unprecedented weight as conference champions lock in first-round byes while bubble teams battle for at-large seeds."
         ]
         left_framing = "Competitive Parity Over Corporate Monopolies: Student-Athletes Drive Historic Athletic Drama"
+        left_bullets = [
+            "Celebrates competitive parity across collegiate sports, proving that player grit and team development can overcome massive budget disparities.",
+            "Highlights how student-athletes put their physical health on the line every Saturday, underscoring the case for fair compensation and healthcare.",
+            "Shows that the sport thrives when non-traditional and heartland programs have an equitable opportunity to compete on national television."
+        ]
         left_talk = [
             "Seeing hungry underdog teams take down multi-million dollar athletic factories shows the sport still belongs to players and campus communities, not TV network deals.",
             "These student-athletes put their bodies on the line every single Saturday—their incredible effort proves they deserve real equity, fair compensation, and lifelong healthcare."
         ]
         center_framing = "Playoff Elimination Chaos: 12-Team Bracket Magnifies Every Single Regular-Season Upset"
+        center_bullets = [
+            "Analyzes the strategic volatility introduced by the 12-team playoff format, where mid-season upsets immediately alter at-large bracket resumes.",
+            "Evaluates team depth, road environment composure, and tactical second-half coaching adjustments that decided marquee top-10 games.",
+            "Demonstrates that regular-season execution under pressure separates genuine title contenders from paper favorites."
+        ]
         center_talk = [
             "That's why you play the games: preseason rankings and media hype mean nothing once you have to execute in a hostile road stadium.",
             "With the new 12-team playoff, these mid-season upsets make every Saturday an elimination tournament with zero room for error."
         ]
         right_framing = "Heartland Grit Over Coastal Media Hype: Unranked Underdogs Prove Games Are Won on the Field"
+        right_bullets = [
+            "Celebrates pure athletic meritocracy: performance on the field proves that heartland work ethic and physical toughness defeat media hype.",
+            "Rebuffs national television studio narratives, proving that championships are earned in the trenches on game day.",
+            "Highlights the cultural vitality of passionate campus fanbases and underdog programs achieving historic milestone victories."
+        ]
         right_talk = [
             "This is why we love college football—unranked heartland underdogs knocking off overhyped, corporate-funded blue bloods on pure grit and heart!",
             "The coastal media elites running the AP poll look foolish once again; real championships are won in the trenches, not in an ESPN TV studio."
         ]
-    
-# --- 6. FEDERAL RESERVE INTEREST RATES ---
+
+    # --- 6. FEDERAL RESERVE INTEREST RATES ---
     elif has_any(["federal reserve", "rates steady", "benchmark rates steady", "core inflation eases", "fomc"]):
         core_facts = [
             "The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.",
@@ -3241,40 +3338,7 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
                 if re.search(r'\b' + pat + r'\b', text, flags=re.I):
                     return True
             return False
-
-        # Extract primary entity or subject phrase from headline
-        def extract_focus_entity(text: str) -> str:
-            known_entities = [
-                "Germie Bernard", "Steelers", "Bucs", "Buccaneers", "Jalen Hurts", "Eagles", "Panthers",
-                "Dodgers", "Brewers", "Lakers", "Celtics", "Chiefs", "Bills", "Cowboys", "Knicks",
-                "Anthony Davis", "LeBron James", "JJ Redick", "Patrick Mahomes", "PGA Tour", "LIV Golf",
-                "NCAA", "Alabama", "Vanderbilt", "Tennessee", "Arkansas", "Oregon", "Ohio State", "BYU",
-                "Miami Hurricanes", "Georgia", "Texas Longhorns", "Donald Trump", "Trump", "Kamala Harris",
-                "Biden", "Jerome Powell", "Federal Reserve", "Tesla", "Roadster", "Elon Musk", "Anthropic",
-                "Claude", "Cindy Crawford", "Kaia Gerber", "Presley Gerber", "Christopher Nolan", "James Webb",
-                "NASA", "Starlink", "Ukraine", "Russia", "France", "Paris", "Pakistan", "Imran Khan", "Khyber Pakhtunkhwa"
-            ]
-            for ent in known_entities:
-                if re.search(r'\b' + re.escape(ent) + r'\b', text, flags=re.I):
-                    return ent
-            matches = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
-            stops = {
-                'A', 'An', 'The', 'In', 'On', 'At', 'To', 'For', 'With', 'From', 'By', 'After', 'Before', 'During',
-                'Under', 'Over', 'Between', 'First', 'New', 'Hits', 'Shares', 'Plans', 'Reveals', 'Rules', 'Dies',
-                'Dead', 'Several', 'Historic', 'Huge', 'Live', 'Updates', 'Why', 'How', 'What', 'Where', 'When', 'Who',
-                'Reportedly', 'Near', 'Says', 'Says It', 'Tells', 'Warns', 'Claims', 'Finds', 'Witness', 'Witnesses',
-                'Police', 'Officials', 'Authorities', 'Victim', 'Victims', 'Family', 'Sources', 'Reports', 'Report',
-                'Man', 'Woman', 'Person', 'People', 'Child', 'Children', 'Kid', 'Kids', 'Teen', 'Adult',
-                'Suspect', 'Shooter', 'Gunman', 'Driver', 'Pilot', 'Worker', 'Workers', 'Investigators', 'Agents',
-                'Officers', 'Sheriff', 'Deputies', 'First Responders', 'Responders', 'Paramedics', 'Firefighters',
-                'Public Safety', 'Law Enforcement', 'Court', 'Judge', 'Jury', 'Trial', 'Hearing', 'Inquiry',
-                'Something', 'Someone', 'Everything', 'Nothing', 'Breaking', 'Exclusive', 'Special', 'Daily'
-            }
-            filtered = [m for m in matches if m not in stops and len(m) > 2]
-            if filtered:
-                return filtered[0]
-            words = text.split()
-            return " ".join(words[:3]) if len(words) >= 3 else text
+        # Primary focus entity extracted at function entry
 
         focus_ent = extract_focus_entity(t_clean)
         is_international = has_bound([
@@ -4760,6 +4824,7 @@ def run_pipeline():
             s["category"] = cat_assigned
             s["master_category"] = master_cat_assigned
             cat = cat_assigned
+            master_cat = master_cat_assigned
             ctx = s.get("description") or s.get("neutral_summary") or ""
             re_synth = call_ai_synthesizer(title, ctx, cat)
             s["core_facts"] = re_synth.get("core_facts", [
@@ -4770,7 +4835,7 @@ def run_pipeline():
             s["neutral_summary"] = re_synth["neutral_summary"]
             s["perspectives"] = re_synth["perspectives"]
             # Re-resolve image with corrected category
-            img_info = resolve_story_image(title, cat, used_urls)
+            img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=None)
             s["image_url"] = img_info["url"]
             s["caption"] = img_info["caption"]
             s["credit"] = img_info["credit"]
