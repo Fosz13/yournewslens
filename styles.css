@@ -462,9 +462,7 @@
       transition: transform 0.2s ease;
     }
 
-    .compact-card.expanded .expand-chevron {
-      transform: rotate(180deg);
-    }
+    /* .compact-card.expanded .expand-chevron handled via JS glyph toggle */
 
     /* Collapsible Details Panel */
     .compact-card .card-details {

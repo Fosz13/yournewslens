@@ -141,3 +141,18 @@
      - Added strict regex filtering in `extract_facts_from_context_and_title()` to strip journalist sign-offs (`[Name] reports`, `contributed to this report`, `all rights reserved`).
   6. **Self-Healing Verification Loop (`is_story_mismatched`)**:
      - Added automated detection that flags and re-synthesizes any accidental casualty story carrying violent crime soundbites or mismatched political portraits.
+
+---
+
+## 13. Accordion Toggle Fix: 'Tap to view Key Facts & Perspectives' Not Responding
+
+- **Issue Reported**: Clicking 'Tap to view Key Facts & Perspectives' produced no visible response across feed cards.
+- **Root Cause**:
+  1. **Missing Element IDs in Dynamic Renderer**: In `renderStoriesFeed()` (inside both `index.html` and `app.js`), the dynamically generated card container used `<div class="card-details">` and `<span class="expand-label">` without explicit element IDs (`id="{sId}-details"`, `id="{sId}-expand-label"`).
+  2. **Conflicting Function Shadowing**: Two conflicting definitions of `toggleStoryDetails()` existed in the codebase. The latter implementation looked for `document.getElementById(storyId + '-details')` and aborted immediately (`if (!details) return;`) when the ID was missing on dynamic cards.
+  3. **CSS Transform Collision**: `.compact-card.expanded .expand-chevron` had `transform: rotate(180deg)` in `styles.css` while JavaScript also toggled the character between `▾` and `▴`, causing inverted orientation upon expansion.
+- **Fixes Applied**:
+  1. **Unified, State-Aware `toggleStoryDetails`**: Replaced duplicate definitions with a single robust function that checks both element IDs and class queries (`card.querySelector('.card-details')`), reliably toggling `details.style.display` between `'block'` and `'none'` while synchronizing the `.expanded` CSS class.
+  2. **Dynamic Renderer ID Standardization**: Updated `renderStoriesFeed()` in `index.html`, `app.js`, and `engine.py`'s `prerender_cards_html()` to guarantee `id="{sId}-details"`, `id="{sId}-expand-label"`, and `id="{sId}-chevron"` on all cards.
+  3. **Initial State Normalization**: Set pre-rendered cards in `index.html` to a clean collapsed state (`Tap to view Key Facts & Perspectives ▾`) matching live hydration.
+  4. **Chevron Display Synchronization**: Removed conflicting CSS `transform: rotate(180deg)` so `▾` (collapsed) and `▴` (expanded) render in the exact intended orientation.

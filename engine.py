@@ -3976,11 +3976,11 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             <h3 class="story-title" onclick="toggleStoryDetails('{sId}')">{s.get('title', '')}</h3>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
-              <span class="expand-label">Tap to view Key Facts & Perspectives</span>
-              <span class="expand-chevron">▾</span>
+              <span class="expand-label" id="{sId}-expand-label">Tap to view Key Facts & Perspectives</span>
+              <span class="expand-chevron" id="{sId}-chevron">▾</span>
             </div>
 
-            <div class="card-details">
+            <div class="card-details" id="{sId}-details">
               <div class="neutral-box">
                 <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
                 {facts_markup}
