@@ -6,15 +6,16 @@
   <meta name="referrer" content="no-referrer">
   <title>Your News Lens — Multi-Perspective News & Debate Platform</title>
   <style>
-    :root {
-      --bg-main: #080c16;
-      --bg-card: #0e1626;
-      --bg-card-hover: #121d33;
-      --bg-subtle: #060911;
+:root {
+      --bg-main: #07090e;
+      --bg-card: rgba(14, 20, 36, 0.82);
+      --bg-card-hover: rgba(18, 26, 46, 0.92);
+      --bg-subtle: #090d18;
       --border-color: rgba(255, 255, 255, 0.08);
-      --border-color-hover: rgba(255, 255, 255, 0.16);
+      --border-color-hover: rgba(255, 255, 255, 0.18);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --text-subtle: #64748b;
       --accent-blue: #38bdf8;
       --accent-indigo: #6366f1;
       --accent-red: #ef4444;
@@ -27,29 +28,33 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "SF Pro", -system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     
     body {
       background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(1000px 500px at 50% -120px, rgba(56, 189, 248, 0.08), transparent 70%),
+        radial-gradient(800px 400px at 90% 15%, rgba(99, 102, 241, 0.06), transparent 60%);
+      background-attachment: fixed;
       color: var(--text-main);
       line-height: 1.45;
-      padding-bottom: 50px;
+      padding-bottom: 60px;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Modern Glassmorphic Sticky Header */
+    /* Apple-Grade Glassmorphic Sticky Header */
     header.app-header {
-      background: rgba(8, 12, 22, 0.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
+      background: rgba(7, 9, 14, 0.82);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       position: sticky;
       top: 0;
       z-index: 50;
       padding: 10px 16px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     .header-container {
@@ -72,21 +77,21 @@
     .brand-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
     }
 
     .brand-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
       background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #ec4899 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      color: white;
-      font-size: 17px;
-      box-shadow: 0 2px 10px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+      font-size: 18px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.38);
       flex-shrink: 0;
     }
 
@@ -96,17 +101,18 @@
     }
 
     .brand-title {
-      font-size: 17px;
-      font-weight: 800;
+      font-size: 18px;
+      font-weight: 700;
       color: #ffffff;
       line-height: 1.15;
-      letter-spacing: -0.015em;
+      letter-spacing: -0.022em;
     }
 
     .brand-tagline {
-      font-size: 10.5px;
+      font-size: 11px;
       color: var(--text-muted);
       font-weight: 500;
+      letter-spacing: -0.01em;
     }
 
     .header-controls {
@@ -116,14 +122,14 @@
       justify-content: space-between;
     }
 
-    /* Sleek Segmented Lens Selector */
+    /* Apple-Style Sleek Segmented Lens Selector */
     .lens-selector-wrapper {
       display: flex;
       align-items: center;
-      background: rgba(14, 22, 38, 0.9);
+      background: rgba(18, 24, 38, 0.7);
       padding: 3px;
       border-radius: 9999px;
-      border: 1px solid var(--border-color);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       width: 100%;
       box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
     }
@@ -154,7 +160,7 @@
       cursor: pointer;
       flex: 1;
       text-align: center;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     @media (min-width: 640px) {
@@ -170,19 +176,19 @@
     .lens-btn.active.left {
       background: #2563eb;
       color: #ffffff;
-      box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 2px 12px rgba(37, 99, 235, 0.45);
     }
 
     .lens-btn.active.center {
       background: #059669;
       color: #ffffff;
-      box-shadow: 0 2px 10px rgba(5, 150, 105, 0.4);
+      box-shadow: 0 2px 12px rgba(5, 150, 105, 0.45);
     }
 
     .lens-btn.active.right {
       background: #dc2626;
       color: #ffffff;
-      box-shadow: 0 2px 10px rgba(220, 38, 38, 0.4);
+      box-shadow: 0 2px 12px rgba(220, 38, 38, 0.45);
     }
 
     /* Sub-Nav Bar (Streamlined) */
@@ -198,9 +204,9 @@
     /* View Switcher: Clean Pill Segment */
     .view-tabs {
       display: flex;
-      background: rgba(14, 22, 38, 0.8);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
+      background: rgba(18, 24, 38, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
       padding: 3px;
       width: 100%;
     }
@@ -208,8 +214,8 @@
     .view-tab {
       flex: 1;
       text-align: center;
-      padding: 7px 10px;
-      border-radius: 7px;
+      padding: 7px 11px;
+      border-radius: 9px;
       border: none;
       background: transparent;
       color: var(--text-muted);
@@ -219,8 +225,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      transition: all 0.15s ease;
+      gap: 6px;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .view-tab:hover {
@@ -228,22 +234,31 @@
     }
 
     .view-tab.active {
-      background: #1e293b;
+      background: rgba(255, 255, 255, 0.12);
       color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+    }
+
+    /* Category Bar with Arrange Button */
+    .category-bar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
     }
 
     /* Unified Single-Row Category Carousel */
     .category-carousel-wrapper {
       position: relative;
-      width: 100%;
+      flex: 1;
+      overflow: hidden;
     }
 
     .category-carousel {
       display: flex;
-      gap: 6px;
+      gap: 7px;
       overflow-x: auto;
-      padding: 2px 2px 6px;
+      padding: 3px 2px 6px;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
     }
@@ -253,36 +268,396 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(14, 22, 38, 0.7);
-      border: 1px solid var(--border-color);
+      background: rgba(18, 24, 38, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       color: #94a3b8;
-      padding: 6px 13px;
+      padding: 6px 14px;
       border-radius: 9999px;
       font-size: 11.5px;
       font-weight: 600;
-      cursor: pointer;
+      cursor: grab;
       white-space: nowrap;
-      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       flex-shrink: 0;
+      user-select: none;
+    }
+
+    .cat-pill:active {
+      cursor: grabbing;
     }
 
     .cat-pill:hover {
-      background: #182338;
-      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(28, 38, 60, 0.85);
+      border-color: rgba(255, 255, 255, 0.18);
       color: #f1f5f9;
+      transform: translateY(-1px);
     }
 
     .cat-pill.active {
-      background: #1e293b !important;
+      background: rgba(56, 189, 248, 0.15) !important;
       border-color: #38bdf8 !important;
       color: #38bdf8 !important;
       font-weight: 700;
-      box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25);
+    }
+
+    .cat-pill.dragging {
+      opacity: 0.4;
+      transform: scale(0.95);
+      border-style: dashed;
+      border-color: #38bdf8;
+    }
+
+    .cat-pill.drag-over {
+      border-color: #38bdf8;
+      transform: scale(1.06);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
     }
 
     .cat-icon {
       font-size: 13px;
       line-height: 1;
+    }
+
+    /* Arrange / Reorder Button */
+    .btn-arrange-categories {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(18, 24, 38, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .btn-arrange-categories:hover {
+      background: rgba(30, 41, 65, 0.95);
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Active Priority Status Banner */
+    .priority-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.1) 0%, rgba(99, 102, 241, 0.08) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 7px 12px;
+      margin-bottom: 12px;
+      font-size: 11.5px;
+      color: #e2e8f0;
+      animation: fadeInPriority 0.3s ease-out;
+    }
+
+    @keyframes fadeInPriority {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .priority-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .priority-spark {
+      font-size: 12px;
+    }
+
+    .priority-badge-pill {
+      background: #38bdf8;
+      color: #07090e;
+      font-size: 9.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-priority-change {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 10.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-priority-change:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    /* Reorder Modal Sheet (Apple Design) */
+    .reorder-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: fadeInModal 0.2s ease-out;
+    }
+
+    .reorder-modal-backdrop.show {
+      display: flex;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .reorder-modal-sheet {
+      background: rgba(14, 20, 36, 0.94);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+      max-width: 500px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .reorder-modal-header {
+      padding: 16px 20px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .reorder-modal-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.015em;
+    }
+
+    .reorder-modal-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    .reorder-modal-close {
+      background: rgba(255, 255, 255, 0.06);
+      border: none;
+      color: var(--text-muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.15s ease;
+    }
+
+    .reorder-modal-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .reorder-presets-row {
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .reorder-presets-row::-webkit-scrollbar { display: none; }
+
+    .preset-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .preset-btn:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
+      color: #38bdf8;
+    }
+
+    .reorder-list-container {
+      padding: 12px 20px;
+      overflow-y: auto;
+      max-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reorder-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 8px 12px;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .reorder-item-row.is-first {
+      background: rgba(56, 189, 248, 0.1);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .reorder-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reorder-rank-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .reorder-item-row.is-first .reorder-rank-badge {
+      background: #38bdf8;
+      color: #07090e;
+      font-weight: 900;
+    }
+
+    .reorder-item-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .reorder-priority-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 6px;
+    }
+
+    .reorder-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .reorder-arrow-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      transition: all 0.15s ease;
+    }
+
+    .reorder-arrow-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    .reorder-arrow-btn:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+
+    .reorder-modal-footer {
+      padding: 12px 20px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-modal-cancel {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-modal-cancel:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+    }
+
+    .btn-modal-apply {
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      border: none;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      transition: all 0.15s ease;
+    }
+
+    .btn-modal-apply:hover {
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
+      transform: translateY(-1px);
     }
 
     main {
@@ -297,22 +672,23 @@
       gap: 16px;
     }
 
-    /* Modern Story Card */
+    /* Apple-Grade Story Card */
     .compact-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 26px -2px rgba(0, 0, 0, 0.42), 0 2px 6px -1px rgba(0, 0, 0, 0.2);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .compact-card:hover {
       border-color: var(--border-color-hover);
-      box-shadow: 0 8px 28px -4px rgba(0, 0, 0, 0.55);
+      box-shadow: 0 12px 34px -4px rgba(0, 0, 0, 0.58);
+      transform: translateY(-2px);
     }
 
-    /* Photo Header - Bigger & Clickable (Less Aggressive Cropping) */
+    /* Photo Header */
     .hero-image-wrap {
       position: relative;
       width: 100%;
@@ -334,7 +710,7 @@
       object-fit: cover;
       object-position: center 20%;
       display: block;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .hero-image-wrap:hover .hero-photo {
@@ -346,7 +722,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(8, 12, 22, 0.88) 75%, rgba(8, 12, 22, 0.98) 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(7, 9, 14, 0.88) 75%, rgba(7, 9, 14, 0.98) 100%);
       padding: 8px 14px;
       display: flex;
       justify-content: space-between;
@@ -420,12 +796,12 @@
 
     /* Clickable Story Title */
     .story-title {
-      font-size: 17px;
+      font-size: 17.5px;
       font-weight: 700;
       color: #ffffff;
       line-height: 1.35;
       margin-bottom: 10px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
       cursor: pointer;
       transition: color 0.15s ease;
     }
@@ -439,9 +815,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(255, 255, 255, 0.035);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 8px 12px;
       margin-bottom: 4px;
       cursor: pointer;
@@ -459,7 +835,7 @@
     }
 
     .compact-card.expanded .expand-prompt-bar {
-      background: rgba(14, 22, 38, 0.8);
+      background: rgba(18, 24, 38, 0.85);
       border-color: rgba(255, 255, 255, 0.12);
       color: #94a3b8;
       margin-bottom: 12px;
@@ -469,8 +845,6 @@
       font-size: 13px;
       transition: transform 0.2s ease;
     }
-
-    /* .compact-card.expanded .expand-chevron handled via JS glyph toggle */
 
     /* Collapsible Details Panel */
     .compact-card .card-details {
@@ -489,11 +863,11 @@
 
     /* Verified Facts Box */
     .neutral-box {
-      background: rgba(10, 15, 29, 0.7);
+      background: rgba(10, 15, 29, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-left: 3px solid #38bdf8;
       padding: 10px 12px;
-      border-radius: 0 8px 8px 0;
+      border-radius: 0 10px 10px 0;
       margin-bottom: 12px;
     }
 
@@ -594,9 +968,9 @@
 
     /* Talking Points Box */
     .talking-points-panel {
-      background: rgba(10, 15, 29, 0.7);
+      background: rgba(10, 15, 29, 0.75);
       border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 10px 12px;
       margin-top: 8px;
     }
@@ -620,19 +994,19 @@
     }
 
     .btn-copy-chip {
-      background: #1e293b;
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
       color: #f8fafc;
       font-size: 10px;
       font-weight: 700;
       padding: 3px 8px;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.15s ease;
     }
 
     .btn-copy-chip:hover {
-      background: #334155;
+      background: rgba(255, 255, 255, 0.16);
     }
 
     .quote-row {
@@ -704,22 +1078,30 @@
     /* Toast */
     .toast-msg {
       position: fixed;
-      bottom: 20px;
+      bottom: 24px;
       left: 16px;
       right: 16px;
       max-width: 320px;
       margin: 0 auto;
-      background: #059669;
+      background: rgba(5, 150, 105, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: #fff;
-      padding: 9px 14px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 12px;
       font-size: 12px;
       font-weight: 700;
       display: none;
       text-align: center;
       justify-content: center;
-      z-index: 200;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      z-index: 300;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+      animation: fadeInToast 0.2s ease-out;
+    }
+
+    @keyframes fadeInToast {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .btn-quick {
@@ -741,132 +1123,7 @@
       border-color: #6366f1;
       color: #fff;
     }
-
-    /* Image Status Badges */
-    .photo-header-overlay {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      z-index: 10;
-    }
-    .img-status-tag {
-      font-size: 9.5px;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      backdrop-filter: blur(8px);
-    }
-    .img-status-tag.original { background: rgba(16, 185, 129, 0.9); color: #fff; }
-    .img-status-tag.related { background: rgba(56, 189, 248, 0.9); color: #0a0f1d; }
-    .img-status-tag.illustrative { background: rgba(245, 158, 11, 0.9); color: #0a0f1d; }
-    .img-status-tag.placeholder { background: rgba(100, 116, 139, 0.9); color: #fff; }
-
-    .citation-tag {
-      font-size: 10px;
-      color: #38bdf8;
-      font-weight: 600;
-      font-style: italic;
-    }
-
-    /* Substantive Analysis Block */
-    .substantive-analysis-block {
-      background: rgba(15, 23, 42, 0.6);
-      border-left: 2px solid #6366f1;
-      padding: 8px 10px;
-      font-size: 12px;
-      color: #cbd5e1;
-      line-height: 1.45;
-      margin-bottom: 8px;
-      border-radius: 0 4px 4px 0;
-    }
-
-    /* Voices & Sources Accordion */
-    .voices-accordion {
-      margin-top: 8px;
-      border: 1px solid #1e293b;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #090e1a;
-    }
-    .voices-toggle {
-      padding: 6px 10px;
-      font-size: 10.5px;
-      font-weight: 800;
-      color: #94a3b8;
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-    .voices-toggle:hover { color: #f1f5f9; background: #111a2e; }
-    .voices-body {
-      padding: 8px 10px;
-      border-top: 1px solid #1e293b;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .source-card {
-      background: #111a2e;
-      border: 1px solid #233352;
-      border-radius: 6px;
-      padding: 8px;
-    }
-    .source-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 4px;
-    }
-    .source-type-pill {
-      font-size: 9px;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      text-transform: uppercase;
-    }
-    .pill-actual { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
-    .pill-prior { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
-    .pill-inferred { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.4); }
-    .scope-tag { font-size: 9.5px; color: #64748b; font-weight: 600; }
-    .source-person-name { font-size: 12px; font-weight: 800; color: #fff; }
-    .source-person-role { font-size: 10.5px; color: #94a3b8; margin-bottom: 4px; }
-    .source-argument-summary { font-size: 11.5px; color: #cbd5e1; line-height: 1.35; font-style: italic; margin-bottom: 4px; }
-    .source-link { font-size: 10.5px; color: #38bdf8; text-decoration: none; font-weight: 700; display: inline-block; }
-    .source-link:hover { text-decoration: underline; }
-
-    /* Analytical Conclusions Accordion */
-    .analysis-accordion {
-      margin-bottom: 8px;
-      border: 1px solid #1e293b;
-      border-radius: 6px;
-      overflow: hidden;
-      background: #090e1a;
-    }
-    .analysis-toggle {
-      padding: 6px 10px;
-      font-size: 10px;
-      font-weight: 800;
-      color: #94a3b8;
-      display: flex;
-      justify-content: space-between;
-      cursor: pointer;
-      text-transform: uppercase;
-    }
-    .analysis-toggle:hover { color: #f1f5f9; background: #111a2e; }
-    .analysis-body {
-      padding: 8px 10px;
-      border-top: 1px solid #1e293b;
-      font-size: 11.5px;
-      color: #cbd5e1;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-</style>
+  </style>
 </head>
 <body>
 
@@ -909,42 +1166,91 @@
       </button>
     </div>
 
-    <!-- Unified Category Carousel -->
-    <div class="category-carousel-wrapper">
-      <div class="category-carousel" id="categoryCarousel">
-        <button type="button" class="cat-pill active" onclick="filterCategory(this, 'All')">
-          <span class="cat-icon">🌐</span><span>All Stories</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Politics')">
-          <span class="cat-icon">🏛️</span><span>Politics</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Business')">
-          <span class="cat-icon">📈</span><span>Business & Economy</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Energy')">
-          <span class="cat-icon">⚡</span><span>Energy & Weather</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Health')">
-          <span class="cat-icon">🩺</span><span>Health</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Tech')">
-          <span class="cat-icon">🤖</span><span>Tech & AI</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'World')">
-          <span class="cat-icon">🌍</span><span>World News</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Sports')">
-          <span class="cat-icon">🏆</span><span>Sports</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Entertainment')">
-          <span class="cat-icon">🍿</span><span>Entertainment</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Border')">
-          <span class="cat-icon">🛡️</span><span>Border & Security</span>
-        </button>
-        <button type="button" class="cat-pill" onclick="filterCategory(this, 'Crime')">
-          <span class="cat-icon">⚖️</span><span>Crime & Safety</span>
-        </button>
+    <!-- Category Toolbar with Reorder / Arrange Control -->
+    <div class="category-bar-wrapper">
+      <div class="category-carousel-wrapper">
+        <div class="category-carousel" id="categoryCarousel">
+          <button type="button" class="cat-pill active" data-category="All" onclick="filterCategory(this, 'All')">
+            <span class="cat-icon">🌐</span><span>All Stories</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Politics" draggable="true" onclick="filterCategory(this, 'Politics')">
+            <span class="cat-icon">🏛️</span><span>Politics</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Business" draggable="true" onclick="filterCategory(this, 'Business')">
+            <span class="cat-icon">📈</span><span>Business & Economy</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Energy" draggable="true" onclick="filterCategory(this, 'Energy')">
+            <span class="cat-icon">⚡</span><span>Energy & Weather</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Health" draggable="true" onclick="filterCategory(this, 'Health')">
+            <span class="cat-icon">🩺</span><span>Health</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Tech" draggable="true" onclick="filterCategory(this, 'Tech')">
+            <span class="cat-icon">🤖</span><span>Tech & AI</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="World" draggable="true" onclick="filterCategory(this, 'World')">
+            <span class="cat-icon">🌍</span><span>World News</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Sports" draggable="true" onclick="filterCategory(this, 'Sports')">
+            <span class="cat-icon">🏆</span><span>Sports</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Entertainment" draggable="true" onclick="filterCategory(this, 'Entertainment')">
+            <span class="cat-icon">🍿</span><span>Entertainment</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Border" draggable="true" onclick="filterCategory(this, 'Border')">
+            <span class="cat-icon">🛡️</span><span>Border & Security</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="Crime" draggable="true" onclick="filterCategory(this, 'Crime')">
+            <span class="cat-icon">⚖️</span><span>Crime & Safety</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Arrange Categories Button -->
+      <button type="button" class="btn-arrange-categories" id="btnArrangeCategories" onclick="openArrangeModal()" title="Arrange category order & feed priority">
+        <span>⚙️</span><span>Arrange</span>
+      </button>
+    </div>
+
+    <!-- Active Feed Priority Status Banner -->
+    <div class="priority-banner" id="priorityBanner" style="display: none;">
+      <div class="priority-banner-content">
+        <span class="priority-spark">⚡</span>
+        <span>Feed Priority:</span>
+        <span class="priority-badge-pill" id="priorityTopBadge">Sports (#1)</span>
+        <span id="prioritySubText">— mostly sports news imported</span>
+      </div>
+      <button type="button" class="btn-priority-change" onclick="openArrangeModal()">Customize</button>
+    </div>
+  </div>
+
+  <!-- Apple-Style Reorder Category & Priority Modal Sheet -->
+  <div class="reorder-modal-backdrop" id="reorderModal" role="dialog" aria-modal="true" aria-labelledby="reorderModalTitle">
+    <div class="reorder-modal-sheet">
+      <div class="reorder-modal-header">
+        <div>
+          <div class="reorder-modal-title" id="reorderModalTitle">✨ Arrange Category & Feed Priority</div>
+          <div class="reorder-modal-subtitle">Drag or use arrows to change button order. Stories from your #1 category will be prioritized first in your feed.</div>
+        </div>
+        <button type="button" class="reorder-modal-close" onclick="closeArrangeModal()" aria-label="Close modal">&times;</button>
+      </div>
+
+      <div class="reorder-presets-row">
+        <span style="font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">Presets:</span>
+        <button type="button" class="preset-btn" onclick="applyPresetOrder('sports_first')">🏆 Sports First</button>
+        <button type="button" class="preset-btn" onclick="applyPresetOrder('politics_first')">🏛️ Politics First</button>
+        <button type="button" class="preset-btn" onclick="applyPresetOrder('business_first')">📈 Business First</button>
+        <button type="button" class="preset-btn" onclick="applyPresetOrder('tech_first')">🤖 Tech First</button>
+        <button type="button" class="preset-btn" onclick="applyPresetOrder('reset')">↺ Reset</button>
+      </div>
+
+      <div class="reorder-list-container" id="reorderListContainer">
+        <!-- Dynamically rendered list of categories with move up/down and drag handles -->
+      </div>
+
+      <div class="reorder-modal-footer">
+        <button type="button" class="btn-modal-cancel" onclick="closeArrangeModal()">Cancel</button>
+        <button type="button" class="btn-modal-apply" onclick="saveAndApplyFromModal()">Save & Prioritize Feed</button>
       </div>
     </div>
   </div>
@@ -5452,14 +5758,18 @@ var currentFilterCategory = 'All';
       filterCategory(activePill, currentFilterCategory);
     }
 
-    function renderStoriesFeed(stories) {
+        function renderStoriesFeed(stories) {
       var container = document.getElementById('storiesFeedView');
       if (!container || !stories || !stories.length) return;
 
+      window.loadedStoriesData = stories;
+      // Apply custom category priority ordering
+      var prioritizedStories = sortStoriesByPriority(stories, currentCategoryOrder);
+
       var fallbackImg = 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80';
       var html = '';
-      for (var s = 0; s < stories.length; s++) {
-        var story = stories[s];
+      for (var s = 0; s < prioritizedStories.length; s++) {
+        var story = prioritizedStories[s];
         var sId = story.id || ('story-dyn-' + s);
         var cat = story.category || 'General News';
         if (Array.isArray(cat)) cat = cat[0] || 'General News';
@@ -5516,9 +5826,9 @@ var currentFilterCategory = 'All';
 
         var perspectives = story.perspectives || {};
         var lensList = [
-          { key: 'CENTER', name: 'Centrist / Balanced', icon: '🟢', chipClass: 'emerald' },
-          { key: 'RIGHT', name: 'Conservative Lens', icon: '🔴', chipClass: 'red' },
-          { key: 'LEFT', name: 'Progressive Lens', icon: '🔵', chipClass: 'blue' }
+          { key: 'CENTER', name: 'Balanced Lens — Multiple Perspectives', icon: '🟢', chipClass: 'emerald' },
+          { key: 'RIGHT', name: 'Red Lens — Right / Conservative', icon: '🔴', chipClass: 'red' },
+          { key: 'LEFT', name: 'Blue Lens — Left / Progressive', icon: '🔵', chipClass: 'blue' }
         ];
 
         for (var l = 0; l < lensList.length; l++) {
@@ -5695,7 +6005,420 @@ var currentFilterCategory = 'All';
         });
     }
 
+    
+    // ------------------------------------------------------------------------
+    // CATEGORY REORDERING & FEED PRIORITIZATION ENGINE (Apple-Inspired)
+    // ------------------------------------------------------------------------
+    var DEFAULT_CATEGORIES = [
+      { key: 'Politics', label: 'Politics', icon: '🏛️' },
+      { key: 'Business', label: 'Business & Economy', icon: '📈' },
+      { key: 'Energy', label: 'Energy & Weather', icon: '⚡' },
+      { key: 'Health', label: 'Health', icon: '🩺' },
+      { key: 'Tech', label: 'Tech & AI', icon: '🤖' },
+      { key: 'World', label: 'World News', icon: '🌍' },
+      { key: 'Sports', label: 'Sports', icon: '🏆' },
+      { key: 'Entertainment', label: 'Entertainment', icon: '🍿' },
+      { key: 'Border', label: 'Border & Security', icon: '🛡️' },
+      { key: 'Crime', label: 'Crime & Safety', icon: '⚖️' }
+    ];
+
+    var currentCategoryOrder = loadCategoryOrder();
+    var modalTempOrder = [];
+
+    function loadCategoryOrder() {
+      try {
+        var saved = localStorage.getItem('userCategoryOrder');
+        if (saved) {
+          var parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= 3) {
+            // Validate all default categories are represented
+            var keys = parsed.map(function(c) { return c.key; });
+            for (var i = 0; i < DEFAULT_CATEGORIES.length; i++) {
+              if (keys.indexOf(DEFAULT_CATEGORIES[i].key) === -1) {
+                parsed.push(DEFAULT_CATEGORIES[i]);
+              }
+            }
+            return parsed;
+          }
+        }
+      } catch (e) {
+        console.log('Error reading category order:', e);
+      }
+      return DEFAULT_CATEGORIES.slice(0);
+    }
+
+    function saveCategoryOrder(order) {
+      currentCategoryOrder = order;
+      try {
+        localStorage.setItem('userCategoryOrder', JSON.stringify(order));
+      } catch (e) {}
+      applyCategoryOrderToDOM(order);
+      updatePriorityBanner(order);
+      reorderExistingDOMCards(order);
+      if (window.loadedStoriesData && window.loadedStoriesData.length) {
+        renderStoriesFeed(window.loadedStoriesData);
+      }
+    }
+
+    function applyCategoryOrderToDOM(order) {
+      var carousel = document.getElementById('categoryCarousel');
+      if (!carousel) return;
+
+      var allBtn = carousel.querySelector('.cat-pill[data-category="All"]');
+      if (!allBtn) {
+        allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = 'cat-pill ' + (currentFilterCategory === 'All' ? 'active' : '');
+        allBtn.setAttribute('data-category', 'All');
+        allBtn.onclick = function() { filterCategory(this, 'All'); };
+        allBtn.innerHTML = '<span class="cat-icon">🌐</span><span>All Stories</span>';
+      }
+
+      carousel.innerHTML = '';
+      carousel.appendChild(allBtn);
+
+      for (var i = 0; i < order.length; i++) {
+        var cat = order[i];
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'cat-pill ' + (currentFilterCategory === cat.key ? 'active' : '');
+        btn.setAttribute('data-category', cat.key);
+        btn.setAttribute('draggable', 'true');
+        btn.onclick = (function(k) {
+          return function() { filterCategory(this, k); };
+        })(cat.key);
+        btn.innerHTML = '<span class="cat-icon">' + cat.icon + '</span><span>' + cat.label + '</span>';
+        carousel.appendChild(btn);
+      }
+
+      setupCarouselDragAndDrop();
+    }
+
+    function updatePriorityBanner(order) {
+      var banner = document.getElementById('priorityBanner');
+      var badge = document.getElementById('priorityTopBadge');
+      var sub = document.getElementById('prioritySubText');
+      if (!banner || !badge || !sub || !order || !order.length) return;
+
+      var topCat = order[0];
+      badge.textContent = topCat.label + ' (#1)';
+      sub.textContent = '— mostly ' + topCat.key.toLowerCase() + ' news imported';
+      banner.style.display = 'flex';
+    }
+
+    // Direct Drag and Drop on Carousel
+    var draggedPill = null;
+
+    function setupCarouselDragAndDrop() {
+      var pills = document.querySelectorAll('#categoryCarousel .cat-pill[draggable="true"]');
+      for (var i = 0; i < pills.length; i++) {
+        var pill = pills[i];
+        pill.addEventListener('dragstart', handlePillDragStart);
+        pill.addEventListener('dragover', handlePillDragOver);
+        pill.addEventListener('dragleave', handlePillDragLeave);
+        pill.addEventListener('drop', handlePillDrop);
+        pill.addEventListener('dragend', handlePillDragEnd);
+
+        // Touch support for mobile devices
+        pill.addEventListener('touchstart', handleTouchStart, { passive: true });
+        pill.addEventListener('touchmove', handleTouchMove, { passive: false });
+        pill.addEventListener('touchend', handleTouchEnd);
+      }
+    }
+
+    function handlePillDragStart(e) {
+      draggedPill = this;
+      this.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', this.getAttribute('data-category'));
+    }
+
+    function handlePillDragOver(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      if (this !== draggedPill && this.getAttribute('data-category') !== 'All') {
+        this.classList.add('drag-over');
+      }
+    }
+
+    function handlePillDragLeave() {
+      this.classList.remove('drag-over');
+    }
+
+    function handlePillDrop(e) {
+      e.preventDefault();
+      this.classList.remove('drag-over');
+      if (!draggedPill || this === draggedPill) return;
+
+      var fromKey = draggedPill.getAttribute('data-category');
+      var toKey = this.getAttribute('data-category');
+      if (!fromKey || !toKey || toKey === 'All') return;
+
+      var order = currentCategoryOrder.slice(0);
+      var fromIdx = -1, toIdx = -1;
+      for (var i = 0; i < order.length; i++) {
+        if (order[i].key === fromKey) fromIdx = i;
+        if (order[i].key === toKey) toIdx = i;
+      }
+
+      if (fromIdx !== -1 && toIdx !== -1) {
+        var moved = order.splice(fromIdx, 1)[0];
+        order.splice(toIdx, 0, moved);
+        saveCategoryOrder(order);
+        showToastNotification('Reordered! ' + moved.label + ' moved to position #' + (toIdx + 1));
+      }
+    }
+
+    function handlePillDragEnd() {
+      if (draggedPill) draggedPill.classList.remove('dragging');
+      draggedPill = null;
+      var pills = document.querySelectorAll('#categoryCarousel .cat-pill');
+      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('drag-over');
+    }
+
+    // Touch Event Handling for Mobile Dragging
+    var touchDraggedPill = null;
+    var touchClone = null;
+
+    function handleTouchStart(e) {
+      // Intentionally lightweight touch init; tap acts as click unless long-press/dragged
+      touchDraggedPill = this;
+    }
+
+    function handleTouchMove(e) {
+      if (!touchDraggedPill) return;
+      var touch = e.touches[0];
+      var target = document.elementFromPoint(touch.clientX, touch.clientY);
+      var pillTarget = target ? target.closest('.cat-pill[draggable="true"]') : null;
+      
+      var pills = document.querySelectorAll('#categoryCarousel .cat-pill');
+      for (var i = 0; i < pills.length; i++) pills[i].classList.remove('drag-over');
+
+      if (pillTarget && pillTarget !== touchDraggedPill) {
+        pillTarget.classList.add('drag-over');
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (!touchDraggedPill) return;
+      var pills = document.querySelectorAll('#categoryCarousel .cat-pill');
+      for (var i = 0; i < pills.length; i++) {
+        if (pills[i].classList.contains('drag-over')) {
+          pills[i].classList.remove('drag-over');
+          var fromKey = touchDraggedPill.getAttribute('data-category');
+          var toKey = pills[i].getAttribute('data-category');
+          if (fromKey && toKey && fromKey !== toKey) {
+            var order = currentCategoryOrder.slice(0);
+            var fromIdx = -1, toIdx = -1;
+            for (var j = 0; j < order.length; j++) {
+              if (order[j].key === fromKey) fromIdx = j;
+              if (order[j].key === toKey) toIdx = j;
+            }
+            if (fromIdx !== -1 && toIdx !== -1) {
+              var moved = order.splice(fromIdx, 1)[0];
+              order.splice(toIdx, 0, moved);
+              saveCategoryOrder(order);
+              showToastNotification('Reordered! ' + moved.label + ' prioritized.');
+            }
+          }
+        }
+      }
+      touchDraggedPill = null;
+    }
+
+    // Modal Sheet Management
+    function openArrangeModal() {
+      modalTempOrder = currentCategoryOrder.slice(0);
+      renderArrangeModalList();
+      var modal = document.getElementById('reorderModal');
+      if (modal) modal.classList.add('show');
+    }
+
+    function closeArrangeModal() {
+      var modal = document.getElementById('reorderModal');
+      if (modal) modal.classList.remove('show');
+    }
+
+    function renderArrangeModalList() {
+      var container = document.getElementById('reorderListContainer');
+      if (!container) return;
+
+      container.innerHTML = '';
+      for (var i = 0; i < modalTempOrder.length; i++) {
+        var cat = modalTempOrder[i];
+        var isFirst = (i === 0);
+        var row = document.createElement('div');
+        row.className = 'reorder-item-row ' + (isFirst ? 'is-first' : '');
+
+        var priorityTag = '';
+        if (i === 0) priorityTag = '<span class="reorder-priority-tag">🔥 Highest Priority</span>';
+        else if (i === 1) priorityTag = '<span class="reorder-priority-tag" style="color:#60a5fa;background:rgba(37,99,235,0.15);">#2 Priority</span>';
+
+        row.innerHTML = 
+          '<div class="reorder-item-left">' +
+            '<div class="reorder-rank-badge">' + (i + 1) + '</div>' +
+            '<div class="reorder-item-name">' +
+              '<span>' + cat.icon + '</span>' +
+              '<span>' + cat.label + '</span>' +
+              priorityTag +
+            '</div>' +
+          '</div>' +
+          '<div class="reorder-item-actions">' +
+            '<button type="button" class="reorder-arrow-btn" onclick="moveCategoryUp(' + i + ')" ' + (i === 0 ? 'disabled' : '') + ' title="Move Up">▲</button>' +
+            '<button type="button" class="reorder-arrow-btn" onclick="moveCategoryDown(' + i + ')" ' + (i === modalTempOrder.length - 1 ? 'disabled' : '') + ' title="Move Down">▼</button>' +
+          '</div>';
+
+        container.appendChild(row);
+      }
+    }
+
+    function moveCategoryUp(idx) {
+      if (idx <= 0 || idx >= modalTempOrder.length) return;
+      var temp = modalTempOrder[idx];
+      modalTempOrder[idx] = modalTempOrder[idx - 1];
+      modalTempOrder[idx - 1] = temp;
+      renderArrangeModalList();
+    }
+
+    function moveCategoryDown(idx) {
+      if (idx < 0 || idx >= modalTempOrder.length - 1) return;
+      var temp = modalTempOrder[idx];
+      modalTempOrder[idx] = modalTempOrder[idx + 1];
+      modalTempOrder[idx + 1] = temp;
+      renderArrangeModalList();
+    }
+
+    function applyPresetOrder(presetName) {
+      var keys = [];
+      if (presetName === 'sports_first') {
+        keys = ['Sports', 'Politics', 'Business', 'Tech', 'Energy', 'Health', 'World', 'Entertainment', 'Border', 'Crime'];
+      } else if (presetName === 'politics_first') {
+        keys = ['Politics', 'World', 'Business', 'Sports', 'Energy', 'Health', 'Tech', 'Entertainment', 'Border', 'Crime'];
+      } else if (presetName === 'business_first') {
+        keys = ['Business', 'Tech', 'Energy', 'Politics', 'Sports', 'Health', 'World', 'Entertainment', 'Border', 'Crime'];
+      } else if (presetName === 'tech_first') {
+        keys = ['Tech', 'Business', 'Energy', 'Sports', 'Politics', 'Health', 'World', 'Entertainment', 'Border', 'Crime'];
+      } else {
+        // Reset to default
+        modalTempOrder = DEFAULT_CATEGORIES.slice(0);
+        renderArrangeModalList();
+        return;
+      }
+
+      var map = {};
+      for (var i = 0; i < DEFAULT_CATEGORIES.length; i++) {
+        map[DEFAULT_CATEGORIES[i].key] = DEFAULT_CATEGORIES[i];
+      }
+
+      var newArr = [];
+      for (var k = 0; k < keys.length; k++) {
+        if (map[keys[k]]) newArr.push(map[keys[k]]);
+      }
+      modalTempOrder = newArr;
+      renderArrangeModalList();
+    }
+
+    function saveAndApplyFromModal() {
+      saveCategoryOrder(modalTempOrder);
+      closeArrangeModal();
+      showToastNotification('✓ Preferences saved! Feed prioritized: ' + modalTempOrder[0].label + ' first.');
+    }
+
+    // ------------------------------------------------------------------------
+    // FEED PRIORITIZATION ALGORITHM (Places #1 Category Stories First)
+    // ------------------------------------------------------------------------
+    function sortStoriesByPriority(stories, order) {
+      if (!stories || !stories.length || !order || !order.length) return stories || [];
+      var copy = stories.slice(0);
+
+      function getPriorityRank(s) {
+        var cat = (s.category || '').toLowerCase().trim();
+        var masterCat = (s.master_category || '').toLowerCase().trim();
+
+        for (var i = 0; i < order.length; i++) {
+          var key = order[i].key.toLowerCase().trim();
+          var match = false;
+          if (key === 'politics' && (cat.indexOf('politic') !== -1 || masterCat.indexOf('politic') !== -1)) match = true;
+          else if (key === 'sports' && (cat.indexOf('sport') !== -1 || masterCat.indexOf('sport') !== -1)) match = true;
+          else if (key === 'business' && (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1)) match = true;
+          else if (key === 'energy' && (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1)) match = true;
+          else if (key === 'health' && (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1)) match = true;
+          else if (key === 'tech' && (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1)) match = true;
+          else if (key === 'world' && (cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1 || masterCat.indexOf('world') !== -1)) match = true;
+          else if (key === 'entertainment' && (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1 || masterCat.indexOf('entertain') !== -1)) match = true;
+          else if (key === 'border' && (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1)) match = true;
+          else if (key === 'crime' && (cat.indexOf('crime') !== -1 || cat.indexOf('safety') !== -1 || cat.indexOf('law') !== -1 || cat.indexOf('court') !== -1)) match = true;
+          else if (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1) match = true;
+
+          if (match) return i;
+        }
+        return 99;
+      }
+
+      copy.sort(function(a, b) {
+        var rankA = getPriorityRank(a);
+        var rankB = getPriorityRank(b);
+        if (rankA !== rankB) {
+          return rankA - rankB; // Lower rank = higher priority (appears first)
+        }
+        var tsA = parseInt(a.pub_timestamp) || 0;
+        var tsB = parseInt(b.pub_timestamp) || 0;
+        return tsB - tsA; // Newest first within same priority tier
+      });
+
+      return copy;
+    }
+
+    // Reorder static pre-rendered cards in the DOM immediately upon page load
+    function reorderExistingDOMCards(order) {
+      var container = document.getElementById('storiesFeedView');
+      if (!container) return;
+      var cards = Array.prototype.slice.call(container.querySelectorAll('.compact-card'));
+      if (!cards.length || !order || !order.length) return;
+
+      function getCardPriority(card) {
+        var cat = (card.getAttribute('data-category') || '').toLowerCase().trim();
+        var masterCat = (card.getAttribute('data-master-category') || '').toLowerCase().trim();
+
+        for (var i = 0; i < order.length; i++) {
+          var key = order[i].key.toLowerCase().trim();
+          var match = false;
+          if (key === 'politics' && (cat.indexOf('politic') !== -1 || masterCat.indexOf('politic') !== -1)) match = true;
+          else if (key === 'sports' && (cat.indexOf('sport') !== -1 || masterCat.indexOf('sport') !== -1)) match = true;
+          else if (key === 'business' && (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1)) match = true;
+          else if (key === 'energy' && (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1)) match = true;
+          else if (key === 'health' && (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1)) match = true;
+          else if (key === 'tech' && (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1)) match = true;
+          else if (key === 'world' && (cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1 || masterCat.indexOf('world') !== -1)) match = true;
+          else if (key === 'entertainment' && (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1 || masterCat.indexOf('entertain') !== -1)) match = true;
+          else if (key === 'border' && (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1)) match = true;
+          else if (key === 'crime' && (cat.indexOf('crime') !== -1 || cat.indexOf('safety') !== -1 || cat.indexOf('law') !== -1 || cat.indexOf('court') !== -1)) match = true;
+          else if (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1) match = true;
+
+          if (match) return i;
+        }
+        return 99;
+      }
+
+      cards.sort(function(a, b) {
+        var rA = getCardPriority(a);
+        var rB = getCardPriority(b);
+        if (rA !== rB) return rA - rB;
+        var tsA = parseInt(a.querySelector('.source-tag') ? a.querySelector('.source-tag').getAttribute('data-timestamp') : '0') || 0;
+        var tsB = parseInt(b.querySelector('.source-tag') ? b.querySelector('.source-tag').getAttribute('data-timestamp') : '0') || 0;
+        return tsB - tsA;
+      });
+
+      for (var k = 0; k < cards.length; k++) {
+        container.appendChild(cards[k]);
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', function() {
+      applyCategoryOrderToDOM(currentCategoryOrder);
+      updatePriorityBanner(currentCategoryOrder);
+      reorderExistingDOMCards(currentCategoryOrder);
+
       setGlobalPerspective(currentGlobalPerspective);
       reapplyCategoryFilter();
       loadLiveStories();

@@ -1,3 +1,67 @@
+# Your News Lens — Apple Design Overhaul & Custom Category Priority Engine
+
+## 1. Apple-Inspired Aesthetic Redesign
+- **User Request**: *"Let's beautiful the site to make it more appealing to the human eye. Take queues from top website designs that are clean and elegant. Apple might be an example"*
+- **Design Enhancements Implemented**:
+  1. **Apple Typographic Hierarchy**: Applied Apple's SF Pro font stack (`-apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", -system-ui, sans-serif`) with fine-tuned tracking (`letter-spacing: -0.022em` on titles) and line heights for maximum legibility.
+  2. **Translucent Glassmorphism & Ambient Canvas**: Refined deep onyx canvas (`#07090e`) with subtle ambient background radial glows, paired with an ultra-thin frosted glass header (`backdrop-filter: blur(24px) saturate(180%)`) and hairline borders (`rgba(255, 255, 255, 0.08)`).
+  3. **Refined Capsule Controls & Micro-Interactions**: Upgraded the 3-perspective lens selector and view switcher tabs into sleek Apple segmented pill controls with smooth spring-like easing (`cubic-bezier(0.16, 1, 0.3, 1)`).
+  4. **High-Definition Story Cards**: Increased corner radius to 20px, added soft elevation shadows (`0 6px 26px -2px rgba(0, 0, 0, 0.42)`), subtle micro-lift on hover, refined category badge pills, and polished facts and talking points containers.
+
+---
+
+## 2. Interactive Category Reordering & Ingestion Feed Prioritization
+- **User Request**: *"Also let's do something with this area circled in the screen shot. We should be able to move the buttons and arrange them in order that we want videos imported. For instance if I move sports to the first position I want mostly sports news"*
+- **Features Implemented**:
+  1. **Direct Drag-and-Drop & Touch Reordering on Carousel**:
+     - All category buttons in `#categoryCarousel` are now interactive and draggable (`draggable="true"`).
+     - Users can drag and drop any pill left or right on desktop or touch-drag on mobile to reorder their preferred news categories in real time.
+     - Live visual feedback: lifted pill state, drop target glow, and smooth animations.
+  2. **Apple-Style 'Arrange Categories & Feed Priority' Sheet / Modal**:
+     - Added a dedicated `⚙️ Arrange` button right in the category toolbar.
+     - Clicking opens a floating frosted-glass sheet where users can:
+       - View the full ranked list of categories from #1 to #10.
+       - Move categories up or down with 1-tap `▲` / `▼` arrow controls or drag handles `☰`.
+       - See live priority badges (`🔥 Highest Priority`, `#2 Priority`, etc.).
+       - Use 1-tap presets: **🏆 Sports First**, **🏛️ Politics First**, **📈 Business First**, **🤖 Tech First**, or **↺ Reset Default**.
+  3. **Dynamic Feed Prioritization Algorithm**:
+     - When categories are arranged, the feed prioritization engine immediately sorts the "All Stories" feed based on the user's custom category ranking.
+     - Moving **Sports** to position 1 places Sports stories at the very top of the feed with dominant volume (*"mostly sports news"*), followed by subsequent categories in priority order, while maintaining recency within each tier.
+     - Also displays an Apple-style active priority banner above the feed indicating which category has highest priority with a quick *Customize* button.
+  4. **Persistent User Setting**:
+     - Automatically saves custom category rankings to `localStorage.getItem('userCategoryOrder')`.
+     - Preserved across sessions, page reloads, and device visits.
+  5. **Backend Ingestion Support**:
+     - Upgraded `balance_feed_by_category` in `engine.py` to support custom category priority order weighting during automated feed processing.
+
+---
+
+## 2. Interactive Category Reordering & Ingestion Feed Prioritization
+- **User Request**: *"Also let's do something with this area circled in the screen shot. We should be able to move the buttons and arrange them in order that we want videos imported. For instance if I move sports to the first position I want mostly sports news"*
+- **Features Implemented**:
+  1. **Direct Drag-and-Drop & Touch Reordering on Carousel**:
+     - All category buttons in  are now interactive and draggable ().
+     - Users can drag and drop any pill left or right on desktop or touch-drag on mobile to reorder their preferred news categories in real time.
+     - Live visual feedback: lifted pill state, drop target glow, and smooth animations.
+  2. **Apple-Style 'Arrange Categories & Feed Priority' Sheet / Modal**:
+     - Added a dedicated  button right in the category toolbar.
+     - Clicking opens a floating frosted-glass sheet where users can:
+       - View the full ranked list of categories from #1 to #10.
+       - Move categories up or down with 1-tap  /  arrow controls or drag handles .
+       - See live priority badges (, , etc.).
+       - Use 1-tap presets: **🏆 Sports First**, **🏛️ Politics First**, **📈 Business First**, **🤖 Tech First**, or **↺ Reset Default**.
+  3. **Dynamic Feed Prioritization Algorithm**:
+     - When categories are arranged, the feed prioritization engine immediately sorts the "All Stories" feed based on the user's custom category ranking.
+     - Moving **Sports** to position 1 places Sports stories at the very top of the feed with dominant volume (*"mostly sports news"*), followed by subsequent categories in priority order, while maintaining recency within each tier.
+     - Also displays an Apple-style active priority banner above the feed indicating which category has highest priority with a quick *Customize* button.
+  4. **Persistent User Setting**:
+     - Automatically saves custom category rankings to .
+     - Preserved across sessions, page reloads, and device visits.
+  5. **Backend Ingestion Support**:
+     - Upgraded  in  to support custom category priority order weighting during automated feed processing.
+
+---
+
 # Your News Lens — Key Talking Points & Arguments Multi-Category Overhaul
 
 ## Key Talking Points & Arguments: Multi-Category Unique Synthesis & Deduplication

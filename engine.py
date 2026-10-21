@@ -4738,8 +4738,9 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 
-def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60, min_per_cat: int = 6) -> List[Dict[str, Any]]:
-    """Ensures balanced category distribution so buttons like Sports, Energy, and Healthcare are never empty."""
+def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60, min_per_cat: int = 6, category_order: Optional[List[str]] = None) -> List[Dict[str, Any]]:
+    """Ensures balanced category distribution so buttons like Sports, Energy, and Healthcare are never empty.
+    When category_order is provided, stories from top-priority categories are given prioritized placement and allocation."""
     from collections import defaultdict
     cat_buckets = defaultdict(list)
     for s in stories:
@@ -4748,6 +4749,18 @@ def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60,
 
     selected = []
     selected_ids = set()
+
+    # If category_order is specified (e.g. ['Sports', 'Politics', ...]), prioritize category 1 with higher allocation
+    if category_order and len(category_order) > 0:
+        top_cat = category_order[0]
+        top_quota = max(min_per_cat, int(max_total * 0.4))
+        for c, items in cat_buckets.items():
+            if top_cat.lower() in c.lower():
+                for s in items[:top_quota]:
+                    if s.get("id") not in selected_ids:
+                        selected.append(s)
+                        selected_ids.add(s.get("id"))
+
     # 1. Guarantee minimum quota per category
     for c, items in cat_buckets.items():
         for s in items[:min_per_cat]:
@@ -4763,14 +4776,20 @@ def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60,
             selected.append(s)
             selected_ids.add(s.get("id"))
 
-    def safe_ts(val):
-        if val is None:
-            return 0
+    def get_priority_key(s):
+        pub_ts = 0
         try:
-            return int(float(val))
+            pub_ts = int(float(s.get("pub_timestamp") or 0))
         except Exception:
-            return 0
-    selected.sort(key=lambda x: safe_ts(x.get("pub_timestamp")), reverse=True)
+            pass
+        if category_order:
+            cat_str = (s.get("category") or "").lower()
+            for rank, target in enumerate(category_order):
+                if target.lower() in cat_str:
+                    return ((100 - rank) * 10000000000) + pub_ts
+        return pub_ts
+
+    selected.sort(key=get_priority_key, reverse=True)
     return selected
 
 def run_pipeline():
