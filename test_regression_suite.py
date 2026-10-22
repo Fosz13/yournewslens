@@ -30,7 +30,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 9
+    total_tests = 11
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -280,6 +280,76 @@ def run_all_regression_tests():
     assert not bad_ok9, "Test 9 Negative Failed: Screenshot boilerplate facts did NOT fail validation!"
     assert any("boilerplate" in e for e in bad_errs9), f"Test 9 Negative Failed: Expected boilerplate error, got: {bad_errs9}"
     print("✓ TEST 9 PASSED: Michigan Senate debate facts are 100% substantive; screenshot boilerplates strictly rejected.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 10: Question & Clickbait Headline Direct Answer Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 10] Question & Clickbait Headline Direct Answer Verification...")
+    t10 = "Centrus vs. BWX Technologies: Which Nuclear Supply Chain Stock Is the Better Buy After the Sell-Off? - The Motley Fool"
+    d10 = "Centrus Energy and BWX Technologies occupy critical positions in the nuclear supply chain after the sell-off."
+    
+    assert engine.is_question_or_clickbait_headline(t10), "Test 10 Failed: Did not detect question/clickbait headline!"
+    
+    synth10 = engine.generate_contextual_synthesis(t10, d10, "Business & Economy")
+    facts10 = synth10.get("core_facts", [])
+    assert len(facts10) == 4, f"Test 10 Failed: Expected 4 facts, got {len(facts10)}"
+    
+    f1_10 = facts10[0]
+    # Fact 1 MUST directly answer the question, NOT repeat it
+    assert "Direct Answer" in f1_10 or "Verdict" in f1_10, f"Test 10 Failed: Fact 1 does not state direct answer: {f1_10}"
+    assert "Which Nuclear Supply Chain Stock Is the Better Buy" not in f1_10, f"Test 10 Failed: Fact 1 repeated the question!"
+    assert "?" not in f1_10, f"Test 10 Failed: Fact 1 contains a question mark!"
+    
+    # Image check: Nuclear stock must get nuclear facility image, not generic sports/soccer
+    img10 = engine.resolve_story_image(t10, "Business & Economy", "National Headlines")
+    assert "nuclear" in img10["caption"].lower(), f"Test 10 Failed: Nuclear stock did not receive nuclear image: {img10}"
+    print("✓ TEST 10 PASSED: Question headline immediately answered in Fact 1 with nuclear supply chain image.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 11: General Sub-Sport Image Isolation & Feed-Wide Deduplication
+    # -------------------------------------------------------------------------
+    print("\n[TEST 11] General Sub-Sport Image Isolation & Feed-Wide Deduplication Verification...")
+    t11_a = "Kevin Young may have been absent, but No. 25 BYU offered plenty of buzz at Big 12 basketball media days - Deseret News"
+    d11_a = "Big 12 basketball media days in Kansas City featured plenty of buzz surrounding BYU."
+    
+    t11_b = "Warriors exploring Kristaps Porzingis trades as absence from team continues: Source - "
+    d11_b = "The Golden State Warriors have begun exploring trade routes for center Kristaps Porzingis."
+
+    # Subcategory check: Must be sports_basketball, NOT sports_football
+    sub11_a = engine.determine_story_subcategory(t11_a, "Sports", d11_a)
+    sub11_b = engine.determine_story_subcategory(t11_b, "Sports", d11_b)
+    assert sub11_a == "sports_basketball", f"Test 11 Failed: BYU basketball got subcategory {sub11_a}"
+    assert sub11_b == "sports_basketball", f"Test 11 Failed: Warriors trade got subcategory {sub11_b}"
+
+    used_pool = set()
+    img11_a = engine.resolve_story_image(t11_a, "Sports", "Sports", used_pool)
+    img11_b = engine.resolve_story_image(t11_b, "Sports", "Sports", used_pool)
+
+    # Both must receive basketball imagery
+    assert "basketball" in img11_a["caption"].lower() or "hardwood" in img11_a["caption"].lower(), f"Test 11 Failed: BYU got non-basketball image: {img11_a}"
+    assert "basketball" in img11_b["caption"].lower() or "hardwood" in img11_b["caption"].lower(), f"Test 11 Failed: Warriors got non-basketball image: {img11_b}"
+
+    # Strict rejection of soccer ball and football stadium
+    for img in [img11_a, img11_b]:
+        assert "photo-1574629810360-7efbbe195018" not in img["url"], "Test 11 Failed: Soccer ball assigned to basketball story!"
+        assert "soccer" not in img["caption"].lower(), "Test 11 Failed: Soccer caption assigned to basketball story!"
+        assert "football stadium" not in img["caption"].lower(), "Test 11 Failed: Football stadium assigned to basketball story!"
+
+    # Feed Deduplication Check: Multiple stories in same subcategory must never duplicate
+    assert img11_a["url"] != img11_b["url"], "Test 11 Failed: Consecutive basketball stories received identical image URL!"
+    
+    # Test feed-wide deduplicator function on synthetic duplicates
+    mock_stories = [
+        {"id": "s1", "title": t11_a, "category": "Sports", "image_url": "https://images.unsplash.com/photo-dup"},
+        {"id": "s2", "title": t11_b, "category": "Sports", "image_url": "https://images.unsplash.com/photo-dup"},
+        {"id": "s3", "title": "Chiefs vs Bills playoff matchup", "category": "Sports", "image_url": "https://images.unsplash.com/photo-dup"}
+    ]
+    deduped = engine.enforce_feed_image_uniqueness(mock_stories)
+    deduped_urls = [s["image_url"] for s in deduped]
+    assert len(deduped_urls) == len(set(deduped_urls)), "Test 11 Failed: enforce_feed_image_uniqueness left duplicates!"
+    print("✓ TEST 11 PASSED: Sub-sport basketball isolation verified; zero soccer leakage and 100% feed uniqueness guaranteed.")
     passed_count += 1
 
     # FINAL VERIFICATION SUMMARY
