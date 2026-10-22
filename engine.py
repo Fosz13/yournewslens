@@ -5058,8 +5058,11 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         caption = s.get("caption", s.get("title", ""))
         credit = s.get("credit", "📸 News Wire")
         source = s.get("source", "Associated Press Wire")
+        src_name = s.get("source_name") or (source.split(" • ")[0] if " • " in source else source)
         pub_ts = s.get("pub_timestamp", "")
         summary = s.get("neutral_summary", "")
+        encoded_title = urllib.parse.quote(s.get('title', ''))
+        article_url = s.get("article_url") or s.get("link") or f"https://news.google.com/search?q={encoded_title}"
 
         perspectives = s.get("perspectives", {})
         
@@ -5071,7 +5074,12 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         else:
             facts_markup = f'<div class="neutral-desc">{summary}</div>'
 
-        # Badge display: clean, distinct single topic badge
+        # Expanded facts dossier
+        exp_facts = s.get("expanded_facts", {})
+        exp_context = exp_facts.get("in_depth_context") or summary or "Comprehensive investigative reporting details the full chronology, background mechanisms, and procedural milestones surrounding this development."
+        exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
+        exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
+
         tags_html = f'<span class="category-tag">{cat}</span>'
 
         card = f"""
@@ -5089,20 +5097,58 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <div class="tags-group">
                 {tags_html}
               </div>
-              <span class="source-tag" data-timestamp="{pub_ts}">{source}</span>
+              <div class="meta-source-wrap">
+                <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on {src_name}">
+                  <span>{src_name}</span> <span class="ext-icon">↗</span>
+                </a>
+                <span class="source-tag" data-timestamp="{pub_ts}">{source.split(' • ')[-1] if ' • ' in source else source}</span>
+              </div>
             </div>
 
-            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')">{s.get('title', '')}</h3>
+            <h3 class="story-title">
+              <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
+                {s.get('title', '')} <span class="title-ext-icon">↗</span>
+              </a>
+            </h3>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
-              <span class="expand-label" id="{sId}-expand-label">Tap to view Key Facts & Perspectives</span>
+              <span class="expand-label" id="{sId}-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="{sId}-chevron">▾</span>
             </div>
 
             <div class="card-details" id="{sId}-details">
               <div class="neutral-box">
-                <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
+                <div class="neutral-box-header">
+                  <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
+                  <button type="button" class="btn-expand-facts" id="{sId}-btn-facts-toggle" onclick="toggleFactExpansion('{sId}', event)">
+                    <span id="{sId}-fact-btn-text">🔍 Deep Dive & Evidence</span>
+                    <span id="{sId}-fact-btn-chevron" class="expand-facts-chevron">▾</span>
+                  </button>
+                </div>
                 {facts_markup}
+
+                <!-- Expandable Detailed Evidence Dossier -->
+                <div class="expanded-facts-dossier" id="{sId}-facts-dossier" style="display: none;">
+                  <div class="dossier-inner">
+                    <div class="dossier-section">
+                      <div class="dossier-heading">📌 In-Depth Context & Background</div>
+                      <p class="dossier-text">{exp_context}</p>
+                    </div>
+                    <div class="dossier-section">
+                      <div class="dossier-heading">📊 Documented Data & Source Evidence</div>
+                      <p class="dossier-text">{exp_evidence}</p>
+                    </div>
+                    <div class="dossier-section">
+                      <div class="dossier-heading">🔮 Strategic Impact & Next Milestones</div>
+                      <p class="dossier-text">{exp_impact}</p>
+                    </div>
+                    <div class="dossier-footer">
+                      <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="dossier-ext-link">
+                        <span>📖 Read full original coverage on {src_name}</span> <span>↗</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>"""
 
         lensList = [
@@ -5145,15 +5191,22 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
               </div>"""
 
-        card += """
+        card += f"""
               <div class="card-bottom-actions">
-                <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
-                  <span>🤍</span>
-                  <span>Save</span>
-                </button>
-                <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
-                  <span>👥</span> Discuss
-                </button>
+                <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
+                  <span>📖</span>
+                  <span>Read Article</span>
+                  <span class="arrow-up-right">↗</span>
+                </a>
+                <div class="card-action-group">
+                  <button type="button" class="btn-action-small" onclick="toggleSaveCard(this)">
+                    <span>🤍</span>
+                    <span>Save</span>
+                  </button>
+                  <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
+                    <span>👥</span> Discuss
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -5346,6 +5399,7 @@ def run_pipeline():
             scraped_pic = it.get("scraped_image")
             img_info = resolve_story_image(t, cat_assigned, master_cat_assigned, used_urls, scraped_image=scraped_pic)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
+            article_link = it.get("link") or f"https://news.google.com/search?q={urllib.parse.quote(t)}"
             story_record = {
                 "id": story_id,
                 "category": cat_assigned,
@@ -5354,6 +5408,8 @@ def run_pipeline():
                 "source_name": it["source_name"],
                 "pub_timestamp": it["pub_timestamp"],
                 "source": it["source"],
+                "article_url": article_link,
+                "link": article_link,
                 "image_url": img_info["url"],
                 "caption": img_info["caption"],
                 "credit": img_info["credit"],

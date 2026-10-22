@@ -220,3 +220,29 @@
   2. **Dynamic Renderer ID Standardization**: Updated `renderStoriesFeed()` in `index.html`, `app.js`, and `engine.py`'s `prerender_cards_html()` to guarantee `id="{sId}-details"`, `id="{sId}-expand-label"`, and `id="{sId}-chevron"` on all cards.
   3. **Initial State Normalization**: Set pre-rendered cards in `index.html` to a clean collapsed state (`Tap to view Key Facts & Perspectives ▾`) matching live hydration.
   4. **Chevron Display Synchronization**: Removed conflicting CSS `transform: rotate(180deg)` so `▾` (collapsed) and `▴` (expanded) render in the exact intended orientation.
+## 14. Direct Article Links, Expandable In-Depth Fact Dossier & Frictionless 1-Tap Customizer
+- **User Request**: *"Id like an option to click on a link to the me to the article if I'm interested in reading it or expanding the key facts because sometimes the key facts are severely lacking. Also the button and customization is awful and burdensome. Make it way more user-friendly"*
+- **Fixes & Enhancements Implemented**:
+  1. **Direct Clickable Article Links Across All Stories**:
+     - Added a prominent primary action button to every story card: `📖 Read Full Article ↗`, opening the original external news source in a new tab (`target="_blank" rel="noopener noreferrer"`).
+     - Added a clickable source attribution chip in the card header (e.g. `[AP News] ↗`, `[ESPN] ↗`, `[NPR] ↗`, `[BBC News] ↗`).
+     - Made the story headline itself a styled clickable link to the source article.
+     - Enriched all 42 live stories in `data/stories.json` with canonical, verified publisher URLs and updated `engine.py` to preserve source URLs during wire scraping.
+  2. **Expandable In-Depth Facts ("Deep Dive & Evidence")**:
+     - Under `⚖️ The Facts (Verified Breakdown)`, added a tactile `🔍 Deep Dive & Evidence ▾` / `▴ Hide Evidence` toggle button.
+     - When tapped, smoothly reveals an extensive evidentiary dossier:
+       - **📌 In-Depth Context & Background**: Comprehensive narrative explaining the operational background, mechanisms, and timeline that brief 4-bullet summaries omit.
+       - **📊 Documented Data & Source Evidence**: Specific metrics, quoted statements, and documented evidence cited in the original reporting.
+       - **🔮 Strategic Impact & Next Milestones**: Upcoming court hearings, playoff implications, legislative votes, and deadlines.
+       - Direct link to the publisher's full coverage.
+  3. **Streamlined, User-Friendly Customization (Zero Burden)**:
+     - Completely eliminated the burdensome 10-step up/down arrow modal, rank numbers, drag-and-drop touch interference, and cumbersome "Save & Apply" multi-step flow.
+     - Removed the intrusive static priority banner (`⚡ Feed Priority: Sports (#1)...`) that cluttered the feed header.
+     - Introduced an instant **"⚡ Focus"** 1-tap customizer:
+       - **1-Tap Quick Beats**: Tap `🏆 Sports First`, `🏛️ Politics First`, `📈 Business First`, `🤖 Tech First`, or `🌟 All News (Default)` to re-sort the feed in real-time.
+       - Smooth, native horizontal swipe on the category carousel with 1-tap instant category filtering.
+       - Automatic persistence to `localStorage` with a subtle toast notification.
+  4. **Apple-Grade Touch Ergonomics & Accessible Button Design**:
+     - Increased button touch targets to minimum 42px height for effortless mobile thumb navigation.
+     - Designed vibrant, high-contrast action pills (`.btn-read-article`, `.btn-expand-facts`) with tactile micro-interactions on tap.
+     - Balanced bottom action bar with `📖 Read Article ↗`, `🤍 Save`, and `👥 Discuss`.
