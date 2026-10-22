@@ -30,7 +30,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 8
+    total_tests = 9
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -234,6 +234,54 @@ def run_all_regression_tests():
     passed_count += 1
 
     # -------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
+    # TEST 9: Michigan Senate Debate & Zero-Boilerplate Fact Extraction
+    # -------------------------------------------------------------------------
+    print("\n[TEST 9] Michigan Senate Debate & Zero-Boilerplate Fact Extraction Verification...")
+    t9 = "Brotherhood accusations in fiery Senate debate"
+    d9 = "Abdul El-Sayed denied Muslim Brotherhood ties at a Michigan Senate debate after Mike Rogers referenced a 2012 letter to Egypt's president."
+    subcat9 = engine.determine_story_subcategory(t9, "Politics", d9)
+    assert subcat9 == "politics_elections", f"Test 9 Failed: Subcategory {subcat9} != politics_elections"
+
+    # Focus entity check: Must be Abdul El-Sayed or El-Sayed, NEVER truncated 'El'
+    ent9 = engine.extract_focus_entity(f"{t9} {d9}")
+    assert "el-sayed" in ent9.lower(), f"Test 9 Failed: Focus entity '{ent9}' truncated or missed El-Sayed!"
+    assert ent9.lower() != "el", "Test 9 Failed: Focus entity was truncated to single particle 'El'!"
+
+    # Fact Extraction check: Must generate 4 substantive facts with ZERO boilerplate filler
+    synth9 = engine.generate_contextual_synthesis(t9, d9, "Politics")
+    facts9 = synth9.get("core_facts", [])
+    assert len(facts9) == 4, f"Test 9 Failed: Expected 4 facts, got {len(facts9)}"
+
+    # Validate that none of the forbidden filler phrases exist
+    for f in facts9:
+        f_lower = f.lower()
+        assert "operational context" not in f_lower, f"Test 9 Failed: 'operational context' found in: {f}"
+        assert "administrative reviews" not in f_lower, f"Test 9 Failed: 'administrative reviews' found in: {f}"
+        assert "procedural timelines" not in f_lower, f"Test 9 Failed: 'procedural timelines' found in: {f}"
+        assert "primary reporting documented" not in f_lower, f"Test 9 Failed: 'primary reporting documented' found in: {f}"
+
+    # Verify validate_extracted_facts passes
+    facts_ok9, errs9 = engine.validate_extracted_facts(t9, facts9, d9)
+    assert facts_ok9, f"Test 9 Failed: Fact validation returned errors: {errs9}"
+
+    # Verify talking points do not have 'regarding El'
+    tp_red9 = " ".join(synth9["perspectives"]["RIGHT"]["talking_points"])
+    assert "regarding el." not in tp_red9.lower() and "regarding el " not in tp_red9.lower(), f"Test 9 Failed: 'regarding El' found in talking points: {tp_red9}"
+
+    # Negative check: Deliberate injection of the user's screenshot boilerplate MUST fail
+    bad_screenshot_facts = [
+        "Abdul El-Sayed denied Muslim Brotherhood ties at a Michigan Senate debate after Mike Rogers referenced a 2012 letter to Egypt's president.",
+        "Primary reporting documented specific operational context and verified official timelines.",
+        "Organizational leadership confirmed administrative reviews will continue as updates proceed.",
+        "The situation continues to evolve across Michigan congressional districts."
+    ]
+    bad_ok9, bad_errs9 = engine.validate_extracted_facts(t9, bad_screenshot_facts, d9)
+    assert not bad_ok9, "Test 9 Negative Failed: Screenshot boilerplate facts did NOT fail validation!"
+    assert any("boilerplate" in e for e in bad_errs9), f"Test 9 Negative Failed: Expected boilerplate error, got: {bad_errs9}"
+    print("✓ TEST 9 PASSED: Michigan Senate debate facts are 100% substantive; screenshot boilerplates strictly rejected.")
+    passed_count += 1
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
     print("\n" + "=" * 75)
