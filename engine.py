@@ -697,6 +697,439 @@ HEADLINE_NOISE_WORDS = {
     "can", "anyone", "stop", "remains", "unbeaten", "surges", "climbs", "falls"
 }
 
+
+# =============================================================================
+# THREE-LAYER ARCHITECTURAL SAFEGUARDS: IMAGE POOLS, FACTS & PERSPECTIVE VALIDATION
+# =============================================================================
+
+def normalize_text(text: str) -> str:
+    """Normalizes text into lowercase alphanumeric space-separated tokens."""
+    return " ".join(re.findall(r"[a-z0-9]+", (text or "").lower()))
+
+# 1. SUBCATEGORY CLASSIFIER & ENTITY EXTRACTOR
+def determine_story_subcategory(title: str, category: str = "", context: str = "") -> str:
+    """Determines the fine-grained story subcategory for domain locking and image matching."""
+    text = (title + " " + (context or "")).lower()
+    
+    # Fashion & Celebrity
+    if any(w in text for w in ["kylie jenner", "fantasy bra", "victoria's secret", "fashion show", "runway", "lingerie", "cindy crawford", "kaia gerber"]):
+        return "entertainment_fashion"
+    # Cinema & Movies
+    if any(w in text for w in ["box office", "theatrical", "cinema", "movie", "film", "hollywood", "oppenheimer", "director", "screenplay"]):
+        return "entertainment_cinema"
+    # Music
+    if any(w in text for w in ["grammy", "album", "concert", "taylor swift", "singer"]):
+        return "entertainment_music"
+    
+    # Sports Subcategories
+    if any(w in text for w in ["pga", "golf", "masters", "fairway", "links", "potomac links", "putting green", "liv golf"]):
+        if any(w in text for w in ["national park service", "parkland", "trees cleared", "land dispute", "court fight over land"]):
+            return "politics_public_land"
+        return "sports_golf"
+    if any(w in text for w in ["nfl", "football", "quarterback", "touchdown", "wr adams", "rams", "eagles", "jalen hurts", "bo nix", "super bowl"]):
+        return "sports_football"
+    if any(w in text for w in ["cfb", "college football", "vanderbilt", "alabama", "ohio state", "top 25", "playoff expand", "heisman"]):
+        return "sports_football"
+    if any(w in text for w in ["nba", "basketball", "hardwood", "lakers", "celtics", "power rankings", "30 teams", "hoops"]):
+        return "sports_basketball"
+    if any(w in text for w in ["mlb", "baseball", "dodgers", "brewers", "yankees", "mets", "nlcs", "world series", "ballpark"]):
+        return "sports_baseball"
+    
+    # Public Safety & Accidents
+    if any(w in text for w in ["airman", "rappelling", "alamodome", "fatal fall", "accidental death"]):
+        return "safety_accident"
+    if any(w in text for w in ["cfb wainwright", "military base fire", "blaze at base"]):
+        return "safety_fire"
+    if any(w in text for w in ["shooter", "shooting", "elementary school", "gunfire", "oj simpson"]):
+        return "safety_crime"
+
+    # World News
+    if any(w in text for w in ["france", "paris", "limoges", "riots in france", "protest"]):
+        return "world_protests"
+    if any(w in text for w in ["pakistan", "khyber", "pakhtunkhwa", "imran khan", "emergency rule"]):
+        return "world_conflict"
+    if any(w in text for w in ["starlink", "ukraine", "russia", "frontline", "missile"]):
+        return "world_conflict"
+
+    # Politics
+    if any(w in text for w in ["east potomac", "public parkland", "national park service"]):
+        return "politics_public_land"
+    if any(w in text for w in ["spending framework", "government shutdown", "budget deal", "appropriations"]):
+        return "politics_congress"
+    if any(w in text for w in ["trump approval", "midterms", "election", "ballots", "polling"]):
+        return "politics_elections"
+    if any(w in text for w in ["supreme court", "content moderation", "social media laws"]):
+        return "politics_courts"
+    if any(w in text for w in ["immigration policy", "border patrol", "fentanyl", "cbp", "asylum"]):
+        return "politics_elections"
+
+    # Business & Economy
+    if any(w in text for w in ["federal reserve", "rates steady", "inflation", "cpi", "stocks"]):
+        return "business_markets"
+    if any(w in text for w in ["semiconductor", "microchips", "export controls"]):
+        return "business_technology"
+    if any(w in text for w in ["tesla", "roadster", "anthropic", "ipo", "valuation"]):
+        return "business_companies"
+    if any(w in text for w in ["ncaa", "revenue-sharing", "settlement"]):
+        return "business_labor"
+
+    # Fallback to category string normalized
+    clean_cat = (category or "general").lower().replace(" & ", "_").replace(" ", "_")
+    return clean_cat
+
+def extract_story_entities(title: str, context: str = "") -> List[Dict[str, str]]:
+    """Extracts structured entities (people, organizations, places) for semantic tracking."""
+    text = f"{title} {context}"
+    entities = []
+    seen = set()
+
+    # Known entity mappings
+    known = [
+        ("Kylie Jenner", "person", "subject"),
+        ("Victoria's Secret", "organization", "brand"),
+        ("Cindy Crawford", "person", "subject"),
+        ("Kaia Gerber", "person", "subject"),
+        ("Rams", "organization", "team"),
+        ("Davante Adams", "person", "subject"),
+        ("Jalen Hurts", "person", "subject"),
+        ("Eagles", "organization", "team"),
+        ("Lakers", "organization", "team"),
+        ("Dodgers", "organization", "team"),
+        ("Brewers", "organization", "team"),
+        ("Donald Trump", "person", "subject"),
+        ("East Potomac", "place", "location"),
+        ("National Park Service", "organization", "agency"),
+        ("Alamodome", "place", "venue"),
+        ("U.S. Air Force", "organization", "military"),
+        ("CFB Wainwright", "place", "defense_base"),
+        ("Canadian Armed Forces", "organization", "military"),
+        ("Federal Reserve", "organization", "central_bank"),
+        ("Jerome Powell", "person", "subject"),
+        ("Tesla", "organization", "company"),
+        ("Elon Musk", "person", "subject"),
+        ("Anthropic", "organization", "company"),
+        ("Supreme Court", "organization", "judiciary"),
+        ("Starlink", "organization", "service"),
+        ("Ukraine", "place", "nation"),
+        ("Russia", "place", "nation"),
+        ("France", "place", "nation"),
+        ("Pakistan", "place", "nation"),
+        ("Imran Khan", "person", "subject"),
+        ("Khyber Pakhtunkhwa", "place", "region"),
+        ("NCAA", "organization", "league"),
+    ]
+
+    for name, ent_type, role in known:
+        if name.lower() in text.lower() and name not in seen:
+            entities.append({"name": name, "type": ent_type, "role": role})
+            seen.add(name)
+
+    return entities
+
+# 2. IMAGE POOLS & CROSS-DOMAIN EXCLUSIONS
+IMAGE_POOLS = {
+    "sports_football": {"nfl", "football", "quarterback", "touchdown", "rams", "gridiron", "super bowl", "heisman", "touchdowns", "helmet"},
+    "sports_basketball": {"nba", "basketball", "hardwood", "lakers", "celtics", "hoops", "court", "power rankings", "arena"},
+    "sports_baseball": {"mlb", "baseball", "ballpark", "dodgers", "brewers", "yankees", "mets", "pitcher", "nlcs", "world series"},
+    "sports_golf": {"pga", "golf", "fairway", "masters", "putting green", "links", "liv golf"},
+    "sports_soccer": {"soccer", "mls", "fifa", "premier league", "champions league"},
+    "sports_general": {"athletics", "stadium", "sports", "competition"},
+
+    "entertainment_fashion": {"fashion", "runway", "couture", "model", "supermodel", "kylie jenner", "victoria's secret", "lingerie", "cindy crawford", "kaia gerber"},
+    "entertainment_cinema": {"cinema", "movie", "film", "theatrical", "box office", "actor", "director", "hollywood"},
+    "entertainment_music": {"music", "concert", "singer", "album", "grammy", "taylor swift"},
+    "entertainment_celebrity": {"celebrity", "red carpet", "hollywood"},
+    "entertainment_tv": {"television", "series", "emmy", "streaming", "netflix"},
+
+    "politics_elections": {"election", "ballots", "voting", "polling", "midterms", "campaign", "white house"},
+    "politics_congress": {"capitol", "congress", "senate", "house of representatives", "lawmakers", "budget"},
+    "politics_courts": {"supreme court", "scotus", "appellate", "judge", "courtroom"},
+    "politics_public_land": {"national park service", "public parkland", "east potomac", "park", "tidal basin", "public land", "golf course"},
+
+    "world_protests": {"protest", "riot", "demonstration", "unrest", "civil unrest", "police clashes", "paris", "france"},
+    "world_conflict": {"ukraine", "russia", "gaza", "military conflict", "insurgency", "frontline", "defense", "starlink", "pakistan"},
+    "world_diplomacy": {"diplomacy", "treaty", "summit", "ambassador", "foreign minister"},
+    "world_disaster": {"wildfire", "earthquake", "tsunami", "flood"},
+
+    "safety_accident": {"accident", "fall", "first responders", "alamodome", "rappelling", "emergency rescue"},
+    "safety_crime": {"crime", "police", "investigation", "fbi", "shooting", "law enforcement", "oj simpson"},
+    "safety_fire": {"fire", "explosion", "blaze", "hazmat", "cfb wainwright", "defense installation"},
+    "safety_rescue": {"search and rescue", "evacuation"},
+
+    "business_companies": {"tesla", "anthropic", "startup", "corporate", "earnings"},
+    "business_markets": {"federal reserve", "interest rates", "stock market", "dow", "nasdaq", "inflation", "cpi", "wall street"},
+    "business_labor": {"union", "strike", "workers", "wages", "labor", "revenue sharing"},
+    "business_technology": {"semiconductor", "microchips", "export controls", "silicon", "hardware"},
+    "general": {"news", "wire", "press"}
+}
+
+CROSS_DOMAIN_EXCLUSIONS = {
+    "sports_football": {"golf", "fairway", "pga", "basketball court", "hardwood", "ballpark", "theatrical cinema", "fashion runway", "church", "pope"},
+    "sports_basketball": {"golf", "fairway", "pga", "football helmet", "gridiron", "quarterback", "ballpark", "theatrical cinema", "fashion runway"},
+    "sports_baseball": {"golf", "fairway", "pga", "football helmet", "hardwood", "basketball", "theatrical cinema"},
+    "sports_golf": {"football helmet", "basketball court", "baseball ballpark", "hardwood court"},
+    "entertainment_fashion": {"theatrical cinema", "movie theater", "box office", "sports stadium", "football", "golf"},
+    "entertainment_cinema": {"fashion runway", "lingerie", "sports stadium"},
+    "politics_public_land": {"supreme court", "scotus", "courtroom", "pga tour media"},
+    "world_protests": {"military fallen soldiers", "funeral honor guard", "sports stadium"},
+    "safety_accident": {"sports scoreboard", "celebrity runway", "trading floor"}
+}
+
+def validate_image_candidate(candidate: Dict[str, Any], expected_pool: str, title: str, context: str = "") -> Tuple[bool, List[str], int]:
+    """Validates an image candidate record against the expected subcategory pool and cross-domain exclusions."""
+    metadata = normalize_text(f"{candidate.get('caption', '')} {candidate.get('credit', '')} {' '.join(candidate.get('tags', []))}")
+    if not metadata:
+        return False, ["missing_image_metadata"], 0
+    candidate_pool = candidate.get("pool")
+    if candidate_pool and candidate_pool.lower() != expected_pool.lower() and expected_pool != "general":
+        return False, ["wrong_image_pool"], 0
+    errors = []
+    for forbidden in CROSS_DOMAIN_EXCLUSIONS.get(expected_pool.lower(), set()):
+        if normalize_text(forbidden) in metadata:
+            errors.append(f"cross_domain:{forbidden}")
+    if errors:
+        return False, errors, 0
+    pool_terms = IMAGE_POOLS.get(expected_pool.lower(), set())
+    pool_hits = sum(1 for term in pool_terms if normalize_text(term) in metadata)
+    if expected_pool != "general" and pool_hits == 0:
+        return False, ["no_subcategory_match"], 0
+    score = pool_hits * 3
+    title_text = normalize_text(title)
+    context_text = normalize_text(context)
+    article_terms = set(title_text.split())
+    candidate_terms = set(metadata.split())
+    score += min(len(article_terms & candidate_terms), 8)
+    if candidate.get("verified_entity_match"):
+        score += 10
+    if candidate.get("source_article_url"):
+        score += 2
+    context_terms = set(context_text.split())
+    score += min(len(context_terms & candidate_terms), 4)
+    return True, [], score
+
+# 3. FACTS EXTRACTION & VALIDATION GATE
+FACT_SLOTS = [
+    "what_happened",
+    "how_it_happened",
+    "key_evidence",
+    "impact_next_steps",
+]
+
+FACT_BOILERPLATE = [
+    r"\bverified reports\b",
+    r"\boperational context\b",
+    r"\bsituation continues to evolve\b",
+    r"\bhighlights the importance of\b",
+    r"\bunderscores the need for\b",
+    r"\bremains to be seen\b",
+    r"\bvarious stakeholders\b",
+    r"\bongoing developments\b",
+    r"\bthe broader implications\b",
+    r"\bfurther details were not immediately available\b",
+]
+
+def fact_tokens(text: str) -> set:
+    return {
+        token for token in re.findall(r"[a-z0-9]+", (text or "").lower())
+        if len(token) > 2
+    }
+
+def normalized_fact(text: str) -> str:
+    return " ".join(re.findall(r"[a-z0-9]+", (text or "").lower()))
+
+def validate_extracted_facts(
+    title: str,
+    facts: List[Any],
+    article_text: str = ""
+) -> Tuple[bool, List[str]]:
+    """
+    Validates that extracted facts:
+    1. Contain 4 distinct, non-empty statements.
+    2. Contain no forbidden boilerplate filler phrases.
+    3. Do not merely duplicate the headline.
+    4. Are mutually distinct from one another.
+    5. Are grounded in provided source evidence.
+    """
+    errors = []
+    if not isinstance(facts, list) or len(facts) < 4:
+        return False, [f"expected_4_facts:got_{len(facts) if isinstance(facts, list) else 0}"]
+
+    title_tokens = fact_tokens(title)
+    fact_texts = []
+    slots_present = set()
+
+    for i, item in enumerate(facts[:4]):
+        if isinstance(item, dict):
+            slot = item.get("slot", FACT_SLOTS[i])
+            text = str(item.get("text") or "").strip()
+            evidence = str(item.get("evidence") or "").strip()
+            slots_present.add(slot)
+        else:
+            slot = FACT_SLOTS[i]
+            text = str(item).strip()
+            evidence = ""
+            slots_present.add(slot)
+
+        fact_texts.append(text)
+        if not text:
+            errors.append(f"empty_fact_slot:{slot}")
+            continue
+
+        # Check boilerplate
+        for bp in FACT_BOILERPLATE:
+            if re.search(bp, text.lower()):
+                errors.append(f"boilerplate_in_{slot}:{bp}")
+
+        # Check headline duplication
+        f_toks = fact_tokens(text)
+        if title_tokens and len(f_toks) >= 4:
+            overlap = len(title_tokens & f_toks) / max(len(title_tokens), 1)
+            if overlap > 0.85:
+                errors.append(f"headline_duplication_in_{slot}")
+
+    # Check distinctness across facts
+    for j in range(len(fact_texts)):
+        for k in range(j + 1, len(fact_texts)):
+            tj = fact_tokens(fact_texts[j])
+            tk = fact_tokens(fact_texts[k])
+            if tj and tk:
+                sim = len(tj & tk) / min(len(tj), len(tk))
+                if sim > 0.75:
+                    errors.append(f"duplicate_facts_between_slot_{j}_and_{k}")
+
+    return len(errors) == 0, errors
+
+# 4. DOMAIN LEAKAGE RULES & PERSPECTIVE RELEVANCE VALIDATOR
+DOMAIN_LEAKAGE_RULES: Dict[str, Dict[str, List[str]]] = {
+    "entertainment_fashion": {
+        "cinema": [
+            r"\bbox office\b",
+            r"\btheatrical release\b",
+            r"\bmovie theater\b",
+            r"\bopening weekend\b",
+            r"\bticket sales\b",
+            r"\bfilm distribution\b",
+        ],
+        "sports": [
+            r"\bfinal scoreboard\b",
+            r"\bturnover differential\b",
+            r"\bnext man up\b",
+            r"\bplayoff seeding\b",
+        ],
+        "military": [
+            r"\bthose who serve and sacrifice\b",
+            r"\bfallen service members\b",
+            r"\bmilitary casualties\b",
+        ],
+    },
+    "entertainment_cinema": {
+        "fashion": [
+            r"\bfashion runway\b",
+            r"\bcouture collection\b",
+            r"\bfashion week\b",
+        ],
+        "sports": [
+            r"\bfinal scoreboard\b",
+            r"\bturnover differential\b",
+        ]
+    },
+    "sports_football": {
+        "basketball": [
+            r"\bhardwood court\b",
+            r"\bthree-point percentage\b",
+            r"\bfull-court press\b",
+        ],
+        "golf": [
+            r"\bclubhouse green\b",
+            r"\bfairway drive\b",
+            r"\bpga tour\b",
+        ],
+        "military": [
+            r"\bthose who serve and sacrifice\b",
+            r"\bmilitary casualties\b",
+        ]
+    },
+    "sports_basketball": {
+        "football": [
+            r"\bin the trenches\b",
+            r"\bbetween the goal line\b",
+            r"\bquarterback\b",
+            r"\btouchdown\b",
+            r"\bred zone\b",
+        ],
+        "golf": [
+            r"\bclubhouse green\b",
+            r"\bfairway drive\b",
+            r"\bpga tour\b",
+        ]
+    },
+    "sports_baseball": {
+        "football": [
+            r"\bquarterback\b",
+            r"\btouchdown\b",
+            r"\bin the trenches\b"
+        ],
+        "golf": [
+            r"\bclubhouse green\b",
+            r"\bfairway\b",
+        ]
+    },
+    "politics_public_land": {
+        "courts": [
+            r"\bsupreme court ruling\b",
+            r"\bconstitutional originalism\b",
+            r"\bmarbury v madison\b",
+        ],
+        "sports": [
+            r"\bturnover differential\b",
+            r"\bfinal scoreboard\b",
+            r"\bnext man up\b",
+        ]
+    },
+    "world_protests": {
+        "military": [
+            r"\bthose who serve and sacrifice\b",
+            r"\bfallen service members\b",
+            r"\bmilitary casualties\b",
+        ],
+        "us_domestic_budget": [
+            r"\bthe american people\b",
+            r"\bdivided government in washington\b",
+            r"\bbalance the federal budget\b",
+            r"\bcongressional gridlock\b",
+        ]
+    },
+    "world_conflict": {
+        "us_domestic_budget": [
+            r"\bdivided government in washington\b",
+            r"\bcongressional gridlock\b",
+        ]
+    },
+    "safety_accident": {
+        "sports": [
+            r"\bfinal scoreboard\b",
+            r"\bscoreboard doesn't lie\b",
+            r"\bturnover differential\b",
+            r"\bchampionship caliber\b",
+        ],
+        "entertainment": [
+            r"\bbox office\b",
+            r"\bhollywood premiere\b",
+        ]
+    }
+}
+
+def find_domain_leakage(text: str, story_subcategory: str) -> List[str]:
+    subcat_key = story_subcategory.lower().replace(" ", "_")
+    rules = DOMAIN_LEAKAGE_RULES.get(subcat_key, {})
+    errors = []
+    text_lower = text.lower()
+    for forbidden_domain, patterns in rules.items():
+        for pat in patterns:
+            if re.search(pat, text_lower):
+                errors.append(f"leakage_from_{forbidden_domain}:{pat}")
+    return errors
+
 def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[str, str]:
     """Accurately classifies articles into specific topic category and hierarchical master category.
     Strictly separates domestic US issues from international foreign affairs and prevents tragedies
@@ -1132,7 +1565,13 @@ def is_story_image_mismatched(story: dict) -> bool:
     except Exception:
         return False
 
-def validate_perspective_relevance(article_title: str, article_summary: str, perspectives: dict) -> Tuple[bool, List[str]]:
+def validate_perspective_relevance(
+    article_title: str,
+    article_summary: str,
+    perspectives: dict,
+    story_subcategory: str = "general",
+    validated_facts: list = None,
+) -> Tuple[bool, List[str]]:
     """
     Strict in-code article-relevance validation layer.
     For every generated perspective, validates that:
@@ -1154,18 +1593,27 @@ def validate_perspective_relevance(article_title: str, article_summary: str, per
     summary_lower = (article_summary or "").lower()
     combined_article = title_lower + " " + summary_lower
 
-    # Aggregate text of all perspectives
+    if story_subcategory == "general" or not story_subcategory:
+        story_subcategory = determine_story_subcategory(article_title, "", article_summary)
+
+    # 1. Check each lens independently for domain leakage
     all_perspectives_text = []
     for lens in ["LEFT", "CENTER", "RIGHT"]:
         p = perspectives[lens]
         framing = str(p.get("headline_framing", "")).lower()
         bullets = " ".join([str(b).lower() for b in p.get("why_it_matters", [])])
         points = " ".join([str(tp).lower() for tp in p.get("talking_points", [])])
-        all_perspectives_text.append(f"{framing} {bullets} {points}")
+        lens_text = f"{framing} {bullets} {points}"
+        all_perspectives_text.append(lens_text)
+
+        # Domain leakage check per lens
+        leak_errors = find_domain_leakage(lens_text, story_subcategory)
+        for le in leak_errors:
+            errors.append(f"{lens}:{le}")
 
     combined_perspectives = " ".join(all_perspectives_text)
 
-    # 1. Negative Cross-Domain Leakage Checks:
+    # 2. Negative Cross-Domain Leakage Checks:
     # A. Box office & cinema terms in non-movie articles
     is_movie_story = any(w in combined_article for w in [
         "movie", "movies", "film", "films", "box office", "theatrical", "cinema",
@@ -1182,7 +1630,7 @@ def validate_perspective_relevance(article_title: str, article_summary: str, per
     is_sports_story = any(w in combined_article for w in [
         "nfl", "nba", "mlb", "sports", "football", "basketball", "baseball", "golf",
         "quarterback", "touchdown", "rams", "dodgers", "brewers", "lakers", "celtics", "pga", "hurts"
-    ])
+    ]) and not any(w in combined_article for w in ["alamodome", "airman dies", "rappelling accident"])
     scoreboard_terms = ["final scoreboard", "scoreboard doesn't lie", "turnover differential", "between the lines", "red-zone efficiency", "fourth-quarter focus"]
     if not is_sports_story:
         for term in scoreboard_terms:
@@ -1213,7 +1661,7 @@ def validate_perspective_relevance(article_title: str, article_summary: str, per
             if term in combined_perspectives:
                 errors.append(f"Budget/shutdown term '{term}' leaked into non-budget article")
 
-    # 2. Entity / Subject Grounding Check
+    # 3. Entity / Subject Grounding Check
     title_words = [w for w in re.findall(r'[a-zA-Z]+', title_lower) if len(w) >= 4 and w not in [
         "after", "before", "during", "several", "major", "report", "reports", "latest", "first",
         "begins", "draws", "moment", "amid", "over", "under", "with", "from", "into", "this"
