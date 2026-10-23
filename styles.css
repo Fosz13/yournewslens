@@ -872,8 +872,17 @@ div[id$="-view-RIGHT"] .perspective-badge {
   transition: transform 0.2s ease;
 }
 
+.compact-card.expanded .expand-prompt-bar {
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.compact-card.expanded .expand-label {
+  color: #0f172a;
+}
+
 .compact-card.expanded .expand-chevron {
-  transform: rotate(180deg);
+  color: #0f172a;
 }
 
 /* Card Details Drawer */

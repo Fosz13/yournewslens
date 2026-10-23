@@ -884,8 +884,17 @@ div[id$="-view-RIGHT"] .perspective-badge {
   transition: transform 0.2s ease;
 }
 
+.compact-card.expanded .expand-prompt-bar {
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.compact-card.expanded .expand-label {
+  color: #0f172a;
+}
+
 .compact-card.expanded .expand-chevron {
-  transform: rotate(180deg);
+  color: #0f172a;
 }
 
 /* Card Details Drawer */
@@ -1194,7 +1203,6 @@ div[id$="-view-RIGHT"] .perspective-badge {
     font-size: 18px;
   }
 }
-
   </style>
 </head>
 <body>
@@ -1291,7 +1299,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
     <div id="storiesFeedView" class="feed-container">
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="National Headlines" id="story-centrus-vs-bwxt-nuclear-buy">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-centrus-vs-bwxt-nuclear-buy\', event)">
             <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Advanced nuclear energy supply chain and electrical generation facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced nuclear energy supply chain and electrical generation facility.</span>
@@ -1318,7 +1326,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-centrus-vs-bwxt-nuclear-buy\', event)">
               <span class="expand-label" id="story-centrus-vs-bwxt-nuclear-buy-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-centrus-vs-bwxt-nuclear-buy-chevron">▾</span>
             </div>
@@ -1455,7 +1463,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-byu-big-12-basketball-media-days">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-byu-big-12-basketball-media-days\', event)">
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Collegiate basketball arena hardwood court under game night floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate basketball arena hardwood court under game night floodlights.</span>
@@ -1482,7 +1490,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-byu-big-12-basketball-media-days\', event)">
               <span class="expand-label" id="story-byu-big-12-basketball-media-days-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-byu-big-12-basketball-media-days-chevron">▾</span>
             </div>
@@ -1619,7 +1627,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-warriors-porzingis-trades-absence">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-warriors-porzingis-trades-absence\', event)">
             <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=1200&q=80" alt="Professional basketball arena hardwood floor and team baseline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional basketball arena hardwood floor and team baseline.</span>
@@ -1646,7 +1654,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-warriors-porzingis-trades-absence\', event)">
               <span class="expand-label" id="story-warriors-porzingis-trades-absence-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-warriors-porzingis-trades-absence-chevron">▾</span>
             </div>
@@ -1783,7 +1791,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Politics" data-master-category="National Headlines" id="story-michigan-senate-debate">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-michigan-senate-debate')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-michigan-senate-debate\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and Senate chamber in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Capitol building and Senate chamber in Washington, D.C.</span>
@@ -1810,7 +1818,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-michigan-senate-debate')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-michigan-senate-debate\', event)">
               <span class="expand-label" id="story-michigan-senate-debate-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-michigan-senate-debate-chevron">▾</span>
             </div>
@@ -1947,7 +1955,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" id="story-kylie-jenner-fantasy-bra">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-kylie-jenner-fantasy-bra\', event)">
             <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="High-fashion runway presentation and couture model showcase." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-fashion runway presentation and couture model showcase.</span>
@@ -1974,7 +1982,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-kylie-jenner-fantasy-bra\', event)">
               <span class="expand-label" id="story-kylie-jenner-fantasy-bra-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-kylie-jenner-fantasy-bra-chevron">▾</span>
             </div>
@@ -2111,7 +2119,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-rams-injuries-wr-adams">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-rams-injuries-wr-adams\', event)">
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" alt="NFL football helmet and gridiron equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">NFL football helmet and gridiron equipment on stadium sideline turf.</span>
@@ -2138,7 +2146,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-rams-injuries-wr-adams\', event)">
               <span class="expand-label" id="story-rams-injuries-wr-adams-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-rams-injuries-wr-adams-chevron">▾</span>
             </div>
@@ -2275,7 +2283,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-nba-preseason-power-rankings">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-nba-preseason-power-rankings\', event)">
             <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" alt="Basketball hoop and backboard in tournament competition arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball hoop and backboard in tournament competition arena.</span>
@@ -2302,7 +2310,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-nba-preseason-power-rankings\', event)">
               <span class="expand-label" id="story-nba-preseason-power-rankings-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nba-preseason-power-rankings-chevron">▾</span>
             </div>
@@ -2439,7 +2447,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" id="story-cindy-crawford-tribute">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-cindy-crawford-tribute\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Cindy_Crawford_2011.jpg/800px-Cindy_Crawford_2011.jpg" alt="Cindy Crawford — American model and actress alongside family." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Cindy Crawford — American model and actress alongside family.</span>
@@ -2466,7 +2474,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-cindy-crawford-tribute\', event)">
               <span class="expand-label" id="story-cindy-crawford-tribute-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-cindy-crawford-tribute-chevron">▾</span>
             </div>
@@ -2603,7 +2611,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" id="story-trump-approval-midterms">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-approval-midterms')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-trump-approval-midterms\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg" alt="The White House North Portico and Executive Mansion in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">The White House North Portico and Executive Mansion in Washington, D.C.</span>
@@ -2630,7 +2638,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-approval-midterms')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-trump-approval-midterms\', event)">
               <span class="expand-label" id="story-trump-approval-midterms-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-trump-approval-midterms-chevron">▾</span>
             </div>
@@ -2767,7 +2775,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Politics" data-master-category="National Headlines" id="story-trump-east-potomac-links">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-trump-east-potomac-links\', event)">
             <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C.</span>
@@ -2794,7 +2802,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-trump-east-potomac-links\', event)">
               <span class="expand-label" id="story-trump-east-potomac-links-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-trump-east-potomac-links-chevron">▾</span>
             </div>
@@ -2931,7 +2939,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="World News" data-master-category="World News" id="story-canada-cfb-wainwright-fire">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-canada-cfb-wainwright-fire\', event)">
             <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80" alt="Emergency response and disaster investigation operations at defense installation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency response and disaster investigation operations at defense installation.</span>
@@ -2958,7 +2966,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-canada-cfb-wainwright-fire\', event)">
               <span class="expand-label" id="story-canada-cfb-wainwright-fire-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-canada-cfb-wainwright-fire-chevron">▾</span>
             </div>
@@ -3095,7 +3103,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" id="story-alamodome-airman-rappel">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-alamodome-airman-rappel')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-alamodome-airman-rappel\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alamodome.jpg/800px-Alamodome.jpg" alt="Emergency first responders and municipal public safety perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency first responders and municipal public safety perimeter operations.</span>
@@ -3122,7 +3130,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-alamodome-airman-rappel')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-alamodome-airman-rappel\', event)">
               <span class="expand-label" id="story-alamodome-airman-rappel-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-alamodome-airman-rappel-chevron">▾</span>
             </div>
@@ -3259,7 +3267,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-cfb-rankings-upsets">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-cfb-rankings-upsets\', event)">
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Championship college football stadium under Saturday night floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship college football stadium under Saturday night floodlights.</span>
@@ -3286,7 +3294,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-cfb-rankings-upsets\', event)">
               <span class="expand-label" id="story-cfb-rankings-upsets-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-cfb-rankings-upsets-chevron">▾</span>
             </div>
@@ -3423,7 +3431,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Health" data-master-category="Health" id="story-npr-sidewalk-sleepers">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-npr-sidewalk-sleepers\', event)">
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional public hospital medical complex and caregiver reception grounds." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Regional public hospital medical complex and caregiver reception grounds.</span>
@@ -3450,7 +3458,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-npr-sidewalk-sleepers\', event)">
               <span class="expand-label" id="story-npr-sidewalk-sleepers-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-npr-sidewalk-sleepers-chevron">▾</span>
             </div>
@@ -3587,7 +3595,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" id="story-oj-simpson-case">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oj-simpson-case')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-oj-simpson-case\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg" alt="O.J. Simpson during legal proceedings in criminal court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">O.J. Simpson during legal proceedings in criminal court.</span>
@@ -3614,7 +3622,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-oj-simpson-case')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-oj-simpson-case\', event)">
               <span class="expand-label" id="story-oj-simpson-case-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-oj-simpson-case-chevron">▾</span>
             </div>
@@ -3751,7 +3759,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Politics" data-master-category="National Headlines" id="story-trump-immigration-soften">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-immigration-soften')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-trump-immigration-soften\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Customs and Border Protection vehicle inspection and federal border enforcement checkpoint." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">U.S. Customs and Border Protection vehicle inspection and federal border enforcement checkpoint.</span>
@@ -3778,7 +3786,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-immigration-soften')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-trump-immigration-soften\', event)">
               <span class="expand-label" id="story-trump-immigration-soften-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-trump-immigration-soften-chevron">▾</span>
             </div>
@@ -3915,7 +3923,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" id="story-budget-shutdown-deal">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-budget-shutdown-deal\', event)">
             <img src="https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80" alt="House committee room and congressional caucus proceedings in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">House committee room and congressional caucus proceedings in Washington, D.C.</span>
@@ -3942,7 +3950,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-budget-shutdown-deal\', event)">
               <span class="expand-label" id="story-budget-shutdown-deal-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-budget-shutdown-deal-chevron">▾</span>
             </div>
@@ -4079,7 +4087,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" id="story-ferc-grid-grants">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ferc-grid-grants')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-ferc-grid-grants\', event)">
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-voltage transmission line towers and regional electrical grid infrastructure.</span>
@@ -4106,7 +4114,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-ferc-grid-grants')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-ferc-grid-grants\', event)">
               <span class="expand-label" id="story-ferc-grid-grants-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-ferc-grid-grants-chevron">▾</span>
             </div>
@@ -4243,7 +4251,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-pga-saudi-merger">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pga-saudi-merger')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-pga-saudi-merger\', event)">
             <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80" alt="Golf course putting green and championship tournament flagstick." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Golf course putting green and championship tournament flagstick.</span>
@@ -4270,7 +4278,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-pga-saudi-merger')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-pga-saudi-merger\', event)">
               <span class="expand-label" id="story-pga-saudi-merger-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-pga-saudi-merger-chevron">▾</span>
             </div>
@@ -4407,7 +4415,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-ncaa-revenue-share">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-ncaa-revenue-share\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png" alt="National Collegiate Athletic Association (NCAA) and College Football Playoff." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">National Collegiate Athletic Association (NCAA) and College Football Playoff.</span>
@@ -4434,7 +4442,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-ncaa-revenue-share\', event)">
               <span class="expand-label" id="story-ncaa-revenue-share-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-ncaa-revenue-share-chevron">▾</span>
             </div>
@@ -4571,7 +4579,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" id="story-oregon-school-shooting">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oregon-school-shooting')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-oregon-school-shooting\', event)">
             <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1200&q=80" alt="Municipal emergency first responders and public safety perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Municipal emergency first responders and public safety perimeter operations.</span>
@@ -4598,7 +4606,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-oregon-school-shooting')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-oregon-school-shooting\', event)">
               <span class="expand-label" id="story-oregon-school-shooting-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-oregon-school-shooting-chevron">▾</span>
             </div>
@@ -4735,7 +4743,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" id="story-fed-rates-steady">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fed-rates-steady')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-fed-rates-steady\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
@@ -4762,7 +4770,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fed-rates-steady')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-fed-rates-steady\', event)">
               <span class="expand-label" id="story-fed-rates-steady-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-fed-rates-steady-chevron">▾</span>
             </div>
@@ -4899,7 +4907,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="World News" data-master-category="World News" id="story-france-riots-shock">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-france-riots-shock')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-france-riots-shock\', event)">
             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="Civil unrest and emergency police security perimeters across Paris and Limoges, France." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Civil unrest and emergency police security perimeters across Paris and Limoges, France.</span>
@@ -4926,7 +4934,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-france-riots-shock')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-france-riots-shock\', event)">
               <span class="expand-label" id="story-france-riots-shock-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-france-riots-shock-chevron">▾</span>
             </div>
@@ -5063,7 +5071,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="World News" data-master-category="World News" id="story-pakistan-kp-emergency-rule">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-pakistan-kp-emergency-rule\', event)">
             <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Regional administrative headquarters and security operations in Khyber Pakhtunkhwa, Pakistan." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Regional administrative headquarters and security operations in Khyber Pakhtunkhwa, Pakistan.</span>
@@ -5090,7 +5098,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-pakistan-kp-emergency-rule\', event)">
               <span class="expand-label" id="story-pakistan-kp-emergency-rule-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-pakistan-kp-emergency-rule-chevron">▾</span>
             </div>
@@ -5227,7 +5235,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-nfl-jalen-hurts">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-nfl-jalen-hurts\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg" alt="Philadelphia Eagles quarterback Jalen Hurts." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Philadelphia Eagles quarterback Jalen Hurts.</span>
@@ -5254,7 +5262,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-nfl-jalen-hurts\', event)">
               <span class="expand-label" id="story-nfl-jalen-hurts-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nfl-jalen-hurts-chevron">▾</span>
             </div>
@@ -5391,7 +5399,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-nba-lakers-prep">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-lakers-prep')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-nba-lakers-prep\', event)">
             <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Athletic basketball arena floor and grandstand seating." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Athletic basketball arena floor and grandstand seating.</span>
@@ -5418,7 +5426,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nba-lakers-prep')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-nba-lakers-prep\', event)">
               <span class="expand-label" id="story-nba-lakers-prep-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nba-lakers-prep-chevron">▾</span>
             </div>
@@ -5555,7 +5563,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" id="story-cfb-playoff-24">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-playoff-24')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-cfb-playoff-24\', event)">
             <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1200&q=80" alt="Football gridiron stadium turf and yard line markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football gridiron stadium turf and yard line markings.</span>
@@ -5582,7 +5590,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cfb-playoff-24')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-cfb-playoff-24\', event)">
               <span class="expand-label" id="story-cfb-playoff-24-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-cfb-playoff-24-chevron">▾</span>
             </div>
@@ -5719,7 +5727,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" id="story-nuclear-modular-compact">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-nuclear-modular-compact\', event)">
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe weather system with high winds and emergency utility grid repair operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Severe weather system with high winds and emergency utility grid repair operations.</span>
@@ -5746,7 +5754,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-nuclear-modular-compact\', event)">
               <span class="expand-label" id="story-nuclear-modular-compact-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nuclear-modular-compact-chevron">▾</span>
             </div>
@@ -5883,7 +5891,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" id="story-border-compromise">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-border-compromise')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-border-compromise\', event)">
             <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80" alt="Commercial maritime freight shipping container terminal and customs inspection facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial maritime freight shipping container terminal and customs inspection facility.</span>
@@ -5910,7 +5918,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-border-compromise')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-border-compromise\', event)">
               <span class="expand-label" id="story-border-compromise-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-border-compromise-chevron">▾</span>
             </div>
@@ -6047,7 +6055,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="World News" data-master-category="World News" id="story-starlink-ukraine-cnbc">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-starlink-ukraine-cnbc\', event)">
             <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80" alt="Orbital satellite communications array and high-frequency defense telecommunications relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Orbital satellite communications array and high-frequency defense telecommunications relay.</span>
@@ -6074,7 +6082,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-starlink-ukraine-cnbc\', event)">
               <span class="expand-label" id="story-starlink-ukraine-cnbc-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-starlink-ukraine-cnbc-chevron">▾</span>
             </div>
@@ -6211,7 +6219,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Health" data-master-category="Health" id="story-hhs-cash-prices">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-hhs-cash-prices')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-hhs-cash-prices\', event)">
             <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80" alt="Clinical healthcare medical research and patient therapy center." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Clinical healthcare medical research and patient therapy center.</span>
@@ -6238,7 +6246,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-hhs-cash-prices')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-hhs-cash-prices\', event)">
               <span class="expand-label" id="story-hhs-cash-prices-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-hhs-cash-prices-chevron">▾</span>
             </div>
@@ -6375,7 +6383,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" id="story-port-security-fentanyl">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-port-security-fentanyl')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-port-security-fentanyl\', event)">
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Federal customs clearance checkpoint and commercial transport inspection bay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal customs clearance checkpoint and commercial transport inspection bay.</span>
@@ -6402,7 +6410,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-port-security-fentanyl')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-port-security-fentanyl\', event)">
               <span class="expand-label" id="story-port-security-fentanyl-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-port-security-fentanyl-chevron">▾</span>
             </div>
@@ -6539,7 +6547,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Health" data-master-category="Health" id="story-medicare-negotiations">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-medicare-negotiations')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-medicare-negotiations\', event)">
             <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="Hospital inpatient corridor and medical clinical healthcare wing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Hospital inpatient corridor and medical clinical healthcare wing.</span>
@@ -6566,7 +6574,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-medicare-negotiations')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-medicare-negotiations\', event)">
               <span class="expand-label" id="story-medicare-negotiations-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-medicare-negotiations-chevron">▾</span>
             </div>
@@ -6703,7 +6711,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-supreme-court-speech">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-supreme-court-speech')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-supreme-court-speech\', event)">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Supreme Court of the United States west facade in Washington, D.C.</span>
@@ -6730,7 +6738,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-supreme-court-speech')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-supreme-court-speech\', event)">
               <span class="expand-label" id="story-supreme-court-speech-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-supreme-court-speech-chevron">▾</span>
             </div>
@@ -6867,7 +6875,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
         </article>
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" id="story-chip-export-controls">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('story-chip-export-controls')">
+          <div class="hero-image-wrap" onclick="toggleStoryDetails(\'story-chip-export-controls\', event)">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Advanced semiconductor silicon wafer and microchip integrated circuit architecture." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced semiconductor silicon wafer and microchip integrated circuit architecture.</span>
@@ -6894,7 +6902,7 @@ div[id$="-view-RIGHT"] .perspective-badge {
               </a>
             </h3>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-chip-export-controls')">
+            <div class="expand-prompt-bar" onclick="toggleStoryDetails(\'story-chip-export-controls\', event)">
               <span class="expand-label" id="story-chip-export-controls-expand-label">View Facts & Perspectives</span>
               <span class="expand-chevron" id="story-chip-export-controls-chevron">▾</span>
             </div>
@@ -7056,475 +7064,497 @@ div[id$="-view-RIGHT"] .perspective-badge {
 
   <script>
 /**
- * YOUR NEWS LENS — CORE CLIENT SCRIPT
+ * YOUR NEWS LENS — CORE CLIENT CONTROLLER
  * High-Reliability Interactive Controller (Zero-Failure Execution)
  */
 
-// Image fallback handler
-function onImgError(img) {
-  if (img) {
-    img.onerror = null;
-    img.src = 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';
+(function() {
+  // Prevent duplicate execution if script is loaded or embedded multiple times
+  if (typeof window !== 'undefined' && window.__YOUR_NEWS_LENS_INITIALIZED__) {
+    return;
   }
-}
-
-// Global Perspective State
-var currentGlobalPerspective = 'CENTER';
-try {
-  var savedPref = localStorage.getItem('userLensPreference');
-  if (savedPref && (savedPref === 'LEFT' || savedPref === 'CENTER' || savedPref === 'RIGHT')) {
-    currentGlobalPerspective = savedPref;
+  if (typeof window !== 'undefined') {
+    window.__YOUR_NEWS_LENS_INITIALIZED__ = true;
   }
-} catch (e) {}
 
-var currentFilterCategory = 'All';
+  // Image fallback handler
+  function onImgError(img) {
+    if (img) {
+      img.onerror = null;
+      img.src = 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1200&q=80';
+    }
+  }
 
-// Global Perspective Switcher
-function setGlobalPerspective(p) {
-  if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
-  currentGlobalPerspective = p;
+  // Global Perspective State
+  var currentGlobalPerspective = 'CENTER';
   try {
-    localStorage.setItem('userLensPreference', p);
+    var savedPref = localStorage.getItem('userLensPreference');
+    if (savedPref && (savedPref === 'LEFT' || savedPref === 'CENTER' || savedPref === 'RIGHT')) {
+      currentGlobalPerspective = savedPref;
+    }
   } catch (e) {}
 
-  // Update Global Header Buttons
-  var btnL = document.getElementById('btnGlobalLeft');
-  var btnC = document.getElementById('btnGlobalCenter');
-  var btnR = document.getElementById('btnGlobalRight');
-  if (btnL) btnL.className = 'lens-btn left ' + (p === 'LEFT' ? 'active' : '');
-  if (btnC) btnC.className = 'lens-btn center ' + (p === 'CENTER' ? 'active' : '');
-  if (btnR) btnR.className = 'lens-btn right ' + (p === 'RIGHT' ? 'active' : '');
+  var currentFilterCategory = 'All';
 
-  // Synchronize All Cards
-  var allCards = document.querySelectorAll('.compact-card');
-  for (var i = 0; i < allCards.length; i++) {
-    if (allCards[i].id) {
-      switchStoryPerspective(allCards[i].id, p);
-    }
-  }
+  // Global Perspective Switcher
+  function setGlobalPerspective(p) {
+    if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
+    currentGlobalPerspective = p;
+    try {
+      localStorage.setItem('userLensPreference', p);
+    } catch (e) {}
 
-  updateLoungeTitle(p);
-  var label = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced');
-  showToastNotification('Switched to ' + label + ' Lens');
-}
+    // Update Global Header Buttons
+    var btnL = document.getElementById('btnGlobalLeft');
+    var btnC = document.getElementById('btnGlobalCenter');
+    var btnR = document.getElementById('btnGlobalRight');
+    if (btnL) btnL.className = 'lens-btn left ' + (p === 'LEFT' ? 'active' : '');
+    if (btnC) btnC.className = 'lens-btn center ' + (p === 'CENTER' ? 'active' : '');
+    if (btnR) btnR.className = 'lens-btn right ' + (p === 'RIGHT' ? 'active' : '');
 
-// Card-Level Perspective Switcher
-function switchStoryPerspective(storyId, p) {
-  if (!storyId || !p) return;
-  var views = ['RIGHT', 'CENTER', 'LEFT'];
-  for (var i = 0; i < views.length; i++) {
-    var el = document.getElementById(storyId + '-view-' + views[i]);
-    if (el) {
-      el.style.display = (views[i] === p) ? 'block' : 'none';
-    }
-  }
-
-  var card = document.getElementById(storyId);
-  if (card && card.querySelectorAll) {
-    var btns = card.querySelectorAll('.card-toggle-btn');
-    for (var b = 0; b < btns.length; b++) {
-      var btn = btns[b];
-      var txt = btn.textContent.trim().toUpperCase();
-      btn.classList.remove('active', 'left', 'center', 'right');
-      if (p === 'LEFT' && (txt === 'LEFT' || txt.indexOf('LEFT') !== -1)) {
-        btn.classList.add('active', 'left');
-      } else if (p === 'CENTER' && (txt === 'BALANCED' || txt === 'CENTER' || txt.indexOf('BAL') !== -1)) {
-        btn.classList.add('active', 'center');
-      } else if (p === 'RIGHT' && (txt === 'RIGHT' || txt.indexOf('RIGHT') !== -1)) {
-        btn.classList.add('active', 'right');
+    // Synchronize All Cards
+    var allCards = document.querySelectorAll('.compact-card');
+    for (var i = 0; i < allCards.length; i++) {
+      if (allCards[i].id) {
+        switchStoryPerspective(allCards[i].id, p);
       }
     }
-  }
-}
 
-// Story Details & Perspective Accordion Toggle
-function toggleStoryDetails(storyId) {
-  if (!storyId) return;
-  var card = document.getElementById(storyId);
-  if (!card) return;
-
-  var details = document.getElementById(storyId + '-details') || card.querySelector('.card-details');
-  var label = document.getElementById(storyId + '-expand-label') || card.querySelector('.expand-label');
-  var chevron = document.getElementById(storyId + '-chevron') || card.querySelector('.expand-chevron');
-
-  var isOpen = card.classList.contains('expanded');
-  if (details && details.style.display === 'block') {
-    isOpen = true;
+    updateLoungeTitle(p);
+    var label = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced');
+    showToastNotification('Switched to ' + label + ' Lens');
   }
 
-  if (!isOpen) {
-    card.classList.add('expanded');
-    if (details) details.style.display = 'block';
-    if (label) label.textContent = 'Hide Details & Perspectives';
-    if (chevron) chevron.textContent = '▴';
-  } else {
-    card.classList.remove('expanded');
-    if (details) details.style.display = 'none';
-    if (label) label.textContent = 'View Facts & Perspectives';
-    if (chevron) chevron.textContent = '▾';
-  }
-}
+  // Card-Level Perspective Switcher
+  function switchStoryPerspective(storyId, p) {
+    if (!storyId || !p) return;
+    var views = ['RIGHT', 'CENTER', 'LEFT'];
+    for (var i = 0; i < views.length; i++) {
+      var el = document.getElementById(storyId + '-view-' + views[i]);
+      if (el) {
+        el.style.display = (views[i] === p) ? 'block' : 'none';
+      }
+    }
 
-// In-Depth Facts Dossier Expansion
-function toggleFactExpansion(storyId, event) {
-  if (event) {
-    event.stopPropagation();
-    event.preventDefault();
-  }
-  if (!storyId) return;
-  var dossier = document.getElementById(storyId + '-facts-dossier');
-  var btn = document.getElementById(storyId + '-btn-facts-toggle');
-  var btnText = document.getElementById(storyId + '-fact-btn-text');
-  var btnChevron = document.getElementById(storyId + '-fact-btn-chevron');
-
-  if (!dossier) return;
-
-  var isHidden = (dossier.style.display === 'none' || dossier.style.display === '');
-  if (isHidden) {
-    dossier.style.display = 'block';
-    if (btn) btn.classList.add('active');
-    if (btnText) btnText.textContent = 'Hide Evidence';
-    if (btnChevron) btnChevron.textContent = '▴';
-  } else {
-    dossier.style.display = 'none';
-    if (btn) btn.classList.remove('active');
-    if (btnText) btnText.textContent = 'Deep Dive & Evidence';
-    if (btnChevron) btnChevron.textContent = '▾';
-  }
-}
-
-// Category Filter Toolbar
-function filterCategory(btn, catKey) {
-  currentFilterCategory = catKey || 'All';
-  var pills = document.querySelectorAll('.cat-pill');
-  for (var i = 0; i < pills.length; i++) {
-    pills[i].classList.remove('active');
-  }
-  if (btn) {
-    btn.classList.add('active');
-  } else {
-    // Highlight matching pill if called programmatically
-    for (var k = 0; k < pills.length; k++) {
-      if ((pills[k].getAttribute('data-category') || '').toLowerCase() === currentFilterCategory.toLowerCase()) {
-        pills[k].classList.add('active');
-        break;
+    var card = document.getElementById(storyId);
+    if (card && card.querySelectorAll) {
+      var btns = card.querySelectorAll('.card-toggle-btn');
+      for (var b = 0; b < btns.length; b++) {
+        var btn = btns[b];
+        var txt = btn.textContent.trim().toUpperCase();
+        btn.classList.remove('active', 'left', 'center', 'right');
+        if (p === 'LEFT' && (txt === 'LEFT' || txt.indexOf('LEFT') !== -1)) {
+          btn.classList.add('active', 'left');
+        } else if (p === 'CENTER' && (txt === 'BALANCED' || txt === 'CENTER' || txt.indexOf('BAL') !== -1)) {
+          btn.classList.add('active', 'center');
+        } else if (p === 'RIGHT' && (txt === 'RIGHT' || txt.indexOf('RIGHT') !== -1)) {
+          btn.classList.add('active', 'right');
+        }
       }
     }
   }
 
-  var key = currentFilterCategory.toLowerCase().trim();
-  var articles = document.querySelectorAll('.compact-card');
-  var visibleCount = 0;
+  // State map and throttle to prevent double-invocation from event bubbling or rapid clicks
+  var _lastToggleMap = {};
 
-  for (var j = 0; j < articles.length; j++) {
-    var cat = (articles[j].getAttribute('data-category') || '').toLowerCase().trim();
-    var masterCat = (articles[j].getAttribute('data-master-category') || '').toLowerCase().trim();
-    var match = false;
+  // Story Details & Perspective Accordion Toggle
+  function toggleStoryDetails(storyId, evt) {
+    if (!storyId) return;
 
-    if (key === 'all') {
-      match = true;
-    } else if (key === 'politics') {
-      match = (cat.indexOf('politic') !== -1 || masterCat.indexOf('politic') !== -1);
-    } else if (key === 'sports') {
-      match = (cat.indexOf('sport') !== -1 || masterCat.indexOf('sport') !== -1);
-    } else if (key === 'business') {
-      match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
-    } else if (key === 'energy') {
-      match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
-    } else if (key === 'health') {
-      match = (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1);
-    } else if (key === 'tech') {
-      match = (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1);
-    } else if (key === 'world') {
-      match = (cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1 || masterCat.indexOf('world') !== -1);
-    } else if (key === 'entertainment') {
-      match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1 || masterCat.indexOf('entertain') !== -1);
-    } else if (key === 'border') {
-      match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
-    } else if (key === 'crime') {
-      match = (cat.indexOf('crime') !== -1 || cat.indexOf('safety') !== -1 || cat.indexOf('law') !== -1 || cat.indexOf('court') !== -1);
+    var e = evt || (typeof window !== 'undefined' ? window.event : null);
+    if (e) {
+      if (e.__handledStoryToggle) {
+        return;
+      }
+      e.__handledStoryToggle = true;
+      if (typeof e.stopPropagation === 'function') {
+        e.stopPropagation();
+      }
+    }
+
+    // Throttle calls within 150ms for the exact same card to guarantee single-click accuracy
+    var now = Date.now();
+    if (_lastToggleMap[storyId] && (now - _lastToggleMap[storyId] < 150)) {
+      return;
+    }
+    _lastToggleMap[storyId] = now;
+
+    var card = document.getElementById(storyId);
+    if (!card) return;
+
+    var details = document.getElementById(storyId + '-details') || card.querySelector('.card-details');
+    var label = document.getElementById(storyId + '-expand-label') || card.querySelector('.expand-label');
+    var chevron = document.getElementById(storyId + '-chevron') || card.querySelector('.expand-chevron');
+
+    var isOpen = card.classList.contains('expanded');
+
+    if (!isOpen) {
+      card.classList.add('expanded');
+      if (details) details.style.display = 'block';
+      if (label) label.textContent = 'Hide Details & Perspectives';
+      if (chevron) chevron.textContent = '▴';
     } else {
-      match = (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1);
+      card.classList.remove('expanded');
+      if (details) details.style.display = 'none';
+      if (label) label.textContent = 'View Facts & Perspectives';
+      if (chevron) chevron.textContent = '▾';
     }
-
-    articles[j].style.display = match ? 'block' : 'none';
-    if (match) visibleCount++;
   }
-}
 
-// Personalize Feed Drawer Toggle
-function togglePersonalizePanel() {
-  var panel = document.getElementById('personalizePanel');
-  if (!panel) return;
-  var isOpen = panel.classList.contains('open');
-  if (isOpen) {
-    panel.classList.remove('open');
-  } else {
-    panel.classList.add('open');
-  }
-}
+  // In-Depth Facts Dossier Expansion
+  function toggleFactExpansion(storyId, event) {
+    var e = event || (typeof window !== 'undefined' ? window.event : null);
+    if (e) {
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+    }
+    if (!storyId) return;
+    var dossier = document.getElementById(storyId + '-facts-dossier');
+    var btn = document.getElementById(storyId + '-btn-facts-toggle');
+    var btnText = document.getElementById(storyId + '-fact-btn-text');
+    var btnChevron = document.getElementById(storyId + '-fact-btn-chevron');
 
-// Quick Focus Presets
-function applyQuickFocus(focusPreset) {
-  var btns = document.querySelectorAll('.focus-preset-btn');
-  for (var i = 0; i < btns.length; i++) {
-    if (btns[i].getAttribute('data-focus') === focusPreset) {
-      btns[i].classList.add('active');
+    if (!dossier) return;
+
+    var isHidden = (dossier.style.display === 'none' || dossier.style.display === '');
+    if (isHidden) {
+      dossier.style.display = 'block';
+      if (btn) btn.classList.add('active');
+      if (btnText) btnText.textContent = 'Hide Evidence';
+      if (btnChevron) btnChevron.textContent = '▴';
     } else {
-      btns[i].classList.remove('active');
+      dossier.style.display = 'none';
+      if (btn) btn.classList.remove('active');
+      if (btnText) btnText.textContent = 'Deep Dive & Evidence';
+      if (btnChevron) btnChevron.textContent = '▾';
     }
   }
 
-  try {
-    localStorage.setItem('userFeedFocus', focusPreset);
-  } catch (e) {}
+  // Category Filter Toolbar
+  function filterCategory(btnOrKey, keyOrBtn) {
+    var btn = null;
+    var catKey = 'All';
+    if (typeof btnOrKey === 'string') {
+      catKey = btnOrKey;
+      btn = (keyOrBtn && typeof keyOrBtn === 'object') ? keyOrBtn : null;
+    } else {
+      btn = btnOrKey;
+      catKey = (typeof keyOrBtn === 'string') ? keyOrBtn : 'All';
+    }
 
-  var feed = document.getElementById('storiesFeedView');
-  if (feed) {
-    var cards = Array.prototype.slice.call(feed.querySelectorAll('.compact-card'));
-    cards.sort(function(a, b) {
-      return getCardRank(b, focusPreset) - getCardRank(a, focusPreset);
-    });
-    for (var k = 0; k < cards.length; k++) {
-      feed.appendChild(cards[k]);
+    currentFilterCategory = catKey || 'All';
+    var pills = document.querySelectorAll('.cat-pill');
+    for (var i = 0; i < pills.length; i++) {
+      pills[i].classList.remove('active');
+    }
+    if (btn && btn.classList) {
+      btn.classList.add('active');
+    } else {
+      // Highlight matching pill if called programmatically
+      for (var k = 0; k < pills.length; k++) {
+        if ((pills[k].getAttribute('data-category') || '').toLowerCase() === currentFilterCategory.toLowerCase()) {
+          pills[k].classList.add('active');
+          break;
+        }
+      }
+    }
+
+    var key = currentFilterCategory.toLowerCase().trim();
+    var articles = document.querySelectorAll('.compact-card');
+    var visibleCount = 0;
+
+    for (var j = 0; j < articles.length; j++) {
+      var cat = (articles[j].getAttribute('data-category') || '').toLowerCase().trim();
+      var masterCat = (articles[j].getAttribute('data-master-category') || '').toLowerCase().trim();
+      var match = false;
+
+      if (key === 'all') {
+        match = true;
+      } else if (key === 'politics') {
+        match = (cat.indexOf('politic') !== -1 || masterCat.indexOf('politic') !== -1);
+      } else if (key === 'sports') {
+        match = (cat.indexOf('sport') !== -1 || masterCat.indexOf('sport') !== -1);
+      } else if (key === 'business') {
+        match = (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1 || cat.indexOf('inflat') !== -1 || cat.indexOf('stock') !== -1 || cat.indexOf('market') !== -1);
+      } else if (key === 'energy') {
+        match = (cat.indexOf('energy') !== -1 || cat.indexOf('weather') !== -1 || cat.indexOf('power') !== -1 || cat.indexOf('grid') !== -1);
+      } else if (key === 'health') {
+        match = (cat.indexOf('health') !== -1 || cat.indexOf('drug') !== -1 || cat.indexOf('medic') !== -1);
+      } else if (key === 'tech') {
+        match = (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1 || cat.indexOf('ai') !== -1 || cat.indexOf('space') !== -1);
+      } else if (key === 'world') {
+        match = (cat.indexOf('world') !== -1 || cat.indexOf('geopolitic') !== -1 || masterCat.indexOf('world') !== -1);
+      } else if (key === 'entertainment') {
+        match = (cat.indexOf('entertain') !== -1 || cat.indexOf('movie') !== -1 || cat.indexOf('film') !== -1 || masterCat.indexOf('entertain') !== -1);
+      } else if (key === 'border') {
+        match = (cat.indexOf('border') !== -1 || cat.indexOf('secur') !== -1);
+      } else if (key === 'crime') {
+        match = (cat.indexOf('crime') !== -1 || cat.indexOf('safety') !== -1 || cat.indexOf('law') !== -1 || cat.indexOf('court') !== -1);
+      } else {
+        match = (cat.indexOf(key) !== -1 || masterCat.indexOf(key) !== -1);
+      }
+
+      articles[j].style.display = match ? 'block' : 'none';
+      if (match) visibleCount++;
     }
   }
 
-  var label = (focusPreset === 'sports') ? 'Sports' : (focusPreset === 'politics') ? 'Politics' : (focusPreset === 'business') ? 'Business' : (focusPreset === 'tech') ? 'Tech' : 'All News';
-  showToastNotification('Prioritized ' + label + ' first in feed');
-}
-
-function getCardRank(card, focusPreset) {
-  if (!focusPreset || focusPreset === 'all') return 0;
-  var cat = (card.getAttribute('data-category') || '').toLowerCase();
-  var master = (card.getAttribute('data-master-category') || '').toLowerCase();
-  if (focusPreset === 'sports' && (cat.indexOf('sport') !== -1 || master.indexOf('sport') !== -1)) return 10;
-  if (focusPreset === 'politics' && (cat.indexOf('politic') !== -1 || master.indexOf('politic') !== -1)) return 10;
-  if (focusPreset === 'business' && (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1)) return 10;
-  if (focusPreset === 'tech' && (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1)) return 10;
-  return 0;
-}
-
-// Copy Talking Points to Clipboard
-function copyPointsFromCard(btn) {
-  var panel = btn.closest('.talking-points-panel');
-  if (!panel) return;
-  var rows = panel.querySelectorAll('.quote-row');
-  var list = [];
-  for (var i = 0; i < rows.length; i++) {
-    list.push('• ' + rows[i].textContent.replace(/^"|"$/g, '').trim());
+  // Personalize Feed Drawer Toggle
+  function togglePersonalizePanel() {
+    var panel = document.getElementById('personalizePanel');
+    if (!panel) return;
+    var isOpen = panel.classList.contains('open');
+    if (isOpen) {
+      panel.classList.remove('open');
+    } else {
+      panel.classList.add('open');
+    }
   }
-  var text = list.join('\n');
-  if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(function() {
-      showToastNotification('Talking points copied');
-    }).catch(function() {
+
+  // Quick Focus Presets
+  function applyQuickFocus(focusPreset) {
+    var btns = document.querySelectorAll('.focus-preset-btn');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].getAttribute('data-focus') === focusPreset) {
+        btns[i].classList.add('active');
+      } else {
+        btns[i].classList.remove('active');
+      }
+    }
+
+    try {
+      localStorage.setItem('userFeedFocus', focusPreset);
+    } catch (e) {}
+
+    var feed = document.getElementById('storiesFeedView');
+    if (feed) {
+      var cards = Array.prototype.slice.call(feed.querySelectorAll('.compact-card'));
+      cards.sort(function(a, b) {
+        return getCardRank(b, focusPreset) - getCardRank(a, focusPreset);
+      });
+      for (var k = 0; k < cards.length; k++) {
+        feed.appendChild(cards[k]);
+      }
+    }
+
+    var label = (focusPreset === 'sports') ? 'Sports' : (focusPreset === 'politics') ? 'Politics' : (focusPreset === 'business') ? 'Business' : (focusPreset === 'tech') ? 'Tech' : 'All News';
+    showToastNotification('Prioritized ' + label + ' first in feed');
+  }
+
+  function getCardRank(card, focusPreset) {
+    if (!focusPreset || focusPreset === 'all') return 0;
+    var cat = (card.getAttribute('data-category') || '').toLowerCase();
+    var master = (card.getAttribute('data-master-category') || '').toLowerCase();
+    if (focusPreset === 'sports' && (cat.indexOf('sport') !== -1 || master.indexOf('sport') !== -1)) return 10;
+    if (focusPreset === 'politics' && (cat.indexOf('politic') !== -1 || master.indexOf('politic') !== -1)) return 10;
+    if (focusPreset === 'business' && (cat.indexOf('business') !== -1 || cat.indexOf('econom') !== -1)) return 10;
+    if (focusPreset === 'tech' && (cat.indexOf('tech') !== -1 || cat.indexOf('science') !== -1)) return 10;
+    return 0;
+  }
+
+  // Copy Talking Points to Clipboard
+  function copyPointsFromCard(btn) {
+    var panel = btn.closest('.talking-points-panel');
+    if (!panel) return;
+    var rows = panel.querySelectorAll('.quote-row');
+    var list = [];
+    for (var i = 0; i < rows.length; i++) {
+      list.push('• ' + rows[i].textContent.replace(/^"|"$/g, '').trim());
+    }
+    var text = list.join('\n');
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showToastNotification('Talking points copied');
+      }).catch(function() {
+        fallbackCopy(text);
+      });
+    } else {
       fallbackCopy(text);
-    });
-  } else {
-    fallbackCopy(text);
-  }
-}
-
-function fallbackCopy(text) {
-  var ta = document.createElement('textarea');
-  ta.value = text;
-  ta.style.position = 'fixed';
-  ta.style.opacity = '0';
-  document.body.appendChild(ta);
-  ta.select();
-  try {
-    document.execCommand('copy');
-    showToastNotification('Talking points copied');
-  } catch (err) {}
-  document.body.removeChild(ta);
-}
-
-// Bookmark / Save Story Toggle
-function toggleSaveCard(btn) {
-  if (!btn) return;
-  btn.classList.toggle('active');
-  var isSaved = btn.classList.contains('active');
-  showToastNotification(isSaved ? 'Story saved to bookmarks' : 'Story removed from bookmarks');
-}
-
-// Toast Feedback Notification
-function showToastNotification(msg) {
-  var box = document.getElementById('toastBox');
-  if (!box) return;
-  box.textContent = '✓ ' + msg;
-  box.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(function() {
-    box.classList.remove('show');
-  }, 2400);
-}
-
-// Tab Switchers
-function showStoriesTab() {
-  var feed = document.getElementById('storiesFeedView');
-  var comm = document.getElementById('communityView');
-  var tabS = document.getElementById('navStories');
-  var tabL = document.getElementById('navLounge');
-  if (feed) feed.style.display = 'flex';
-  if (comm) comm.style.display = 'none';
-  if (tabS) tabS.className = 'view-tab active';
-  if (tabL) tabL.className = 'view-tab';
-}
-
-function showLoungeTab() {
-  var feed = document.getElementById('storiesFeedView');
-  var comm = document.getElementById('communityView');
-  var tabS = document.getElementById('navStories');
-  var tabL = document.getElementById('navLounge');
-  if (feed) feed.style.display = 'none';
-  if (comm) comm.style.display = 'flex';
-  if (tabS) tabS.className = 'view-tab';
-  if (tabL) tabL.className = 'view-tab active';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function updateLoungeTitle(p) {
-  var title = document.getElementById('loungeTitle');
-  if (!title) return;
-  var name = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced');
-  title.textContent = 'Community Discussion Lounge • ' + name + ' Perspective Feed';
-}
-
-// Submit Lounge Discussion Post
-function submitPost() {
-  var input = document.getElementById('composerInput');
-  if (!input) return;
-  var text = input.value.trim();
-  if (!text) {
-    input.focus();
-    return;
+    }
   }
 
-  var list = document.getElementById('communityPostsList');
-  if (list) {
-    var newPost = document.createElement('div');
-    newPost.className = 'community-post-card';
-    newPost.style.border = '1px solid var(--border-subtle)';
-    newPost.style.borderRadius = '10px';
-    newPost.style.padding = '14px 18px';
-    newPost.style.marginBottom = '10px';
-    newPost.style.background = '#ffffff';
-
-    var author = document.createElement('div');
-    author.style.fontSize = '12px';
-    author.style.fontWeight = '750';
-    author.style.color = '#0f172a';
-    author.style.marginBottom = '6px';
-    author.innerHTML = 'You • Reader <span style="color:#64748b; font-size:11px; font-weight:normal;">• Just now</span>';
-
-    var body = document.createElement('div');
-    body.style.fontSize = '13.5px';
-    body.style.color = '#334155';
-    body.style.lineHeight = '1.5';
-    body.style.marginBottom = '10px';
-    body.textContent = '"' + text + '"';
-
-    var actions = document.createElement('div');
-    actions.style.display = 'flex';
-    actions.style.justifyContent = 'flex-end';
-    actions.innerHTML = '<button type="button" class="btn-action-small active" onclick="this.classList.toggle(\'active\')">👍 Agree (1)</button>';
-
-    newPost.appendChild(author);
-    newPost.appendChild(body);
-    newPost.appendChild(actions);
-
-    list.insertBefore(newPost, list.firstChild);
-    input.value = '';
-    showToastNotification('Post shared to Lounge');
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToastNotification('Talking points copied');
+    } catch (err) {}
+    document.body.removeChild(ta);
   }
-}
 
-// Hydrate Data from Server / JSON if Available
-function loadLiveStories() {
-  fetch('data/stories.json?t=' + Date.now())
-    .then(function(res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json();
-    })
-    .then(function(loaded) {
-      if (Array.isArray(loaded) && loaded.length > 0) {
-        console.log('Hydrated with ' + loaded.length + ' stories from data/stories.json');
+  // Bookmark / Save Story Toggle
+  function toggleSaveCard(btn) {
+    if (!btn) return;
+    btn.classList.toggle('active');
+    var isSaved = btn.classList.contains('active');
+    showToastNotification(isSaved ? 'Story saved to bookmarks' : 'Story removed from bookmarks');
+  }
+
+  // Toast Feedback Notification
+  function showToastNotification(msg) {
+    var box = document.getElementById('toastBox');
+    if (!box) return;
+    box.textContent = '✓ ' + msg;
+    box.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function() {
+      box.classList.remove('show');
+    }, 2400);
+  }
+
+  // Tab Switchers
+  function showStoriesTab() {
+    var feed = document.getElementById('storiesFeedView');
+    var comm = document.getElementById('communityView');
+    var tabS = document.getElementById('navStories');
+    var tabL = document.getElementById('navLounge');
+    if (feed) feed.style.display = 'flex';
+    if (comm) comm.style.display = 'none';
+    if (tabS) tabS.className = 'view-tab active';
+    if (tabL) tabL.className = 'view-tab';
+  }
+
+  function showLoungeTab() {
+    var feed = document.getElementById('storiesFeedView');
+    var comm = document.getElementById('communityView');
+    var tabS = document.getElementById('navStories');
+    var tabL = document.getElementById('navLounge');
+    if (feed) feed.style.display = 'none';
+    if (comm) comm.style.display = 'flex';
+    if (tabS) tabS.className = 'view-tab';
+    if (tabL) tabL.className = 'view-tab active';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateLoungeTitle(p) {
+    var title = document.getElementById('loungeTitle');
+    if (!title) return;
+    var name = (p === 'RIGHT' ? 'Conservative' : p === 'LEFT' ? 'Progressive' : 'Balanced');
+    title.textContent = 'Community Discussion Lounge • ' + name + ' Perspective Feed';
+  }
+
+  // Submit Lounge Discussion Post
+  function submitPost() {
+    var input = document.getElementById('composerInput');
+    if (!input) return;
+    var text = input.value.trim();
+    if (!text) {
+      input.focus();
+      return;
+    }
+
+    var list = document.getElementById('communityPostsList');
+    if (list) {
+      var newPost = document.createElement('div');
+      newPost.className = 'community-post-card';
+      newPost.style.border = '1px solid var(--border-subtle)';
+      newPost.style.borderRadius = '10px';
+      newPost.style.padding = '14px 18px';
+      newPost.style.marginBottom = '10px';
+      newPost.style.background = '#ffffff';
+
+      var author = document.createElement('div');
+      author.style.fontSize = '12px';
+      author.style.fontWeight = '750';
+      author.style.color = '#0f172a';
+      author.style.marginBottom = '6px';
+      author.innerHTML = 'You • Reader <span style="color:#64748b; font-size:11px; font-weight:normal;">• Just now</span>';
+
+      var body = document.createElement('div');
+      body.style.fontSize = '13.5px';
+      body.style.color = '#334155';
+      body.style.lineHeight = '1.5';
+      body.style.marginBottom = '10px';
+      body.textContent = '"' + text + '"';
+
+      var actions = document.createElement('div');
+      actions.style.display = 'flex';
+      actions.style.justifyContent = 'flex-end';
+      actions.innerHTML = '<button type="button" class="btn-action-small active" onclick="this.classList.toggle(\'active\')">👍 Agree (1)</button>';
+
+      newPost.appendChild(author);
+      newPost.appendChild(body);
+      newPost.appendChild(actions);
+
+      list.insertBefore(newPost, list.firstChild);
+      input.value = '';
+      showToastNotification('Post shared to Lounge');
+    }
+  }
+
+  // Hydrate Data from Server / JSON if Available
+  function loadLiveStories() {
+    fetch('data/stories.json?t=' + Date.now())
+      .then(function(res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function(loaded) {
+        if (Array.isArray(loaded) && loaded.length > 0) {
+          console.log('Hydrated with ' + loaded.length + ' stories from data/stories.json');
+        }
+      })
+      .catch(function(err) {
+        console.log('Using pre-rendered cards:', err);
+      });
+  }
+
+  // Global Event Delegation for Dynamic Elements or Missed Handlers
+  document.addEventListener('click', function(e) {
+    var target = e.target;
+    if (!target) return;
+
+    // Expand prompt bar fallback (only if element does NOT have an inline onclick and was not already handled)
+    var expandBar = target.closest('.expand-prompt-bar');
+    if (expandBar && !expandBar.getAttribute('onclick')) {
+      if (e && e.__handledStoryToggle) return;
+      var parentCard = expandBar.closest('.compact-card');
+      if (parentCard && parentCard.id) {
+        toggleStoryDetails(parentCard.id, e);
       }
-    })
-    .catch(function(err) {
-      console.log('Using pre-rendered cards:', err);
-    });
-}
-
-// Global Event Delegation for 100% Click Reliability
-document.addEventListener('click', function(e) {
-  var target = e.target;
-  if (!target) return;
-
-  // Perspective toggle on card
-  var cardBtn = target.closest('.card-toggle-btn');
-  if (cardBtn) {
-    var storyId = cardBtn.getAttribute('data-story') || (cardBtn.closest('.compact-card') ? cardBtn.closest('.compact-card').id : null);
-    var txt = cardBtn.textContent.trim().toUpperCase();
-    var p = 'CENTER';
-    if (txt === 'LEFT' || txt.indexOf('LEFT') !== -1) p = 'LEFT';
-    else if (txt === 'RIGHT' || txt.indexOf('RIGHT') !== -1) p = 'RIGHT';
-    if (storyId) {
-      switchStoryPerspective(storyId, p);
+      return;
     }
-    return;
+  });
+
+  // Explicit Global Window Attachments
+  window.onImgError = onImgError;
+  window.setGlobalPerspective = setGlobalPerspective;
+  window.switchStoryPerspective = switchStoryPerspective;
+  window.toggleStoryDetails = toggleStoryDetails;
+  window.toggleFactExpansion = toggleFactExpansion;
+  window.filterCategory = filterCategory;
+  window.togglePersonalizePanel = togglePersonalizePanel;
+  window.applyQuickFocus = applyQuickFocus;
+  window.copyPointsFromCard = copyPointsFromCard;
+  window.toggleSaveCard = toggleSaveCard;
+  window.showToastNotification = showToastNotification;
+  window.showStoriesTab = showStoriesTab;
+  window.showLoungeTab = showLoungeTab;
+  window.submitPost = submitPost;
+
+  // Initialize on Load
+  function initOnReady() {
+    setGlobalPerspective(currentGlobalPerspective);
+    try {
+      var savedFocus = localStorage.getItem('userFeedFocus');
+      if (savedFocus && savedFocus !== 'all') {
+        applyQuickFocus(savedFocus);
+      }
+    } catch (e) {}
+    loadLiveStories();
   }
 
-  // Global lens button
-  var lensBtn = target.closest('.lens-btn');
-  if (lensBtn) {
-    if (lensBtn.id === 'btnGlobalLeft') setGlobalPerspective('LEFT');
-    else if (lensBtn.id === 'btnGlobalCenter') setGlobalPerspective('CENTER');
-    else if (lensBtn.id === 'btnGlobalRight') setGlobalPerspective('RIGHT');
-    return;
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initOnReady);
+  } else {
+    initOnReady();
   }
-
-  // Expand prompt bar
-  var expandBar = target.closest('.expand-prompt-bar');
-  if (expandBar) {
-    var parentCard = expandBar.closest('.compact-card');
-    if (parentCard && parentCard.id) {
-      toggleStoryDetails(parentCard.id);
-    }
-    return;
-  }
-});
-
-// Explicit Global Window Attachments
-window.onImgError = onImgError;
-window.setGlobalPerspective = setGlobalPerspective;
-window.switchStoryPerspective = switchStoryPerspective;
-window.toggleStoryDetails = toggleStoryDetails;
-window.toggleFactExpansion = toggleFactExpansion;
-window.filterCategory = filterCategory;
-window.togglePersonalizePanel = togglePersonalizePanel;
-window.applyQuickFocus = applyQuickFocus;
-window.copyPointsFromCard = copyPointsFromCard;
-window.toggleSaveCard = toggleSaveCard;
-window.showToastNotification = showToastNotification;
-window.showStoriesTab = showStoriesTab;
-window.showLoungeTab = showLoungeTab;
-window.submitPost = submitPost;
-
-// Initialize on Load
-window.addEventListener('DOMContentLoaded', function() {
-  setGlobalPerspective(currentGlobalPerspective);
-  try {
-    var savedFocus = localStorage.getItem('userFeedFocus');
-    if (savedFocus && savedFocus !== 'all') {
-      applyQuickFocus(savedFocus);
-    }
-  } catch (e) {}
-  loadLiveStories();
-});
-
+})();
 </script>
-  <script src="app.js"></script>
 </body>
 </html>
