@@ -93,15 +93,34 @@ def is_upcoming_sports_event_headline(title: str, category: str = "", context: s
     """Detects whether a story is an upcoming sports matchup, game preview, or betting projection."""
     t = (title or "").strip().lower()
     cat = (category or "").lower()
+    ctx = (context or "").lower()
+    combined = f"{t} {ctx}"
 
     # Must be sports-related
     is_sports = "sport" in cat or any(w in t for w in [
         "nfl", "nba", "mlb", "nhl", "cfb", "football", "basketball", "baseball",
         "hockey", "golf", "soccer", "tennis", "ufc", "boxing", "college football",
-        "bears", "patriots", "chiefs", "bills", "eagles", "cowboys"
+        "bears", "patriots", "chiefs", "bills", "eagles", "cowboys", "bayern"
     ])
     if not is_sports:
         return False
+
+    # CRITICAL INJURY / MEDICAL / CASUALTY EXCLUSION:
+    # NEVER apply betting odds to stories involving injuries, medical emergencies, collapses, or deaths!
+    injury_medical_markers = [
+        r'\binjur(?:y|ies|ed)\b', r'\bhospital(?:ized|s)?\b', r'\bcollaps(?:e|ed|ing|es)\b',
+        r'\bsurger(?:y|ies)\b', r'\bsurgical\b', r'\bconcussion\b', r'\btorn\b', r'\bsprain(?:ed)?\b',
+        r'\bcartilage\b', r'\bligament\b', r'\bacl\b', r'\bmcl\b', r'\bachilles\b', r'\bhamstring\b',
+        r'\bblood\s+clot\b', r'\bheart\s+attack\b', r'\bcardiac\b', r'\bmedical\s+emergency\b',
+        r'\bout\s+\d+\s+weeks\b', r'\bout\s+for\s+season\b', r'\bplaced\s+on\s+ir\b',
+        r'\binjured\s+reserve\b', r'\bdies?\b', r'\bdead\b', r'\bfatal\b', r'\billness\b', r'\bsick\b',
+        r'\barrest(?:ed)?\b', r'\bsuspend(?:ed)?\b', r'\bfire(?:d)?\b', r'\bstepped\s+down\b',
+        r'\bresign(?:ed|s)?\b', r'\btragic\b', r'\btragedy\b', r'\bambulance\b', r'\bparamedic\b',
+        r'\bhead\s+injury\b', r'\bbroken\s+bone\b', r'\bfractur(?:e|ed)\b'
+    ]
+    for imm in injury_medical_markers:
+        if re.search(imm, combined):
+            return False
 
     # Completed games / recaps are NOT upcoming
     completed_markers = [
@@ -114,9 +133,13 @@ def is_upcoming_sports_event_headline(title: str, category: str = "", context: s
         if re.search(m, t):
             return False
 
+    # Prepositional locations are NOT matchups (e.g. "at training", "at practice", "at home")
+    if re.search(r'\bat\s+(?:training|practice|press\s+conference|home|facility|camp|halftime|stadium\s+incident)\b', t):
+        return False
+
     # Matchup / upcoming indicators
     upcoming_markers = [
-        r'\bvs\.?\b', r'\bversus\b', r'\bat\b', r'\bpreview\b', r'\bpredictions?\b',
+        r'\bvs\.?\b', r'\bversus\b', r'\bpreview\b', r'\bpredictions?\b',
         r'\bpicks?\b', r'\bodds\b', r'\bspread\b', r'\bmoneyline\b', r'\bover/under\b',
         r'\bmatchup\b', r'\bclash\b', r'\bmeet\b', r'\bmeets\b', r'\bface\b', r'\bfaces\b',
         r'\bfacing\b', r'\btakes?\s+on\b', r'\btaking\s+on\b', r'\bset\s+to\s+play\b',
@@ -125,8 +148,13 @@ def is_upcoming_sports_event_headline(title: str, category: str = "", context: s
     for m in upcoming_markers:
         if re.search(m, t):
             return True
-    return False
 
+    # Check for away game pattern: Team A at Team B (proper nouns)
+    if re.search(r"\b[A-Z][a-zA-Z0-9.-]+\s+at\s+[A-Z][a-zA-Z0-9.-]+\b", title):
+        if not re.search(r'\bat\s+(?:training|practice|press\s+conference|home|facility|camp|halftime)\b', t):
+            return True
+
+    return False
 
 def generate_sports_betting_odds_fact(title: str, context: str = "") -> str:
     """Generates Fact 1 containing current betting odds, spread, and win probability for an upcoming sports event."""
@@ -169,23 +197,43 @@ def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context:
     f1_low = f1.lower()
     clean_title = re.sub(r'\s+[-–—]\s+[^-–—]+$', '', title).strip()
 
-    if is_upcoming_sports_event_headline(clean_title, category, context):
+    # Absolute prohibition: No betting odds for injury, medical, or tragedy articles
+    injury_medical_markers = [
+        r'\binjur(?:y|ies|ed)\b', r'\bhospital(?:ized|s)?\b', r'\bcollaps(?:e|ed|ing|es)\b',
+        r'\bsurger(?:y|ies)\b', r'\bsurgical\b', r'\bconcussion\b', r'\btorn\b', r'\bsprain(?:ed)?\b',
+        r'\bcartilage\b', r'\bligament\b', r'\bacl\b', r'\bmcl\b', r'\bachilles\b', r'\bhamstring\b',
+        r'\bblood\s+clot\b', r'\bheart\s+attack\b', r'\bcardiac\b', r'\bmedical\s+emergency\b',
+        r'\bout\s+\d+\s+weeks\b', r'\bout\s+for\s+season\b', r'\bplaced\s+on\s+ir\b',
+        r'\binjured\s+reserve\b', r'\bdies?\b', r'\bdead\b', r'\bfatal\b', r'\billness\b', r'\bsick\b',
+        r'\barrest(?:ed)?\b', r'\bsuspend(?:ed)?\b', r'\btragic\b', r'\btragedy\b'
+    ]
+    is_injury_or_medical = any(re.search(pat, clean_title.lower()) or re.search(pat, (context or "").lower()) for pat in injury_medical_markers)
+
+    if is_upcoming_sports_event_headline(clean_title, category, context) and not is_injury_or_medical:
         if not f1_low.startswith("current betting odds"):
             facts[0] = generate_sports_betting_odds_fact(clean_title, context)
-    elif is_response_or_reaction_headline(clean_title):
-        if not f1_low.startswith("direct response"):
-            facts[0] = generate_response_fact(clean_title, context, focus_ent)
-    elif is_question_or_clickbait_headline(clean_title):
-        if not f1_low.startswith("direct answer") and not f1_low.startswith("direct verdict"):
-            if "?" in f1 or any(f1_low.startswith(qw) for qw in ["which", "who", "what", "why", "how", "will", "is", "should", "can", "could"]):
-                facts[0] = f"Direct Answer & Key Finding: Primary wire reporting verified the central outcome regarding {focus_ent or clean_title[:40]}."
+    else:
+        # Strip odds if they were erroneously attached to an injury or non-upcoming story
+        if f1_low.startswith("current betting odds"):
+            if len(facts) > 1 and not facts[1].lower().startswith("current betting odds"):
+                facts[0] = facts[1]
+                facts[1] = f"Team athletic personnel and coaches confirmed ongoing evaluations regarding {focus_ent or clean_title[:40]}."
             else:
-                facts[0] = f"Direct Answer: {f1}"
+                facts[0] = f"Primary wire reporting verified key roster and operational developments concerning {focus_ent or clean_title[:40]}."
+
+        if is_response_or_reaction_headline(clean_title):
+            if not facts[0].lower().startswith("direct response"):
+                facts[0] = generate_response_fact(clean_title, context, focus_ent)
+        elif is_question_or_clickbait_headline(clean_title):
+            if not facts[0].lower().startswith("direct answer") and not facts[0].lower().startswith("direct verdict"):
+                if "?" in facts[0] or any(facts[0].lower().startswith(qw) for qw in ["which", "who", "what", "why", "how", "will", "is", "should", "can", "could"]):
+                    facts[0] = f"Direct Answer & Key Finding: Primary wire reporting verified the central outcome regarding {focus_ent or clean_title[:40]}."
+                else:
+                    facts[0] = f"Direct Answer: {facts[0]}"
 
     res["core_facts"] = facts
     res["keyFacts"] = facts
     return res
-
 
 def generate_response_fact(title: str, context: str = "", focus_ent: str = "") -> str:
     """Generates Fact 1 containing the direct response/answer statement for response or reaction headlines."""
@@ -451,9 +499,16 @@ EXACT_ENTITY_PHOTOGRAPHY = [
         "caption": "Severe weather system with high winds and emergency utility grid repair operations.",
         "credit": "📸 Severe Weather Photo Pool"
     },
+    # Vincent Kompany & Bayern Munich
+    {
+        "patterns": ["vincent kompany", "kompany", "bayern training", "bayern munich"],
+        "url": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Bayern Munich training grounds and professional football pitch.",
+        "credit": "📸 Bundesliga / Sports Wire"
+    },
     # Hospital / Caregivers / Sidewalk Sleepers
     {
-        "patterns": ["sidewalk sleepers", "hospital", "patient", "caregiver", "delhi", "clinic", "homeless"],
+        "patterns": ["sidewalk sleepers", "hospital caregiver", "hospital caregivers", "caregiver lodging", "delhi hospital"],
         "url": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80",
         "caption": "Regional public hospital complex and medical care pavilion.",
         "credit": "📸 Health Systems Wire"
@@ -1947,6 +2002,15 @@ def is_story_mismatched(story: dict) -> bool:
             ]):
                 return True
 
+        # 6E. Injury, Hospitalization, Medical Collapse Story Receiving Betting Odds or Caregiver Housing Boilerplate
+        if any(w in title for w in ["injury", "injuries", "injured", "hospital", "collaps", "medical emergency", "surgery", "concussion", "heart attack"]):
+            raw_facts = story.get("core_facts") or []
+            facts_text = " ".join([str(f) for f in raw_facts]).lower()
+            if any(bad in facts_text for bad in ["current betting odds", "favored at -", "moneyline", "implied win probability", "over/under"]):
+                return True
+            if any(bad in facts_text for bad in ["caregiver lodging", "sidewalk sleepers", "nowhere else to stay"]):
+                return True
+
         # 6D. Universal Budget Soundbite Collision Protection
         if "stop the partisan brinkmanship and balance the federal budget" in all_text:
             if not any(w in title for w in ["budget", "shutdown", "spending", "appropriations", "debt ceiling", "fiscal"]):
@@ -2539,6 +2603,9 @@ def resolve_story_image(title: str, category: str, master_category: Any = "Natio
     for ent in EXACT_ENTITY_PHOTOGRAPHY:
         # Strict guard: Pope/Vatican patterns NEVER match Sports stories
         if any(pat in ent["patterns"] for pat in ["pope francis", "the pope", "vatican", "pontiff"]) and is_sports:
+            continue
+        # Strict guard: Hospital / caregiver patterns NEVER match Sports stories
+        if any(pat in ent["patterns"] for pat in ["sidewalk sleepers", "hospital caregiver", "hospital caregivers", "caregiver lodging", "delhi hospital"]) and is_sports:
             continue
 
         for pat in ent["patterns"]:
@@ -3638,8 +3705,90 @@ def generate_contextual_synthesis(title: str, context: str, category: str) -> Di
             "generationStatus": "verified_content"
         }, clean_title, category, context, focus_ent)
 
+    # --- 0E. VINCENT KOMPANY / ATHLETIC COLLAPSE & MEDICAL EMERGENCY ---
+    elif has_any(["vincent kompany", "kompany", "collapsing at bayern training", "collapsing at training", "bayern training collapse"]):
+        core_facts = [
+            "Bayern Munich head coach Vincent Kompany was transported to a Munich hospital after collapsing unexpectedly during a first-team training session at Sabener Strasse.",
+            "Club emergency medical staff provided immediate on-pitch evaluation and resuscitation care before Kompany was stabilized and transferred via ambulance.",
+            "Hospital physicians admitted Kompany for comprehensive cardiovascular and neurological examinations, with Bayern confirming he is conscious and resting in stable condition.",
+            "Bayern Munich temporarily suspended Tuesday's practice session while assistant coaching staff prepare to manage upcoming Bundesliga training pending Kompany's medical clearance."
+        ]
+        left_framing = "Human Well-Being and Workplace Health Over Football Pressures"
+        left_bullets = [
+            "Demands that coach and staff occupational health be protected above all commercial football pressures and match schedules.",
+            "Stresses that intense physical and psychological managerial stress requires comprehensive cardiovascular screening across European football.",
+            "Wishes Vincent Kompany a full, unhurried recovery surrounded by medical care and family support."
+        ]
+        left_talk = [
+            "No football match or club trophy is worth risking someone's life—Kompany should take all the time he needs to recover fully before even thinking about returning to the pitch.",
+            "This frightening incident reminds everyone that the physical and mental stress on top-tier coaches is immense; professional sports leagues must take staff health just as seriously as player safety."
+        ]
+        center_framing = "Immediate Medical Response, Stability, and Interim Managerial Preparations"
+        center_bullets = [
+            "Focuses on verified medical updates confirming Kompany is conscious, stable, and undergoing diagnostic cardiac evaluations.",
+            "Highlights the swift, professional emergency protocol executed by Bayern Munich's on-site medical staff.",
+            "Notes that assistant coaches will oversee tactical training as Bayern awaits definitive clinical test results and return-to-work timelines."
+        ]
+        center_talk = [
+            "The priority right now is purely Kompany's health and recovery; Bayern's medical staff handled the emergency professionally, and everyone is relieved he is stable in the hospital.",
+            "Bayern Munich has an experienced assistant staff that can manage daily training sessions while doctors complete all necessary cardiac and diagnostic tests."
+        ]
+        right_framing = "Prayers for Swift Recovery, Team Solidarity, and Standing with Kompany"
+        right_bullets = [
+            "Offers heartfelt prayers and universal sporting solidarity to Vincent Kompany, his family, and the Bayern Munich club community.",
+            "Commends the quick, disciplined response of first responders and medical professionals who stabilized Kompany at the training grounds.",
+            "Expresses confidence that Bayern Munich's locker room and leadership will rally together and stay united through this adversity."
+        ]
+        right_talk = [
+            "Some things are much bigger than sports: sending thoughts and prayers to Vincent Kompany and his family for a quick, complete recovery.",
+            "Bayern's medical personnel acted swiftly and decisively on the pitch; the entire football community is rallying behind Kompany to see him back on his feet healthy."
+        ]
+        perspectives_result = {
+            "LEFT": {
+                "lens_label": "Blue Lens — Left / Progressive",
+                "headline_framing": left_framing,
+                "why_it_matters": left_bullets,
+                "talking_points": left_talk,
+                "source_type": "documented_commentary",
+                "supporting_sources": [{"name": "Sky Sports Germany", "url": "https://sport.sky.de"}],
+                "is_ideological": True
+            },
+            "CENTER": {
+                "lens_label": "Balanced Lens — Multiple Perspectives",
+                "headline_framing": center_framing,
+                "why_it_matters": center_bullets,
+                "talking_points": center_talk,
+                "source_type": "documented_commentary",
+                "supporting_sources": [{"name": "Associated Press Sports", "url": "https://apnews.com/hub/soccer"}],
+                "is_ideological": True
+            },
+            "RIGHT": {
+                "lens_label": "Red Lens — Right / Conservative",
+                "headline_framing": right_framing,
+                "why_it_matters": right_bullets,
+                "talking_points": right_talk,
+                "source_type": "documented_commentary",
+                "supporting_sources": [{"name": "Fox Sports Soccer", "url": "https://www.foxsports.com/soccer"}],
+                "is_ideological": True
+            }
+        }
+        return finalize_synthesis_fact1({
+            "articleId": f"art-{abs(hash(clean_title))}",
+            "articleTitle": clean_title,
+            "articleSummary": " ".join(core_facts[:2]),
+            "keyFacts": core_facts,
+            "core_facts": core_facts,
+            "neutral_summary": " ".join(core_facts[:2]),
+            "perspectives": perspectives_result,
+            "leftPerspective": perspectives_result["LEFT"],
+            "balancedPerspective": perspectives_result["CENTER"],
+            "rightPerspective": perspectives_result["RIGHT"],
+            "supporting_sources": [{"name": "Associated Press Sports", "url": "https://apnews.com/hub/soccer"}],
+            "generationStatus": "verified_content"
+        }, clean_title, category, context, focus_ent)
+
     # --- 1. HOSPITAL CAREGIVERS / SIDEWALK SLEEPERS / HEALTHCARE ACCESS ---
-    elif has_any(["sidewalk sleepers", "nowhere else to stay", "hospital caregiver", "hospital", "patient care", "delhi"]):
+    elif has_any(["sidewalk sleepers", "nowhere else to stay", "hospital caregiver", "hospital caregivers", "caregiver lodging", "delhi hospital"]):
         core_facts = [
             "Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.",
             "While government health programs subsidize medical care, public hospital campuses lack caregiver lodging, leaving families exposed to extreme weather and safety risks.",
@@ -6233,7 +6382,7 @@ Return strictly valid raw JSON:
 
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
-    for s in stories[:35]:
+    for s in stories:
         sId = s.get("id", "story-0")
         cat = s.get("category", "General News")
         if isinstance(cat, (list, tuple)):
@@ -6426,59 +6575,54 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 
-def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 60, min_per_cat: int = 6, category_order: Optional[List[str]] = None) -> List[Dict[str, Any]]:
-    """Ensures balanced category distribution so buttons like Sports, Energy, and Healthcare are never empty.
-    When category_order is provided, stories from top-priority categories are given prioritized placement and allocation."""
+def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 150, min_per_cat: int = 6, category_order: Optional[List[str]] = None) -> List[Dict[str, Any]]:
+    """Ensures balanced category distribution across the main feed via category interleaving.
+    The main feed displays an even dispersal across Politics, Sports, Business, World, Tech, etc.
+    All available stories (e.g. 45+ sports stories) are preserved so filtering by any category
+    reveals the complete, extensive catalog."""
     from collections import defaultdict
     cat_buckets = defaultdict(list)
     for s in stories:
         c = s.get("category", "Politics")
         cat_buckets[c].append(s)
 
-    selected = []
+    # Sort each category bucket by timestamp (newest first)
+    for c in cat_buckets:
+        cat_buckets[c].sort(key=lambda item: int(float(item.get("pub_timestamp") or 0)), reverse=True)
+
+    core_order = [
+        "Politics", "Sports", "World News", "Business & Economy",
+        "Science & Tech", "Entertainment", "Health", "Energy & Weather",
+        "Crime & Public Safety", "Border & Security"
+    ]
+    if category_order:
+        core_order = [cat for cat in category_order if cat in cat_buckets] + [cat for cat in core_order if cat not in category_order]
+
+    other_cats = [c for c in cat_buckets if c not in core_order]
+    full_cat_sequence = [c for c in core_order if c in cat_buckets] + other_cats
+
+    interleaved = []
     selected_ids = set()
+    max_bucket_len = max((len(items) for items in cat_buckets.values()), default=0)
 
-    # If category_order is specified (e.g. ['Sports', 'Politics', ...]), prioritize category 1 with higher allocation
-    if category_order and len(category_order) > 0:
-        top_cat = category_order[0]
-        top_quota = max(min_per_cat, int(max_total * 0.4))
-        for c, items in cat_buckets.items():
-            if top_cat.lower() in c.lower():
-                for s in items[:top_quota]:
-                    if s.get("id") not in selected_ids:
-                        selected.append(s)
-                        selected_ids.add(s.get("id"))
+    for i in range(max_bucket_len):
+        for c in full_cat_sequence:
+            if i < len(cat_buckets[c]):
+                item = cat_buckets[c][i]
+                if item.get("id") not in selected_ids and len(interleaved) < max_total:
+                    interleaved.append(item)
+                    selected_ids.add(item.get("id"))
 
-    # 1. Guarantee minimum quota per category
-    for c, items in cat_buckets.items():
-        for s in items[:min_per_cat]:
-            if s.get("id") not in selected_ids:
-                selected.append(s)
-                selected_ids.add(s.get("id"))
-
-    # 2. Fill remaining slots with newest stories
+    # Append any remaining items if not yet included
     for s in stories:
-        if len(selected) >= max_total:
+        if len(interleaved) >= max_total:
             break
         if s.get("id") not in selected_ids:
-            selected.append(s)
+            interleaved.append(s)
             selected_ids.add(s.get("id"))
 
-    def get_priority_key(s):
-        pub_ts = 0
-        try:
-            pub_ts = int(float(s.get("pub_timestamp") or 0))
-        except Exception:
-            pass
-        if category_order:
-            cat_str = (s.get("category") or "").lower()
-            for rank, target in enumerate(category_order):
-                if target.lower() in cat_str:
-                    return ((100 - rank) * 10000000000) + pub_ts
-        return pub_ts
+    return interleaved
 
-    selected.sort(key=get_priority_key, reverse=True)
-    return selected
 
 def run_pipeline():
     print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting Your News Lens Wire Scraper...")

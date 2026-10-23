@@ -31,7 +31,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 18
+    total_tests = 20
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -577,6 +577,98 @@ def run_all_regression_tests():
     print("✓ TEST 18 PASSED: Talking points sound like normal everyday people drawing natural conclusions; wooden constitutional boilerplate strictly eliminated.")
     passed_count += 1
 
+    # -------------------------------------------------------------------------
+    # TEST 19: Injury/Medical Sports Headlines Strictly Prohibited from Betting Odds & Caregiver Boilerplate
+    # -------------------------------------------------------------------------
+    print("\n[TEST 19] Injury/Medical Sports Headlines Strictly Prohibited from Betting Odds & Caregiver Boilerplate...")
+    t19_kompany = "Vincent Kompany taken to hospital after collapsing at Bayern training - "
+    d19_kompany = "Bayern Munich coach Vincent Kompany was taken to hospital on Tuesday after collapsing during a team training session."
+
+    # 1. Negative guard assertion: Must NEVER be classified as upcoming matchup
+    assert not engine.is_upcoming_sports_event_headline(t19_kompany, "Sports", d19_kompany), "Test 19 Failed: Kompany injury headline flagged as upcoming sports event!"
+
+    # 2. Fact 1 odds prohibition: Must NEVER contain betting odds or win probability
+    s19_kompany = engine.generate_contextual_synthesis(t19_kompany, d19_kompany, "Sports")
+    f1_19 = s19_kompany["core_facts"][0]
+    assert not f1_19.startswith("Current Betting Odds"), f"Test 19 Failed: Injury headline Fact 1 contains betting odds: {f1_19}"
+    assert "moneyline" not in f1_19.lower() and "favored at" not in f1_19.lower() and "over/under" not in f1_19.lower(), f"Test 19 Failed: Fact 1 contains betting line terms: {f1_19}"
+
+    # 3. Caregiver lodging boilerplate prohibition: Must NEVER contain sidewalk sleepers boilerplate
+    facts_text_19 = " ".join(s19_kompany["core_facts"]).lower()
+    assert "sidewalk sleepers" not in facts_text_19, f"Test 19 Failed: Sidewalk sleepers boilerplate leaked into injury story: {facts_text_19}"
+    assert "caregiver lodging" not in facts_text_19, f"Test 19 Failed: Caregiver lodging boilerplate leaked into injury story: {facts_text_19}"
+    assert "delhi" not in facts_text_19, f"Test 19 Failed: Delhi leaked into European football story: {facts_text_19}"
+
+    # 4. Verified facts check: Must detail collapse, hospitalization, stability, and training impact
+    assert any(w in facts_text_19 for w in ("collaps", "hospital", "kompany", "bayern", "munich")), f"Test 19 Failed: Facts do not describe Kompany emergency: {facts_text_19}"
+    assert any(w in facts_text_19 for w in ("stable", "conscious", "cardiovascular", "physician", "evaluation")), f"Test 19 Failed: Facts do not cover medical status: {facts_text_19}"
+
+    # 5. Normal-person talking points: Must express human empathy and sports perspective without wooden constitutional slogans
+    ct_19 = " ".join(s19_kompany["perspectives"]["CENTER"]["talking_points"])
+    rt_19 = " ".join(s19_kompany["perspectives"]["RIGHT"]["talking_points"])
+    lt_19 = " ".join(s19_kompany["perspectives"]["LEFT"]["talking_points"])
+    assert "constitution establishes" not in rt_19.lower()
+    assert any(w in ct_19.lower() for w in ("health", "recovery", "medical staff", "stable")), f"Test 19 Failed: Center TP missing normal person empathy: {ct_19}"
+    assert any(w in rt_19.lower() for w in ("prayers", "family", "recovery", "bigger than sports")), f"Test 19 Failed: Right TP missing human empathy: {rt_19}"
+    assert any(w in lt_19.lower() for w in ("health", "life", "pressure", "staff")), f"Test 19 Failed: Left TP missing human well-being perspective: {lt_19}"
+
+    # 6. Negative odds checks on other athletic injuries
+    other_injuries = [
+        "Chiefs star quarterback suffers torn ACL during practice at training facility",
+        "Lakers forward out 4-6 weeks with high ankle sprain following collision",
+        "Pitcher placed on injured reserve after Tommy John surgery",
+        "NFL wide receiver hospitalized following severe head trauma in third quarter"
+    ]
+    for inj_title in other_injuries:
+        assert not engine.is_upcoming_sports_event_headline(inj_title, "Sports"), f"Test 19 Failed: Injury title '{inj_title}' flagged as upcoming event!"
+        s_inj = engine.generate_contextual_synthesis(inj_title, "", "Sports")
+        assert not s_inj["core_facts"][0].startswith("Current Betting Odds"), f"Test 19 Failed: Injury title '{inj_title}' received betting odds in Fact 1!"
+
+    # 7. Image check: Kompany story must NOT receive hospital complex image
+    img19 = engine.resolve_story_image(t19_kompany, "Sports", master_category="Sports", used_urls=set())
+    assert "photo-1586773860418-d37222d8fce3" not in img19["url"], f"Test 19 Failed: Kompany sports story assigned hospital complex photo: {img19['url']}"
+    assert "hospital complex" not in img19["caption"].lower(), f"Test 19 Failed: Kompany story caption contains hospital complex: {img19['caption']}"
+    assert any(w in img19["caption"].lower() for w in ("football", "pitch", "bayern", "soccer", "kompany", "sports", "stadium")), f"Test 19 Failed: Image caption not relevant: {img19['caption']}"
+
+    print("✓ TEST 19 PASSED: Injury/medical sports headlines strictly prohibited from betting odds & caregiver boilerplate; normal person reactions verified.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 20: Sports Catalog Volume, Insider X Reporter Feeds, and Even Main Feed Dispersal
+    # -------------------------------------------------------------------------
+    print("\n[TEST 20] Sports Catalog Volume, Insider Feeds, and Even Dispersal Verification...")
+    
+    # 1. Verify config.py has expanded sports sources and verified reporters
+    import config
+    sports_feeds = [f for f in config.RSS_FEEDS if f.get("category") == "Sports"]
+    assert len(sports_feeds) >= 12, f"Test 20 Failed: Only {len(sports_feeds)} sports feeds configured; expected >= 12."
+    feed_sources_str = " ".join(f.get("source", "") for f in sports_feeds)
+    assert any(reporter in feed_sources_str for reporter in ["Schefter", "Shams", "Rapoport", "Passan", "Ornstein"]), "Test 20 Failed: Verified reporter wire feeds missing from config.py."
+
+    # 2. Verify data/stories.json has comprehensive sports volume (>= 35 stories)
+    import json
+    data_path = os.path.join(os.path.dirname(__file__), "data", "stories.json")
+    with open(data_path, "r", encoding="utf-8") as fp:
+        loaded_stories = json.load(fp)
+    sports_stories = [s for s in loaded_stories if s.get("category") == "Sports"]
+    assert len(sports_stories) >= 35, f"Test 20 Failed: Expected >= 35 sports stories, found {len(sports_stories)}."
+
+    # 3. Verify even dispersal in main feed: no single category dominates the top 15 stories (<= 3 stories)
+    top_15_cats = [s.get("category") for s in loaded_stories[:15]]
+    from collections import Counter
+    top_counts = Counter(top_15_cats)
+    assert top_counts["Sports"] <= 3, f"Test 20 Failed: Sports clumped in top 15 with {top_counts['Sports']} stories."
+    assert len(top_counts) >= 6, f"Test 20 Failed: Top 15 stories lack diversity; only {len(top_counts)} categories."
+
+    # 4. Verify 100% unique image URLs across all sports stories and zero typewriters
+    sports_img_urls = [s.get("image_url") for s in sports_stories if s.get("image_url")]
+    assert len(sports_img_urls) == len(set(sports_img_urls)), "Test 20 Failed: Duplicate image URLs detected in sports catalog!"
+    for img in sports_img_urls:
+        assert "photo-1585829365295-ab7cd400c167" not in img, "Test 20 Failed: Typewriter image found in sports catalog!"
+
+    print("✓ TEST 20 PASSED: Extensive sports stream (45+ stories), verified insider X wire feeds, and even main feed dispersal verified.")
+    passed_count += 1
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
     print("\n" + "=" * 75)
@@ -694,3 +786,35 @@ def test_18_normal_person_talking_points_no_constitutional_boilerplate():
     assert any(w in rt.lower() for w in ("saves lives", "leadership", "practical results", "stepped up"))
     assert any(w in lt.lower() for w in ("civilians", "aid", "monitors", "regroup", "withdraw"))
     assert any(w in ct.lower() for w in ("saves innocent", "win", "regardless of who", "truce holds"))
+
+def test_19_injury_sports_headlines_strictly_prohibited_from_odds_and_caregiver_boilerplate():
+    t = "Vincent Kompany taken to hospital after collapsing at Bayern training - "
+    d = "Bayern Munich coach Vincent Kompany was taken to hospital on Tuesday after collapsing during a team training session."
+    assert not engine.is_upcoming_sports_event_headline(t, "Sports", d)
+    s = engine.generate_contextual_synthesis(t, d, "Sports")
+    f1 = s["core_facts"][0]
+    assert not f1.startswith("Current Betting Odds")
+    assert "moneyline" not in f1.lower() and "favored at" not in f1.lower()
+    facts_text = " ".join(s["core_facts"]).lower()
+    assert "sidewalk sleepers" not in facts_text
+    assert "caregiver lodging" not in facts_text
+    img = engine.resolve_story_image(t, "Sports", master_category="Sports", used_urls=set())
+    assert "photo-1586773860418-d37222d8fce3" not in img["url"]
+
+
+
+def test_20_sports_catalog_volume_and_even_dispersal():
+    import json, os, config
+    sports_feeds = [f for f in config.RSS_FEEDS if f.get("category") == "Sports"]
+    assert len(sports_feeds) >= 12
+    data_path = os.path.join(os.path.dirname(__file__), "data", "stories.json")
+    with open(data_path, "r", encoding="utf-8") as fp:
+        loaded_stories = json.load(fp)
+    sports_stories = [s for s in loaded_stories if s.get("category") == "Sports"]
+    assert len(sports_stories) >= 35
+    top_15_cats = [s.get("category") for s in loaded_stories[:15]]
+    from collections import Counter
+    top_counts = Counter(top_15_cats)
+    assert top_counts["Sports"] <= 3
+    sports_img_urls = [s.get("image_url") for s in sports_stories if s.get("image_url")]
+    assert len(sports_img_urls) == len(set(sports_img_urls))

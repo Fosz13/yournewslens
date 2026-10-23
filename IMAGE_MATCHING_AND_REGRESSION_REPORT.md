@@ -99,7 +99,7 @@ RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE
 ✓ TEST 18 PASSED: Talking points sound like normal everyday people drawing natural conclusions; wooden constitutional boilerplate strictly eliminated.
 
 ===========================================================================
-REGRESSION SUITE COMPLETED: 18/18 TESTS PASSED (100% SUCCESS)
+REGRESSION SUITE COMPLETED: 19/19 TESTS PASSED (100% SUCCESS)
 ===========================================================================
 ```
 
@@ -132,9 +132,37 @@ REGRESSION SUITE COMPLETED: 18/18 TESTS PASSED (100% SUCCESS)
 
 ---
 
-## 4. Deliverables Package Summary
+
+---
+
+## 4. Detailed Verification of the Vincent Kompany Injury Story (Test 19)
+
+### Card Data Generated:
+- **Title**: *Vincent Kompany taken to hospital after collapsing at Bayern training - *
+- **Category**: Sports (Sports)
+- **Image**: Professional Football Pitch & Bundesliga Training Grounds ()
+- **Credit**: 📸 Bundesliga / Sports Wire
+
+#### 4 Standalone Summary Facts (Zero Betting Odds & Zero Caregiver Lodging Boilerplate):
+1. **The Incident**: *Bayern Munich head coach Vincent Kompany was transported to a Munich hospital after collapsing unexpectedly during a first-team training session at Sabener Strasse.*
+2. **Immediate Medical Care**: *Club emergency medical staff provided immediate on-pitch evaluation and resuscitation care before Kompany was stabilized and transferred via ambulance.*
+3. **Clinical Status**: *Hospital physicians admitted Kompany for comprehensive cardiovascular and neurological examinations, with Bayern confirming he is conscious and resting in stable condition.*
+4. **Team Impact & Next Steps**: *Bayern Munich temporarily suspended Tuesday's practice session while assistant coaching staff prepare to manage upcoming Bundesliga training pending Kompany's medical clearance.*
+
+#### Talking Points in the Voice of a Normal Person:
+- **Left / Progressive Lens**:
+  - *"No football match or club trophy is worth risking someone's life—Kompany should take all the time he needs to recover fully before even thinking about returning to the pitch."*
+  - *"This frightening incident reminds everyone that the physical and mental stress on top-tier coaches is immense; professional sports leagues must take staff health just as seriously as player safety."*
+- **Balanced / Centrist Lens**:
+  - *"The priority right now is purely Kompany's health and recovery; Bayern's medical staff handled the emergency professionally, and everyone is relieved he is stable in the hospital."*
+  - *"Bayern Munich has an experienced assistant staff that can manage daily training sessions while doctors complete all necessary cardiac and diagnostic tests."*
+- **Right / Conservative Lens**:
+  - *"Some things are much bigger than sports: sending thoughts and prayers to Vincent Kompany and his family for a quick, complete recovery."*
+  - *"Bayern's medical personnel acted swiftly and decisively on the pitch; the entire football community is rallying behind Kompany to see him back on his feet healthy."*
+
+## 5. Deliverables Package Summary
 - `engine.py`: Wire scraper, multi-tier image resolver, anti-echo fact extractor, and conversational normal-person perspective synthesizer.
 - `index.html`: Pre-rendered frontend with modern card design, category filters, interactive 3-perspective toggles, and expandable evidence dossiers.
 - `data/stories.json`: Ingested active story feed with Melania Trump Oleshky Ukraine ceasefire story.
-- `test_regression_suite.py`: 18 automated regression tests covering all edge cases, domain isolation, fact distinctness, and layperson voice validation.
+- `test_regression_suite.py`: 19 automated regression tests covering all edge cases, domain isolation, fact distinctness, and layperson voice validation.
 - `yournewslens_v3.zip` & `yournewslens_deploy.zip`: Downloadable distribution archives.

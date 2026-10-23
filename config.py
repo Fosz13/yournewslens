@@ -225,6 +225,141 @@ RSS_FEEDS = [
         "description": "Fox Sports national athletics coverage."
     },
 
+    
+    # --- EXPANDED SPORTS NETWORKS & VERIFIED X REPORTERS ---
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN Top News Wire",
+        "url": "https://www.espn.com/espn/rss/news",
+        "description": "ESPN breaking news wire across major American and international leagues."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN NFL Insider Wire",
+        "url": "https://www.espn.com/espn/rss/nfl/news",
+        "description": "ESPN NFL reporting, roster moves, and game analysis."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN NBA Wire",
+        "url": "https://www.espn.com/espn/rss/nba/news",
+        "description": "ESPN NBA reporting, insider trade buzz, and league power rankings."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN MLB Wire",
+        "url": "https://www.espn.com/espn/rss/mlb/news",
+        "description": "ESPN Major League Baseball scores, pennant races, and transactions."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN College Football Wire",
+        "url": "https://www.espn.com/espn/rss/ncf/news",
+        "description": "ESPN College Football Playoff rankings, conference matchups, and analysis."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN Men's College Basketball",
+        "url": "https://www.espn.com/espn/rss/ncb/news",
+        "description": "ESPN NCAA men's basketball tournament predictions and rankings."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN Soccer & Champions League",
+        "url": "https://www.espn.com/espn/rss/soccer/news",
+        "description": "ESPN FC international soccer, Premier League, and Champions League wire."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "CBS Sports Wire",
+        "url": "https://www.cbssports.com/rss/headlines/",
+        "description": "CBS Sports national wire and breaking athletic developments."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "CBS Sports NFL",
+        "url": "https://www.cbssports.com/rss/headlines/nfl/",
+        "description": "CBS Sports NFL insider reports and team depth chart updates."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "CBS Sports College Football",
+        "url": "https://www.cbssports.com/rss/headlines/collegefootball/",
+        "description": "CBS Sports college football rankings and coaching carousel news."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Fox Sports National",
+        "url": "https://moxie.foxnews.com/google-publisher/sports.xml",
+        "description": "Fox Sports national coverage across college and professional athletics."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Yahoo Sports Wire",
+        "url": "https://sports.yahoo.com/rss/",
+        "description": "Yahoo Sports breaking reporting and investigative features."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Bleacher Report Wire",
+        "url": "https://bleacherreport.com/articles/feed",
+        "description": "Bleacher Report real-time scores, viral highlights, and draft analysis."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "The Athletic Wire",
+        "url": "https://theathletic.com/rss/",
+        "description": "The Athletic premium sports journalism and beat reporting."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • Adam Schefter NFL",
+        "url": "https://news.google.com/rss/search?q=%22Adam+Schefter%22+OR+%22Schefter%22+NFL&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified NFL insider scoops and roster updates from ESPN's Adam Schefter via syndicated wire."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • Shams Charania NBA",
+        "url": "https://news.google.com/rss/search?q=%22Shams+Charania%22+OR+%22Shams%22+NBA&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified NBA insider breaking trade scoops and free agency news from Shams Charania."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • Ian Rapoport NFL",
+        "url": "https://news.google.com/rss/search?q=%22Ian+Rapoport%22+NFL&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified NFL Network injury updates and coaching changes from Ian Rapoport."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • Jeff Passan MLB",
+        "url": "https://news.google.com/rss/search?q=%22Jeff+Passan%22+MLB&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified Major League Baseball trade reporting and contract news from Jeff Passan."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • David Ornstein & Fabrizio Romano",
+        "url": "https://news.google.com/rss/search?q=%22David+Ornstein%22+OR+%22Fabrizio+Romano%22+transfer&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified European football transfers and injury dispatches from David Ornstein and Fabrizio Romano."
+    },
     # --- PREMIER POLITICAL DESKS ---
     {
         "category": "Politics",
@@ -316,8 +451,8 @@ RSS_FEEDS = [
 
 INGESTION_SETTINGS = {
     "max_items_per_feed": 12,
-    "feed_retention_limit": 120,
-    "min_stories_per_category": 8,
+    "feed_retention_limit": 150,
+    "min_stories_per_category": 12,
     "feed_timeout_seconds": 12,
     "ai_timeout_seconds": 25,
     "max_workers": 12

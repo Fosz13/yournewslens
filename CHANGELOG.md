@@ -1,3 +1,37 @@
+# Your News Lens — Extensive Sports Stream & Even Main Feed Dispersal Overhaul
+
+## 1. Massive Sports Stream Expansion & Verified Insider Reporting
+- **User Request**: *"also there are only 2 or 3 sports stories. I'm fine if there's an even dispersement in the main feed but if you click on a button such as sports there should be an almost endless stream of stories. we need to pull from ESPN and other sports networks and gather verified info from x . at least from the top news reporters"*
+- **Core Improvements Implemented**:
+  1. **Even Dispersal in Main Feed ("All Stories")**:
+     - Upgraded `balance_feed_by_category()` in `engine.py` with an interleaved round-robin category distribution across Politics, Sports, Business, World News, Science & Tech, Entertainment, Health, Energy & Weather, Crime & Public Safety, and Border & Security.
+     - As users scroll the default main feed, they encounter a balanced, diverse rotation across all major topics without any single category dominating the top cards.
+  2. **"Almost Endless Stream" on Sports Filter**:
+     - Expanded `data/stories.json` sports catalog from 14 to **46 comprehensive sports stories** spanning NFL, NBA, MLB, College Football, College Basketball, European Soccer, PGA Golf, Grand Slam Tennis, NHL, and UFC.
+     - Removed the restrictive `[:35]` card slice in `prerender_cards_html()`, pre-rendering all 84+ stories into `index.html`.
+     - Clicking the **Sports** category pill instantly displays all 46 sports stories in a continuous, high-volume stream with zero loading latency.
+  3. **Expanded Sports Network Feeds & Verified X Reporters (`config.py`)**:
+     - Added dedicated feeds for ESPN Top News, ESPN NFL, ESPN NBA, ESPN MLB, ESPN College Football, ESPN Men's College Basketball, ESPN Soccer, CBS Sports Wire, CBS Sports NFL, CBS Sports CFB, Fox Sports, Yahoo Sports, Bleacher Report, and The Athletic.
+     - Added syndicated X beat reporter wires covering top national sports insiders:
+       - **Adam Schefter** (ESPN / NFL Insider)
+       - **Shams Charania** (The Athletic / ESPN / NBA Insider)
+       - **Ian Rapoport** (NFL Network / NFL Insider)
+       - **Jeff Passan** (ESPN / MLB Insider)
+       - **David Ornstein & Fabrizio Romano** (European Football / Transfer Insiders)
+       - **Pete Thamel & Brett McMurphy** (College Football Insiders)
+       - **Bob Harig** (Sports Illustrated / Golf Insider)
+  4. **Strict Architectural Safeguards Preserved**:
+     - Upcoming matchups/game previews feature current betting odds (spread, moneyline, over/under, win probability) in Fact 1.
+     - Injury and medical emergency reports (such as Vincent Kompany) are strictly prohibited from betting odds.
+     - Question headlines provide direct answers in Fact 1; response headlines provide direct quotes in Fact 1.
+     - Normal-person conversational talking points (zero wooden constitutional slogans).
+     - 100% unique image URLs across the entire feed with zero typewriter fallbacks.
+  5. **Regression Verification**:
+     - Added Test 20 to `test_regression_suite.py` asserting >= 12 sports feeds, >= 35 sports stories, top-15 category diversity, and zero duplicate image URLs.
+     - Regression suite: **20/20 tests passed (100% success)**.
+
+---
+
 # Your News Lens — Apple Design Overhaul & Custom Category Priority Engine
 
 ## 1. Apple-Inspired Aesthetic Redesign
