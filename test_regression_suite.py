@@ -30,7 +30,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 13
+    total_tests = 16
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -408,6 +408,85 @@ def run_all_regression_tests():
     print("✓ TEST 13 PASSED: Market futures story uses modern financial image; standalone generic nouns and antique certificate rejected.")
     passed_count += 1
 
+    # -------------------------------------------------------------------------
+    # TEST 14: Response/Reaction Headline Fact 1 Direct Answer Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 14] Response/Reaction Headline Fact 1 Direct Answer Verification...")
+    t14_a = "Coach Sean McVay responds to critics regarding fourth-down play calling in loss"
+    d14_a = "Rams head coach Sean McVay addressed reporters following the divisional loss, defending fourth-down calls."
+    assert engine.is_response_or_reaction_headline(t14_a), "Test 14 Failed: t14_a not detected as response headline!"
+
+    s14_a = engine.generate_contextual_synthesis(t14_a, d14_a, "Sports")
+    f1_14a = s14_a["core_facts"][0]
+    assert f1_14a.startswith("Direct Response:"), f"Test 14 Failed: Fact 1 does not start with 'Direct Response:': {f1_14a}"
+    assert "responded" in f1_14a.lower(), f"Test 14 Failed: Fact 1 does not contain response substance: {f1_14a}"
+
+    t14_b = "Abdul El-Sayed reacts to Muslim Brotherhood accusations during Michigan Senate debate"
+    assert engine.is_response_or_reaction_headline(t14_b), "Test 14 Failed: t14_b not detected as response headline!"
+    s14_b = engine.generate_contextual_synthesis(t14_b, "Abdul El-Sayed forcefully rejected claims during the debate.", "Politics")
+    f1_14b = s14_b["core_facts"][0]
+    assert f1_14b.startswith("Direct Response:") or "rejected" in f1_14b.lower() or "denied" in f1_14b.lower(), f"Test 14 Failed: Fact 1 response missing: {f1_14b}"
+
+    # Negative check: Standard news headline is not a response headline
+    t14_neg = "Stock futures remain under pressure after worst Nasdaq session since June"
+    assert not engine.is_response_or_reaction_headline(t14_neg), "Test 14 Negative Failed: Standard headline flagged as response!"
+    print("✓ TEST 14 PASSED: Response/reaction headline Fact 1 provides the direct response immediately with zero clickbait.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 15: Upcoming Sports Event Fact 1 Current Betting Odds Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 15] Upcoming Sports Event Fact 1 Current Betting Odds Verification...")
+    t15_a = "Chiefs vs. Bills Sunday Night Football Matchup Preview, Odds, and Predictions"
+    d15_a = "Kansas City prepares to face Buffalo in an upcoming AFC conference showdown."
+    assert engine.is_upcoming_sports_event_headline(t15_a, "Sports", d15_a), "Test 15 Failed: t15_a not detected as upcoming sports event!"
+
+    s15_a = engine.generate_contextual_synthesis(t15_a, d15_a, "Sports")
+    f1_15a = s15_a["core_facts"][0]
+    assert f1_15a.startswith("Current Betting Odds & Win Probability:"), f"Test 15 Failed: Fact 1 does not start with odds header: {f1_15a}"
+    assert any(term in f1_15a.lower() for term in ["favored", "moneyline", "%", "over/under"]), f"Test 15 Failed: Fact 1 missing betting terms: {f1_15a}"
+    assert "Chiefs" in f1_15a and "Bills" in f1_15a, f"Test 15 Failed: Teams not properly identified: {f1_15a}"
+
+    t15_b = "Ohio State at Penn State: Odds, Betting Lines, and Win Probability"
+    assert engine.is_upcoming_sports_event_headline(t15_b, "Sports"), "Test 15 Failed: t15_b not detected as upcoming sports event!"
+    s15_b = engine.generate_contextual_synthesis(t15_b, "Big Ten conference matchup preview.", "Sports")
+    assert s15_b["core_facts"][0].startswith("Current Betting Odds & Win Probability:"), f"Test 15 Failed: Fact 1 not odds: {s15_b['core_facts'][0]}"
+
+    # Negative check: Finished game recap is NOT an upcoming sports event
+    t15_recap = "Game Recap: Bears knock off Patriots on Thursday Night Football, improve to 5-2 - Chicago Bears"
+    assert not engine.is_upcoming_sports_event_headline(t15_recap, "Sports"), "Test 15 Negative Failed: Finished game recap flagged as upcoming event!"
+    s15_recap = engine.generate_contextual_synthesis(t15_recap, "The Chicago Bears defeated the New England Patriots 33-14.", "Sports")
+    assert not s15_recap["core_facts"][0].startswith("Current Betting Odds"), f"Test 15 Negative Failed: Completed game given betting odds: {s15_recap['core_facts'][0]}"
+    print("✓ TEST 15 PASSED: Upcoming sports events provide current odds/spread/win probability in Fact 1; completed recaps preserved.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 16: Sports Image Fallback Isolation & Typewriter Purge Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 16] Sports Image Fallback Isolation & Typewriter Purge Verification...")
+    t16 = "Game Recap: Bears knock off Patriots on Thursday Night Football, improve to 5-2 - Chicago Bears"
+    img16 = engine.resolve_story_image(t16, "Sports", master_category="Sports", used_urls=set())
+    assert img16["url"], "Test 16 Failed: No image returned for Bears recap!"
+    assert "photo-1585829365295-ab7cd400c167" not in img16["url"], "Test 16 Failed: Vintage typewriter assigned to Bears football story!"
+    assert any(w in img16["caption"].lower() for w in ("football", "stadium", "nfl", "gridiron")), f"Test 16 Failed: Caption is not football-related: {img16['caption']}"
+
+    # Verify sports pools have 0 typewriter URLs and 0 dead Unsplash IDs
+    sports_pools = [
+        engine.CATEGORY_FALLBACK_POOLS.get("Sports_Football", []),
+        engine.CATEGORY_FALLBACK_POOLS.get("Sports_Basketball", []),
+        engine.CATEGORY_FALLBACK_POOLS.get("Sports", [])
+    ]
+    for pool in sports_pools:
+        for item in pool:
+            assert "photo-1585829365295-ab7cd400c167" not in item["url"], "Test 16 Failed: Typewriter found in sports fallback pool!"
+            assert "photo-1516216628859-9bcceabb84ca" not in item["url"], "Test 16 Failed: Dead Unsplash football URL found in pool!"
+            assert "photo-1519766304817-4f37bda74a29" not in item["url"], "Test 16 Failed: Dead Unsplash basketball URL found in pool!"
+            assert "\\ud83d\\udcf8" not in item.get("credit", ""), "Test 16 Failed: Escaped unicode camera emoji found in credit!"
+
+    print("✓ TEST 16 PASSED: Sports image isolation verified; typewriter fallback completely purged from all sports pathways.")
+    passed_count += 1
+
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
     print("\n" + "=" * 75)
@@ -475,3 +554,26 @@ def test_13_market_futures_story_uses_modern_financial_image_and_rejects_antique
     assert any(word in result["caption"].lower() for word in ("financial", "market", "trading"))
     assert "antique" not in result["caption"].lower()
     assert "certificate" not in result["caption"].lower()
+
+
+def test_14_response_or_reaction_headline_provides_direct_response():
+    title = "Coach Sean McVay responds to critics regarding fourth-down play calling in loss"
+    assert engine.is_response_or_reaction_headline(title)
+    s = engine.generate_contextual_synthesis(title, "Rams coach Sean McVay addressed reporters.", "Sports")
+    assert s["core_facts"][0].startswith("Direct Response:")
+
+
+def test_15_upcoming_sports_event_provides_current_betting_odds():
+    title = "Chiefs vs. Bills Sunday Night Football Matchup Preview, Odds, and Predictions"
+    assert engine.is_upcoming_sports_event_headline(title, "Sports")
+    s = engine.generate_contextual_synthesis(title, "Upcoming game preview.", "Sports")
+    assert s["core_facts"][0].startswith("Current Betting Odds & Win Probability:")
+    assert any(term in s["core_facts"][0].lower() for term in ["favored", "moneyline", "%", "over/under"])
+
+
+def test_16_sports_images_exclude_typewriter_and_dead_urls():
+    title = "Game Recap: Bears knock off Patriots on Thursday Night Football, improve to 5-2 - Chicago Bears"
+    img = engine.resolve_story_image(title, "Sports", master_category="Sports", used_urls=set())
+    assert img["url"]
+    assert "photo-1585829365295-ab7cd400c167" not in img["url"]
+    assert any(w in img["caption"].lower() for w in ("football", "stadium", "nfl", "gridiron"))
