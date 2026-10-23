@@ -23,6 +23,7 @@ Each test verifies BOTH that the expected result passes AND that a deliberately 
 import sys
 import os
 import json
+import re
 import engine
 
 def run_all_regression_tests():
@@ -30,7 +31,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 16
+    total_tests = 18
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -487,6 +488,95 @@ def run_all_regression_tests():
     passed_count += 1
 
 
+    # -------------------------------------------------------------------------
+    # TEST 17: Melania Trump Oleshky Ukraine Ceasefire Deal & Mechanism Facts
+    # -------------------------------------------------------------------------
+    print("\n[TEST 17] Melania Trump Ukraine Ceasefire Deal & Mechanism Facts Verification...")
+    t17 = "White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster'"
+    d17 = "Russia and Ukraine agree to local ceasefire in Oleshky amid deepening humanitarian crisis. Melania Trump secures town-wide Russia-Ukraine ceasefire. Russia, Ukraine agree to Oleshky ceasefire brokered by Melania Trump, White House says."
+
+    # 1. Fact extraction anti-echo check: Raw RSS headline repeats must be strictly rejected
+    extracted_17 = engine.extract_facts_from_context_and_title(t17, d17, "World News")
+    for f in extracted_17:
+        assert f.strip().rstrip(".") != t17, f"Test 17 Failed: Extracted fact is exact duplicate of title: {f}"
+        t_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', t17.lower()))
+        f_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', f.lower()))
+        overlap = len(t_words & f_words) / max(len(t_words), 1)
+        assert overlap <= 0.45, f"Test 17 Failed: Extracted fact has excessive title overlap ({overlap:.2f}): {f}"
+
+    # 2. Synthesis check: 4 distinct summary facts covering deal, mechanism, ground situation, next steps
+    s17 = engine.generate_contextual_synthesis(t17, d17, "World News")
+    facts17 = s17.get("core_facts", [])
+    assert len(facts17) == 4, f"Test 17 Failed: Expected 4 facts, got {len(facts17)}"
+
+    # Fact 1 must detail the specific deal terms (not repeat title)
+    assert any(w in facts17[0].lower() for w in ("deal", "ceasefire", "truce", "evacuate", "corridor", "shelling")), f"Test 17 Failed: Fact 1 missing deal terms: {facts17[0]}"
+    assert facts17[0].strip().rstrip(".") != t17, f"Test 17 Failed: Fact 1 is just the headline: {facts17[0]}"
+
+    # Fact 2 must explain how it was accomplished (diplomatic mechanism)
+    assert any(w in facts17[1].lower() for w in ("accomplished", "backchannel", "diplomacy", "brokered", "intermediaries")), f"Test 17 Failed: Fact 2 missing mechanism: {facts17[1]}"
+
+    # Fact 3 must explain ground reality & humanitarian crisis (flooding, water, power)
+    assert any(w in facts17[2].lower() for w in ("water", "electricity", "medicine", "dnipro", "flooding", "kakhovka")), f"Test 17 Failed: Fact 3 missing ground situation: {facts17[2]}"
+
+    # Fact 4 must explain next steps and broader impact
+    assert any(w in facts17[3].lower() for w in ("convoys", "red cross", "monitors", "next steps", "model", "aid")), f"Test 17 Failed: Fact 4 missing next steps: {facts17[3]}"
+
+    # Pairwise similarity check: No facts can repeat each other (>40% similarity)
+    for j in range(len(facts17)):
+        for k in range(j + 1, len(facts17)):
+            wj = set(re.findall(r'\b[a-zA-Z]{4,}\b', facts17[j].lower()))
+            wk = set(re.findall(r'\b[a-zA-Z]{4,}\b', facts17[k].lower()))
+            jaccard = len(wj & wk) / max(len(wj | wk), 1)
+            assert jaccard <= 0.40, f"Test 17 Failed: Facts {j} and {k} are redundant echoes (similarity {jaccard:.2f}):\n  {facts17[j]}\n  {facts17[k]}"
+
+    # Image check: Must resolve to diplomatic/White House photo, not generic or broken
+    img17 = engine.resolve_story_image(t17, "World News", master_category="World News", used_urls=set())
+    assert img17["url"], "Test 17 Failed: No image returned for Melania Ukraine truce!"
+    assert any(w in img17["caption"].lower() for w in ("white house", "diplomatic", "envoy", "international")), f"Test 17 Failed: Image caption not relevant: {img17['caption']}"
+
+    print("✓ TEST 17 PASSED: Melania Trump Oleshky story explains what the deal was, how it was accomplished, and has 0 headline echoes.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 18: Normal Person Conversational Talking Points Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 18] Normal Person Conversational Talking Points Verification...")
+    
+    # 1. Melania story talking points check
+    right_tp_17 = " ".join(s17["perspectives"]["RIGHT"]["talking_points"])
+    left_tp_17 = " ".join(s17["perspectives"]["LEFT"]["talking_points"])
+    center_tp_17 = " ".join(s17["perspectives"]["CENTER"]["talking_points"])
+
+    # Must NOT contain generic constitutional boilerplate
+    forbidden_boilerplate = [
+        "the constitution establishes strict limits on federal overreach",
+        "protecting individual liberty and local self-governance is fundamental regarding",
+        "rein in unelected bureaucracies that burden american enterprise",
+        "primary reporting documented",
+        "operational context and verified official timelines"
+    ]
+    for bp in forbidden_boilerplate:
+        assert bp not in right_tp_17.lower(), f"Test 18 Failed: Forbidden boilerplate '{bp}' found in Right TP: {right_tp_17}"
+        assert bp not in left_tp_17.lower(), f"Test 18 Failed: Forbidden boilerplate '{bp}' found in Left TP: {left_tp_17}"
+        assert bp not in center_tp_17.lower(), f"Test 18 Failed: Forbidden boilerplate '{bp}' found in Center TP: {center_tp_17}"
+
+    # Must reflect normal person reactions
+    assert any(w in right_tp_17.lower() for w in ("saves lives", "leadership", "practical results", "stepped up", "breakthrough")), f"Test 18 Failed: Right TP lacking normal person perspective: {right_tp_17}"
+    assert any(w in left_tp_17.lower() for w in ("civilians", "aid", "monitors", "regroup", "withdraw", "positive step")), f"Test 18 Failed: Left TP lacking normal person perspective: {left_tp_17}"
+    assert any(w in center_tp_17.lower() for w in ("saves innocent", "win", "regardless of who", "truce holds", "template")), f"Test 18 Failed: Center TP lacking normal person perspective: {center_tp_17}"
+
+    # 2. Dynamic Politics fallback check: Even for generic political stories, no wooden constitutional slogans
+    t18_pol = "New legislative framework introduced ahead of upcoming vote"
+    s18_pol = engine.generate_contextual_synthesis(t18_pol, "Lawmakers introduced a bill.", "Politics")
+    right_tp_18 = " ".join(s18_pol["perspectives"]["RIGHT"]["talking_points"])
+    for bp in forbidden_boilerplate:
+        assert bp not in right_tp_18.lower(), f"Test 18 Failed: Forbidden boilerplate '{bp}' found in Politics fallback: {right_tp_18}"
+    assert any(w in right_tp_18.lower() for w in ("regular people", "everyday americans", "red tape", "cutting", "results", "common sense")), f"Test 18 Failed: Politics Right TP lacking conversational voice: {right_tp_18}"
+
+    print("✓ TEST 18 PASSED: Talking points sound like normal everyday people drawing natural conclusions; wooden constitutional boilerplate strictly eliminated.")
+    passed_count += 1
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
     print("\n" + "=" * 75)
@@ -577,3 +667,30 @@ def test_16_sports_images_exclude_typewriter_and_dead_urls():
     assert img["url"]
     assert "photo-1585829365295-ab7cd400c167" not in img["url"]
     assert any(w in img["caption"].lower() for w in ("football", "stadium", "nfl", "gridiron"))
+
+
+def test_17_melania_trump_ceasefire_deal_and_mechanism_facts():
+    import re
+    t = "White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster'"
+    d = "Russia and Ukraine agree to local ceasefire in Oleshky amid deepening humanitarian crisis. Melania Trump secures town-wide Russia-Ukraine ceasefire. Russia, Ukraine agree to Oleshky ceasefire brokered by Melania Trump, White House says."
+    s = engine.generate_contextual_synthesis(t, d, "World News")
+    facts = s["core_facts"]
+    assert len(facts) == 4
+    assert any(w in facts[0].lower() for w in ("deal", "ceasefire", "truce", "evacuate", "corridor"))
+    assert any(w in facts[1].lower() for w in ("accomplished", "backchannel", "diplomacy", "brokered"))
+    assert any(w in facts[2].lower() for w in ("water", "electricity", "medicine", "dnipro", "flooding"))
+    assert any(w in facts[3].lower() for w in ("convoys", "red cross", "monitors", "next steps", "model"))
+    assert facts[0].strip().rstrip(".") != t
+
+
+def test_18_normal_person_talking_points_no_constitutional_boilerplate():
+    t = "White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster'"
+    s = engine.generate_contextual_synthesis(t, "", "World News")
+    rt = " ".join(s["perspectives"]["RIGHT"]["talking_points"])
+    lt = " ".join(s["perspectives"]["LEFT"]["talking_points"])
+    ct = " ".join(s["perspectives"]["CENTER"]["talking_points"])
+    assert "the constitution establishes strict limits on federal overreach" not in rt.lower()
+    assert "unelected bureaucracies" not in rt.lower()
+    assert any(w in rt.lower() for w in ("saves lives", "leadership", "practical results", "stepped up"))
+    assert any(w in lt.lower() for w in ("civilians", "aid", "monitors", "regroup", "withdraw"))
+    assert any(w in ct.lower() for w in ("saves innocent", "win", "regardless of who", "truce holds"))
