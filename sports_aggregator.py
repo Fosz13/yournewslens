@@ -3,7 +3,7 @@
 sports_aggregator.py
 Dedicated sports wire aggregator and verified reporter pipeline for Your News Lens.
 Pulls sports headlines from:
-1. Premier Sports Networks: ESPN (NFL, NBA, MLB, CFB, CBB, Soccer), CBS Sports, Fox Sports, Yahoo Sports, The Athletic.
+1. Premier Sports Networks: ESPN (NFL, NBA, MLB, CFB, CBB, Soccer), CBS Sports, Fox Sports, Sports Illustrated, The Athletic.
 2. Verified Reporter Wire Dispatches from X (Twitter):
    - Adam Schefter (NFL / ESPN)
    - Shams Charania (NBA / The Athletic & ESPN)
@@ -54,7 +54,8 @@ class SportsAggregator:
         if os.path.exists(self.data_file):
             try:
                 with open(self.data_file, "r", encoding="utf-8") as f:
-                    stories = json.load(f)
+                    raw_stories = json.load(f)
+                    stories = [s for s in raw_stories if not engine.is_disallowed_source(s)]
                     for s in stories:
                         u = s.get("image_url")
                         if u:
@@ -70,6 +71,8 @@ class SportsAggregator:
             json.dump(stories, f, indent=2)
 
     def fetch_feed_items(self, feed_info: Dict[str, str], max_items: int = 5) -> List[Dict[str, Any]]:
+        if engine.is_disallowed_source(feed_info):
+            return []
         items = []
         try:
             req = urllib.request.Request(
@@ -94,6 +97,8 @@ class SportsAggregator:
                     ts, rel_time = engine.parse_pubdate_to_relative(pub)
 
                     if title and len(title) > 15:
+                        if engine.is_disallowed_source({"title": title, "link": link, "source_name": feed_info["source"]}):
+                            continue
                         items.append({
                             "title": title,
                             "link": link,
@@ -109,7 +114,9 @@ class SportsAggregator:
             pass
         return items
 
-    def process_and_synthesize(self, item: Dict[str, Any]) -> Dict[str, Any]:
+    def process_and_synthesize(self, item: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        if engine.is_disallowed_source(item):
+            return None
         title = item["title"]
         ctx = item.get("description", "")
         cat = "Sports"
@@ -145,13 +152,16 @@ class SportsAggregator:
 
         print(f"Connecting to {len(SPORTS_NETWORK_FEEDS)} sports network and X reporter wire feeds...")
         for feed in SPORTS_NETWORK_FEEDS:
+            if engine.is_disallowed_source(feed):
+                continue
             raw_items = self.fetch_feed_items(feed, max_items=3)
             for item in raw_items:
                 t_clean = item["title"].strip().lower()
                 if t_clean not in existing_titles:
                     try:
                         record = self.process_and_synthesize(item)
-                        new_stories.append(record)
+                        if record:
+                            new_stories.append(record)
                         existing_titles.add(t_clean)
                     except Exception as err:
                         print(f"Notice synthesizing item: {err}")

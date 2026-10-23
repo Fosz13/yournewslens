@@ -307,9 +307,9 @@ RSS_FEEDS = [
     {
         "category": "Sports",
         "master_category": "Sports",
-        "source": "Yahoo Sports Wire",
-        "url": "https://sports.yahoo.com/rss/",
-        "description": "Yahoo Sports breaking reporting and investigative features."
+        "source": "Sports Illustrated Wire",
+        "url": "https://www.si.com/.rss/full/",
+        "description": "Sports Illustrated comprehensive coverage across collegiate and professional athletics."
     },
     {
         "category": "Sports",
@@ -439,6 +439,28 @@ RSS_FEEDS = [
         "source": "CNBC Markets",
         "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
         "description": "CNBC stock exchange, interest rates, and bond yields."
+    },
+    # --- YAHOO QUALITY NEWS & SPORTS FEEDS ---
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "Yahoo Sports Wire",
+        "url": "https://sports.yahoo.com/rss/",
+        "description": "Yahoo Sports game broadcasts, breaking transactions, scores, and streaming guides."
+    },
+    {
+        "category": "All",
+        "master_category": "National Headlines",
+        "source": "Yahoo News",
+        "url": "https://news.yahoo.com/rss/",
+        "description": "Yahoo News national domestic reporting and top wire stories."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "Business & Economy",
+        "source": "Yahoo Finance Wire",
+        "url": "https://finance.yahoo.com/news/rssindex",
+        "description": "Yahoo Finance market analyses, corporate earnings, and personal finance."
     },
     {
         "category": "Science & Tech",
