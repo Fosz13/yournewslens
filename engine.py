@@ -76,8 +76,7 @@ EXACT_ENTITY_PHOTOGRAPHY = [
     # Centrus vs. BWX Technologies / Nuclear Supply Chain Stocks
     {
         "patterns": [
-            "centrus vs. bwx", "centrus vs bwx", "centrus", "bwx technologies", "bwxt",
-            "nuclear supply chain stock", "better buy after the sell-off", "haleu", "nuclear fuel supplier"
+            "centrus vs. bwx", "centrus vs bwx", "centrus", "bwx technologies", "bwxt", "haleu"
         ],
         "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
         "caption": "Advanced nuclear energy supply chain and electrical generation facility.",
@@ -693,11 +692,6 @@ CATEGORY_FALLBACK_POOLS = {
             "credit": "\ud83d\udcf8 Market Analytics Wire"
         },
         {
-            "url": "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80",
-            "caption": "Advanced nuclear energy and clean baseload electrical generation facility.",
-            "credit": "\ud83d\udcf8 Clean Energy Technology Wire"
-        },
-        {
             "url": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
             "caption": "Central banking capital currency and economic monetary assets.",
             "credit": "\ud83d\udcf8 Economic Reserve Wire"
@@ -707,6 +701,43 @@ CATEGORY_FALLBACK_POOLS = {
             "caption": "Metropolitan commercial financial district corporate headquarters.",
             "credit": "\ud83d\udcf8 Corporate Commerce Media"
         }
+    ],
+    # Topic-specific business imagery is selected before generic category fallbacks.
+    "Business_RealEstate": [
+        {
+            "url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Modern commercial real estate and office towers.",
+            "credit": "📸 Unsplash / Commercial Real Estate"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Urban residential buildings and property development.",
+            "credit": "📸 Unsplash / Property Markets"
+        },
+    ],
+    "Business_FinancialMarkets": [
+        {
+            "url": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Financial market charts and modern trading data.",
+            "credit": "📸 Unsplash / Financial Markets"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Modern stock-market analysis and financial data.",
+            "credit": "📸 Unsplash / Market Analysis"
+        },
+    ],
+    "Business_BankingRates": [
+        {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg",
+            "caption": "Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.",
+            "credit": "📸 Wikimedia Commons / Federal Reserve Building"
+        },
+        {
+            "url": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
+            "caption": "Currency and financial assets in a modern banking context.",
+            "credit": "📸 Unsplash / Banking and Finance"
+        },
     ],
     "Health": [
         {
@@ -945,9 +976,40 @@ HEADLINE_NOISE_WORDS = {
     "commanders", "patriots", "capitals", "bill", "mark", "major", "general", "hall",
     "power", "rankings", "standings", "hero", "bystander", "official", "officials",
     "leader", "leaders", "house", "senate", "court", "judge", "board", "agency",
-    "can", "anyone", "stop", "remains", "unbeaten", "surges", "climbs", "falls"
+    "can", "anyone", "stop", "remains", "unbeaten", "surges", "climbs", "falls",
+    "stock", "stocks", "future", "futures", "market", "markets", "rate", "rates",
+    "bank", "banks", "trade", "trading", "yield", "yields", "bond", "bonds",
+    "fund", "funds", "property", "housing", "economy", "money", "inflation",
+    "quarter", "earnings", "revenue", "profit", "loss", "match", "update", "updates",
+    "court", "law", "bill", "share", "shares"
 }
 
+
+# Generic nouns must never be looked up as standalone Wikipedia entities.
+COMMON_NOUN_BLACKLIST = {
+    "stock", "stocks", "future", "futures", "market", "markets", "rate", "rates",
+    "bank", "banks", "trade", "trading", "yield", "yields", "bond", "bonds",
+    "fund", "funds", "real estate", "property", "housing", "economy", "money",
+    "inflation", "quarter", "earnings", "revenue", "profit", "loss", "game",
+    "match", "season", "week", "lead", "update", "updates", "live", "court",
+    "law", "bill", "share", "shares", "ownership", "investment", "investing",
+}
+RECOGNIZED_SINGLE_WORD_ENTITIES = {
+    "nasdaq", "tesla", "apple", "boeing", "centrus", "bwxt",
+}
+MULTIWORD_ENTITY_ALLOWLIST = {
+    "new york stock exchange", "federal reserve", "jerome powell",
+    "donald trump", "kylie jenner", "dow jones", "s&p 500", "bwx technologies",
+}
+HISTORICAL_IMAGE_TERMS = {
+    "certificate", "manuscript", "engraving", "painting from", "circa",
+    "century", "historical document", "antique", "parchment", "archival document",
+    "handwritten share", "ancient artifact", "old share certificate",
+}
+EXPLICIT_HISTORICAL_TERMS = {
+    "history", "historic", "historical", "century", "1800s", "1900s",
+    "museum", "archaeology", "ancient", "antiquity",
+}
 
 # =============================================================================
 # THREE-LAYER ARCHITECTURAL SAFEGUARDS: IMAGE POOLS, FACTS & PERSPECTIVE VALIDATION
@@ -1967,73 +2029,87 @@ def validate_perspective_relevance(
     return (len(errors) == 0, errors)
 
 def is_wikipedia_result_relevant(data: dict, title: str, category: str, master_category: str = "National Headlines") -> bool:
-    """Verifies that a Wikipedia lookup matches the context of the story and enforces strict domain boundaries."""
-    if not data or not isinstance(data, dict):
-        return False
-    
-    desc = (data.get("description") or "").lower()
-    extract = (data.get("extract") or "").lower()
-    page_type = (data.get("type") or "").lower()
-    t_lower = (title or "").lower()
-    c_lower = (category or "").lower()
-    m_lower = (master_category or "").lower()
-    is_sports = "sport" in c_lower or "sport" in m_lower
-
-    if page_type == "disambiguation":
+    """Reject unrelated, generic, and historically misleading Wikipedia thumbnails."""
+    if not isinstance(data, dict) or not data:
         return False
 
-    # 1. Block hardware tools, cable reels, spools, and generic biological taxa
+    page_title = str(data.get("title") or "").strip()
+    desc = str(data.get("description") or "").strip().lower()
+    extract = str(data.get("extract") or "").strip().lower()
+    page_type = str(data.get("type") or "").lower()
+    thumb = data.get("thumbnail") or {}
+    thumb_url = thumb.get("source", "") if isinstance(thumb, dict) else ""
+    title_lower = (title or "").lower()
+    category_lower = (category or "").lower()
+    master_lower = (master_category or "").lower()
+    metadata_lower = f"{page_title} {desc} {extract} {thumb_url}".lower()
+
+    if page_type == "disambiguation" or not page_title or not is_usable_image_url(thumb_url):
+        return False
+
+    # Generic dictionary nouns should never serve as a standalone entity image.
+    if page_title.casefold() in COMMON_NOUN_BLACKLIST:
+        return False
+
     unrelated_phrases = [
         "device used to", "mechanical device", "type of tool", "cable reel", "hose reel",
         "spool", "fastener", "hardware", "genus of", "species of plant", "species of insect",
-        "taxonomic rank", "flowering plant in the family"
+        "taxonomic rank", "flowering plant in the family",
     ]
-    for phrase in unrelated_phrases:
-        if phrase in desc or phrase in extract:
-            return False
+    if any(phrase in desc or phrase in extract for phrase in unrelated_phrases):
+        return False
 
-    # 2. STRICT RELIGIOUS / POPE GATEWAY:
-    # A Wikipedia entity about the Pope, Vatican, or Catholic clergy is ONLY allowed if the story
-    # is explicitly religious (and NEVER for Sports, Tech, or Energy).
+    historical_context = any(term in title_lower for term in EXPLICIT_HISTORICAL_TERMS)
+    is_modern_news = any(term in category_lower + " " + master_lower for term in (
+        "business", "econom", "finance", "market", "stock", "politic", "sports", "technology", "tech"
+    )) or any(term in title_lower for term in (
+        "live updates", "futures", "stock", "market", "breaking", "today", "remain under pressure"
+    ))
+    if not historical_context and is_modern_news and any(term in metadata_lower for term in HISTORICAL_IMAGE_TERMS):
+        return False
+
+    # Preserve the existing strict religious domain boundary.
+    is_sports = "sport" in category_lower or "sport" in master_lower
     religious_markers = [
         "the pope", "pope francis", "papal", "papacy", "pontiff", "bishop of rome",
         "holy see", "vatican", "catholic church", "clergy", "archbishop", "priest",
-        "monk", "nun", "theologian", "diocese", "monastery", "patriarch of the",
-        "canonized", "cardinal of the catholic"
+        "monk", "nun", "theologian", "diocese", "monastery", "canonized",
     ]
-    wiki_title_lower = (data.get("title") or "").strip().lower()
-    is_wiki_religious = (wiki_title_lower == "pope") or any(rm in desc or rm in extract for rm in religious_markers)
-    title_has_religion = any(rw in t_lower for rw in ["pope", "vatican", "papal", "pontiff", "catholic", "holy see", "bishop", "priest", "clergy", "religion", "faith"])
-    
-    if is_wiki_religious:
-        # If the story is Sports, Energy, Tech, or does not explicitly have religious keywords in the title, REJECT!
-        if is_sports or "tech" in c_lower or "energy" in c_lower or "weather" in c_lower:
-            return False
-        if not title_has_religion:
-            return False
+    wiki_religious = page_title.lower() == "pope" or any(x in desc or x in extract for x in religious_markers)
+    title_has_religion = any(x in title_lower for x in [
+        "pope", "vatican", "papal", "pontiff", "catholic", "holy see", "bishop", "priest", "clergy", "religion", "faith"
+    ])
+    if wiki_religious and (is_sports or "tech" in category_lower or "energy" in category_lower or not title_has_religion):
+        return False
 
-    # 3. STRICT SPORTS GATEWAY:
-    # If the story is categorized under Sports, the Wikipedia entity MUST be verified sports-related!
+    # Preserve sports-domain isolation.
     if is_sports:
-        sports_affinity_markers = [
-            "sport", "athlete", "player", "coach", "football", "basketball", "baseball",
-            "soccer", "racing", "driver", "golf", "tennis", "championship", "tournament",
-            "league", "team", "club", "stadium", "arena", "ncaa", "nfl", "nba", "mlb",
-            "nhl", "pga", "nascar", "olympic", "division", "quarterback", "pitcher",
-            "athletics", "boxer", "ballpark", "collegiate", "conference", "heisman",
-            "touchdown", "playoff", "defensive", "offensive", "guard", "forward", "center",
-            "striker", "pitching", "batting", "wicket", "hockey", "curling", "skater", "swimmer"
+        sports_markers = [
+            "sport", "athlete", "player", "coach", "football", "basketball", "baseball", "soccer",
+            "racing", "driver", "golf", "tennis", "championship", "tournament", "league", "team",
+            "club", "stadium", "arena", "ncaa", "nfl", "nba", "mlb", "nhl", "pga", "nascar",
+            "olympic", "quarterback", "pitcher", "athletics", "boxer", "ballpark", "heisman",
         ]
-        has_sports_affinity = any(sam in desc or sam in extract for sam in sports_affinity_markers)
-        if not has_sports_affinity:
-            # If a Wikipedia entity has zero sports context, reject it for a Sports story!
+        if not any(marker in desc or marker in extract for marker in sports_markers):
+            return False
+    elif any(marker in desc for marker in ["professional sports team", "basketball team", "football team", "baseball team"]):
+        if not any(marker in title_lower for marker in ["team", "stadium", "arena", "football", "basketball", "baseball"]):
             return False
 
-    # 4. CROSS-DOMAIN ANTI-POLLUTION:
-    # A non-Sports story should not get sports players/stadiums
-    if not is_sports:
-        stadium_markers = ["stadium", "ballpark", "basketball team", "football team", "baseball team", "professional sports team"]
-        if any(sm in desc for sm in stadium_markers) and not any(sw in t_lower for sw in ["stadium", "arena", "team"]):
+    # Require at least two meaningful overlapping tokens from the headline and page title/description.
+    # Remove generic nouns and noise from both sides to avoid false matches such as Stock -> antique share.
+    stop = set(HEADLINE_NOISE_WORDS) | COMMON_NOUN_BLACKLIST | {
+        "after", "before", "since", "under", "over", "remain", "remains", "session", "worst",
+        "pressure", "higher", "made", "family", "offices", "pickier", "investing", "latest",
+        "news", "report", "reported", "american", "company", "business", "economy", "financial",
+    }
+    headline_tokens = {x for x in re.findall(r"[a-z0-9]+", title_lower) if len(x) > 2 and x not in stop}
+    page_tokens = {x for x in re.findall(r"[a-z0-9]+", (page_title + " " + desc).lower()) if len(x) > 2 and x not in stop}
+    if len(headline_tokens & page_tokens) < 2:
+        # Explicit known multiword entities may still pass only when the title names them.
+        normalized_page = re.sub(r"[^a-z0-9]+", " ", page_title.lower()).strip()
+        normalized_headline = re.sub(r"[^a-z0-9]+", " ", title_lower).strip()
+        if not any(entity in normalized_headline and normalized_page == entity for entity in MULTIWORD_ENTITY_ALLOWLIST):
             return False
 
     return True
@@ -2064,29 +2140,37 @@ def fetch_wikipedia_entity_image(entity_name: str, title: str = "", category: st
     return None
 
 def extract_named_entities_from_title(title: str) -> List[str]:
-    """Robust NER extractor with acronym normalization and strict headline noise word filtering."""
-    clean = re.sub(r'\s*-\s*[^-]+$', '', title).strip()
-    
-    # Normalize initials and dotted names (e.g., 'O.J.' -> 'OJ', 'J.D.' -> 'JD')
+    """Extract likely named entities while excluding standalone generic nouns."""
+    clean = re.sub(r"\s*-\s*[^-]+$", "", title or "").strip()
     norm = clean.replace("O.J.", "OJ").replace("O. J.", "OJ").replace("J.D.", "JD").replace("J. D.", "JD")
-    
-    entities = []
-    
-    # 1. Multi-word phrases (prefer multi-word specific entities)
-    multi_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]*(?:\s+[A-Z][a-zA-Z0-9]*)+\b', norm)
-    for m in multi_matches:
-        words = m.split()
-        filtered = [w for w in words if w.lower() not in HEADLINE_NOISE_WORDS]
-        if len(filtered) >= 2:
-            entities.append("_".join(filtered))
-        elif len(filtered) == 1 and len(filtered[0]) >= 3 and filtered[0].lower() not in HEADLINE_NOISE_WORDS:
-            entities.append(filtered[0])
+    lowered = norm.casefold()
+    entities: List[str] = []
 
-    # 2. Single proper nouns (at least 3 characters, strictly non-noise)
-    single_matches = re.findall(r'\b[A-Z][a-zA-Z0-9]{2,}\b', norm)
-    for s in single_matches:
-        if s.lower() not in HEADLINE_NOISE_WORDS and s not in entities:
-            entities.append(s)
+    def add(candidate: str) -> None:
+        candidate = candidate.strip().replace(" ", "_")
+        key = candidate.replace("_", " ").casefold()
+        if not candidate or key in HEADLINE_NOISE_WORDS or key in COMMON_NOUN_BLACKLIST:
+            return
+        if candidate.casefold() not in {x.casefold() for x in entities}:
+            entities.append(candidate)
+
+    # Explicit, recognized multiword entities first.
+    for entity in sorted(MULTIWORD_ENTITY_ALLOWLIST, key=len, reverse=True):
+        if re.search(r"(?<!\w)" + re.escape(entity) + r"(?!\w)", lowered):
+            add(entity)
+
+    # Capitalized multiword phrases; reject phrases that reduce to generic nouns.
+    multi_matches = re.findall(r"\b[A-Z][a-zA-Z0-9&.'-]*(?:\s+[A-Z][a-zA-Z0-9&.'-]*)+\b", norm)
+    for match in multi_matches:
+        words = match.split()
+        meaningful = [w for w in words if w.casefold() not in HEADLINE_NOISE_WORDS and w.casefold() not in COMMON_NOUN_BLACKLIST]
+        if len(meaningful) >= 2:
+            add(" ".join(meaningful))
+
+    # Only recognized brands/tickers may be queried as single-token entities.
+    for entity in RECOGNIZED_SINGLE_WORD_ENTITIES:
+        if re.search(r"(?<!\w)" + re.escape(entity) + r"(?!\w)", lowered):
+            add(entity)
 
     return entities
 
@@ -2227,6 +2311,36 @@ def resolve_story_image(title: str, category: str, master_category: Any = "Natio
                     "associated_subject": clean_title[:40],
                     "timestamp": int(time.time())
                 }
+
+    # PRIORITY 3A: Topic-specific business imagery. This runs before Wikipedia so
+    # generic entities cannot inject unrelated dictionary thumbnails into finance stories.
+    business_topic = None
+    if "business" in clean_category.lower() or "econom" in clean_category.lower() or "business" in clean_master.lower():
+        if any(re.search(pattern, combined_title_search) for pattern in [
+            r"\breal estate\b", r"\bproperty market", r"\bhousing\b", r"\bmortgage", r"\bcommercial propert", r"\bfamily offices\b"
+        ]):
+            business_topic = "Business_RealEstate"
+        elif any(re.search(pattern, combined_title_search) for pattern in [
+            r"\bstock futures\b", r"\bstock market\b", r"\bnasdaq\b", r"\bs\s*&?\s*p\s*500\b", r"\bdow jones\b", r"\bstock exchange\b", r"\bmarket sell[- ]?off\b", r"\btrading session\b"
+        ]):
+            business_topic = "Business_FinancialMarkets"
+        elif any(re.search(pattern, combined_title_search) for pattern in [
+            r"\binterest rates?\b", r"\bfederal reserve\b", r"\bcentral bank", r"\bmonetary policy\b", r"\bbank lending\b", r"\bbond yields?\b"
+        ]):
+            business_topic = "Business_BankingRates"
+
+    if business_topic:
+        for item in CATEGORY_FALLBACK_POOLS.get(business_topic, []):
+            if item["url"] not in used_urls and is_usable_image_url(item["url"]):
+                used_urls.add(item["url"])
+                return {
+                    "url": item["url"], "caption": item["caption"], "credit": item["credit"],
+                    "resolution_method": "priority_3_topic_specific_fallback",
+                    "verification_status": "topic_fallback",
+                    "associated_subject": business_topic,
+                    "timestamp": int(time.time())
+                }
+
 
     # PRIORITY 2 & 3: Exact Curated Entity & Story-Specific Replacement Image
     for ent in EXACT_ENTITY_PHOTOGRAPHY:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 test_regression_suite.py
-Comprehensive 8-Part Automated Regression Test Suite for Your News Lens.
+Comprehensive 13-Part Automated Regression Test Suite for Your News Lens.
 Verifies the three-layer architectural safeguards:
 1. Image Selection & Subcategory Pool Matching (with cross-domain negative checks)
 2. Evidence-Grounded 4-Part Fact Extraction (with boilerplate and headline-overlap gates)
@@ -30,7 +30,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 11
+    total_tests = 13
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -352,6 +352,62 @@ def run_all_regression_tests():
     print("✓ TEST 11 PASSED: Sub-sport basketball isolation verified; zero soccer leakage and 100% feed uniqueness guaranteed.")
     passed_count += 1
 
+
+    # -------------------------------------------------------------------------
+    # TEST 12: Real Estate & Interest Rate Story Image Isolation
+    # -------------------------------------------------------------------------
+    print("\n[TEST 12] Real Estate & Interest Rate Story Image Isolation Verification...")
+    t12 = "Higher interest rates have made family offices pickier about investing in real estate"
+    used_12 = set()
+    img12 = engine.resolve_story_image(t12, "Business & Economy", master_category="Business & Economy", used_urls=used_12)
+    assert img12["url"], "Test 12 Failed: No image returned for real estate!"
+    assert "photo-1513836279014-a89f7a76ae86" not in img12["url"], "Test 12 Failed: Nuclear facility image assigned to real estate story!"
+    assert img12["associated_subject"] == "Business_RealEstate", f"Test 12 Failed: Subject is {img12['associated_subject']}"
+    assert any(word in img12["caption"].lower() for word in ("real estate", "property", "residential")), f"Test 12 Failed: Caption mismatch: {img12['caption']}"
+    assert all("photo-1513836279014-a89f7a76ae86" not in item["url"] for item in engine.CATEGORY_FALLBACK_POOLS["Business & Economy"]), "Test 12 Failed: Nuclear image still in Business & Economy pool!"
+    print("✓ TEST 12 PASSED: Real estate story receives verified property image; nuclear image strictly excluded.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 13: Market Futures Story Uses Modern Financial Image & Rejects Antique Thumbnail
+    # -------------------------------------------------------------------------
+    print("\n[TEST 13] Market Futures Story Uses Modern Financial Image & Rejects Antique Thumbnail...")
+    t13 = "Stock futures remain under pressure after worst Nasdaq session since June: Live updates -"
+    entities13 = engine.extract_named_entities_from_title(t13)
+    assert "Stock" not in entities13, "Test 13 Failed: 'Stock' extracted as entity!"
+    assert "Futures" not in entities13, "Test 13 Failed: 'Futures' extracted as entity!"
+    assert "Stock_futures" not in entities13, "Test 13 Failed: 'Stock_futures' extracted as entity!"
+    assert "nasdaq" in [entity.casefold() for entity in entities13], "Test 13 Failed: 'nasdaq' not extracted as recognized entity!"
+
+    antique_page = {
+        "title": "Stock",
+        "description": "A historical handwritten share certificate from the seventeenth century",
+        "extract": "An antique manuscript documenting early share ownership.",
+        "thumbnail": {
+            "source": "https://upload.wikimedia.org/wikipedia/commons/example-antique-certificate.jpg"
+        },
+    }
+    assert not engine.is_wikipedia_result_relevant(
+        antique_page,
+        t13,
+        "Business & Economy",
+        "Business & Economy",
+    ), "Test 13 Failed: Antique share certificate was not rejected!"
+
+    img13 = engine.resolve_story_image(
+        t13,
+        "Business & Economy",
+        master_category="Business & Economy",
+        used_urls=set(),
+    )
+    assert img13["url"], "Test 13 Failed: No image returned for market futures!"
+    assert img13["associated_subject"] == "Business_FinancialMarkets", f"Test 13 Failed: Subject is {img13['associated_subject']}"
+    assert any(word in img13["caption"].lower() for word in ("financial", "market", "trading")), f"Test 13 Failed: Caption mismatch: {img13['caption']}"
+    assert "antique" not in img13["caption"].lower(), "Test 13 Failed: Antique in caption!"
+    assert "certificate" not in img13["caption"].lower(), "Test 13 Failed: Certificate in caption!"
+    print("✓ TEST 13 PASSED: Market futures story uses modern financial image; standalone generic nouns and antique certificate rejected.")
+    passed_count += 1
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
     print("\n" + "=" * 75)
@@ -366,3 +422,56 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exc()
         sys.exit(1)
+
+def test_12_real_estate_and_interest_rate_story_uses_relevant_image():
+    title = "Higher interest rates have made family offices pickier about investing in real estate"
+    used_urls = set()
+    result = engine.resolve_story_image(
+        title,
+        "Business & Economy",
+        master_category="Business & Economy",
+        used_urls=used_urls,
+    )
+    assert result["url"]
+    assert "photo-1513836279014-a89f7a76ae86" not in result["url"]
+    assert result["associated_subject"] == "Business_RealEstate"
+    assert any(word in result["caption"].lower() for word in ("real estate", "property", "residential"))
+    assert all(
+        "photo-1513836279014-a89f7a76ae86" not in item["url"]
+        for item in engine.CATEGORY_FALLBACK_POOLS["Business & Economy"]
+    )
+
+def test_13_market_futures_story_uses_modern_financial_image_and_rejects_antique_thumbnail():
+    title = "Stock futures remain under pressure after worst Nasdaq session since June"
+    entities = engine.extract_named_entities_from_title(title)
+    assert "Stock" not in entities
+    assert "Futures" not in entities
+    assert "Stock_futures" not in entities
+    assert "nasdaq" in [entity.casefold() for entity in entities]
+
+    antique_page = {
+        "title": "Stock",
+        "description": "A historical handwritten share certificate from the seventeenth century",
+        "extract": "An antique manuscript documenting early share ownership.",
+        "thumbnail": {
+            "source": "https://upload.wikimedia.org/wikipedia/commons/example-antique-certificate.jpg"
+        },
+    }
+    assert not engine.is_wikipedia_result_relevant(
+        antique_page,
+        title,
+        "Business & Economy",
+        "Business & Economy",
+    )
+
+    result = engine.resolve_story_image(
+        title,
+        "Business & Economy",
+        master_category="Business & Economy",
+        used_urls=set(),
+    )
+    assert result["url"]
+    assert result["associated_subject"] == "Business_FinancialMarkets"
+    assert any(word in result["caption"].lower() for word in ("financial", "market", "trading"))
+    assert "antique" not in result["caption"].lower()
+    assert "certificate" not in result["caption"].lower()
