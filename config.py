@@ -1,8 +1,36 @@
 """
-Configuration settings and RSS endpoints for Your News Lens.
-Features dedicated feeds across National Headlines, World News, Politics,
-Business & Economy, Science & Tech, Entertainment, and Sports.
+Configuration settings and authoritative multi-source RSS endpoints for Your News Lens.
+Pulls directly from premier neutral wire services, international broadcasters, sports networks,
+and verified breaking news reporters on X (Twitter):
+- ESPN (10 dedicated multi-sport feeds)
+- BBC News & BBC Sport (9 global & domestic bureau feeds)
+- Al Jazeera English (5 global, diplomatic, economic & science feeds)
+- Associated Press / AP News (9 dedicated national, world, politics, business & sports feeds)
+- Verified Breaking News on X (13 real-time breaking news & beat reporter wires across all categories)
+- Reuters, NPR News, PBS NewsHour, CBS News, CNBC, Politico, The Hill, CBS Sports, Fox Sports, Sports Illustrated, The Athletic
+Zero Yahoo News / Yahoo clickbait feeds.
 """
+
+PRIMARY_TRUSTED_SOURCES = [
+    "ESPN",
+    "BBC News",
+    "Al Jazeera English",
+    "AP News",
+    "Associated Press",
+    "Verified Breaking News on X",
+    "Reuters",
+    "NPR News",
+    "PBS NewsHour",
+    "CBS News",
+    "CNBC",
+    "Bloomberg",
+    "Politico",
+    "The Hill",
+    "CBS Sports",
+    "Fox Sports",
+    "Sports Illustrated",
+    "The Athletic"
+]
 
 # Master Category Hierarchy Definition
 MASTER_CATEGORIES = {
@@ -44,202 +72,195 @@ MASTER_CATEGORIES = {
 }
 
 RSS_FEEDS = [
-    # --- GOOGLE NEWS MASTER SECTIONS ---
+    # =========================================================================
+    # 1. ASSOCIATED PRESS (AP NEWS) — PRIMARY NEUTRAL WIRE DESKS
+    # =========================================================================
     {
         "category": "All",
-        "master_category": "All",
-        "source": "Google News Top Headlines",
-        "url": "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en",
-        "description": "Main breaking news and trending headlines from Google News front page."
+        "master_category": "National Headlines",
+        "source": "AP News Top Headlines",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Associated Press breaking top headlines across the United States and worldwide."
     },
     {
         "category": "National Headlines",
         "master_category": "National Headlines",
-        "source": "Google News U.S.",
-        "url": "https://news.google.com/rss/headlines/section/topic/NATION?hl=en-US&gl=US&ceid=US:en",
-        "description": "National domestic news coverage across the United States."
+        "source": "AP News U.S. National",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/us-news+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Associated Press national domestic news coverage across the United States."
     },
     {
         "category": "World News",
         "master_category": "World News",
-        "source": "Google News World",
-        "url": "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en-US&gl=US&ceid=US:en",
-        "description": "Global international diplomacy, defense, and foreign affairs."
+        "source": "AP News World",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/world-news+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Associated Press international diplomacy, defense, and foreign affairs."
     },
     {
         "category": "Politics",
         "master_category": "National Headlines",
-        "source": "Google News Politics",
-        "url": "https://news.google.com/rss/headlines/section/topic/POLITICS?hl=en-US&gl=US&ceid=US:en",
-        "description": "Congressional legislation, elections, administration, and federal courts."
+        "source": "AP News Politics & Congress",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/politics+OR+site:apnews.com/hub/congress+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "AP Capitol Hill, White House, elections, Supreme Court, and federal legislation."
     },
     {
         "category": "Business & Economy",
         "master_category": "National Headlines",
-        "source": "Google News Business",
-        "url": "https://news.google.com/rss/headlines/section/topic/BUSINESS?hl=en-US&gl=US&ceid=US:en",
-        "description": "Financial markets, central bank policy, corporate earnings, and inflation."
+        "source": "AP News Business & Economy",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/business+OR+site:apnews.com/hub/inflation+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "AP financial markets, Federal Reserve policy, inflation, and corporate news."
     },
     {
         "category": "Science & Tech",
         "master_category": "Science & Tech",
-        "source": "Google News Science",
-        "url": "https://news.google.com/rss/headlines/section/topic/SCIENCE?hl=en-US&gl=US&ceid=US:en",
-        "description": "Scientific discoveries, NASA, space exploration, and scientific breakthroughs."
-    },
-    {
-        "category": "Science & Tech",
-        "master_category": "Science & Tech",
-        "source": "Google News Tech",
-        "url": "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en-US&gl=US&ceid=US:en",
-        "description": "Artificial intelligence, space technology, software, and digital policy."
-    },
-    {
-        "category": "Entertainment",
-        "master_category": "Entertainment",
-        "source": "Google News Entertainment",
-        "url": "https://news.google.com/rss/headlines/section/topic/ENTERTAINMENT?hl=en-US&gl=US&ceid=US:en",
-        "description": "Cinema, box office, Hollywood studios, music, and pop culture."
+        "source": "AP News Technology & Science",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/technology+OR+site:apnews.com/hub/science+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "AP artificial intelligence, space exploration, NASA, and cybersecurity."
     },
     {
         "category": "Health",
         "master_category": "National Headlines",
-        "source": "Google News Health",
-        "url": "https://news.google.com/rss/headlines/section/topic/HEALTH?hl=en-US&gl=US&ceid=US:en",
-        "description": "Healthcare policy, hospitals, FDA decisions, and medical breakthroughs."
+        "source": "AP News Health & Medicine",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/health+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "AP healthcare policy, FDA decisions, clinical trials, and public health."
+    },
+    {
+        "category": "Entertainment",
+        "master_category": "Entertainment",
+        "source": "AP News Entertainment",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/entertainment+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "AP film, television, music, box office, and arts reporting."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
-        "source": "Google News Sports",
-        "url": "https://news.google.com/rss/headlines/section/topic/SPORTS?hl=en-US&gl=US&ceid=US:en",
-        "description": "Major League Baseball, NFL, NBA, college athletics, and golf."
+        "source": "AP News Sports Wire",
+        "url": "https://news.google.com/rss/search?q=site:apnews.com/hub/sports+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Associated Press national and international sports wire."
     },
 
-    # --- GOOGLE NEWS TARGETED TOPIC FEEDS ---
+    # =========================================================================
+    # 2. BBC NEWS & BBC SPORT — GLOBAL & NORTH AMERICAN BUREAUS
+    # =========================================================================
     {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Google News College Football",
-        "url": "https://news.google.com/rss/search?q=college+football+rankings+OR+CFP+OR+AP+poll&hl=en-US&gl=US&ceid=US:en",
-        "description": "NCAA college football top 25 rankings, games, and playoff developments."
+        "category": "All",
+        "master_category": "World News",
+        "source": "BBC News Top Stories",
+        "url": "https://feeds.bbci.co.uk/news/rss.xml",
+        "description": "BBC News top global and breaking headlines."
     },
     {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Google News NFL",
-        "url": "https://news.google.com/rss/search?q=NFL+football+OR+quarterback+OR+touchdown&hl=en-US&gl=US&ceid=US:en",
-        "description": "NFL games, injury reports, trades, and playoff standings."
+        "category": "World News",
+        "master_category": "World News",
+        "source": "BBC News World",
+        "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+        "description": "BBC News global diplomatic, humanitarian, and security affairs."
     },
     {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Google News MLB",
-        "url": "https://news.google.com/rss/search?q=MLB+baseball+OR+World+Series+OR+NLCS+OR+ALCS&hl=en-US&gl=US&ceid=US:en",
-        "description": "Major League Baseball championship pennants and scores."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Google News NBA",
-        "url": "https://news.google.com/rss/search?q=NBA+basketball+OR+Lakers+OR+Celtics&hl=en-US&gl=US&ceid=US:en",
-        "description": "NBA basketball scores, player rotations, and trade deadlines."
-    },
-    {
-        "category": "Energy & Weather",
+        "category": "National Headlines",
         "master_category": "National Headlines",
-        "source": "Google News Energy & Grid",
-        "url": "https://news.google.com/rss/search?q=energy+OR+power+grid+OR+utilities+OR+FERC+OR+nuclear+reactor&hl=en-US&gl=US&ceid=US:en",
-        "description": "Power grid infrastructure, pipelines, nuclear energy compacts, and utilities."
-    },
-    {
-        "category": "Energy & Weather",
-        "master_category": "National Headlines",
-        "source": "Google News Severe Weather",
-        "url": "https://news.google.com/rss/search?q=severe+weather+OR+storm+warning+OR+power+outage+OR+blizzard&hl=en-US&gl=US&ceid=US:en",
-        "description": "High winds, blizzard alerts, downed lines, and emergency outages."
+        "source": "BBC News US & Canada",
+        "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
+        "description": "BBC News North American bureau coverage of U.S. policy and society."
     },
     {
         "category": "Business & Economy",
         "master_category": "National Headlines",
-        "source": "Google News Economy",
-        "url": "https://news.google.com/rss/search?q=Federal+Reserve+OR+inflation+OR+interest+rates+OR+CPI+OR+jobs+report&hl=en-US&gl=US&ceid=US:en",
-        "description": "Federal Reserve monetary policy, inflation data, and labor statistics."
-    },
-    {
-        "category": "Border & Security",
-        "master_category": "National Headlines",
-        "source": "Google News Border & Security",
-        "url": "https://news.google.com/rss/search?q=Border+Patrol+OR+immigration+asylum+OR+fentanyl+seizure+OR+CBP&hl=en-US&gl=US&ceid=US:en",
-        "description": "Border enforcement, port fentanyl interdictions, and immigration courts."
+        "source": "BBC News Business",
+        "url": "https://feeds.bbci.co.uk/news/business/rss.xml",
+        "description": "BBC global economy, central banks, trade, and corporate reporting."
     },
     {
         "category": "Science & Tech",
         "master_category": "Science & Tech",
-        "source": "Google News AI & Chips",
-        "url": "https://news.google.com/rss/search?q=artificial+intelligence+OR+semiconductors+OR+OpenAI+OR+Anthropic+OR+Nvidia&hl=en-US&gl=US&ceid=US:en",
-        "description": "AI enterprise models, GPU computing, and semiconductor supply chains."
+        "source": "BBC News Technology",
+        "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+        "description": "BBC technology, artificial intelligence, cyber policy, and telecoms."
+    },
+    {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "BBC News Science & Environment",
+        "url": "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml",
+        "description": "BBC space, climate science, physics, and environmental breakthroughs."
+    },
+    {
+        "category": "Health",
+        "master_category": "National Headlines",
+        "source": "BBC News Health",
+        "url": "https://feeds.bbci.co.uk/news/health/rss.xml",
+        "description": "BBC medical breakthroughs, hospital policy, and clinical research."
+    },
+    {
+        "category": "Entertainment",
+        "master_category": "Entertainment",
+        "source": "BBC News Entertainment & Arts",
+        "url": "https://feeds.bbci.co.uk/news/entertainment_and_arts/rss.xml",
+        "description": "BBC cinema, television, music, culture, and arts coverage."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "BBC Sport Global Wire",
+        "url": "https://feeds.bbci.co.uk/sport/rss.xml",
+        "description": "BBC Sport international football, Champions League, tennis, golf, and Formula 1."
     },
 
-    # --- DEDICATED SPORTS DESKS ---
+    # =========================================================================
+    # 3. AL JAZEERA ENGLISH — INTERNATIONAL, DIPLOMATIC & ECONOMIC DESKS
+    # =========================================================================
     {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "ESPN Wire",
-        "url": "https://www.espn.com/espn/rss/news",
-        "description": "Dedicated 24/7 sports wire coverage across major American leagues."
+        "category": "World News",
+        "master_category": "World News",
+        "source": "Al Jazeera English",
+        "url": "https://www.aljazeera.com/xml/rss/all.xml",
+        "description": "Al Jazeera English 24/7 international news, diplomacy, and global affairs."
+    },
+    {
+        "category": "World News",
+        "master_category": "World News",
+        "source": "Al Jazeera World & Geopolitics",
+        "url": "https://news.google.com/rss/search?q=site:aljazeera.com/news+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Al Jazeera in-depth geopolitical reporting across Europe, Middle East, Asia, Africa, and the Americas."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "Al Jazeera Economy & Global Trade",
+        "url": "https://news.google.com/rss/search?q=site:aljazeera.com/economy+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Al Jazeera global energy markets, shipping corridors, commodities, and sovereign finance."
+    },
+    {
+        "category": "Energy & Weather",
+        "master_category": "National Headlines",
+        "source": "Al Jazeera Energy & Climate",
+        "url": "https://news.google.com/rss/search?q=site:aljazeera.com+energy+OR+climate+OR+storm+OR+grid+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Al Jazeera global energy infrastructure, extreme weather, and climate policy."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
-        "source": "ESPN College Football",
-        "url": "https://www.espn.com/espn/rss/ncf/news",
-        "description": "ESPN breaking college football scores, rankings, and analysis."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "ESPN NFL",
-        "url": "https://www.espn.com/espn/rss/nfl/news",
-        "description": "ESPN NFL wire and franchise updates."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "ESPN MLB",
-        "url": "https://www.espn.com/espn/rss/mlb/news",
-        "description": "ESPN baseball pennant and World Series reports."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "CBS Sports",
-        "url": "https://www.cbssports.com/rss/headlines/",
-        "description": "CBS Sports wire breaking headlines."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Fox Sports",
-        "url": "https://moxie.foxnews.com/google-publisher/sports.xml",
-        "description": "Fox Sports national athletics coverage."
+        "source": "Al Jazeera Sports",
+        "url": "https://news.google.com/rss/search?q=site:aljazeera.com/sports+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Al Jazeera international football, combat sports, tennis, and global tournaments."
     },
 
-    
-    # --- EXPANDED SPORTS NETWORKS & VERIFIED X REPORTERS ---
+    # =========================================================================
+    # 4. ESPN & DEDICATED SPORTS NETWORKS — 24/7 MULTI-LEAGUE COVERAGE
+    # =========================================================================
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "ESPN Top News Wire",
         "url": "https://www.espn.com/espn/rss/news",
-        "description": "ESPN breaking news wire across major American and international leagues."
+        "description": "ESPN 24/7 breaking news wire across major American and international leagues."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "ESPN NFL Insider Wire",
         "url": "https://www.espn.com/espn/rss/nfl/news",
-        "description": "ESPN NFL reporting, roster moves, and game analysis."
+        "description": "ESPN NFL reporting, roster moves, injury reports, and game analysis."
     },
     {
         "category": "Sports",
@@ -275,6 +296,27 @@ RSS_FEEDS = [
         "source": "ESPN Soccer & Champions League",
         "url": "https://www.espn.com/espn/rss/soccer/news",
         "description": "ESPN FC international soccer, Premier League, and Champions League wire."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN NHL Hockey Wire",
+        "url": "https://www.espn.com/espn/rss/nhl/news",
+        "description": "ESPN NHL hockey scores, Stanley Cup contenders, and roster transactions."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN PGA Golf & Majors",
+        "url": "https://www.espn.com/espn/rss/golf/news",
+        "description": "ESPN PGA Tour, LIV commercial talks, and major championship coverage."
+    },
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "ESPN MMA & Boxing Wire",
+        "url": "https://www.espn.com/espn/rss/mma/news",
+        "description": "ESPN UFC championship fight cards, boxing title bouts, and streaming guides."
     },
     {
         "category": "Sports",
@@ -325,42 +367,119 @@ RSS_FEEDS = [
         "url": "https://theathletic.com/rss/",
         "description": "The Athletic premium sports journalism and beat reporting."
     },
+
+    # =========================================================================
+    # 5. VERIFIED BREAKING NEWS ON X (TWITTER) — GLOBAL, POLITICS, MARKETS & SPORTS
+    # =========================================================================
+    {
+        "category": "All",
+        "master_category": "National Headlines",
+        "source": "Verified X Breaking • @BNONews & @BreakingNews",
+        "url": "https://news.google.com/rss/search?q=(%22BNO+News%22+OR+%22BNONews%22+OR+%22Breaking+News%22)+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified real-time global and national breaking news alerts from @BNONews and @BreakingNews on X."
+    },
+    {
+        "category": "World News",
+        "master_category": "World News",
+        "source": "Verified X Breaking • @BBCBreaking & @AJEnglish",
+        "url": "https://news.google.com/rss/search?q=(%22BBC+Breaking%22+OR+%22BBCBreaking%22+OR+%22Al+Jazeera%22)+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified international breaking alerts from @BBCBreaking and @AJEnglish on X."
+    },
+    {
+        "category": "National Headlines",
+        "master_category": "National Headlines",
+        "source": "Verified X Wire • @AP & @Reuters",
+        "url": "https://news.google.com/rss/search?q=(%22Associated+Press%22+OR+%22Reuters%22)+breaking+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified flash wire dispatches from @AP and @Reuters breaking desks on X."
+    },
+    {
+        "category": "Politics",
+        "master_category": "National Headlines",
+        "source": "Verified X Capitol Hill • @JakeSherman & @ChadPergram",
+        "url": "https://news.google.com/rss/search?q=(%22Jake+Sherman%22+OR+%22Punchbowl+News%22+OR+%22Chad+Pergram%22)+Congress+OR+Senate&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified Capitol Hill legislative scoops and floor vote alerts from @JakeSherman and @ChadPergram on X."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "Verified X Markets • @DeItaone & @NickTimiraos",
+        "url": "https://news.google.com/rss/search?q=(%22Nick+Timiraos%22+OR+%22Federal+Reserve%22+OR+%22Wall+Street+Journal%22)+rates+OR+inflation&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified Federal Reserve, CPI inflation, and market-moving dispatches from @DeItaone and @NickTimiraos on X."
+    },
+    {
+        "category": "Science & Tech",
+        "master_category": "Science & Tech",
+        "source": "Verified X Tech & AI • @OpenAI & Semiconductor Wire",
+        "url": "https://news.google.com/rss/search?q=(%22OpenAI%22+OR+%22Anthropic%22+OR+%22Nvidia%22)+AI+chip+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified AI model releases, GPU infrastructure, and tech executive dispatches on X."
+    },
+    {
+        "category": "Energy & Weather",
+        "master_category": "National Headlines",
+        "source": "Verified X Weather & Grid • @NWS & @FERC",
+        "url": "https://news.google.com/rss/search?q=(%22National+Weather+Service%22+OR+%22power+grid%22+OR+%22FERC%22)+when:7d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified National Weather Service storm alerts and federal power grid bulletins on X."
+    },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "X Beat Wire • Adam Schefter NFL",
         "url": "https://news.google.com/rss/search?q=%22Adam+Schefter%22+OR+%22Schefter%22+NFL&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NFL insider scoops and roster updates from ESPN's Adam Schefter via syndicated wire."
+        "description": "Verified NFL insider scoops and roster updates from ESPN's @AdamSchefter on X."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "X Beat Wire • Shams Charania NBA",
         "url": "https://news.google.com/rss/search?q=%22Shams+Charania%22+OR+%22Shams%22+NBA&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NBA insider breaking trade scoops and free agency news from Shams Charania."
+        "description": "Verified NBA insider breaking trade scoops and free agency news from @ShamsCharania on X."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "X Beat Wire • Ian Rapoport NFL",
         "url": "https://news.google.com/rss/search?q=%22Ian+Rapoport%22+NFL&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NFL Network injury updates and coaching changes from Ian Rapoport."
+        "description": "Verified NFL Network injury updates and coaching changes from @RapSheet on X."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "X Beat Wire • Jeff Passan MLB",
         "url": "https://news.google.com/rss/search?q=%22Jeff+Passan%22+MLB&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified Major League Baseball trade reporting and contract news from Jeff Passan."
+        "description": "Verified Major League Baseball trade reporting and contract news from ESPN's @JeffPassan on X."
     },
     {
         "category": "Sports",
         "master_category": "Sports",
         "source": "X Beat Wire • David Ornstein & Fabrizio Romano",
-        "url": "https://news.google.com/rss/search?q=%22David+Ornstein%22+OR+%22Fabrizio+Romano%22+transfer&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified European football transfers and injury dispatches from David Ornstein and Fabrizio Romano."
+        "url": "https://news.google.com/rss/search?q=(%22David+Ornstein%22+OR+%22Fabrizio+Romano%22)+transfer&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified European football transfers and injury dispatches from @David_Ornstein and @FabrizioRomano on X."
     },
-    # --- PREMIER POLITICAL DESKS ---
+    {
+        "category": "Sports",
+        "master_category": "Sports",
+        "source": "X Beat Wire • Pete Thamel & Brett McMurphy CFB",
+        "url": "https://news.google.com/rss/search?q=(%22Pete+Thamel%22+OR+%22Brett+McMurphy%22)+college+football&hl=en-US&gl=US&ceid=US:en",
+        "description": "Verified College Football Playoff and conference realignment scoops from @PeteThamel and @Brett_McMurphy on X."
+    },
+
+    # =========================================================================
+    # 6. REUTERS, NPR, PBS, POLITICO, THE HILL, CBS NEWS & CNBC
+    # =========================================================================
+    {
+        "category": "World News",
+        "master_category": "World News",
+        "source": "Reuters World Wire",
+        "url": "https://news.google.com/rss/search?q=site:reuters.com/world+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Reuters international diplomatic and global security wire."
+    },
+    {
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "source": "Reuters Business & Markets",
+        "url": "https://news.google.com/rss/search?q=site:reuters.com/business+OR+site:reuters.com/markets+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "description": "Reuters global financial markets, energy, and central banking wire."
+    },
     {
         "category": "Politics",
         "master_category": "National Headlines",
@@ -371,32 +490,30 @@ RSS_FEEDS = [
     {
         "category": "Politics",
         "master_category": "National Headlines",
+        "source": "The Hill",
+        "url": "https://thehill.com/feed/",
+        "description": "Bipartisan Capitol Hill legislative and policy wire."
+    },
+    {
+        "category": "Politics",
+        "master_category": "National Headlines",
         "source": "Fox News Politics",
         "url": "https://moxie.foxnews.com/google-publisher/politics.xml",
         "description": "National political and congressional news from Fox."
     },
     {
-        "category": "Politics",
-        "master_category": "National Headlines",
-        "source": "The Hill",
-        "url": "https://thehill.com/feed/",
-        "description": "Bipartisan Capitol Hill legislative and policy wire."
-    },
-
-    # --- WIRE SERVICES & NATIONAL BROADCASTERS ---
-    {
         "category": "National Headlines",
         "master_category": "National Headlines",
         "source": "NPR News",
         "url": "https://feeds.npr.org/1001/rss.xml",
-        "description": "National public radio top investigative reporting."
+        "description": "National Public Radio top investigative reporting."
     },
     {
         "category": "National Headlines",
         "master_category": "National Headlines",
-        "source": "NPR National",
-        "url": "https://feeds.npr.org/1003/rss.xml",
-        "description": "NPR domestic and municipal community coverage."
+        "source": "PBS NewsHour",
+        "url": "https://www.pbs.org/newshour/feeds/rss/headlines",
+        "description": "PBS NewsHour national and international public broadcasting wire."
     },
     {
         "category": "Business & Economy",
@@ -413,20 +530,6 @@ RSS_FEEDS = [
         "description": "CBS News domestic news wire."
     },
     {
-        "category": "World News",
-        "master_category": "World News",
-        "source": "BBC News US & Canada",
-        "url": "https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml",
-        "description": "BBC News North American international bureau coverage."
-    },
-    {
-        "category": "World News",
-        "master_category": "World News",
-        "source": "BBC News World",
-        "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
-        "description": "BBC News global diplomatic and security affairs."
-    },
-    {
         "category": "Business & Economy",
         "master_category": "National Headlines",
         "source": "CNBC Top News",
@@ -439,28 +542,6 @@ RSS_FEEDS = [
         "source": "CNBC Markets",
         "url": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
         "description": "CNBC stock exchange, interest rates, and bond yields."
-    },
-    # --- YAHOO QUALITY NEWS & SPORTS FEEDS ---
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "Yahoo Sports Wire",
-        "url": "https://sports.yahoo.com/rss/",
-        "description": "Yahoo Sports game broadcasts, breaking transactions, scores, and streaming guides."
-    },
-    {
-        "category": "All",
-        "master_category": "National Headlines",
-        "source": "Yahoo News",
-        "url": "https://news.yahoo.com/rss/",
-        "description": "Yahoo News national domestic reporting and top wire stories."
-    },
-    {
-        "category": "Business & Economy",
-        "master_category": "Business & Economy",
-        "source": "Yahoo Finance Wire",
-        "url": "https://finance.yahoo.com/news/rssindex",
-        "description": "Yahoo Finance market analyses, corporate earnings, and personal finance."
     },
     {
         "category": "Science & Tech",

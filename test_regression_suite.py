@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 21
+    total_tests = 22
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -669,40 +669,10 @@ def run_all_regression_tests():
     passed_count += 1
 
     # -------------------------------------------------------------------------
-    # TEST 21: Yahoo Quality Re-Integration & Practical Streaming Enrichment Verification
+    # TEST 21: Practical Streaming Entity Enrichment (DAZN) & Fact 1 Direct Answer Mandate
     # -------------------------------------------------------------------------
-    print("\n[TEST 21] Yahoo Quality Re-Integration & Practical Streaming Enrichment Verification...")
-    # 1. Assert Yahoo feeds are present in config.py
-    yahoo_feeds = [
-        f for f in config.RSS_FEEDS
-        if "yahoo" in f.get("source", "").lower() or "yahoo.com" in f.get("url", "").lower()
-    ]
-    assert len(yahoo_feeds) >= 2, f"Test 21 Failed: Expected >=2 Yahoo feeds in config.py, found {len(yahoo_feeds)}"
-
-    # 2. Assert Yahoo stories are present in data/stories.json
-    data_path = os.path.join(os.path.dirname(__file__), "data", "stories.json")
-    with open(data_path, "r", encoding="utf-8") as fp:
-        all_stories = json.load(fp)
-    yahoo_stories = [
-        s for s in all_stories
-        if "yahoo" in str(s.get("source_name", "")).lower() or "yahoo.com" in str(s.get("link", "")).lower()
-    ]
-    assert len(yahoo_stories) >= 2, f"Test 21 Failed: Expected >=2 Yahoo stories in data/stories.json, found {len(yahoo_stories)}"
-
-    # 3. Assert Yahoo stories render into index.html
-    html_path = os.path.join(os.path.dirname(__file__), "index.html")
-    with open(html_path, "r", encoding="utf-8") as fp:
-        html_content = fp.read()
-    assert "sports.yahoo.com" in html_content.lower() or "yahoo" in html_content.lower(), "Test 21 Failed: Yahoo content not found in index.html!"
-
-    # 4. Assert engine.is_disallowed_source allows Yahoo while rejecting true spam
-    assert not engine.is_disallowed_source("https://sports.yahoo.com/cfb-playoff-expansion"), "Test 21 Failed: Yahoo sports URL incorrectly rejected!"
-    assert not engine.is_disallowed_source("https://news.yahoo.com/breaking-news"), "Test 21 Failed: Yahoo news URL incorrectly rejected!"
-    assert not engine.is_disallowed_source({"source_name": "Yahoo Sports", "title": "Game Recap", "link": "https://sports.yahoo.com/recap"}), "Test 21 Failed: Yahoo source incorrectly rejected!"
-    assert engine.is_disallowed_source("https://clickbaitspam.com/fake-news"), "Test 21 Failed: Spam domain not rejected!"
-
-    # 5. Practical streaming service entity enrichment (DAZN, etc.)
-    t_dazn = "How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access - Yahoo Sports"
+    print("\n[TEST 21] Practical Streaming Entity Enrichment (DAZN) & Fact 1 Direct Answer Verification...")
+    t_dazn = "How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access - ESPN"
     d_dazn = "The undisputed super middleweight championship fight streams live on DAZN this Saturday night."
     assert engine.is_question_or_clickbait_headline(t_dazn), "Test 21 Failed: DAZN viewing headline not identified as question/viewing query!"
     s_dazn = engine.generate_contextual_synthesis(t_dazn, d_dazn, "Sports")
@@ -714,15 +684,15 @@ def run_all_regression_tests():
     assert "?" not in f1_dazn, f"Test 21 Failed: Fact 1 contains question mark: {f1_dazn}"
 
     # Verify Non-Question streaming story also receives streaming entity breakdown
-    t_dazn_nq = "Canelo Alvarez confirms championship defense against William Scull on DAZN - Yahoo Sports"
+    t_dazn_nq = "Canelo Alvarez confirms championship defense against William Scull on DAZN - ESPN"
     s_dazn_nq = engine.generate_contextual_synthesis(t_dazn_nq, d_dazn, "Sports")
     facts_text = " ".join(s_dazn_nq["core_facts"]).lower()
     assert "standalone app" in facts_text, "Test 21 Failed: Standalone app info missing from non-question story facts!"
     assert "$19.99" in facts_text, "Test 21 Failed: Cost info missing from non-question story facts!"
     assert "dazn.com" in facts_text, "Test 21 Failed: Where to order missing from non-question story facts!"
 
-    # 6. Universal Fact 1 Direct Answer across question & curiosity-inducing headlines
-    t_why = "Here's why the Detroit Lions traded for edge rusher Za'Darius Smith - Yahoo Sports"
+    # Universal Fact 1 Direct Answer across question & curiosity-inducing headlines
+    t_why = "Here's why the Detroit Lions traded for edge rusher Za'Darius Smith - ESPN"
     d_why = "The Detroit Lions completed a trade for Za'Darius Smith after losing Aidan Hutchinson to a fractured tibia, reinforcing their defensive pass rush."
     assert engine.is_question_or_clickbait_headline(t_why), "Test 21 Failed: 'Here\'s why' headline not detected!"
     s_why = engine.generate_contextual_synthesis(t_why, d_why, "Sports")
@@ -730,7 +700,72 @@ def run_all_regression_tests():
     assert "Direct Answer" in f1_why or "Core Reason" in f1_why, f"Test 21 Failed: Fact 1 does not answer 'Here\'s why': {f1_why}"
     assert "?" not in f1_why, f"Test 21 Failed: Fact 1 contains question mark: {f1_why}"
 
-    print("✓ TEST 21 PASSED: Yahoo quality re-integration, streaming entity enrichment (DAZN cost/ordering/app), and Fact 1 direct answers verified.")
+    print("✓ TEST 21 PASSED: Practical streaming entity enrichment (DAZN cost/ordering/standalone app) and Fact 1 direct answers verified.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 22: Multi-Source Aggregation (ESPN, BBC, Al Jazeera, AP News, Verified X) & Zero Yahoo Dependency
+    # -------------------------------------------------------------------------
+    print("\n[TEST 22] Multi-Source Aggregation (ESPN, BBC, Al Jazeera, AP News, Verified X) & Zero Yahoo Verification...")
+    # 1. Verify config.py has dedicated feeds for ESPN, BBC, Al Jazeera, AP News, and Verified Breaking News on X, and ZERO Yahoo feeds
+    yahoo_feeds = [
+        f for f in config.RSS_FEEDS
+        if "yahoo" in f.get("source", "").lower() or "yahoo.com" in f.get("url", "").lower()
+    ]
+    assert len(yahoo_feeds) == 0, f"Test 22 Failed: Found {len(yahoo_feeds)} Yahoo feeds in config.py!"
+
+    espn_feeds = [f for f in config.RSS_FEEDS if "espn" in f.get("source", "").lower() or "espn.com" in f.get("url", "").lower()]
+    bbc_feeds = [f for f in config.RSS_FEEDS if "bbc" in f.get("source", "").lower() or "bbci.co.uk" in f.get("url", "").lower()]
+    aljazeera_feeds = [f for f in config.RSS_FEEDS if "al jazeera" in f.get("source", "").lower() or "aljazeera.com" in f.get("url", "").lower()]
+    ap_feeds = [f for f in config.RSS_FEEDS if "ap news" in f.get("source", "").lower() or "apnews.com" in f.get("url", "").lower()]
+    x_feeds = [f for f in config.RSS_FEEDS if "verified x" in f.get("source", "").lower() or "x beat wire" in f.get("source", "").lower()]
+
+    assert len(espn_feeds) >= 8, f"Test 22 Failed: Expected >=8 ESPN feeds, found {len(espn_feeds)}"
+    assert len(bbc_feeds) >= 6, f"Test 22 Failed: Expected >=6 BBC feeds, found {len(bbc_feeds)}"
+    assert len(aljazeera_feeds) >= 4, f"Test 22 Failed: Expected >=4 Al Jazeera feeds, found {len(aljazeera_feeds)}"
+    assert len(ap_feeds) >= 6, f"Test 22 Failed: Expected >=6 AP News feeds, found {len(ap_feeds)}"
+    assert len(x_feeds) >= 10, f"Test 22 Failed: Expected >=10 Verified X feeds, found {len(x_feeds)}"
+
+    # 2. Verify engine.is_disallowed_source strictly blocks Yahoo while allowing ESPN, BBC, Al Jazeera, AP News, and Verified X
+    assert engine.is_disallowed_source("https://news.yahoo.com/some-story"), "Test 22 Failed: Yahoo News URL not blocked!"
+    assert engine.is_disallowed_source("https://sports.yahoo.com/nfl"), "Test 22 Failed: Yahoo Sports URL not blocked!"
+    assert engine.is_disallowed_source({"source_name": "Yahoo News", "title": "Breaking headline", "link": "https://yahoo.com"}), "Test 22 Failed: Yahoo dict not blocked!"
+    assert not engine.is_disallowed_source("https://www.espn.com/nfl/story"), "Test 22 Failed: ESPN blocked!"
+    assert not engine.is_disallowed_source("https://www.bbc.com/news/world"), "Test 22 Failed: BBC blocked!"
+    assert not engine.is_disallowed_source("https://www.aljazeera.com/news"), "Test 22 Failed: Al Jazeera blocked!"
+    assert not engine.is_disallowed_source("https://apnews.com/hub/us-news"), "Test 22 Failed: AP News blocked!"
+
+    # 3. Verify data/stories.json has 0 Yahoo stories and rich representation of ESPN, BBC, Al Jazeera, AP News, and Verified X
+    data_path = os.path.join(os.path.dirname(__file__), "data", "stories.json")
+    with open(data_path, "r", encoding="utf-8") as fp:
+        all_stories = json.load(fp)
+    yahoo_stories = [
+        s for s in all_stories
+        if "yahoo" in str(s.get("source_name", "")).lower() or "yahoo.com" in str(s.get("link", "")).lower() or "yahoo" in str(s.get("title", "")).lower()
+    ]
+    assert len(yahoo_stories) == 0, f"Test 22 Failed: Found {len(yahoo_stories)} Yahoo stories in data/stories.json!"
+
+    src_blob = " | ".join(str(s.get("source_name", "")) + " " + str(s.get("article_url", "")) for s in all_stories).lower()
+    assert "espn" in src_blob, "Test 22 Failed: ESPN missing from stories.json!"
+    assert "bbc" in src_blob, "Test 22 Failed: BBC missing from stories.json!"
+    assert "al jazeera" in src_blob or "aljazeera" in src_blob, "Test 22 Failed: Al Jazeera missing from stories.json!"
+    assert "ap news" in src_blob or "associated press" in src_blob or "apnews.com" in src_blob, "Test 22 Failed: AP News missing from stories.json!"
+    assert "verified x" in src_blob or "schefter" in src_blob or "shams" in src_blob, "Test 22 Failed: Verified X missing from stories.json!"
+
+    # 4. Verify app.js and index.html have 0 Yahoo URLs and poll ESPN, BBC, Al Jazeera, AP News, and Verified X
+    js_path = os.path.join(os.path.dirname(__file__), "app.js")
+    with open(js_path, "r", encoding="utf-8") as fp:
+        js_content = fp.read()
+    assert "sports.yahoo.com" not in js_content.lower() and "news.yahoo.com" not in js_content.lower(), "Test 22 Failed: Yahoo RSS URL still in app.js!"
+    for required_src in ["espn.com", "bbci.co.uk", "aljazeera.com", "apnews.com", "Verified X"]:
+        assert required_src.lower() in js_content.lower(), f"Test 22 Failed: {required_src} missing from app.js live poller!"
+
+    html_path = os.path.join(os.path.dirname(__file__), "index.html")
+    with open(html_path, "r", encoding="utf-8") as fp:
+        html_content = fp.read()
+    assert "sports.yahoo.com" not in html_content.lower() and "news.yahoo.com" not in html_content.lower(), "Test 22 Failed: Yahoo URL found in index.html!"
+
+    print("✓ TEST 22 PASSED: Multi-source aggregation (ESPN, BBC, Al Jazeera, AP News, Verified X) & zero Yahoo dependency verified.")
     passed_count += 1
 
     # FINAL VERIFICATION SUMMARY
@@ -747,6 +782,25 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exc()
         sys.exit(1)
+
+
+def test_21_streaming_enrichment_and_direct_answers():
+    t_dazn = "How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access - ESPN"
+    s_dazn = engine.generate_contextual_synthesis(t_dazn, "Streams on DAZN.", "Sports")
+    assert "standalone app" in s_dazn["core_facts"][0].lower()
+    assert "$19.99" in s_dazn["core_facts"][0]
+
+
+def test_22_multi_source_aggregation_and_zero_yahoo():
+    import config, json, os, engine
+    yahoo_feeds = [f for f in config.RSS_FEEDS if "yahoo" in f.get("source", "").lower() or "yahoo.com" in f.get("url", "").lower()]
+    assert len(yahoo_feeds) == 0
+    assert engine.is_disallowed_source("https://news.yahoo.com/story")
+    assert not engine.is_disallowed_source("https://www.aljazeera.com/news")
+    assert not engine.is_disallowed_source("https://www.bbc.com/news")
+    assert not engine.is_disallowed_source("https://apnews.com")
+    assert not engine.is_disallowed_source("https://www.espn.com")
+
 
 def test_12_real_estate_and_interest_rate_story_uses_relevant_image():
     title = "Higher interest rates have made family offices pickier about investing in real estate"
@@ -884,27 +938,3 @@ def test_20_sports_catalog_volume_and_even_dispersal():
     assert len(sports_img_urls) == len(set(sports_img_urls))
 
 
-def test_21_zero_yahoo_articles_and_strict_blacklisting():
-    """Updated Test 21 verifying Yahoo quality re-integration, streaming enrichment, and Q&A answers."""
-    import config, json, os, engine
-    yahoo_feeds = [
-        f for f in config.RSS_FEEDS
-        if "yahoo" in f.get("source", "").lower() or "yahoo.com" in f.get("url", "").lower()
-    ]
-    assert len(yahoo_feeds) >= 2
-    data_path = os.path.join(os.path.dirname(__file__), "data", "stories.json")
-    with open(data_path, "r", encoding="utf-8") as fp:
-        all_stories = json.load(fp)
-    yahoo_stories = [
-        s for s in all_stories
-        if "yahoo" in str(s.get("source_name", "")).lower() or "yahoo.com" in str(s.get("link", "")).lower()
-    ]
-    assert len(yahoo_stories) >= 2
-    assert not engine.is_disallowed_source("https://sports.yahoo.com/cfb-playoff-expansion")
-    assert not engine.is_disallowed_source({"source_name": "Yahoo Sports", "title": "Game Recap", "link": "https://sports.yahoo.com/recap"})
-
-    # Streaming entity enrichment check
-    t_dazn = "How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access - Yahoo Sports"
-    s_dazn = engine.generate_contextual_synthesis(t_dazn, "Streams on DAZN.", "Sports")
-    assert "standalone app" in s_dazn["core_facts"][0].lower()
-    assert "$19.99" in s_dazn["core_facts"][0]

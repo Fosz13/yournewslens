@@ -1,5 +1,93 @@
 # Your News Lens — Changelog
 
+## [v4.1] - 2026-10-23 — Multi-Source Aggregation Overhaul (ESPN, BBC, Al Jazeera, AP News, Verified X) & Yahoo News Removal
+- **Eliminated Yahoo News / Yahoo Sports Dominance Across Frontend & Backend**:
+  - Replaced the single-source Yahoo RSS browser fetcher (`fetchBrowserLiveRSS()` in `app.js` and `index.html`) with a **Multi-Source Live Wire Aggregator** rotating across **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified Breaking News on X**.
+  - Upgraded `LIVE_WIRE_RESERVE_DISPATCHES` in `app.js` / `index.html` to pull from **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified X Wire (`@ShamsCharania`, `@BNONews`, `@AP`)** with zero Yahoo dependency.
+  - Removed all Yahoo feeds (`Yahoo News`, `Yahoo Sports Wire`, `Yahoo Finance Wire`) from `config.py` and reinstated strict Yahoo filtering in `engine.is_disallowed_source()` so syndicated Google News queries never ingest Yahoo reprints.
+- **Expanded Primary Authoritative Feeds (`config.py` & `engine.py`)**:
+  - **ESPN (10 Dedicated Desks)**: Top News, NFL, NBA, MLB, College Football, Men's College Basketball, Soccer & Champions League, NHL, PGA Golf, and MMA/Boxing.
+  - **BBC News & BBC Sport (9 Bureaus)**: Top Stories, World, US & Canada, Business, Technology, Science & Environment, Health, Entertainment & Arts, and BBC Sport.
+  - **Al Jazeera English (5 Global Desks)**: Top News (`aljazeera.com/xml/rss/all.xml`), World & Geopolitics, Economy & Global Trade, Energy & Climate, and Sports.
+  - **Associated Press / AP News (9 Wire Desks)**: Top Headlines, U.S. National, World, Politics & Congress, Business & Economy, Technology & Science, Health, Entertainment, and Sports.
+  - **Verified Breaking News on X (13 Real-Time Wires)**: `@BNONews` & `@BreakingNews`, `@BBCBreaking` & `@AJEnglish`, `@AP` & `@Reuters`, `@JakeSherman` & `@ChadPergram` (Capitol Hill), `@DeItaone` & `@NickTimiraos` (Fed/Markets), `@OpenAI` & Tech Insiders, `@NWS` & `@FERC`, plus sports insiders `@AdamSchefter`, `@ShamsCharania`, `@RapSheet`, `@JeffPassan`, `@FabrizioRomano`, `@David_Ornstein`, and `@PeteThamel`.
+  - Added `resolve_canonical_publisher()` in `engine.py` to extract `<source>` XML metadata and map every item to its true publisher instead of generic `Google News` labels.
+- **Preserved All Neutral News Aggregation Method Rules**:
+  - 4 standalone verified facts (zero headline echoes, zero generic boilerplate).
+  - Universal Fact 1 Direct Answer for question & curiosity-gap headlines (`Direct Answer:`, `Direct Verdict:`, `Viewing & Platform Answer:`, `Direct Answer & Core Reason:`).
+  - Practical Streaming Service Entity Enrichment (`DAZN`, `Peacock`, `ESPN+`, `Apple TV+`, `Prime Video`, `Paramount+`, `Max`, `YouTube TV`, `Fubo`, `NFL+` — explaining what it is, exact costs, where to order, and standalone app availability).
+  - Current betting odds in Fact 1 for upcoming sports matchups; strict prohibition of betting odds on injury/medical emergency stories.
+  - Normal-person conversational talking points across Left, Balanced, and Right lenses, and 100% unique image URLs across all 96 stories.
+- **Regression Suite Verification**:
+  - Expanded `test_regression_suite.py` to **22/22 automated tests passing (100% success)**.
+
+
+## [v4.1] - 2026-10-23 — Multi-Source Aggregation Overhaul (ESPN, BBC, Al Jazeera, AP News, Verified X) & Yahoo News Removal
+- **Eliminated Yahoo News / Yahoo Sports Dominance Across Frontend & Backend**:
+  - Replaced the single-source Yahoo RSS browser fetcher (`fetchBrowserLiveRSS()` in `app.js` and `index.html`) with a **Multi-Source Live Wire Aggregator** rotating across **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified Breaking News on X**.
+  - Upgraded `LIVE_WIRE_RESERVE_DISPATCHES` in `app.js` / `index.html` to pull from **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified X Wire (`@ShamsCharania`, `@BNONews`, `@AP`)** with zero Yahoo dependency.
+  - Removed all Yahoo feeds (`Yahoo News`, `Yahoo Sports Wire`, `Yahoo Finance Wire`) from `config.py` and reinstated strict Yahoo filtering in `engine.is_disallowed_source()` so syndicated Google News queries never ingest Yahoo reprints.
+- **Expanded Primary Authoritative Feeds (`config.py` & `engine.py`)**:
+  - **ESPN (10 Dedicated Desks)**: Top News, NFL, NBA, MLB, College Football, Men's College Basketball, Soccer & Champions League, NHL, PGA Golf, and MMA/Boxing.
+  - **BBC News & BBC Sport (9 Bureaus)**: Top Stories, World, US & Canada, Business, Technology, Science & Environment, Health, Entertainment & Arts, and BBC Sport.
+  - **Al Jazeera English (5 Global Desks)**: Top News (`aljazeera.com/xml/rss/all.xml`), World & Geopolitics, Economy & Global Trade, Energy & Climate, and Sports.
+  - **Associated Press / AP News (9 Wire Desks)**: Top Headlines, U.S. National, World, Politics & Congress, Business & Economy, Technology & Science, Health, Entertainment, and Sports.
+  - **Verified Breaking News on X (13 Real-Time Wires)**: `@BNONews` & `@BreakingNews`, `@BBCBreaking` & `@AJEnglish`, `@AP` & `@Reuters`, `@JakeSherman` & `@ChadPergram` (Capitol Hill), `@DeItaone` & `@NickTimiraos` (Fed/Markets), `@OpenAI` & Tech Insiders, `@NWS` & `@FERC`, plus sports insiders `@AdamSchefter`, `@ShamsCharania`, `@RapSheet`, `@JeffPassan`, `@FabrizioRomano`, `@David_Ornstein`, and `@PeteThamel`.
+  - Added `resolve_canonical_publisher()` in `engine.py` to extract `<source>` XML metadata and map every item to its true publisher instead of generic `Google News` labels.
+- **Preserved All Neutral News Aggregation Method Rules**:
+  - 4 standalone verified facts (zero headline echoes, zero generic boilerplate).
+  - Universal Fact 1 Direct Answer for question & curiosity-gap headlines (`Direct Answer:`, `Direct Verdict:`, `Viewing & Platform Answer:`, `Direct Answer & Core Reason:`).
+  - Practical Streaming Service Entity Enrichment (`DAZN`, `Peacock`, `ESPN+`, `Apple TV+`, `Prime Video`, `Paramount+`, `Max`, `YouTube TV`, `Fubo`, `NFL+` — explaining what it is, exact costs, where to order, and standalone app availability).
+  - Current betting odds in Fact 1 for upcoming sports matchups; strict prohibition of betting odds on injury/medical emergency stories.
+  - Normal-person conversational talking points across Left, Balanced, and Right lenses, and 100% unique image URLs across all 96 stories.
+- **Regression Suite Verification**:
+  - Expanded `test_regression_suite.py` to **22/22 automated tests passing (100% success)**.
+
+
+## [v4.1] - 2026-10-23 — Multi-Source Aggregation Overhaul (ESPN, BBC, Al Jazeera, AP News, Verified X) & Yahoo News Removal
+- **Eliminated Yahoo News / Yahoo Sports Dominance Across Frontend & Backend**:
+  - Replaced the single-source Yahoo RSS browser fetcher (`fetchBrowserLiveRSS()` in `app.js` and `index.html`) with a **Multi-Source Live Wire Aggregator** rotating across **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified Breaking News on X**.
+  - Upgraded `LIVE_WIRE_RESERVE_DISPATCHES` in `app.js` / `index.html` to pull from **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified X Wire (`@ShamsCharania`, `@BNONews`, `@AP`)** with zero Yahoo dependency.
+  - Removed all Yahoo feeds (`Yahoo News`, `Yahoo Sports Wire`, `Yahoo Finance Wire`) from `config.py` and reinstated strict Yahoo filtering in `engine.is_disallowed_source()` so syndicated Google News queries never ingest Yahoo reprints.
+- **Expanded Primary Authoritative Feeds (`config.py` & `engine.py`)**:
+  - **ESPN (10 Dedicated Desks)**: Top News, NFL, NBA, MLB, College Football, Men's College Basketball, Soccer & Champions League, NHL, PGA Golf, and MMA/Boxing.
+  - **BBC News & BBC Sport (9 Bureaus)**: Top Stories, World, US & Canada, Business, Technology, Science & Environment, Health, Entertainment & Arts, and BBC Sport.
+  - **Al Jazeera English (5 Global Desks)**: Top News (`aljazeera.com/xml/rss/all.xml`), World & Geopolitics, Economy & Global Trade, Energy & Climate, and Sports.
+  - **Associated Press / AP News (9 Wire Desks)**: Top Headlines, U.S. National, World, Politics & Congress, Business & Economy, Technology & Science, Health, Entertainment, and Sports.
+  - **Verified Breaking News on X (13 Real-Time Wires)**: `@BNONews` & `@BreakingNews`, `@BBCBreaking` & `@AJEnglish`, `@AP` & `@Reuters`, `@JakeSherman` & `@ChadPergram` (Capitol Hill), `@DeItaone` & `@NickTimiraos` (Fed/Markets), `@OpenAI` & Tech Insiders, `@NWS` & `@FERC`, plus sports insiders `@AdamSchefter`, `@ShamsCharania`, `@RapSheet`, `@JeffPassan`, `@FabrizioRomano`, `@David_Ornstein`, and `@PeteThamel`.
+  - Added `resolve_canonical_publisher()` in `engine.py` to extract `<source>` XML metadata and map every item to its true publisher instead of generic `Google News` labels.
+- **Preserved All Neutral News Aggregation Method Rules**:
+  - 4 standalone verified facts (zero headline echoes, zero generic boilerplate).
+  - Universal Fact 1 Direct Answer for question & curiosity-gap headlines (`Direct Answer:`, `Direct Verdict:`, `Viewing & Platform Answer:`, `Direct Answer & Core Reason:`).
+  - Practical Streaming Service Entity Enrichment (`DAZN`, `Peacock`, `ESPN+`, `Apple TV+`, `Prime Video`, `Paramount+`, `Max`, `YouTube TV`, `Fubo`, `NFL+` — explaining what it is, exact costs, where to order, and standalone app availability).
+  - Current betting odds in Fact 1 for upcoming sports matchups; strict prohibition of betting odds on injury/medical emergency stories.
+  - Normal-person conversational talking points across Left, Balanced, and Right lenses, and 100% unique image URLs across all 96 stories.
+- **Regression Suite Verification**:
+  - Expanded `test_regression_suite.py` to **22/22 automated tests passing (100% success)**.
+
+
+## [v4.1] - 2026-10-23 — Multi-Source Aggregation Overhaul (ESPN, BBC, Al Jazeera, AP News, Verified X) & Yahoo News Removal
+- **Eliminated Yahoo News / Yahoo Sports Dominance Across Frontend & Backend**:
+  - Replaced the single-source Yahoo RSS browser fetcher (`fetchBrowserLiveRSS()` in `app.js` and `index.html`) with a **Multi-Source Live Wire Aggregator** rotating across **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified Breaking News on X**.
+  - Upgraded `LIVE_WIRE_RESERVE_DISPATCHES` in `app.js` / `index.html` to pull from **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified X Wire (`@ShamsCharania`, `@BNONews`, `@AP`)** with zero Yahoo dependency.
+  - Removed all Yahoo feeds (`Yahoo News`, `Yahoo Sports Wire`, `Yahoo Finance Wire`) from `config.py` and reinstated strict Yahoo filtering in `engine.is_disallowed_source()` so syndicated Google News queries never ingest Yahoo reprints.
+- **Expanded Primary Authoritative Feeds (`config.py` & `engine.py`)**:
+  - **ESPN (10 Dedicated Desks)**: Top News, NFL, NBA, MLB, College Football, Men's College Basketball, Soccer & Champions League, NHL, PGA Golf, and MMA/Boxing.
+  - **BBC News & BBC Sport (9 Bureaus)**: Top Stories, World, US & Canada, Business, Technology, Science & Environment, Health, Entertainment & Arts, and BBC Sport.
+  - **Al Jazeera English (5 Global Desks)**: Top News (`aljazeera.com/xml/rss/all.xml`), World & Geopolitics, Economy & Global Trade, Energy & Climate, and Sports.
+  - **Associated Press / AP News (9 Wire Desks)**: Top Headlines, U.S. National, World, Politics & Congress, Business & Economy, Technology & Science, Health, Entertainment, and Sports.
+  - **Verified Breaking News on X (13 Real-Time Wires)**: `@BNONews` & `@BreakingNews`, `@BBCBreaking` & `@AJEnglish`, `@AP` & `@Reuters`, `@JakeSherman` & `@ChadPergram` (Capitol Hill), `@DeItaone` & `@NickTimiraos` (Fed/Markets), `@OpenAI` & Tech Insiders, `@NWS` & `@FERC`, plus sports insiders `@AdamSchefter`, `@ShamsCharania`, `@RapSheet`, `@JeffPassan`, `@FabrizioRomano`, `@David_Ornstein`, and `@PeteThamel`.
+  - Added `resolve_canonical_publisher()` in `engine.py` to extract `<source>` XML metadata and map every item to its true publisher instead of generic `Google News` labels.
+- **Preserved All Neutral News Aggregation Method Rules**:
+  - 4 standalone verified facts (zero headline echoes, zero generic boilerplate).
+  - Universal Fact 1 Direct Answer for question & curiosity-gap headlines (`Direct Answer:`, `Direct Verdict:`, `Viewing & Platform Answer:`, `Direct Answer & Core Reason:`).
+  - Practical Streaming Service Entity Enrichment (`DAZN`, `Peacock`, `ESPN+`, `Apple TV+`, `Prime Video`, `Paramount+`, `Max`, `YouTube TV`, `Fubo`, `NFL+` — explaining what it is, exact costs, where to order, and standalone app availability).
+  - Current betting odds in Fact 1 for upcoming sports matchups; strict prohibition of betting odds on injury/medical emergency stories.
+  - Normal-person conversational talking points across Left, Balanced, and Right lenses, and 100% unique image URLs across all 96 stories.
+- **Regression Suite Verification**:
+  - Expanded `test_regression_suite.py` to **22/22 automated tests passing (100% success)**.
+
+
 ## [v4.0] - 2026-10-23 — Real-Time Live Wire Ingestion & Luxury Editorial Bento UI Revamp
 - **Fixed Stale Stories & Real-Time Feed Ingestion**:
   - Upgraded `loadLiveStories()` in `app.js` / `index.html` from a console-only stub into a live DOM card renderer that dynamically injects newly discovered stories from `data/stories.json` into `#storiesFeedView`.

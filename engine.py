@@ -1518,15 +1518,22 @@ EXPLICIT_HISTORICAL_TERMS = {
 # YAHOO BLACKLIST: STRICT ZERO-TOLERANCE EXCLUSION GUARD
 # =============================================================================
 DISALLOWED_PUBLISHERS = {
-    "tabloid_clickbait_wire", "spam_news_syndicate", "unverified_rumor_mill"
+    "yahoo", "yahoo news", "yahoo sports", "yahoo finance",
+    "yahoo sports wire", "yahoo finance wire", "yahoo sports live",
+    "yahoo sports live wire", "yahoo entertainment", "yahoo life",
+    "yahoo lifestyle", "tabloid_clickbait_wire", "spam_news_syndicate",
+    "unverified_rumor_mill"
 }
 
 DISALLOWED_DOMAINS = {
+    "yahoo.com", "news.yahoo.com", "sports.yahoo.com", "finance.yahoo.com",
+    "uk.yahoo.com", "ca.yahoo.com", "au.yahoo.com",
     "clickbaitspam.com", "fake-news-generator.com", "content-farm-network.net"
 }
 
 def is_disallowed_source(item_or_url_or_source) -> bool:
-    """Checks and rejects actual spam or disallowed domains, while allowing verified news sources including Yahoo."""
+    """Strictly filters out Yahoo News/Sports/Finance clickbait and syndicated wrappers,
+    as well as spam domains, ensuring aggregation pulls from primary outlets (ESPN, BBC, Al Jazeera, AP News, Verified X, Reuters, NPR)."""
     if not item_or_url_or_source:
         return False
     if isinstance(item_or_url_or_source, dict):
@@ -1539,13 +1546,83 @@ def is_disallowed_source(item_or_url_or_source) -> bool:
         src = text
         title = text
 
-    # Check domain
     if any(d in url for d in DISALLOWED_DOMAINS):
         return True
-    # Check publisher / source
     if any(p in src for p in DISALLOWED_PUBLISHERS):
         return True
+    if re.search(r'(?:[-–—|]\s*|)yahoo(?:\s+(?:news|sports|finance|entertainment|life))?', title):
+        return True
     return False
+
+
+def resolve_canonical_publisher(title: str, link: str, xml_source: str = "", feed_source: str = "") -> str:
+    """Resolves the true authoritative publisher name from RSS item metadata, URL domain, or title suffix,
+    preventing generic 'Google News' labels and highlighting ESPN, BBC News, Al Jazeera, AP News, and Verified X wires."""
+    combined_src = f"{xml_source} {feed_source}".strip()
+    url_low = (link or "").lower()
+    title_str = (title or "").strip()
+
+    # Check explicit Verified X Beat / Breaking Wire feeds first
+    if "verified x" in feed_source.lower() or "x beat wire" in feed_source.lower():
+        return feed_source
+
+    # Extract trailing '- Publisher' from title if present
+    suffix_match = re.search(r'\s+[-–—|]\s+([^-–—|]{2,35})$', title_str)
+    suffix_pub = suffix_match.group(1).strip() if suffix_match else ""
+
+    for candidate in (xml_source, suffix_pub, feed_source):
+        c_low = (candidate or "").lower()
+        if not c_low or "google news" in c_low:
+            continue
+        if "espn" in c_low:
+            return candidate if "espn" in candidate.lower() else "ESPN"
+        if "bbc" in c_low:
+            return candidate if "bbc" in candidate.lower() else "BBC News"
+        if "al jazeera" in c_low or "aljazeera" in c_low:
+            return "Al Jazeera English"
+        if "associated press" in c_low or c_low == "ap" or "ap news" in c_low or "apnews" in c_low:
+            return "AP News"
+        if "reuters" in c_low:
+            return "Reuters"
+        if "npr" in c_low:
+            return "NPR News"
+        if "pbs" in c_low:
+            return "PBS NewsHour"
+        if "cbs sports" in c_low:
+            return "CBS Sports"
+        if "cbs" in c_low:
+            return "CBS News"
+        if "cnbc" in c_low:
+            return "CNBC"
+        if "bloomberg" in c_low:
+            return "Bloomberg"
+        if "politico" in c_low:
+            return "Politico"
+        if "the hill" in c_low:
+            return "The Hill"
+        if "the athletic" in c_low:
+            return "The Athletic"
+        if "sports illustrated" in c_low:
+            return "Sports Illustrated"
+        if "fox sports" in c_low:
+            return "Fox Sports"
+        return candidate
+
+    if "espn.com" in url_low:
+        return "ESPN"
+    if "bbc.co" in url_low or "bbc.com" in url_low:
+        return "BBC News"
+    if "aljazeera.com" in url_low:
+        return "Al Jazeera English"
+    if "apnews.com" in url_low:
+        return "AP News"
+    if "reuters.com" in url_low:
+        return "Reuters"
+    if "npr.org" in url_low:
+        return "NPR News"
+    if "x.com" in url_low or "twitter.com" in url_low:
+        return "Verified X Breaking Wire"
+    return feed_source if "google news" not in feed_source.lower() else "AP News Wire"
 
 # =============================================================================
 # THREE-LAYER ARCHITECTURAL SAFEGUARDS: IMAGE POOLS, FACTS & PERSPECTIVE VALIDATION
@@ -3100,18 +3177,27 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                 desc = clean_html_text(item.findtext("description", "") or item.findtext("{http://www.w3.org/2005/Atom}summary", ""))
                 raw_pub_date = item.findtext("pubDate", "") or item.findtext("{http://www.w3.org/2005/Atom}updated", "") or ""
                 
+                source_el = item.find("source")
+                xml_src_name = clean_html_text(source_el.text) if source_el is not None and source_el.text else ""
+                xml_src_url = source_el.get("url", "") if source_el is not None else ""
+                if xml_src_url and ("news.google.com" in (link or "") or not link):
+                    link = xml_src_url
+
                 ts, rel_time = parse_pubdate_to_relative(raw_pub_date)
 
                 if title and len(title) > 15:
-                    if is_disallowed_source({"title": title, "link": link, "source_name": feed_info["source"]}):
+                    if is_disallowed_source({"title": title, "link": link, "source_name": xml_src_name or feed_info["source"]}):
                         continue
-                    scraped_pic = extract_image_from_xml_item(item, feed_info["source"], title)
+                    resolved_src = resolve_canonical_publisher(title, link, xml_src_name, feed_info["source"])
+                    if is_disallowed_source(resolved_src):
+                        continue
+                    scraped_pic = extract_image_from_xml_item(item, resolved_src, title)
                     items.append({
                         "title": title,
                         "link": link,
                         "description": desc,
-                        "source_name": feed_info["source"],
-                        "source": f"{feed_info['source']} • {rel_time}",
+                        "source_name": resolved_src,
+                        "source": f"{resolved_src} • {rel_time}",
                         "pub_timestamp": ts,
                         "category": feed_info["category"],
                         "scraped_image": scraped_pic
