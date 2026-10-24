@@ -1582,6 +1582,21 @@ div[id$="-view-RIGHT"] {
 }
 
   </style>
+  <script>
+  window.onImgError = window.onImgError || function(img, cat) {
+    if (!img) return;
+    var step = parseInt(img.getAttribute("data-fallback-step") || "0", 10);
+    var isSport = cat && String(cat).toLowerCase().indexOf("sport") !== -1;
+    var p1 = isSport ? "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" : "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG";
+    var p2 = isSport ? "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" : "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80";
+    if (step === 0 && img.src !== p1) { img.setAttribute("data-fallback-step", "1"); img.src = p1; }
+    else if (step <= 1 && img.src !== p2) { img.setAttribute("data-fallback-step", "2"); img.src = p2; }
+    else {
+      img.onerror = null;
+      img.src = "data:image/svg+xml;utf8," + encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"675\" viewBox=\"0 0 1200 675\"><rect width=\"1200\" height=\"675\" fill=\"#0f172a\"/><text x=\"600\" y=\"345\" font-family=\"Inter,sans-serif\" font-size=\"28\" font-weight=\"700\" fill=\"#10b981\" text-anchor=\"middle\">YOUR NEWS LENS • VERIFIED WIRE</text></svg>");
+    }
+  };
+  </script>
 </head>
 <body>
 
@@ -1710,7 +1725,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="Illuminated Capitol dome and legislative chamber corridor during evening session in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Illuminated Capitol dome and legislative chamber corridor during evening session in Washington, D.C.</span>
-              <span class="credit-tag">📸 Congressional Press Gallery</span>
+              <span class="credit-tag">Source: Associated Press Wire</span>
             </div>
           </div>
 
@@ -1883,7 +1898,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=80" alt="Championship boxing ring canvas and red corner ropes under stadium lighting." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship boxing ring canvas and red corner ropes under stadium lighting.</span>
-              <span class="credit-tag">📸 ESPN Boxing & Combat Wire</span>
+              <span class="credit-tag">Source: ESPN Boxing Wire</span>
             </div>
           </div>
 
@@ -2056,7 +2071,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/United_Nations_General_Assembly_Hall_%283%29.jpg" alt="International diplomatic assembly hall during multilateral sovereign finance negotiations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">International diplomatic assembly hall during multilateral sovereign finance negotiations.</span>
-              <span class="credit-tag">📸 Al Jazeera English Diplomatic Wire</span>
+              <span class="credit-tag">Source: Al Jazeera English</span>
             </div>
           </div>
 
@@ -2229,7 +2244,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Institutional bond market analytics terminal and real-time Treasury yield curve telemetry." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Institutional bond market analytics terminal and real-time Treasury yield curve telemetry.</span>
-              <span class="credit-tag">📸 Associated Press Financial Wire</span>
+              <span class="credit-tag">Source: AP News Business</span>
             </div>
           </div>
 
@@ -2402,7 +2417,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/ITER_Tokamak_and_Plant_Systems_%282016%29_%2841634338181%29.jpg" alt="High-temperature magnetic confinement tokamak fusion reactor engineering chamber." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-temperature magnetic confinement tokamak fusion reactor engineering chamber.</span>
-              <span class="credit-tag">📸 BBC Science & Environment Wire</span>
+              <span class="credit-tag">Source: BBC News Science</span>
             </div>
           </div>
 
@@ -2575,7 +2590,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1200&q=80" alt="Cinematic studio production lighting and digital streaming premiere screening stage." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Cinematic studio production lighting and digital streaming premiere screening stage.</span>
-              <span class="credit-tag">📸 Variety Entertainment Wire</span>
+              <span class="credit-tag">Source: Variety Wire</span>
             </div>
           </div>
 
@@ -2748,7 +2763,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=80" alt="Clinical oncology genomic sequencing laboratory and biomedical research instrumentation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Clinical oncology genomic sequencing laboratory and biomedical research instrumentation.</span>
-              <span class="credit-tag">📸 Biomedical Research Archive</span>
+              <span class="credit-tag">Source: STAT Health Wire</span>
             </div>
           </div>
 
@@ -2921,7 +2936,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?auto=format&fit=crop&w=1200&q=80" alt="Coastal storm surge cloud formation over regional municipal shoreline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Coastal storm surge cloud formation over regional municipal shoreline.</span>
-              <span class="credit-tag">📸 Associated Press National Wire</span>
+              <span class="credit-tag">Source: AP News National</span>
             </div>
           </div>
 
@@ -3094,7 +3109,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=80" alt="Federal cybercrime forensics command center and digital decryption operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal cybercrime forensics command center and digital decryption operations.</span>
-              <span class="credit-tag">📸 Federal Law Enforcement Wire</span>
+              <span class="credit-tag">Source: Associated Press Legal</span>
             </div>
           </div>
 
@@ -3267,7 +3282,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80" alt="Commercial freight port of entry inspection lanes and automated cargo scanning portal." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Border & Security');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial freight port of entry inspection lanes and automated cargo scanning portal.</span>
-              <span class="credit-tag">📸 Verified X Breaking Wire • @BNONews</span>
+              <span class="credit-tag">Source: Verified X Breaking • @BNONews</span>
             </div>
           </div>
 
@@ -3440,7 +3455,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/United_States_Senate_chamber.jpg" alt="The United States Senate legislative chamber in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'National News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Senate legislative chamber in Washington, D.C.</span>
-              <span class="credit-tag">📸 U.S. Senate Historical Office</span>
+              <span class="credit-tag">Source: Nature Astronomy</span>
             </div>
           </div>
 
@@ -3613,7 +3628,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and Senate chamber in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Capitol building and Senate chamber in Washington, D.C.</span>
-              <span class="credit-tag">📸 Senate Press Gallery / Architect of the Capitol</span>
+              <span class="credit-tag">Source: Bridge Michigan</span>
             </div>
           </div>
 
@@ -3786,7 +3801,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1200&q=80" alt="Football gridiron stadium turf and yard line markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football gridiron stadium turf and yard line markings.</span>
-              <span class="credit-tag">📸 Gridiron Sports Wire</span>
+              <span class="credit-tag">Source: ESPN College Football</span>
             </div>
           </div>
 
@@ -3959,7 +3974,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80" alt="Allied naval patrol frigate and maritime reconnaissance operations in international waters." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Allied naval patrol frigate and maritime reconnaissance operations in international waters.</span>
-              <span class="credit-tag">📸 BBC World Service Wire</span>
+              <span class="credit-tag">Source: BBC News World</span>
             </div>
           </div>
 
@@ -4132,7 +4147,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Modern commercial real estate and office towers." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Modern commercial real estate and office towers.</span>
-              <span class="credit-tag">📸 Unsplash / Commercial Real Estate</span>
+              <span class="credit-tag">Source: CNBC Top News</span>
             </div>
           </div>
 
@@ -4305,7 +4320,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80" alt="High-density optical fiber photonics array and next-generation semiconductor computing architecture." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-density optical fiber photonics array and next-generation semiconductor computing architecture.</span>
-              <span class="credit-tag">📸 Al Jazeera Technology Wire</span>
+              <span class="credit-tag">Source: Al Jazeera Science & Tech</span>
             </div>
           </div>
 
@@ -4478,7 +4493,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="High-fashion runway presentation and couture model showcase." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-fashion runway presentation and couture model showcase.</span>
-              <span class="credit-tag">📸 Fashion & Entertainment Wire</span>
+              <span class="credit-tag">Source: Entertainment Tonight Wire</span>
             </div>
           </div>
 
@@ -4651,7 +4666,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional public hospital medical complex and caregiver reception grounds." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Regional public hospital medical complex and caregiver reception grounds.</span>
-              <span class="credit-tag">📸 Sajad Hameed / NPR News</span>
+              <span class="credit-tag">Source: NPR News</span>
             </div>
           </div>
 
@@ -4824,7 +4839,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-voltage transmission line towers and regional electrical grid infrastructure.</span>
-              <span class="credit-tag">📸 AP Photo Archive</span>
+              <span class="credit-tag">Source: Associated Press Wire</span>
             </div>
           </div>
 
@@ -4997,7 +5012,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alamodome.jpg/800px-Alamodome.jpg" alt="Emergency first responders and municipal public safety perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency first responders and municipal public safety perimeter operations.</span>
-              <span class="credit-tag">📸 National Public Safety Wire</span>
+              <span class="credit-tag">Source: Texas Public Radio</span>
             </div>
           </div>
 
@@ -5170,7 +5185,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80" alt="Commercial maritime freight shipping container terminal and customs inspection facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Border & Security');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial maritime freight shipping container terminal and customs inspection facility.</span>
-              <span class="credit-tag">📸 Commercial Maritime Freight Pool</span>
+              <span class="credit-tag">Source: Associated Press Wire</span>
             </div>
           </div>
 
@@ -5343,7 +5358,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80" alt="House committee room and congressional caucus proceedings in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">House committee room and congressional caucus proceedings in Washington, D.C.</span>
-              <span class="credit-tag">📸 Congressional Press Gallery</span>
+              <span class="credit-tag">Source: AP News Politics</span>
             </div>
           </div>
 
@@ -5516,7 +5531,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=1200&q=80" alt="Indoor collegiate basketball gymnasium and team practice court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Indoor collegiate basketball gymnasium and team practice court.</span>
-              <span class="credit-tag">📸 NCAA Basketball Pool</span>
+              <span class="credit-tag">Source: ESPN • Adam Schefter</span>
             </div>
           </div>
 
@@ -5689,7 +5704,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg" alt="The White House Executive Mansion and diplomatic envoy facilities in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The White House Executive Mansion and diplomatic envoy facilities in Washington, D.C.</span>
-              <span class="credit-tag">📸 White House Photo Archive / Wikimedia Commons</span>
+              <span class="credit-tag">Source: Reuters World</span>
             </div>
           </div>
 
@@ -5862,7 +5877,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market charts and modern trading data." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Financial market charts and modern trading data.</span>
-              <span class="credit-tag">📸 Unsplash / Financial Markets</span>
+              <span class="credit-tag">Source: BBC News Business</span>
             </div>
           </div>
 
@@ -6035,7 +6050,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Supreme Court of the United States west facade in Washington, D.C.</span>
-              <span class="credit-tag">📸 National Photo Archive</span>
+              <span class="credit-tag">Source: Associated Press Wire</span>
             </div>
           </div>
 
@@ -6208,7 +6223,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Cindy_Crawford_2011.jpg/800px-Cindy_Crawford_2011.jpg" alt="Cindy Crawford — American model and actress alongside family." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Cindy Crawford — American model and actress alongside family.</span>
-              <span class="credit-tag">📸 Wikimedia Commons / Cindy Crawford</span>
+              <span class="credit-tag">Source: BBC News Entertainment</span>
             </div>
           </div>
 
@@ -6381,7 +6396,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80" alt="Clinical healthcare medical research and patient therapy center." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Clinical healthcare medical research and patient therapy center.</span>
-              <span class="credit-tag">📸 Medical Science Photo Pool</span>
+              <span class="credit-tag">Source: BBC News Health</span>
             </div>
           </div>
 
@@ -6554,7 +6569,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe weather system with high winds and emergency utility grid repair operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Severe weather system with high winds and emergency utility grid repair operations.</span>
-              <span class="credit-tag">📸 Severe Weather Photo Pool</span>
+              <span class="credit-tag">Source: Al Jazeera Energy</span>
             </div>
           </div>
 
@@ -6727,7 +6742,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg" alt="O.J. Simpson during legal proceedings in criminal court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">O.J. Simpson during legal proceedings in criminal court.</span>
-              <span class="credit-tag">📸 Wikimedia Commons / Court Pool Archive</span>
+              <span class="credit-tag">Source: The New York Times</span>
             </div>
           </div>
 
@@ -6900,7 +6915,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Federal customs clearance checkpoint and commercial transport inspection bay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Border & Security');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal customs clearance checkpoint and commercial transport inspection bay.</span>
-              <span class="credit-tag">📸 Customs & Border Logistics</span>
+              <span class="credit-tag">Source: Verified X Breaking • @AP & @BNONews</span>
             </div>
           </div>
 
@@ -7073,7 +7088,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C.</span>
-              <span class="credit-tag">📸 National Recreation Photo Pool</span>
+              <span class="credit-tag">Source: AP News</span>
             </div>
           </div>
 
@@ -7246,7 +7261,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Bayern Munich training grounds and professional football pitch." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Bayern Munich training grounds and professional football pitch.</span>
-              <span class="credit-tag">📸 Bundesliga / Sports Wire</span>
+              <span class="credit-tag">Source: BBC Sport</span>
             </div>
           </div>
 
@@ -7419,7 +7434,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80" alt="Emergency response and disaster investigation operations at defense installation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency response and disaster investigation operations at defense installation.</span>
-              <span class="credit-tag">📸 International Defense Wire</span>
+              <span class="credit-tag">Source: BBC News</span>
             </div>
           </div>
 
@@ -7592,7 +7607,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Advanced nuclear energy supply chain and electrical generation facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced nuclear energy supply chain and electrical generation facility.</span>
-              <span class="credit-tag">📸 Clean Energy Technology Wire</span>
+              <span class="credit-tag">Source: The Motley Fool</span>
             </div>
           </div>
 
@@ -7765,7 +7780,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Advanced semiconductor silicon wafer and microchip integrated circuit architecture." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced semiconductor silicon wafer and microchip integrated circuit architecture.</span>
-              <span class="credit-tag">📸 Semiconductor Technology Pool</span>
+              <span class="credit-tag">Source: Al Jazeera Economy</span>
             </div>
           </div>
 
@@ -7938,7 +7953,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" alt="Major motion picture theatrical cinema and entertainment industry production." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Major motion picture theatrical cinema and entertainment industry production.</span>
-              <span class="credit-tag">📸 Entertainment News Wire</span>
+              <span class="credit-tag">Source: Variety</span>
             </div>
           </div>
 
@@ -8111,7 +8126,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="Hospital inpatient corridor and medical clinical healthcare wing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Hospital inpatient corridor and medical clinical healthcare wing.</span>
-              <span class="credit-tag">📸 Healthcare Facility Archive</span>
+              <span class="credit-tag">Source: Associated Press Health</span>
             </div>
           </div>
 
@@ -8284,7 +8299,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80" alt="Commercial wind turbine generators and renewable energy farm infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial wind turbine generators and renewable energy farm infrastructure.</span>
-              <span class="credit-tag">📸 Renewable Power Archive</span>
+              <span class="credit-tag">Source: Associated Press</span>
             </div>
           </div>
 
@@ -8457,7 +8472,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?auto=format&fit=crop&w=1200&q=80" alt="Municipal emergency first responders and public safety perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Municipal emergency first responders and public safety perimeter operations.</span>
-              <span class="credit-tag">📸 Emergency Services Archive</span>
+              <span class="credit-tag">Source: CNN</span>
             </div>
           </div>
 
@@ -8630,7 +8645,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Customs and Border Protection vehicle inspection and federal border enforcement checkpoint." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">U.S. Customs and Border Protection vehicle inspection and federal border enforcement checkpoint.</span>
-              <span class="credit-tag">📸 U.S. Customs and Border Protection</span>
+              <span class="credit-tag">Source: Associated Press Congressional</span>
             </div>
           </div>
 
@@ -8800,10 +8815,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-01')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80&story_id=4091541527214575522" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80" alt="Major League Baseball stadium diamond and dugout under game lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">📸 Sports Media Wire</span>
+              <span class="caption-text">Major League Baseball stadium diamond and dugout under game lights.</span>
+              <span class="credit-tag">Source: ESPN • Jeff Passan</span>
             </div>
           </div>
 
@@ -8976,7 +8991,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="Civil unrest and emergency police security perimeters across Paris and Limoges, France." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Civil unrest and emergency police security perimeters across Paris and Limoges, France.</span>
-              <span class="credit-tag">📸 European Press Photo</span>
+              <span class="credit-tag">Source: Al Jazeera English</span>
             </div>
           </div>
 
@@ -9149,7 +9164,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
-              <span class="credit-tag">📸 Federal Reserve Pool</span>
+              <span class="credit-tag">Source: Verified X Markets • @NickTimiraos & @DeItaone</span>
             </div>
           </div>
 
@@ -9322,7 +9337,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence venture valuation and advanced neural computing technology." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Artificial intelligence venture valuation and advanced neural computing technology.</span>
-              <span class="credit-tag">📸 Tech Systems Wire</span>
+              <span class="credit-tag">Source: Reuters Business</span>
             </div>
           </div>
 
@@ -9495,7 +9510,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Theatrical cinema screen auditorium and movie premiere exhibition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Theatrical cinema screen auditorium and movie premiere exhibition.</span>
-              <span class="credit-tag">📸 Cinema Box Office Media</span>
+              <span class="credit-tag">Source: The Hollywood Reporter</span>
             </div>
           </div>
 
@@ -9668,7 +9683,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80" alt="Federal law enforcement and postal screening security operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal law enforcement and postal screening security operations.</span>
-              <span class="credit-tag">📸 Postal Inspection Service</span>
+              <span class="credit-tag">Source: NPR News</span>
             </div>
           </div>
 
@@ -9841,7 +9856,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80" alt="Televised political debate stage and campaign press briefing podium." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Televised political debate stage and campaign press briefing podium.</span>
-              <span class="credit-tag">📸 Campaign Press Pool</span>
+              <span class="credit-tag">Source: Verified X Capitol Hill • @JakeSherman</span>
             </div>
           </div>
 
@@ -10014,7 +10029,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=1200&q=80" alt="Baseball outfield and stadium grandstand during championship series." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Baseball outfield and stadium grandstand during championship series.</span>
-              <span class="credit-tag">📸 Ballpark Media Pool</span>
+              <span class="credit-tag">Source: The Athletic • Shams Charania</span>
             </div>
           </div>
 
@@ -10184,10 +10199,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-pakistan-kp-emergency-rule">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
-            <img src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80" alt="Regional administrative headquarters and security operations in Khyber Pakhtunkhwa, Pakistan." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Civil demonstration and metropolitan public square assembly." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Regional administrative headquarters and security operations in Khyber Pakhtunkhwa, Pakistan.</span>
-              <span class="credit-tag">📸 International Press Pool</span>
+              <span class="caption-text">Civil demonstration and metropolitan public square assembly.</span>
+              <span class="credit-tag">Source: Al Jazeera English</span>
             </div>
           </div>
 
@@ -10360,7 +10375,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80" alt="Tesla electric performance vehicle and high-technology automotive manufacturing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Tesla electric performance vehicle and high-technology automotive manufacturing.</span>
-              <span class="credit-tag">📸 Automotive News Wire</span>
+              <span class="credit-tag">Source: CNBC Business</span>
             </div>
           </div>
 
@@ -10533,7 +10548,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets rally with upward trending index charts and stock market trading gains." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Financial markets rally with upward trending index charts and stock market trading gains.</span>
-              <span class="credit-tag">📸 Wall Street Financial Wire</span>
+              <span class="credit-tag">Source: CNBC Business</span>
             </div>
           </div>
 
@@ -10706,7 +10721,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=8188426659910939849" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: Sky Sports • Fabrizio Romano</span>
             </div>
           </div>
 
@@ -10879,7 +10894,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80" alt="Orbital satellite communications array and high-frequency defense telecommunications relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Orbital satellite communications array and high-frequency defense telecommunications relay.</span>
-              <span class="credit-tag">📸 Aerospace Defense Media</span>
+              <span class="credit-tag">Source: BBC World Service</span>
             </div>
           </div>
 
@@ -11052,7 +11067,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Deep space observation and advanced astronomical planetary science." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Deep space observation and advanced astronomical planetary science.</span>
-              <span class="credit-tag">📸 NASA / Scientific Photo Archive</span>
+              <span class="credit-tag">Source: Space.com</span>
             </div>
           </div>
 
@@ -11225,7 +11240,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80" alt="Gridiron athletic stadium and yard markers during pre-game warmups." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Gridiron athletic stadium and yard markers during pre-game warmups.</span>
-              <span class="credit-tag">📸 Sports Action Pool</span>
+              <span class="credit-tag">Source: ESPN NFL • Vegas Consensus</span>
             </div>
           </div>
 
@@ -11395,10 +11410,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-world-geneva-maritime-talks">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')">
-            <img src="https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80" alt="Civil demonstration and metropolitan public square assembly." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
+            <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80" alt="Urban residential buildings and property development." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Civil demonstration and metropolitan public square assembly.</span>
-              <span class="credit-tag">📸 Global News Wire Archive</span>
+              <span class="caption-text">Urban residential buildings and property development.</span>
+              <span class="credit-tag">Source: Al Jazeera World</span>
             </div>
           </div>
 
@@ -11571,7 +11586,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=4153667004244570093" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: ESPN • Pete Thamel</span>
             </div>
           </div>
 
@@ -11744,7 +11759,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=2045899427921376367" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: Sports Illustrated • Bob Harig</span>
             </div>
           </div>
 
@@ -11914,10 +11929,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-02')">
-            <img src="https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=1200&q=80" alt="Championship basketball arena court and perimeter baseline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Championship basketball arena court and perimeter baseline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship basketball arena court and perimeter baseline.</span>
-              <span class="credit-tag">📸 NBA Media Wire</span>
+              <span class="credit-tag">Source: NBA.com • Consensus Odds</span>
             </div>
           </div>
 
@@ -12090,7 +12105,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=1200&q=80" alt="Basketball game ball on court sideline during league warmup." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball game ball on court sideline during league warmup.</span>
-              <span class="credit-tag">📸 Sports News Wire</span>
+              <span class="credit-tag">Source: NFL Network • Ian Rapoport</span>
             </div>
           </div>
 
@@ -12260,10 +12275,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-02')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80&story_id=7716887424513693674" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">📸 Sports Media Wire</span>
+              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
+              <span class="credit-tag">Source: MLB.com • Consensus Wire</span>
             </div>
           </div>
 
@@ -12433,10 +12448,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-03')">
-            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" alt="Basketball hoop and backboard in tournament competition arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
-              <span class="credit-tag">📸 Basketball Media Wire</span>
+              <span class="caption-text">Basketball hoop and backboard in tournament competition arena.</span>
+              <span class="credit-tag">Source: ESPN • Adrian Wojnarowski</span>
             </div>
           </div>
 
@@ -12609,7 +12624,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=1216413915733239037" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: Fox Sports • Joel Klatt</span>
             </div>
           </div>
 
@@ -12779,10 +12794,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-04">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-04')">
-            <img src="https://images.unsplash.com/photo-1516216628859-9bcceabb84ca?auto=format&fit=crop&w=1200&q=80" alt="Championship football stadium field and spectator stands under evening lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=80" alt="Championship football stadium field and spectator stands under evening lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under evening lights.</span>
-              <span class="credit-tag">📸 CBS Sports NFL Wire</span>
+              <span class="credit-tag">Source: CBS Sports • Pete Prisco</span>
             </div>
           </div>
 
@@ -12955,7 +12970,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80" alt="International soccer stadium grandstand and floodlights during evening European competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">International soccer stadium grandstand and floodlights during evening European competition.</span>
-              <span class="credit-tag">📸 The Athletic • David Ornstein Wire</span>
+              <span class="credit-tag">Source: The Athletic • David Ornstein</span>
             </div>
           </div>
 
@@ -13125,10 +13140,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-chiefs-bills-snf-preview">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')">
-            <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=80" alt="Football goalpost uprights and end zone turf under stadium floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Collegiate and professional football stadium under Saturday night floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Football goalpost uprights and end zone turf under stadium floodlights.</span>
-              <span class="credit-tag">📸 Stadium Lights Wire</span>
+              <span class="caption-text">Collegiate and professional football stadium under Saturday night floodlights.</span>
+              <span class="credit-tag">Source: ESPN NFL</span>
             </div>
           </div>
 
@@ -13301,7 +13316,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80" alt="Championship tournament tennis court net under competition floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship tournament tennis court net under competition floodlights.</span>
-              <span class="credit-tag">📸 Tennis Channel Media Wire</span>
+              <span class="credit-tag">Source: Tennis Channel • Match Odds</span>
             </div>
           </div>
 
@@ -13474,7 +13489,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=1200&q=80" alt="NFL gridiron field turf and defensive frontline equipment." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">NFL gridiron field turf and defensive frontline equipment.</span>
-              <span class="credit-tag">📸 NFL Network • Ian Rapoport Wire</span>
+              <span class="credit-tag">Source: NFL Network • Ian Rapoport</span>
             </div>
           </div>
 
@@ -13644,10 +13659,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-08">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-08')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80&story_id=6652792603866980039" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Athletic basketball arena floor and grandstand seating." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">📸 Sports Media Wire</span>
+              <span class="caption-text">Athletic basketball arena floor and grandstand seating.</span>
+              <span class="credit-tag">Source: ESPN NFL • Jeremy Fowler</span>
             </div>
           </div>
 
@@ -13820,7 +13835,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1200&q=80" alt="Championship football stadium field and spectator stands under evening floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under evening floodlights.</span>
-              <span class="credit-tag">📸 ESPN Wire • Vegas Consensus</span>
+              <span class="credit-tag">Source: ESPN Wire • Odds Wire</span>
             </div>
           </div>
 
@@ -13990,10 +14005,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-09">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-09')">
-            <img src="https://images.unsplash.com/photo-1511257404494-0ae107141203?auto=format&fit=crop&w=1200&q=80" alt="Professional football field turf and team end zone markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&w=1200&q=80" alt="Basketball net and championship arena hardwood floor." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Professional football field turf and team end zone markings.</span>
-              <span class="credit-tag">📸 The Athletic • Dianna Russini Wire</span>
+              <span class="caption-text">Basketball net and championship arena hardwood floor.</span>
+              <span class="credit-tag">Source: The Athletic • Dianna Russini</span>
             </div>
           </div>
 
@@ -14163,10 +14178,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-07">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-07')">
-            <img src="https://images.unsplash.com/photo-1520642643446-c27c74904a0e?auto=format&fit=crop&w=1200&q=80" alt="Athletic stadium crowd and team sideline bench during competitive game action." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80" alt="Golf course putting green and championship tournament flagstick." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Athletic stadium crowd and team sideline bench during competitive game action.</span>
-              <span class="credit-tag">📸 Fox Sports • Tom Pelissero Wire</span>
+              <span class="caption-text">Golf course putting green and championship tournament flagstick.</span>
+              <span class="credit-tag">Source: Fox Sports • Tom Pelissero</span>
             </div>
           </div>
 
@@ -14339,7 +14354,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=2829905617597745965" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: Miami Herald • Adam Schefter</span>
             </div>
           </div>
 
@@ -14509,10 +14524,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-bears-patriots-tnf-recap">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')">
-            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="NFL football stadium under floodlights during Thursday night conference matchup." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80" alt="Tournament links fairway and sand trap hazard along championship course." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">NFL football stadium under floodlights during Thursday night conference matchup.</span>
-              <span class="credit-tag">📸 NFL / Sports Media Wire</span>
+              <span class="caption-text">Tournament links fairway and sand trap hazard along championship course.</span>
+              <span class="credit-tag">Source: ESPN NFL</span>
             </div>
           </div>
 
@@ -14682,10 +14697,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-04">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-04')">
-            <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" alt="Basketball hoop and backboard in tournament competition arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=6005526022832589748" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Basketball hoop and backboard in tournament competition arena.</span>
-              <span class="credit-tag">📸 College Hoops Archive</span>
+              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
+              <span class="credit-tag">Source: The Athletic • Jovan Buha</span>
             </div>
           </div>
 
@@ -14858,7 +14873,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=2628972925807922650" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: ESPN • Tim MacMahon</span>
             </div>
           </div>
 
@@ -15031,7 +15046,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=560466740670587254" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: NBA.com • Consensus Lines</span>
             </div>
           </div>
 
@@ -15204,7 +15219,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=1200&q=80" alt="Basketball hoop and backboard in tournament arena under floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball hoop and backboard in tournament arena under floodlights.</span>
-              <span class="credit-tag">📸 Fox Sports • NBA Wire</span>
+              <span class="credit-tag">Source: Fox Sports • Chris Broussard</span>
             </div>
           </div>
 
@@ -15377,7 +15392,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80" alt="Collegiate football stadium under competition lights during major conference championship." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate football stadium under competition lights during major conference championship.</span>
-              <span class="credit-tag">📸 ESPN College Football Wire</span>
+              <span class="credit-tag">Source: ESPN College Football • Odds Wire</span>
             </div>
           </div>
 
@@ -15550,7 +15565,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=6244123378071817006" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 Athletics Media Wire</span>
+              <span class="credit-tag">Source: ESPN • Tim Bontemps</span>
             </div>
           </div>
 
@@ -15723,7 +15738,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1200&q=80" alt="Professional ice hockey rink and arena perimeter under tournament lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional ice hockey rink and arena perimeter under tournament lights.</span>
-              <span class="credit-tag">📸 NHL Media Wire</span>
+              <span class="credit-tag">Source: NHL.com • Consensus Odds</span>
             </div>
           </div>
 
@@ -15893,10 +15908,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-03')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80&story_id=59058756389016518" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=6119567607639045673" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">📸 Sports Media Wire</span>
+              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
+              <span class="credit-tag">Source: The Athletic • Ken Rosenthal</span>
             </div>
           </div>
 
@@ -16069,7 +16084,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80" alt="Championship combat sports arena ring under competition floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship combat sports arena ring under competition floodlights.</span>
-              <span class="credit-tag">📸 ESPN MMA Wire</span>
+              <span class="credit-tag">Source: ESPN MMA • Brett Okamoto</span>
             </div>
           </div>
 
@@ -16239,10 +16254,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-cbb-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-cbb-01')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80&story_id=2686016919680841524" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=5520512279454200383" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">📸 Sports Media Wire</span>
+              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
+              <span class="credit-tag">Source: The Athletic • Sam Vecenie</span>
             </div>
           </div>
 
@@ -16415,7 +16430,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80" alt="Championship mixed martial arts cage perimeter under arena lighting." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship mixed martial arts cage perimeter under arena lighting.</span>
-              <span class="credit-tag">📸 MMA Fighting Wire</span>
+              <span class="credit-tag">Source: MMA Fighting • Brett Okamoto</span>
             </div>
           </div>
 
@@ -16585,10 +16600,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-byu-big-12-basketball-media-days">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
-            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Athletic basketball arena floor and grandstand seating." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=4290099047570380375" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Athletic basketball arena floor and grandstand seating.</span>
-              <span class="credit-tag">📸 Basketball Arena Pool</span>
+              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
+              <span class="credit-tag">Source: Deseret News</span>
             </div>
           </div>
 
@@ -16758,10 +16773,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-warriors-porzingis-trades-absence">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
-            <img src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&w=1200&q=80" alt="Basketball net and championship arena hardwood floor." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80&story_id=4888358556650187140" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Basketball net and championship arena hardwood floor.</span>
-              <span class="credit-tag">📸 Sports League Media</span>
+              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
+              <span class="credit-tag">Source: ESPN NBA Wire</span>
             </div>
           </div>
 
@@ -16931,10 +16946,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-rams-injuries-wr-adams">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
-            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" alt="NFL football helmet and gridiron equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=9083299222364198331" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">NFL football helmet and gridiron equipment on stadium sideline turf.</span>
-              <span class="credit-tag">📸 NFL Media Wire</span>
+              <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
+              <span class="credit-tag">Source: ESPN NFL Wire</span>
             </div>
           </div>
 
@@ -17104,10 +17119,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-nba-preseason-power-rankings">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
-            <img src="https://images.unsplash.com/photo-1508344928928-7165b67de128?auto=format&fit=crop&w=1200&q=80" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80&story_id=4322914369255520999" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Major athletic championship stadium and grandstand.</span>
-              <span class="credit-tag">?? Sports Media Wire</span>
+              <span class="credit-tag">Source: NBA.com Official</span>
             </div>
           </div>
 
@@ -17280,7 +17295,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png" alt="National Collegiate Athletic Association (NCAA) and College Football Playoff." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">National Collegiate Athletic Association (NCAA) and College Football Playoff.</span>
-              <span class="credit-tag">📸 NCAA / Wikimedia Commons</span>
+              <span class="credit-tag">Source: FOX Sports</span>
             </div>
           </div>
 
@@ -17450,10 +17465,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-pga-saudi-merger">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pga-saudi-merger')">
-            <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80" alt="Golf course putting green and championship tournament flagstick." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=6103629950936875869" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Golf course putting green and championship tournament flagstick.</span>
-              <span class="credit-tag">📸 Golf Links Archive</span>
+              <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
+              <span class="credit-tag">Source: Associated Press Sports</span>
             </div>
           </div>
 
@@ -17623,10 +17638,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-ncaa-revenue-share">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
-            <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80" alt="Baseball home plate and field dirt under stadium lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=5154078143432522643" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Baseball home plate and field dirt under stadium lights.</span>
-              <span class="credit-tag">📸 Major League Photo Archive</span>
+              <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
+              <span class="credit-tag">Source: Reuters Sports</span>
             </div>
           </div>
 
@@ -17799,7 +17814,7 @@ div[id$="-view-RIGHT"] {
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg" alt="Philadelphia Eagles quarterback Jalen Hurts." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Philadelphia Eagles quarterback Jalen Hurts.</span>
-              <span class="credit-tag">📸 Wikimedia Commons / Jeffrey Beall</span>
+              <span class="credit-tag">Source: The New York Times</span>
             </div>
           </div>
 
@@ -17969,10 +17984,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-nba-lakers-prep">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-lakers-prep')">
-            <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80" alt="Tournament links fairway and sand trap hazard along championship course." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80&story_id=5146109674293484409" alt="Major athletic championship stadium and grandstand." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Tournament links fairway and sand trap hazard along championship course.</span>
-              <span class="credit-tag">?? Fairway Media Wire</span>
+              <span class="caption-text">Major athletic championship stadium and grandstand.</span>
+              <span class="credit-tag">Source: ESPN Sports</span>
             </div>
           </div>
 
@@ -18142,10 +18157,10 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-dodgers-brewers-nlcs">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">
-            <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80&story_id=8356461386950680037" alt="Championship athletic equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
+            <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=7105596803037756876" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">Championship athletic equipment on stadium sideline turf.</span>
-              <span class="credit-tag">?? Athletics Media Wire</span>
+              <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
+              <span class="credit-tag">Source: ESPN Sports</span>
             </div>
           </div>
 
@@ -18360,7 +18375,7 @@ div[id$="-view-RIGHT"] {
     'Science & Tech': 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80',
     'Health': 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80',
     'Entertainment': 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
-    'World News': 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80',
+    'World News': 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80',
     'Crime & Public Safety': 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
     'Border & Security': 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80'
   };
@@ -18376,7 +18391,7 @@ div[id$="-view-RIGHT"] {
       article_url: 'https://www.espn.com/nfl/',
       image_url: 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80',
       caption: 'Championship NFL stadium turf and broadcast sideline cameras under prime-time lights.',
-      credit: '📸 ESPN Broadcast Wire',
+      credit: 'Source: ESPN Broadcast Wire',
       core_facts: [
         'Direct Answer: NFL Game Pass International streams exclusively on the standalone DAZN app outside the U.S. (starting at $19.99/month or $199.99/season at DAZN.com), while domestic U.S. viewers access out-of-market Sunday games via NFL Sunday Ticket on YouTube and YouTube TV.',
         'Platform & Standalone App Access: DAZN operates as a 100% standalone app across iOS, Android, Apple TV, Roku, Amazon Fire TV, Smart TVs, PlayStation, and Xbox—requiring no cable television subscription.',
@@ -18413,7 +18428,7 @@ div[id$="-view-RIGHT"] {
       article_url: 'https://www.bbc.com/news/technology',
       image_url: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1200&q=80',
       caption: 'International diplomatic summit hall and frontier cybersecurity telemetry infrastructure.',
-      credit: '📸 BBC World Service Wire',
+      credit: 'Source: BBC World Service Wire',
       core_facts: [
         'Direct Answer & Core Reason: Twenty-eight countries signed the binding AI safety framework to mandate pre-deployment red-team testing on frontier models exceeding 10^26 floating-point operations before public release, preventing autonomous cyber and bio-security risks.',
         'Cross-Border Verification: Signatories including the U.S., UK, EU, Japan, and South Korea established a joint network of national AI safety institutes to share model weight vulnerability audits.',
@@ -18450,7 +18465,7 @@ div[id$="-view-RIGHT"] {
       article_url: 'https://www.aljazeera.com/economy/',
       image_url: 'https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1200&q=80',
       caption: 'Deep-water international container vessel transiting strategic maritime shipping corridor.',
-      credit: '📸 Al Jazeera Global Economy Wire',
+      credit: 'Source: Al Jazeera Global Economy Wire',
       core_facts: [
         'Direct Answer: Diverting container vessels around Africa’s Cape of Good Hope adds 10 to 14 days to Asia-Europe transit times and absorbs 9% of global shipping capacity, keeping spot 40-foot container rates 140% above pre-crisis averages.',
         'Supply Chain Impact: Major retailers in Europe and North America pulled holiday inventory orders forward by six weeks to buffer against port congestion in Rotterdam, Singapore, and Los Angeles.',
@@ -18487,7 +18502,7 @@ div[id$="-view-RIGHT"] {
       article_url: 'https://apnews.com/hub/business',
       image_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
       caption: 'Financial district glass skyscrapers and institutional equity trading headquarters.',
-      credit: '📸 Associated Press Financial Wire',
+      credit: 'Source: Associated Press Financial Wire',
       core_facts: [
         'Direct Answer & Core Reason: Institutional funds rotated $14.2 billion into mid-cap industrial and electrical grid companies this week because surging AI data center construction and domestic factory reshoring have created a 5-year order backlog for high-voltage transformers and switchgear.',
         'Quarterly filings show industrial power-equipment manufacturers reporting 22% year-over-year revenue growth and record operating margins of 19.4%.',
@@ -18524,7 +18539,7 @@ div[id$="-view-RIGHT"] {
       article_url: 'https://www.espn.com/nba/',
       image_url: 'https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=1200&q=80',
       caption: 'Professional NBA basketball arena hardwood court and championship rafters.',
-      credit: '📸 ESPN NBA & Verified X Wire',
+      credit: 'Source: ESPN NBA & Verified X Wire',
       core_facts: [
         'Current Betting Odds & Win Probability: Boston Celtics are favored at -4.5 (-190 moneyline, 64.5% implied win probability) against the New York Knicks (+4.5, +160 moneyline), with the Over/Under total set at 224.5 points.',
         'Verified Insider Roster Update (@ShamsCharania): Jayson Tatum and Jaylen Brown headline a full-strength Boston starting five, while New York deploys its revamped wing defense.',
@@ -18556,21 +18571,100 @@ div[id$="-view-RIGHT"] {
 
   var _reserveIndex = 0;
 
+  var INLINE_SVG_FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">' +
+    '<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '<stop offset="0%" stop-color="#0f172a"/><stop offset="50%" stop-color="#1e293b"/><stop offset="100%" stop-color="#064e3b"/>' +
+    '</linearGradient></defs>' +
+    '<rect width="1200" height="675" fill="url(#g)"/>' +
+    '<circle cx="600" cy="310" r="88" fill="none" stroke="#10b981" stroke-width="4" opacity="0.55"/>' +
+    '<circle cx="600" cy="310" r="36" fill="#10b981" opacity="0.45"/>' +
+    '<text x="600" y="455" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#f8fafc" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text>' +
+    '</svg>'
+  );
+
+  function cleanPhotoCredit(credit, sourceName) {
+    var src = String(sourceName || '').trim();
+    if (src.indexOf(' • ') !== -1) {
+      var parts = src.split(' • ');
+      var cleanParts = [];
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i].trim();
+        if (p && !/(\bmins?\b|\bhours?\b|\bdays?\b|\bjust now\b|\b\d+h\b|\b\d+m\b|\bago\b)/i.test(p)) {
+          cleanParts.push(p);
+        }
+      }
+      src = cleanParts.length > 0 ? cleanParts.join(' • ') : parts[0].trim();
+    }
+    src = src.replace(/[\?\ufffd\uD800-\uDFFF📸📷]+/g, '').replace(/^[-–—•:\s]+|[-–—•:\s]+$/g, '');
+    if (src && src.toLowerCase() !== 'news wire' && src.toLowerCase() !== 'live wire' && src.toLowerCase() !== 'general news') {
+      if (src.toLowerCase().indexOf('source:') === 0) {
+        src = src.substring(7).trim();
+      }
+      return 'Source: ' + src;
+    }
+    var raw = String(credit || '').replace(/[\?\ufffd\uD800-\uDFFF📸📷]+/g, '').replace(/^[-–—•:\s]+|[-–—•:\s]+$/g, '');
+    if (raw.toLowerCase().indexOf('source:') === 0) {
+      raw = raw.substring(7).trim();
+    }
+    if (!raw || /press pool|wire archive|media wire/i.test(raw)) {
+      raw = src || 'Associated Press Wire';
+    }
+    return 'Source: ' + raw;
+  }
+
   function onImgError(img, cat) {
     if (!img) return;
-    img.onerror = null;
+    var step = parseInt(img.getAttribute('data-fallback-step') || '0', 10);
     if (!cat) {
       var card = img.closest ? img.closest('.compact-card') : null;
       cat = card ? card.getAttribute('data-category') : 'General News';
     }
-    var fallback = CATEGORY_FALLBACK_IMAGES[cat];
-    if (!fallback && cat && cat.indexOf('Sport') !== -1) {
-      fallback = CATEGORY_FALLBACK_IMAGES['Sports'];
+    var primary = CATEGORY_FALLBACK_IMAGES[cat] || (cat && cat.indexOf('Sport') !== -1 ? CATEGORY_FALLBACK_IMAGES['Sports'] : CATEGORY_FALLBACK_IMAGES['Politics']);
+    var secondary = (cat && cat.indexOf('Sport') !== -1)
+      ? 'https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80'
+      : 'https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG';
+
+    if (step === 0 && primary && img.src !== primary) {
+      img.setAttribute('data-fallback-step', '1');
+      img.src = primary;
+    } else if (step <= 1 && secondary && img.src !== secondary) {
+      img.setAttribute('data-fallback-step', '2');
+      img.src = secondary;
+    } else {
+      img.onerror = null;
+      img.setAttribute('data-fallback-step', '3');
+      img.src = INLINE_SVG_FALLBACK;
     }
-    img.src = fallback || 'https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG';
+  }
+
+  function sanitizeAllCreditTagsInDOM() {
+    var cards = document.querySelectorAll('.compact-card');
+    for (var i = 0; i < cards.length; i++) {
+      var card = cards[i];
+      var srcChip = card.querySelector('.source-link-chip span');
+      var srcName = srcChip ? srcChip.textContent.trim() : '';
+      var creditEl = card.querySelector('.credit-tag');
+      if (creditEl) {
+        var cur = creditEl.textContent || '';
+        if (cur.indexOf('?') !== -1 || cur.indexOf('📸') !== -1 || cur.indexOf('Source:') !== 0 || /press pool|wire archive/i.test(cur)) {
+          creditEl.textContent = cleanPhotoCredit(cur, srcName);
+        }
+      }
+      var heroImg = card.querySelector('.hero-photo');
+      if (heroImg) {
+        var u = heroImg.getAttribute('src') || '';
+        if (u.indexOf('1569098644584') !== -1 || u.indexOf('1519766304817') !== -1 || u.indexOf('1516216628859') !== -1 || (heroImg.complete && heroImg.naturalWidth === 0)) {
+          onImgError(heroImg, card.getAttribute('data-category'));
+        }
+      }
+    }
   }
   if (typeof window !== 'undefined') {
     window.onImgError = onImgError;
+  window.cleanPhotoCredit = cleanPhotoCredit;
+  sanitizeAllCreditTagsInDOM();
+  if (typeof document !== 'undefined') { document.addEventListener('DOMContentLoaded', sanitizeAllCreditTagsInDOM); }
   }
 
   // Global State
@@ -19046,8 +19140,8 @@ div[id$="-view-RIGHT"] {
     var catSlug = getCategorySlugJS(cat);
     var imgUrl = s.image_url || CATEGORY_FALLBACK_IMAGES[cat] || CATEGORY_FALLBACK_IMAGES['Politics'];
     var caption = s.caption || s.title || '';
-    var credit = s.credit || '📸 Live Wire';
     var srcName = s.source_name || 'Live News Wire';
+    var credit = cleanPhotoCredit(s.credit, srcName);
     var pubTs = s.pub_timestamp || Math.floor(Date.now() / 1000);
     var relTime = formatRelativeTime(pubTs);
     var articleUrl = s.article_url || s.link || ('https://news.google.com/search?q=' + encodeURIComponent(s.title || ''));
@@ -19117,7 +19211,7 @@ div[id$="-view-RIGHT"] {
     article.innerHTML =
       '<div class="hero-image-wrap" onclick="toggleStoryDetails(\'' + sId + '\')">' +
         '<img src="' + imgUrl + '" alt="' + caption.replace(/"/g, '&quot;') + '" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, \'' + cat + '\');" />' +
-        '<div class="photo-caption-bar"><span class="caption-text">' + caption + '</span><span class="credit-tag">' + credit + '</span></div>' +
+        '<div class="photo-caption-bar"><span class="caption-text">' + caption + '</span><span class="credit-tag">Source: ' + credit + '</span></div>' +
       '</div>' +
       '<div class="card-body">' +
         '<div class="meta-row">' +
@@ -19178,10 +19272,20 @@ div[id$="-view-RIGHT"] {
         if (Array.isArray(loaded) && loaded.length > 0) {
           for (var i = loaded.length - 1; i >= 0; i--) {
             var item = loaded[i];
-            if (item && item.id && !document.getElementById(item.id)) {
+            if (!item || !item.id) continue;
+            var existingEl = document.getElementById(item.id);
+            if (!existingEl) {
               if (prependStoryToFeed(item)) addedCount++;
+            } else {
+              var cTag = existingEl.querySelector('.credit-tag');
+              if (cTag) cTag.textContent = cleanPhotoCredit(item.credit, item.source_name);
+              var hImg = existingEl.querySelector('.hero-photo');
+              if (hImg && item.image_url && (hImg.src.indexOf('1569098644584') !== -1 || hImg.src.indexOf('1519766304817') !== -1 || hImg.src.indexOf('1516216628859') !== -1)) {
+                hImg.src = item.image_url;
+              }
             }
           }
+          sanitizeAllCreditTagsInDOM();
           updateRelativeTimestamps();
           refreshLiveTicker();
         }
@@ -19194,11 +19298,11 @@ div[id$="-view-RIGHT"] {
 
   // Client-Side Multi-Source Live RSS-to-JSON Aggregator (polls ESPN, BBC News, Al Jazeera, AP News & Verified X Breaking News)
   var LIVE_RSS_FEEDS = [
-    { url: 'https://www.espn.com/espn/rss/news', source: 'ESPN Live Wire', category: 'Sports', master_category: 'Sports', credit: '📸 ESPN Sports Wire', fallback_url: 'https://www.espn.com' },
-    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC News World', category: 'World News', master_category: 'World News', credit: '📸 BBC World Service', fallback_url: 'https://www.bbc.com/news/world' },
-    { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera English', category: 'World News', master_category: 'World News', credit: '📸 Al Jazeera English Wire', fallback_url: 'https://www.aljazeera.com/news/' },
-    { url: 'https://news.google.com/rss/search?q=site:apnews.com+when:1d&hl=en-US&gl=US&ceid=US:en', source: 'AP News Breaking Wire', category: 'National Headlines', master_category: 'National Headlines', credit: '📸 Associated Press Wire', fallback_url: 'https://apnews.com' },
-    { url: 'https://news.google.com/rss/search?q=(%22Adam+Schefter%22+OR+%22Shams+Charania%22+OR+%22BNONews%22+OR+%22BBCBreaking%22)+when:1d&hl=en-US&gl=US&ceid=US:en', source: 'Verified X Breaking Wire', category: 'Sports', master_category: 'Sports', credit: '📸 Verified X Breaking Wire', fallback_url: 'https://x.com/BNONews' }
+    { url: 'https://www.espn.com/espn/rss/news', source: 'ESPN Live Wire', category: 'Sports', master_category: 'Sports', credit: 'Source: ESPN Sports Wire', fallback_url: 'https://www.espn.com' },
+    { url: 'https://feeds.bbci.co.uk/news/world/rss.xml', source: 'BBC News World', category: 'World News', master_category: 'World News', credit: 'Source: BBC World Service', fallback_url: 'https://www.bbc.com/news/world' },
+    { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera English', category: 'World News', master_category: 'World News', credit: 'Source: Al Jazeera English Wire', fallback_url: 'https://www.aljazeera.com/news/' },
+    { url: 'https://news.google.com/rss/search?q=site:apnews.com+when:1d&hl=en-US&gl=US&ceid=US:en', source: 'AP News Breaking Wire', category: 'National Headlines', master_category: 'National Headlines', credit: 'Source: Associated Press Wire', fallback_url: 'https://apnews.com' },
+    { url: 'https://news.google.com/rss/search?q=(%22Adam+Schefter%22+OR+%22Shams+Charania%22+OR+%22BNONews%22+OR+%22BBCBreaking%22)+when:1d&hl=en-US&gl=US&ceid=US:en', source: 'Verified X Breaking Wire', category: 'Sports', master_category: 'Sports', credit: 'Source: Verified X Breaking Wire', fallback_url: 'https://x.com/BNONews' }
   ];
   var _liveFeedCursor = 0;
 
@@ -19223,8 +19327,8 @@ div[id$="-view-RIGHT"] {
           var it = data.items[j];
           var cleanTitle = (it.title || '').trim();
           var itemLink = it.link || feedCfg.fallback_url;
-          // Strictly filter out any ESPNsyndicated items
-          if (!cleanTitle || /ESPN/i.test(cleanTitle) || /ESPN\.com/i.test(itemLink)) continue;
+          // Strictly filter out any Yahoo syndicated items
+          if (!cleanTitle || /yahoo/i.test(cleanTitle) || /yahoo\.com/i.test(itemLink)) continue;
           if (existingTitles[cleanTitle.toLowerCase()]) continue;
           var desc = (it.description || '').replace(/<[^>]+>/g, ' ').trim();
           var isQuestion = cleanTitle.indexOf('?') !== -1 || /how to watch|where to watch|here's why|which|what is/i.test(cleanTitle);
@@ -19240,7 +19344,7 @@ div[id$="-view-RIGHT"] {
             source_name: feedCfg.source,
             pub_timestamp: Math.floor(Date.now() / 1000) - (j * 30),
             article_url: itemLink,
-            image_url: (it.enclosure && it.enclosure.link) || CATEGORY_FALLBACK_IMAGES[feedCfg.category] || CATEGORY_FALLBACK_IMAGES['Politics'],
+            image_url: (it.thumbnail && it.thumbnail.indexOf('http') === 0 ? it.thumbnail : null) || (it.enclosure && (it.enclosure.link || it.enclosure.url)) || ((it.description || it.content || '').match(/<img[^>]+src=["'](https?:\/\/[^"']+)["']/i) || [])[1] || CATEGORY_FALLBACK_IMAGES[feedCfg.category] || CATEGORY_FALLBACK_IMAGES['Politics'],
             caption: cleanTitle,
             credit: feedCfg.credit,
             core_facts: [
@@ -19332,6 +19436,9 @@ div[id$="-view-RIGHT"] {
 
   // Explicit Global Window Attachments
   window.onImgError = onImgError;
+  window.cleanPhotoCredit = cleanPhotoCredit;
+  sanitizeAllCreditTagsInDOM();
+  if (typeof document !== 'undefined') { document.addEventListener('DOMContentLoaded', sanitizeAllCreditTagsInDOM); }
   window.setGlobalPerspective = setGlobalPerspective;
   window.switchStoryPerspective = switchStoryPerspective;
   window.toggleStoryDetails = toggleStoryDetails;

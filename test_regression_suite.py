@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 22
+    total_tests = 23
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -768,8 +768,149 @@ def run_all_regression_tests():
     print("✓ TEST 22 PASSED: Multi-source aggregation (ESPN, BBC, Al Jazeera, AP News, Verified X) & zero Yahoo dependency verified.")
     passed_count += 1
 
+    # -------------------------------------------------------------------------
+    # TEST 23: Direct Article Image Extraction & Screenshot 1/2/3 Defect Verification
+    # -------------------------------------------------------------------------
+    print("\
+[TEST 23] Direct Article Image Extraction & Screenshot 1/2/3 Defect Verification...")
+
+    # 1. Verify RSS XML image extraction handles CDN URLs with ?query parameters (ESPN, BBC, Al Jazeera, CNBC)
+    import xml.etree.ElementTree as ET
+    sample_xml = """<item>
+      <title>Silicon Valley Democrats demand investigation into Starlink restrictions in Ukraine</title>
+      <link>https://www.cnbc.com/2026/10/23/starlink-ukraine-investigation.html</link>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="https://image.cnbcfm.com/api/v1/image/107312345-starlink-dish.jpg?v=1697000000&amp;w=1200&amp;h=630" />
+    </item>"""
+    xml_el = ET.fromstring(sample_xml)
+    extracted_img = engine.extract_image_from_xml_item(xml_el, "CNBC", "Silicon Valley Democrats demand investigation into Starlink restrictions in Ukraine")
+    assert extracted_img is not None, "Test 23 Failed: extract_image_from_xml_item failed on URL with ?query parameters!"
+    assert "image.cnbcfm.com" in extracted_img["url"], f"Test 23 Failed: Wrong URL extracted: {extracted_img}"
+    assert extracted_img.get("is_original_article_image") is True, "Test 23 Failed: is_original_article_image flag not set!"
+
+    # Verify Priority 1 uses the article's own image and sets is_original_article_image=True
+    resolved_p1 = engine.resolve_story_image(
+        "Silicon Valley Democrats demand investigation into Starlink restrictions in Ukraine",
+        "World News",
+        "World News",
+        used_urls=set(),
+        scraped_image=extracted_img
+    )
+    assert resolved_p1["url"] == extracted_img["url"], "Test 23 Failed: resolve_story_image did not use Priority 1 article image!"
+    assert resolved_p1.get("is_original_article_image") is True
+
+    # 2. Screenshot 1 Verification: Brazil Election (Bolsonaro and Lula)
+    #    - Must classify as World News (not domestic US Politics)
+    #    - Must NEVER receive the U.S. Capitol building image
+    #    - Fact 1 must NEVER repeat the headline verbatim
+    t_brazil = "Bolsonaro and Lula clash on living costs, corruption in final Brazil election debate -"
+    d_brazil = "Bolsonaro and Lula clash on living costs, corruption in final Brazil election debate - Reuters"
+    cat_br, master_br = engine.classify_article(t_brazil, d_brazil)
+    assert cat_br == "World News", f"Test 23 Failed: Brazil election classified as {cat_br} instead of World News!"
+    img_br = engine.resolve_story_image(t_brazil, cat_br, master_br, used_urls=set())
+    assert "us_capitol" not in img_br["url"].lower() and "united states capitol" not in img_br["caption"].lower(), f"Test 23 Failed: Brazil election got US Capitol image: {img_br}"
+    synth_br = engine.generate_contextual_synthesis(t_brazil, d_brazil, cat_br)
+    f1_br = synth_br["core_facts"][0]
+    assert f1_br.strip().rstrip(".") != t_brazil.strip().rstrip("-").strip(), f"Test 23 Failed: Fact 1 echoed headline verbatim: {f1_br}"
+
+    # 3. Screenshot 2 Verification: '2026 MLB trade deadline preview: Passan's intel on every team -'
+    #    - Must NOT be classified as an upcoming game matchup
+    #    - Fact 1 must NEVER contain 'Current Betting Odds' or 'The favored team is favored at'
+    #    - Must NEVER receive the Little League youth photo (photo-1508344928928-7165b67de128)
+    t_mlb = "2026 MLB trade deadline preview: Passan's intel on every team -"
+    d_mlb = "ESPN MLB insider Jeff Passan breaks down trade deadline buyers, sellers, and top targets for all 30 clubs."
+    assert not engine.is_upcoming_sports_event_headline(t_mlb, "Sports", d_mlb), "Test 23 Failed: MLB trade deadline preview flagged as upcoming game matchup!"
+    synth_mlb = engine.generate_contextual_synthesis(t_mlb, d_mlb, "Sports")
+    f1_mlb = synth_mlb["core_facts"][0]
+    assert not f1_mlb.startswith("Current Betting Odds"), f"Test 23 Failed: Trade deadline preview given betting odds: {f1_mlb}"
+    assert "the favored team" not in f1_mlb.lower(), f"Test 23 Failed: Fake 'The favored team' odds emitted: {f1_mlb}"
+    img_mlb = engine.resolve_story_image(t_mlb, "Sports", "Sports", used_urls=set())
+    assert "photo-1508344928928-7165b67de128" not in img_mlb["url"], "Test 23 Failed: Little League photo assigned to MLB story!"
+
+    # 4. Screenshot 3 Verification: Multiple Starlink / Ukraine stories
+    #    - Neither the first nor second Starlink story can receive the distorted tiny-planet globe (photo-1526470608268-f674ce90ebd4)
+    used_starlink = set()
+    img_sl1 = engine.resolve_story_image("U.S. Starlink curbs embolden Russia to intensify attacks in Ukraine", "World News", "World News", used_urls=used_starlink)
+    img_sl2 = engine.resolve_story_image("Silicon Valley Democrats demand investigation into Starlink restrictions in Ukraine", "World News", "World News", used_urls=used_starlink)
+    assert "photo-1526470608268-f674ce90ebd4" not in img_sl1["url"]
+    assert "photo-1526470608268-f674ce90ebd4" not in img_sl2["url"]
+    assert img_sl1["url"] != img_sl2["url"]
+
+    # 5. Verify zero '??' corrupted camera emoji credits or UTF-16 surrogates in engine.py, stories.json, and index.html
+    with open(os.path.join(os.path.dirname(__file__), "engine.py"), "r", encoding="utf-8") as fp:
+        eng_txt = fp.read()
+    assert "\\ud83d" not in eng_txt and r"\ud83d" not in eng_txt, "Test 23 Failed: Surrogate pair found in engine.py!"
+    with open(os.path.join(os.path.dirname(__file__), "index.html"), "r", encoding="utf-8") as fp:
+        html_txt = fp.read()
+    assert "?? Architect" not in html_txt and "?? Sports" not in html_txt and "?? International" not in html_txt, "Test 23 Failed: '??' corrupted credit found in index.html!"
+    assert "photo-1526470608268-f674ce90ebd4" not in html_txt, "Test 23 Failed: Distorted tiny-planet photo still in index.html!"
+    assert "photo-1508344928928-7165b67de128" not in html_txt, "Test 23 Failed: Little League photo still in index.html!"
+
+    print("✓ TEST 23 PASSED: Direct article image extraction, Brazil election, MLB trade deadline preview, Starlink multi-image, and ?? credit fix verified.")
+    passed_count += 1
+
     # FINAL VERIFICATION SUMMARY
     # -------------------------------------------------------------------------
+
+    # -------------------------------------------------------------------------
+    # TEST 24: Screenshot 1000003696-1000003698 Fixes (Zero ?? Credits, Sticky-Note Photo Ban, Typhoon Synthesis & Cached Self-Healing)
+    # -------------------------------------------------------------------------
+    print("\n[TEST 24] Photo Source Badge Cleanup (Zero ??), Sticky-Note Photo Ban & Cached Self-Healing...")
+    assert engine.clean_photo_credit("?? Campaign Press Pool", "Reuters") == "Source: Reuters"
+    assert engine.clean_photo_credit("?? Global News Wire Archive", "Reuters • 2h 10m ago") == "Source: Reuters"
+    assert engine.clean_photo_credit("📸 College Sports Wire Archive", "X Beat Wire • Pete Thamel & Brett McMurphy CFB") == "Source: X Beat Wire • Pete Thamel & Brett McMurphy CFB"
+
+    # Sticky-note office photo (photo-1569098644584-210bcd375b59) and dead 404 Unsplash URLs must be rejected
+    assert not engine.is_usable_image_url("https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80")
+    assert not engine.is_usable_image_url("https://images.unsplash.com/photo-1519766304817-4f37bda74a29?auto=format&fit=crop&w=1200&q=80")
+    assert not engine.is_usable_image_url("https://images.unsplash.com/photo-1516216628859-9bcceabb84ca?auto=format&fit=crop&w=1200&q=80")
+    assert not engine.is_usable_image_url("https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG&story_id=12345")
+
+    # Typhoon Champi synthesis & image verification
+    t_typhoon = "Typhoon Champi sweeps past Taiwan, one dead and 500 injured - Reuters"
+    img_typhoon = engine.resolve_story_image(t_typhoon, "World News", "World News")
+    assert "1569098644584" not in img_typhoon["url"], "Test 24 Failed: Sticky-note office photo assigned to Typhoon Champi!"
+    assert "?" not in img_typhoon["credit"] and "📸" not in img_typhoon["credit"], f"Test 24 Failed: Bad credit {img_typhoon['credit']}"
+    synth_typhoon = engine.generate_contextual_synthesis(t_typhoon, "", "World News")
+    assert synth_typhoon["core_facts"][0].startswith("Direct Answer:"), f"Test 24 Failed: Typhoon lead fact echoed headline: {synth_typhoon['core_facts'][0]}"
+
+    # Cached story self-healing detector (is_story_mismatched & is_story_image_mismatched)
+    cached_brazil = {
+        "title": "Bolsonaro and Lula clash on living costs, corruption in final Brazil election debate -",
+        "category": "Politics",
+        "credit": "?? Campaign Press Pool",
+        "image_url": "https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80",
+        "core_facts": ["Bolsonaro and Lula clash on living costs, corruption in final Brazil election debate."]
+    }
+    assert engine.is_story_mismatched(cached_brazil), "Test 24 Failed: is_story_mismatched did not catch cached Brazil story with ?? credit and headline echo!"
+
+    cached_typhoon = {
+        "title": "Typhoon Champi sweeps past Taiwan, one dead and 500 injured -",
+        "category": "World News",
+        "credit": "?? Global News Wire Archive",
+        "image_url": "https://images.unsplash.com/photo-1569098644584-210bcd375b59?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Civil demonstration and metropolitan public square assembly.",
+        "core_facts": ["Typhoon Champi sweeps past Taiwan, one dead and 500 injured."]
+    }
+    assert engine.is_story_mismatched(cached_typhoon), "Test 24 Failed: is_story_mismatched did not catch cached Typhoon story!"
+    assert engine.is_story_image_mismatched(cached_typhoon), "Test 24 Failed: is_story_image_mismatched did not catch sticky-note photo on Typhoon story!"
+
+    # Verify zero ? or 📸 in any credit field across data/stories.json and index.html
+    with open("data/stories.json", "r", encoding="utf-8") as f_st:
+        all_st = json.load(f_st)
+    for st in all_st:
+        cr = st.get("credit", "")
+        assert "?" not in cr and "📸" not in cr and cr.startswith("Source: "), f"Test 24 Failed: Story {st.get('id')} has uncleaned credit: {cr}"
+
+    with open("index.html", "r", encoding="utf-8") as f_ht:
+        ht_content = f_ht.read()
+    credit_tags = re.findall(r'<span class="credit-tag">([^<]+)</span>', ht_content)
+    assert len(credit_tags) >= 50, f"Test 24 Failed: Expected >= 50 credit-tags, found {len(credit_tags)}"
+    for ct in credit_tags:
+        assert "?" not in ct and "📸" not in ct and ct.startswith("Source: "), f"Test 24 Failed: HTML credit-tag has ? or emoji: {ct}"
+
+    print("✓ TEST 24 PASSED: All photo credits use clean 'Source: <Outlet>' text (zero ?? or emojis), sticky-note photo banned, and cached stories self-heal.")
+    passed_count += 1
+
     print("\n" + "=" * 75)
     print(f"REGRESSION SUITE COMPLETED: {passed_count}/{total_tests} TESTS PASSED (100% SUCCESS)")
     print("=" * 75)
