@@ -1,23 +1,22 @@
 """
 Configuration settings and authoritative multi-source RSS endpoints for Your News Lens.
-Pulls directly from premier neutral wire services, international broadcasters, sports networks,
-and verified breaking news reporters on X (Twitter):
+Pulls directly from premier neutral wire services, international broadcasters, and sports networks
+that publish full editorial articles with verified lead photography:
 - ESPN (10 dedicated multi-sport feeds)
 - BBC News & BBC Sport (9 global & domestic bureau feeds)
 - Al Jazeera English (5 global, diplomatic, economic & science feeds)
 - Associated Press / AP News (9 dedicated national, world, politics, business & sports feeds)
-- Verified Breaking News on X (13 real-time breaking news & beat reporter wires across all categories)
 - Reuters, NPR News, PBS NewsHour, CBS News, CNBC, Politico, The Hill, CBS Sports, Fox Sports, Sports Illustrated, The Athletic
-Zero Yahoo News / Yahoo clickbait feeds.
+Zero Yahoo News / Yahoo clickbait feeds and zero image-less X / Twitter wire feeds.
 """
 
 PRIMARY_TRUSTED_SOURCES = [
     "ESPN",
     "BBC News",
+    "BBC Sport",
     "Al Jazeera English",
     "AP News",
     "Associated Press",
-    "Verified Breaking News on X",
     "Reuters",
     "NPR News",
     "PBS NewsHour",
@@ -356,115 +355,13 @@ RSS_FEEDS = [
     {
         "category": "Sports",
         "master_category": "Sports",
-        "source": "Bleacher Report Wire",
-        "url": "https://bleacherreport.com/articles/feed",
-        "description": "Bleacher Report real-time scores, viral highlights, and draft analysis."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
         "source": "The Athletic Wire",
         "url": "https://theathletic.com/rss/",
         "description": "The Athletic premium sports journalism and beat reporting."
     },
 
     # =========================================================================
-    # 5. VERIFIED BREAKING NEWS ON X (TWITTER) — GLOBAL, POLITICS, MARKETS & SPORTS
-    # =========================================================================
-    {
-        "category": "All",
-        "master_category": "National Headlines",
-        "source": "Verified X Breaking • @BNONews & @BreakingNews",
-        "url": "https://news.google.com/rss/search?q=(%22BNO+News%22+OR+%22BNONews%22+OR+%22Breaking+News%22)+when:1d&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified real-time global and national breaking news alerts from @BNONews and @BreakingNews on X."
-    },
-    {
-        "category": "World News",
-        "master_category": "World News",
-        "source": "Verified X Breaking • @BBCBreaking & @AJEnglish",
-        "url": "https://news.google.com/rss/search?q=(%22BBC+Breaking%22+OR+%22BBCBreaking%22+OR+%22Al+Jazeera%22)+when:1d&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified international breaking alerts from @BBCBreaking and @AJEnglish on X."
-    },
-    {
-        "category": "National Headlines",
-        "master_category": "National Headlines",
-        "source": "Verified X Wire • @AP & @Reuters",
-        "url": "https://news.google.com/rss/search?q=(%22Associated+Press%22+OR+%22Reuters%22)+breaking+when:1d&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified flash wire dispatches from @AP and @Reuters breaking desks on X."
-    },
-    {
-        "category": "Politics",
-        "master_category": "National Headlines",
-        "source": "Verified X Capitol Hill • @JakeSherman & @ChadPergram",
-        "url": "https://news.google.com/rss/search?q=(%22Jake+Sherman%22+OR+%22Punchbowl+News%22+OR+%22Chad+Pergram%22)+Congress+OR+Senate&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified Capitol Hill legislative scoops and floor vote alerts from @JakeSherman and @ChadPergram on X."
-    },
-    {
-        "category": "Business & Economy",
-        "master_category": "National Headlines",
-        "source": "Verified X Markets • @DeItaone & @NickTimiraos",
-        "url": "https://news.google.com/rss/search?q=(%22Nick+Timiraos%22+OR+%22Federal+Reserve%22+OR+%22Wall+Street+Journal%22)+rates+OR+inflation&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified Federal Reserve, CPI inflation, and market-moving dispatches from @DeItaone and @NickTimiraos on X."
-    },
-    {
-        "category": "Science & Tech",
-        "master_category": "Science & Tech",
-        "source": "Verified X Tech & AI • @OpenAI & Semiconductor Wire",
-        "url": "https://news.google.com/rss/search?q=(%22OpenAI%22+OR+%22Anthropic%22+OR+%22Nvidia%22)+AI+chip+when:7d&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified AI model releases, GPU infrastructure, and tech executive dispatches on X."
-    },
-    {
-        "category": "Energy & Weather",
-        "master_category": "National Headlines",
-        "source": "Verified X Weather & Grid • @NWS & @FERC",
-        "url": "https://news.google.com/rss/search?q=(%22National+Weather+Service%22+OR+%22power+grid%22+OR+%22FERC%22)+when:7d&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified National Weather Service storm alerts and federal power grid bulletins on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • Adam Schefter NFL",
-        "url": "https://news.google.com/rss/search?q=%22Adam+Schefter%22+OR+%22Schefter%22+NFL&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NFL insider scoops and roster updates from ESPN's @AdamSchefter on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • Shams Charania NBA",
-        "url": "https://news.google.com/rss/search?q=%22Shams+Charania%22+OR+%22Shams%22+NBA&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NBA insider breaking trade scoops and free agency news from @ShamsCharania on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • Ian Rapoport NFL",
-        "url": "https://news.google.com/rss/search?q=%22Ian+Rapoport%22+NFL&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified NFL Network injury updates and coaching changes from @RapSheet on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • Jeff Passan MLB",
-        "url": "https://news.google.com/rss/search?q=%22Jeff+Passan%22+MLB&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified Major League Baseball trade reporting and contract news from ESPN's @JeffPassan on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • David Ornstein & Fabrizio Romano",
-        "url": "https://news.google.com/rss/search?q=(%22David+Ornstein%22+OR+%22Fabrizio+Romano%22)+transfer&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified European football transfers and injury dispatches from @David_Ornstein and @FabrizioRomano on X."
-    },
-    {
-        "category": "Sports",
-        "master_category": "Sports",
-        "source": "X Beat Wire • Pete Thamel & Brett McMurphy CFB",
-        "url": "https://news.google.com/rss/search?q=(%22Pete+Thamel%22+OR+%22Brett+McMurphy%22)+college+football&hl=en-US&gl=US&ceid=US:en",
-        "description": "Verified College Football Playoff and conference realignment scoops from @PeteThamel and @Brett_McMurphy on X."
-    },
-
-    # =========================================================================
-    # 6. REUTERS, NPR, PBS, POLITICO, THE HILL, CBS NEWS & CNBC
+    # 5. REUTERS, NPR, PBS, POLITICO, THE HILL, CBS NEWS & CNBC
     # =========================================================================
     {
         "category": "World News",
