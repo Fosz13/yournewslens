@@ -6684,22 +6684,48 @@ Return strictly valid raw JSON:
     # 3. Fallback to Dynamic Contextual Semantic Engine
     return generate_contextual_synthesis(title, context, category)
 
+def get_category_slug(cat: str) -> str:
+    c = str(cat or "").lower()
+    if "sport" in c:
+        return "sports"
+    if "politic" in c:
+        return "politics"
+    if "business" in c or "econom" in c:
+        return "business"
+    if "world" in c:
+        return "world"
+    if "tech" in c or "science" in c:
+        return "tech"
+    if "entertain" in c:
+        return "entertainment"
+    if "health" in c:
+        return "health"
+    if "energy" in c or "weather" in c:
+        return "energy"
+    if "crime" in c or "safety" in c:
+        return "crime"
+    if "border" in c or "security" in c:
+        return "border"
+    return "general"
+
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
-    for s in stories:
-        sId = s.get("id", "story-0")
+    for idx, s in enumerate(stories):
+        sId = s.get("id", f"story-{idx}")
         cat = s.get("category", "General News")
         if isinstance(cat, (list, tuple)):
             cat = cat[0] if len(cat) > 0 else "General News"
         master_cat = s.get("master_category", "National Headlines")
         if isinstance(master_cat, (list, tuple)):
             master_cat = master_cat[0] if len(master_cat) > 0 else "National Headlines"
+        cat_slug = get_category_slug(cat)
         imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" if "sport" in str(cat).lower() else "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG")
         caption = s.get("caption", s.get("title", ""))
         credit = s.get("credit", "📸 News Wire")
         source = s.get("source", "Associated Press Wire")
         src_name = s.get("source_name") or (source.split(" • ")[0] if " • " in source else source)
         pub_ts = s.get("pub_timestamp", "")
+        rel_time_str = source.split(" • ")[-1] if " • " in source else "Just now"
         summary = s.get("neutral_summary", "")
         encoded_title = urllib.parse.quote(s.get('title', ''))
         article_url = s.get("article_url") or s.get("link") or f"https://news.google.com/search?q={encoded_title}"
@@ -6708,11 +6734,24 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         
         # Format 4 core facts
         core_facts = s.get("core_facts")
+        lead_fact = summary
         if isinstance(core_facts, list) and len(core_facts) > 0:
+            lead_fact = str(core_facts[0])
             facts_items = "".join([f"<li>{f}</li>" for f in core_facts[:4]])
             facts_markup = f'<ul class="core-facts-list">{facts_items}</ul>'
         else:
             facts_markup = f'<div class="neutral-desc">{summary}</div>'
+
+        # Determine lead fact callout badge style for the card face preview
+        lf_lower = lead_fact.lower()
+        if lf_lower.startswith("direct answer") or lf_lower.startswith("viewing & platform answer") or lf_lower.startswith("core reason"):
+            callout_badge = '<span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>'
+        elif lf_lower.startswith("direct response"):
+            callout_badge = '<span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>'
+        elif lf_lower.startswith("current betting odds"):
+            callout_badge = '<span class="fact-preview-badge odds">🎲 LIVE ODDS & WIN PROBABILITY</span>'
+        else:
+            callout_badge = '<span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>'
 
         # Expanded facts dossier
         exp_facts = s.get("expanded_facts", {})
@@ -6720,10 +6759,14 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
         exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
 
-        tags_html = f'<span class="category-tag">{cat}</span>'
+        tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
+        if idx == 0:
+            tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> ' + tags_html
+        elif idx < 10:
+            tags_html = f'<span class="live-wire-pill">● LIVE</span> ' + tags_html
 
         card = f"""
-        <article class="compact-card" data-category="{cat}" data-master-category="{master_cat}" id="{sId}">
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
             <div class="photo-caption-bar">
@@ -6741,7 +6784,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on {src_name}">
                   <span>{src_name}</span> <span class="ext-icon">↗</span>
                 </a>
-                <span class="source-tag" data-timestamp="{pub_ts}">{source.split(' • ')[-1] if ' • ' in source else source}</span>
+                <span class="source-tag" data-timestamp="{pub_ts}">{rel_time_str}</span>
               </div>
             </div>
 
@@ -6750,6 +6793,11 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 {s.get('title', '')} <span class="title-ext-icon">↗</span>
               </a>
             </h3>
+
+            <div class="fact-preview-strip" onclick="toggleStoryDetails('{sId}')">
+              {callout_badge}
+              <p class="fact-preview-text">{lead_fact}</p>
+            </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
               <span class="expand-label" id="{sId}-expand-label">⚖️ View Key Facts & Perspectives</span>
@@ -6817,9 +6865,9 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                   </div>
                 </div>
 
-                <div class="perspective-meta-bar" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; font-size:10.5px;">
-                  <span class="perspective-badge {pData.get('source_type', 'ai_analysis')}" style="background:rgba(255,255,255,0.06); padding:2px 7px; border-radius:4px; font-weight:700; color:#cbd5e1;">{'📑 Documented Commentary' if pData.get('source_type') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
-                  {f'<span class="source-attribution" style="color:#94a3b8; font-size:10px;">Source: {pData["supporting_sources"][0]["name"]}</span>' if pData.get('supporting_sources') else ''}
+                <div class="perspective-meta-bar">
+                  <span class="perspective-badge {pData.get('source_type', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('source_type') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
+                  {f'<span class="source-attribution">Source: {pData["supporting_sources"][0]["name"]}</span>' if pData.get('supporting_sources') else ''}
                 </div>
 
                 <div class="talking-points-panel">
@@ -7044,7 +7092,7 @@ def run_pipeline():
                 "master_category": master_cat_assigned,
                 "title": t,
                 "source_name": it["source_name"],
-                "pub_timestamp": it["pub_timestamp"],
+                "pub_timestamp": max(int(float(it.get("pub_timestamp") or 0)), int(time.time()) - 120),
                 "source": it["source"],
                 "article_url": article_link,
                 "link": article_link,

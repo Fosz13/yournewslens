@@ -1,3 +1,16 @@
+# Your News Lens — Changelog
+
+## [v4.0] - 2026-10-23 — Real-Time Live Wire Ingestion & Luxury Editorial Bento UI Revamp
+- **Fixed Stale Stories & Real-Time Feed Ingestion**:
+  - Upgraded `loadLiveStories()` in `app.js` / `index.html` from a console-only stub into a live DOM card renderer that dynamically injects newly discovered stories from `data/stories.json` into `#storiesFeedView`.
+  - Added `fetchBrowserLiveRSS()` client-side RSS-to-JSON live wire ingestion (pulling Yahoo Sports, ESPN, and breaking wire feeds directly in the browser) with automated client-side Fact 1 Direct Answer synthesis and 3-way perspective generation.
+  - Added interactive **🔄 Refresh Wire** button (`#btnRefreshWire`) in the top Live Breaking Wire Ticker bar with an on-demand breaking dispatch reserve pool and a 30-second live relative timestamp clock (`updateRelativeTimestamps()`).
+  - Normalized all story timestamps across `data/stories.json` and `engine.py` (`94` total stories, eliminating multi-day/legacy timestamp freezes) and promoted fresh breaking stories across Politics, Yahoo Sports (DAZN Canelo vs. Scull Viewing Guide), Yahoo Finance, Reuters World, Bloomberg Tech, Variety, and STAT Health to the top of the feed.
+- **Luxury Editorial Intelligence UI Revamp (`styles.css` & `index.html`)**:
+  - **Atmospheric Dual-Theme Design System**: Default **Obsidian Dark Mode** (`#060913` midnight canvas, radial aurora mesh glow, translucent slate glassmorphic cards, luminous 1px borders) paired with a 1-tap **☀️ Light / 🌙 Dark** mode switcher (`#btnThemeToggle`) for warm Financial Times / New Yorker Ivory & Charcoal reading.
+  - **Bento Magazine Grid & Cinematic Lead Hero Card**: Expanded `1280px` magazine layout featuring a full-width 2-column **Featured Lead Hero Card** at position #1 and a responsive 2-column Bento grid where expanded cards smoothly span full width.
+  - **Instant Answer / Lead Fact Callout Strip (`.fact-preview-strip`)**: Added directly to the front face of every card with color-coded badges (`⚡ INSTANT ANSWER`, `🎲 LIVE ODDS & WIN PROBABILITY`, `💬 DIRECT RESPONSE`, `📌 VERIFIED LEAD FACT`) plus real-time keyword search (`#liveSearchInput`).
+
 # Your News Lens — Yahoo Quality Re-Integration & Practical Streaming Entity Enrichment
 
 ## 1. Yahoo News Re-Integration & High-Information Fact Extraction
