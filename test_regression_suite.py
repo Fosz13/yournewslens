@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 25
+    total_tests = 26
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -978,9 +978,89 @@ def run_all_regression_tests():
     print("✓ TEST 25 PASSED: X reporting skipped, coaching buyouts ('Six' bug) fixed, unplayed games use pre-game tense, 48/48 sports images sub-sport locked, and MAGA/Liberal/Green-Centrist Persona reactions verified.")
     passed_count += 1
 
+    # -------------------------------------------------------------------------
+    # TEST 26: Top 5 News Stories Horizontal Carousel & Responsive Layout
+    # -------------------------------------------------------------------------
+    print("\n[TEST 26] Top 5 News Stories Horizontal Carousel & Responsive Layout Verification...")
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # 1. Verify Top News Section exists
+    assert '<section class="top-news-section" id="topNewsSection"' in html, "Test 26 Failed: #topNewsSection missing from index.html"
+    assert '<div class="top-news-carousel" id="topNewsCarousel"' in html, "Test 26 Failed: #topNewsCarousel missing from index.html"
+
+    # 2. Extract cards inside the carousel
+    carousel_match = re.search(r'<div class="top-news-carousel" id="topNewsCarousel"[^>]*>(.*?)</div>\s*</div>\s*</section>', html, re.DOTALL)
+    assert carousel_match, "Test 26 Failed: Unable to extract carousel markup from index.html"
+    carousel_cards = re.findall(r'<article[^>]*id="([^"]+)"', carousel_match.group(1))
+    assert len(carousel_cards) == 5, f"Test 26 Failed: Expected exactly 5 cards in top carousel, found {len(carousel_cards)}: {carousel_cards}"
+
+    # 3. Verify cards in vertical feed
+    feed_match = re.search(r'<div id="storiesFeedView" class="feed-container"[^>]*>(.*?)</div>\s*<!-- Community Lounge -->', html, re.DOTALL)
+    assert feed_match, "Test 26 Failed: Unable to extract vertical feed markup"
+    feed_cards = re.findall(r'<article[^>]*id="([^"]+)"', feed_match.group(1))
+    assert len(feed_cards) == 92, f"Test 26 Failed: Expected 92 vertical cards, found {len(feed_cards)}"
+
+    # 4. Verify ZERO duplicate IDs across index.html
+    all_cards = carousel_cards + feed_cards
+    assert len(all_cards) == len(set(all_cards)), f"Test 26 Failed: Duplicate IDs detected between carousel and vertical feed!"
+
+    # 5. Verify carousel rank badges and styling
+    assert 'carousel-rank-badge' in carousel_match.group(1), "Test 26 Failed: carousel-rank-badge missing from top cards"
+    assert 'scrollCarousel(-1)' in html and 'scrollCarousel(1)' in html, "Test 26 Failed: scrollCarousel arrow buttons missing"
+
+    # 6. Verify app.js contains scrollCarousel and topNewsSection handling
+    with open("app.js", "r", encoding="utf-8") as f:
+        app_js = f.read()
+    assert "function scrollCarousel" in app_js, "Test 26 Failed: scrollCarousel function missing from app.js"
+    assert "topNewsSection" in app_js, "Test 26 Failed: topNewsSection logic missing from app.js"
+
+    print("✓ TEST 26 PASSED: Top 5 News Stories horizontal carousel verified (5 top stories, 92 vertical stories, 0 duplicate IDs, smooth snap-scroll).")
+    passed_count += 1
+
+
+
     print("\n" + "=" * 75)
     print(f"REGRESSION SUITE COMPLETED: {passed_count}/{total_tests} TESTS PASSED (100% SUCCESS)")
     print("=" * 75)
+
+
+def test_26_top_5_news_horizontal_carousel():
+    print("\n[TEST 26] Top 5 News Stories Horizontal Carousel & Responsive Layout Verification...")
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # 1. Verify Top News Section exists
+    assert '<section class="top-news-section" id="topNewsSection"' in html, "Test 26 Failed: #topNewsSection missing from index.html"
+    assert '<div class="top-news-carousel" id="topNewsCarousel"' in html, "Test 26 Failed: #topNewsCarousel missing from index.html"
+
+    # 2. Extract cards inside the carousel
+    carousel_match = re.search(r'<div class="top-news-carousel" id="topNewsCarousel"[^>]*>(.*?)</div>\s*</div>\s*</section>', html, re.DOTALL)
+    assert carousel_match, "Test 26 Failed: Unable to extract carousel markup from index.html"
+    carousel_cards = re.findall(r'<article[^>]*id="([^"]+)"', carousel_match.group(1))
+    assert len(carousel_cards) == 5, f"Test 26 Failed: Expected exactly 5 cards in top carousel, found {len(carousel_cards)}: {carousel_cards}"
+
+    # 3. Verify cards in vertical feed
+    feed_match = re.search(r'<div id="storiesFeedView" class="feed-container"[^>]*>(.*?)</div>\s*<!-- Community Lounge -->', html, re.DOTALL)
+    assert feed_match, "Test 26 Failed: Unable to extract vertical feed markup"
+    feed_cards = re.findall(r'<article[^>]*id="([^"]+)"', feed_match.group(1))
+    assert len(feed_cards) == 92, f"Test 26 Failed: Expected 92 vertical cards, found {len(feed_cards)}"
+
+    # 4. Verify ZERO duplicate IDs across index.html
+    all_cards = carousel_cards + feed_cards
+    assert len(all_cards) == len(set(all_cards)), f"Test 26 Failed: Duplicate IDs detected between carousel and vertical feed!"
+
+    # 5. Verify carousel rank badges and styling
+    assert 'carousel-rank-badge' in carousel_match.group(1), "Test 26 Failed: carousel-rank-badge missing from top cards"
+    assert 'scrollCarousel(-1)' in html and 'scrollCarousel(1)' in html, "Test 26 Failed: scrollCarousel arrow buttons missing"
+
+    # 6. Verify app.js contains scrollCarousel and topNewsSection handling
+    with open("app.js", "r", encoding="utf-8") as f:
+        app_js = f.read()
+    assert "function scrollCarousel" in app_js, "Test 26 Failed: scrollCarousel function missing from app.js"
+    assert "topNewsSection" in app_js, "Test 26 Failed: topNewsSection logic missing from app.js"
+
+    print("✓ TEST 26 PASSED: Top 5 News Stories horizontal carousel verified (5 top stories, 92 vertical stories, 0 duplicate IDs, smooth snap-scroll).")
 
 if __name__ == "__main__":
     try:

@@ -1581,7 +1581,255 @@ div[id$="-view-RIGHT"] {
   opacity: 1;
 }
 
-  </style>
+
+/* ==========================================================================
+   TOP NEWS HORIZONTAL SCROLL CAROUSEL (Top 5 Stories)
+   ========================================================================== */
+
+.top-news-section {
+  max-width: 1200px;
+  margin: 14px auto 18px auto;
+  padding: 0 12px;
+}
+
+.top-news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 0 4px;
+}
+
+.top-news-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.top-news-flame {
+  font-size: 20px;
+  animation: flamePulse 1.8s infinite;
+}
+
+@keyframes flamePulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #ef4444); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #f59e0b); }
+}
+
+.top-news-heading {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-news-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface-elevated);
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border-medium);
+  letter-spacing: 0.02em;
+}
+
+.carousel-nav-arrows {
+  display: flex;
+  gap: 6px;
+}
+
+.carousel-nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0 0 2px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-nav-btn:hover {
+  background: var(--border-highlight);
+  color: #060913;
+  border-color: var(--border-highlight);
+  transform: scale(1.08);
+}
+
+.carousel-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.top-news-carousel-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.top-news-carousel {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 4px 18px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-highlight) transparent;
+}
+
+.top-news-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.top-news-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.top-news-carousel::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 6px;
+}
+
+.top-news-carousel::-webkit-scrollbar-thumb:hover {
+  background: var(--border-highlight);
+}
+
+/* Horizontal Card Width & Snap */
+.top-news-carousel .compact-card {
+  flex: 0 0 calc(85vw - 24px);
+  width: calc(85vw - 24px);
+  max-width: 380px;
+  min-width: 290px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  margin-bottom: 0;
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  background: var(--bg-card);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .top-news-carousel .compact-card {
+    flex: 0 0 350px;
+    width: 350px;
+    max-width: 350px;
+  }
+}
+
+.top-news-carousel .compact-card:hover {
+  border-color: var(--border-highlight);
+  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.18);
+}
+
+/* Rank Badge on Thumbnail */
+.carousel-rank-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(6, 9, 19, 0.88);
+  backdrop-filter: blur(8px);
+  color: #38bdf8;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  letter-spacing: 0.04em;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.top-story-pill {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2.5px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* Vertical Feed Divider */
+.vertical-feed-divider {
+  max-width: 1200px;
+  margin: 10px auto 16px auto;
+  padding: 16px 14px 0 14px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vertical-feed-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vertical-feed-icon {
+  font-size: 18px;
+}
+
+.vertical-feed-heading {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.vertical-feed-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface-elevated);
+  padding: 2.5px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+}
+
+.vertical-feed-scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.vertical-scroll-arrow {
+  color: var(--border-active);
+  font-size: 13px;
+  animation: bounceDown 1.6s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+</style>
   <script>
   window.onImgError = window.onImgError || function(img, cat) {
     if (!img) return;
@@ -1607,7 +1855,7 @@ div[id$="-view-RIGHT"] {
     <div class="live-ticker-inner">
       <div class="ticker-left">
         <span class="ticker-live-badge"><span class="pulse-dot"></span><span>LIVE WIRE</span></span>
-        <span class="ticker-count-chip" id="liveStoryCountBadge">94 Live Stories</span>
+        <span class="ticker-count-chip" id="liveStoryCountBadge">97 Live Stories</span>
       </div>
 
       <div class="ticker-headlines-viewport" id="liveTickerTrack">
@@ -1717,11 +1965,26 @@ div[id$="-view-RIGHT"] {
   </div>
 
   <main>
-    <!-- Streamlined Bento Magazine Feed -->
-    <div id="storiesFeedView" class="feed-container">
+    <!-- TOP NEWS HORIZONTAL SCROLL CAROUSEL (Top 5 Stories) -->
+    <section class="top-news-section" id="topNewsSection" aria-label="Top 5 News Stories of the Day">
+      <div class="top-news-header">
+        <div class="top-news-title-wrap">
+          <span class="top-news-flame">🔥</span>
+          <h2 class="top-news-heading" id="topNewsHeading">Top news</h2>
+          <span class="top-news-badge" id="topNewsBadge">Top 5 Stories • Scroll Left to Right ➔</span>
+        </div>
+        <div class="carousel-nav-arrows">
+          <button type="button" class="carousel-nav-btn prev" onclick="scrollCarousel(-1)" title="Scroll left" aria-label="Scroll left">‹</button>
+          <button type="button" class="carousel-nav-btn next" onclick="scrollCarousel(1)" title="Scroll right" aria-label="Scroll right">›</button>
+        </div>
+      </div>
 
-        <article class="compact-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-senate-appropriations-live-vote">
+      <div class="top-news-carousel-wrap">
+        <div class="top-news-carousel" id="topNewsCarousel" role="region" aria-label="Top news horizontal scroll">
+
+        <article class="compact-card top-news-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-senate-appropriations-live-vote">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
+            <span class="carousel-rank-badge">⚡ #1 TOP NEWS</span>
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Capitol building and House chamber wing in Washington, D.C.</span>
@@ -1732,7 +1995,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="featured-lead-pill">⚡ BREAKING LEAD</span> <span class="category-tag cat-politics">Politics</span>
+                <span class="top-story-pill">🔥 TOP STORY #1</span> <span class="category-tag cat-politics">Politics</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://apnews.com/hub/congress" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on Associated Press Wire">
@@ -1893,8 +2156,9 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-six-coaching-buyouts">
+        <article class="compact-card top-news-card featured-lead-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-six-coaching-buyouts">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')">
+            <span class="carousel-rank-badge">⚡ #2 TOP NEWS</span>
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Collegiate football stadium under stadium floodlights during conference competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate football stadium under stadium floodlights during conference competition.</span>
@@ -1905,7 +2169,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-sports">Sports</span>
+                <span class="top-story-pill">🔥 TOP STORY #2</span> <span class="category-tag cat-sports">Sports</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.cbssports.com/college-football/" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on CBS Sports College Football">
@@ -2066,8 +2330,9 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-aljazeera-global-south-debt-summit">
+        <article class="compact-card top-news-card featured-lead-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-aljazeera-global-south-debt-summit">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')">
+            <span class="carousel-rank-badge">⚡ #3 TOP NEWS</span>
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="International diplomatic envoy conference and multilateral delegation summit." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">International diplomatic envoy conference and multilateral delegation summit.</span>
@@ -2078,7 +2343,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-world">World News</span>
+                <span class="top-story-pill">🔥 TOP STORY #3</span> <span class="category-tag cat-world">World News</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.aljazeera.com/economy/" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on Al Jazeera English">
@@ -2239,8 +2504,9 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-fed-treasury-yields-rally">
+        <article class="compact-card top-news-card featured-lead-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-fed-treasury-yields-rally">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')">
+            <span class="carousel-rank-badge">⚡ #4 TOP NEWS</span>
             <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market exchange trading floor and electronic index terminals." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Financial market exchange trading floor and electronic index terminals.</span>
@@ -2251,7 +2517,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-business">Business & Economy</span>
+                <span class="top-story-pill">🔥 TOP STORY #4</span> <span class="category-tag cat-business">Business & Economy</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://apnews.com/hub/financial-markets" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on AP News Business">
@@ -2412,8 +2678,9 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-bbc-Fusion-energy-tokamak-record">
+        <article class="compact-card top-news-card featured-lead-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-bbc-Fusion-energy-tokamak-record">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')">
+            <span class="carousel-rank-badge">⚡ #5 TOP NEWS</span>
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="High-density enterprise cloud data center and computational server infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-density enterprise cloud data center and computational server infrastructure.</span>
@@ -2424,7 +2691,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-tech">Science & Tech</span>
+                <span class="top-story-pill">🔥 TOP STORY #5</span> <span class="category-tag cat-tech">Science & Tech</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.bbc.com/news/science_and_environment" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on BBC News Science">
@@ -2584,9 +2851,29 @@ div[id$="-view-RIGHT"] {
             </div>
           </div>
         </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- VERTICAL FEED SECTION DIVIDER -->
+    <div class="vertical-feed-divider">
+      <div class="vertical-feed-title-wrap">
+        <span class="vertical-feed-icon">📰</span>
+        <h3 class="vertical-feed-heading" id="verticalFeedHeading">Latest News Wire</h3>
+        <span class="vertical-feed-count" id="verticalFeedCountBadge">92 Stories</span>
+      </div>
+      <div class="vertical-feed-scroll-hint">
+        <span>Scroll vertically for full live wire</span>
+        <span class="vertical-scroll-arrow">↓</span>
+      </div>
+    </div>
+
+    <!-- Streamlined Bento Magazine Feed -->
+    <div id="storiesFeedView" class="feed-container">
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" data-cat-slug="entertainment" id="story-apple-tv-standalone-sci-fi">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')">
+            
             <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80" alt="Major motion picture theatrical cinema and entertainment industry production." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Major motion picture theatrical cinema and entertainment industry production.</span>
@@ -2760,6 +3047,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Health" data-master-category="Health" data-cat-slug="health" id="story-doj-cyber-ransomware-takedown">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')">
+            
             <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=80" alt="Regional hospital medical center pavilion and pharmacy healthcare complex." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Regional hospital medical center pavilion and pharmacy healthcare complex.</span>
@@ -2933,6 +3221,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" data-cat-slug="energy" id="story-ferc-grid-grants">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ferc-grid-grants')">
+            
             <img src="https://images.unsplash.com/photo-1527482797697-8795b05a13fe?auto=format&fit=crop&w=1200&q=80" alt="Severe weather system with high winds and emergency utility grid repair operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Severe weather system with high winds and emergency utility grid repair operations.</span>
@@ -3106,6 +3395,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="National Headlines" data-cat-slug="crime" id="story-alamodome-airman-rappel">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-alamodome-airman-rappel')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Alamodome.jpg/800px-Alamodome.jpg" alt="Emergency first responders and municipal public safety perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency first responders and municipal public safety perimeter operations.</span>
@@ -3279,6 +3569,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" data-cat-slug="border" id="story-border-compromise">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-border-compromise')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/80/CBP_Operations_-_San_Diego_Checkpoint_%2827862652842%29.jpg" alt="U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Border & Security');" />
             <div class="photo-caption-bar">
               <span class="caption-text">U.S. Border Patrol checkpoint and vehicle inspection operations in Jamul, California.</span>
@@ -3452,6 +3743,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="National News" data-master-category="National Headlines" data-cat-slug="general" id="story-fda-mrna-pancreatic-trial">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')">
+            
             <img src="https://images.unsplash.com/photo-1520690214124-2405c5217036?auto=format&fit=crop&w=1200&q=80" alt="House committee room and congressional caucus proceedings in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'National News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">House committee room and congressional caucus proceedings in Washington, D.C.</span>
@@ -3625,6 +3917,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-michigan-senate-debate">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-michigan-senate-debate')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/White_House_North_Portico_2020.jpg" alt="The White House North Portico and Executive Mansion in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The White House North Portico and Executive Mansion in Washington, D.C.</span>
@@ -3798,6 +4091,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-espn-dazn-viewing-guide">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-espn-dazn-viewing-guide')">
+            
             <img src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1200&q=80" alt="Championship boxing and combat sports ring under arena spotlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship boxing and combat sports ring under arena spotlights.</span>
@@ -3971,6 +4265,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-nato-maritime-corridor-summit">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')">
+            
             <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80" alt="Civil demonstration and metropolitan public square assembly." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Civil demonstration and metropolitan public square assembly.</span>
@@ -4144,6 +4439,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-real-estate-family-offices-rates">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-real-estate-family-offices-rates')">
+            
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80" alt="Modern commercial real estate and office towers." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Modern commercial real estate and office towers.</span>
@@ -4317,6 +4613,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-nextgen-ai-datacenter-chips">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')">
+            
             <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="Deep space observation and advanced astronomical planetary science." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Deep space observation and advanced astronomical planetary science.</span>
@@ -4490,6 +4787,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" data-cat-slug="entertainment" id="story-kylie-jenner-fantasy-bra">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
+            
             <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80" alt="High-fashion runway presentation and couture model showcase." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-fashion runway presentation and couture model showcase.</span>
@@ -4663,6 +4961,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Health" data-master-category="Health" data-cat-slug="health" id="story-npr-sidewalk-sleepers">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
+            
             <img src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1200&q=80" alt="Clinical healthcare medical research and patient therapy center." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Clinical healthcare medical research and patient therapy center.</span>
@@ -4836,6 +5135,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" data-cat-slug="energy" id="story-nuclear-modular-compact">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
+            
             <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=80" alt="Advanced nuclear energy and clean baseload electrical generation facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced nuclear energy and clean baseload electrical generation facility.</span>
@@ -5009,6 +5309,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" data-cat-slug="crime" id="story-oj-simpson-case">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oj-simpson-case')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/O._J._Simpson_1990.jpg/800px-O._J._Simpson_1990.jpg" alt="O.J. Simpson during legal proceedings in criminal court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">O.J. Simpson during legal proceedings in criminal court.</span>
@@ -5182,6 +5483,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Border & Security" data-master-category="Border & Security" data-cat-slug="border" id="story-port-security-fentanyl">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-port-security-fentanyl')">
+            
             <img src="https://images.unsplash.com/photo-1545459720-aac8509eb02c?auto=format&fit=crop&w=1200&q=80" alt="Commercial maritime freight shipping container terminal and customs inspection facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Border & Security');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial maritime freight shipping container terminal and customs inspection facility.</span>
@@ -5355,6 +5657,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="National News" data-master-category="National Headlines" data-cat-slug="general" id="story-ap-fema-grants">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ap-fema-grants')">
+            
             <img src="https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?auto=format&fit=crop&w=1200&q=80" alt="Televised political debate stage and campaign press briefing podium." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'National News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Televised political debate stage and campaign press briefing podium.</span>
@@ -5528,6 +5831,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-trump-approval-midterms">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-approval-midterms')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/United_States_Senate_chamber.jpg" alt="The United States Senate legislative chamber in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Senate legislative chamber in Washington, D.C.</span>
@@ -5701,6 +6005,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-playoff-24">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-playoff-24')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/960px-NCAA_logo.svg.png" alt="National Collegiate Athletic Association (NCAA) and College Football Playoff." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">National Collegiate Athletic Association (NCAA) and College Football Playoff.</span>
@@ -5874,6 +6179,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-1792776582-melania-oleshky">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')">
+            
             <img src="https://images.unsplash.com/photo-1516849841032-87cbac4d88f7?auto=format&fit=crop&w=1200&q=80" alt="Low-Earth-orbit satellite communications constellation and defense telemetry relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Low-Earth-orbit satellite communications constellation and defense telemetry relay.</span>
@@ -6047,6 +6353,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-stock-futures-nasdaq-pressure">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-stock-futures-nasdaq-pressure')">
+            
             <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80" alt="Modern stock-market analysis and financial data." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Modern stock-market analysis and financial data.</span>
@@ -6220,6 +6527,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-cbp-autonomous-port-scanners">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cbp-autonomous-port-scanners')">
+            
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Advanced semiconductor silicon wafer and microchip circuit architecture." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Advanced semiconductor silicon wafer and microchip circuit architecture.</span>
@@ -6393,6 +6701,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" data-cat-slug="entertainment" id="story-cindy-crawford-tribute">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
+            
             <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80" alt="Memorial floral tribute honoring family remembrance and bereavement." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Memorial floral tribute honoring family remembrance and bereavement.</span>
@@ -6566,6 +6875,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Health" data-master-category="Health" data-cat-slug="health" id="story-hhs-cash-prices">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-hhs-cash-prices')">
+            
             <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1200&q=80" alt="Hospital inpatient corridor and medical clinical healthcare wing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Hospital inpatient corridor and medical clinical healthcare wing.</span>
@@ -6739,6 +7049,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Energy & Weather" data-master-category="Energy & Weather" data-cat-slug="energy" id="story-weather-power-outage-pacific">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-weather-power-outage-pacific')">
+            
             <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80" alt="High-voltage transmission line towers and regional electrical grid infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Energy & Weather');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-voltage transmission line towers and regional electrical grid infrastructure.</span>
@@ -6912,6 +7223,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Crime & Public Safety" data-master-category="Crime & Public Safety" data-cat-slug="crime" id="story-oregon-school-shooting">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-oregon-school-shooting')">
+            
             <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1200&q=80" alt="Municipal first responders and law enforcement security perimeter operations." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Crime & Public Safety');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Municipal first responders and law enforcement security perimeter operations.</span>
@@ -7085,6 +7397,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="National Headlines" data-cat-slug="politics" id="story-trump-east-potomac-links">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
+            
             <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1200&q=80" alt="Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Historic public municipal golf links and parkland course along the Potomac River in Washington, D.C.</span>
@@ -7258,6 +7571,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-01')">
+            
             <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1200&q=80" alt="Football gridiron stadium turf and yard line markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football gridiron stadium turf and yard line markings.</span>
@@ -7431,6 +7745,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-canada-cfb-wainwright-fire">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
+            
             <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=1200&q=80" alt="Emergency response and disaster investigation operations at defense installation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency response and disaster investigation operations at defense installation.</span>
@@ -7604,6 +7919,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-centrus-vs-bwxt-nuclear-buy">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')">
+            
             <img src="https://images.unsplash.com/photo-1642543491381-197a9f77f98e?auto=format&fit=crop&w=1200&q=80" alt="Financial markets rally with upward trending index charts and stock market trading gains." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Financial markets rally with upward trending index charts and stock market trading gains.</span>
@@ -7777,6 +8093,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-supreme-court-speech">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-supreme-court-speech')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/94/Supreme_Court.jpg" alt="Supreme Court of the United States west facade in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Supreme Court of the United States west facade in Washington, D.C.</span>
@@ -7950,6 +8267,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" data-cat-slug="entertainment" id="story-entertainment-nolan-imax">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-entertainment-nolan-imax')">
+            
             <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Theatrical cinema screen auditorium and movie premiere exhibition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Theatrical cinema screen auditorium and movie premiere exhibition.</span>
@@ -8123,6 +8441,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Health" data-master-category="Health" data-cat-slug="health" id="story-medicare-negotiations">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-medicare-negotiations')">
+            
             <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1200&q=80" alt="Emergency care clinical reception and hospital medical pavilion." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Health');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Emergency care clinical reception and hospital medical pavilion.</span>
@@ -8296,6 +8615,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="National Headlines" data-cat-slug="politics" id="story-trump-immigration-soften">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-trump-immigration-soften')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Marriner_S._Eccles_Federal_Reserve_Board_Building.jpg" alt="Marriner S. Eccles Federal Reserve Board Building in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Marriner S. Eccles Federal Reserve Board Building in Washington, D.C.</span>
@@ -8469,6 +8789,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-kompany-bayern-hospital">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-kompany-bayern-hospital')">
+            
             <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1200&q=80" alt="International soccer stadium grandstand and pitch during match play." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">International soccer stadium grandstand and pitch during match play.</span>
@@ -8642,6 +8963,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-france-riots-shock">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-france-riots-shock')">
+            
             <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1200&q=80" alt="The Parisian metropolitan corridor in France." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The Parisian metropolitan corridor in France.</span>
@@ -8815,6 +9137,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-fed-rates-steady">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fed-rates-steady')">
+            
             <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80" alt="Currency and financial assets in a modern banking context." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Currency and financial assets in a modern banking context.</span>
@@ -8988,6 +9311,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-science-astronomy-water-vapor">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')">
+            
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence venture valuation and advanced neural computing technology." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Artificial intelligence venture valuation and advanced neural computing technology.</span>
@@ -9161,6 +9485,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Entertainment" data-master-category="Entertainment" data-cat-slug="entertainment" id="story-entertainment-box-office-rebound">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-entertainment-box-office-rebound')">
+            
             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80" alt="Communal live entertainment auditorium and stage concert exhibition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Entertainment');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Communal live entertainment auditorium and stage concert exhibition.</span>
@@ -9334,6 +9659,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-election-mailings">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-election-mailings')">
+            
             <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80" alt="Federal law enforcement and postal screening security operations under active investigation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal law enforcement and postal screening security operations under active investigation.</span>
@@ -9507,6 +9833,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-01')">
+            
             <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80" alt="Major League Baseball stadium diamond and dugout under game lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Major League Baseball stadium diamond and dugout under game lights.</span>
@@ -9680,6 +10007,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-pakistan-kp-emergency-rule">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
+            
             <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1200&q=80" alt="Urban residential buildings and property development." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Urban residential buildings and property development.</span>
@@ -9853,6 +10181,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-tesla-roadster">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-tesla-roadster')">
+            
             <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=1200&q=80" alt="Tesla electric performance vehicle and high-technology automotive manufacturing." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Tesla electric performance vehicle and high-technology automotive manufacturing.</span>
@@ -10026,6 +10355,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-chip-export-controls">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-chip-export-controls')">
+            
             <img src="https://images.unsplash.com/photo-1507668077129-56e32842fceb?auto=format&fit=crop&w=1200&q=80" alt="High-technology laboratory research and optical computing architecture." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-technology laboratory research and optical computing architecture.</span>
@@ -10199,6 +10529,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-budget-shutdown-deal">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
+            
             <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Fashion editorial showcase and designer couture presentation." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Fashion editorial showcase and designer couture presentation.</span>
@@ -10372,6 +10703,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-01')">
+            
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
@@ -10545,6 +10877,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-starlink-ukraine-cnbc">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')">
+            
             <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1200&q=80" alt="Low-Earth-orbit satellite communications constellation and defense telemetry relay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Low-Earth-orbit satellite communications constellation and defense telemetry relay.</span>
@@ -10718,6 +11051,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-anthropic-ipo">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-anthropic-ipo')">
+            
             <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=1200&q=80" alt="Live performance stage production and concert lighting display." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Live performance stage production and concert lighting display.</span>
@@ -10891,6 +11225,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-soc-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-soc-01')">
+            
             <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=1200&q=80" alt="Championship stadium arena and floodlit pitch." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship stadium arena and floodlit pitch.</span>
@@ -11064,6 +11399,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-world-geneva-maritime-talks">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')">
+            
             <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80" alt="Commercial wind turbine generators and renewable energy farm infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial wind turbine generators and renewable energy farm infrastructure.</span>
@@ -11237,6 +11573,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-dow-nasdaq-ai-rotation">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')">
+            
             <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=80" alt="Federal customs clearance checkpoint and commercial transport inspection bay." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Federal customs clearance checkpoint and commercial transport inspection bay.</span>
@@ -11410,6 +11747,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-02')">
+            
             <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=80" alt="Football goalpost uprights and end zone turf under stadium floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football goalpost uprights and end zone turf under stadium floodlights.</span>
@@ -11583,6 +11921,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-science-nasa-james-webb">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-science-nasa-james-webb')">
+            
             <img src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="Commercial solar photovoltaic generation arrays and clean electric grid facility." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Commercial solar photovoltaic generation arrays and clean electric grid facility.</span>
@@ -11756,6 +12095,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-cfb-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-cfb-01')">
+            
             <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=1200&q=80" alt="Gridiron football stadium and yard markers during pre-game warmups." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Gridiron football stadium and yard markers during pre-game warmups.</span>
@@ -11929,6 +12269,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-golf-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-golf-01')">
+            
             <img src="https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?auto=format&fit=crop&w=1200&q=80" alt="Golf course putting green and championship tournament flagstick." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Golf course putting green and championship tournament flagstick.</span>
@@ -12102,6 +12443,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-02')">
+            
             <img src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&w=1200&q=80" alt="Basketball net and championship arena hardwood floor." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball net and championship arena hardwood floor.</span>
@@ -12275,6 +12617,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-03')">
+            
             <img src="https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" alt="NFL football helmet and gridiron equipment on stadium sideline turf." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">NFL football helmet and gridiron equipment on stadium sideline turf.</span>
@@ -12448,6 +12791,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-02')">
+            
             <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=1200&q=80&story_id=125960241861123287" alt="Baseball outfield and stadium grandstand during championship series." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Baseball outfield and stadium grandstand during championship series.</span>
@@ -12621,6 +12965,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-03')">
+            
             <img src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=1200&q=80" alt="Indoor collegiate basketball gymnasium and team practice court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Indoor collegiate basketball gymnasium and team practice court.</span>
@@ -12794,6 +13139,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-cfb-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-cfb-02')">
+            
             <img src="https://images.unsplash.com/photo-1569517282132-25d22f4573e6?auto=format&fit=crop&w=1200&q=80" alt="NFL and college football gridiron field turf and sideline markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">NFL and college football gridiron field turf and sideline markings.</span>
@@ -12967,6 +13313,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-04">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-04')">
+            
             <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1200&q=80" alt="Championship football stadium field and spectator stands under floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under floodlights.</span>
@@ -13140,6 +13487,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-soc-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-soc-02')">
+            
             <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=1200&q=80" alt="Professional European football pitch and match ball under floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional European football pitch and match ball under floodlights.</span>
@@ -13313,6 +13661,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-chiefs-bills-snf-preview">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')">
+            
             <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80" alt="Collegiate and NFL football stadium under prime-time competition lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and NFL football stadium under prime-time competition lights.</span>
@@ -13486,6 +13835,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-ten-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-ten-01')">
+            
             <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80" alt="Grand Slam championship tennis court net and baseline under stadium lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Grand Slam championship tennis court net and baseline under stadium lights.</span>
@@ -13659,6 +14009,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-05">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-05')">
+            
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Jalen_Hurts_2021.jpg/800px-Jalen_Hurts_2021.jpg" alt="Philadelphia Eagles quarterback Jalen Hurts." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Philadelphia Eagles quarterback Jalen Hurts.</span>
@@ -13832,6 +14183,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-08">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-08')">
+            
             <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1200&q=80&story_id=3606502887820678066" alt="Championship football stadium field and spectator stands under floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under floodlights.</span>
@@ -14005,6 +14357,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-06">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-06')">
+            
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80&story_id=2245142308900871073" alt="Championship football stadium field and spectator stands under evening lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under evening lights.</span>
@@ -14178,6 +14531,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-09">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-09')">
+            
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80&story_id=2468445469269113116" alt="Collegiate and professional football stadium under Saturday night floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and professional football stadium under Saturday night floodlights.</span>
@@ -14351,6 +14705,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-07">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-07')">
+            
             <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80&story_id=3165079782734968418" alt="Collegiate and NFL football stadium under prime-time competition lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and NFL football stadium under prime-time competition lights.</span>
@@ -14524,6 +14879,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nfl-10">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nfl-10')">
+            
             <img src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1200&q=80&story_id=7898876668160310112" alt="Championship football stadium field and spectator stands under floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under floodlights.</span>
@@ -14697,6 +15053,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-bears-patriots-tnf-recap">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')">
+            
             <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?auto=format&fit=crop&w=1200&q=80&story_id=8926893138546278723" alt="Football gridiron stadium turf and yard line markings." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football gridiron stadium turf and yard line markings.</span>
@@ -14870,6 +15227,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-04">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-04')">
+            
             <img src="https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?auto=format&fit=crop&w=1200&q=80" alt="Basketball game ball on court sideline during league warmup." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball game ball on court sideline during league warmup.</span>
@@ -15043,6 +15401,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-06">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-06')">
+            
             <img src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=1200&q=80&story_id=6076200715881544589" alt="Indoor collegiate basketball gymnasium and team practice court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Indoor collegiate basketball gymnasium and team practice court.</span>
@@ -15216,6 +15575,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-05">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-05')">
+            
             <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80" alt="Basketball hoop and backboard in tournament competition arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball hoop and backboard in tournament competition arena.</span>
@@ -15389,6 +15749,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-07">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-07')">
+            
             <img src="https://images.unsplash.com/photo-1515523110800-9415d13b84a8?auto=format&fit=crop&w=1200&q=80&story_id=1030241468583950620" alt="Basketball net and championship arena hardwood floor." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball net and championship arena hardwood floor.</span>
@@ -15562,6 +15923,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-cfb-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-cfb-03')">
+            
             <img src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=1200&q=80&story_id=4548019525211597818" alt="Football goalpost uprights and end zone turf under stadium floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Football goalpost uprights and end zone turf under stadium floodlights.</span>
@@ -15735,6 +16097,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nba-08">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nba-08')">
+            
             <img src="https://images.unsplash.com/photo-1608245449230-4ac19066d2d0?auto=format&fit=crop&w=1200&q=80&story_id=6431942491284229358" alt="Indoor collegiate basketball gymnasium and team practice court." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Indoor collegiate basketball gymnasium and team practice court.</span>
@@ -15908,6 +16271,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-nhl-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-nhl-01')">
+            
             <img src="https://images.unsplash.com/photo-1580748141549-71748dbe0bdc?auto=format&fit=crop&w=1200&q=80" alt="Professional NHL ice hockey rink and goal crease under arena lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional NHL ice hockey rink and goal crease under arena lights.</span>
@@ -16081,6 +16445,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-mlb-03">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-mlb-03')">
+            
             <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=1200&q=80" alt="Baseball outfield and stadium grandstand during championship series." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Baseball outfield and stadium grandstand during championship series.</span>
@@ -16254,6 +16619,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-ufc-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-ufc-01')">
+            
             <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80" alt="Heavyweight championship fight preparation and training arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Heavyweight championship fight preparation and training arena.</span>
@@ -16427,6 +16793,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-cbb-01">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-cbb-01')">
+            
             <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=1200&q=80" alt="Athletic basketball arena floor and grandstand seating." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Athletic basketball arena floor and grandstand seating.</span>
@@ -16600,6 +16967,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-sports-ufc-02">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-sports-ufc-02')">
+            
             <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=80" alt="Championship MMA octagon cage and main-event arena floor." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship MMA octagon cage and main-event arena floor.</span>
@@ -16773,6 +17141,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-byu-big-12-basketball-media-days">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
+            
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=6930468690315892862" alt="Professional basketball arena hardwood court under game night lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Professional basketball arena hardwood court under game night lights.</span>
@@ -16946,6 +17315,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-warriors-porzingis-trades-absence">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
+            
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=4622705957549387632" alt="Championship basketball arena court and perimeter baseline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship basketball arena court and perimeter baseline.</span>
@@ -17119,6 +17489,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-rams-injuries-wr-adams">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
+            
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80&story_id=6489782409283202847" alt="Championship football stadium field and spectator stands under evening lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship football stadium field and spectator stands under evening lights.</span>
@@ -17292,6 +17663,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-nba-preseason-power-rankings">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
+            
             <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80&story_id=5704038210482882026" alt="Championship basketball arena court and perimeter baseline." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Championship basketball arena court and perimeter baseline.</span>
@@ -17465,6 +17837,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-rankings-upsets">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
+            
             <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80&story_id=4462865028298292984" alt="Collegiate and NFL football stadium under prime-time competition lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and NFL football stadium under prime-time competition lights.</span>
@@ -17638,6 +18011,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-pga-saudi-merger">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-pga-saudi-merger')">
+            
             <img src="https://images.unsplash.com/photo-1592919505780-303950717480?auto=format&fit=crop&w=1200&q=80" alt="Tournament links fairway and sand trap hazard along championship course." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Tournament links fairway and sand trap hazard along championship course.</span>
@@ -17811,6 +18185,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-ncaa-revenue-share">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
+            
             <img src="https://images.unsplash.com/photo-1517649763962-0c623266ddc0?auto=format&fit=crop&w=1200&q=80&story_id=6450607779708784751" alt="Collegiate and NFL football stadium under prime-time competition lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and NFL football stadium under prime-time competition lights.</span>
@@ -17984,6 +18359,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-nfl-jalen-hurts">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
+            
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80&story_id=6853082614998531805" alt="Collegiate and professional football stadium under Saturday night floodlights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate and professional football stadium under Saturday night floodlights.</span>
@@ -18157,6 +18533,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-nba-lakers-prep">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-nba-lakers-prep')">
+            
             <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1200&q=80&story_id=5214874860963168025" alt="Basketball hoop and backboard in tournament competition arena." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Basketball hoop and backboard in tournament competition arena.</span>
@@ -18330,6 +18707,7 @@ div[id$="-view-RIGHT"] {
 
         <article class="compact-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-dodgers-brewers-nlcs">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">
+            
             <img src="https://images.unsplash.com/photo-1562077772-3bd90403f7f0?auto=format&fit=crop&w=1200&q=80&story_id=2187769298272886026" alt="Baseball home plate and field dirt under stadium lights." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Baseball home plate and field dirt under stadium lights.</span>
@@ -19103,6 +19481,34 @@ div[id$="-view-RIGHT"] {
 
       card.style.display = match ? '' : 'none';
     }
+
+    // Update Top News Horizontal Carousel visibility & badge
+    var topNewsSection = document.getElementById('topNewsSection');
+    var topCarousel = document.getElementById('topNewsCarousel');
+    if (topNewsSection && topCarousel) {
+      var visibleTopCards = topCarousel.querySelectorAll('.compact-card:not([style*="display: none"])');
+      var topNewsBadge = document.getElementById('topNewsBadge');
+      if (visibleTopCards.length === 0) {
+        topNewsSection.style.display = 'none';
+      } else {
+        topNewsSection.style.display = '';
+        if (topNewsBadge) {
+          topNewsBadge.textContent = key === 'all' ? 'Top 5 Stories • Scroll Left to Right ➔' : (visibleTopCards.length + ' Featured in ' + (currentFilterCategory || '') + ' • Scroll ➔');
+        }
+      }
+    }
+
+    // Update Vertical News Feed count & heading
+    var verticalFeed = document.getElementById('storiesFeedView');
+    if (verticalFeed) {
+      var visibleVerticalCards = verticalFeed.querySelectorAll('.compact-card:not([style*="display: none"])');
+      var vCount = document.getElementById('verticalFeedCountBadge');
+      if (vCount) vCount.textContent = visibleVerticalCards.length + ' Stories';
+      var vHeading = document.getElementById('verticalFeedHeading');
+      if (vHeading) {
+        vHeading.textContent = key === 'all' ? 'Latest News Wire' : (currentFilterCategory + ' Stories');
+      }
+    }
   }
 
   function filterCategory(btnOrKey, keyOrBtn) {
@@ -19617,6 +20023,17 @@ div[id$="-view-RIGHT"] {
   window.toggleStoryDetails = toggleStoryDetails;
   window.toggleFactExpansion = toggleFactExpansion;
   window.filterCategory = filterCategory;
+
+  // Horizontal Carousel Navigation (Top 5 Stories)
+  function scrollCarousel(dir) {
+    var el = document.getElementById('topNewsCarousel');
+    if (!el) return;
+    var card = el.querySelector('.compact-card');
+    var scrollDist = card ? (card.offsetWidth + 16) : 340;
+    el.scrollBy({ left: dir * scrollDist, behavior: 'smooth' });
+  }
+  window.scrollCarousel = scrollCarousel;
+
   window.handleLiveSearch = handleLiveSearch;
   window.togglePersonalizePanel = togglePersonalizePanel;
   window.applyQuickFocus = applyQuickFocus;

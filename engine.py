@@ -7237,10 +7237,11 @@ def get_category_slug(cat: str) -> str:
         return "border"
     return "general"
 
-def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
+def prerender_cards_html(stories: List[Dict[str, Any]], is_carousel: bool = False, rank_offset: int = 0) -> str:
     cards_html = []
     for idx, s in enumerate(stories):
-        sId = s.get("id", f"story-{idx}")
+        global_idx = idx + rank_offset
+        sId = s.get("id", f"story-{global_idx}")
         cat = s.get("category", "General News")
         if isinstance(cat, (list, tuple)):
             cat = cat[0] if len(cat) > 0 else "General News"
@@ -7288,15 +7289,23 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
         exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
 
-        tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
-        if idx == 0:
-            tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> ' + tags_html
-        elif idx < 10:
-            tags_html = f'<span class="live-wire-pill">● LIVE</span> ' + tags_html
+        if is_carousel:
+            rank_badge_html = f'<span class="carousel-rank-badge">⚡ #{idx+1} TOP NEWS</span>'
+            tags_html = f'<span class="top-story-pill">🔥 TOP STORY #{idx+1}</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+            card_class = "compact-card top-news-card featured-lead-card"
+        else:
+            rank_badge_html = ''
+            card_class = f"compact-card{' featured-lead-card' if global_idx == 0 else ''}"
+            tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
+            if global_idx == 0:
+                tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> ' + tags_html
+            elif global_idx < 10:
+                tags_html = f'<span class="live-wire-pill">● LIVE</span> ' + tags_html
 
         card = f"""
-        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" id="{sId}">
+        <article class="{card_class}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
+            {rank_badge_html}
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
             <div class="photo-caption-bar">
               <span class="caption-text">{caption}</span>
@@ -7439,31 +7448,55 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
         with open(HTML_FILE, "r", encoding="utf-8") as f:
             content = f.read()
 
+        # 1. Update topNewsCarousel with top 5 stories
+        carousel_marker = '<div class="top-news-carousel" id="topNewsCarousel"'
+        c_pos = content.find(carousel_marker)
+        if c_pos != -1:
+            c_tag_end = content.find('>', c_pos) + 1
+            c_close = content.find('</div>\n      </div>\n    </section>', c_tag_end)
+            if c_close == -1:
+                c_close = content.find('</div>', c_tag_end)
+            if c_close != -1:
+                top_5_html = "\n" + prerender_cards_html(stories[:5], is_carousel=True, rank_offset=0) + "\n        "
+                content = content[:c_tag_end] + top_5_html + content[c_close:]
+
+        # 2. Update vertical feed with remaining stories (stories 6+)
         feed_start = content.find('<div id="storiesFeedView" class="feed-container">')
-        if feed_start == -1:
-            return
-        feed_start += len('<div id="storiesFeedView" class="feed-container">')
-        
-        comm_view = content.find('<!-- Community Lounge -->')
-        feed_end = content.rfind('</div>', feed_start, comm_view if comm_view != -1 else len(content))
-        
-        if feed_end != -1:
-            new_cards = "\n" + prerender_cards_html(stories) + "\n    "
-            updated_content = content[:feed_start] + new_cards + content[feed_end:]
+        if feed_start != -1:
+            feed_start += len('<div id="storiesFeedView" class="feed-container">')
+            comm_view = content.find('<!-- Community Lounge -->')
+            feed_end = content.rfind('</div>', feed_start, comm_view if comm_view != -1 else len(content))
+            if feed_end != -1:
+                vertical_cards = "\n" + prerender_cards_html(stories[5:], is_carousel=False, rank_offset=5) + "\n    "
+                content = content[:feed_start] + vertical_cards + content[feed_end:]
 
-            # Also synchronize the inline <script> block at the bottom of index.html with app.js if present
-            app_js_path = os.path.join(BASE_DIR, "app.js")
-            if os.path.exists(app_js_path):
-                with open(app_js_path, "r", encoding="utf-8") as jf:
-                    app_js_code = jf.read()
-                s_tag = updated_content.rfind("<script>")
-                e_tag = updated_content.rfind("</script>")
-                if s_tag != -1 and e_tag != -1 and e_tag > s_tag:
-                    updated_content = updated_content[:s_tag + len("<script>")] + "\n" + app_js_code + "\n" + updated_content[e_tag:]
+        # 3. Update count badges
+        content = re.sub(r'id="verticalFeedCountBadge">[^<]*<', f'id="verticalFeedCountBadge">{len(stories[5:])} Stories<', content)
+        content = re.sub(r'id="liveStoryCountBadge">[^<]*<', f'id="liveStoryCountBadge">{len(stories)} Live Stories<', content)
 
-            with open(HTML_FILE, "w", encoding="utf-8", errors="replace") as f:
-                f.write(updated_content)
-            print("Successfully pre-rendered updated story cards and synced app.js into index.html.")
+        # 4. Synchronize inline styles with styles.css
+        styles_path = os.path.join(BASE_DIR, "styles.css")
+        if os.path.exists(styles_path):
+            with open(styles_path, "r", encoding="utf-8") as sf:
+                css_code = sf.read()
+            s_style = content.find("<style>")
+            e_style = content.find("</style>")
+            if s_style != -1 and e_style != -1 and e_style > s_style:
+                content = content[:s_style + len("<style>")] + "\n" + css_code + "\n" + content[e_style:]
+
+        # 5. Synchronize inline <script> block with app.js
+        app_js_path = os.path.join(BASE_DIR, "app.js")
+        if os.path.exists(app_js_path):
+            with open(app_js_path, "r", encoding="utf-8") as jf:
+                app_js_code = jf.read()
+            s_tag = content.rfind("<script>")
+            e_tag = content.rfind("</script>")
+            if s_tag != -1 and e_tag != -1 and e_tag > s_tag:
+                content = content[:s_tag + len("<script>")] + "\n" + app_js_code + "\n" + content[e_tag:]
+
+        with open(HTML_FILE, "w", encoding="utf-8", errors="replace") as f:
+            f.write(content)
+        print("Successfully pre-rendered updated story cards and synced styles/scripts into index.html.")
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 

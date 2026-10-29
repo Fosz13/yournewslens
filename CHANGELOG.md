@@ -1,5 +1,31 @@
 # Your News Lens — Changelog
 
+## [v10.0] - 2026-10-28 — Top 5 News Stories Horizontal Carousel & Responsive Magazine Layout
+- **Top 5 News Stories Horizontal Scroll Carousel**:
+  - Implemented `.top-news-section` positioned directly beneath the category navigation pills and above the vertical feed.
+  - Features the **Top 5 news stories of the day** in a responsive, touch-friendly horizontal swipe rail (`.top-news-carousel`) with `scroll-snap-type: x mandatory`.
+  - On mobile devices, cards feature an optimized width (`calc(85vw - 24px)`, max-width 380px) that allows the next card to subtly peek in from the right edge, signaling horizontal scrollability (matching modern mobile video/news feed ergonomics).
+  - On desktop/tablet, includes tactile circular arrow navigation buttons (`‹` and `›`) for smooth one-click left/right horizontal scrolling.
+  - Each carousel card features:
+    - 16:9 widescreen editorial image thumbnail with clean source credit attribution.
+    - Prominent `⚡ TOP STORY #1..#5` and `⚡ #{i+1} TOP NEWS` rank badges.
+    - Verified outlet source badge with relative timestamp (`Source: AP Wire • 14 hours ago`).
+    - High-contrast headline link opening the original reporting in a new tab.
+    - Direct headline answer preview box (`⚡ INSTANT ANSWER` / `⚖️ The Direct Answer`).
+    - Tri-perspective preview pills (`Left: Progressive`, `Balanced: Centrist`, `Right: Conservative`).
+    - Full interactive expansion: tapping any card reveals the complete 4-fact dossier, Deep Dive & Evidence, authentic persona talking points, and copy button.
+- **Continuous Vertical News Feed**:
+  - Below the horizontal carousel, a dedicated section divider (`.vertical-feed-divider`) transitions into the full vertical news feed.
+  - Displays the remaining 92 stories scrolling vertically as a standard, high-density editorial magazine grid.
+  - Zero duplicate story IDs between the carousel and the vertical feed.
+- **Dynamic Category Filtering & Search Synchronization**:
+  - Category pill selection dynamically synchronizes both the horizontal carousel and the vertical news feed.
+  - When filtering by beats (e.g. `Sports`), the carousel highlights matching featured stories while the vertical feed updates its story count and heading.
+  - If a filter produces no matching cards in the carousel, the top rail gracefully collapses.
+- **Test Suite & Verification**:
+  - Added `TEST 26` to `test_regression_suite.py` validating 5 top carousel stories, 92 vertical stories, 0 duplicate IDs, and arrow navigation.
+  - 26/26 tests passing (100% success rate).
+
 ## [v4.1] - 2026-10-23 — Multi-Source Aggregation Overhaul (ESPN, BBC, Al Jazeera, AP News, Verified X) & Yahoo News Removal
 - **Eliminated Yahoo News / Yahoo Sports Dominance Across Frontend & Backend**:
   - Replaced the single-source Yahoo RSS browser fetcher (`fetchBrowserLiveRSS()` in `app.js` and `index.html`) with a **Multi-Source Live Wire Aggregator** rotating across **ESPN**, **BBC News**, **Al Jazeera English**, **AP News**, and **Verified Breaking News on X**.
