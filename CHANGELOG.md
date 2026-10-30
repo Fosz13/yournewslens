@@ -1,5 +1,30 @@
 # Your News Lens — Changelog
 
+## [v11.0] - 2026-10-29 — Location-Based Local News Section & Metro Selection Engine
+- **Location-Based Local News Wire**:
+  - Added a dedicated `📍 Local News` category pill to the main navigation bar.
+  - Implemented an editorial **Local News Banner** (`#localNewsBanner`) positioned right above the feed, displaying the user's active metro area, detection status pill (`Default Metro`, `🎯 GPS Detected`, or `User Selected`), and quick action controls.
+- **Automatic Geolocation Detection & Manual Metro Selector**:
+  - Integrated HTML5 Geolocation API (`detectUserLocation()`) with geographic bounding boxes for major metropolitan regions and graceful fallback.
+  - Built an intuitive **Change City** dropdown grid featuring quick 1-tap presets for top metro areas:
+    - **Tampa Bay, FL** (Default Home Metro)
+    - **Orlando & Central FL**
+    - **Miami & South FL**
+    - **Atlanta Metro, GA**
+    - **New York City Metro**
+    - **Washington D.C. Metro**
+    - **Chicago & Midwest**
+    - **Los Angeles & SoCal**
+    - **Dallas-Fort Worth, TX**
+  - Included a custom city/ZIP text input with instant filter application.
+  - Persisted user location choices across browser sessions via `localStorage` (`userLocalMetro`).
+- **Authentic Local Reporting & Tri-Perspective Coverage**:
+  - Ingested rich local news stories covering Hillsborough road transit & infrastructure, the St. Pete Gas Plant & Rays stadium agreement, Florida homeowners property insurance rate stabilization, Tampa historic district renovation guidelines (Hyde Park, Ybor City, Seminole Heights), and Tampa Bay red tide marine sensor monitoring.
+  - Every local story includes the universal 4-fact verified breakdown, instant direct answer, evidentiary deep dive, and Left/Balanced/Right perspective talking points.
+- **Test Suite Verification**:
+  - Added `TEST 27` to `test_regression_suite.py` verifying Local pill presence, location banner controls, metro presets, local card tags (`data-metro`, `cat-local`), and geolocation controller logic.
+  - 27/27 regression tests passing (100% success rate).
+
 ## [v10.2] - 2026-10-29 — Clean Editorial Streamlining & Gaudy Number Purge
 - **Complete Elimination of Gaudy Rank Numbers & Badges**:
   - Completely purged all neon green numbers `#1` through `#5`, rank badges (`.green-rank-badge`), and metadata rank pills (`.green-rank-pill`).
