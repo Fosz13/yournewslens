@@ -1572,215 +1572,36 @@ div[id$="-view-RIGHT"] {
 
 
 
+
 /* ==========================================================================
-   TOP NEWS VERTICAL SCREENING & GREEN RANKED #1-#5 SYSTEM
+   CLEAN EDITORIAL TYPOGRAPHY & STREAMLINED MAGAZINE CARDS
    ========================================================================== */
 
-.top-news-section {
-  max-width: 900px;
-  margin: 14px auto 20px auto;
-  padding: 0 12px;
-}
-
-.top-news-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-  padding: 0 4px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 10px;
-}
-
-.top-news-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.top-news-flame {
-  font-size: 22px;
-  animation: flamePulse 1.8s infinite;
-}
-
-@keyframes flamePulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #10b981); }
-  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #34d399); }
-}
-
-.top-news-heading {
-  font-size: 21px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  margin: 0;
-}
-
-.top-news-badge {
-  font-size: 11px;
-  font-weight: 700;
-  color: #34d399;
-  background: rgba(16, 185, 129, 0.12);
-  padding: 3px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  letter-spacing: 0.02em;
-}
-
-[data-theme="light"] .top-news-badge {
-  color: #047857;
-  background: rgba(16, 185, 129, 0.15);
-  border-color: rgba(5, 150, 105, 0.4);
-}
-
-.top-news-feed {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Green Rank Badges (#1 through #5) */
-.green-rank-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: linear-gradient(135deg, rgba(6, 78, 59, 0.94) 0%, rgba(4, 47, 46, 0.96) 100%);
-  border: 2px solid #10b981;
-  color: #ecfdf5;
-  padding: 5px 12px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4), 0 2px 6px rgba(0, 0, 0, 0.5);
-  z-index: 10;
-  backdrop-filter: blur(8px);
-}
-
-.green-rank-badge .rank-badge-num {
-  color: #34d399;
-  font-size: 16px;
-  font-weight: 900;
-  line-height: 1;
-  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
-}
-
-.green-rank-badge .rank-badge-label {
-  color: #a7f3d0;
-  font-size: 10.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.green-rank-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(16, 185, 129, 0.18);
-  border: 1.5px solid #10b981;
-  color: #34d399;
-  font-size: 10.5px;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 2.5px 8px;
-  border-radius: 6px;
-  letter-spacing: 0.04em;
-}
-
-[data-theme="light"] .green-rank-badge {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  border-color: #059669;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
-}
-
-[data-theme="light"] .green-rank-badge .rank-badge-num {
-  color: #ffffff;
-  text-shadow: none;
-}
-
-[data-theme="light"] .green-rank-badge .rank-badge-label {
-  color: #d1fae5;
-}
-
-[data-theme="light"] .green-rank-pill {
-  background: rgba(16, 185, 129, 0.14);
-  border-color: #059669;
-  color: #047857;
-}
-
-.top-ranked-card {
-  border-color: rgba(16, 185, 129, 0.35) !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
-}
-
-.top-ranked-card:hover {
-  border-color: #10b981 !important;
-  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.22) !important;
-}
-
-/* Vertical Feed Divider */
-.vertical-feed-divider {
-  max-width: 900px;
-  margin: 20px auto 16px auto;
-  padding: 16px 12px 0 12px;
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.vertical-feed-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.vertical-feed-icon {
-  font-size: 18px;
-}
-
-.vertical-feed-heading {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin: 0;
-}
-
-.vertical-feed-count {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
-  background: var(--bg-surface-elevated);
-  padding: 2.5px 8px;
-  border-radius: 10px;
-  border: 1px solid var(--border-subtle);
-}
-
-.vertical-feed-scroll-hint {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
-/* Story Title Click-to-Expand */
 .story-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 10px;
   cursor: pointer;
   user-select: text;
   transition: color 0.18s ease;
+  letter-spacing: -0.01em;
 }
 
 .story-title:hover {
   color: var(--border-active);
+}
+
+.live-wire-pill {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2.5px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
 }

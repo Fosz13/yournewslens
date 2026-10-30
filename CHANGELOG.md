@@ -1,5 +1,20 @@
 # Your News Lens — Changelog
 
+## [v10.2] - 2026-10-29 — Clean Editorial Streamlining & Gaudy Number Purge
+- **Complete Elimination of Gaudy Rank Numbers & Badges**:
+  - Completely purged all neon green numbers `#1` through `#5`, rank badges (`.green-rank-badge`), and metadata rank pills (`.green-rank-pill`).
+  - Restored a clean, dignified, uncluttered editorial aesthetic (modern magazine layout inspired by Apple News, The Verge, and Substack).
+- **Single Unified Vertical Editorial Feed**:
+  - Unified all 97 stories into a single, seamless, continuous vertical feed (`#storiesFeedView`).
+  - The top lead stories naturally head the feed with clean editorial hierarchy (`⚡ BREAKING LEAD` on story #1, followed by `● TOP STORY` and `● LIVE` wire pills), without artificial segmented dividers or jarring visual clutters.
+- **In-Page Headline Toggle (Zero External Redirects)**:
+  - Ensured all story titles remain free of external hyperlinks (`<a>`).
+  - Clicking any headline triggers `toggleStoryDetails(storyId)` to smoothly expand key facts, evidence dossiers, and tri-perspective arguments right in place.
+  - Original article external links are tastefully preserved inside the expanded details via the `📖 Read Article ↗` button and source chip.
+- **Test Suite Verification**:
+  - Updated `TEST 26` in `test_regression_suite.py` to assert the complete absence of gaudy green badges, verified 97 stories in the clean unified feed, and confirmed zero title redirect links.
+  - 26/26 regression tests passing (100% success rate).
+
 ## [v10.1] - 2026-10-29 — Pure Vertical Screening & Green Ranked #1–#5 System & Headline Link Removal
 - **Pure Vertical Screening & Elimination of Horizontal Scrolling**:
   - Completely removed the horizontal carousel and sideways scroll rail to resolve gesture conflict, scroll locking, and mobile page wobble.

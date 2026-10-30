@@ -7237,11 +7237,10 @@ def get_category_slug(cat: str) -> str:
         return "border"
     return "general"
 
-def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = False, rank_offset: int = 0) -> str:
+def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
     for idx, s in enumerate(stories):
-        global_idx = idx + rank_offset
-        sId = s.get("id", f"story-{global_idx}")
+        sId = s.get("id", f"story-{idx}")
         cat = s.get("category", "General News")
         if isinstance(cat, (list, tuple)):
             cat = cat[0] if len(cat) > 0 else "General News"
@@ -7289,27 +7288,19 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = Fa
         exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
         exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
 
-        if is_top_ranked:
-            rank_num = idx + 1
-            rank_badge_html = f'''<div class="green-rank-badge" title="Top {rank_num} story of the day">
-              <span class="rank-badge-num">#{rank_num}</span>
-              <span class="rank-badge-label">TOP STORY</span>
-            </div>'''
-            tags_html = f'<span class="green-rank-pill">#{rank_num} TOP STORY</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
-            card_class = f"compact-card top-ranked-card{' featured-lead-card' if rank_num == 1 else ''}"
+        # Clean editorial tags row without gaudy rank badges
+        if idx == 0:
+            tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+        elif idx < 5:
+            tags_html = f'<span class="live-wire-pill">● TOP STORY</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+        elif idx < 12:
+            tags_html = f'<span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
         else:
-            rank_badge_html = ''
-            card_class = f"compact-card{' featured-lead-card' if global_idx == 0 else ''}"
             tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
-            if global_idx == 0:
-                tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> ' + tags_html
-            elif global_idx < 10:
-                tags_html = f'<span class="live-wire-pill">● LIVE</span> ' + tags_html
 
         card = f"""
-        <article class="{card_class}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" id="{sId}">
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
-            {rank_badge_html}
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
             <div class="photo-caption-bar">
               <span class="caption-text">{caption}</span>
@@ -7330,7 +7321,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = Fa
               </div>
             </div>
 
-            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view key facts and perspectives">
+            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view Key Facts & Perspectives">
               {s.get('title', '')}
             </h3>
 
@@ -7406,8 +7397,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = Fa
                 </div>
 
                 <div class="perspective-meta-bar">
-                  <span class="perspective-badge {pData.get('source_type', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('source_type') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
-                  {f'<span class="source-attribution">Source: {pData["supporting_sources"][0]["name"]}</span>' if pData.get('supporting_sources') else ''}
+                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
+                  {f'<span class="source-attribution">Source: {pData.get("source_attribution")}</span>' if pData.get("source_attribution") else ''}
                 </div>
 
                 <div class="talking-points-panel">
@@ -7440,43 +7431,46 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = Fa
           </div>
         </article>"""
         cards_html.append(card)
-
     return "\n".join(cards_html)
 
+
 def update_index_html_prerender(stories: List[Dict[str, Any]]):
+    import re
     if not os.path.exists(HTML_FILE) or not stories:
         return
     try:
         with open(HTML_FILE, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # 1. Update topNewsFeed with top 5 stories in vertical layout
-        top_marker = '<div class="top-news-feed" id="topNewsFeed"'
-        c_pos = content.find(top_marker)
-        if c_pos != -1:
-            c_tag_end = content.find('>', c_pos) + 1
-            c_close = content.find('</div>\n    </section>', c_tag_end)
-            if c_close == -1:
-                c_close = content.find('</div>', c_tag_end)
-            if c_close != -1:
-                top_5_html = "\n" + prerender_cards_html(stories[:5], is_top_ranked=True, rank_offset=0) + "\n    "
-                content = content[:c_tag_end] + top_5_html + content[c_close:]
+        # Clean out any old top-news-section or vertical dividers
+        if '<section class="top-news-section"' in content:
+            s_sec = content.find('<section class="top-news-section"')
+            e_sec = content.find('</section>', s_sec) + len('</section>')
+            content = content[:s_sec] + content[e_sec:]
 
-        # 2. Update vertical feed with remaining stories (stories 6+)
+        if '<div class="vertical-feed-divider"' in content:
+            s_div = content.find('<div class="vertical-feed-divider"')
+            e_div = content.find('</div>\n    </div>', s_div)
+            if e_div != -1:
+                e_div += len('</div>\n    </div>')
+            else:
+                e_div = content.find('</div>', s_div) + len('</div>')
+            content = content[:s_div] + content[e_div:]
+
+        # Update storiesFeedView with all stories
         feed_start = content.find('<div id="storiesFeedView" class="feed-container">')
         if feed_start != -1:
             feed_start += len('<div id="storiesFeedView" class="feed-container">')
             comm_view = content.find('<!-- Community Lounge -->')
             feed_end = content.rfind('</div>', feed_start, comm_view if comm_view != -1 else len(content))
             if feed_end != -1:
-                vertical_cards = "\n" + prerender_cards_html(stories[5:], is_top_ranked=False, rank_offset=5) + "\n    "
-                content = content[:feed_start] + vertical_cards + content[feed_end:]
+                all_cards = "\n" + prerender_cards_html(stories) + "\n    "
+                content = content[:feed_start] + all_cards + content[feed_end:]
 
-        # 3. Update count badges
-        content = re.sub(r'id="verticalFeedCountBadge">[^<]*<', f'id="verticalFeedCountBadge">{len(stories[5:])} Stories<', content)
+        # Update live count badge
         content = re.sub(r'id="liveStoryCountBadge">[^<]*<', f'id="liveStoryCountBadge">{len(stories)} Live Stories<', content)
 
-        # 4. Synchronize inline styles with styles.css
+        # Synchronize inline styles with styles.css
         styles_path = os.path.join(BASE_DIR, "styles.css")
         if os.path.exists(styles_path):
             with open(styles_path, "r", encoding="utf-8") as sf:
@@ -7486,7 +7480,7 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
             if s_style != -1 and e_style != -1 and e_style > s_style:
                 content = content[:s_style + len("<style>")] + "\n" + css_code + "\n" + content[e_style:]
 
-        # 5. Synchronize inline <script> block with app.js
+        # Synchronize inline script with app.js
         app_js_path = os.path.join(BASE_DIR, "app.js")
         if os.path.exists(app_js_path):
             with open(app_js_path, "r", encoding="utf-8") as jf:
@@ -7498,7 +7492,7 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
 
         with open(HTML_FILE, "w", encoding="utf-8", errors="replace") as f:
             f.write(content)
-        print("Successfully pre-rendered vertical top-news cards and synced styles/scripts into index.html.")
+        print("Successfully pre-rendered clean editorial feed and synced styles/scripts into index.html.")
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 
