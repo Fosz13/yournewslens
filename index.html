@@ -2184,14 +2184,9 @@ div[id$="-view-RIGHT"] {
 
 .blind-topics-bar {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 .blind-topics-label {
@@ -2200,31 +2195,55 @@ div[id$="-view-RIGHT"] {
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  white-space: nowrap;
 }
 
 .blind-pills-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .blind-pills-wrap {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
 }
 
 .blind-topic-pill {
   background: var(--bg-surface-elevated, rgba(30, 41, 59, 0.7));
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  font-size: 12.5px;
-  font-weight: 650;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-radius: var(--radius-md, 10px);
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.35;
   transition: all 0.18s ease;
   touch-action: manipulation;
+  pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   user-select: none;
   -webkit-user-select: none;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .blind-topic-pill {
+    text-align: left;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    font-size: 13.5px;
+  }
 }
 
 .blind-topic-pill:hover {
@@ -2233,16 +2252,17 @@ div[id$="-view-RIGHT"] {
 }
 
 .blind-topic-pill.active {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  border-color: #38bdf8;
-  color: #ffffff;
-  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.38);
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  border-color: #38bdf8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 3px 12px rgba(2, 132, 199, 0.45) !important;
+  font-weight: 800 !important;
 }
 
 [data-theme="light"] .blind-topic-pill.active {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  border-color: #0369a1;
-  color: #ffffff;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+  border-color: #0369a1 !important;
+  color: #ffffff !important;
 }
 
 /* Prompt Banner */
@@ -2980,24 +3000,24 @@ div[id$="-view-RIGHT"] {
 
         <div class="blind-survey-body" id="blindSurveyBody">
           <div class="blind-topics-bar">
-            <span class="blind-topics-label">Choose Debate:</span>
-            <div class="blind-pills-wrap">
-              <button type="button" class="blind-topic-pill active" data-topic-index="0" onclick="selectBlindSurveyTopic(0, this)">
+            <span class="blind-topics-label">Choose Today's Debate:</span>
+            <div class="blind-pills-wrap" id="blindPillsWrap">
+              <button type="button" class="blind-topic-pill active" id="blindPill0" data-topic-index="0" onclick="window.selectBlindSurveyTopic(0, this); return false;">
                 🏛️ $895B Spending &amp; Border
               </button>
-              <button type="button" class="blind-topic-pill" data-topic-index="1" onclick="selectBlindSurveyTopic(1, this)">
+              <button type="button" class="blind-topic-pill" id="blindPill1" data-topic-index="1" onclick="window.selectBlindSurveyTopic(1, this); return false;">
                 🏆 CFB 24-Team Playoff Expansion
               </button>
-              <button type="button" class="blind-topic-pill" data-topic-index="2" onclick="selectBlindSurveyTopic(2, this)">
+              <button type="button" class="blind-topic-pill" id="blindPill2" data-topic-index="2" onclick="window.selectBlindSurveyTopic(2, this); return false;">
                 🌴 Tampa Bay $1.3B Rays Stadium
               </button>
             </div>
           </div>
 
-                    <div id="blindSurveyCardsView">
+          <div id="blindSurveyCardsView">
             <div class="blind-prompt-banner">
               <span class="blind-prompt-tag">🏛️ Congress &amp; National Budget</span>
-              <h3 class="blind-prompt-question">Should Congress approve an $895B spending package that prioritizes defense and border technology while freezing non-defense programs?</h3>
+              <h3 class="blind-prompt-question">Should Congress pass this $895B spending bill?</h3>
             </div>
             <div class="blind-options-grid">
               <div class="blind-option-card" id="blindCardA" onclick="voteBlindOption('A')">
@@ -3005,7 +3025,7 @@ div[id$="-view-RIGHT"] {
                   <span class="blind-card-label">Argument A</span>
                   <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>
                 </div>
-                <p class="blind-argument-text">“Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. A budget deal that doesn't enforce mandatory spending caps or decisive border enforcement is an opportunity lost for true fiscal discipline.”</p>
+                <p class="blind-argument-text">“We're $36 trillion in debt and inflation is crushing regular families. Stop spending money we don't have, and don't pass any budget that doesn't actually secure the border.”</p>
                 <button type="button" class="btn-vote-option" onclick="event.stopPropagation(); voteBlindOption('A')">
                   <span>👉 I Agree With Argument A</span>
                 </button>
@@ -3015,13 +3035,14 @@ div[id$="-view-RIGHT"] {
                   <span class="blind-card-label">Argument B</span>
                   <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>
                 </div>
-                <p class="blind-argument-text">“Keeping the government open protects vital food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always hurts everyday Americans.”</p>
+                <p class="blind-argument-text">“Threatening to shut down the government over politics hurts working people and freezes essential food and healthcare programs. Keep the country running first, then debate.”</p>
                 <button type="button" class="btn-vote-option" onclick="event.stopPropagation(); voteBlindOption('B')">
                   <span>👉 I Agree With Argument B</span>
                 </button>
               </div>
             </div>
           </div>
+
           <div id="blindSurveyResults" class="blind-results-container"></div>
         </div>
       </div>
@@ -29851,32 +29872,35 @@ function cleanPhotoCredit(credit, sourceName) {
   }
 
   function sanitizeAllCreditTagsInDOM() {
-    var cards = document.querySelectorAll('.compact-card');
-    for (var i = 0; i < cards.length; i++) {
-      var card = cards[i];
-      var srcChip = card.querySelector('.source-link-chip span');
-      var srcName = srcChip ? srcChip.textContent.trim() : '';
-      var creditEl = card.querySelector('.credit-tag');
-      if (creditEl) {
-        var cur = creditEl.textContent || '';
-        if (cur.indexOf('?') !== -1 || cur.indexOf('📸') !== -1 || cur.indexOf('Source:') !== 0 || /press pool|wire archive/i.test(cur)) {
-          creditEl.textContent = cleanPhotoCredit(cur, srcName);
+    try {
+      var cards = document.querySelectorAll('.compact-card');
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        if (!card || !card.querySelector) continue;
+        var srcChip = card.querySelector('.source-link-chip span');
+        var srcName = srcChip ? srcChip.textContent.trim() : '';
+        var creditEl = card.querySelector('.credit-tag');
+        if (creditEl) {
+          var cur = creditEl.textContent || '';
+          if (cur.indexOf('?') !== -1 || cur.indexOf('📸') !== -1 || cur.indexOf('Source:') !== 0 || /press pool|wire archive/i.test(cur)) {
+            creditEl.textContent = cleanPhotoCredit(cur, srcName);
+          }
+        }
+        var heroImg = card.querySelector('.hero-photo');
+        if (heroImg) {
+          var u = heroImg.getAttribute('src') || '';
+          if (u.indexOf('1569098644584') !== -1 || u.indexOf('1519766304817') !== -1 || u.indexOf('1516216628859') !== -1 || (heroImg.complete && heroImg.naturalWidth === 0)) {
+            onImgError(heroImg, card.getAttribute('data-category'));
+          }
         }
       }
-      var heroImg = card.querySelector('.hero-photo');
-      if (heroImg) {
-        var u = heroImg.getAttribute('src') || '';
-        if (u.indexOf('1569098644584') !== -1 || u.indexOf('1519766304817') !== -1 || u.indexOf('1516216628859') !== -1 || (heroImg.complete && heroImg.naturalWidth === 0)) {
-          onImgError(heroImg, card.getAttribute('data-category'));
-        }
-      }
-    }
+    } catch (e) {}
   }
   if (typeof window !== 'undefined') {
     window.onImgError = onImgError;
-  window.cleanPhotoCredit = cleanPhotoCredit;
-  sanitizeAllCreditTagsInDOM();
-  if (typeof document !== 'undefined') { document.addEventListener('DOMContentLoaded', sanitizeAllCreditTagsInDOM); }
+    window.cleanPhotoCredit = cleanPhotoCredit;
+    try { sanitizeAllCreditTagsInDOM(); } catch (e) {}
+    if (typeof document !== 'undefined') { document.addEventListener('DOMContentLoaded', sanitizeAllCreditTagsInDOM); }
   }
 
   // Global State
@@ -31216,79 +31240,79 @@ function cleanPhotoCredit(credit, sourceName) {
     {
       id: 'senate-spending-package',
       badge: '🏛️ Congress & National Budget',
-      title: 'Senate $895B Defense & Border Spending Deal',
-      question: 'Should Congress approve an $895B spending package that prioritizes defense and border technology while freezing non-defense programs?',
+      title: 'Senate $895B Spending & Border Deal',
+      question: 'Should Congress pass this $895B spending bill?',
       options: {
         A: {
           lens: 'conservative',
-          lensTitle: 'Conservative Perspective',
+          lensTitle: 'Conservative Stance',
           lensBadge: '🔴 Conservative Lens',
-          argument: '“Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. A budget deal that doesn\'t enforce mandatory spending caps or decisive border enforcement is an opportunity lost for true fiscal discipline.”',
+          argument: '“We\'re $36 trillion in debt and inflation is crushing regular families. Stop spending money we don\'t have, and don\'t pass any budget that doesn\'t actually secure the border.”',
           crowdPct: 54
         },
         B: {
           lens: 'progressive',
-          lensTitle: 'Progressive Perspective',
+          lensTitle: 'Progressive Stance',
           lensBadge: '🔵 Progressive Lens',
-          argument: '“Keeping the government open protects vital food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always hurts everyday Americans.”',
+          argument: '“Threatening to shut down the government over politics hurts working people and freezes essential food and healthcare programs. Keep the country running first, then debate.”',
           crowdPct: 46
         }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
-        text: 'Divided government requires compromise: the agreement protects military payrolls and prevents costly shutdown disruptions, but punts the tough structural decisions on national debt and mandatory spending down the road.'
+        text: 'Neither side wants a costly government shutdown right before the holidays, so both parties compromised on military funding while kicking the bigger debt fight down the road.'
       }
     },
     {
       id: 'cfb-playoff-expansion',
       badge: '🏆 College Football & Sports Media',
-      title: 'College Football Playoff 24-Team Expansion Debate',
-      question: 'Should the College Football Playoff expand from 12 to 24 teams starting in 2026?',
+      title: 'College Football Playoff 24-Team Expansion',
+      question: 'Should college football expand its playoff to 24 teams?',
       options: {
         A: {
           lens: 'progressive',
-          lensTitle: 'Progressive / Modernist Perspective',
+          lensTitle: 'Progressive / Modernist Stance',
           lensBadge: '🔵 Progressive Lens',
-          argument: '“Expanding the playoff guarantees access for Cinderella mid-majors and creates high-stakes campus postseason games that fans adore, democratizing the sport beyond just four dominant blue-blood programs.”',
+          argument: '“More playoff teams give underdog mid-majors a real shot, create incredible December games on campus, and stop four blue-blood schools from running the whole sport.”',
           crowdPct: 58
         },
         B: {
           lens: 'conservative',
-          lensTitle: 'Traditionalist / Conservative Perspective',
+          lensTitle: 'Traditionalist / Conservative Stance',
           lensBadge: '🔴 Conservative Lens',
-          argument: '“A 24-team tournament completely destroys the singular regular-season urgency that makes college football legendary, while turning unpaid student-athletes into NFL-length collision commodities.”',
+          argument: '“It ruins the regular season. When half the top 25 gets in, historic rivalries lose their do-or-die drama, and we\'re treating unpaid college kids like NFL crash dummies.”',
           crowdPct: 42
         }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
-        text: 'Television networks and athletic directors are driven by billions in playoff media rights, but extended seasons increase player fatigue and devalue historic conference rivalry games.'
+        text: 'TV networks and universities want the billions in playoff ad money, but playing 17 games a year wears out players and waters down regular season games.'
       }
     },
     {
       id: 'rays-stadium-gas-plant',
       badge: '🌴 Tampa Bay & Pinellas Civic Debate',
-      title: 'Tampa Bay Rays $1.3B Ballpark & Historic Gas Plant Project',
-      question: 'Should St. Petersburg and Pinellas County issue $600M+ in public bonds to fund the Rays\' new downtown ballpark and Gas Plant redevelopment?',
+      title: 'Tampa Bay Rays $1.3B Ballpark & Gas Plant District',
+      question: 'Should local taxpayers fund $600M for the new Rays stadium?',
       options: {
         A: {
           lens: 'progressive',
-          lensTitle: 'Progressive / Civic Investment Perspective',
+          lensTitle: 'Progressive / Civic Investment Stance',
           lensBadge: '🔵 Progressive Lens',
-          argument: '“Historic Gas Plant district revitalization creates thousands of union jobs, affordable housing units, and permanent entertainment tax revenue that keeps the Rays anchored in Tampa Bay for 30 years.”',
+          argument: '“It keeps the Rays in St. Pete for 30 years and replaces empty parking lots with 1,200 affordable homes, local union jobs, and parks—mostly paid by tourist hotel taxes, not our property taxes.”',
           crowdPct: 52
         },
         B: {
           lens: 'conservative',
-          lensTitle: 'Fiscal Conservative Perspective',
+          lensTitle: 'Fiscal Conservative Stance',
           lensBadge: '🔴 Conservative Lens',
-          argument: '“Billionaire sports franchise owners should fund their own private stadiums rather than saddling local taxpayers with decades of bond interest debt that crowds out essential infrastructure repairs.”',
+          argument: '“Billionaire team owners should build their own stadiums. Taxpayers shouldn\'t be paying hundreds of millions in bond debt when our roads, schools, and sewers desperately need repairs.”',
           crowdPct: 48
         }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
-        text: 'The deal includes $50M in community equity commitments, but public stadium bond debt historically falls back on hotel bed taxes and general revenue if development milestones lag.'
+        text: 'Tourist taxes soften the blow for local homeowners, but cities rarely break even on stadium deals unless the promised housing and entertainment district actually materialize.'
       }
     }
   ];
@@ -31391,18 +31415,23 @@ function cleanPhotoCredit(credit, sourceName) {
       resultsContainer.innerHTML = '';
     }
 
-    // Update active tab pill styling and auto-center
-    var pills = document.querySelectorAll('.blind-topic-pill');
-    for (var p = 0; p < pills.length; p++) {
-      if (p === index) {
-        pills[p].classList.add('active');
-        if (pills[p].scrollIntoView) {
-          try {
-            pills[p].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          } catch (e) {}
+    // Update active tab pill styling
+    for (var p = 0; p < 3; p++) {
+      var pill = document.getElementById('blindPill' + p);
+      if (pill) {
+        if (p === index) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
         }
+      }
+    }
+    var pillsFallback = document.querySelectorAll('.blind-topic-pill');
+    for (var pf = 0; pf < pillsFallback.length; pf++) {
+      if (pf === index) {
+        pillsFallback[pf].classList.add('active');
       } else {
-        pills[p].classList.remove('active');
+        pillsFallback[pf].classList.remove('active');
       }
     }
   }
@@ -31467,23 +31496,26 @@ function cleanPhotoCredit(credit, sourceName) {
     if (isNaN(index) || index < 0 || index >= BLIND_SURVEY_TOPICS.length) {
       index = 0;
     }
+    _activeBlindSurveyTopic = index;
 
-    var pills = document.querySelectorAll('.blind-topic-pill');
-    for (var i = 0; i < pills.length; i++) {
-      if (pills[i].classList) {
-        pills[i].classList.remove('active');
-      }
-      if (i === index) {
-        pills[i].classList.add('active');
-        if (pills[i].scrollIntoView) {
-          try {
-            pills[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-          } catch (e) {}
+    // Immediately toggle pill classes
+    for (var p = 0; p < 3; p++) {
+      var pill = document.getElementById('blindPill' + p);
+      if (pill) {
+        if (p === index) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
         }
       }
     }
-    if (btnEl && btnEl.classList) {
-      btnEl.classList.add('active');
+    var pillsFallback = document.querySelectorAll('.blind-topic-pill');
+    for (var pf = 0; pf < pillsFallback.length; pf++) {
+      if (pf === index) {
+        pillsFallback[pf].classList.add('active');
+      } else {
+        pillsFallback[pf].classList.remove('active');
+      }
     }
 
     renderBlindSurveyTopic(index);
@@ -31547,15 +31579,17 @@ function cleanPhotoCredit(credit, sourceName) {
   window.toggleBlindSurvey = toggleBlindSurvey;
 
   function bindBlindSurveyEvents() {
-    var pills = document.querySelectorAll('.blind-topic-pill');
-    for (var i = 0; i < pills.length; i++) {
-      (function(idx, el) {
-        el.setAttribute('data-topic-index', String(idx));
-        el.onclick = function(e) {
-          if (e && e.preventDefault) e.preventDefault();
+    for (var i = 0; i < 3; i++) {
+      (function(idx) {
+        var el = document.getElementById('blindPill' + idx);
+        if (!el) return;
+        var handleSelect = function(e) {
+          if (e && e.stopPropagation) e.stopPropagation();
           selectBlindSurveyTopic(idx, el);
         };
-      })(i, pills[i]);
+        el.onclick = handleSelect;
+        el.onpointerup = handleSelect;
+      })(i);
     }
   }
   window.bindBlindSurveyEvents = bindBlindSurveyEvents;

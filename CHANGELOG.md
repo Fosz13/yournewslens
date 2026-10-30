@@ -1,5 +1,18 @@
 # Your News Lens — Changelog
 
+## [v11.9] - 2026-10-30 — Responsive Non-Overflow Debate Grid & Concise Human Layperson Arguments
+- **Responsive Non-Overflow Debate Pill Grid (`.blind-topics-bar`, `.blind-pills-wrap`)**:
+  - Replaced the horizontal scrolling overflow bar with a responsive CSS grid: 3 equal-width columns on desktop and cleanly stacked 48px-tall cards on mobile.
+  - Guarantees all three debates (`🏛️ $895B Spending & Border`, `🏆 CFB 24-Team Playoff Expansion`, `🌴 Tampa Bay $1.3B Rays Stadium`) are 100% visible on mobile without horizontal scrolling or text truncation.
+  - Eliminated mobile Chrome scroll-gesture interception by removing `overflow-x: auto` and attaching direct `onclick` and `onpointerup` handlers with `touch-action: manipulation; pointer-events: auto;`.
+- **Concise, Punchy Human Layperson Arguments Across All Debates**:
+  - Purged wooden legislative boilerplate across `app.js`, `index.html`, and `generate_sunday_briefing.py`, replacing them with conversational phrases real humans use at the dinner table:
+    - *Senate $895B Budget*: "We're $36 trillion in debt and inflation is crushing regular families. Stop spending money we don't have, and don't pass any budget that doesn't actually secure the border." vs. "Threatening to shut down the government over politics hurts working people and freezes essential food and healthcare programs. Keep the country running first, then debate."
+    - *CFB 24-Team Playoff*: "More playoff teams give underdog mid-majors a real shot, create incredible December games on campus, and stop four blue-blood schools from running the whole sport." vs. "It ruins the regular season. When half the top 25 gets in, historic rivalries lose their do-or-die drama, and we're treating unpaid college kids like NFL crash dummies."
+    - *Tampa Bay Rays $1.3B Ballpark*: "It keeps the Rays in St. Pete for 30 years and replaces empty parking lots with 1,200 affordable homes, local union jobs, and parks—mostly paid by tourist hotel taxes, not our property taxes." vs. "Billionaire team owners should build their own stadiums. Taxpayers shouldn't be paying hundreds of millions in bond debt when our roads, schools, and sewers desperately need repairs."
+- **Automated Verification**:
+  - All 30 regression tests passing in `test_regression_suite.py` (100% success rate).
+
 ## [v11.8] - 2026-10-30 — Per-Article Reader Stance Polls & Touch-Proof In-Place Blind Stance Reveal
 - **Per-Article Reader Stance Polls (`.story-stance-poll`) Across All 97 Stories**:
   - Implemented the requested engagement survey directly on every single article in the news feed.

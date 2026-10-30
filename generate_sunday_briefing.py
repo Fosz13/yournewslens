@@ -19,9 +19,9 @@ SUNDAY_CHEAT_SHEETS = [
             "Congressional leadership agreed on a $1.65T statutory discretionary budget, allocating $895B to defense/border technology and $704B for domestic programs.",
             "The bipartisan compromise averts a government shutdown while setting hard statutory negotiation deadlines across 12 agency bills."
         ],
-        "conservative": "Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. Any spending package that fails to enforce strict fiscal caps or decisive southern border enforcement is a missed opportunity for true fiscal discipline.",
-        "progressive": "Keeping the government open shields essential food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always harms everyday Americans.",
-        "reality": "Divided government requires compromise: the agreement protects military payrolls and averts economic disruption, but punts the tough structural decisions on national debt and mandatory spending down the road.",
+        "conservative": "We're $36 trillion in debt and inflation is crushing regular families. Stop spending money we don't have, and don't pass any budget that doesn't actually secure the border.",
+        "progressive": "Threatening to shut down the government over politics hurts working people and freezes essential food and healthcare programs. Keep the country running first, then debate.",
+        "reality": "Neither side wants a costly government shutdown right before the holidays, so both parties compromised on military funding while kicking the bigger debt fight down the road.",
         "link": "https://yournewslens.com/#story-senate-appropriations-live-vote"
     },
     {
@@ -31,9 +31,9 @@ SUNDAY_CHEAT_SHEETS = [
             "College football commissioners are reviewing a framework to expand the playoff to 24 teams by 2027, reserving 14 automatic conference bids and 10 at-large spots.",
             "The proposal comes as athletic departments prepare for the landmark $20.5M annual school player revenue-sharing cap taking effect in college sports."
         ],
-        "conservative": "Paying fired football coaches $40M to $70M to sit on a beach while public universities jack up tuition and ticket prices is institutional insanity. In the real world, you don't reward failure with taxpayer-subsidized golden parachutes.",
-        "progressive": "For decades universities claimed they couldn't afford to pay players or lower tuition, yet they magically find tens of millions for coaching buyouts. Revenue sharing is long overdue for the athletes who generate billions.",
-        "reality": "Expanding to a 24-team tournament creates massive new television revenue that athletic departments need to fund player revenue-sharing, but risks turning college football into an unregulated corporate semi-pro league.",
+        "conservative": "It ruins the regular season. When half the top 25 gets in, historic rivalries lose their do-or-die drama, and we're treating unpaid college kids like NFL crash dummies.",
+        "progressive": "More playoff teams give underdog mid-majors a real shot, create incredible December games on campus, and stop four blue-blood schools from running the whole sport.",
+        "reality": "TV networks and universities want the billions in playoff ad money, but playing 17 games a year wears out players and waters down regular season games.",
         "link": "https://yournewslens.com/#story-cfb-playoff-24"
     },
     {
@@ -43,9 +43,9 @@ SUNDAY_CHEAT_SHEETS = [
             "St. Petersburg and Pinellas County approved $600M in tourist-development bed tax bonds to anchor a new 30,000-seat enclosed ballpark.",
             "The Tampa Bay Rays and Hines development partners are funding the remaining $700M+ alongside 1,200 planned affordable and workforce housing units."
         ],
-        "conservative": "Using hotel and tourist development bed taxes ensures out-of-state visitors foot the bill for the stadium rather than local property owners, while private developers commit over $700M of private capital to downtown revitalization.",
-        "progressive": "Hundreds of millions in public bond subsidies for a private sports franchise must come with enforceable local hiring and prevailing wage mandates, and the city must strictly hold developers to their 1,200 affordable housing unit pledge.",
-        "reality": "Keeping Major League Baseball anchored in Tampa Bay through 2058 transforms an underutilized 86-acre asphalt lot into a long-term economic engine, provided municipal leaders hold developers strictly accountable to their workforce housing commitments.",
+        "conservative": "Billionaire team owners should build their own stadiums. Taxpayers shouldn't be paying hundreds of millions in bond debt when our roads, schools, and sewers desperately need repairs.",
+        "progressive": "It keeps the Rays in St. Pete for 30 years and replaces empty parking lots with 1,200 affordable homes, local union jobs, and parks—mostly paid by tourist hotel taxes, not our property taxes.",
+        "reality": "Tourist taxes soften the blow for local homeowners, but cities rarely break even on stadium deals unless the promised housing and entertainment district actually materialize.",
         "link": "https://yournewslens.com/#story-local-tampa-rays-gas-plant-agreement"
     }
 ]
