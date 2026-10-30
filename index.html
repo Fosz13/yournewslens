@@ -2917,8 +2917,6 @@ div[id$="-view-RIGHT"] {
     
 
     <!-- VERTICAL FEED SECTION DIVIDER -->
-    
-    </div>
 
         <!-- Local News Metro Control Bar -->
     <!-- Welcoming Editorial Masthead & Metro Control -->
@@ -2980,6 +2978,325 @@ div[id$="-view-RIGHT"] {
 
     <!-- The Dinner Table Cheat Sheet (60-Second Conversation Ammunition) -->
     <!-- Blind Stance Challenge Section (Micro-Stance Survey & Argument Reveal) -->
+        <!-- Blind Stance Challenge Direct Inline Controller (Guarantees Instant Click Execution) -->
+    <script>
+    var BLIND_SURVEY_TOPICS = [
+      {
+        id: 'senate-spending-package',
+        badge: '🏛️ Congress & National Budget',
+        title: 'Senate $895B Spending & Border Deal',
+        question: 'Should Congress pass this $895B spending bill?',
+        options: {
+          A: {
+            lens: 'conservative',
+            lensTitle: 'Conservative Stance',
+            lensBadge: '🔴 Conservative Lens',
+            argument: '“We\'re $36 trillion in debt and inflation is crushing regular families. Stop spending money we don\'t have, and don\'t pass any budget that doesn\'t actually secure the border.”',
+            crowdPct: 54
+          },
+          B: {
+            lens: 'progressive',
+            lensTitle: 'Progressive Stance',
+            lensBadge: '🔵 Progressive Lens',
+            argument: '“Threatening to shut down the government over politics hurts working people and freezes essential food and healthcare programs. Keep the country running first, then debate.”',
+            crowdPct: 46
+          }
+        },
+        reality: {
+          title: 'The Common Ground / Reality Check',
+          text: 'Neither side wants a costly government shutdown right before the holidays, so both parties compromised on military funding while kicking the bigger debt fight down the road.'
+        }
+      },
+      {
+        id: 'cfb-playoff-expansion',
+        badge: '🏆 College Football & Sports Media',
+        title: 'College Football Playoff 24-Team Expansion',
+        question: 'Should college football expand its playoff to 24 teams?',
+        options: {
+          A: {
+            lens: 'progressive',
+            lensTitle: 'Progressive / Modernist Stance',
+            lensBadge: '🔵 Progressive Lens',
+            argument: '“More playoff teams give underdog mid-majors a real shot, create incredible December games on campus, and stop four blue-blood schools from running the whole sport.”',
+            crowdPct: 58
+          },
+          B: {
+            lens: 'conservative',
+            lensTitle: 'Traditionalist / Conservative Stance',
+            lensBadge: '🔴 Conservative Lens',
+            argument: '“It ruins the regular season. When half the top 25 gets in, historic rivalries lose their do-or-die drama, and we\'re treating unpaid college kids like NFL crash dummies.”',
+            crowdPct: 42
+          }
+        },
+        reality: {
+          title: 'The Common Ground / Reality Check',
+          text: 'TV networks and universities want the billions in playoff ad money, but playing 17 games a year wears out players and waters down regular season games.'
+        }
+      },
+      {
+        id: 'rays-stadium-gas-plant',
+        badge: '🌴 Tampa Bay & Pinellas Civic Debate',
+        title: 'Tampa Bay Rays $1.3B Ballpark & Gas Plant District',
+        question: 'Should local taxpayers fund $600M for the new Rays stadium?',
+        options: {
+          A: {
+            lens: 'progressive',
+            lensTitle: 'Progressive / Civic Investment Stance',
+            lensBadge: '🔵 Progressive Lens',
+            argument: '“It keeps the Rays in St. Pete for 30 years and replaces empty parking lots with 1,200 affordable homes, local union jobs, and parks—mostly paid by tourist hotel taxes, not our property taxes.”',
+            crowdPct: 52
+          },
+          B: {
+            lens: 'conservative',
+            lensTitle: 'Fiscal Conservative Stance',
+            lensBadge: '🔴 Conservative Lens',
+            argument: '“Billionaire team owners should build their own stadiums. Taxpayers shouldn\'t be paying hundreds of millions in bond debt when our roads, schools, and sewers desperately need repairs.”',
+            crowdPct: 48
+          }
+        },
+        reality: {
+          title: 'The Common Ground / Reality Check',
+          text: 'Tourist taxes soften the blow for local homeowners, but cities rarely break even on stadium deals unless the promised housing and entertainment district actually materialize.'
+        }
+      }
+    ];
+
+    var _activeBlindSurveyTopic = 0;
+    var _userSurveyVotes = {};
+    try {
+      var _sv = localStorage.getItem('userBlindSurveyVotes');
+      if (_sv) _userSurveyVotes = JSON.parse(_sv) || {};
+    } catch (e) {}
+
+    function selectBlindSurveyTopic(index) {
+      if (typeof index !== 'number') index = parseInt(index, 10);
+      if (isNaN(index) || index < 0 || index >= BLIND_SURVEY_TOPICS.length) {
+        index = 0;
+      }
+      _activeBlindSurveyTopic = index;
+
+      for (var p = 0; p < 3; p++) {
+        var pill = document.getElementById('blindPill' + p);
+        if (pill) {
+          if (p === index) {
+            pill.classList.add('active');
+          } else {
+            pill.classList.remove('active');
+          }
+        }
+      }
+
+      renderBlindSurveyTopic(index);
+      var topic = BLIND_SURVEY_TOPICS[index];
+      if (topic && topic.title && typeof showToastNotification === 'function') {
+        showToastNotification('Switched debate to ' + topic.title);
+      }
+    }
+    window.selectBlindSurveyTopic = selectBlindSurveyTopic;
+
+    function voteBlindOption(optionKey) {
+      if (optionKey !== 'A' && optionKey !== 'B') return;
+      _userSurveyVotes[_activeBlindSurveyTopic] = optionKey;
+      try {
+        localStorage.setItem('userBlindSurveyVotes', JSON.stringify(_userSurveyVotes));
+      } catch (e) {}
+
+      renderBlindSurveyTopic(_activeBlindSurveyTopic);
+
+      var topic = BLIND_SURVEY_TOPICS[_activeBlindSurveyTopic];
+      var opt = topic.options[optionKey];
+      if (typeof showToastNotification === 'function') {
+        showToastNotification('🗳️ Vote recorded! Revealed: ' + opt.lensTitle);
+      }
+    }
+    window.voteBlindOption = voteBlindOption;
+
+    function resetBlindSurvey() {
+      delete _userSurveyVotes[_activeBlindSurveyTopic];
+      try {
+        localStorage.setItem('userBlindSurveyVotes', JSON.stringify(_userSurveyVotes));
+      } catch (e) {}
+      renderBlindSurveyTopic(_activeBlindSurveyTopic);
+      if (typeof showToastNotification === 'function') {
+        showToastNotification('Vote reset. Pick an argument!');
+      }
+    }
+    window.resetBlindSurvey = resetBlindSurvey;
+
+    function toggleBlindSurvey() {
+      var body = document.getElementById('blindSurveyBody');
+      var chevron = document.getElementById('blindSurveyChevron');
+      if (!body) return;
+      var isHidden = body.style.display === 'none';
+      if (isHidden) {
+        body.style.display = 'block';
+        if (chevron) chevron.textContent = '▴';
+        try { localStorage.setItem('userBlindSurveyCollapsed', 'false'); } catch (e) {}
+      } else {
+        body.style.display = 'none';
+        if (chevron) chevron.textContent = '▾';
+        try { localStorage.setItem('userBlindSurveyCollapsed', 'true'); } catch (e) {}
+      }
+    }
+    window.toggleBlindSurvey = toggleBlindSurvey;
+
+    function renderBlindSurveyTopic(index) {
+      if (typeof index !== 'number') index = parseInt(index, 10);
+      if (isNaN(index) || index < 0 || index >= BLIND_SURVEY_TOPICS.length) {
+        index = 0;
+      }
+      _activeBlindSurveyTopic = index;
+      var topic = BLIND_SURVEY_TOPICS[index];
+
+      var cardsContainer = document.getElementById('blindSurveyCardsView');
+      var resultsContainer = document.getElementById('blindSurveyResults');
+      if (!cardsContainer) return;
+
+      var existingVote = _userSurveyVotes[index];
+      var isRevealed = Boolean(existingVote);
+
+      var cardHtml = '';
+      cardHtml += '<div class="blind-prompt-banner">';
+      cardHtml += '  <span class="blind-prompt-tag">' + topic.badge + '</span>';
+      cardHtml += '  <h3 class="blind-prompt-question">' + topic.question + '</h3>';
+      cardHtml += '</div>';
+
+      cardHtml += '<div class="blind-options-grid">';
+
+      var optA = topic.options.A;
+      var isSelA = existingVote === 'A';
+      var classA = 'blind-option-card';
+      if (isRevealed) {
+        classA += optA.lens === 'conservative' ? ' revealed-conservative' : ' revealed-progressive';
+      }
+      if (isSelA) classA += ' selected';
+
+      cardHtml += '<div class="' + classA + '" id="blindCardA" onclick="voteBlindOption(\'A\')">';
+      cardHtml += '  <div class="blind-card-header">';
+      if (isRevealed) {
+        var colorA = optA.lens === 'conservative' ? 'revealed-conservative' : 'revealed-progressive';
+        cardHtml += '    <span class="blind-card-label ' + colorA + '">' + optA.lensBadge + '</span>';
+        cardHtml += '    <span class="blind-card-anonymous-tag ' + colorA + '">' + optA.crowdPct + '% Agreed</span>';
+      } else {
+        cardHtml += '    <span class="blind-card-label">Argument A</span>';
+        cardHtml += '    <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>';
+      }
+      cardHtml += '  </div>';
+      cardHtml += '  <p class="blind-argument-text">' + optA.argument + '</p>';
+      var btnTextA = isRevealed ? (isSelA ? '✓ You Backed This (' + optA.crowdPct + '%)' : optA.crowdPct + '% Backed This') : '👉 I Agree With Argument A';
+      var btnClassA = 'btn-vote-option' + (isSelA ? ' voted-this' : '');
+      cardHtml += '  <button type="button" class="' + btnClassA + '" onclick="event.stopPropagation(); voteBlindOption(\'A\')">';
+      cardHtml += '    <span>' + btnTextA + '</span>';
+      cardHtml += '  </button>';
+      cardHtml += '</div>';
+
+      var optB = topic.options.B;
+      var isSelB = existingVote === 'B';
+      var classB = 'blind-option-card';
+      if (isRevealed) {
+        classB += optB.lens === 'conservative' ? ' revealed-conservative' : ' revealed-progressive';
+      }
+      if (isSelB) classB += ' selected';
+
+      cardHtml += '<div class="' + classB + '" id="blindCardB" onclick="voteBlindOption(\'B\')">';
+      cardHtml += '  <div class="blind-card-header">';
+      if (isRevealed) {
+        var colorB = optB.lens === 'conservative' ? 'revealed-conservative' : 'revealed-progressive';
+        cardHtml += '    <span class="blind-card-label ' + colorB + '">' + optB.lensBadge + '</span>';
+        cardHtml += '    <span class="blind-card-anonymous-tag ' + colorB + '">' + optB.crowdPct + '% Agreed</span>';
+      } else {
+        cardHtml += '    <span class="blind-card-label">Argument B</span>';
+        cardHtml += '    <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>';
+      }
+      cardHtml += '  </div>';
+      cardHtml += '  <p class="blind-argument-text">' + optB.argument + '</p>';
+      var btnTextB = isRevealed ? (isSelB ? '✓ You Backed This (' + optB.crowdPct + '%)' : optB.crowdPct + '% Backed This') : '👉 I Agree With Argument B';
+      var btnClassB = 'btn-vote-option' + (isSelB ? ' voted-this' : '');
+      cardHtml += '  <button type="button" class="' + btnClassB + '" onclick="event.stopPropagation(); voteBlindOption(\'B\')">';
+      cardHtml += '    <span>' + btnTextB + '</span>';
+      cardHtml += '  </button>';
+      cardHtml += '</div>';
+
+      cardHtml += '</div>';
+
+      cardsContainer.innerHTML = cardHtml;
+
+      if (existingVote && resultsContainer) {
+        renderBlindSurveyResults(index, existingVote);
+        resultsContainer.style.display = 'block';
+      } else if (resultsContainer) {
+        resultsContainer.style.display = 'none';
+        resultsContainer.innerHTML = '';
+      }
+
+      for (var p = 0; p < 3; p++) {
+        var pill = document.getElementById('blindPill' + p);
+        if (pill) {
+          if (p === index) {
+            pill.classList.add('active');
+          } else {
+            pill.classList.remove('active');
+          }
+        }
+      }
+    }
+    window.renderBlindSurveyTopic = renderBlindSurveyTopic;
+
+    function renderBlindSurveyResults(index, chosenKey) {
+      var resultsContainer = document.getElementById('blindSurveyResults');
+      if (!resultsContainer) return;
+
+      var topic = BLIND_SURVEY_TOPICS[index];
+      var chosenOpt = topic.options[chosenKey];
+      var isConserv = chosenOpt.lens === 'conservative';
+
+      var optA = topic.options.A;
+      var optB = topic.options.B;
+      var leftPct = optA.crowdPct;
+
+      var rHtml = '';
+      rHtml += '<div class="blind-reveal-banner">';
+      rHtml += '  <div class="reveal-verdict-row">';
+      rHtml += '    <div class="reveal-badge-box">';
+      rHtml += '      <span class="reveal-lens-pill ' + (isConserv ? 'conservative' : 'progressive') + '">';
+      rHtml += '        ' + chosenOpt.lensBadge;
+      rHtml += '      </span>';
+      rHtml += '      <span class="reveal-congrats-text">🎯 You agreed with the ' + chosenOpt.lensTitle + '!</span>';
+      rHtml += '    </div>';
+      rHtml += '    <button type="button" class="btn-reset-survey" onclick="resetBlindSurvey()" title="Reset your vote on this topic">';
+      rHtml += '      🔄 Vote Again';
+      rHtml += '    </button>';
+      rHtml += '  </div>';
+
+      rHtml += '  <div class="crowd-stats-section">';
+      rHtml += '    <div class="crowd-stats-header">';
+      rHtml += '      <span class="stat-left">Argument A (' + optA.lensTitle + '): <strong>' + optA.crowdPct + '%</strong></span>';
+      rHtml += '      <span class="stat-right">Argument B (' + optB.lensTitle + '): <strong>' + optB.crowdPct + '%</strong></span>';
+      rHtml += '    </div>';
+      rHtml += '    <div class="crowd-split-bar-track" title="Crowd Consensus Split">';
+      rHtml += '      <div class="crowd-split-fill-left" style="width: ' + leftPct + '%;"></div>';
+      rHtml += '    </div>';
+      rHtml += '  </div>';
+
+      rHtml += '  <div class="survey-reality-box">';
+      rHtml += '    <div class="survey-reality-title">🟢 ' + topic.reality.title + '</div>';
+      rHtml += '    <p class="survey-reality-text">' + topic.reality.text + '</p>';
+      rHtml += '  </div>';
+
+      rHtml += '  <div class="survey-link-row">';
+      rHtml += '    <span>⚡ Get the full 60-second debate breakdowns every Sunday at 7:00 AM:</span>';
+      rHtml += '    <a href="data/sunday_daily_briefing.html" target="_blank" class="survey-email-link">';
+      rHtml += '      📬 Read The Sunday Daily Briefing Digest &rarr;';
+      rHtml += '    </a>';
+      rHtml += '  </div>';
+
+      rHtml += '</div>';
+
+      resultsContainer.innerHTML = rHtml;
+      resultsContainer.style.display = 'block';
+    }
+    </script>
+
     <section class="blind-stance-section" id="blindStanceSection">
       <div class="blind-survey-card">
         <div class="blind-survey-header">
@@ -3002,13 +3319,13 @@ div[id$="-view-RIGHT"] {
           <div class="blind-topics-bar">
             <span class="blind-topics-label">Choose Today's Debate:</span>
             <div class="blind-pills-wrap" id="blindPillsWrap">
-              <button type="button" class="blind-topic-pill active" id="blindPill0" data-topic-index="0" onclick="window.selectBlindSurveyTopic(0, this); return false;">
+              <button type="button" class="blind-topic-pill active" id="blindPill0" onclick="selectBlindSurveyTopic(0)">
                 🏛️ $895B Spending &amp; Border
               </button>
-              <button type="button" class="blind-topic-pill" id="blindPill1" data-topic-index="1" onclick="window.selectBlindSurveyTopic(1, this); return false;">
+              <button type="button" class="blind-topic-pill" id="blindPill1" onclick="selectBlindSurveyTopic(1)">
                 🏆 CFB 24-Team Playoff Expansion
               </button>
-              <button type="button" class="blind-topic-pill" id="blindPill2" data-topic-index="2" onclick="window.selectBlindSurveyTopic(2, this); return false;">
+              <button type="button" class="blind-topic-pill" id="blindPill2" onclick="selectBlindSurveyTopic(2)">
                 🌴 Tampa Bay $1.3B Rays Stadium
               </button>
             </div>

@@ -1,5 +1,16 @@
 # Your News Lens — Changelog
 
+## [v11.10] - 2026-10-30 — Instant Fast-Load Script Injection, Clean Native Handlers & Malformed Tag Purge
+- **Instant Fast-Load Script Placement (Zero Execution Lag)**:
+  - Injected the entire Blind Stance Challenge controller (`selectBlindSurveyTopic`, `voteBlindOption`, `resetBlindSurvey`, `renderBlindSurveyTopic`, `BLIND_SURVEY_TOPICS`) in a dedicated `<script>` block positioned immediately before the `#blindStanceSection` DOM elements.
+  - Resolves the root cause of unresponsive taps on mobile: the controller functions are now parsed and bound to `window` on the exact millisecond the buttons appear on screen, rather than waiting for the 2.2MB document stream and bottom script to finish downloading.
+- **Clean Native Button Handlers & Orphan Tag Purge**:
+  - Removed confusing `return false;` and conflicting `onpointerup` handlers that interfered with standard touch event queues on mobile Chrome.
+  - Buttons now use clean native `onclick="selectBlindSurveyTopic(0)"`, `onclick="selectBlindSurveyTopic(1)"`, `onclick="selectBlindSurveyTopic(2)"`.
+  - Removed a stray orphan `</div>` tag that was closing `<main>` prematurely at line 2921.
+- **Automated Verification**:
+  - All 30 regression tests passing in `test_regression_suite.py` (100% success rate).
+
 ## [v11.9] - 2026-10-30 — Responsive Non-Overflow Debate Grid & Concise Human Layperson Arguments
 - **Responsive Non-Overflow Debate Pill Grid (`.blind-topics-bar`, `.blind-pills-wrap`)**:
   - Replaced the horizontal scrolling overflow bar with a responsive CSS grid: 3 equal-width columns on desktop and cleanly stacked 48px-tall cards on mobile.
