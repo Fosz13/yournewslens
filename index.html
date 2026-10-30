@@ -7,27 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-content">
-            <h1>Your News Lens</h1>
-            <p class="tagline">Dynamic Multi-Perspective News Aggregation</p>
-        </div>
+    <header>
+        <h1>Your News Lens</h1>
+        <p>Dynamic Multi-Perspective News Aggregation</p>
     </header>
-    <main class="container">
-        <section id="lens-selector" class="lens-selector">
-            <button class="lens-btn active" onclick="switchLens('all')">All Lenses</button>
-            <button class="lens-btn" onclick="switchLens('Objective')">Objective</button>
-            <button class="lens-btn" onclick="switchLens('Analytical')">Analytical</button>
-            <button class="lens-btn" onclick="switchLens('Critical')">Critical</button>
-            <button class="lens-btn" onclick="switchLens('Forward-Looking')">Forward-Looking</button>
-        </section>
-        <div id="feed-container">
-            <div class="loading-state">Loading latest news lenses...</div>
+    <main>
+        <div id="lens-buttons" class="lens-container">
+            <!-- Dynamic Lens Buttons -->
+        </div>
+        <div id="articles-container">
+            <p class="loading">Loading news feed...</p>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2026 Your News Lens. Powered by Gemini AI.</p>
-    </footer>
-    <script src="app.js?v=20"></script>
+    <script src="app.js"></script>
 </body>
 </html>
