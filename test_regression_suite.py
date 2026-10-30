@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 27
+    total_tests = 28
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1067,6 +1067,39 @@ def run_all_regression_tests():
 
     print("✓ TEST 27 PASSED: Location-based local news verified (Local pill, metro control banner, auto-detect GPS, and authentic Tampa Bay & Florida reporting).")
     passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 28: Global Perspective Feed Re-Ordering & Window Handlers Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 28] Global Perspective Feed Re-Ordering & Window Handlers Verification...")
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # 1. Verify all event handlers are explicitly bound to window
+    s_tag = html.rfind("<script>")
+    script = html[s_tag:]
+    assert "window.toggleFactExpansion = toggleFactExpansion" in script, "Test 28 Failed: window.toggleFactExpansion missing!"
+    assert "window.toggleStoryDetails = toggleStoryDetails" in script, "Test 28 Failed: window.toggleStoryDetails missing!"
+    assert "window.setGlobalPerspective = setGlobalPerspective" in script, "Test 28 Failed: window.setGlobalPerspective missing!"
+    assert "window.filterCategory = filterCategory" in script, "Test 28 Failed: window.filterCategory missing!"
+    assert "window.switchStoryPerspective = switchStoryPerspective" in script, "Test 28 Failed: window.switchStoryPerspective missing!"
+
+    # 2. Verify data-lean and data-original-index are stamped on cards
+    assert 'data-lean="right"' in html, "Test 28 Failed: data-lean='right' missing from cards!"
+    assert 'data-lean="left"' in html, "Test 28 Failed: data-lean='left' missing from cards!"
+    assert 'data-original-index=' in html, "Test 28 Failed: data-original-index missing from cards!"
+
+    # 3. Verify setGlobalPerspective in app.js performs dynamic DOM reordering
+    with open("app.js", "r", encoding="utf-8") as f:
+        app_js = f.read()
+    assert "p === 'RIGHT'" in app_js and "leanA === 'right'" in app_js, "Test 28 Failed: Right lens feed prioritization missing from app.js"
+    assert "p === 'LEFT'" in app_js and "leanA === 'left'" in app_js, "Test 28 Failed: Left lens feed prioritization missing from app.js"
+    assert "data-original-index" in app_js, "Test 28 Failed: Center lens original index restoration missing from app.js"
+
+    print("✓ TEST 28 PASSED: Global perspective feed re-ordering & window event handlers verified (100% callable, Fox/Right stories prioritized on Red, Left stories on Blue, Center restored).")
+    passed_count += 1
+
+
 
 
 

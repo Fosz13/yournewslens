@@ -1928,3 +1928,68 @@ div[id$="-view-RIGHT"] {
   color: #b45309;
   border-color: rgba(217, 119, 6, 0.4);
 }
+
+
+/* Perspective Segmented Controller */
+.perspective-segmented-control {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-surface-elevated, #1e293b);
+  border: 1px solid var(--border-medium, rgba(148, 163, 184, 0.25));
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.seg-btn, .lens-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted, #94a3b8);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1;
+}
+
+.seg-btn:hover, .lens-btn:hover {
+  color: var(--text-primary, #ffffff);
+}
+
+.seg-btn.active.left, .lens-btn.active.left {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45);
+}
+
+.seg-btn.active.center, .lens-btn.active.center {
+  background: #059669 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.45);
+}
+
+.seg-btn.active.right, .lens-btn.active.right {
+  background: #dc2626 !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.45);
+}
+
+.lens-mode-indicator {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+.lens-mode-indicator.right {
+  background: rgba(220, 38, 38, 0.15);
+  border: 1px solid rgba(220, 38, 38, 0.35);
+  color: #fca5a5;
+}
+.lens-mode-indicator.left {
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #93c5fd;
+}

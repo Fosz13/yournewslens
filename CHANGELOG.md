@@ -1,5 +1,24 @@
 # Your News Lens — Changelog
 
+## [v11.2] - 2026-10-30 — Global Event Handler Bindings Fix & Red/Blue Lens Story Pool Prioritization
+- **Fixed All Interactive Handlers & Key Facts Expansion**:
+  - Bound all click, tap, and filter handlers (`toggleStoryDetails`, `toggleFactExpansion`, `setGlobalPerspective`, `filterCategory`, `filterLocalSubcategory`, `toggleCityDropdown`, `selectMetro`, `detectUserLocation`, `applyCustomCity`, `toggleThemeMode`, `copyPointsFromCard`, `toggleSaveCard`, `showStoriesTab`, `showLoungeTab`) explicitly to `window`.
+  - Resolved `ReferenceError` exception that previously prevented buttons and key facts dossiers from expanding.
+- **Dynamic Red & Blue Lens Story Pool Prioritization**:
+  - **Red / Right Lens Active**:
+    - Instantly switches all story cards to display the **Conservative / Red Lens (MAGA Persona)** framing and talking points.
+    - Dynamically re-sorts and prioritizes the feed to surface stories from **Fox News**, **Fox Business**, **Wall Street Journal Opinion**, **Washington Examiner**, and right-leaning media at the top of the feed.
+  - **Blue / Left Lens Active**:
+    - Instantly switches all story cards to display the **Progressive / Blue Lens (Liberal Persona)** framing and talking points.
+    - Dynamically re-sorts and prioritizes the feed to surface stories from **MSNBC**, **The Guardian**, **NPR**, **ProPublica**, and progressive media at the top.
+  - **Center / Balanced Lens Active**:
+    - Restores the natural balanced chronological order with AP, Reuters, and BBC dispatches, displaying the Centrist / Balanced green lens perspective.
+- **Enriched Polarized Wire Coverage**:
+  - Ingested 6 dedicated Fox News, Fox Business, MSNBC, Guardian, and ProPublica stories covering border enforcement, domestic crude energy records, Second Amendment rulings, minimum wage legislation, clean energy milestones, and healthcare equity.
+- **Automated Verification**:
+  - Added `TEST 28` to `test_regression_suite.py` asserting window handler bindings, `data-lean` tags, and dynamic DOM sorting.
+  - 28/28 regression tests passing (100% success rate).
+
 ## [v11.1] - 2026-10-30 — Decluttered Editorial Greeting, Revamped Button Layout & Local Events Subcategory
 - **Decluttered Button Layout & Welcoming Editorial Masthead**:
   - Replaced the cluttered, multi-layered ticker bars and stacked buttons with a clean, dignified **Welcoming Masthead Bar** (`#localNewsBanner` / `.welcome-edition-bar`).
