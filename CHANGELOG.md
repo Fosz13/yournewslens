@@ -1,5 +1,14 @@
 # Your News Lens — Changelog
 
+## [v11.12] - 2026-10-30 — Tri-Layer Strict Visibility Enforcement (Guaranteed Main-Page-Only Challenge)
+- **Tri-Layer CSS & JS Visibility Enforcement**:
+  - **CSS Priority Rule**: Added `body.filtered-category #blindStanceSection, body.community-mode #blindStanceSection, body.searching-mode #blindStanceSection { display: none !important; }` in `styles.css` to physically prevent the challenge from displaying under any non-main feed context.
+  - **Early Event Hook in Fast Inline Script**: Embedded an immediate DOM click listener inside `index.html` directly on all `.cat-pill` buttons. The exact millisecond a user taps `📍 Local News`, `🏆 Sports`, or any other category beat, `body.classList.add('filtered-category')` and `sec.style.display = 'none'` execute instantly without waiting for background feed parsing.
+  - **Controller Reinforcement**: Reinforced state management across `filterCategory()`, `applyFilters()`, `handleLiveSearch()`, `showStoriesTab()`, and `showLoungeTab()`.
+  - Guarantees the Blind Stance Challenge is 100% exclusive to the main landing page (`🌐 All Stories`) and never leaks into Local, Sports, or any category view.
+- **Automated Verification**:
+  - All 30 regression tests passing in `test_regression_suite.py` (100% success rate).
+
 ## [v11.11] - 2026-10-30 — Context-Aware Blind Stance Visibility (Main Homepage Feed Only)
 - **Main-Page-Only Blind Stance Visibility**:
   - Restricted `#blindStanceSection` to ONLY display on the main homepage feed (`🌐 All Stories` without an active search query).

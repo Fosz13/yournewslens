@@ -2795,6 +2795,14 @@ div[id$="-view-RIGHT"] {
   font-weight: 750;
 }
 
+
+/* Context-Aware Visibility: Blind Stance Challenge STRICTLY on Main Homepage Only */
+body.filtered-category #blindStanceSection,
+body.community-mode #blindStanceSection,
+body.searching-mode #blindStanceSection {
+  display: none !important;
+}
+
 </style>
   <script>
   window.onImgError = window.onImgError || function(img, cat) {
@@ -2980,6 +2988,24 @@ div[id$="-view-RIGHT"] {
     <!-- Blind Stance Challenge Section (Micro-Stance Survey & Argument Reveal) -->
         <!-- Blind Stance Challenge Direct Inline Controller (Guarantees Instant Click Execution) -->
     <script>
+    // Immediate early category pill and tab hook (hides blindStanceSection with zero execution delay)
+    document.addEventListener('DOMContentLoaded', function() {
+      var catPills = document.querySelectorAll('.cat-pill');
+      for (var ci = 0; ci < catPills.length; ci++) {
+        catPills[ci].addEventListener('click', function() {
+          var c = (this.getAttribute('data-category') || '').toLowerCase().trim();
+          var isAll = (c === 'all');
+          var sec = document.getElementById('blindStanceSection');
+          if (sec) sec.style.display = isAll ? 'block' : 'none';
+          if (isAll) {
+            document.body.classList.remove('filtered-category');
+          } else {
+            document.body.classList.add('filtered-category');
+          }
+        });
+      }
+    });
+
     var BLIND_SURVEY_TOPICS = [
       {
         id: 'senate-spending-package',
@@ -30475,16 +30501,25 @@ function cleanPhotoCredit(credit, sourceName) {
     var articles = document.querySelectorAll('#storiesFeedView .compact-card');
     var visibleCount = 0;
 
+    var isMainFeed = (key === 'all' && !q);
+    if (isMainFeed) {
+      document.body.classList.remove('filtered-category');
+      document.body.classList.remove('searching-mode');
+    } else {
+      if (key !== 'all') document.body.classList.add('filtered-category');
+      if (q) document.body.classList.add('searching-mode');
+    }
+
     // Toggle local subnav visibility based on active category
     var localSubnav = document.getElementById('localSubnavBar');
     if (localSubnav) {
       localSubnav.style.display = (key === 'local') ? 'block' : 'none';
     }
 
-    // Toggle blind stance challenge visibility: ONLY show on main page (All Stories, no search query)
+    // Toggle blind stance challenge visibility: STRICTLY ONLY on main page (All Stories, no search query)
     var blindSection = document.getElementById('blindStanceSection');
     if (blindSection) {
-      blindSection.style.display = (key === 'all' && !q) ? 'block' : 'none';
+      blindSection.style.display = isMainFeed ? 'block' : 'none';
     }
 
     var curMetro = (currentLocalMetro || 'Tampa Bay, FL').toLowerCase();
@@ -30730,6 +30765,19 @@ function cleanPhotoCredit(credit, sourceName) {
     }
 
     currentFilterCategory = catKey || 'All';
+    var isAll = (currentFilterCategory.toLowerCase().trim() === 'all');
+
+    if (isAll) {
+      document.body.classList.remove('filtered-category');
+    } else {
+      document.body.classList.add('filtered-category');
+    }
+
+    var blindSection = document.getElementById('blindStanceSection');
+    if (blindSection) {
+      blindSection.style.display = isAll ? 'block' : 'none';
+    }
+
     var pills = document.querySelectorAll('.cat-pill');
     for (var i = 0; i < pills.length; i++) {
       pills[i].classList.remove('active');
@@ -30752,6 +30800,11 @@ function cleanPhotoCredit(credit, sourceName) {
 
   function handleLiveSearch(inputEl) {
     currentSearchQuery = inputEl ? inputEl.value : '';
+    if (currentSearchQuery.trim()) {
+      document.body.classList.add('searching-mode');
+    } else {
+      document.body.classList.remove('searching-mode');
+    }
     applyFilters();
   }
 

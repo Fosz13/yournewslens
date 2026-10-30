@@ -2783,3 +2783,11 @@ div[id$="-view-RIGHT"] {
   color: #10b981;
   font-weight: 750;
 }
+
+
+/* Context-Aware Visibility: Blind Stance Challenge STRICTLY on Main Homepage Only */
+body.filtered-category #blindStanceSection,
+body.community-mode #blindStanceSection,
+body.searching-mode #blindStanceSection {
+  display: none !important;
+}
