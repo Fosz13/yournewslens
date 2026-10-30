@@ -1,5 +1,15 @@
 # Your News Lens — Changelog
 
+## [v11.11] - 2026-10-30 — Context-Aware Blind Stance Visibility (Main Homepage Feed Only)
+- **Main-Page-Only Blind Stance Visibility**:
+  - Restricted `#blindStanceSection` to ONLY display on the main homepage feed (`🌐 All Stories` without an active search query).
+  - Tapping `📍 Local News` or any specific category pill (`🏆 Sports`, `🏛️ Politics`, `📈 Business`, `🌍 World News`, `⚡ Tech & AI`, `🎬 Entertainment`, etc.) immediately hides `#blindStanceSection` (`display: none`), removing it from view and dedicating the entire viewport to category-specific reporting.
+  - Switching to the `💬 Community Lounge` tab hides `#blindStanceSection`.
+  - Switching back to `🌐 All Stories` automatically restores the Blind Stance Challenge.
+  - Live keyword searches also temporarily conceal the challenge to keep search results clean and uncluttered.
+- **Automated Verification**:
+  - All 30 regression tests passing in `test_regression_suite.py` (100% success rate).
+
 ## [v11.10] - 2026-10-30 — Instant Fast-Load Script Injection, Clean Native Handlers & Malformed Tag Purge
 - **Instant Fast-Load Script Placement (Zero Execution Lag)**:
   - Injected the entire Blind Stance Challenge controller (`selectBlindSurveyTopic`, `voteBlindOption`, `resetBlindSurvey`, `renderBlindSurveyTopic`, `BLIND_SURVEY_TOPICS`) in a dedicated `<script>` block positioned immediately before the `#blindStanceSection` DOM elements.

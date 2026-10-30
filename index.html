@@ -30481,6 +30481,12 @@ function cleanPhotoCredit(credit, sourceName) {
       localSubnav.style.display = (key === 'local') ? 'block' : 'none';
     }
 
+    // Toggle blind stance challenge visibility: ONLY show on main page (All Stories, no search query)
+    var blindSection = document.getElementById('blindStanceSection');
+    if (blindSection) {
+      blindSection.style.display = (key === 'all' && !q) ? 'block' : 'none';
+    }
+
     var curMetro = (currentLocalMetro || 'Tampa Bay, FL').toLowerCase();
     var cityCore = curMetro.split(',')[0].toLowerCase().trim();
 
@@ -30856,6 +30862,14 @@ function cleanPhotoCredit(credit, sourceName) {
     if (comm) comm.style.display = 'none';
     if (tabS) tabS.className = 'view-tab active';
     if (tabL) tabL.className = 'view-tab';
+
+    // Restore blind stance challenge only if on main All Stories view without search
+    var blindSection = document.getElementById('blindStanceSection');
+    var curCat = (currentFilterCategory || 'All').toLowerCase().trim();
+    var curQ = (currentSearchQuery || '').toLowerCase().trim();
+    if (blindSection) {
+      blindSection.style.display = (curCat === 'all' && !curQ) ? 'block' : 'none';
+    }
   }
 
   function showLoungeTab() {
@@ -30867,6 +30881,12 @@ function cleanPhotoCredit(credit, sourceName) {
     if (comm) comm.style.display = 'flex';
     if (tabS) tabS.className = 'view-tab';
     if (tabL) tabL.className = 'view-tab active';
+
+    // Never show the blind stance challenge in Community Lounge
+    var blindSection = document.getElementById('blindStanceSection');
+    if (blindSection) {
+      blindSection.style.display = 'none';
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
