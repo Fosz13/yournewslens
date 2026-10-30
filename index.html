@@ -15,49 +15,19 @@
     </header>
     <main class="container">
         <section id="lens-selector" class="lens-selector">
-            <button class="lens-btn active" onclick="switchLens('all')">All</button>
+            <button class="lens-btn active" onclick="switchLens('all')">All Lenses</button>
             <button class="lens-btn" onclick="switchLens('Objective')">Objective</button>
             <button class="lens-btn" onclick="switchLens('Analytical')">Analytical</button>
             <button class="lens-btn" onclick="switchLens('Critical')">Critical</button>
             <button class="lens-btn" onclick="switchLens('Forward-Looking')">Forward-Looking</button>
         </section>
         <div id="feed-container">
-            <article class="news-card">
-                <h2><a href="#" target="_blank" rel="noopener">Your News Lens Online & Operational</a></h2>
-                <div class="article-meta">
-                    <span>Source: System Core</span> | 
-                    <span>Perspective: Objective</span>
-                </div>
-                <p>Multi-perspective news aggregation feed successfully initialized and rendering live content.</p>
-                <div class="fact-expansion">
-                    <strong>Key Takeaways:</strong>
-                    <ul>
-                        <li>Dynamic lens reordering enabled</li>
-                        <li>Instant client-side rendering active</li>
-                        <li>Automated scraper synchronization ready</li>
-                    </ul>
-                </div>
-            </article>
-            <article class="news-card">
-                <h2><a href="#" target="_blank" rel="noopener">Global Tech Markets Shift Toward AI Integration</a></h2>
-                <div class="article-meta">
-                    <span>Source: TechWire</span> | 
-                    <span>Perspective: Analytical</span>
-                </div>
-                <p>Recent developments in edge computing and automated agent workflows are transforming enterprise architectures.</p>
-                <div class="fact-expansion">
-                    <strong>Key Takeaways:</strong>
-                    <ul>
-                        <li>Infrastructure demands up 34% year-over-year</li>
-                        <li>Developer velocity increased via automated deployment pipelines</li>
-                    </ul>
-                </div>
-            </article>
+            <div class="loading-state">Loading latest news lenses...</div>
         </div>
     </main>
     <footer>
         <p>&copy; 2026 Your News Lens. Powered by Gemini AI.</p>
     </footer>
-    <script src="app.js?v=19"></script>
+    <script src="app.js?v=20"></script>
 </body>
 </html>
