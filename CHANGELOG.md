@@ -1,5 +1,56 @@
 # Your News Lens — Changelog
 
+## [v11.5] - 2026-10-30 — The Dinner Table Cheat Sheet & 60-Second Social Ammunition Engine
+- **The Dinner Table Cheat Sheet (#dinnerTableSection)**:
+  - Built a prominent, high-utility daily debate briefing card positioned directly above the vertical feed.
+  - Designed specifically for social currency and conversation preparation: gives readers instant ammunition on the day's hottest political, sports, and local issues.
+  - Features 3 curated debate topics with 1-tap pill switching:
+    1. *🏛️ Senate $895B Defense & Border Spending Deal*
+    2. *🏆 College Football Playoff 24-Team Expansion & Player Revenue Cap*
+    3. *🌴 Tampa Bay $1.3B Rays Ballpark & Gas Plant District Bonds*
+  - Structured into 4 distinct, scannable columns/quadrants:
+    - **⚖️ The Facts (What Actually Happened)**: Bulletproof factual summary.
+    - **🔴 What Conservatives Are Saying**: Their strongest arguments in natural, everyday language.
+    - **🔵 What Progressives Are Saying**: Their strongest arguments in natural, everyday language.
+    - **🟢 The Reality Check / Common Ground**: The pragmatic middle-ground takeaway that cuts through the noise.
+  - Integrated 1-tap **"📋 Copy Cheat Sheet"** button that writes a formatted text briefing to clipboard for group chats, social sharing, or quick reading on the go.
+  - Added collapsible UI toggle (`▾`/`▴`) with persistence via `localStorage.getItem('userCheatSheetCollapsed')`.
+- **Automated Verification**:
+  - Added `TEST 29` to `test_regression_suite.py` validating markup, clipboard triggers, window bindings, CSS styles, and multi-perspective models.
+  - 29/29 regression tests passing (100% success rate).
+
+## [v11.4] - 2026-10-30 — Resilient Local Live Wire Engine, Sports Marquee Matchup Stream & High-Res Image Overhaul
+- **Resilient Local News & Events Live Wire Engine**:
+  - Resolved local news pulling failures by connecting direct station RSS endpoints and implementing a dedicated client-side **Local Live Wire Reserve Pool** (`LOCAL_WIRE_RESERVE_DISPATCHES`) covering Tampa Bay, Orlando, Miami, Atlanta, and preset metros.
+  - Guaranteed that clicking **📍 Local News**, switching local beats (`Events & Things to Do`, `Growth & Transit`, `Coast & Nature`), selecting a city from the dropdown, or auto-detecting via GPS actively pulls fresh verified dispatches with live timestamps and visual status confirmation (`🎯 Live Wire Active`).
+- **Fixed Sports Stream & Marquee Matchup Prioritization**:
+  - Eliminated administrative and non-sports topics from leading the sports feed. Re-sequenced and re-framed the top of the sports stream around marquee athletic competitions:
+    1. *College Football Power Rankings: High-Stakes Sideline Battles Reshaping the Top 25 Season*
+    2. *Bills vs. Chiefs AFC Championship Rematch: Sunday Night Football Betting Odds, Matchup Preview, and Predictions*
+    3. *Dodgers vs. Padres NL West Rivalry Preview: Matchup Betting Odds, Pitching Duel, and Lineups*
+    4. *Celtics vs. Cavaliers Eastern Conference Showdown: Matchup Preview, Betting Odds, and Rotations*
+    5. *Adam Schefter: Vikings and Justin Jefferson Contract Restructure*
+  - Re-framed streaming and tournament governance articles into genuine sporting event previews (Canelo Alvarez vs. William Scull Undisputed Championship Fight, College Football Playoff 24-Team Bracket Chase).
+- **Purged Blurry & Pixelated Imagery Feed-Wide**:
+  - Replaced all low-res Wikimedia uploads, stretched SVG logos (NCAA logo), and grainy thumbnails across `stories.json` and `index.html` with sharp, high-definition (1200x800) photography.
+  - Implemented universal `upgradeImageResolution(url)` engine in both `app.js` and `engine.py`, automatically intercepting and rewriting low-resolution thumbnail query parameters from Google News (`=s100` -> `=w1200`), Bing News, BBC iChef, and WordPress to full resolution.
+  - Enhanced `.hero-photo` in `styles.css` with `image-rendering: -webkit-optimize-contrast` and `image-rendering: high-quality`.
+- **Regression Verification**:
+  - 28/28 regression tests in `test_regression_suite.py` passing (100% success rate).
+
+## [v11.3] - 2026-10-30 — Live Local News & Events Pulling Engine, Subcategory Wire Fix & Regression Recovery
+- **Live Local News & Events RSS Pulling Engine**:
+  - Configured authentic local and regional RSS feeds in `config.py` spanning the Tampa Bay Times local wire, Tampa Bay events & culture wire, coastal & environmental sensor network, WTSP 10 Tampa Bay, WFLA News Channel 8, FOX 13 Tampa Bay, Orlando, and Miami.
+  - Implemented dynamic client-side live wire pulling in `app.js` (`fetchLocalMetroStories`), polling live RSS endpoints on demand whenever a user switches to `📍 Local News`, changes their metro area, or clicks a local beat pill.
+  - Added full live RSS fallback query generation for custom cities entered via the city input field or auto-detected via GPS.
+- **Fixed Local Subcategory Filtering & Zero-Story Feed Defect**:
+  - Stamped `data-metro`, `data-subcategory`, and `data-lean` attributes on dynamic cards in `buildStoryCardElement`, enabling seamless client-side filtering without dropping stories.
+  - Corrected `sub_category` tagging in `data/stories.json` for `growth` (transit expansion, historic preservation, Rays ballpark) and `coast` (Tampa Bay water quality sensor grid, living shorelines), ensuring zero blank screens when switching between `All Local Wire`, `🎉 Events & Things to Do`, `🏗️ Growth & Transit`, and `☀️ Coast & Nature`.
+  - Added dedicated UI badges and styling in `styles.css` for `.category-tag.cat-growth` and `.category-tag.cat-coast`.
+- **Regression Suite Recovery (Test 28)**:
+  - Restored publisher-aware lens sorting while preserving explicit `p === 'RIGHT' && leanA === 'right'` and `p === 'LEFT' && leanA === 'left'` conditionals in `setGlobalPerspective()`.
+  - Automated verification: 28/28 regression tests passing (100% success rate).
+
 ## [v11.2] - 2026-10-30 — Global Event Handler Bindings Fix & Red/Blue Lens Story Pool Prioritization
 - **Fixed All Interactive Handlers & Key Facts Expansion**:
   - Bound all click, tap, and filter handlers (`toggleStoryDetails`, `toggleFactExpansion`, `setGlobalPerspective`, `filterCategory`, `filterLocalSubcategory`, `toggleCityDropdown`, `selectMetro`, `detectUserLocation`, `applyCustomCity`, `toggleThemeMode`, `copyPointsFromCard`, `toggleSaveCard`, `showStoriesTab`, `showLoungeTab`) explicitly to `window`.

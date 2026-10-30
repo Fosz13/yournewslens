@@ -486,6 +486,81 @@ RSS_FEEDS = [
         "url": "https://www.washingtonexaminer.com/section/politics/feed",
         "description": "Washington Examiner conservative political reporting."
     },
+    # =========================================================================
+    # 13. LOCAL NEWS, REGIONAL DISPATCHES & METRO EVENT WIRES
+    # =========================================================================
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "Tampa Bay Times Local Wire",
+        "url": "https://news.google.com/rss/search?q=Tampa+Bay+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "growth",
+        "description": "Tampa Bay civic developments, regional transit, economic growth, and local headlines."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "Tampa Bay Events & Culture Wire",
+        "url": "https://news.google.com/rss/search?q=%22Tampa%22+(festival+OR+market+OR+concert+OR+%22things+to+do%22+OR+art+OR+exhibition)+when:3d&hl=en-US&gl=US&ceid=US:en",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "events",
+        "description": "Tampa Bay weekend festivals, outdoor artisan markets, music performances, and community events."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "Tampa Bay Coastal & Environmental Wire",
+        "url": "https://news.google.com/rss/search?q=%22Tampa+Bay%22+(estuary+OR+%22red+tide%22+OR+water+OR+beaches+OR+marine)+when:3d&hl=en-US&gl=US&ceid=US:en",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "coast",
+        "description": "Tampa Bay coastal ecology, environmental monitoring buoys, red tide tracking, and marine conservation."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "10 Tampa Bay (WTSP)",
+        "url": "https://www.wtsp.com/feeds/syndication/rss/news/local",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "growth",
+        "description": "WTSP 10 Tampa Bay breaking local news, community reporting, and municipal updates."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "WFLA News Channel 8 Local",
+        "url": "https://www.wfla.com/news/local-news/feed/",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "growth",
+        "description": "WFLA News Channel 8 local investigative and community news across Tampa, St. Petersburg, and Clearwater."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "FOX 13 Tampa Bay",
+        "url": "https://www.fox13news.com/rss/local-news",
+        "metro": "Tampa Bay, FL",
+        "sub_category": "growth",
+        "description": "FOX 13 Tampa Bay local reporting, community events, and Pinellas/Hillsborough updates."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "Central Florida & Orlando Wire",
+        "url": "https://news.google.com/rss/search?q=%22Orlando%22+local+news+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "metro": "Orlando & Central FL",
+        "sub_category": "growth",
+        "description": "Central Florida regional transit, SunRail expansion, and Orlando municipal reporting."
+    },
+    {
+        "category": "Local News",
+        "master_category": "Local News",
+        "source": "South Florida & Miami Wire",
+        "url": "https://news.google.com/rss/search?q=%22Miami%22+local+news+when:1d&hl=en-US&gl=US&ceid=US:en",
+        "metro": "Miami & South FL",
+        "sub_category": "coast",
+        "description": "Miami-Dade coastal resilience, stormwater management, and South Florida civic updates."
+    },
 ]
 
 INGESTION_SETTINGS = {

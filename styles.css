@@ -853,6 +853,8 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1929,6 +1931,30 @@ div[id$="-view-RIGHT"] {
   border-color: rgba(217, 119, 6, 0.4);
 }
 
+.category-tag.cat-growth {
+  background: rgba(59, 130, 246, 0.14);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.35);
+}
+
+.category-tag.cat-coast {
+  background: rgba(6, 182, 212, 0.14);
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.35);
+}
+
+[data-theme="light"] .category-tag.cat-growth {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  border-color: rgba(29, 78, 216, 0.35);
+}
+
+[data-theme="light"] .category-tag.cat-coast {
+  background: rgba(6, 182, 212, 0.12);
+  color: #0e7490;
+  border-color: rgba(14, 116, 144, 0.35);
+}
+
 
 /* Perspective Segmented Controller */
 .perspective-segmented-control {
@@ -2025,4 +2051,344 @@ div[id$="-view-RIGHT"] {
   .brand-tagline { max-width: 265px; }
   .lens-label { display: none; }
   .view-tab { font-size: 10.5px; }
+}
+
+
+/* =========================================================================
+   DINNER TABLE CHEAT SHEET — 60-SECOND CONVERSATION AMMUNITION
+   ========================================================================= */
+.dinner-table-section {
+  max-width: 1280px;
+  margin: 0 auto 22px;
+  padding: 0 20px;
+}
+
+.cheat-sheet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.24s ease;
+}
+
+.cheat-sheet-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #10b981 0%, #3b82f6 50%, #ef4444 100%);
+  z-index: 2;
+}
+
+.cheat-sheet-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 24px 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(15, 23, 42, 0.55);
+}
+
+[data-theme="light"] .cheat-sheet-header {
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.cheat-sheet-title-group {
+  flex: 1;
+}
+
+.cheat-sheet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+[data-theme="light"] .cheat-sheet-badge {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.cheat-sheet-headline {
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  letter-spacing: -0.01em;
+}
+
+.cheat-sheet-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.cheat-sheet-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.btn-copy-cheatsheet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.btn-copy-cheatsheet:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.45);
+}
+
+.btn-toggle-cheatsheet {
+  background: var(--bg-surface-elevated, #1e293b);
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.btn-toggle-cheatsheet:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong, #64748b);
+}
+
+.cheat-sheet-body {
+  padding: 16px 24px 22px;
+}
+
+.cheat-sheet-topics-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.topics-label {
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.topics-pills-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.cheat-topic-pill {
+  background: var(--bg-surface-elevated, rgba(30, 41, 59, 0.7));
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 650;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.cheat-topic-pill:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.cheat-topic-pill.active {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  border-color: #38bdf8;
+  color: #38bdf8;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="light"] .cheat-topic-pill.active {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0369a1;
+}
+
+.cheat-sheet-content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .cheat-sheet-content-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cheat-column-card {
+  background: var(--bg-surface-elevated, rgba(30, 41, 59, 0.45));
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md, 10px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.cheat-column-card:hover {
+  border-color: var(--border-medium);
+}
+
+.cheat-column-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cheat-column-icon {
+  font-size: 16px;
+}
+
+.cheat-column-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* Card Specific Themes */
+.cheat-card-fact .cheat-column-title { color: #38bdf8; }
+.cheat-card-conservative .cheat-column-title { color: #f87171; }
+.cheat-card-progressive .cheat-column-title { color: #60a5fa; }
+
+[data-theme="light"] .cheat-card-fact .cheat-column-title { color: #0284c7; }
+[data-theme="light"] .cheat-card-conservative .cheat-column-title { color: #dc2626; }
+[data-theme="light"] .cheat-card-progressive .cheat-column-title { color: #2563eb; }
+
+.cheat-points-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cheat-point-item {
+  position: relative;
+  padding-left: 14px;
+}
+
+.cheat-point-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-tertiary);
+  font-weight: bold;
+}
+
+.cheat-card-quote {
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.55;
+  margin: 0;
+  font-size: 13px;
+}
+
+.cheat-card-speaker {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Full Width Common Ground Banner */
+.cheat-reality-check-banner {
+  grid-column: 1 / -1;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  border-radius: var(--radius-md, 10px);
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+[data-theme="light"] .cheat-reality-check-banner {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.reality-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.reality-content {
+  flex: 1;
+}
+
+.reality-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: #34d399;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 3px;
+}
+
+[data-theme="light"] .reality-title {
+  color: #047857;
+}
+
+.reality-text {
+  font-size: 13px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 0;
 }

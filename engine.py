@@ -2467,6 +2467,14 @@ def classify_article(title: str, text: str = "", feed_hint: str = "") -> Tuple[s
         if not (has_any([r'power outages?', r'blackouts?']) and not has_any([r'rankings?', r'game', r'score', r'win', r'loss', r'upset', r'playoff'], t_lower)):
             return ("Sports", "Sports")
 
+    # LOCAL NEWS & CIVIC GATEKEEPER
+    hint_lower = (feed_hint or "").lower()
+    if ("local" in hint_lower or "tampa" in hint_lower or "wtsp" in hint_lower or "wfla" in hint_lower) and not is_international:
+        return ("Local News", "Local News")
+
+    if has_any([r'tampa\s+bay', r'st\.\s+petersburg', r'hillsborough\s+county', r'pinellas\s+county', r'ybor\s+city', r'hyde\s+park', r'bayshore', r'riverwalk', r'clearwater'], string=combined) and not is_international and not is_sports:
+        return ("Local News", "Local News")
+
     # 3. Severe Weather & Utility Grids
     if not is_sports_team_weather and not is_sports and has_any([
         r'power outages?', r'blackouts?', r'high winds?', r'wind gusts?',
@@ -3253,16 +3261,33 @@ def is_usable_image_url(url: Optional[str]) -> bool:
 
 
 def upgrade_publisher_image_resolution(url: str) -> str:
-    """Upgrades low-res RSS thumbnail URLs (BBC, ESPN, Al Jazeera, Bing, etc.) to high-resolution lead photos."""
+    """Upgrades low-res RSS thumbnail URLs (BBC, ESPN, Al Jazeera, Bing, Google News, etc.) to high-resolution lead photos."""
     if not url:
         return url
     u = url.strip()
-    # BBC News / Sport iChef CDN: upgrade /144/, /240/, /320/, /480/, /640/ to /976/
+    # 1. BBC News / Sport iChef CDN: upgrade /144/, /240/, /320/, /480/, /640/ to /976/
     if "ichef.bbci.co.uk" in u:
         u = re.sub(r'/(?:144|240|320|464|480|624|640|800)/', '/976/', u)
-    # Al Jazeera WordPress resize parameter: upgrade small resize= to 1200,800
+    # 2. Al Jazeera WordPress resize parameter: upgrade small resize= to 1200,800
     if "aljazeera.com" in u and "resize=" in u:
         u = re.sub(r'resize=\d+(?:%2C|,)\d+', 'resize=1200%2C800', u)
+    # 3. Google UserContent / Google News thumbnails: upgrade low-res =s... / =w... to 1200x800
+    if "googleusercontent.com" in u:
+        u = re.sub(r'=([swh]\d+.*)$', '=w1200-h800-p-k-no-nu', u)
+        if '=' not in u:
+            u += '=w1200-h800-p-k-no-nu'
+    # 4. Bing News thumbnails: upgrade width & height
+    if "bing.com/th" in u:
+        u = re.sub(r'w=\d+', 'w=1200', u)
+        u = re.sub(r'h=\d+', 'h=800', u)
+    # 5. WordPress thumbnail dimensions: strip -150x150, -300x200
+    u = re.sub(r'-\d{2,4}x\d{2,4}(\.(?:jpg|jpeg|png|webp))', r'\g<1>', u, flags=re.IGNORECASE)
+    # 6. Unsplash parameters: ensure w=1200
+    if "images.unsplash.com" in u:
+        if "w=" in u:
+            u = re.sub(r'w=\d+', 'w=1200', u)
+        else:
+            u += ('?' if '?' not in u else '&') + 'w=1200&q=80'
     return u
 
 
@@ -3850,7 +3875,10 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                         "source_name": resolved_src,
                         "source": f"{resolved_src} • {rel_time}",
                         "pub_timestamp": ts,
-                        "category": feed_info["category"],
+                        "category": feed_info.get("category", "General News"),
+                        "master_category": feed_info.get("master_category", "National Headlines"),
+                        "metro": feed_info.get("metro", ""),
+                        "sub_category": feed_info.get("sub_category", ""),
                         "scraped_image": scraped_pic
                     })
     except Exception as err:
@@ -7305,7 +7333,17 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
 
         # Clean editorial tags row without gaudy rank badges
-        if idx == 0:
+        if cat == "Local News":
+            if sub_cat == "events":
+                sub_badge = '<span class="category-tag cat-events">🎉 Events</span>'
+            elif sub_cat == "growth":
+                sub_badge = '<span class="category-tag cat-growth">🏗️ Growth</span>'
+            elif sub_cat == "coast":
+                sub_badge = '<span class="category-tag cat-coast">☀️ Coast</span>'
+            else:
+                sub_badge = ''
+            tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span> {sub_badge}'.strip()
+        elif idx == 0:
             tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
         elif idx < 5:
             tags_html = f'<span class="live-wire-pill">● TOP STORY</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
@@ -7530,7 +7568,7 @@ def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 150
     core_order = [
         "Politics", "Sports", "World News", "Business & Economy",
         "Science & Tech", "Entertainment", "Health", "Energy & Weather",
-        "Crime & Public Safety", "Border & Security"
+        "Crime & Public Safety", "Border & Security", "Local News"
     ]
     if category_order:
         core_order = [cat for cat in category_order if cat in cat_buckets] + [cat for cat in core_order if cat not in category_order]
@@ -7688,10 +7726,29 @@ def run_pipeline():
             img_info = resolve_story_image(t, cat_assigned, master_cat_assigned, used_urls, scraped_image=scraped_pic)
             story_id = f"story-{int(time.time())}-{len(new_stories)}"
             article_link = it.get("link") or f"https://news.google.com/search?q={urllib.parse.quote(t)}"
+            metro_assigned = it.get("metro", "")
+            if not metro_assigned and cat_assigned == "Local News":
+                metro_assigned = "Tampa Bay, FL"
+
+            subcat_assigned = it.get("sub_category", "")
+            if not subcat_assigned and cat_assigned == "Local News":
+                comb_text = (t + " " + (it.get("description") or "")).lower()
+                if any(w in comb_text for w in ["event", "festival", "market", "concert", "art", "music", "fair", "things to do", "exhibit", "celebration", "food truck", "craft", "parade"]):
+                    subcat_assigned = "events"
+                elif any(w in comb_text for w in ["transit", "road", "corridor", "airport", "construction", "zoning", "council", "commission", "preservation", "ballpark", "stadium", "development", "housing", "insurance"]):
+                    subcat_assigned = "growth"
+                elif any(w in comb_text for w in ["beach", "coast", "water", "estuary", "red tide", "marine", "storm", "hurricane", "ecology", "sensor", "shoreline"]):
+                    subcat_assigned = "coast"
+                else:
+                    subcat_assigned = ""
+
             story_record = {
                 "id": story_id,
                 "category": cat_assigned,
                 "master_category": master_cat_assigned,
+                "metro": metro_assigned,
+                "sub_category": subcat_assigned,
+                "lean": synthesis.get("lean", "center"),
                 "title": t,
                 "source_name": it["source_name"],
                 "pub_timestamp": max(int(float(it.get("pub_timestamp") or 0)), int(time.time()) - 120),
