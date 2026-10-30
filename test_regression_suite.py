@@ -1056,6 +1056,15 @@ def run_all_regression_tests():
     assert "function selectMetro" in app_js, "Test 27 Failed: selectMetro missing from app.js"
     assert "key === 'local'" in app_js, "Test 27 Failed: key === 'local' filter branch missing from app.js"
 
+    
+    # 6. Verify Events & Things to Do Subcategory
+    assert 'id="localSubnavBar"' in html, "Test 27 Failed: #localSubnavBar missing from index.html"
+    assert 'Events & Things to Do' in html, "Test 27 Failed: 'Events & Things to Do' button missing!"
+    event_cards = re.findall(r'<article[^>]*data-subcategory="events"[^>]*id="([^"]+)"', html)
+    assert len(event_cards) >= 5, f"Test 27 Failed: Expected >= 5 event cards, found {len(event_cards)}"
+    assert 'cat-events' in html, "Test 27 Failed: cat-events tag class missing!"
+    assert 'function filterLocalSubcategory' in app_js, "Test 27 Failed: filterLocalSubcategory missing from app.js"
+
     print("✓ TEST 27 PASSED: Location-based local news verified (Local pill, metro control banner, auto-detect GPS, and authentic Tampa Bay & Florida reporting).")
     passed_count += 1
 

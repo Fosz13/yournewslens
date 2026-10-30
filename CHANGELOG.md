@@ -1,5 +1,30 @@
 # Your News Lens — Changelog
 
+## [v11.1] - 2026-10-30 — Decluttered Editorial Greeting, Revamped Button Layout & Local Events Subcategory
+- **Decluttered Button Layout & Welcoming Editorial Masthead**:
+  - Replaced the cluttered, multi-layered ticker bars and stacked buttons with a clean, dignified **Welcoming Masthead Bar** (`#localNewsBanner` / `.welcome-edition-bar`).
+  - Displays the current date, active metro area (`📍 Tampa Bay, FL ▾`), live detection status (`GPS Active`), quick 1-tap `🎯 Auto-Detect City`, and total active wire count (`110 Live Stories`).
+  - Streamlined primary navigation into distinct, uncluttered pills with clear spacing and consistent tactile touch targets.
+- **Fixed Local News Zero-Story Defect**:
+  - Resolved the rigid filtering collision in `applyFilters()` that previously caused Local News to show 0 stories.
+  - Implemented a **Bulletproof Local Wire Fallback**: If an unpopulated or custom city is entered, the engine automatically presents the regional state wire dispatches rather than rendering an empty screen.
+- **Dedicated 'Events & Things to Do' Subcategory**:
+  - Implemented an interactive local subnavigation bar (`#localSubnavBar`) that appears when `📍 Local News` is active:
+    - `All Local Wire` (Full civic, transit, and community coverage)
+    - `🎉 Events & Things to Do` (Filter: `sub_category: "events"`)
+    - `🏗️ Growth & Transit` (Transit expansion, historic preservation, Rays ballpark)
+    - `☀️ Coast & Nature` (Tampa Bay ecology, red tide sensor grid)
+  - Curated 6 dedicated local events and things to do for the Tampa Bay area:
+    1. **Hyde Park Village Autumn Artisan Market**: 85 local makers, organic growers, pet-friendly outdoor dining, and live acoustic music.
+    2. **Tampa Riverwalk Fourth Friday**: Free Tampa Museum of Art admission, Henry B. Plant Museum, discounted Pirate Water Taxi wristbands, and Riverwalk Sip & Stroll.
+    3. **Tampa Bay Open Pickleball Championship**: 16-court open bracket, free spectator seating, and youth fundamentals clinic at Julian B. Lane Riverfront Park.
+    4. **Historic Ybor City Saturday Market & Culinary Walk**: 7th Avenue casitas walking tour, Cuban bread and cigar rolling demonstrations in Centennial Park, free TECO Streetcar connection.
+    5. **St. Pete Pier Sunset Concert Series & Night Market**: Free waterfront concert pavilion at Spa Beach Park, 40 illuminated artisan booths, tram shuttles.
+    6. **Gasparilla Festival of the Arts Showcase Preview**: 250 juried national artists along the riverfront, $80K prize purse, children's art collector pavilion.
+- **Automated Verification**:
+  - Verified with `skills/web-app-generation/scripts/check_web_app.py` (0 errors).
+  - All 27 regression tests passed (100% success rate).
+
 ## [v11.0] - 2026-10-29 — Location-Based Local News Section & Metro Selection Engine
 - **Location-Based Local News Wire**:
   - Added a dedicated `📍 Local News` category pill to the main navigation bar.

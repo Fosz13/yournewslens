@@ -1607,90 +1607,113 @@ div[id$="-view-RIGHT"] {
 }
 
 
+
+
 /* ==========================================================================
-   LOCAL NEWS LOCATION BAR & METRO SELECTOR
+   REVAMPED EDITORIAL MASTHEAD, GREETING & DECLUTTERED NAVIGATION
    ========================================================================== */
 
-.local-news-banner {
-  max-width: 900px;
-  margin: 10px auto 14px auto;
-  padding: 0 12px;
+/* Clean Masthead Greeting */
+.welcome-edition-bar {
+  max-width: 960px;
+  margin: 12px auto 6px auto;
+  padding: 0 16px;
 }
 
-.local-banner-content {
+.edition-bar-inner {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 8px 14px;
+  border-radius: 10px;
+  padding: 10px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  box-shadow: var(--shadow-sm);
-  transition: border-color 0.2s ease;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-.local-banner-content:hover {
-  border-color: var(--border-medium);
-}
-
-.local-banner-left {
+.edition-meta-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
-.local-pin {
-  font-size: 16px;
+.edition-date {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.edition-divider {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+.edition-location-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.edition-location-selector:hover {
+  border-color: var(--border-active);
+  background: var(--border-medium);
+}
+
+.edition-pin {
+  font-size: 13px;
   color: var(--border-active);
 }
 
-.local-title {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.edition-city {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.edition-dropdown-icon {
+  font-size: 11px;
   color: var(--text-muted);
 }
 
-.local-current-city {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-}
-
-.local-status-pill {
+.edition-status-badge {
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   color: #34d399;
   background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   padding: 2px 7px;
-  border-radius: 10px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-[data-theme="light"] .local-status-pill {
+[data-theme="light"] .edition-status-badge {
   color: #047857;
-  background: rgba(16, 185, 129, 0.14);
+  background: rgba(16, 185, 129, 0.15);
 }
 
-.local-banner-actions {
+.edition-meta-right {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
-.btn-location-change,
-.btn-location-detect {
-  background: var(--bg-surface-elevated);
+.btn-detect-gps {
+  background: transparent;
   border: 1px solid var(--border-medium);
-  color: var(--text-primary);
+  color: var(--border-active);
   font-size: 11.5px;
   font-weight: 700;
-  padding: 5px 11px;
+  padding: 4px 10px;
   border-radius: 6px;
   cursor: pointer;
   display: inline-flex;
@@ -1699,15 +1722,19 @@ div[id$="-view-RIGHT"] {
   transition: all 0.18s ease;
 }
 
-.btn-location-change:hover,
-.btn-location-detect:hover {
+.btn-detect-gps:hover {
   background: var(--border-medium);
   border-color: var(--border-highlight);
-  color: var(--border-active);
 }
 
-.btn-location-detect {
-  color: var(--border-active);
+.live-counter-pill {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: var(--bg-surface-elevated);
+  padding: 3px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
 }
 
 /* Quick Metro Dropdown */
@@ -1715,9 +1742,9 @@ div[id$="-view-RIGHT"] {
   margin-top: 8px;
   background: var(--bg-card);
   border: 1px solid var(--border-medium);
-  border-radius: var(--radius-md);
+  border-radius: 10px;
   padding: 14px;
-  box-shadow: var(--shadow-elevated);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
   animation: fadeIn 0.18s ease;
 }
 
@@ -1811,22 +1838,93 @@ div[id$="-view-RIGHT"] {
   padding: 6px 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: opacity 0.15s ease;
 }
 
-.btn-apply-city:hover {
-  opacity: 0.9;
+/* Local News Subcategories Bar */
+.local-subnav-bar {
+  max-width: 960px;
+  margin: 6px auto 12px auto;
+  padding: 0 16px;
+  animation: fadeIn 0.2s ease;
 }
 
-/* Category tag for local news */
+.local-subnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.local-subnav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.local-subnav-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+  padding-right: 4px;
+  border-right: 1px solid var(--border-medium);
+}
+
+.subcat-pill {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.subcat-pill:hover {
+  background: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.subcat-pill.active {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #10b981;
+  color: #34d399;
+}
+
+[data-theme="light"] .subcat-pill.active {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* Category Tags */
 .category-tag.cat-local {
   background: rgba(16, 185, 129, 0.12);
   color: #34d399;
   border-color: rgba(16, 185, 129, 0.35);
 }
 
+.category-tag.cat-events {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
 [data-theme="light"] .category-tag.cat-local {
   background: rgba(16, 185, 129, 0.14);
   color: #047857;
   border-color: rgba(5, 150, 105, 0.4);
+}
+
+[data-theme="light"] .category-tag.cat-events {
+  background: rgba(245, 158, 11, 0.14);
+  color: #b45309;
+  border-color: rgba(217, 119, 6, 0.4);
 }

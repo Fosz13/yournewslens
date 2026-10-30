@@ -7251,6 +7251,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             master_cat = master_cat[0] if len(master_cat) > 0 else "National Headlines"
         cat_slug = get_category_slug(cat)
         metro = s.get("metro", "")
+        sub_cat = s.get("sub_category", "")
         imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" if "sport" in str(cat).lower() else "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG")
         caption = s.get("caption", s.get("title", ""))
         source = s.get("source", "Associated Press Wire")
@@ -7302,7 +7303,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
 
         card = f"""
-        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" id="{sId}">
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
             <div class="photo-caption-bar">
