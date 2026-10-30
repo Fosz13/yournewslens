@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Your News Lens</h1>
-        <p>Dynamic Multi-Perspective News Aggregation</p>
+    <header class="site-header">
+        <div class="header-content">
+            <h1>Your News Lens</h1>
+            <p class="tagline">Dynamic Multi-Perspective News Aggregation</p>
+        </div>
     </header>
-    <main id="app">
-        <!-- Dynamic Feed Container with Lens Reordering & Fact Expansion -->
-        <div id="feed-container">Loading latest news lenses...</div>
+    <main class="container">
+        <section id="lens-selector" class="lens-selector">
+            <!-- Perspective buttons rendered dynamically -->
+        </section>
+        <div id="feed-container">
+            <div class="loading-state">Loading latest news lenses...</div>
+        </div>
     </main>
-    <script src="app.js?v=15"></script>
+    <footer>
+        <p>&copy; Your News Lens. Powered by Gemini AI.</p>
+    </footer>
+    <script src="app.js?v=16"></script>
 </body>
 </html>
