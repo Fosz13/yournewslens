@@ -979,46 +979,53 @@ def run_all_regression_tests():
     passed_count += 1
 
     # -------------------------------------------------------------------------
-    # TEST 26: Top 5 News Stories Horizontal Carousel & Responsive Layout
     # -------------------------------------------------------------------------
-    print("\n[TEST 26] Top 5 News Stories Horizontal Carousel & Responsive Layout Verification...")
+    # TEST 26: Top 5 News Stories Vertical Screening & Green Ranked #1–#5 System
+    # -------------------------------------------------------------------------
+    print("\n[TEST 26] Top 5 News Stories Vertical Screening & Green Ranked #1–#5 Verification...")
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Verify Top News Section exists
+    # 1. Verify Top News Section exists in vertical flow
     assert '<section class="top-news-section" id="topNewsSection"' in html, "Test 26 Failed: #topNewsSection missing from index.html"
-    assert '<div class="top-news-carousel" id="topNewsCarousel"' in html, "Test 26 Failed: #topNewsCarousel missing from index.html"
+    assert '<div class="top-news-feed" id="topNewsFeed"' in html, "Test 26 Failed: #topNewsFeed missing from index.html"
+    assert 'class="top-news-carousel"' not in html, "Test 26 Failed: Horizontal carousel markup still present in index.html"
 
-    # 2. Extract cards inside the carousel
-    carousel_match = re.search(r'<div class="top-news-carousel" id="topNewsCarousel"[^>]*>(.*?)</div>\s*</div>\s*</section>', html, re.DOTALL)
-    assert carousel_match, "Test 26 Failed: Unable to extract carousel markup from index.html"
-    carousel_cards = re.findall(r'<article[^>]*id="([^"]+)"', carousel_match.group(1))
-    assert len(carousel_cards) == 5, f"Test 26 Failed: Expected exactly 5 cards in top carousel, found {len(carousel_cards)}: {carousel_cards}"
+    # 2. Extract cards inside topNewsFeed
+    top_match = re.search(r'<div class="top-news-feed" id="topNewsFeed"[^>]*>(.*?)</div>\s*</section>', html, re.DOTALL)
+    assert top_match, "Test 26 Failed: Unable to extract topNewsFeed markup from index.html"
+    top_cards = re.findall(r'<article[^>]*id="([^"]+)"', top_match.group(1))
+    assert len(top_cards) == 5, f"Test 26 Failed: Expected exactly 5 cards in topNewsFeed, found {len(top_cards)}: {top_cards}"
 
-    # 3. Verify cards in vertical feed
+    # 3. Verify prominent green rank badges (#1 through #5)
+    green_badges = re.findall(r'<div class="green-rank-badge"[^>]*>[\s\S]*?</div>', top_match.group(1))
+    assert len(green_badges) == 5, f"Test 26 Failed: Expected 5 green-rank-badge elements, found {len(green_badges)}"
+    for idx_b in range(1, 6):
+        assert f"#{idx_b}</span>" in top_match.group(1), f"Test 26 Failed: Rank #{idx_b} missing from top cards"
+
+    # 4. Verify ZERO <a href> hyperlinks inside .story-title across index.html
+    title_links = re.findall(r'<h3 class="story-title"[^>]*>\s*<a\b[^>]*>', html)
+    assert len(title_links) == 0, f"Test 26 Failed: Found {len(title_links)} external hyperlinks inside story-title!"
+    assert 'onclick="toggleStoryDetails(' in html, "Test 26 Failed: Story title click-to-expand handler missing"
+
+    # 5. Verify cards in vertical feed (92 stories)
     feed_match = re.search(r'<div id="storiesFeedView" class="feed-container"[^>]*>(.*?)</div>\s*<!-- Community Lounge -->', html, re.DOTALL)
     assert feed_match, "Test 26 Failed: Unable to extract vertical feed markup"
     feed_cards = re.findall(r'<article[^>]*id="([^"]+)"', feed_match.group(1))
     assert len(feed_cards) == 92, f"Test 26 Failed: Expected 92 vertical cards, found {len(feed_cards)}"
 
-    # 4. Verify ZERO duplicate IDs across index.html
-    all_cards = carousel_cards + feed_cards
-    assert len(all_cards) == len(set(all_cards)), f"Test 26 Failed: Duplicate IDs detected between carousel and vertical feed!"
+    # 6. Verify ZERO duplicate IDs across index.html
+    all_cards = top_cards + feed_cards
+    assert len(all_cards) == len(set(all_cards)), "Test 26 Failed: Duplicate IDs detected between topNewsFeed and vertical feed!"
 
-    # 5. Verify carousel rank badges and styling
-    assert 'carousel-rank-badge' in carousel_match.group(1), "Test 26 Failed: carousel-rank-badge missing from top cards"
-    assert 'scrollCarousel(-1)' in html and 'scrollCarousel(1)' in html, "Test 26 Failed: scrollCarousel arrow buttons missing"
-
-    # 6. Verify app.js contains scrollCarousel and topNewsSection handling
+    # 7. Verify app.js contains topNewsFeed handling
     with open("app.js", "r", encoding="utf-8") as f:
         app_js = f.read()
-    assert "function scrollCarousel" in app_js, "Test 26 Failed: scrollCarousel function missing from app.js"
-    assert "topNewsSection" in app_js, "Test 26 Failed: topNewsSection logic missing from app.js"
+    assert "topNewsFeed" in app_js, "Test 26 Failed: topNewsFeed logic missing from app.js"
+    assert 'class="story-title-link"' not in app_js, "Test 26 Failed: story-title-link still present in app.js"
 
-    print("✓ TEST 26 PASSED: Top 5 News Stories horizontal carousel verified (5 top stories, 92 vertical stories, 0 duplicate IDs, smooth snap-scroll).")
+    print("✓ TEST 26 PASSED: Top 5 News Stories vertical screening verified (5 green-ranked #1-#5 stories, 92 vertical stories, 0 title redirect hyperlinks, 0 duplicate IDs).")
     passed_count += 1
-
-
 
     print("\n" + "=" * 75)
     print(f"REGRESSION SUITE COMPLETED: {passed_count}/{total_tests} TESTS PASSED (100% SUCCESS)")

@@ -1582,13 +1582,14 @@ div[id$="-view-RIGHT"] {
 }
 
 
+
 /* ==========================================================================
-   TOP NEWS HORIZONTAL SCROLL CAROUSEL (Top 5 Stories)
+   TOP NEWS VERTICAL SCREENING & GREEN RANKED #1-#5 SYSTEM
    ========================================================================== */
 
 .top-news-section {
-  max-width: 1200px;
-  margin: 14px auto 18px auto;
+  max-width: 900px;
+  margin: 14px auto 20px auto;
   padding: 0 12px;
 }
 
@@ -1596,25 +1597,26 @@ div[id$="-view-RIGHT"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   padding: 0 4px;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 10px;
 }
 
 .top-news-title-wrap {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .top-news-flame {
-  font-size: 20px;
+  font-size: 22px;
   animation: flamePulse 1.8s infinite;
 }
 
 @keyframes flamePulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #ef4444); }
-  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #f59e0b); }
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #10b981); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 8px #34d399); }
 }
 
 .top-news-heading {
@@ -1623,155 +1625,120 @@ div[id$="-view-RIGHT"] {
   color: var(--text-primary);
   letter-spacing: -0.02em;
   margin: 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .top-news-badge {
   font-size: 11px;
   font-weight: 700;
-  color: var(--text-muted);
-  background: var(--bg-surface-elevated);
-  padding: 3px 10px;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  padding: 3px 12px;
   border-radius: 12px;
-  border: 1px solid var(--border-medium);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   letter-spacing: 0.02em;
 }
 
-.carousel-nav-arrows {
+[data-theme="light"] .top-news-badge {
+  color: #047857;
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(5, 150, 105, 0.4);
+}
+
+.top-news-feed {
   display: flex;
-  gap: 6px;
-}
-
-.carousel-nav-btn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--bg-card-solid);
-  border: 1px solid var(--border-medium);
-  color: var(--text-primary);
-  font-size: 20px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  line-height: 1;
-  padding: 0 0 2px 0;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-nav-btn:hover {
-  background: var(--border-highlight);
-  color: #060913;
-  border-color: var(--border-highlight);
-  transform: scale(1.08);
-}
-
-.carousel-nav-btn:active {
-  transform: scale(0.95);
-}
-
-.top-news-carousel-wrap {
-  position: relative;
-  width: 100%;
-}
-
-.top-news-carousel {
-  display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding: 4px 4px 18px 4px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-highlight) transparent;
 }
 
-.top-news-carousel::-webkit-scrollbar {
-  height: 6px;
-}
-
-.top-news-carousel::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.top-news-carousel::-webkit-scrollbar-thumb {
-  background: var(--border-medium);
-  border-radius: 6px;
-}
-
-.top-news-carousel::-webkit-scrollbar-thumb:hover {
-  background: var(--border-highlight);
-}
-
-/* Horizontal Card Width & Snap */
-.top-news-carousel .compact-card {
-  flex: 0 0 calc(85vw - 24px);
-  width: calc(85vw - 24px);
-  max-width: 380px;
-  min-width: 290px;
-  scroll-snap-align: start;
-  scroll-snap-stop: normal;
-  margin-bottom: 0;
-  border: 1px solid var(--border-medium);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  border-radius: 12px;
-  background: var(--bg-card);
-  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-@media (min-width: 768px) {
-  .top-news-carousel .compact-card {
-    flex: 0 0 350px;
-    width: 350px;
-    max-width: 350px;
-  }
-}
-
-.top-news-carousel .compact-card:hover {
-  border-color: var(--border-highlight);
-  box-shadow: 0 6px 22px rgba(56, 189, 248, 0.18);
-}
-
-/* Rank Badge on Thumbnail */
-.carousel-rank-badge {
+/* Green Rank Badges (#1 through #5) */
+.green-rank-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(6, 9, 19, 0.88);
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.94) 0%, rgba(4, 47, 46, 0.96) 100%);
+  border: 2px solid #10b981;
+  color: #ecfdf5;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4), 0 2px 6px rgba(0, 0, 0, 0.5);
+  z-index: 10;
   backdrop-filter: blur(8px);
-  color: #38bdf8;
+}
+
+.green-rank-badge .rank-badge-num {
+  color: #34d399;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+}
+
+.green-rank-badge .rank-badge-label {
+  color: #a7f3d0;
   font-size: 10.5px;
   font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 6px;
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  letter-spacing: 0.04em;
-  z-index: 5;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.top-story-pill {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.45);
-  font-size: 10px;
+.green-rank-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.18);
+  border: 1.5px solid #10b981;
+  color: #34d399;
+  font-size: 10.5px;
   font-weight: 800;
   text-transform: uppercase;
-  padding: 2.5px 7px;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
+  padding: 2.5px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="light"] .green-rank-badge {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  border-color: #059669;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+}
+
+[data-theme="light"] .green-rank-badge .rank-badge-num {
+  color: #ffffff;
+  text-shadow: none;
+}
+
+[data-theme="light"] .green-rank-badge .rank-badge-label {
+  color: #d1fae5;
+}
+
+[data-theme="light"] .green-rank-pill {
+  background: rgba(16, 185, 129, 0.14);
+  border-color: #059669;
+  color: #047857;
+}
+
+.top-ranked-card {
+  border-color: rgba(16, 185, 129, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+.top-ranked-card:hover {
+  border-color: #10b981 !important;
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.22) !important;
 }
 
 /* Vertical Feed Divider */
 .vertical-feed-divider {
-  max-width: 1200px;
-  margin: 10px auto 16px auto;
-  padding: 16px 14px 0 14px;
+  max-width: 900px;
+  margin: 20px auto 16px auto;
+  padding: 16px 12px 0 12px;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   justify-content: space-between;
@@ -1818,15 +1785,15 @@ div[id$="-view-RIGHT"] {
   font-weight: 600;
 }
 
-.vertical-scroll-arrow {
-  color: var(--border-active);
-  font-size: 13px;
-  animation: bounceDown 1.6s infinite;
+/* Story Title Click-to-Expand */
+.story-title {
+  cursor: pointer;
+  user-select: text;
+  transition: color 0.18s ease;
 }
 
-@keyframes bounceDown {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
+.story-title:hover {
+  color: var(--border-active);
 }
 
 </style>
@@ -1966,25 +1933,23 @@ div[id$="-view-RIGHT"] {
 
   <main>
     <!-- TOP NEWS HORIZONTAL SCROLL CAROUSEL (Top 5 Stories) -->
-    <section class="top-news-section" id="topNewsSection" aria-label="Top 5 News Stories of the Day">
+    <section class="top-news-section" id="topNewsSection" aria-label="Top 5 Ranked News Stories of the Day">
       <div class="top-news-header">
         <div class="top-news-title-wrap">
           <span class="top-news-flame">🔥</span>
-          <h2 class="top-news-heading" id="topNewsHeading">Top news</h2>
-          <span class="top-news-badge" id="topNewsBadge">Top 5 Stories • Scroll Left to Right ➔</span>
+          <h2 class="top-news-heading" id="topNewsHeading">Top News Stories of the Day</h2>
         </div>
-        <div class="carousel-nav-arrows">
-          <button type="button" class="carousel-nav-btn prev" onclick="scrollCarousel(-1)" title="Scroll left" aria-label="Scroll left">‹</button>
-          <button type="button" class="carousel-nav-btn next" onclick="scrollCarousel(1)" title="Scroll right" aria-label="Scroll right">›</button>
-        </div>
+        <span class="top-news-badge" id="topNewsBadge">Ranked #1 – #5 by Wire Intelligence</span>
       </div>
 
-      <div class="top-news-carousel-wrap">
-        <div class="top-news-carousel" id="topNewsCarousel" role="region" aria-label="Top news horizontal scroll">
+      <div class="top-news-feed" id="topNewsFeed" role="region" aria-label="Top 5 ranked stories">
 
-        <article class="compact-card top-news-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-senate-appropriations-live-vote">
+        <article class="compact-card top-ranked-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" id="story-senate-appropriations-live-vote">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
-            <span class="carousel-rank-badge">⚡ #1 TOP NEWS</span>
+            <div class="green-rank-badge" title="Top 1 story of the day">
+              <span class="rank-badge-num">#1</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
               <span class="caption-text">The United States Capitol building and House chamber wing in Washington, D.C.</span>
@@ -1995,7 +1960,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="top-story-pill">🔥 TOP STORY #1</span> <span class="category-tag cat-politics">Politics</span>
+                <span class="green-rank-pill">#1 TOP STORY</span> <span class="category-tag cat-politics">Politics</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://apnews.com/hub/congress" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on Associated Press Wire">
@@ -2005,10 +1970,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/congress" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Why Did Senate Leaders Fast-Track the $895B Defense & Border Technology Package Tonight? <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')" title="Click to view key facts and perspectives">
+              Why Did Senate Leaders Fast-Track the $895B Defense & Border Technology Package Tonight?
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
@@ -2156,9 +2119,12 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card top-news-card featured-lead-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-six-coaching-buyouts">
+        <article class="compact-card top-ranked-card" data-category="Sports" data-master-category="Sports" data-cat-slug="sports" id="story-cfb-six-coaching-buyouts">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')">
-            <span class="carousel-rank-badge">⚡ #2 TOP NEWS</span>
+            <div class="green-rank-badge" title="Top 2 story of the day">
+              <span class="rank-badge-num">#2</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" alt="Collegiate football stadium under stadium floodlights during conference competition." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Sports');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Collegiate football stadium under stadium floodlights during conference competition.</span>
@@ -2169,7 +2135,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="top-story-pill">🔥 TOP STORY #2</span> <span class="category-tag cat-sports">Sports</span>
+                <span class="green-rank-pill">#2 TOP STORY</span> <span class="category-tag cat-sports">Sports</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.cbssports.com/college-football/" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on CBS Sports College Football">
@@ -2179,10 +2145,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cbssports.com/college-football/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Six college football buyouts that will determine the coaching carousel <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')" title="Click to view key facts and perspectives">
+              Six college football buyouts that will determine the coaching carousel
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')">
@@ -2330,9 +2294,12 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card top-news-card featured-lead-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-aljazeera-global-south-debt-summit">
+        <article class="compact-card top-ranked-card" data-category="World News" data-master-category="World News" data-cat-slug="world" id="story-aljazeera-global-south-debt-summit">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')">
-            <span class="carousel-rank-badge">⚡ #3 TOP NEWS</span>
+            <div class="green-rank-badge" title="Top 3 story of the day">
+              <span class="rank-badge-num">#3</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>
             <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="International diplomatic envoy conference and multilateral delegation summit." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'World News');" />
             <div class="photo-caption-bar">
               <span class="caption-text">International diplomatic envoy conference and multilateral delegation summit.</span>
@@ -2343,7 +2310,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="top-story-pill">🔥 TOP STORY #3</span> <span class="category-tag cat-world">World News</span>
+                <span class="green-rank-pill">#3 TOP STORY</span> <span class="category-tag cat-world">World News</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.aljazeera.com/economy/" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on Al Jazeera English">
@@ -2353,10 +2320,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/economy/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Why Are Emerging Economies Pushing for IMF Quota & Sovereign Debt Restructuring Reform? <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')" title="Click to view key facts and perspectives">
+              Why Are Emerging Economies Pushing for IMF Quota & Sovereign Debt Restructuring Reform?
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')">
@@ -2504,9 +2469,12 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card top-news-card featured-lead-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-fed-treasury-yields-rally">
+        <article class="compact-card top-ranked-card" data-category="Business & Economy" data-master-category="Business & Economy" data-cat-slug="business" id="story-fed-treasury-yields-rally">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')">
-            <span class="carousel-rank-badge">⚡ #4 TOP NEWS</span>
+            <div class="green-rank-badge" title="Top 4 story of the day">
+              <span class="rank-badge-num">#4</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>
             <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" alt="Financial market exchange trading floor and electronic index terminals." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Business & Economy');" />
             <div class="photo-caption-bar">
               <span class="caption-text">Financial market exchange trading floor and electronic index terminals.</span>
@@ -2517,7 +2485,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="top-story-pill">🔥 TOP STORY #4</span> <span class="category-tag cat-business">Business & Economy</span>
+                <span class="green-rank-pill">#4 TOP STORY</span> <span class="category-tag cat-business">Business & Economy</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://apnews.com/hub/financial-markets" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on AP News Business">
@@ -2527,10 +2495,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/financial-markets" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Why Are 10-Year Treasury Yields Dropping Ahead of Friday's Inflation Report? <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')" title="Click to view key facts and perspectives">
+              Why Are 10-Year Treasury Yields Dropping Ahead of Friday's Inflation Report?
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')">
@@ -2678,9 +2644,12 @@ div[id$="-view-RIGHT"] {
           </div>
         </article>
 
-        <article class="compact-card top-news-card featured-lead-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-bbc-Fusion-energy-tokamak-record">
+        <article class="compact-card top-ranked-card" data-category="Science & Tech" data-master-category="Science & Tech" data-cat-slug="tech" id="story-bbc-Fusion-energy-tokamak-record">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')">
-            <span class="carousel-rank-badge">⚡ #5 TOP NEWS</span>
+            <div class="green-rank-badge" title="Top 5 story of the day">
+              <span class="rank-badge-num">#5</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>
             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80" alt="High-density enterprise cloud data center and computational server infrastructure." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Science & Tech');" />
             <div class="photo-caption-bar">
               <span class="caption-text">High-density enterprise cloud data center and computational server infrastructure.</span>
@@ -2691,7 +2660,7 @@ div[id$="-view-RIGHT"] {
           <div class="card-body">
             <div class="meta-row">
               <div class="tags-group">
-                <span class="top-story-pill">🔥 TOP STORY #5</span> <span class="category-tag cat-tech">Science & Tech</span>
+                <span class="green-rank-pill">#5 TOP STORY</span> <span class="category-tag cat-tech">Science & Tech</span>
               </div>
               <div class="meta-source-wrap">
                 <a href="https://www.bbc.com/news/science_and_environment" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on BBC News Science">
@@ -2701,10 +2670,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/science_and_environment" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                How Did European & UK Physicists Achieve a Record Sustained Plasma Burn in Magnetic Fusion? <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')" title="Click to view key facts and perspectives">
+              How Did European & UK Physicists Achieve a Record Sustained Plasma Burn in Magnetic Fusion?
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')">
@@ -2851,8 +2818,7 @@ div[id$="-view-RIGHT"] {
             </div>
           </div>
         </article>
-        </div>
-      </div>
+    </div>
     </section>
 
     <!-- VERTICAL FEED SECTION DIVIDER -->
@@ -2894,10 +2860,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://variety.com/v/tv/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Where to Watch 'Silo' New Season on Apple TV+: Subscription Cost, Standalone App & Schedule - Variety <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')" title="Click to view key facts and perspectives">
+              Where to Watch 'Silo' New Season on Apple TV+: Subscription Cost, Standalone App & Schedule - Variety
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')">
@@ -3068,10 +3032,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/cybersecurity" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                DOJ & Europol Seize 42 Servers in Coordinated Takedown of Hospital Ransomware Syndicate - AP <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')" title="Click to view key facts and perspectives">
+              DOJ & Europol Seize 42 Servers in Coordinated Takedown of Hospital Ransomware Syndicate - AP
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')">
@@ -3242,10 +3204,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/ferc-grid-upgrade-grants-pipeline-permits" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Federal Regulators Approve $8B Grid Upgrade Grants Alongside Stricter Pipeline Permits <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-ferc-grid-grants')" title="Click to view key facts and perspectives">
+              Federal Regulators Approve $8B Grid Upgrade Grants Alongside Stricter Pipeline Permits
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-ferc-grid-grants')">
@@ -3416,10 +3376,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.tpr.org/news/2026-10-18/airman-dies-rappelling-accident-alamodome-pregame" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Airman dies in rappelling accident at Alamodome before UTSA-Navy game - Texas Public Radio | TPR <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-alamodome-airman-rappel')" title="Click to view key facts and perspectives">
+              Airman dies in rappelling accident at Alamodome before UTSA-Navy game - Texas Public Radio | TPR
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-alamodome-airman-rappel')">
@@ -3590,10 +3548,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/senate-border-security-compromise-asylum-courts" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Bipartisan Senate Compromise Proposes 1,500 Border Patrol Agents and Expedited Asylum Courts <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-border-compromise')" title="Click to view key facts and perspectives">
+              Bipartisan Senate Compromise Proposes 1,500 Border Patrol Agents and Expedited Asylum Courts
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-border-compromise')">
@@ -3764,10 +3720,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.statnews.com/category/health/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Can Personalized Immunotherapy Vaccines Stop Pancreatic Cancer Recurrence? Phase 2 Data Released - STAT News <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')" title="Click to view key facts and perspectives">
+              Can Personalized Immunotherapy Vaccines Stop Pancreatic Cancer Recurrence? Phase 2 Data Released - STAT News
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')">
@@ -3938,10 +3892,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://bridgemi.com/michigan-government/abdul-el-sayed-disavows-muslim-brotherhood-responds-to-claims/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Brotherhood accusations in fiery Senate debate <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-michigan-senate-debate')" title="Click to view key facts and perspectives">
+              Brotherhood accusations in fiery Senate debate
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-michigan-senate-debate')">
@@ -4112,10 +4064,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/boxing/story/_/id/canelo-alvarez-william-scull-dazn-ppv-cost-how-to-watch" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-espn-dazn-viewing-guide')" title="Click to view key facts and perspectives">
+              How to Watch Canelo vs. Scull on DAZN: PPV Cost, Where to Order, and Standalone App Access
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-espn-dazn-viewing-guide')">
@@ -4286,10 +4236,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/world-europe" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                European Allies Approve Joint Baltic & Red Sea Undersea Infrastructure Defense Pact <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')" title="Click to view key facts and perspectives">
+              European Allies Approve Joint Baltic & Red Sea Undersea Infrastructure Defense Pact
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')">
@@ -4460,10 +4408,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cnbc.com/real-estate" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Higher interest rates have made family offices pickier about investing in real estate <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-real-estate-family-offices-rates')" title="Click to view key facts and perspectives">
+              Higher interest rates have made family offices pickier about investing in real estate
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-real-estate-family-offices-rates')">
@@ -4634,10 +4580,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/tag/science-and-technology/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                How Do Optical Silicon Photonics Interconnects Cut AI Data Center Power Use by 40%? <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')" title="Click to view key facts and perspectives">
+              How Do Optical Silicon Photonics Interconnects Cut AI Data Center Power Use by 40%?
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')">
@@ -4808,10 +4752,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.etonline.com/news/kylie-jenner-victorias-secret-fashion-show-fantasy-bra-debut" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Kylie Jenner's Fantasy Bra moment draws criticism from Victoria's Secret fans <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')" title="Click to view key facts and perspectives">
+              Kylie Jenner's Fantasy Bra moment draws criticism from Victoria's Secret fans
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
@@ -4982,10 +4924,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.npr.org/sections/goatsandsoda/2026/10/18/hospital-sidewalk-sleepers-delhi-healthcare-lodging" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Sidewalk sleepers: They have nowhere else to stay while a loved one is in the hospital <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')" title="Click to view key facts and perspectives">
+              Sidewalk sleepers: They have nowhere else to stay while a loved one is in the hospital
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
@@ -5156,10 +5096,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/economy/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Six Midwestern States Sign Joint Compact Accelerating Small Modular Nuclear Reactor Deployment <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nuclear-modular-compact')" title="Click to view key facts and perspectives">
+              Six Midwestern States Sign Joint Compact Accelerating Small Modular Nuclear Reactor Deployment
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
@@ -5330,10 +5268,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nytimes.com/2026/10/18/us/oj-simpson-trial-evidence-reexamination.html" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                5 Takeaways From The Times's Re-Examination of the O.J. Simpson Case <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-oj-simpson-case')" title="Click to view key facts and perspectives">
+              5 Takeaways From The Times's Re-Examination of the O.J. Simpson Case
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-oj-simpson-case')">
@@ -5504,10 +5440,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/us-news" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Federal Agents Seize Record Multi-Ton Fentanyl Shipment at Commercial Maritime Entry Terminal <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-port-security-fentanyl')" title="Click to view key facts and perspectives">
+              Federal Agents Seize Record Multi-Ton Fentanyl Shipment at Commercial Maritime Entry Terminal
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-port-security-fentanyl')">
@@ -5678,10 +5612,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/fema" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Here's why disaster recovery grants face new FEMA distribution timelines <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-ap-fema-grants')" title="Click to view key facts and perspectives">
+              Here's why disaster recovery grants face new FEMA distribution timelines
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-ap-fema-grants')">
@@ -5852,10 +5784,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/trump-approval-ratings-midterm-elections-polling-suburbs" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Trump approval hits record low, handing Democrats a clear midterm edge <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-trump-approval-midterms')" title="Click to view key facts and perspectives">
+              Trump approval hits record low, handing Democrats a clear midterm edge
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-trump-approval-midterms')">
@@ -6026,10 +5956,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/college-football/story/_/id/cfb-playoff-expansion-24-teams-2027" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                College Football Playoff leaders reviewing framework to expand to 24 teams by 2027 <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-cfb-playoff-24')" title="Click to view key facts and perspectives">
+              College Football Playoff leaders reviewing framework to expand to 24 teams by 2027
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cfb-playoff-24')">
@@ -6200,10 +6128,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://news.google.com/search?q=White%20House%20says%20Melania%20Trump%20brokers%20truce%20for%20Ukraine%20city%20%27on%20brink%20of%20disaster%27" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')" title="Click to view key facts and perspectives">
+              White House says Melania Trump brokers truce for Ukraine city 'on brink of disaster'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')">
@@ -6374,10 +6300,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/business" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Stock futures remain under pressure after worst Nasdaq session since June: Live updates <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-stock-futures-nasdaq-pressure')" title="Click to view key facts and perspectives">
+              Stock futures remain under pressure after worst Nasdaq session since June: Live updates
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-stock-futures-nasdaq-pressure')">
@@ -6548,10 +6472,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/hub/us-news" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                CBP Activates High-Throughput AI Drive-Through Cargo Scanners Across Southern Ports of Entry <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-cbp-autonomous-port-scanners')" title="Click to view key facts and perspectives">
+              CBP Activates High-Throughput AI Drive-Through Cargo Scanners Across Southern Ports of Entry
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cbp-autonomous-port-scanners')">
@@ -6722,10 +6644,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/entertainment_and_arts" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                ‘We are beyond heartbroken’: Cindy Crawford, Rande and Kaia Gerber share tributes to Presley <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-cindy-crawford-tribute')" title="Click to view key facts and perspectives">
+              ‘We are beyond heartbroken’: Cindy Crawford, Rande and Kaia Gerber share tributes to Presley
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
@@ -6896,10 +6816,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/health" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                HHS Issues Binding Rules Requiring All Hospitals and Insurers to Publish Real Cash Prices <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-hhs-cash-prices')" title="Click to view key facts and perspectives">
+              HHS Issues Binding Rules Requiring All Hospitals and Insurers to Publish Real Cash Prices
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-hhs-cash-prices')">
@@ -7070,10 +6988,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/pacific-northwest-high-winds-power-outages-storm" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                High Winds Trigger Widespread Power Outages Across Pacific Northwest Utility Grids <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-weather-power-outage-pacific')" title="Click to view key facts and perspectives">
+              High Winds Trigger Widespread Power Outages Across Pacific Northwest Utility Grids
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-weather-power-outage-pacific')">
@@ -7244,10 +7160,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cnn.com/2026/10/18/us/oregon-elementary-school-shooting" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Teen shooter kills 3 children, teacher in Oregon elementary school before being shot by bystander <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-oregon-school-shooting')" title="Click to view key facts and perspectives">
+              Teen shooter kills 3 children, teacher in Oregon elementary school before being shot by bystander
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-oregon-school-shooting')">
@@ -7418,10 +7332,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/east-potomac-golf-course-renovation-park-service-trees" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Trump shares plan to overhaul East Potomac golf course amid court fight over land <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-trump-east-potomac-links')" title="Click to view key facts and perspectives">
+              Trump shares plan to overhaul East Potomac golf course amid court fight over land
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
@@ -7592,10 +7504,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/story/_/id/400101/justin-jefferson-contract-restructure" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Adam Schefter: Vikings and Justin Jefferson finalize contract restructure to create immediate $12M cap room <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-01')" title="Click to view key facts and perspectives">
+              Adam Schefter: Vikings and Justin Jefferson finalize contract restructure to create immediate $12M cap room
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-01')">
@@ -7766,10 +7676,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/world-us-canada-cfb-wainwright-military-base-fire" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Several dead or injured in major fire at Canada military base <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')" title="Click to view key facts and perspectives">
+              Several dead or injured in major fire at Canada military base
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
@@ -7940,10 +7848,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.fool.com/investing/2026/10/21/centrus-vs-bwx-technologies-which-nuclear-supply-c/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Centrus vs. BWX Technologies: Which Nuclear Supply Chain Stock Is the Better Buy After the Sell-Off? - The Motley Fool <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')" title="Click to view key facts and perspectives">
+              Centrus vs. BWX Technologies: Which Nuclear Supply Chain Stock Is the Better Buy After the Sell-Off? - The Motley Fool
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')">
@@ -8114,10 +8020,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/supreme-court-social-media-content-moderation-netchoice" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Supreme Court Hears Arguments on State Laws Regulating Social Media Content Moderation <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-supreme-court-speech')" title="Click to view key facts and perspectives">
+              Supreme Court Hears Arguments on State Laws Regulating Social Media Content Moderation
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-supreme-court-speech')">
@@ -8288,10 +8192,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://variety.com/2026/film/news/christopher-nolan-next-imax-movie-damon-holland" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Christopher Nolan Begins Production on Next IMAX Feature with Star-Studded Ensemble Cast <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-entertainment-nolan-imax')" title="Click to view key facts and perspectives">
+              Christopher Nolan Begins Production on Next IMAX Feature with Star-Studded Ensemble Cast
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-entertainment-nolan-imax')">
@@ -8462,10 +8364,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/medicare-prescription-drug-price-negotiations-cms" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Medicare Unveils 15 New Critical Medications Selected for Direct Federal Price Negotiations <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-medicare-negotiations')" title="Click to view key facts and perspectives">
+              Medicare Unveils 15 New Critical Medications Selected for Direct Federal Price Negotiations
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-medicare-negotiations')">
@@ -8636,10 +8536,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/trump-immigration-policy-workplace-enforcement-midterms" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Trump officials soften approach to key immigration policy ahead of midterms <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-trump-immigration-soften')" title="Click to view key facts and perspectives">
+              Trump officials soften approach to key immigration policy ahead of midterms
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-trump-immigration-soften')">
@@ -8810,10 +8708,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/sport/football" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Vincent Kompany taken to hospital after collapsing at Bayern training <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-kompany-bayern-hospital')" title="Click to view key facts and perspectives">
+              Vincent Kompany taken to hospital after collapsing at Bayern training
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-kompany-bayern-hospital')">
@@ -8984,10 +8880,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/where/france/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Huge Riots in France Prompt Shock and Blame Game <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-france-riots-shock')" title="Click to view key facts and perspectives">
+              Huge Riots in France Prompt Shock and Blame Game
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-france-riots-shock')">
@@ -9158,10 +9052,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.reuters.com/business/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Federal Reserve Holds Benchmark Rates Steady as Core Inflation Eases to 2.7% <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-fed-rates-steady')" title="Click to view key facts and perspectives">
+              Federal Reserve Holds Benchmark Rates Steady as Core Inflation Eases to 2.7%
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fed-rates-steady')">
@@ -9332,10 +9224,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nature.com/articles/astronomy-ancient-water-vapor-molecular-cloud" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Astronomers Detect Ancient Water Vapor Reservoirs in Early Universe Molecular Cloud <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')" title="Click to view key facts and perspectives">
+              Astronomers Detect Ancient Water Vapor Reservoirs in Early Universe Molecular Cloud
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')">
@@ -9506,10 +9396,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.hollywoodreporter.com/movies/movie-news/autumn-box-office-original-releases-imax" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Autumn Box Office Surges as Original Cinematic Releases Drive Family Theatrical Admissions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-entertainment-box-office-rebound')" title="Click to view key facts and perspectives">
+              Autumn Box Office Surges as Original Cinematic Releases Drive Family Theatrical Admissions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-entertainment-box-office-rebound')">
@@ -9680,10 +9568,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.npr.org/2026/10/18/suspicious-mailings-election-officials-investigation" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Suspicious mailings to election officials, congressional offices under investigation - NPR News <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-election-mailings')" title="Click to view key facts and perspectives">
+              Suspicious mailings to election officials, congressional offices under investigation - NPR News
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-election-mailings')">
@@ -9854,10 +9740,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/mlb/story/_/id/400108/juan-soto-free-agency-record-deal" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Jeff Passan: Juan Soto and New York Yankees enter high-stakes free agency negotiations with historic $600M benchmark <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-mlb-01')" title="Click to view key facts and perspectives">
+              Jeff Passan: Juan Soto and New York Yankees enter high-stakes free agency negotiations with historic $600M benchmark
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-mlb-01')">
@@ -10028,10 +9912,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/where/pakistan/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Pakistan's decades of backing terror comes full circle as Khyber Pakhtunkhwa falls under emergency rule - The Times of India <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')" title="Click to view key facts and perspectives">
+              Pakistan's decades of backing terror comes full circle as Khyber Pakhtunkhwa falls under emergency rule - The Times of India
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
@@ -10202,10 +10084,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cnbc.com/2026/10/18/tesla-roadster-production-specs-reveal-delay.html" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Tesla plans next-generation Roadster reveal after almost a decade of delays <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-tesla-roadster')" title="Click to view key facts and perspectives">
+              Tesla plans next-generation Roadster reveal after almost a decade of delays
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-tesla-roadster')">
@@ -10376,10 +10256,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/economy/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Commerce Department Expands High-End Semiconductor Export Bans to Protect Domestic AI Lead <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-chip-export-controls')" title="Click to view key facts and perspectives">
+              Commerce Department Expands High-End Semiconductor Export Bans to Protect Domestic AI Lead
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-chip-export-controls')">
@@ -10550,10 +10428,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.politico.com/congress" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Congressional Leaders Agree on $1.65T Bipartisan Spending Framework to Avert Federal Shutdown <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-budget-shutdown-deal')" title="Click to view key facts and perspectives">
+              Congressional Leaders Agree on $1.65T Bipartisan Spending Framework to Avert Federal Shutdown
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
@@ -10724,10 +10600,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/nba/clint-capela-knicks-trade-talks" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Shams Charania: Knicks and Hawks engage in exploratory trade discussions centered on center Clint Capela <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-01')" title="Click to view key facts and perspectives">
+              Shams Charania: Knicks and Hawks engage in exploratory trade discussions centered on center Clint Capela
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-01')">
@@ -10898,10 +10772,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.bbc.com/news/world-europe" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')" title="Click to view key facts and perspectives">
+              U.S. Starlink curbs embolden Russia to intensify attacks on Ukraine, minister tells CNBC
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')">
@@ -11072,10 +10944,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.reuters.com/technology/investors-anthropic-ipo-valuation-expectations-claude" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-anthropic-ipo')" title="Click to view key facts and perspectives">
+              Investors temper Anthropic IPO valuation expectations over revenue growth slowdown, sources say
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-anthropic-ipo')">
@@ -11246,10 +11116,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.skysports.com/football/news/man-city-florian-wirtz-transfer-agreement" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Fabrizio Romano: Manchester City agree personal terms with German playmaker Florian Wirtz ahead of record summer transfer <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-soc-01')" title="Click to view key facts and perspectives">
+              Fabrizio Romano: Manchester City agree personal terms with German playmaker Florian Wirtz ahead of record summer transfer
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-soc-01')">
@@ -11420,10 +11288,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.aljazeera.com/news/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Diplomatic Envoy Convenes Geneva Talks on Black Sea Maritime Security and Export Corridors <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')" title="Click to view key facts and perspectives">
+              Diplomatic Envoy Convenes Geneva Talks on Black Sea Maritime Security and Export Corridors
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')">
@@ -11594,10 +11460,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cnbc.com/2026/10/18/dow-nasdaq-wall-street-stocks-ai-sector-rotation.html" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')" title="Click to view key facts and perspectives">
+              Dow jumps 200 points, Nasdaq slides as investors continue to rotate out of AI stocks: Live updates
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')">
@@ -11768,10 +11632,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/story/_/id/400102/bills-chiefs-afc-rematch-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Bills vs. Chiefs AFC Championship Rematch: Sunday Night Football Betting Odds, Matchup Preview, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-02')" title="Click to view key facts and perspectives">
+              Bills vs. Chiefs AFC Championship Rematch: Sunday Night Football Betting Odds, Matchup Preview, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-02')">
@@ -11942,10 +11804,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.space.com/james-webb-space-telescope-habitable-exoplanet-water-vapor" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                NASA James Webb Telescope Captures Unprecedented Atmospheric Data on Habitable-Zone Exoplanet <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-science-nasa-james-webb')" title="Click to view key facts and perspectives">
+              NASA James Webb Telescope Captures Unprecedented Atmospheric Data on Habitable-Zone Exoplanet
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-science-nasa-james-webb')">
@@ -12116,10 +11976,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/college-football/story/_/id/400112/cfp-rankings-12-team-bracket-bubble" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Pete Thamel: College Football Playoff committee prepares for unprecedented bubble chaos under 12-team bracket format <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-cfb-01')" title="Click to view key facts and perspectives">
+              Pete Thamel: College Football Playoff committee prepares for unprecedented bubble chaos under 12-team bracket format
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cfb-01')">
@@ -12290,10 +12148,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.si.com/golf/pga-tour-pif-term-sheet-player-equity" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Bob Harig: PGA Tour and Saudi PIF near finalized commercial term sheet with $1.5B upfront player equity pool <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-golf-01')" title="Click to view key facts and perspectives">
+              Bob Harig: PGA Tour and Saudi PIF near finalized commercial term sheet with $1.5B upfront player equity pool
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-golf-01')">
@@ -12464,10 +12320,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nba.com/news/celtics-cavaliers-preview-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Celtics vs. Cavaliers Eastern Conference Showdown: Matchup Preview, Betting Odds, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-02')" title="Click to view key facts and perspectives">
+              Celtics vs. Cavaliers Eastern Conference Showdown: Matchup Preview, Betting Odds, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-02')">
@@ -12638,10 +12492,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nfl.com/news/christian-mccaffrey-calf-injury-update" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Ian Rapoport: 49ers running back Christian McCaffrey completes MRI exam, held out of practice for precautionary calf rest <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-03')" title="Click to view key facts and perspectives">
+              Ian Rapoport: 49ers running back Christian McCaffrey completes MRI exam, held out of practice for precautionary calf rest
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-03')">
@@ -12812,10 +12664,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.mlb.com/news/dodgers-padres-nl-west-preview-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Dodgers vs. Padres NL West Rivalry Preview: Matchup Betting Odds, Pitching Duel, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-mlb-02')" title="Click to view key facts and perspectives">
+              Dodgers vs. Padres NL West Rivalry Preview: Matchup Betting Odds, Pitching Duel, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-mlb-02')">
@@ -12986,10 +12836,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nba/story/_/id/400105/bucks-giannis-urgency-trade-market" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Adrian Wojnarowski Report: Bucks exploring perimeter defense upgrades as Giannis Antetokounmpo issues urgency challenge <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-03')" title="Click to view key facts and perspectives">
+              Adrian Wojnarowski Report: Bucks exploring perimeter defense upgrades as Giannis Antetokounmpo issues urgency challenge
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-03')">
@@ -13160,10 +13008,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.foxsports.com/stories/college-football/ryan-day-embraces-standard-michigan" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Ohio State head coach Ryan Day responds to pressure ahead of Michigan rivalry clash: 'We know the standard and we embrace it' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-cfb-02')" title="Click to view key facts and perspectives">
+              Ohio State head coach Ryan Day responds to pressure ahead of Michigan rivalry clash: 'We know the standard and we embrace it'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cfb-02')">
@@ -13334,10 +13180,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.cbssports.com/nfl/news/lamar-jackson-responds-critics-fourth-quarter/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Ravens quarterback Lamar Jackson responds to critics over fourth-quarter passing efficiency: 'The only stat I care about is winning' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-04')" title="Click to view key facts and perspectives">
+              Ravens quarterback Lamar Jackson responds to critics over fourth-quarter passing efficiency: 'The only stat I care about is winning'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-04')">
@@ -13508,10 +13352,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/football/martin-odegaard-injury-arsenal-champions-league" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                David Ornstein: Arsenal captain Martin Odegaard ruled out of crucial Champions League clash following ankle scan <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-soc-02')" title="Click to view key facts and perspectives">
+              David Ornstein: Arsenal captain Martin Odegaard ruled out of crucial Champions League clash following ankle scan
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-soc-02')">
@@ -13682,10 +13524,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://news.google.com/search?q=Chiefs+vs+Bills+Sunday+Night+Football" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Chiefs vs. Bills Sunday Night Football Matchup Preview, Odds, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')" title="Click to view key facts and perspectives">
+              Chiefs vs. Bills Sunday Night Football Matchup Preview, Odds, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')">
@@ -13856,10 +13696,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.tennischannel.com/news/sinner-alcaraz-grand-slam-preview-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Jannik Sinner vs. Carlos Alcaraz Grand Slam Showdown: Match Preview, Current Betting Odds, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-ten-01')" title="Click to view key facts and perspectives">
+              Jannik Sinner vs. Carlos Alcaraz Grand Slam Showdown: Match Preview, Current Betting Odds, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-ten-01')">
@@ -14030,10 +13868,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nfl.com/news/micah-parsons-ankle-injury-cowboys-eagles" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Ian Rapoport: Cowboys place pass rusher Micah Parsons on injury report with high-ankle sprain ahead of Eagles clash <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-05')" title="Click to view key facts and perspectives">
+              Ian Rapoport: Cowboys place pass rusher Micah Parsons on injury report with high-ankle sprain ahead of Eagles clash
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-05')">
@@ -14204,10 +14040,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/story/_/id/400130/cj-stroud-mvp-talk-response" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Texans quarterback C.J. Stroud responds to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-08')" title="Click to view key facts and perspectives">
+              Texans quarterback C.J. Stroud responds to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-08')">
@@ -14378,10 +14212,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/story/_/id/400115/eagles-cowboys-nfc-east-odds-preview" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Eagles vs. Cowboys NFC East Rivalry Preview: Sunday Night Football Betting Odds, Spread, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-06')" title="Click to view key facts and perspectives">
+              Eagles vs. Cowboys NFC East Rivalry Preview: Sunday Night Football Betting Odds, Spread, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-06')">
@@ -14552,10 +14384,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/nfl/jamarr-chase-contract-dominance-response" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Bengals wideout Ja'Marr Chase responds to contract renegotiation questions following two-touchdown showcase: 'I just go out and dominate' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-09')" title="Click to view key facts and perspectives">
+              Bengals wideout Ja'Marr Chase responds to contract renegotiation questions following two-touchdown showcase: 'I just go out and dominate'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-09')">
@@ -14726,10 +14556,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.foxsports.com/stories/nfl/ben-johnson-lions-head-coach-rumors-response" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Lions offensive coordinator Ben Johnson responds to head coaching speculation: 'My focus is 100% on winning a Super Bowl here' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-07')" title="Click to view key facts and perspectives">
+              Lions offensive coordinator Ben Johnson responds to head coaching speculation: 'My focus is 100% on winning a Super Bowl here'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-07')">
@@ -14900,10 +14728,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.miamiherald.com/sports/nfl/tua-tagovailoa-concussion-protocol-update" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Adam Schefter: Dolphins quarterback Tua Tagovailoa completes non-contact throwing protocol following concussion evaluation <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nfl-10')" title="Click to view key facts and perspectives">
+              Adam Schefter: Dolphins quarterback Tua Tagovailoa completes non-contact throwing protocol following concussion evaluation
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-10')">
@@ -15074,10 +14900,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Game Recap: Bears knock off Patriots on Thursday Night Football, improve to 5-2 - Chicago Bears <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')" title="Click to view key facts and perspectives">
+              Game Recap: Bears knock off Patriots on Thursday Night Football, improve to 5-2 - Chicago Bears
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')">
@@ -15248,10 +15072,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/nba/jj-redick-lakers-rotation-defense-response" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Lakers head coach JJ Redick responds to bench rotation questions after fourth-quarter collapse: 'Accountability starts with me, but our effort has to improve' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-04')" title="Click to view key facts and perspectives">
+              Lakers head coach JJ Redick responds to bench rotation questions after fourth-quarter collapse: 'Accountability starts with me, but our effort has to improve'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-04')">
@@ -15422,10 +15244,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nba/story/_/id/400135/wembanyama-historic-5x5-suns-double-ot" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-06')" title="Click to view key facts and perspectives">
+              Spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-06')">
@@ -15596,10 +15416,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nba.com/news/thunder-nuggets-western-showdown-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Thunder vs. Nuggets Western Conference Clash: Game Preview, Current Betting Odds, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-05')" title="Click to view key facts and perspectives">
+              Thunder vs. Nuggets Western Conference Clash: Game Preview, Current Betting Odds, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-05')">
@@ -15770,10 +15588,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.foxsports.com/stories/nba/anthony-edwards-defense-response-mavericks" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Timberwolves star Anthony Edwards responds to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-07')" title="Click to view key facts and perspectives">
+              Timberwolves star Anthony Edwards responds to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-07')">
@@ -15944,10 +15760,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/college-football/story/_/id/400120/georgia-texas-sec-rematch-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Georgia vs. Texas SEC Championship Clash: Game Preview, Current Betting Odds, and CFP Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-cfb-03')" title="Click to view key facts and perspectives">
+              Georgia vs. Texas SEC Championship Clash: Game Preview, Current Betting Odds, and CFP Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cfb-03')">
@@ -16118,10 +15932,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nba/story/_/id/400140/joel-embiid-knee-swelling-out-back-to-back" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                ESPN Report: 76ers center Joel Embiid ruled out of road back-to-back following knee swelling evaluation <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nba-08')" title="Click to view key facts and perspectives">
+              ESPN Report: 76ers center Joel Embiid ruled out of road back-to-back following knee swelling evaluation
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-08')">
@@ -16292,10 +16104,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nhl.com/news/rangers-bruins-original-six-odds-preview" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Rangers vs. Bruins Original Six Showdown: Matchup Preview, Current Betting Odds, and Predictions <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-nhl-01')" title="Click to view key facts and perspectives">
+              Rangers vs. Bruins Original Six Showdown: Matchup Preview, Current Betting Odds, and Predictions
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nhl-01')">
@@ -16466,10 +16276,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/mlb/roki-sasaki-mets-posting-pursuit" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Ken Rosenthal: New York Mets aggressively pursuing Japanese phenom Roki Sasaki in international posting window <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-mlb-03')" title="Click to view key facts and perspectives">
+              Ken Rosenthal: New York Mets aggressively pursuing Japanese phenom Roki Sasaki in international posting window
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-mlb-03')">
@@ -16640,10 +16448,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/mma/story/_/id/400125/ufc-312-makhachev-tsarukyan-rematch-odds" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                UFC 312 Main Event Preview: Islam Makhachev vs. Arman Tsarukyan Current Betting Odds and Fight Breakdown <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-ufc-01')" title="Click to view key facts and perspectives">
+              UFC 312 Main Event Preview: Islam Makhachev vs. Arman Tsarukyan Current Betting Odds and Fight Breakdown
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-ufc-01')">
@@ -16814,10 +16620,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://theathletic.com/college-basketball/cooper-flagg-duke-debut-draft-scouting" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Duke freshman sensation Cooper Flagg projected No. 1 overall pick following 28-point Cameron Indoor showcase <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-cbb-01')" title="Click to view key facts and perspectives">
+              Duke freshman sensation Cooper Flagg projected No. 1 overall pick following 28-point Cameron Indoor showcase
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cbb-01')">
@@ -16988,10 +16792,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.mmafighting.com/2026/dana-white-jon-jones-retirement-response" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Dana White responds to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments' <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-sports-ufc-02')" title="Click to view key facts and perspectives">
+              Dana White responds to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments'
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-ufc-02')">
@@ -17162,10 +16964,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.deseret.com/sports/byu-basketball-big-12-media-days-kevin-young/" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Kevin Young may have been absent, but No. 25 BYU offered plenty of buzz at Big 12 basketball media days - Deseret News <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')" title="Click to view key facts and perspectives">
+              Kevin Young may have been absent, but No. 25 BYU offered plenty of buzz at Big 12 basketball media days - Deseret News
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
@@ -17336,10 +17136,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nba/story/_/id/warriors-porzingis-trade-market-absence" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Warriors exploring Kristaps Porzingis trades as absence from team continues: Source <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')" title="Click to view key facts and perspectives">
+              Warriors exploring Kristaps Porzingis trades as absence from team continues: Source
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
@@ -17510,10 +17308,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nfl/story/_/id/davante-adams-rams-injury-timeline-nfc-west" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Rams suffer several major injuries, including to WR Adams, who's out 6-10 weeks <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')" title="Click to view key facts and perspectives">
+              Rams suffer several major injuries, including to WR Adams, who's out 6-10 weeks
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
@@ -17684,10 +17480,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nba.com/news/power-rankings-2026-27-preseason-all-30-teams" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Power Rankings: How all 30 teams measure up to begin 2026-27 season - NBA.com <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')" title="Click to view key facts and perspectives">
+              Power Rankings: How all 30 teams measure up to begin 2026-27 season - NBA.com
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
@@ -17858,10 +17652,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.foxsports.com/stories/college-football/rankings-historic-upset-filled-week-7" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                College Football Rankings: Historic Upset-Filled Week 7 Flips Top 25 Upside Down <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-cfb-rankings-upsets')" title="Click to view key facts and perspectives">
+              College Football Rankings: Historic Upset-Filled Week 7 Flips Top 25 Upside Down
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
@@ -18032,10 +17824,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://apnews.com/article/pga-tour-saudi-public-investment-fund-framework" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                PGA Tour and Saudi Public Investment Fund Finalize Commercial Alliance Framework <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-pga-saudi-merger')" title="Click to view key facts and perspectives">
+              PGA Tour and Saudi Public Investment Fund Finalize Commercial Alliance Framework
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-pga-saudi-merger')">
@@ -18206,10 +17996,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.reuters.com/sports/ncaa-power-conferences-revenue-sharing-settlement" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                NCAA and Power Conferences Approve Historic Multi-Billion Dollar Revenue-Sharing Deal <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-ncaa-revenue-share')" title="Click to view key facts and perspectives">
+              NCAA and Power Conferences Approve Historic Multi-Billion Dollar Revenue-Sharing Deal
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
@@ -18380,10 +18168,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.nytimes.com/athletic/jalen-hurts-injury-blood-clot-eagles-panthers" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Jalen Hurts ruled out of Eagles vs. Panthers with superficial blood clot <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nfl-jalen-hurts')" title="Click to view key facts and perspectives">
+              Jalen Hurts ruled out of Eagles vs. Panthers with superficial blood clot
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
@@ -18554,10 +18340,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/nba/story/_/id/lakers-starting-lineup-rotations-redick" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Lakers Finalize Starting Lineup Rotations Ahead of Western Conference Opening Matchup <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-nba-lakers-prep')" title="Click to view key facts and perspectives">
+              Lakers Finalize Starting Lineup Rotations Ahead of Western Conference Opening Matchup
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nba-lakers-prep')">
@@ -18728,10 +18512,8 @@ div[id$="-view-RIGHT"] {
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="https://www.espn.com/mlb/story/_/id/brewers-sweep-dodgers-nlcs-world-series" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                Dodgers tip cap to Brewers as title reign ends in NLCS sweep <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')" title="Click to view key facts and perspectives">
+              Dodgers tip cap to Brewers as title reign ends in NLCS sweep
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">
@@ -19482,18 +19264,18 @@ div[id$="-view-RIGHT"] {
       card.style.display = match ? '' : 'none';
     }
 
-    // Update Top News Horizontal Carousel visibility & badge
+    // Update Top News Vertical Section visibility & badge
     var topNewsSection = document.getElementById('topNewsSection');
-    var topCarousel = document.getElementById('topNewsCarousel');
-    if (topNewsSection && topCarousel) {
-      var visibleTopCards = topCarousel.querySelectorAll('.compact-card:not([style*="display: none"])');
+    var topFeed = document.getElementById('topNewsFeed');
+    if (topNewsSection && topFeed) {
+      var visibleTopCards = topFeed.querySelectorAll('.compact-card:not([style*="display: none"])');
       var topNewsBadge = document.getElementById('topNewsBadge');
       if (visibleTopCards.length === 0) {
         topNewsSection.style.display = 'none';
       } else {
         topNewsSection.style.display = '';
         if (topNewsBadge) {
-          topNewsBadge.textContent = key === 'all' ? 'Top 5 Stories • Scroll Left to Right ➔' : (visibleTopCards.length + ' Featured in ' + (currentFilterCategory || '') + ' • Scroll ➔');
+          topNewsBadge.textContent = key === 'all' ? 'Ranked #1 – #5 by Wire Intelligence' : (visibleTopCards.length + ' Ranked in ' + (currentFilterCategory || ''));
         }
       }
     }
@@ -19800,7 +19582,7 @@ div[id$="-view-RIGHT"] {
             '<span class="source-tag" data-timestamp="' + pubTs + '">' + relTime + '</span>' +
           '</div>' +
         '</div>' +
-        '<h3 class="story-title"><a href="' + articleUrl + '" target="_blank" rel="noopener noreferrer" class="story-title-link">' + s.title + ' <span class="title-ext-icon">↗</span></a></h3>' +
+        '<h3 class="story-title" onclick="toggleStoryDetails(\'" + sId + "\')" title="Click to view key facts and perspectives">' + s.title + '</h3>' +
         '<div class="fact-preview-strip" onclick="toggleStoryDetails(\'' + sId + '\')">' + calloutBadge + '<p class="fact-preview-text">' + leadFact + '</p></div>' +
         '<div class="expand-prompt-bar" onclick="toggleStoryDetails(\'' + sId + '\')">' +
           '<span class="expand-label" id="' + sId + '-expand-label">⚖️ View Key Facts & Perspectives</span>' +
@@ -20024,15 +19806,7 @@ div[id$="-view-RIGHT"] {
   window.toggleFactExpansion = toggleFactExpansion;
   window.filterCategory = filterCategory;
 
-  // Horizontal Carousel Navigation (Top 5 Stories)
-  function scrollCarousel(dir) {
-    var el = document.getElementById('topNewsCarousel');
-    if (!el) return;
-    var card = el.querySelector('.compact-card');
-    var scrollDist = card ? (card.offsetWidth + 16) : 340;
-    el.scrollBy({ left: dir * scrollDist, behavior: 'smooth' });
-  }
-  window.scrollCarousel = scrollCarousel;
+
 
   window.handleLiveSearch = handleLiveSearch;
   window.togglePersonalizePanel = togglePersonalizePanel;

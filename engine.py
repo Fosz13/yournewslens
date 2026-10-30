@@ -7237,7 +7237,7 @@ def get_category_slug(cat: str) -> str:
         return "border"
     return "general"
 
-def prerender_cards_html(stories: List[Dict[str, Any]], is_carousel: bool = False, rank_offset: int = 0) -> str:
+def prerender_cards_html(stories: List[Dict[str, Any]], is_top_ranked: bool = False, rank_offset: int = 0) -> str:
     cards_html = []
     for idx, s in enumerate(stories):
         global_idx = idx + rank_offset
@@ -7289,10 +7289,14 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_carousel: bool = Fals
         exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
         exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
 
-        if is_carousel:
-            rank_badge_html = f'<span class="carousel-rank-badge">⚡ #{idx+1} TOP NEWS</span>'
-            tags_html = f'<span class="top-story-pill">🔥 TOP STORY #{idx+1}</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
-            card_class = "compact-card top-news-card featured-lead-card"
+        if is_top_ranked:
+            rank_num = idx + 1
+            rank_badge_html = f'''<div class="green-rank-badge" title="Top {rank_num} story of the day">
+              <span class="rank-badge-num">#{rank_num}</span>
+              <span class="rank-badge-label">TOP STORY</span>
+            </div>'''
+            tags_html = f'<span class="green-rank-pill">#{rank_num} TOP STORY</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+            card_class = f"compact-card top-ranked-card{' featured-lead-card' if rank_num == 1 else ''}"
         else:
             rank_badge_html = ''
             card_class = f"compact-card{' featured-lead-card' if global_idx == 0 else ''}"
@@ -7326,10 +7330,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]], is_carousel: bool = Fals
               </div>
             </div>
 
-            <h3 class="story-title">
-              <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="story-title-link" title="Open original article in a new tab">
-                {s.get('title', '')} <span class="title-ext-icon">↗</span>
-              </a>
+            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view key facts and perspectives">
+              {s.get('title', '')}
             </h3>
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('{sId}')">
@@ -7448,16 +7450,16 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
         with open(HTML_FILE, "r", encoding="utf-8") as f:
             content = f.read()
 
-        # 1. Update topNewsCarousel with top 5 stories
-        carousel_marker = '<div class="top-news-carousel" id="topNewsCarousel"'
-        c_pos = content.find(carousel_marker)
+        # 1. Update topNewsFeed with top 5 stories in vertical layout
+        top_marker = '<div class="top-news-feed" id="topNewsFeed"'
+        c_pos = content.find(top_marker)
         if c_pos != -1:
             c_tag_end = content.find('>', c_pos) + 1
-            c_close = content.find('</div>\n      </div>\n    </section>', c_tag_end)
+            c_close = content.find('</div>\n    </section>', c_tag_end)
             if c_close == -1:
                 c_close = content.find('</div>', c_tag_end)
             if c_close != -1:
-                top_5_html = "\n" + prerender_cards_html(stories[:5], is_carousel=True, rank_offset=0) + "\n        "
+                top_5_html = "\n" + prerender_cards_html(stories[:5], is_top_ranked=True, rank_offset=0) + "\n    "
                 content = content[:c_tag_end] + top_5_html + content[c_close:]
 
         # 2. Update vertical feed with remaining stories (stories 6+)
@@ -7467,7 +7469,7 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
             comm_view = content.find('<!-- Community Lounge -->')
             feed_end = content.rfind('</div>', feed_start, comm_view if comm_view != -1 else len(content))
             if feed_end != -1:
-                vertical_cards = "\n" + prerender_cards_html(stories[5:], is_carousel=False, rank_offset=5) + "\n    "
+                vertical_cards = "\n" + prerender_cards_html(stories[5:], is_top_ranked=False, rank_offset=5) + "\n    "
                 content = content[:feed_start] + vertical_cards + content[feed_end:]
 
         # 3. Update count badges
@@ -7496,7 +7498,7 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
 
         with open(HTML_FILE, "w", encoding="utf-8", errors="replace") as f:
             f.write(content)
-        print("Successfully pre-rendered updated story cards and synced styles/scripts into index.html.")
+        print("Successfully pre-rendered vertical top-news cards and synced styles/scripts into index.html.")
     except Exception as e:
         print(f"Notice: Pre-rendering index.html: {e}")
 

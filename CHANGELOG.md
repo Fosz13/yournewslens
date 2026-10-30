@@ -1,5 +1,21 @@
 # Your News Lens — Changelog
 
+## [v10.1] - 2026-10-29 — Pure Vertical Screening & Green Ranked #1–#5 System & Headline Link Removal
+- **Pure Vertical Screening & Elimination of Horizontal Scrolling**:
+  - Completely removed the horizontal carousel and sideways scroll rail to resolve gesture conflict, scroll locking, and mobile page wobble.
+  - All stories—including the Top 5 and the remaining 92 wire stories—now flow in a single, smooth, unified vertical screening stream (`#topNewsFeed` and `#storiesFeedView`).
+- **Prominent Editorial Green Rank Badges (#1 through #5)**:
+  - Added luminous emerald green rank badges (`.green-rank-badge`) to the top 5 news stories featuring high-contrast `#1`, `#2`, `#3`, `#4`, `#5` rank indicators with glowing dropshadows (`#10b981` / `#34d399`).
+  - Added companion green rank metadata pills (`.green-rank-pill`) in the card header tags row (`#1 TOP STORY`, `#2 TOP STORY`, etc.).
+  - Added subtle emerald accent borders and glow effects to `.top-ranked-card` elements on hover and focus.
+- **Removed Headline Hyperlink Redirects**:
+  - Removed `<a href="..." target="_blank">` wrappers from all `.story-title` elements across `engine.py`, `app.js`, and `index.html`.
+  - Tapping or clicking the headline now directly triggers `toggleStoryDetails(storyId)` to reveal key facts and perspectives inline without redirecting users off-site.
+  - External publisher links are strictly preserved in the expanded card details (`📖 Read Full Article ↗`) and source attribution chips for readers who intentionally want to visit the source.
+- **Test Suite Updates**:
+  - Updated `TEST 26` in `test_regression_suite.py` to verify vertical screening layout, 5 green rank badges, zero title redirect links, and 92 continuous vertical stories.
+  - 26/26 regression tests passing (100% success rate).
+
 ## [v10.0] - 2026-10-28 — Top 5 News Stories Horizontal Carousel & Responsive Magazine Layout
 - **Top 5 News Stories Horizontal Scroll Carousel**:
   - Implemented `.top-news-section` positioned directly beneath the category navigation pills and above the vertical feed.
