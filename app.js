@@ -391,6 +391,27 @@
     }
   }
 
+
+  // Publisher orientation is separate from the article's political topic/lean.
+  function getPublisherBias(source) {
+    var s = String(source || '').toLowerCase();
+    if (/fox news|daily wire|breitbart|new york post|washington examiner|newsmax|one america news|oann|the federalist/.test(s)) return 'right';
+    if (/cnn|msnbc|huffpost|the guardian|npr|democracy now|mother jones|the intercept|vox|slate/.test(s)) return 'left';
+    return 'center';
+  }
+  function getPublisherPriority(card, perspective) {
+    var category = String(card.getAttribute('data-category') || '').toLowerCase();
+    // Do not politicize sports or clearly non-news verticals.
+    if (/sport|entertainment|weather/.test(category)) return 1;
+    var source = card.getAttribute('data-source') || '';
+    var sourceLink = card.querySelector('.source-link-chip');
+    if (!source && sourceLink) source = sourceLink.textContent || '';
+    var bias = card.getAttribute('data-publisher-bias') || getPublisherBias(source);
+    if (perspective === 'RIGHT') return bias === 'right' ? 3 : (bias === 'center' ? 2 : 1);
+    if (perspective === 'LEFT') return bias === 'left' ? 3 : (bias === 'center' ? 2 : 1);
+    return 1;
+  }
+
   // Global Perspective Switcher
   function setGlobalPerspective(p) {
     if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
@@ -419,27 +440,15 @@
     if (feed) {
       var cardsArr = Array.prototype.slice.call(feed.querySelectorAll('.compact-card'));
       cardsArr.sort(function(a, b) {
-        var leanA = (a.getAttribute('data-lean') || 'center').toLowerCase();
-        var leanB = (b.getAttribute('data-lean') || 'center').toLowerCase();
         var idxA = parseInt(a.getAttribute('data-original-index') || '0', 10);
         var idxB = parseInt(b.getAttribute('data-original-index') || '0', 10);
-
-        if (p === 'RIGHT') {
-          // Prioritize conservative & Fox News stories at the top!
-          var scoreA = (leanA === 'right') ? 2 : (leanA === 'center' ? 1 : 0);
-          var scoreB = (leanB === 'right') ? 2 : (leanB === 'center' ? 1 : 0);
+        if (p === 'RIGHT' || p === 'LEFT') {
+          var scoreA = getPublisherPriority(a, p);
+          var scoreB = getPublisherPriority(b, p);
           if (scoreA !== scoreB) return scoreB - scoreA;
-          return idxA - idxB;
-        } else if (p === 'LEFT') {
-          // Prioritize progressive & left-leaning stories at the top!
-          var scoreA = (leanA === 'left') ? 2 : (leanA === 'center' ? 1 : 0);
-          var scoreB = (leanB === 'left') ? 2 : (leanB === 'center' ? 1 : 0);
-          if (scoreA !== scoreB) return scoreB - scoreA;
-          return idxA - idxB;
-        } else {
-          // Center: restore original balanced chronological order
-          return idxA - idxB;
         }
+        // Balanced mode preserves the original chronology; same-tier stories do too.
+        return idxA - idxB;
       });
 
       for (var k = 0; k < cardsArr.length; k++) {
@@ -1063,6 +1072,9 @@
     article.setAttribute('data-category', cat);
     article.setAttribute('data-master-category', masterCat);
     article.setAttribute('data-cat-slug', catSlug);
+    article.setAttribute('data-source', srcName);
+    article.setAttribute('data-publisher-bias', getPublisherBias(srcName));
+    article.setAttribute('data-original-index', String(Date.now()));
     article.id = sId;
 
     article.innerHTML =

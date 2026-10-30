@@ -80,3 +80,11 @@ Expected output:
 ```
 REGRESSION SUITE COMPLETED: 20/20 TESTS PASSED (100% SUCCESS)
 ```
+
+## Mobile navigation and publisher-aware lens update
+
+- Added a mobile-only navigation layout under 768px; desktop navigation rules remain intact.
+- Search now spans the mobile header, the three-way lens selector is a compact full-width segmented control, view tabs share one row, and categories remain horizontally scrollable.
+- Lens ranking now uses publisher orientation metadata rather than relying only on the article's `lean` field. Left and Right prioritize matching publishers; Balanced preserves the original chronological order.
+- Added CNN, Fox News, The Guardian, HuffPost, and Washington Examiner feeds to broaden publisher coverage. Existing AP, Reuters, BBC, NPR, CBS, and other feeds remain available.
+- Sports, entertainment, and weather stories are not promoted or demoted based on publisher orientation.

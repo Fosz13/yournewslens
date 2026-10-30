@@ -7239,6 +7239,16 @@ def get_category_slug(cat: str) -> str:
         return "border"
     return "general"
 
+
+def publisher_editorial_bias(source_name: Any) -> str:
+    """Broad publisher-level editorial orientation; not an assessment of an article's facts."""
+    name = str(source_name or "").lower()
+    if any(x in name for x in ("fox news", "daily wire", "breitbart", "new york post", "washington examiner", "newsmax", "oann", "one america news", "federalist")):
+        return "right"
+    if any(x in name for x in ("cnn", "msnbc", "huffpost", "the guardian", "npr", "democracy now", "mother jones", "the intercept", "vox", "slate")):
+        return "left"
+    return "center"
+
 def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     cards_html = []
     for idx, s in enumerate(stories):
@@ -7253,6 +7263,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         metro = s.get("metro", "")
         sub_cat = s.get("sub_category", "")
         lean = s.get("lean", "center")
+        publisher_bias = publisher_editorial_bias(s.get("source_name") or s.get("source", ""))
         imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" if "sport" in str(cat).lower() else "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG")
         caption = s.get("caption", s.get("title", ""))
         source = s.get("source", "Associated Press Wire")
@@ -7304,7 +7315,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
 
         card = f"""
-        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" data-lean="{lean}" data-original-index="{idx}" id="{sId}">
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" data-lean="{lean}" data-source="{src_name}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
             <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
             <div class="photo-caption-bar">

@@ -446,7 +446,46 @@ RSS_FEEDS = [
         "source": "CNBC Tech",
         "url": "https://www.cnbc.com/id/19854910/device/rss/rss.html",
         "description": "CNBC Silicon Valley technology, semiconductor, and AI news."
-    }
+    },
+    # =========================================================================
+    # 6. ADDITIONAL LEFT / RIGHT PUBLISHER COVERAGE FOR LENS-BASED FEED MIX
+    # =========================================================================
+    {
+        "category": "Politics", "master_category": "National Headlines",
+        "source": "CNN Politics",
+        "url": "https://rss.cnn.com/rss/cnn_allpolitics.rss",
+        "description": "CNN political reporting and U.S. policy coverage."
+    },
+    {
+        "category": "National Headlines", "master_category": "National Headlines",
+        "source": "CNN Top Stories",
+        "url": "https://rss.cnn.com/rss/cnn_topstories.rss",
+        "description": "CNN national and breaking news coverage."
+    },
+    {
+        "category": "Politics", "master_category": "National Headlines",
+        "source": "Fox News Latest",
+        "url": "https://moxie.foxnews.com/google-publisher/latest.xml",
+        "description": "Fox News national and breaking news coverage."
+    },
+    {
+        "category": "Politics", "master_category": "National Headlines",
+        "source": "The Guardian US",
+        "url": "https://www.theguardian.com/us-news/rss",
+        "description": "The Guardian U.S. politics and national reporting."
+    },
+    {
+        "category": "Politics", "master_category": "National Headlines",
+        "source": "HuffPost Politics",
+        "url": "https://www.huffpost.com/section/politics/feed",
+        "description": "HuffPost U.S. politics and policy coverage."
+    },
+    {
+        "category": "Politics", "master_category": "National Headlines",
+        "source": "Washington Examiner Politics",
+        "url": "https://www.washingtonexaminer.com/section/politics/feed",
+        "description": "Washington Examiner conservative political reporting."
+    },
 ]
 
 INGESTION_SETTINGS = {

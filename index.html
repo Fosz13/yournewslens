@@ -8,8 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;0,6..72,800;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
   <title>Your News Lens — Live Intelligence • Instant Answers • 3 Perspectives</title>
-  <style>
-/* ==========================================================================
+  <style>/* ==========================================================================
    YOUR NEWS LENS — LUXURY EDITORIAL INTELLIGENCE DESIGN SYSTEM (v4.0)
    Atmospheric Obsidian Dark Mode & Warm Alabaster Light Mode • Bento Grid
    ========================================================================== */
@@ -2005,6 +2004,38 @@ div[id$="-view-RIGHT"] {
   color: #93c5fd;
 }
 
+
+/* =========================================================================
+   MOBILE-FIRST NAVIGATION REFINEMENT — desktop remains unchanged
+   ========================================================================= */
+@media (max-width: 767px) {
+  .app-header { padding-bottom: 12px; }
+  .header-container { padding: 14px 14px 10px; gap: 12px; }
+  .brand-row { min-width: 0; }
+  .brand-title { font-size: 21px; }
+  .brand-tagline { font-size: 9px; line-height: 1.35; }
+  .header-controls { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px; width: 100%; align-items: center; }
+  .search-input-wrap { grid-column: 1 / -1; min-width: 0; width: 100%; }
+  .live-search-input { min-height: 42px; font-size: 14px; }
+  .lens-selector-wrapper { grid-column: 1; width: 100%; justify-content: space-between; padding: 4px; gap: 2px; min-width: 0; }
+  .lens-label { padding: 0 6px; font-size: 9px; }
+  .lens-btn { flex: 1; min-width: 0; min-height: 38px; padding: 7px 5px; font-size: 11px; white-space: nowrap; }
+  .btn-theme-toggle { grid-column: 2; min-height: 42px; padding: 7px 10px; }
+  .filter-bar { margin: 10px auto 16px; padding: 0 12px; gap: 10px; }
+  .top-nav-row { gap: 8px; }
+  .view-tabs { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 4px; padding: 4px; border-radius: 12px; }
+  .view-tab { min-width: 0; min-height: 43px; padding: 8px 6px; font-size: 11.5px; line-height: 1.2; }
+  .category-bar-wrapper { display: block; }
+  .category-carousel-wrapper { width: 100%; overflow: visible; }
+  .category-carousel { gap: 7px; padding: 2px 1px 8px; scroll-snap-type: x proximity; }
+  .cat-pill { min-height: 37px; padding: 8px 12px; font-size: 11.5px; scroll-snap-align: start; }
+  .btn-quick-customize { display: none; }
+}
+@media (max-width: 380px) {
+  .brand-tagline { max-width: 265px; }
+  .lens-label { display: none; }
+  .view-tab { font-size: 10.5px; }
+}
 </style>
   <script>
   window.onImgError = window.onImgError || function(img, cat) {
@@ -22050,8 +22081,7 @@ div[id$="-view-RIGHT"] {
     </div>
   </main>
 
-  <script>
-/**
+  <script>/**
  * YOUR NEWS LENS — LIVE WIRE & EDITORIAL INTELLIGENCE CONTROLLER (v4.0)
  * Real-Time RSS & JSON Hydration • Client-Side Synthesis • Dual Theme • Bento Grid
  */
@@ -22444,6 +22474,27 @@ div[id$="-view-RIGHT"] {
     }
   }
 
+
+  // Publisher orientation is separate from the article's political topic/lean.
+  function getPublisherBias(source) {
+    var s = String(source || '').toLowerCase();
+    if (/fox news|daily wire|breitbart|new york post|washington examiner|newsmax|one america news|oann|the federalist/.test(s)) return 'right';
+    if (/cnn|msnbc|huffpost|the guardian|npr|democracy now|mother jones|the intercept|vox|slate/.test(s)) return 'left';
+    return 'center';
+  }
+  function getPublisherPriority(card, perspective) {
+    var category = String(card.getAttribute('data-category') || '').toLowerCase();
+    // Do not politicize sports or clearly non-news verticals.
+    if (/sport|entertainment|weather/.test(category)) return 1;
+    var source = card.getAttribute('data-source') || '';
+    var sourceLink = card.querySelector('.source-link-chip');
+    if (!source && sourceLink) source = sourceLink.textContent || '';
+    var bias = card.getAttribute('data-publisher-bias') || getPublisherBias(source);
+    if (perspective === 'RIGHT') return bias === 'right' ? 3 : (bias === 'center' ? 2 : 1);
+    if (perspective === 'LEFT') return bias === 'left' ? 3 : (bias === 'center' ? 2 : 1);
+    return 1;
+  }
+
   // Global Perspective Switcher
   function setGlobalPerspective(p) {
     if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
@@ -22472,27 +22523,15 @@ div[id$="-view-RIGHT"] {
     if (feed) {
       var cardsArr = Array.prototype.slice.call(feed.querySelectorAll('.compact-card'));
       cardsArr.sort(function(a, b) {
-        var leanA = (a.getAttribute('data-lean') || 'center').toLowerCase();
-        var leanB = (b.getAttribute('data-lean') || 'center').toLowerCase();
         var idxA = parseInt(a.getAttribute('data-original-index') || '0', 10);
         var idxB = parseInt(b.getAttribute('data-original-index') || '0', 10);
-
-        if (p === 'RIGHT') {
-          // Prioritize conservative & Fox News stories at the top!
-          var scoreA = (leanA === 'right') ? 2 : (leanA === 'center' ? 1 : 0);
-          var scoreB = (leanB === 'right') ? 2 : (leanB === 'center' ? 1 : 0);
+        if (p === 'RIGHT' || p === 'LEFT') {
+          var scoreA = getPublisherPriority(a, p);
+          var scoreB = getPublisherPriority(b, p);
           if (scoreA !== scoreB) return scoreB - scoreA;
-          return idxA - idxB;
-        } else if (p === 'LEFT') {
-          // Prioritize progressive & left-leaning stories at the top!
-          var scoreA = (leanA === 'left') ? 2 : (leanA === 'center' ? 1 : 0);
-          var scoreB = (leanB === 'left') ? 2 : (leanB === 'center' ? 1 : 0);
-          if (scoreA !== scoreB) return scoreB - scoreA;
-          return idxA - idxB;
-        } else {
-          // Center: restore original balanced chronological order
-          return idxA - idxB;
         }
+        // Balanced mode preserves the original chronology; same-tier stories do too.
+        return idxA - idxB;
       });
 
       for (var k = 0; k < cardsArr.length; k++) {
@@ -23356,7 +23395,6 @@ div[id$="-view-RIGHT"] {
     initOnReady();
   }
 })();
-
 </script>
 </body>
 </html>
