@@ -1,5 +1,44 @@
 # Your News Lens — Changelog
 
+## [v11.7] - 2026-10-30 — Today's Blind Stance Challenge & Sunday Daily Briefing Email Engine
+- **Homepage Redesign: Today's Blind Stance Challenge (#blindStanceSection)**:
+  - Replaced the homepage cheat sheet card with an interactive **Micro-Stance Challenge** where readers evaluate core arguments without partisan labels.
+  - Compares two anonymous arguments across the day's top debates:
+    1. *🏛️ Senate $895B Defense & Border Spending Deal*
+    2. *🏆 College Football Playoff 24-Team Expansion Debate*
+    3. *🌴 Tampa Bay Rays $1.3B Ballpark & Gas Plant District Project*
+  - **Interactive Vote & Source Reveal Engine**:
+    - Users vote for Argument A or Argument B with 1-tap touch-friendly cards.
+    - Revealing vote exposes whose perspective they aligned with (🔴 Conservative Lens vs. 🔵 Progressive Lens).
+    - Displays live crowd consensus breakdown (e.g. 54% Conservative vs. 46% Progressive split bar).
+    - Presents the pragmatic **🟢 The Common Ground / Reality Check** summary.
+    - Includes **🔄 Vote Again** reset button and state persistence in `localStorage`.
+    - Collapsible card toggle (`▾`/`▴`) with state saved in `localStorage.getItem('userBlindSurveyCollapsed')`.
+- **Sunday Daily Briefing Email Digest Engine (`generate_sunday_briefing.py`)**:
+  - Moved the 60-Second Dinner Table Cheat Sheet out of the homepage flow and into an automated Sunday morning email briefing generator.
+  - Outputs a fully responsive, cross-client-compatible HTML email template (`data/sunday_daily_briefing.html`) formatted for mobile and desktop inboxes.
+  - Delivers all 3 complete debate cheat sheets (The Facts, Conservative Best Point, Progressive Best Point, and Common Ground Reality Check).
+  - Drives high-retention email subscribers directly back to `https://yournewslens.com` with branded CTA buttons and survey challenges.
+- **Automated Verification**:
+  - Updated `TEST 29` in `test_regression_suite.py` to assert `#blindStanceSection`, `#blindSurveyCardsView`, `#blindSurveyResults`, `toggleBlindSurvey()`, window bindings, data models, CSS styles, and briefing generator existence.
+  - All 29 regression tests passing (100% success rate).
+
+## [v11.6] - 2026-10-30 — Touch-Proof Debate Switching, Talking-Points-First Layout & Auto-Centering Mobile UX
+- **Fixed Mobile Touch Switching for Debate Topics**:
+  - Resolved touch-gesture event cancellation on horizontal overflow scrollbars by attaching dedicated `touchend` and `click` listeners with `touch-action: manipulation` and `-webkit-tap-highlight-color: transparent`.
+  - Added defensive parsing and fallback handling in `selectCheatSheetTopic()` ensuring `pills[index]` is activated even if `this` reference is dropped by mobile browsers.
+  - Added smooth auto-centering scroll (`pills[index].scrollIntoView({ inline: 'center' })`) so selected pills smoothly glide into view on mobile.
+- **Talking-Points-First Editorial Architecture**:
+  - Elevated the conversational ammunition to the very top of the card:
+    1. *Active Debate Header Banner* (`.cheat-topic-header-bar`): Instantly updates to display the active debate title (e.g. `🌴 Tampa Bay Rays $1.3B Ballpark & Gas Plant District Bonds`).
+    2. *🔴 What Conservatives Are Saying (Their Best Point)*
+    3. *🔵 What Progressives Are Saying (Their Best Point)*
+    4. *🟢 The Common Ground / Reality Check*
+    5. *⚖️ The Facts (What Actually Happened)*
+  - Eliminates the mobile fold issue: readers see the talking points immediately without having to scroll down past legislative background facts.
+- **Automated Verification**:
+  - All 29 regression tests in `test_regression_suite.py` passing (100% success rate).
+
 ## [v11.5] - 2026-10-30 — The Dinner Table Cheat Sheet & 60-Second Social Ammunition Engine
 - **The Dinner Table Cheat Sheet (#dinnerTableSection)**:
   - Built a prominent, high-utility daily debate briefing card positioned directly above the vertical feed.

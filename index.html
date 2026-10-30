@@ -2066,60 +2066,60 @@ div[id$="-view-RIGHT"] {
 
 
 /* =========================================================================
-   DINNER TABLE CHEAT SHEET — 60-SECOND CONVERSATION AMMUNITION
+   BLIND STANCE SURVEY & WORLDVIEW CHALLENGE
    ========================================================================= */
-.dinner-table-section {
+.blind-stance-section {
   max-width: 1280px;
-  margin: 0 auto 22px;
+  margin: 0 auto 24px;
   padding: 0 20px;
 }
 
-.cheat-sheet-card {
+.blind-survey-card {
   background: var(--bg-card);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   position: relative;
-  transition: all 0.24s ease;
+  transition: all 0.25s ease;
 }
 
-.cheat-sheet-card::before {
+.blind-survey-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #10b981 0%, #3b82f6 50%, #ef4444 100%);
+  background: linear-gradient(90deg, #38bdf8 0%, #10b981 50%, #f59e0b 100%);
   z-index: 2;
 }
 
-.cheat-sheet-header {
+.blind-survey-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   padding: 18px 24px 14px;
   border-bottom: 1px solid var(--border-subtle);
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(15, 23, 42, 0.6);
 }
 
-[data-theme="light"] .cheat-sheet-header {
+[data-theme="light"] .blind-survey-header {
   background: rgba(248, 250, 252, 0.9);
 }
 
-.cheat-sheet-title-group {
+.blind-survey-title-group {
   flex: 1;
 }
 
-.cheat-sheet-badge {
+.blind-survey-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: #34d399;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.05em;
@@ -2129,12 +2129,12 @@ div[id$="-view-RIGHT"] {
   text-transform: uppercase;
 }
 
-[data-theme="light"] .cheat-sheet-badge {
-  color: #047857;
-  background: rgba(16, 185, 129, 0.12);
+[data-theme="light"] .blind-survey-badge {
+  color: #0284c7;
+  background: rgba(56, 189, 248, 0.12);
 }
 
-.cheat-sheet-headline {
+.blind-survey-headline {
   font-size: 21px;
   font-weight: 800;
   color: var(--text-primary);
@@ -2142,14 +2142,14 @@ div[id$="-view-RIGHT"] {
   letter-spacing: -0.01em;
 }
 
-.cheat-sheet-subtitle {
+.blind-survey-subtitle {
   font-size: 13px;
   color: var(--text-secondary);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-.cheat-sheet-header-actions {
+.blind-survey-header-actions {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2157,28 +2157,7 @@ div[id$="-view-RIGHT"] {
   margin-top: 4px;
 }
 
-.btn-copy-cheatsheet {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #ffffff;
-  border: none;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-}
-
-.btn-copy-cheatsheet:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.45);
-}
-
-.btn-toggle-cheatsheet {
+.btn-toggle-survey {
   background: var(--bg-surface-elevated, #1e293b);
   border: 1px solid var(--border-medium);
   color: var(--text-secondary);
@@ -2194,214 +2173,371 @@ div[id$="-view-RIGHT"] {
   transition: all 0.15s ease;
 }
 
-.btn-toggle-cheatsheet:hover {
+.btn-toggle-survey:hover {
   color: var(--text-primary);
   border-color: var(--border-strong, #64748b);
 }
 
-.cheat-sheet-body {
-  padding: 16px 24px 22px;
+.blind-survey-body {
+  padding: 18px 24px 22px;
 }
 
-.cheat-sheet-topics-bar {
+.blind-topics-bar {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
   overflow-x: auto;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 
-.topics-label {
-  font-size: 12px;
-  font-weight: 750;
+.blind-topics-label {
+  font-size: 11.5px;
+  font-weight: 800;
   color: var(--text-tertiary);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   white-space: nowrap;
 }
 
-.topics-pills-wrap {
+.blind-pills-wrap {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: nowrap;
 }
 
-.cheat-topic-pill {
+.blind-topic-pill {
   background: var(--bg-surface-elevated, rgba(30, 41, 59, 0.7));
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 650;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: var(--radius-full);
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.15s ease;
+  transition: all 0.18s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.cheat-topic-pill:hover {
+.blind-topic-pill:hover {
   color: var(--text-primary);
   border-color: var(--border-medium);
 }
 
-.cheat-topic-pill.active {
-  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+.blind-topic-pill.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
   border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.38);
+}
+
+[data-theme="light"] .blind-topic-pill.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-color: #0369a1;
+  color: #ffffff;
+}
+
+/* Prompt Banner */
+.blind-prompt-banner {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid #38bdf8;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+}
+
+[data-theme="light"] .blind-prompt-banner {
+  background: rgba(241, 245, 249, 0.95);
+  border-left-color: #0284c7;
+}
+
+.blind-prompt-tag {
+  font-size: 11px;
+  font-weight: 800;
   color: #38bdf8;
-  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 4px;
 }
 
-[data-theme="light"] .cheat-topic-pill.active {
-  background: #e0f2fe;
-  border-color: #0284c7;
-  color: #0369a1;
+[data-theme="light"] .blind-prompt-tag {
+  color: #0284c7;
 }
 
-.cheat-sheet-content-grid {
+.blind-prompt-question {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* 2 Blind Comparison Cards */
+.blind-options-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 18px;
+  margin-bottom: 20px;
 }
 
-@media (min-width: 900px) {
-  .cheat-sheet-content-grid {
-    grid-template-columns: repeat(3, 1fr);
+@media (min-width: 800px) {
+  .blind-options-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.cheat-column-card {
+.blind-option-card {
   background: var(--bg-surface-elevated, rgba(30, 41, 59, 0.45));
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md, 10px);
-  padding: 16px;
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md, 12px);
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.22s ease;
   position: relative;
-  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.cheat-column-card:hover {
-  border-color: var(--border-medium);
+.blind-option-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(56, 189, 248, 0.15);
 }
 
-.cheat-column-header {
+.blind-option-card.selected {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.08);
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.25);
+}
+
+.blind-card-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
   margin-bottom: 12px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--border-subtle);
 }
 
-.cheat-column-icon {
-  font-size: 16px;
-}
-
-.cheat-column-title {
-  font-size: 12.5px;
+.blind-card-label {
+  font-size: 12px;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-/* Card Specific Themes */
-.cheat-card-fact .cheat-column-title { color: #38bdf8; }
-.cheat-card-conservative .cheat-column-title { color: #f87171; }
-.cheat-card-progressive .cheat-column-title { color: #60a5fa; }
+.blind-card-anonymous-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  background: rgba(100, 116, 139, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
 
-[data-theme="light"] .cheat-card-fact .cheat-column-title { color: #0284c7; }
-[data-theme="light"] .cheat-card-conservative .cheat-column-title { color: #dc2626; }
-[data-theme="light"] .cheat-card-progressive .cheat-column-title { color: #2563eb; }
-
-.cheat-points-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 13px;
-  line-height: 1.55;
+.blind-argument-text {
+  font-size: 14.5px;
+  line-height: 1.6;
   color: var(--text-primary);
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+.btn-vote-option {
+  width: 100%;
+  background: var(--bg-surface-elevated, #1e293b);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 750;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.blind-option-card:hover .btn-vote-option {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+/* Post-Vote Reveal Box */
+.blind-results-container {
+  display: none;
+  animation: fadeIn 0.28s ease;
+}
+
+.blind-reveal-banner {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+  border: 1px solid var(--border-medium);
+  border-radius: 12px;
+  padding: 22px;
+  margin-top: 10px;
+}
+
+[data-theme="light"] .blind-reveal-banner {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.reveal-verdict-row {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.reveal-badge-box {
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
-.cheat-point-item {
-  position: relative;
-  padding-left: 14px;
-}
-
-.cheat-point-item::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--text-tertiary);
-  font-weight: bold;
-}
-
-.cheat-card-quote {
-  font-style: italic;
-  color: var(--text-primary);
-  line-height: 1.55;
-  margin: 0;
-  font-size: 13px;
-}
-
-.cheat-card-speaker {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-tertiary);
-  margin-top: 8px;
+.reveal-lens-pill {
+  font-size: 12.5px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 20px;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
 }
 
-/* Full Width Common Ground Banner */
-.cheat-reality-check-banner {
-  grid-column: 1 / -1;
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.28);
-  border-radius: var(--radius-md, 10px);
-  padding: 14px 18px;
+.reveal-lens-pill.conservative {
+  background: rgba(239, 68, 68, 0.16);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.reveal-lens-pill.progressive {
+  background: rgba(59, 130, 246, 0.16);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+
+.reveal-congrats-text {
+  font-size: 15px;
+  font-weight: 750;
+  color: var(--text-primary);
+}
+
+.btn-reset-survey {
+  background: transparent;
+  border: 1px solid var(--border-medium);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-reset-survey:hover {
+  color: var(--text-primary);
+  border-color: var(--border-strong, #94a3b8);
+}
+
+/* Percentage Breakdown Bar */
+.crowd-stats-section {
+  margin-bottom: 20px;
+}
+
+.crowd-stats-header {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 750;
+  margin-bottom: 8px;
 }
 
-[data-theme="light"] .cheat-reality-check-banner {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.35);
+.stat-left { color: #f87171; }
+.stat-right { color: #60a5fa; }
+
+.crowd-split-bar-track {
+  width: 100%;
+  height: 14px;
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
 }
 
-.reality-icon {
-  font-size: 18px;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 1px;
+.crowd-split-fill-left {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reality-content {
-  flex: 1;
+/* Reality Check on Reveal */
+.survey-reality-box {
+  background: rgba(16, 185, 129, 0.09);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
 }
 
-.reality-title {
+.survey-reality-title {
   font-size: 12px;
   font-weight: 800;
   color: #34d399;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
-[data-theme="light"] .reality-title {
+[data-theme="light"] .survey-reality-title {
   color: #047857;
 }
 
-.reality-text {
-  font-size: 13px;
-  color: var(--text-primary);
+.survey-reality-text {
+  font-size: 13.5px;
   line-height: 1.5;
+  color: var(--text-primary);
   margin: 0;
+}
+
+.survey-link-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 12px;
+}
+
+.survey-email-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.survey-email-link:hover {
+  text-decoration: underline;
 }
 
 </style>
@@ -2588,81 +2724,43 @@ div[id$="-view-RIGHT"] {
     </div>
 
     <!-- The Dinner Table Cheat Sheet (60-Second Conversation Ammunition) -->
-    <section class="dinner-table-section" id="dinnerTableSection">
-      <div class="cheat-sheet-card">
-        <div class="cheat-sheet-header">
-          <div class="cheat-sheet-title-group">
-            <div class="cheat-sheet-badge">
-              <span class="badge-icon">🍽️</span>
-              <span class="badge-text">60-Second Conversation Ammunition</span>
+    <!-- Blind Stance Challenge Section (Micro-Stance Survey & Argument Reveal) -->
+    <section class="blind-stance-section" id="blindStanceSection">
+      <div class="blind-survey-card">
+        <div class="blind-survey-header">
+          <div class="blind-survey-title-group">
+            <div class="blind-survey-badge">
+              <span class="badge-icon">🗳️</span>
+              <span class="badge-text">Daily Perspective Challenge</span>
             </div>
-            <h2 class="cheat-sheet-headline">The Dinner Table Cheat Sheet</h2>
-            <p class="cheat-sheet-subtitle">Never get blindsided in political conversations. What actually happened, what both sides are arguing, and the reality check.</p>
+            <h2 class="blind-survey-headline">Today's Blind Stance Challenge</h2>
+            <p class="blind-survey-subtitle">Can you guess which side you agree with? Pick the argument below without political labels, then reveal the source perspective and crowd consensus.</p>
           </div>
-          <div class="cheat-sheet-header-actions">
-            <button type="button" class="btn-copy-cheatsheet" onclick="copyCheatSheet()" title="Copy entire cheat sheet to clipboard">
-              <span>📋</span> <span>Copy Cheat Sheet</span>
-            </button>
-            <button type="button" class="btn-toggle-cheatsheet" onclick="toggleCheatSheet()" id="btnToggleCheatSheet" aria-label="Collapse cheat sheet" title="Collapse / Expand">
-              <span id="cheatSheetChevron">▴</span>
+          <div class="blind-survey-header-actions">
+            <button type="button" class="btn-toggle-survey" onclick="toggleBlindSurvey()" id="btnToggleBlindSurvey" aria-label="Collapse blind survey" title="Collapse / Expand">
+              <span id="blindSurveyChevron">▴</span>
             </button>
           </div>
         </div>
 
-        <div class="cheat-sheet-body" id="cheatSheetBody">
-          <div class="cheat-sheet-topics-bar">
-            <span class="topics-label">Choose Debate:</span>
-            <div class="topics-pills-wrap">
-              <button type="button" class="cheat-topic-pill active" onclick="selectCheatSheetTopic(0, this)">
-                🏛️ $895B Spending & Border
+        <div class="blind-survey-body" id="blindSurveyBody">
+          <div class="blind-topics-bar">
+            <span class="blind-topics-label">Choose Debate:</span>
+            <div class="blind-pills-wrap">
+              <button type="button" class="blind-topic-pill active" data-topic-index="0" onclick="selectBlindSurveyTopic(0, this)">
+                🏛️ $895B Spending &amp; Border
               </button>
-              <button type="button" class="cheat-topic-pill" onclick="selectCheatSheetTopic(1, this)">
+              <button type="button" class="blind-topic-pill" data-topic-index="1" onclick="selectBlindSurveyTopic(1, this)">
                 🏆 CFB 24-Team Playoff Expansion
               </button>
-              <button type="button" class="cheat-topic-pill" onclick="selectCheatSheetTopic(2, this)">
+              <button type="button" class="blind-topic-pill" data-topic-index="2" onclick="selectBlindSurveyTopic(2, this)">
                 🌴 Tampa Bay $1.3B Rays Stadium
               </button>
             </div>
           </div>
 
-          <div id="cheatSheetTopicView" class="cheat-sheet-content-grid">
-            <div class="cheat-column-card cheat-card-fact">
-              <div class="cheat-column-header">
-                <span class="cheat-column-icon">⚖️</span>
-                <span class="cheat-column-title">The Facts (What Actually Happened)</span>
-              </div>
-              <ul class="cheat-points-list">
-                <li class="cheat-point-item">Congressional leadership fast-tracked a $1.65T statutory discretionary budget, allocating $895B to defense and border technology and $704B for domestic programs.</li>
-                <li class="cheat-point-item">The bipartisan framework averts a government shutdown while setting hard negotiation deadlines across 12 individual agency appropriations bills.</li>
-              </ul>
-            </div>
-
-            <div class="cheat-column-card cheat-card-conservative">
-              <div class="cheat-column-header">
-                <span class="cheat-column-icon">🔴</span>
-                <span class="cheat-column-title">What Conservatives Are Saying</span>
-              </div>
-              <p class="cheat-card-quote">“Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. A budget deal that doesn't enforce mandatory spending caps or decisive border enforcement is an opportunity lost for true fiscal discipline.”</p>
-              <span class="cheat-card-speaker">What Conservatives Are Saying</span>
-            </div>
-
-            <div class="cheat-column-card cheat-card-progressive">
-              <div class="cheat-column-header">
-                <span class="cheat-column-icon">🔵</span>
-                <span class="cheat-column-title">What Progressives Are Saying</span>
-              </div>
-              <p class="cheat-card-quote">“Keeping the government open protects vital food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always hurts everyday Americans.”</p>
-              <span class="cheat-card-speaker">What Progressives Are Saying</span>
-            </div>
-
-            <div class="cheat-reality-check-banner">
-              <span class="reality-icon">🟢</span>
-              <div class="reality-content">
-                <div class="reality-title">The Common Ground / Reality Check</div>
-                <p class="reality-text">Divided government requires compromise: the agreement protects military payrolls and prevents costly shutdown disruptions, but punts the tough structural decisions on national debt and mandatory spending down the road.</p>
-              </div>
-            </div>
-          </div>
+          <div id="blindSurveyCardsView"></div>
+          <div id="blindSurveyResults" class="blind-results-container"></div>
         </div>
       </div>
     </section>
@@ -25205,24 +25303,29 @@ function cleanPhotoCredit(credit, sourceName) {
 
   
   // =========================================================================
-  // THE DINNER TABLE CHEAT SHEET — 60-SECOND CONVERSATION AMMUNITION
+  // TODAY'S BLIND STANCE CHALLENGE — MICRO-STANCE SURVEY ENGINE
   // =========================================================================
-  var CHEAT_SHEET_TOPICS = [
+  var BLIND_SURVEY_TOPICS = [
     {
       id: 'senate-spending-package',
       badge: '🏛️ Congress & National Budget',
       title: 'Senate $895B Defense & Border Spending Deal',
-      facts: [
-        'Congressional leadership fast-tracked a $1.65T statutory discretionary budget, allocating $895B to defense and border technology and $704B for domestic programs.',
-        'The bipartisan framework averts a government shutdown while setting hard negotiation deadlines across 12 individual agency appropriations bills.'
-      ],
-      conservative: {
-        speaker: 'What Conservatives Are Saying',
-        quote: 'Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. A budget deal that doesn\'t enforce mandatory spending caps or decisive border enforcement is an opportunity lost for true fiscal discipline.'
-      },
-      progressive: {
-        speaker: 'What Progressives Are Saying',
-        quote: 'Keeping the government open protects vital food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always hurts everyday Americans.'
+      question: 'Should Congress approve an $895B spending package that prioritizes defense and border technology while freezing non-defense programs?',
+      options: {
+        A: {
+          lens: 'conservative',
+          lensTitle: 'Conservative Perspective',
+          lensBadge: '🔴 Conservative Lens',
+          argument: '“Washington cannot keep running multi-trillion-dollar deficits that drive inflation and permanent debt. A budget deal that doesn\'t enforce mandatory spending caps or decisive border enforcement is an opportunity lost for true fiscal discipline.”',
+          crowdPct: 54
+        },
+        B: {
+          lens: 'progressive',
+          lensTitle: 'Progressive Perspective',
+          lensBadge: '🔵 Progressive Lens',
+          argument: '“Keeping the government open protects vital food assistance, education, and healthcare programs that millions of working families rely on every day. Threatening shutdowns to force extreme cuts always hurts everyday Americans.”',
+          crowdPct: 46
+        }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
@@ -25231,162 +25334,280 @@ function cleanPhotoCredit(credit, sourceName) {
     },
     {
       id: 'cfb-playoff-expansion',
-      badge: '🏆 College Sports & Governance',
-      title: 'College Football Playoff 24-Team Expansion & Player Revenue Cap',
-      facts: [
-        'College football commissioners are reviewing a framework to expand the playoff to 24 teams by 2027, featuring 14 automatic conference bids and 10 at-large spots.',
-        'The proposal comes as athletic departments prepare for the landmark $20.5M annual school revenue-sharing cap taking effect in college sports.'
-      ],
-      conservative: {
-        speaker: 'What Conservatives Are Saying',
-        quote: 'Paying fired football coaches $40M to $70M to sit on a beach while public universities jack up tuition and ticket prices is institutional insanity. In the real world, you don\'t reward failure with taxpayer-subsidized golden parachutes.'
-      },
-      progressive: {
-        speaker: 'What Progressives Are Saying',
-        quote: 'For decades universities claimed they couldn\'t afford to pay players or lower tuition, yet they magically find tens of millions for coaching buyouts. Revenue sharing is long overdue for the athletes who generate billions.'
+      badge: '🏆 College Football & Sports Media',
+      title: 'College Football Playoff 24-Team Expansion Debate',
+      question: 'Should the College Football Playoff expand from 12 to 24 teams starting in 2026?',
+      options: {
+        A: {
+          lens: 'progressive',
+          lensTitle: 'Progressive / Modernist Perspective',
+          lensBadge: '🔵 Progressive Lens',
+          argument: '“Expanding the playoff guarantees access for Cinderella mid-majors and creates high-stakes campus postseason games that fans adore, democratizing the sport beyond just four dominant blue-blood programs.”',
+          crowdPct: 58
+        },
+        B: {
+          lens: 'conservative',
+          lensTitle: 'Traditionalist / Conservative Perspective',
+          lensBadge: '🔴 Conservative Lens',
+          argument: '“A 24-team tournament completely destroys the singular regular-season urgency that makes college football legendary, while turning unpaid student-athletes into NFL-length collision commodities.”',
+          crowdPct: 42
+        }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
-        text: 'Expanding to a 24-team tournament creates massive new television revenue that athletic departments need to fund player revenue-sharing, but risks turning college football into an unregulated corporate semi-pro league.'
+        text: 'Television networks and athletic directors are driven by billions in playoff media rights, but extended seasons increase player fatigue and devalue historic conference rivalry games.'
       }
     },
     {
-      id: 'tampa-gas-plant-ballpark',
-      badge: '🌴 Tampa Bay Regional Development',
-      title: 'Tampa Bay Rays $1.3B Ballpark & Gas Plant District Bonds',
-      facts: [
-        'St. Petersburg and Pinellas County enacted final bond resolutions authorizing $600M in tourist-development bed taxes to anchor a new 30,000-seat enclosed ballpark.',
-        'The Tampa Bay Rays and Hines development partners are funding the remaining $700M+ alongside 1,200 planned affordable and workforce housing units.'
-      ],
-      conservative: {
-        speaker: 'What Conservatives Are Saying',
-        quote: 'Using hotel and tourist development bed taxes ensures out-of-state visitors foot the bill for the stadium rather than local property owners, while private developers commit over $700M of private capital to downtown revitalization.'
-      },
-      progressive: {
-        speaker: 'What Progressives Are Saying',
-        quote: 'Hundreds of millions in public bond subsidies for a private sports franchise must come with enforceable local hiring and prevailing wage mandates, and the city must strictly hold developers to their 1,200 affordable housing unit pledge.'
+      id: 'rays-stadium-gas-plant',
+      badge: '🌴 Tampa Bay & Pinellas Civic Debate',
+      title: 'Tampa Bay Rays $1.3B Ballpark & Historic Gas Plant Project',
+      question: 'Should St. Petersburg and Pinellas County issue $600M+ in public bonds to fund the Rays\' new downtown ballpark and Gas Plant redevelopment?',
+      options: {
+        A: {
+          lens: 'progressive',
+          lensTitle: 'Progressive / Civic Investment Perspective',
+          lensBadge: '🔵 Progressive Lens',
+          argument: '“Historic Gas Plant district revitalization creates thousands of union jobs, affordable housing units, and permanent entertainment tax revenue that keeps the Rays anchored in Tampa Bay for 30 years.”',
+          crowdPct: 52
+        },
+        B: {
+          lens: 'conservative',
+          lensTitle: 'Fiscal Conservative Perspective',
+          lensBadge: '🔴 Conservative Lens',
+          argument: '“Billionaire sports franchise owners should fund their own private stadiums rather than saddling local taxpayers with decades of bond interest debt that crowds out essential infrastructure repairs.”',
+          crowdPct: 48
+        }
       },
       reality: {
         title: 'The Common Ground / Reality Check',
-        text: 'Keeping Major League Baseball anchored in Tampa Bay through 2058 transforms an underutilized 86-acre asphalt lot into a long-term economic engine, provided municipal leaders hold developers strictly accountable to their workforce housing commitments.'
+        text: 'The deal includes $50M in community equity commitments, but public stadium bond debt historically falls back on hotel bed taxes and general revenue if development milestones lag.'
       }
     }
   ];
 
-  var _activeCheatSheetTopic = 0;
+  var _activeBlindSurveyTopic = 0;
+  var _userSurveyVotes = {};
 
-  function renderCheatSheetTopic(index) {
-    if (typeof index !== 'number' || index < 0 || index >= CHEAT_SHEET_TOPICS.length) {
+  function renderBlindSurveyTopic(index) {
+    if (typeof index !== 'number') index = parseInt(index, 10);
+    if (isNaN(index) || index < 0 || index >= BLIND_SURVEY_TOPICS.length) {
       index = 0;
     }
-    _activeCheatSheetTopic = index;
-    var topic = CHEAT_SHEET_TOPICS[index];
-    var container = document.getElementById('cheatSheetTopicView');
-    if (!container) return;
+    _activeBlindSurveyTopic = index;
+    var topic = BLIND_SURVEY_TOPICS[index];
 
-    var factsHtml = '';
-    for (var f = 0; f < topic.facts.length; f++) {
-      factsHtml += '<li class="cheat-point-item">' + topic.facts[f] + '</li>';
+    var cardsContainer = document.getElementById('blindSurveyCardsView');
+    var resultsContainer = document.getElementById('blindSurveyResults');
+    if (!cardsContainer) return;
+
+    var existingVote = _userSurveyVotes[index];
+
+    // Build the 2 anonymous cards
+    var cardHtml = '';
+    cardHtml += '<div class="blind-prompt-banner">';
+    cardHtml += '  <span class="blind-prompt-tag">' + topic.badge + '</span>';
+    cardHtml += '  <h3 class="blind-prompt-question">' + topic.question + '</h3>';
+    cardHtml += '</div>';
+
+    cardHtml += '<div class="blind-options-grid">';
+
+    // Option A
+    var isSelA = existingVote === 'A';
+    cardHtml += '<div class="blind-option-card' + (isSelA ? ' selected' : '') + '" id="blindCardA" onclick="voteBlindOption(\'A\')">';
+    cardHtml += '  <div class="blind-card-header">';
+    cardHtml += '    <span class="blind-card-label">Argument A</span>';
+    cardHtml += '    <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>';
+    cardHtml += '  </div>';
+    cardHtml += '  <p class="blind-argument-text">' + topic.options.A.argument + '</p>';
+    cardHtml += '  <button type="button" class="btn-vote-option" onclick="event.stopPropagation(); voteBlindOption(\'A\')">';
+    cardHtml += '    <span>' + (isSelA ? '✓ Your Pick' : '👉 I Agree With A') + '</span>';
+    cardHtml += '  </button>';
+    cardHtml += '</div>';
+
+    // Option B
+    var isSelB = existingVote === 'B';
+    cardHtml += '<div class="blind-option-card' + (isSelB ? ' selected' : '') + '" id="blindCardB" onclick="voteBlindOption(\'B\')">';
+    cardHtml += '  <div class="blind-card-header">';
+    cardHtml += '    <span class="blind-card-label">Argument B</span>';
+    cardHtml += '    <span class="blind-card-anonymous-tag">🔒 Anonymous Stance</span>';
+    cardHtml += '  </div>';
+    cardHtml += '  <p class="blind-argument-text">' + topic.options.B.argument + '</p>';
+    cardHtml += '  <button type="button" class="btn-vote-option" onclick="event.stopPropagation(); voteBlindOption(\'B\')">';
+    cardHtml += '    <span>' + (isSelB ? '✓ Your Pick' : '👉 I Agree With B') + '</span>';
+    cardHtml += '  </button>';
+    cardHtml += '</div>';
+
+    cardHtml += '</div>';
+
+    cardsContainer.innerHTML = cardHtml;
+
+    // Render results view if already voted
+    if (existingVote && resultsContainer) {
+      renderBlindSurveyResults(index, existingVote);
+      resultsContainer.style.display = 'block';
+    } else if (resultsContainer) {
+      resultsContainer.style.display = 'none';
+      resultsContainer.innerHTML = '';
     }
 
-    container.innerHTML =
-      '<div class="cheat-column-card cheat-card-fact">' +
-        '<div class="cheat-column-header">' +
-          '<span class="cheat-column-icon">⚖️</span>' +
-          '<span class="cheat-column-title">The Facts (What Actually Happened)</span>' +
-        '</div>' +
-        '<ul class="cheat-points-list">' + factsHtml + '</ul>' +
-      '</div>' +
+    // Update active tab pill styling
+    var pills = document.querySelectorAll('.blind-topic-pill');
+    for (var p = 0; p < pills.length; p++) {
+      if (p === index) {
+        pills[p].classList.add('active');
+      } else {
+        pills[p].classList.remove('active');
+      }
+    }
+  }
+  window.renderBlindSurveyTopic = renderBlindSurveyTopic;
 
-      '<div class="cheat-column-card cheat-card-conservative">' +
-        '<div class="cheat-column-header">' +
-          '<span class="cheat-column-icon">🔴</span>' +
-          '<span class="cheat-column-title">What Conservatives Are Saying</span>' +
-        '</div>' +
-        '<p class="cheat-card-quote">“' + topic.conservative.quote + '”</p>' +
-        '<span class="cheat-card-speaker">' + topic.conservative.speaker + '</span>' +
-      '</div>' +
+  function renderBlindSurveyResults(index, chosenKey) {
+    var resultsContainer = document.getElementById('blindSurveyResults');
+    if (!resultsContainer) return;
 
-      '<div class="cheat-column-card cheat-card-progressive">' +
-        '<div class="cheat-column-header">' +
-          '<span class="cheat-column-icon">🔵</span>' +
-          '<span class="cheat-column-title">What Progressives Are Saying</span>' +
-        '</div>' +
-        '<p class="cheat-card-quote">“' + topic.progressive.quote + '”</p>' +
-        '<span class="cheat-card-speaker">' + topic.progressive.speaker + '</span>' +
-      '</div>' +
+    var topic = BLIND_SURVEY_TOPICS[index];
+    var chosenOpt = topic.options[chosenKey];
+    var isConserv = chosenOpt.lens === 'conservative';
 
-      '<div class="cheat-reality-check-banner">' +
-        '<span class="reality-icon">🟢</span>' +
-        '<div class="reality-content">' +
-          '<div class="reality-title">' + topic.reality.title + '</div>' +
-          '<p class="reality-text">' + topic.reality.text + '</p>' +
-        '</div>' +
-      '</div>';
+    var optA = topic.options.A;
+    var optB = topic.options.B;
+    var leftPct = optA.crowdPct;
+
+    var rHtml = '';
+    rHtml += '<div class="blind-reveal-banner">';
+    rHtml += '  <div class="reveal-verdict-row">';
+    rHtml += '    <div class="reveal-badge-box">';
+    rHtml += '      <span class="reveal-lens-pill ' + (isConserv ? 'conservative' : 'progressive') + '">';
+    rHtml += '        ' + chosenOpt.lensBadge;
+    rHtml += '      </span>';
+    rHtml += '      <span class="reveal-congrats-text">You agreed with the ' + chosenOpt.lensTitle + '!</span>';
+    rHtml += '    </div>';
+    rHtml += '    <button type="button" class="btn-reset-survey" onclick="resetBlindSurvey()" title="Reset your vote on this topic">';
+    rHtml += '      🔄 Vote Again';
+    rHtml += '    </button>';
+    rHtml += '  </div>';
+
+    rHtml += '  <div class="crowd-stats-section">';
+    rHtml += '    <div class="crowd-stats-header">';
+    rHtml += '      <span class="stat-left">Argument A (' + optA.lensTitle + '): <strong>' + optA.crowdPct + '%</strong></span>';
+    rHtml += '      <span class="stat-right">Argument B (' + optB.lensTitle + '): <strong>' + optB.crowdPct + '%</strong></span>';
+    rHtml += '    </div>';
+    rHtml += '    <div class="crowd-split-bar-track" title="Crowd Consensus Split">';
+    rHtml += '      <div class="crowd-split-fill-left" style="width: ' + leftPct + '%;"></div>';
+    rHtml += '    </div>';
+    rHtml += '  </div>';
+
+    rHtml += '  <div class="survey-reality-box">';
+    rHtml += '    <div class="survey-reality-title">🟢 ' + topic.reality.title + '</div>';
+    rHtml += '    <p class="survey-reality-text">' + topic.reality.text + '</p>';
+    rHtml += '  </div>';
+
+    rHtml += '  <div class="survey-link-row">';
+    rHtml += '    <span>⚡ Deep dive into both perspectives every week:</span>';
+    rHtml += '    <a href="data/sunday_daily_briefing.html" target="_blank" class="survey-email-link">';
+    rHtml += '      📬 Read The Sunday Daily Briefing Digest &rarr;';
+    rHtml += '    </a>';
+    rHtml += '  </div>';
+
+    rHtml += '</div>';
+
+    resultsContainer.innerHTML = rHtml;
+    resultsContainer.style.display = 'block';
   }
 
-  function selectCheatSheetTopic(index, btnEl) {
-    renderCheatSheetTopic(index);
-    var pills = document.querySelectorAll('.cheat-topic-pill');
+  function selectBlindSurveyTopic(index, btnEl) {
+    if (typeof index !== 'number') index = parseInt(index, 10);
+    if (isNaN(index) || index < 0 || index >= BLIND_SURVEY_TOPICS.length) {
+      index = 0;
+    }
+
+    var pills = document.querySelectorAll('.blind-topic-pill');
     for (var i = 0; i < pills.length; i++) {
-      pills[i].classList.remove('active');
+      if (pills[i].classList) {
+        pills[i].classList.remove('active');
+      }
     }
     if (btnEl && btnEl.classList) {
       btnEl.classList.add('active');
     }
-  }
-  window.selectCheatSheetTopic = selectCheatSheetTopic;
 
-  function copyCheatSheet() {
-    var topic = CHEAT_SHEET_TOPICS[_activeCheatSheetTopic] || CHEAT_SHEET_TOPICS[0];
-    var lines = [
-      '🍽️ THE DINNER TABLE CHEAT SHEET: ' + topic.title,
-      '',
-      '⚖️ THE FACTS (What Actually Happened):'
-    ];
-    for (var i = 0; i < topic.facts.length; i++) {
-      lines.push('• ' + topic.facts[i]);
-    }
-    lines.push('');
-    lines.push('🔴 WHAT CONSERVATIVES ARE SAYING (Their Best Point):');
-    lines.push('• “' + topic.conservative.quote + '”');
-    lines.push('');
-    lines.push('🔵 WHAT PROGRESSIVES ARE SAYING (Their Best Point):');
-    lines.push('• “' + topic.progressive.quote + '”');
-    lines.push('');
-    lines.push('🟢 THE REALITY CHECK / COMMON GROUND:');
-    lines.push('• ' + topic.reality.text);
-    lines.push('');
-    lines.push('— via YourNewsLens.com (The Dinner Table Cheat Sheet)');
-
-    var fullText = lines.join('\n');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(fullText).then(function() {
-        showToastNotification('📋 Copied Dinner Table Cheat Sheet to clipboard!');
-      }).catch(function() {
-        showToastNotification('📋 Copied text ready');
-      });
-    } else {
-      showToastNotification('📋 Copied Dinner Table Cheat Sheet!');
+    renderBlindSurveyTopic(index);
+    var topic = BLIND_SURVEY_TOPICS[index];
+    if (topic && topic.title) {
+      showToastNotification('Switched survey topic to ' + topic.title);
     }
   }
-  window.copyCheatSheet = copyCheatSheet;
+  window.selectBlindSurveyTopic = selectBlindSurveyTopic;
 
-  function toggleCheatSheet() {
-    var body = document.getElementById('cheatSheetBody');
-    var chevron = document.getElementById('cheatSheetChevron');
+  function voteBlindOption(optionKey) {
+    if (optionKey !== 'A' && optionKey !== 'B') return;
+    _userSurveyVotes[_activeBlindSurveyTopic] = optionKey;
+    try {
+      localStorage.setItem('userBlindSurveyVotes', JSON.stringify(_userSurveyVotes));
+    } catch (e) {}
+
+    renderBlindSurveyTopic(_activeBlindSurveyTopic);
+
+    var topic = BLIND_SURVEY_TOPICS[_activeBlindSurveyTopic];
+    var opt = topic.options[optionKey];
+    showToastNotification('🗳️ Vote recorded! Revealed ' + opt.lensTitle);
+
+    var resultsContainer = document.getElementById('blindSurveyResults');
+    if (resultsContainer && resultsContainer.scrollIntoView) {
+      try {
+        resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (e) {}
+    }
+  }
+  window.voteBlindOption = voteBlindOption;
+
+  function resetBlindSurvey() {
+    delete _userSurveyVotes[_activeBlindSurveyTopic];
+    try {
+      localStorage.setItem('userBlindSurveyVotes', JSON.stringify(_userSurveyVotes));
+    } catch (e) {}
+    renderBlindSurveyTopic(_activeBlindSurveyTopic);
+    showToastNotification('Vote reset. Pick an argument!');
+  }
+  window.resetBlindSurvey = resetBlindSurvey;
+
+  function toggleBlindSurvey() {
+    var body = document.getElementById('blindSurveyBody');
+    var chevron = document.getElementById('blindSurveyChevron');
     if (!body) return;
-    if (body.style.display === 'none') {
+
+    var isHidden = body.style.display === 'none';
+    if (isHidden) {
       body.style.display = 'block';
       if (chevron) chevron.textContent = '▴';
-      try { localStorage.setItem('userCheatSheetCollapsed', 'false'); } catch (e) {}
+      try { localStorage.setItem('userBlindSurveyCollapsed', 'false'); } catch (e) {}
+      showToastNotification('Expanded Blind Stance Survey');
     } else {
       body.style.display = 'none';
       if (chevron) chevron.textContent = '▾';
-      try { localStorage.setItem('userCheatSheetCollapsed', 'true'); } catch (e) {}
+      try { localStorage.setItem('userBlindSurveyCollapsed', 'true'); } catch (e) {}
+      showToastNotification('Collapsed Blind Stance Survey');
     }
   }
-  window.toggleCheatSheet = toggleCheatSheet;
+  window.toggleBlindSurvey = toggleBlindSurvey;
+
+  function bindBlindSurveyEvents() {
+    var pills = document.querySelectorAll('.blind-topic-pill');
+    for (var i = 0; i < pills.length; i++) {
+      (function(idx, el) {
+        el.setAttribute('data-topic-index', String(idx));
+        el.onclick = function(e) {
+          selectBlindSurveyTopic(idx, el);
+        };
+        el.addEventListener('touchend', function(e) {
+          selectBlindSurveyTopic(idx, el);
+        }, { passive: true });
+      })(i, pills[i]);
+    }
+  }
+  window.bindBlindSurveyEvents = bindBlindSurveyEvents;
 
 
   function initOnReady() {
@@ -25408,13 +25629,21 @@ function cleanPhotoCredit(credit, sourceName) {
 
     updateRelativeTimestamps();
     refreshLiveTicker();
-    renderCheatSheetTopic(0);
     try {
-      if (localStorage.getItem('userCheatSheetCollapsed') === 'true') {
-        var csBody = document.getElementById('cheatSheetBody');
-        var csChev = document.getElementById('cheatSheetChevron');
-        if (csBody) csBody.style.display = 'none';
-        if (csChev) csChev.textContent = '▾';
+      var savedVotes = localStorage.getItem('userBlindSurveyVotes');
+      if (savedVotes) {
+        _userSurveyVotes = JSON.parse(savedVotes) || {};
+      }
+    } catch (e) {}
+
+    renderBlindSurveyTopic(0);
+    bindBlindSurveyEvents();
+    try {
+      if (localStorage.getItem('userBlindSurveyCollapsed') === 'true') {
+        var bsBody = document.getElementById('blindSurveyBody');
+        var bsChev = document.getElementById('blindSurveyChevron');
+        if (bsBody) bsBody.style.display = 'none';
+        if (bsChev) bsChev.textContent = '▾';
       }
     } catch (e) {}
     loadLiveStories(false);

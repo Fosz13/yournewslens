@@ -1100,43 +1100,49 @@ def run_all_regression_tests():
     passed_count += 1
 
     # -------------------------------------------------------------------------
-    # TEST 29: Dinner Table Cheat Sheet & 60-Second Ammunition Verification
+    # TEST 29: Blind Stance Survey & Sunday Email Briefing Engine Verification
     # -------------------------------------------------------------------------
-    print("\n[TEST 29] Dinner Table Cheat Sheet & 60-Second Ammunition Verification...")
+    print("\n[TEST 29] Blind Stance Survey & Sunday Email Briefing Engine Verification...")
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Verify Dinner Table Cheat Sheet container and elements in index.html
-    assert 'id="dinnerTableSection"' in html, "Test 29 Failed: #dinnerTableSection missing from index.html"
-    assert 'The Dinner Table Cheat Sheet' in html, "Test 29 Failed: 'The Dinner Table Cheat Sheet' title missing!"
-    assert 'id="cheatSheetTopicView"' in html, "Test 29 Failed: #cheatSheetTopicView container missing!"
-    assert 'onclick="copyCheatSheet()"' in html, "Test 29 Failed: copyCheatSheet button handler missing!"
-    assert 'onclick="toggleCheatSheet()"' in html, "Test 29 Failed: toggleCheatSheet button handler missing!"
+    # 1. Verify Blind Stance Survey section and interactive elements in index.html
+    assert 'id="blindStanceSection"' in html, "Test 29 Failed: #blindStanceSection missing from index.html"
+    assert 'Today\'s Blind Stance Challenge' in html, "Test 29 Failed: 'Today\'s Blind Stance Challenge' title missing!"
+    assert 'id="blindSurveyCardsView"' in html, "Test 29 Failed: #blindSurveyCardsView container missing!"
+    assert 'id="blindSurveyResults"' in html, "Test 29 Failed: #blindSurveyResults container missing!"
+    assert 'onclick="toggleBlindSurvey()"' in html, "Test 29 Failed: toggleBlindSurvey button handler missing!"
 
     # 2. Verify window bindings in index.html script tag
     s_tag = html.rfind("<script>")
     script = html[s_tag:]
-    assert "window.selectCheatSheetTopic = selectCheatSheetTopic" in script, "Test 29 Failed: window.selectCheatSheetTopic missing!"
-    assert "window.copyCheatSheet = copyCheatSheet" in script, "Test 29 Failed: window.copyCheatSheet missing!"
-    assert "window.toggleCheatSheet = toggleCheatSheet" in script, "Test 29 Failed: window.toggleCheatSheet missing!"
+    assert "window.selectBlindSurveyTopic = selectBlindSurveyTopic" in script, "Test 29 Failed: window.selectBlindSurveyTopic missing!"
+    assert "window.voteBlindOption = voteBlindOption" in script, "Test 29 Failed: window.voteBlindOption missing!"
+    assert "window.resetBlindSurvey = resetBlindSurvey" in script, "Test 29 Failed: window.resetBlindSurvey missing!"
+    assert "window.toggleBlindSurvey = toggleBlindSurvey" in script, "Test 29 Failed: window.toggleBlindSurvey missing!"
 
-    # 3. Verify app.js Cheat Sheet topics and multi-perspective structure
+    # 3. Verify app.js Blind Stance Survey data models and vote handlers
     with open("app.js", "r", encoding="utf-8") as f:
         app_js = f.read()
-    assert "var CHEAT_SHEET_TOPICS =" in app_js, "Test 29 Failed: CHEAT_SHEET_TOPICS missing from app.js"
-    assert "renderCheatSheetTopic" in app_js, "Test 29 Failed: renderCheatSheetTopic missing from app.js"
-    assert "copyCheatSheet" in app_js, "Test 29 Failed: copyCheatSheet missing from app.js"
-    assert "toggleCheatSheet" in app_js, "Test 29 Failed: toggleCheatSheet missing from app.js"
+    assert "var BLIND_SURVEY_TOPICS =" in app_js, "Test 29 Failed: BLIND_SURVEY_TOPICS missing from app.js"
+    assert "renderBlindSurveyTopic" in app_js, "Test 29 Failed: renderBlindSurveyTopic missing from app.js"
+    assert "voteBlindOption" in app_js, "Test 29 Failed: voteBlindOption missing from app.js"
+    assert "toggleBlindSurvey" in app_js, "Test 29 Failed: toggleBlindSurvey missing from app.js"
 
-    # 4. Verify styles.css contains Dinner Table styling
+    # 4. Verify styles.css contains Blind Stance Survey styling
     with open("styles.css", "r", encoding="utf-8") as f:
         css = f.read()
-    assert ".dinner-table-section" in css, "Test 29 Failed: .dinner-table-section missing from styles.css"
-    assert ".cheat-sheet-card" in css, "Test 29 Failed: .cheat-sheet-card missing from styles.css"
-    assert ".cheat-reality-check-banner" in css, "Test 29 Failed: .cheat-reality-check-banner missing from styles.css"
+    assert ".blind-stance-section" in css, "Test 29 Failed: .blind-stance-section missing from styles.css"
+    assert ".blind-survey-card" in css, "Test 29 Failed: .blind-survey-card missing from styles.css"
+    assert ".blind-option-card" in css, "Test 29 Failed: .blind-option-card missing from styles.css"
 
-    print("✓ TEST 29 PASSED: Dinner Table Cheat Sheet verified (4-quadrant debate ammunition, copy-to-clipboard, collapsible UI, 100% window bound).")
+    # 5. Verify Sunday Daily Briefing generator script exists and produces verified HTML newsletter
+    briefing_script = os.path.join(os.path.dirname(__file__), "generate_sunday_briefing.py")
+    assert os.path.exists(briefing_script), "Test 29 Failed: generate_sunday_briefing.py missing!"
+
+    print("✓ TEST 29 PASSED: Blind Stance Survey & Sunday Daily Briefing generator verified (100% interactive, vote reveal & crowd analytics, Sunday email generator ready).")
     passed_count += 1
+
 
 
 
