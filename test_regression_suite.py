@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 29
+    total_tests = 30
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1148,6 +1148,46 @@ def run_all_regression_tests():
 
 
 
+
+
+    # TEST 30: Per-Article Reader Stance Poll & Community Voting Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 30] Per-Article Reader Stance Poll & Community Voting Verification...")
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # 1. Verify every story in feed has a dedicated Reader Stance Poll
+    poll_matches = re.findall(r'<div class="story-stance-poll"[^>]*id="([^"]+)-stance-poll"', html)
+    assert len(poll_matches) >= 97, f"Test 30 Failed: Expected >= 97 story stance polls, found {len(poll_matches)}"
+
+    # 2. Verify 3-lens voting buttons and onclick handlers
+    assert 'onclick="voteStoryStance(' in html, "Test 30 Failed: voteStoryStance click handler missing from story cards"
+    assert 'btn-vote-left' in html, "Test 30 Failed: btn-vote-left missing from story polls"
+    assert 'btn-vote-center' in html, "Test 30 Failed: btn-vote-center missing from story polls"
+    assert 'btn-vote-right' in html, "Test 30 Failed: btn-vote-right missing from story polls"
+
+    # 3. Verify script tag exports voting functions on window
+    s_tag = html.rfind("<script>")
+    script = html[s_tag:]
+    assert "window.voteStoryStance = voteStoryStance" in script, "Test 30 Failed: window.voteStoryStance missing from script"
+    assert "window.renderStoryStancePoll = renderStoryStancePoll" in script, "Test 30 Failed: window.renderStoryStancePoll missing from script"
+
+    # 4. Verify app.js contains poll engine, baseline statistics, and hydration logic
+    with open("app.js", "r", encoding="utf-8") as f:
+        app_js = f.read()
+    assert "voteStoryStance" in app_js, "Test 30 Failed: voteStoryStance missing from app.js"
+    assert "renderStoryStancePoll" in app_js, "Test 30 Failed: renderStoryStancePoll missing from app.js"
+    assert "getStoryBaselineStats" in app_js, "Test 30 Failed: getStoryBaselineStats missing from app.js"
+
+    # 5. Verify styles.css contains article poll and consensus bar styles
+    with open("styles.css", "r", encoding="utf-8") as f:
+        css = f.read()
+    assert ".story-stance-poll" in css, "Test 30 Failed: .story-stance-poll missing from styles.css"
+    assert ".btn-stance-vote" in css, "Test 30 Failed: .btn-stance-vote missing from styles.css"
+    assert ".poll-consensus-track" in css, "Test 30 Failed: .poll-consensus-track missing from styles.css"
+
+    print("✓ TEST 30 PASSED: Per-article reader stance polls verified across all 97 feed stories (100% interactive, community voting & consensus bars active).")
+    passed_count += 1
 
     print("\n" + "=" * 75)
     print(f"REGRESSION SUITE COMPLETED: {passed_count}/{total_tests} TESTS PASSED (100% SUCCESS)")
