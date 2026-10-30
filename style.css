@@ -103,12 +103,6 @@ body {
     font-size: 0.95rem;
 }
 
-.loading-state, .error-state {
-    text-align: center;
-    padding: 3rem;
-    color: var(--accent-color);
-}
-
 footer {
     text-align: center;
     padding: 2rem;
