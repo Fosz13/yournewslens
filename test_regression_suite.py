@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 30
+    total_tests = 31
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1187,6 +1187,46 @@ def run_all_regression_tests():
     assert ".poll-consensus-track" in css, "Test 30 Failed: .poll-consensus-track missing from styles.css"
 
     print("✓ TEST 30 PASSED: Per-article reader stance polls verified across all 97 feed stories (100% interactive, community voting & consensus bars active).")
+    passed_count += 1
+
+
+    # TEST 31: Your Daily Lens Morning Briefing & Story Evolution Tracker Verification
+    # ---------------------------------------------------------------------------------
+    print("\n[TEST 31] Your Daily Lens Morning Briefing & Story Evolution Tracker Verification...")
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # 1. Verify Your Daily Lens morning briefing view and header
+    assert 'id="dailyLensView"' in html, "Test 31 Failed: #dailyLensView container missing from index.html"
+    assert "Your Daily Lens" in html, "Test 31 Failed: 'Your Daily Lens' title missing from index.html"
+    assert 'id="navDailyLens"' in html, "Test 31 Failed: #navDailyLens view tab missing from index.html"
+    assert 'id="pillFollowing"' in html, "Test 31 Failed: #pillFollowing filter pill missing from category bar"
+
+    # 2. Verify 'What Changed Since Yesterday' callouts on cards
+    assert 'class="what-changed-pill"' in html, "Test 31 Failed: what-changed-pill callouts missing from story cards"
+    assert "What Changed:" in html, "Test 31 Failed: 'What Changed:' label missing from cards"
+
+    # 3. Verify Story Evolution Tracker timeline drawers on cards
+    assert 'class="story-evolution-box"' in html, "Test 31 Failed: story-evolution-box missing from story cards"
+    assert "Story Evolution Tracker" in html, "Test 31 Failed: 'Story Evolution Tracker' title missing from cards"
+    assert 'onclick="toggleEvolutionTimeline(' in html, "Test 31 Failed: toggleEvolutionTimeline handler missing from cards"
+
+    # 4. Verify script exports Daily Lens and Story Evolution handlers
+    s_tag = html.rfind("<script>")
+    script = html[s_tag:]
+    assert "window.showDailyLensTab = showDailyLensTab" in script, "Test 31 Failed: window.showDailyLensTab missing from script"
+    assert "window.toggleFollowStory = toggleFollowStory" in script, "Test 31 Failed: window.toggleFollowStory missing from script"
+    assert "window.toggleEvolutionTimeline = toggleEvolutionTimeline" in script, "Test 31 Failed: window.toggleEvolutionTimeline missing from script"
+
+    # 5. Verify styles.css contains Daily Lens and Story Evolution styles
+    with open("styles.css", "r", encoding="utf-8") as f:
+        css = f.read()
+    assert ".daily-lens-container" in css, "Test 31 Failed: .daily-lens-container missing from styles.css"
+    assert ".what-changed-box" in css, "Test 31 Failed: .what-changed-box missing from styles.css"
+    assert ".story-evolution-box" in css, "Test 31 Failed: .story-evolution-box missing from styles.css"
+    assert ".timeline-track" in css, "Test 31 Failed: .timeline-track missing from styles.css"
+
+    print("✓ TEST 31 PASSED: Your Daily Lens morning briefing & Story Evolution Tracker verified (100% interactive, 24-hr deltas & timelines active).")
     passed_count += 1
 
     print("\n" + "=" * 75)

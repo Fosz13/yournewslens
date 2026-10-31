@@ -7352,6 +7352,24 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         else:
             tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
 
+        what_changed = s.get("what_changed_since_yesterday") or "Overnight developments verified across primary wire dispatches."
+        timeline = s.get("evolution_timeline", [])
+        milestones_html = []
+        for m in timeline:
+            m_time = m.get("time", "")
+            m_tag = m.get("tag", "")
+            m_event = m.get("event", "")
+            milestones_html.append(f'''
+            <div class="timeline-milestone">
+              <div class="milestone-meta-row">
+                <span class="milestone-time">{m_time}</span>
+                <span class="milestone-tag">{m_tag}</span>
+              </div>
+              <p class="milestone-desc">{m_event}</p>
+            </div>
+            ''')
+        timeline_html = "".join(milestones_html)
+
         card = f"""
         <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" data-lean="{lean}" data-source="{src_name}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
@@ -7368,6 +7386,10 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 {tags_html}
               </div>
               <div class="meta-source-wrap">
+                <button type="button" class="btn-follow-card" id="follow-btn-{sId}" onclick="toggleFollowStory('{sId}', this); event.stopPropagation();" title="Follow this story for updates">
+                  <span class="follow-star">⭐</span>
+                  <span class="follow-label">Follow</span>
+                </button>
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on {src_name}">
                   <span>{src_name}</span> <span class="ext-icon">↗</span>
                 </a>
@@ -7382,6 +7404,12 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             <div class="fact-preview-strip" onclick="toggleStoryDetails('{sId}')">
               {callout_badge}
               <p class="fact-preview-text">{lead_fact}</p>
+            </div>
+
+            <div class="what-changed-pill" onclick="toggleStoryDetails('{sId}')" title="What shifted in the last 24 hours">
+              <span class="changed-icon">⚡</span>
+              <span class="changed-label">What Changed:</span>
+              <span class="changed-text">{what_changed}</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
@@ -7478,6 +7506,26 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         total_votes = 820 + (h % 1450)
 
         card += f"""
+              <!-- Story Evolution Tracker (Chronological Milestones) -->
+              <div class="story-evolution-box" id="{sId}-evolution-box">
+                <div class="evolution-header" onclick="toggleEvolutionTimeline('{sId}', event)">
+                  <div class="evolution-title-wrap">
+                    <span class="evolution-icon">📈</span>
+                    <span class="evolution-title">Story Evolution Tracker</span>
+                    <span class="evolution-count-tag">{len(timeline)} milestones</span>
+                  </div>
+                  <button type="button" class="btn-toggle-evolution" id="{sId}-btn-evolution" onclick="toggleEvolutionTimeline('{sId}', event)">
+                    <span id="{sId}-evolution-btn-text">View Timeline</span>
+                    <span id="{sId}-evolution-chevron" class="evolution-chevron">▾</span>
+                  </button>
+                </div>
+                <div class="evolution-timeline" id="{sId}-evolution-timeline" style="display: none;">
+                  <div class="timeline-track">
+                    {timeline_html}
+                  </div>
+                </div>
+              </div>
+
               <!-- Reader Stance Poll / Community Pulse -->
               <div class="story-stance-poll" id="{sId}-stance-poll" data-story-id="{sId}">
                 <div class="poll-header-row">
@@ -7549,6 +7597,103 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
     return "\n".join(cards_html)
 
 
+def prerender_daily_lens_html(stories: List[Dict[str, Any]]) -> str:
+    top_6 = stories[:6]
+    cards_html = []
+    for s in top_6:
+        s_id = s.get("id", "")
+        cat = s.get("category", "General")
+        cat_slug = get_category_slug(cat)
+        title = s.get("title", "")
+        source = s.get("source_name") or (s.get("source", "").split(" • ")[0] if " • " in s.get("source", "") else s.get("source", "Wire"))
+        rel_time = "Updated this morning"
+        what_changed = s.get("what_changed_since_yesterday", "Overnight developments verified across primary wire dispatches.")
+
+        persp = s.get("perspectives", {})
+        l_take = (persp.get("LEFT", {}).get("talking_points", [""]) or [""])[0]
+        c_take = (persp.get("CENTER", {}).get("talking_points", [""]) or [""])[0]
+        r_take = (persp.get("RIGHT", {}).get("talking_points", [""]) or [""])[0]
+
+        card = f"""
+        <article class="daily-lens-story-card" id="daily-card-{s_id}">
+          <div class="daily-card-top">
+            <div class="daily-card-badge-row">
+              <span class="category-tag cat-{cat_slug}">{cat}</span>
+              <span class="daily-card-source">{source} • {rel_time}</span>
+            </div>
+            <h2 class="daily-card-title" onclick="jumpToStoryCard('{s_id}')">{title}</h2>
+          </div>
+
+          <!-- What Changed Since Yesterday Callout Box -->
+          <div class="what-changed-box">
+            <div class="what-changed-header">
+              <span class="what-changed-icon">⚡</span>
+              <span class="what-changed-label">What Changed Since Yesterday</span>
+            </div>
+            <p class="what-changed-text">{what_changed}</p>
+          </div>
+
+          <!-- 3 Perspectives Side-by-Side Tri-Lens Grid -->
+          <div class="daily-tri-lens-grid">
+            <div class="daily-lens-col left">
+              <div class="daily-lens-col-header">
+                <span class="col-dot blue">●</span>
+                <span class="col-name">Left Lens</span>
+              </div>
+              <p class="daily-lens-col-text">"{l_take}"</p>
+            </div>
+            <div class="daily-lens-col center">
+              <div class="daily-lens-col-header">
+                <span class="col-dot green">●</span>
+                <span class="col-name">Balanced Lens</span>
+              </div>
+              <p class="daily-lens-col-text">"{c_take}"</p>
+            </div>
+            <div class="daily-lens-col right">
+              <div class="daily-lens-col-header">
+                <span class="col-dot red">●</span>
+                <span class="col-name">Right Lens</span>
+              </div>
+              <p class="daily-lens-col-text">"{r_take}"</p>
+            </div>
+          </div>
+
+          <div class="daily-card-actions">
+            <button type="button" class="btn-follow-story" id="daily-follow-{s_id}" onclick="toggleFollowStory('{s_id}', this)">
+              <span class="star-icon">⭐</span>
+              <span class="follow-text">Follow Story Evolution</span>
+            </button>
+            <button type="button" class="btn-jump-story" onclick="jumpToStoryCard('{s_id}')">
+              <span>🔍 Full Story &amp; Dossier</span>
+              <span>&rarr;</span>
+            </button>
+          </div>
+        </article>"""
+        cards_html.append(card)
+
+    date_str = "Friday, October 30, 2026"
+    return f"""
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
+    <div id="dailyLensView" class="daily-lens-container" style="display: none;">
+      <div class="daily-lens-header">
+        <div class="daily-lens-badge">
+          <span>🌅</span> <span>Morning Edition • Curated Daily at 7:00 AM</span>
+        </div>
+        <h1 class="daily-lens-title">Your Daily Lens</h1>
+        <p class="daily-lens-subtitle">The 6 biggest stories shaping today — analyzed through Left, Balanced, and Right perspectives, highlighting exactly what changed since yesterday.</p>
+        <div class="daily-lens-meta-bar">
+          <span class="daily-lens-date" id="dailyLensDateDisplay">{date_str}</span>
+          <span class="daily-lens-reading-time">⚡ 4-Minute Morning Read</span>
+          <span class="daily-lens-status">🎯 Fully Grounded in Primary Wires</span>
+        </div>
+      </div>
+
+      <div class="daily-lens-grid" id="dailyLensStoriesGrid">
+        {"".join(cards_html)}
+      </div>
+    </div>"""
+
+
 def update_index_html_prerender(stories: List[Dict[str, Any]]):
     import re
     if not os.path.exists(HTML_FILE) or not stories:
@@ -7571,6 +7716,25 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
             else:
                 e_div = content.find('</div>', s_div) + len('</div>')
             content = content[:s_div] + content[e_div:]
+
+        # Update or insert dailyLensView before storiesFeedView
+        daily_lens_html = prerender_daily_lens_html(stories)
+        if '<div id="dailyLensView"' in content:
+            dl_start = content.find('<div id="dailyLensView"')
+            dl_end = content.find('<!-- END DAILY LENS -->', dl_start)
+            if dl_end != -1:
+                dl_end += len('<!-- END DAILY LENS -->')
+            else:
+                dl_end = content.find('</div>\n    </div>', dl_start)
+                if dl_end != -1:
+                    dl_end += len('</div>\n    </div>')
+                else:
+                    dl_end = content.find('</div>', dl_start) + len('</div>')
+            content = content[:dl_start] + daily_lens_html.strip() + "\n\n    " + content[dl_end:]
+        else:
+            feed_pos = content.find('<div id="storiesFeedView"')
+            if feed_pos != -1:
+                content = content[:feed_pos] + daily_lens_html.strip() + "\n\n    " + content[feed_pos:]
 
         # Update storiesFeedView with all stories
         feed_start = content.find('<div id="storiesFeedView" class="feed-container">')

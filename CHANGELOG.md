@@ -1,5 +1,24 @@
 # Your News Lens — Changelog
 
+## [v12.0] - 2026-10-30 — Your Daily Lens Morning Briefing, What Changed Since Yesterday & Story Evolution Tracker
+- **Your Daily Lens Morning Briefing (`#navDailyLens`, `#dailyLensView`)**:
+  - Implemented a dedicated high-retention morning edition accessible via the top view tabs (`🌅 Your Daily Lens`).
+  - Features the 6 marquee stories of the day across National Politics, College Football/Sports, World Affairs, Economy, Science & Tech, and Tampa Bay Local News.
+  - **⚡ What Changed Since Yesterday**: Dedicated callout on each story explaining the exact 24-hour delta (overnight breakthroughs, votes, contract audits, or new data).
+  - **Tri-Lens Perspective Comparison**: Side-by-side comparative grid showing the strongest Left, Balanced, and Right arguments at a single glance.
+  - **Quick Action Row**: 1-tap `⭐ Follow Story Evolution` button and `🔍 Full Story & Dossier` link jumping straight to the detailed article in the magazine feed.
+- **Story Evolution Tracker (`.story-evolution-box`) Across All Stories**:
+  - Added an expandable chronological development tracker to every story card in the database and feed.
+  - Shows 3 to 4 sequential timeline milestones with timestamps (e.g. *Yesterday 3:15 PM*, *Overnight*, *Today 9:30 AM*, *Next Milestone*), development tags, and verified descriptions.
+- **Follow Story Engine (`⭐ Follow` / `★ Following`) & Following Feed**:
+  - Readers can follow any developing story with 1 tap. Followed status is stored persistently in `localStorage.getItem('userFollowedStories')`.
+  - Added a dedicated `⭐ Following (<span id="followingCountBadge">N</span>)` filter pill in the category bar.
+  - Clicking `⭐ Following` displays only the stories the user is tracking, complete with their live evolution timelines (and an empty state if no stories are tracked yet).
+  - Main magazine cards also feature an inline `⚡ What Changed:` pill right on the card face.
+- **Automated Verification**:
+  - Added `TEST 31` to `test_regression_suite.py` verifying `#dailyLensView`, `#navDailyLens`, `#pillFollowing`, `.what-changed-pill`, `.story-evolution-box`, window handlers (`showDailyLensTab`, `toggleFollowStory`, `toggleEvolutionTimeline`), and CSS rules.
+  - All 31 regression tests passing (100% success rate).
+
 ## [v11.12] - 2026-10-30 — Tri-Layer Strict Visibility Enforcement (Guaranteed Main-Page-Only Challenge)
 - **Tri-Layer CSS & JS Visibility Enforcement**:
   - **CSS Priority Rule**: Added `body.filtered-category #blindStanceSection, body.community-mode #blindStanceSection, body.searching-mode #blindStanceSection { display: none !important; }` in `styles.css` to physically prevent the challenge from displaying under any non-main feed context.
