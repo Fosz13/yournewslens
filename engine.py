@@ -7354,6 +7354,13 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
         what_changed = s.get("what_changed_since_yesterday") or "Overnight developments verified across primary wire dispatches."
         timeline = s.get("evolution_timeline", [])
+        ct = s.get("controversial_take", {})
+        ct_statement = ct.get("statement") or f"Public policy surrounding {title[:50]} does far more harm to working taxpayers than good."
+        ct_agree_lbl = ct.get("agree_label") or "Agree"
+        ct_disagree_lbl = ct.get("disagree_label") or "Disagree"
+        ct_agree_pct = ct.get("baseline_agree_pct", 62)
+        ct_disagree_pct = ct.get("baseline_disagree_pct", 38)
+        ct_votes = ct.get("total_votes", 2840)
         milestones_html = []
         for m in timeline:
             m_time = m.get("time", "")
@@ -7526,54 +7533,46 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
               </div>
 
-              <!-- Reader Stance Poll / Community Pulse -->
-              <div class="story-stance-poll" id="{sId}-stance-poll" data-story-id="{sId}">
-                <div class="poll-header-row">
-                  <div class="poll-badge-label">
-                    <span class="poll-badge-icon">🗳️</span>
-                    <span class="poll-badge-title">Reader Stance Poll</span>
+              <!-- The Controversial Take (Quick Polarizing Poll) -->
+              <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}">
+                <div class="take-header-bar">
+                  <div class="take-badge-group">
+                    <span class="take-badge-fire">🔥</span>
+                    <span class="take-badge-title">The Controversial Take</span>
+                    <span class="take-polarizing-tag">⚡ Most Polarizing Debate</span>
                   </div>
-                  <span class="poll-vote-prompt" id="{sId}-poll-prompt">Which perspective makes more sense to you?</span>
+                  <span class="take-vote-status" id="{sId}-take-status">Vote to see crowd consensus</span>
                 </div>
 
-                <div class="poll-buttons-grid">
-                  <button type="button" class="btn-stance-vote btn-vote-left" id="{sId}-vote-btn-left" onclick="voteStoryStance('{sId}', 'LEFT')">
-                    <span class="vote-lens-icon">🔵</span>
-                    <span class="vote-lens-name">Left / Progressive</span>
-                    <span class="vote-pct-tag" id="{sId}-pct-left">{l_bias}%</span>
+                <div class="take-statement-box">
+                  <p class="take-statement-text">“{ct_statement}”</p>
+                </div>
+
+                <div class="take-vote-actions">
+                  <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" onclick="voteControversialTake('{sId}', 'AGREE')">
+                    <span class="vote-icon">🔥</span>
+                    <span class="vote-label">{ct_agree_lbl}</span>
+                    <span class="vote-pct" id="{sId}-pct-agree">{ct_agree_pct}%</span>
                   </button>
-                  <button type="button" class="btn-stance-vote btn-vote-center" id="{sId}-vote-btn-center" onclick="voteStoryStance('{sId}', 'CENTER')">
-                    <span class="vote-lens-icon">🟢</span>
-                    <span class="vote-lens-name">Balanced / Centrist</span>
-                    <span class="vote-pct-tag" id="{sId}-pct-center">{c_bias}%</span>
-                  </button>
-                  <button type="button" class="btn-stance-vote btn-vote-right" id="{sId}-vote-btn-right" onclick="voteStoryStance('{sId}', 'RIGHT')">
-                    <span class="vote-lens-icon">🔴</span>
-                    <span class="vote-lens-name">Right / Conservative</span>
-                    <span class="vote-pct-tag" id="{sId}-pct-right">{r_bias}%</span>
+                  <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" onclick="voteControversialTake('{sId}', 'DISAGREE')">
+                    <span class="vote-icon">❄️</span>
+                    <span class="vote-label">{ct_disagree_lbl}</span>
+                    <span class="vote-pct" id="{sId}-pct-disagree">{ct_disagree_pct}%</span>
                   </button>
                 </div>
 
-                <div class="poll-consensus-bar-wrap" id="{sId}-poll-bar-wrap" style="display: none;">
-                  <div class="poll-consensus-track">
-                    <div class="poll-fill-left" id="{sId}-fill-left" style="width: {l_bias}%;"></div>
-                    <div class="poll-fill-center" id="{sId}-fill-center" style="width: {c_bias}%;"></div>
-                    <div class="poll-fill-right" id="{sId}-fill-right" style="width: {r_bias}%;"></div>
-                  </div>
-                  <div class="poll-consensus-legend">
-                    <span class="legend-item left"><span class="legend-dot blue">●</span> <span id="{sId}-legend-left">{l_bias}% Left</span></span>
-                    <span class="legend-item center"><span class="legend-dot green">●</span> <span id="{sId}-legend-center">{c_bias}% Balanced</span></span>
-                    <span class="legend-item right"><span class="legend-dot red">●</span> <span id="{sId}-legend-right">{r_bias}% Right</span></span>
-                  </div>
+                <!-- Live Polarizing Consensus Track -->
+                <div class="take-consensus-track" id="{sId}-take-track" style="display: none;">
+                  <div class="take-fill-agree" id="{sId}-fill-agree" style="width: {ct_agree_pct}%;"></div>
+                  <div class="take-fill-disagree" id="{sId}-fill-disagree" style="width: {ct_disagree_pct}%;"></div>
                 </div>
 
-                <div class="poll-footer-meta" id="{sId}-poll-footer" style="display: none;">
-                  <span class="poll-recorded-badge" id="{sId}-recorded-badge">✓ Your vote recorded</span>
-                  <span class="poll-votes-total" id="{sId}-votes-total">{total_votes:,} reader votes</span>
+                <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
+                  <span class="take-voted-msg" id="{sId}-voted-msg">✓ Your vote recorded</span>
+                  <span class="take-total-votes" id="{sId}-total-votes">{ct_votes:,} readers voted</span>
                 </div>
-              </div>"""
+              </div>
 
-        card += f"""
               <div class="card-bottom-actions">
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
                   <span>📖</span>
@@ -7701,6 +7700,17 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     try:
         with open(HTML_FILE, "r", encoding="utf-8") as f:
             content = f.read()
+
+                # Clean out any old blindStanceSection or fast inline script from homepage
+        if '<section class="blind-stance-section"' in content:
+            s_blind = content.find('<section class="blind-stance-section"')
+            e_blind = content.find('</section>', s_blind) + len('</section>')
+            content = content[:s_blind] + content[e_blind:]
+
+        if '<!-- Blind Stance Challenge Direct Inline Controller' in content:
+            s_fast = content.find('<!-- Blind Stance Challenge Direct Inline Controller')
+            e_fast = content.find('</script>', s_fast) + len('</script>')
+            content = content[:s_fast] + content[e_fast:]
 
         # Clean out any old top-news-section or vertical dividers
         if '<section class="top-news-section"' in content:

@@ -1100,93 +1100,75 @@ def run_all_regression_tests():
     passed_count += 1
 
     # -------------------------------------------------------------------------
-    # TEST 29: Blind Stance Survey & Sunday Email Briefing Engine Verification
+    # TEST 29: Weekly Email Blind Stance Challenge & Homepage Purge Verification
     # -------------------------------------------------------------------------
-    print("\n[TEST 29] Blind Stance Survey & Sunday Email Briefing Engine Verification...")
+    print("\n[TEST 29] Weekly Email Blind Stance Challenge & Homepage Purge Verification...")
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Verify Blind Stance Survey section and interactive elements in index.html
-    assert 'id="blindStanceSection"' in html, "Test 29 Failed: #blindStanceSection missing from index.html"
-    assert 'Today\'s Blind Stance Challenge' in html, "Test 29 Failed: 'Today\'s Blind Stance Challenge' title missing!"
-    assert 'id="blindSurveyCardsView"' in html, "Test 29 Failed: #blindSurveyCardsView container missing!"
-    assert 'id="blindSurveyResults"' in html, "Test 29 Failed: #blindSurveyResults container missing!"
-    assert 'onclick="toggleBlindSurvey()"' in html, "Test 29 Failed: toggleBlindSurvey button handler missing!"
+    # 1. Verify Blind Stance Challenge is purged from index.html (homepage)
+    assert 'id="blindStanceSection"' not in html, "Test 29 Failed: #blindStanceSection must be purged from index.html"
+    assert "Today's Blind Stance Challenge" not in html, "Test 29 Failed: Today Blind Stance Challenge must be purged from index.html"
 
-    # 2. Verify window bindings in index.html script tag
-    s_tag = html.rfind("<script>")
-    script = html[s_tag:]
-    assert "window.selectBlindSurveyTopic = selectBlindSurveyTopic" in script, "Test 29 Failed: window.selectBlindSurveyTopic missing!"
-    assert "window.voteBlindOption = voteBlindOption" in script, "Test 29 Failed: window.voteBlindOption missing!"
-    assert "window.resetBlindSurvey = resetBlindSurvey" in script, "Test 29 Failed: window.resetBlindSurvey missing!"
-    assert "window.toggleBlindSurvey = toggleBlindSurvey" in script, "Test 29 Failed: window.toggleBlindSurvey missing!"
-
-    # 3. Verify app.js Blind Stance Survey data models and vote handlers
-    with open("app.js", "r", encoding="utf-8") as f:
-        app_js = f.read()
-    assert "var BLIND_SURVEY_TOPICS =" in app_js, "Test 29 Failed: BLIND_SURVEY_TOPICS missing from app.js"
-    assert "renderBlindSurveyTopic" in app_js, "Test 29 Failed: renderBlindSurveyTopic missing from app.js"
-    assert "voteBlindOption" in app_js, "Test 29 Failed: voteBlindOption missing from app.js"
-    assert "toggleBlindSurvey" in app_js, "Test 29 Failed: toggleBlindSurvey missing from app.js"
-
-    # 4. Verify styles.css contains Blind Stance Survey styling
-    with open("styles.css", "r", encoding="utf-8") as f:
-        css = f.read()
-    assert ".blind-stance-section" in css, "Test 29 Failed: .blind-stance-section missing from styles.css"
-    assert ".blind-survey-card" in css, "Test 29 Failed: .blind-survey-card missing from styles.css"
-    assert ".blind-option-card" in css, "Test 29 Failed: .blind-option-card missing from styles.css"
-
-    # 5. Verify Sunday Daily Briefing generator script exists and produces verified HTML newsletter
+    # 2. Verify Sunday Daily Briefing generator script exists and produces verified HTML newsletter
     briefing_script = os.path.join(os.path.dirname(__file__), "generate_sunday_briefing.py")
     assert os.path.exists(briefing_script), "Test 29 Failed: generate_sunday_briefing.py missing!"
 
-    print("✓ TEST 29 PASSED: Blind Stance Survey & Sunday Daily Briefing generator verified (100% interactive, vote reveal & crowd analytics, Sunday email generator ready).")
+    # 3. Verify Sunday Daily Briefing email contains the Weekly Blind Stance Challenge & Cheat Sheets
+    briefing_html_path = os.path.join(os.path.dirname(__file__), "data", "sunday_daily_briefing.html")
+    assert os.path.exists(briefing_html_path), "Test 29 Failed: data/sunday_daily_briefing.html missing!"
+    with open(briefing_html_path, "r", encoding="utf-8") as f:
+        email_html = f.read()
+    assert "Take the Blind Stance Challenge" in email_html or "Blind Stance Challenge" in email_html, "Test 29 Failed: Blind Stance Challenge missing from Sunday email briefing"
+    assert "60-Sec Cheat Sheet" in email_html, "Test 29 Failed: 60-Sec Cheat Sheet missing from Sunday email briefing"
+    assert "https://yournewslens.com" in email_html, "Test 29 Failed: Link back to website missing from Sunday email briefing"
+
+    # 4. Verify styles.css contains controversial take poll styling
+    with open("styles.css", "r", encoding="utf-8") as f:
+        css = f.read()
+    assert ".controversial-take-poll" in css, "Test 29 Failed: .controversial-take-poll missing from styles.css"
+
+    print("✓ TEST 29 PASSED: Blind Stance Challenge successfully delegated to Sunday weekly email briefing and cleanly purged from homepage.")
     passed_count += 1
 
-
-
-
-
-
-
-
-    # TEST 30: Per-Article Reader Stance Poll & Community Voting Verification
     # -------------------------------------------------------------------------
-    print("\n[TEST 30] Per-Article Reader Stance Poll & Community Voting Verification...")
+    # TEST 30: Per-Article Reader Polarizing Controversial Take Poll Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 30] Per-Article Reader Polarizing Controversial Take Poll Verification...")
     with open("index.html", "r", encoding="utf-8") as f:
         html = f.read()
 
-    # 1. Verify every story in feed has a dedicated Reader Stance Poll
-    poll_matches = re.findall(r'<div class="story-stance-poll"[^>]*id="([^"]+)-stance-poll"', html)
-    assert len(poll_matches) >= 97, f"Test 30 Failed: Expected >= 97 story stance polls, found {len(poll_matches)}"
+    # 1. Verify every story in feed has a dedicated Controversial Take Poll
+    poll_matches = re.findall(r'<div class="controversial-take-poll"[^>]*id="([^"]+)-controversial-poll"', html)
+    assert len(poll_matches) >= 97, f"Test 30 Failed: Expected >= 97 controversial take polls, found {len(poll_matches)}"
 
-    # 2. Verify 3-lens voting buttons and onclick handlers
-    assert 'onclick="voteStoryStance(' in html, "Test 30 Failed: voteStoryStance click handler missing from story cards"
-    assert 'btn-vote-left' in html, "Test 30 Failed: btn-vote-left missing from story polls"
-    assert 'btn-vote-center' in html, "Test 30 Failed: btn-vote-center missing from story polls"
-    assert 'btn-vote-right' in html, "Test 30 Failed: btn-vote-right missing from story polls"
+    # 2. Verify Polarizing Agree/Disagree voting buttons and onclick handlers
+    assert 'onclick="voteControversialTake(' in html, "Test 30 Failed: voteControversialTake click handler missing from story cards"
+    assert 'btn-take-agree' in html, "Test 30 Failed: btn-take-agree missing from story polls"
+    assert 'btn-take-disagree' in html, "Test 30 Failed: btn-take-disagree missing from story polls"
+    assert 'The Controversial Take' in html, "Test 30 Failed: 'The Controversial Take' badge missing from story cards"
 
     # 3. Verify script tag exports voting functions on window
     s_tag = html.rfind("<script>")
     script = html[s_tag:]
-    assert "window.voteStoryStance = voteStoryStance" in script, "Test 30 Failed: window.voteStoryStance missing from script"
-    assert "window.renderStoryStancePoll = renderStoryStancePoll" in script, "Test 30 Failed: window.renderStoryStancePoll missing from script"
+    assert "window.voteControversialTake = voteControversialTake" in script, "Test 30 Failed: window.voteControversialTake missing from script"
+    assert "window.renderControversialPoll = renderControversialPoll" in script, "Test 30 Failed: window.renderControversialPoll missing from script"
 
-    # 4. Verify app.js contains poll engine, baseline statistics, and hydration logic
+    # 4. Verify app.js contains controversial take engine, baseline statistics, and hydration logic
     with open("app.js", "r", encoding="utf-8") as f:
         app_js = f.read()
-    assert "voteStoryStance" in app_js, "Test 30 Failed: voteStoryStance missing from app.js"
-    assert "renderStoryStancePoll" in app_js, "Test 30 Failed: renderStoryStancePoll missing from app.js"
-    assert "getStoryBaselineStats" in app_js, "Test 30 Failed: getStoryBaselineStats missing from app.js"
+    assert "voteControversialTake" in app_js, "Test 30 Failed: voteControversialTake missing from app.js"
+    assert "renderControversialPoll" in app_js, "Test 30 Failed: renderControversialPoll missing from app.js"
 
-    # 5. Verify styles.css contains article poll and consensus bar styles
+    # 5. Verify styles.css contains controversial take poll and consensus bar styles
     with open("styles.css", "r", encoding="utf-8") as f:
         css = f.read()
-    assert ".story-stance-poll" in css, "Test 30 Failed: .story-stance-poll missing from styles.css"
-    assert ".btn-stance-vote" in css, "Test 30 Failed: .btn-stance-vote missing from styles.css"
-    assert ".poll-consensus-track" in css, "Test 30 Failed: .poll-consensus-track missing from styles.css"
+    assert ".controversial-take-poll" in css, "Test 30 Failed: .controversial-take-poll missing from styles.css"
+    assert ".take-consensus-track" in css, "Test 30 Failed: .take-consensus-track missing from styles.css"
+    assert ".btn-take-agree" in css, "Test 30 Failed: .btn-take-agree missing from styles.css"
+    assert ".btn-take-disagree" in css, "Test 30 Failed: .btn-take-disagree missing from styles.css"
 
-    print("✓ TEST 30 PASSED: Per-article reader stance polls verified across all 97 feed stories (100% interactive, community voting & consensus bars active).")
+    print("✓ TEST 30 PASSED: Per-article polarizing controversial take polls verified across all 97 feed stories (100% interactive, community voting & consensus bars active).")
     passed_count += 1
 
 

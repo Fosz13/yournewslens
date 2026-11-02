@@ -1,5 +1,21 @@
 # Your News Lens — Changelog
 
+## [v13.0] - 2026-11-02 — Per-Article Polarizing Controversial Take Poll & Sunday Email Blind Challenge Delegation
+- **Delegation of Blind Stance Challenge to Weekly Sunday Email Newsletter**:
+  - Removed the Blind Stance Challenge (`#blindStanceSection`) completely from the website homepage, resolving user feedback that a static daily challenge felt gimmicky and did not update fast enough.
+  - Re-anchored the Blind Stance Challenge as an exclusive weekly subscriber challenge inside the Sunday Daily Briefing email newsletter (`data/sunday_daily_briefing.html` and `generate_sunday_briefing.py`) with direct click-through to YourNewsLens.com.
+  - Purged obsolete DOM elements, fast inline scripts, and inline style overrides from `index.html`.
+- **Per-Article Polarizing Controversial Take Poll Across All Stories (`.controversial-take-poll`)**:
+  - Replaced the previous generic 3-lens poll on article cards with an ultra-engaging, polarizing debate prompt unique to each of the 122+ stories in the database.
+  - **Provocative Debate Prompts**: Every single story features a custom, high-stakes statement (e.g. *“Passing an $895B spending package when the national debt sits at $36 trillion is fiscal treason...”*, *“Billionaire sports franchise owners should never receive public tax dollars to build private stadiums...”*).
+  - **Dynamic Agree/Disagree Voting Actions**: High-contrast, tactile voting buttons (`btn-take-agree`, `btn-take-disagree`) customized with punchy context labels (e.g. `🔥 Agree (100% Taxpayer Waste)` vs `⚡ Disagree (Essential Civic Investment)`).
+  - **Live Crowd Consensus Breakdown**: Instant post-vote animation revealing the split consensus bar (`.take-consensus-track`) with real-time percentage breakdown and voter turnout.
+  - **Persistent LocalStorage State**: Preserves vote selections locally across refreshes (`localStorage.getItem('userControversialVotes')`) and hydrates instantly when expanding story cards or switching categories.
+- **Automated Regression Suite Verification**:
+  - Updated `TEST 29` in `test_regression_suite.py` to confirm the Blind Stance Challenge is properly delegated to the weekly Sunday email newsletter and absent from the homepage.
+  - Updated `TEST 30` to assert that all stories in the magazine feed feature the interactive `.controversial-take-poll` with proper window exports, click handlers, and consensus bars.
+  - Confirmed 100% pass rate across all 31 comprehensive regression tests.
+
 ## [v12.0] - 2026-10-30 — Your Daily Lens Morning Briefing, What Changed Since Yesterday & Story Evolution Tracker
 - **Your Daily Lens Morning Briefing (`#navDailyLens`, `#dailyLensView`)**:
   - Implemented a dedicated high-retention morning edition accessible via the top view tabs (`🌅 Your Daily Lens`).

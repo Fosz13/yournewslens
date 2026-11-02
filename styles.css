@@ -3348,3 +3348,218 @@ body.searching-mode #blindStanceSection {
   margin: 0 auto 18px;
   line-height: 1.5;
 }
+
+
+/* =========================================================================
+   THE CONTROVERSIAL TAKE (QUICK POLARIZING POLL ON EVERY STORY) (v13.0)
+   ========================================================================= */
+.controversial-take-poll {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-left: 4px solid #f59e0b;
+  border-radius: var(--radius-md, 12px);
+  padding: 16px 18px;
+  margin: 16px 0 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] .controversial-take-poll {
+  background: #ffffff;
+  border-color: #fde68a;
+  border-left-color: #d97706;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.take-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.take-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.take-badge-fire {
+  font-size: 16px;
+  animation: pulseFlame 2s infinite ease-in-out;
+}
+
+@keyframes pulseFlame {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.take-badge-title {
+  font-size: 12px;
+  font-weight: 850;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #f59e0b;
+}
+
+[data-theme="light"] .take-badge-title {
+  color: #b45309;
+}
+
+.take-polarizing-tag {
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+[data-theme="light"] .take-polarizing-tag {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.take-vote-status {
+  font-size: 12px;
+  font-weight: 650;
+  color: var(--text-muted);
+}
+
+.take-statement-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+[data-theme="light"] .take-statement-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.take-statement-text {
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.take-vote-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 600px) {
+  .take-vote-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn-take-vote {
+  background: var(--bg-card, #1e293b);
+  border: 1px solid var(--border-medium);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 750;
+  transition: all 0.18s ease;
+  touch-action: manipulation;
+  min-height: 48px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-take-vote:hover {
+  transform: translateY(-1px);
+}
+
+.btn-take-agree:hover {
+  border-color: #f97316;
+  background: rgba(249, 115, 22, 0.12);
+  color: #fdba74;
+}
+
+.btn-take-disagree:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+}
+
+.btn-take-agree.selected-agree {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.28) 0%, rgba(249, 115, 22, 0.28) 100%) !important;
+  border-color: #f97316 !important;
+  color: #fdba74 !important;
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.3) !important;
+}
+
+.btn-take-disagree.selected-disagree {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.28) 0%, rgba(6, 182, 212, 0.28) 100%) !important;
+  border-color: #38bdf8 !important;
+  color: #7dd3fc !important;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.3) !important;
+}
+
+.vote-label {
+  flex: 1;
+  text-align: left;
+}
+
+.vote-pct {
+  font-size: 12px;
+  font-weight: 850;
+  opacity: 0.9;
+}
+
+.take-consensus-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.take-fill-agree {
+  height: 100%;
+  background: linear-gradient(90deg, #ef4444 0%, #f97316 100%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.take-fill-disagree {
+  height: 100%;
+  background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.take-footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  padding-top: 6px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.take-voted-msg {
+  color: #10b981;
+  font-weight: 750;
+}
