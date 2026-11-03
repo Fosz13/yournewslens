@@ -7413,12 +7413,6 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <p class="fact-preview-text">{lead_fact}</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('{sId}')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">{what_changed}</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
               <span class="expand-label" id="{sId}-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="{sId}-chevron">▾</span>

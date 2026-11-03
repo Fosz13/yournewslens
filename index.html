@@ -1142,13 +1142,11 @@ main {
 }
 
 .fact-preview-text {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.55;
+  margin: 0;
+  display: block;
 }
 
 /* ==========================================================================
@@ -3265,16 +3263,7 @@ body.searching-mode #blindStanceSection {
 
 /* Card-Face What Changed Pill */
 .what-changed-pill {
-  background: rgba(245, 158, 11, 0.09);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin: 8px 0 10px;
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.15s ease;
+  display: none !important;
 }
 
 .what-changed-pill:hover {
@@ -3769,6 +3758,8 @@ body.searching-mode #blindStanceSection {
     <!-- Streamlined Bento Magazine Feed -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <div id="dailyLensView" class="daily-lens-container" style="display: none;">
       <div class="daily-lens-header">
         <div class="daily-lens-badge">
@@ -4112,6 +4103,10 @@ body.searching-mode #blindStanceSection {
       </div>
     </div>
 
+    
+
+    
+
     <div id="storiesFeedView" class="feed-container">
 
         <article class="compact-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" data-metro="" data-subcategory="" data-lean="center" data-source="Associated Press Wire" data-publisher-bias="center" data-original-index="0" id="story-senate-appropriations-live-vote">
@@ -4146,13 +4141,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer & Core Reason: The decision was prompted by House and Senate leadership agreed on a statutory top-line $1.65 trillion discretionary spending framework to fund federal agency operations.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Overnight compromise: Senate leaders broke a multi-week stalemate over naval procurement and border technology, securing a 78-19 procedural vote to fast-track the $895B spending package and avert a government shutdown.</span>
+              <p class="fact-preview-text">Direct Answer & Core Reason: House and Senate leadership agreed on a statutory top-line .65 trillion discretionary spending framework to fund federal agency operations and avert a government shutdown.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
@@ -4169,7 +4158,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-senate-appropriations-live-vote-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer & Core Reason: The decision was prompted by House and Senate leadership agreed on a statutory top-line $1.65 trillion discretionary spending framework to fund federal agency operations.</li><li>The agreement allocates $886 billion for national defense readiness and $704 billion for non-defense domestic discretionary programs.</li><li>Lawmakers face a tight legislative calendar to draft and pass 12 individual agency appropriations bills before temporary stopgap funding expires.</li><li>Congressional budget analysts project that failing to enact full-year appropriations by statutory deadlines would trigger automatic across-the-board sequestration cuts.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer & Core Reason: House and Senate leadership agreed on a statutory top-line .65 trillion discretionary spending framework to fund federal agency operations and avert a government shutdown.</li><li>The agreement allocates $886 billion for national defense readiness and $704 billion for non-defense domestic discretionary programs.</li><li>Lawmakers face a tight legislative calendar to draft and pass 12 individual agency appropriations bills before temporary stopgap funding expires.</li><li>Congressional budget analysts project that failing to enact full-year appropriations by statutory deadlines would trigger automatic across-the-board sequestration cuts.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-senate-appropriations-live-vote-facts-dossier" style="display: none;">
@@ -4419,13 +4408,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer & Season Stakes: High-profile coaching battles and sideline strategy decisions across major Power Four programs are dramatically shifting conference championship races and playoff seeding.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Buyout records released: Commission financial documents confirmed total dead-money buyouts across six dismissed head coaches surpassed $180M, accelerating calls for a 24-team playoff format under the $20.5M school roster cap.</span>
+              <p class="fact-preview-text">Direct Answer & Top 25 Stakes: High-profile coaching battles, dead-money buyout pressures exceeding $180M, and key Power Four sideline matchups are directly shifting conference championship races and 12-team playoff seeding.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cfb-six-coaching-buyouts')">
@@ -4442,7 +4425,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-cfb-six-coaching-buyouts-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer & Season Stakes: High-profile coaching battles and sideline strategy decisions across major Power Four programs are dramatically shifting conference championship races and playoff seeding.</li><li>Revenue-Sharing Squeeze: Under the landmark $20.5 million annual school revenue-sharing cap taking effect in college athletics, athletic directors must weigh paying tens of millions in dead-money buyouts against funding competitive NIL and transfer-portal rosters.</li><li>Booster & Television Leverage: While SEC and Big Ten conference television distributions exceed $60 million per school annually, university presidents require billionaire booster guarantees before triggering multi-year contract terminations.</li><li>Compressed Carousel Timeline: The early December high school signing period and the winter NCAA transfer portal window force programs to finalize coaching changes in late November rather than waiting until after bowl games.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer & Top 25 Stakes: High-profile coaching battles, dead-money buyout pressures exceeding $180M, and key Power Four sideline matchups are directly shifting conference championship races and 12-team playoff seeding.</li><li>Revenue-Sharing Squeeze: Under the landmark $20.5 million annual school revenue-sharing cap taking effect in college athletics, athletic directors must weigh paying tens of millions in dead-money buyouts against funding competitive NIL and transfer-portal rosters.</li><li>Booster & Television Leverage: While SEC and Big Ten conference television distributions exceed $60 million per school annually, university presidents require billionaire booster guarantees before triggering multi-year contract terminations.</li><li>Compressed Carousel Timeline: The early December high school signing period and the winter NCAA transfer portal window force programs to finalize coaching changes in late November rather than waiting until after bowl games.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-cfb-six-coaching-buyouts-facts-dossier" style="display: none;">
@@ -4692,13 +4675,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Finance ministers from emerging economies convened to press for structural reforms to IMF voting quotas and faster sovereign debt restructuring frameworks.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Diplomatic coalition formed: Finance ministers from 22 emerging economies formally presented a joint memorandum to the IMF demanding quota realignments and faster sovereign debt restructuring.</span>
+              <p class="fact-preview-text">Direct Answer: Finance ministers from emerging economies convened to press for structural reforms to IMF voting quotas and faster sovereign debt restructuring frameworks.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-aljazeera-global-south-debt-summit')">
@@ -4715,7 +4692,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-aljazeera-global-south-debt-summit-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Finance ministers from emerging economies convened to press for structural reforms to IMF voting quotas and faster sovereign debt restructuring frameworks.</li><li>Diplomatic envoys and international observers are monitoring regional security dynamics concerning emerging-market IMF debt relief.</li><li>Foreign ministry officials released formal diplomatic statements regarding international treaty commitments.</li><li>Allied defense authorities coordinated strategic communications to preserve regional stability.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer: Finance ministers from emerging economies convened to press for structural reforms to IMF voting quotas and faster sovereign debt restructuring frameworks.</li><li>Diplomatic envoys and international observers are monitoring regional security dynamics concerning emerging-market IMF debt relief.</li><li>Foreign ministry officials released formal diplomatic statements regarding international treaty commitments.</li><li>Allied defense authorities coordinated strategic communications to preserve regional stability.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-aljazeera-global-south-debt-summit-facts-dossier" style="display: none;">
@@ -4965,13 +4942,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer: Primary wire reporting confirms that The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Yields drop 8 bps: Benchmark 10-year Treasury yields tumbled to 4.12% after fresh wholesale inventory and labor data signaled moderating core inflation ahead of Friday's PCE index.</span>
+              <p class="fact-preview-text">Direct Answer: Benchmark 10-year Treasury yields dropped 8 basis points to 4.12% as fresh wholesale inventory and cooling labor data reinforced market expectations for interest rate cuts ahead of Friday's inflation report.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fed-treasury-yields-rally')">
@@ -4988,7 +4959,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-fed-treasury-yields-rally-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer: Primary wire reporting confirms that The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.</li><li>Policymakers noted that while core annual consumer inflation cooled to 2.7%, domestic labor markets and consumer spending remain resilient.</li><li>Chairman Jerome Powell emphasized that future monetary policy adjustments will depend strictly on incoming employment, CPI, and GDP data.</li><li>Financial futures markets adjusted rate expectations, projecting the central bank will maintain borrowing costs at restrictive levels until core inflation reaches its 2.0% annual target.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer: Benchmark 10-year Treasury yields dropped 8 basis points to 4.12% as fresh wholesale inventory and cooling labor data reinforced market expectations for interest rate cuts ahead of Friday's inflation report.</li><li>Policymakers noted that while core annual consumer inflation cooled to 2.7%, domestic labor markets and consumer spending remain resilient.</li><li>Chairman Jerome Powell emphasized that future monetary policy adjustments will depend strictly on incoming employment, CPI, and GDP data.</li><li>Financial futures markets adjusted rate expectations, projecting the central bank will maintain borrowing costs at restrictive levels until core inflation reaches its 2.0% annual target.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-fed-treasury-yields-rally-facts-dossier" style="display: none;">
@@ -5238,13 +5209,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that European and British researchers set a new magnetic confinement fusion energy record, using AI magnet controls to sustain superheated plasma at 150 million degrees Celsius.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Telemetry verified: Physicists at the Culham Centre confirmed their upgraded magnetic confinement tokamak achieved a record sustained plasma burst of 50 megawatts for 360 seconds.</span>
+              <p class="fact-preview-text">Direct Answer: European and British researchers set a new magnetic confinement fusion energy record, using AI magnet controls to sustain superheated plasma at 150 million degrees Celsius.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-bbc-Fusion-energy-tokamak-record')">
@@ -5261,7 +5226,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-bbc-Fusion-energy-tokamak-record-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that European and British researchers set a new magnetic confinement fusion energy record, using AI magnet controls to sustain superheated plasma at 150 million degrees Celsius.</li><li>Key participants and officials addressed the central developments surrounding UK Physicists Achieve.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer: European and British researchers set a new magnetic confinement fusion energy record, using AI magnet controls to sustain superheated plasma at 150 million degrees Celsius.</li><li>Key participants and officials addressed the central developments surrounding UK Physicists Achieve.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-bbc-Fusion-energy-tokamak-record-facts-dossier" style="display: none;">
@@ -5512,12 +5477,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-tampa-gasparilla-arts-preview')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Festival Highlights: The annual Gasparilla Festival of the Arts will showcase 250 premier painters, sculptors, photographers, and ceramicists along the downtown Tampa riverfront with completely free admission for all attendees.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-gasparilla-arts-preview')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Festival map & permits released: Tampa organizers expanded the Bayshore Boulevard festival footprint to 250 juried booths, adding free TECO streetcar and Cross-Bay Ferry commuter shuttles.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-gasparilla-arts-preview')">
@@ -5787,12 +5746,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Schedule: The free outdoor concert series runs every Saturday evening from 6:00 PM to 10:00 PM on the Spa Beach lawn at the St. Pete Pier, featuring alternating sets from local and regional touring musicians.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-st-pete-pier-sunset-music-series')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Lineup & acoustic schedule announced: St. Petersburg finalized the weekend acoustic and culinary roster for the Pier Sunset Concert Series, featuring free lawn admission and local food trucks.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-st-pete-pier-sunset-music-series')">
               <span class="expand-label" id="story-local-st-pete-pier-sunset-music-series-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-st-pete-pier-sunset-music-series-chevron">▾</span>
@@ -6058,12 +6011,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-tampa-ybor-heritage-culinary-tour')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Market Overview: The Ybor City Saturday Market operates year-round every Saturday from 9:00 AM to 3:00 PM in Centennial Park at 8th Avenue and 19th Street with completely free admission.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-ybor-heritage-culinary-tour')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Market Overview: The Ybor City Saturday Market operates year-round every Saturday from 9:00 AM to 3:00 PM in Centennial Park at 8th Avenue and 19th Street with completely free admission.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-ybor-heritage-culinary-tour')">
@@ -6333,12 +6280,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Bills are favored at -1.5 (-130 moneyline) with an implied 55% win probability over Chiefs (Over/Under 54.5 total points), according to consensus sports betting projections.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Bills are favored at -1.5 (-130 moneyline) with an implied 55% win probability over Chiefs (Over/Under 54.5 total points), according to consensus sports betting projections.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-02')">
               <span class="expand-label" id="story-sports-nfl-02-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-nfl-02-chevron">▾</span>
@@ -6604,12 +6545,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-tampa-pickleball-open-championship')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Tournament Info: The tournament will be held November 14–15 at the Julian B. Lane Riverfront Park athletic complex, featuring divisions ranging from 3.0 recreational round-robins to 5.0+ competitive open brackets.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-pickleball-open-championship')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Tournament Info: The tournament will be held November 14–15 at the Julian B. Lane Riverfront Park athletic complex, featuring divisions ranging from 3.0 recreational round-robins to 5.0+ competitive open brackets.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-pickleball-open-championship')">
@@ -6879,12 +6814,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Event Schedule: Fourth Friday takes place from 5:00 PM to 9:00 PM across 12 designated hubs along the continuous 2.6-mile Tampa Riverwalk, connecting Water Street Tampa to the Armature Works Heights district.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-riverwalk-fourth-friday')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Event Schedule: Fourth Friday takes place from 5:00 PM to 9:00 PM across 12 designated hubs along the continuous 2.6-mile Tampa Riverwalk, connecting Water Street Tampa to the Armature Works Heights district.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-riverwalk-fourth-friday')">
               <span class="expand-label" id="story-local-tampa-riverwalk-fourth-friday-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-tampa-riverwalk-fourth-friday-chevron">▾</span>
@@ -7150,12 +7079,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-tampa-hyde-park-fresh-market')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Event Details: The Hyde Park Village Fresh Market takes place the first Sunday of every month from 10:00 AM to 3:00 PM, offering completely free public admission and complimentary parking in the village's three parking garages.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-hyde-park-fresh-market')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Event Details: The Hyde Park Village Fresh Market takes place the first Sunday of every month from 10:00 AM to 3:00 PM, offering completely free public admission and complimentary parking in the village's three parking garages.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-hyde-park-fresh-market')">
@@ -7425,12 +7348,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Dodgers are favored at -5.5 (-155 moneyline) with an implied 60% win probability over Padres (Over/Under 47.0 total points), according to consensus sports betting projections.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-mlb-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Dodgers are favored at -5.5 (-155 moneyline) with an implied 60% win probability over Padres (Over/Under 47.0 total points), according to consensus sports betting projections.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-mlb-02')">
               <span class="expand-label" id="story-sports-mlb-02-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-mlb-02-chevron">▾</span>
@@ -7696,12 +7613,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-miami-coastal-resilience-seawall')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Resilience Scope: Miami-Dade County broke ground on the Biscayne Bay Coastal Resilience package, raising 14 miles of public seawalls and installing 12 storm-surge pump stations across vulnerable coastal neighborhoods.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-miami-coastal-resilience-seawall')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Resilience Scope: Miami-Dade County broke ground on the Biscayne Bay Coastal Resilience package, raising 14 miles of public seawalls and installing 12 storm-surge pump stations across vulnerable coastal neighborhoods.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-miami-coastal-resilience-seawall')">
@@ -7971,12 +7882,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Route Plan: The Sunshine Corridor project will construct an 11-mile dedicated passenger rail spur connecting existing SunRail tracks in Meadow Woods to Terminal C at Orlando International Airport and the I-Drive tourist corridor.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-orlando-sunrail-commuter-expansion')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Route Plan: The Sunshine Corridor project will construct an 11-mile dedicated passenger rail spur connecting existing SunRail tracks in Meadow Woods to Terminal C at Orlando International Airport and the I-Drive tourist corridor.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-orlando-sunrail-commuter-expansion')">
               <span class="expand-label" id="story-local-orlando-sunrail-commuter-expansion-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-orlando-sunrail-commuter-expansion-chevron">▾</span>
@@ -8242,12 +8147,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-02')">
               <span class="fact-preview-badge odds">🎲 LIVE ODDS & WIN PROBABILITY</span>
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Celtics are favored at -1.5 (-130 moneyline) with an implied 55% win probability over Cavaliers (Over/Under 54.5 total points), according to consensus sports betting projections.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Celtics are favored at -1.5 (-130 moneyline) with an implied 55% win probability over Cavaliers (Over/Under 54.5 total points), according to consensus sports betting projections.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-02')">
@@ -8517,12 +8416,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Technology: Eight solar-powered autonomous buoys equipped with optical sensors will stream continuous water quality data every 15 minutes, transmitting real-time nitrogen and chlorophyll metrics directly to public dashboards.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-bay-water-quality-monitoring')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Technology: Eight solar-powered autonomous buoys equipped with optical sensors will stream continuous water quality data every 15 minutes, transmitting real-time nitrogen and chlorophyll metrics directly to public dashboards.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-bay-water-quality-monitoring')">
               <span class="expand-label" id="story-local-tampa-bay-water-quality-monitoring-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-tampa-bay-water-quality-monitoring-chevron">▾</span>
@@ -8788,12 +8681,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-tampa-historic-preservation-resilience')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Ordinance Summary: The updated municipal code allows homeowners in designated historic preservation districts to install architecturally accurate impact-rated wood-clad windows and elevated HVAC stands without undergoing months-long Architectural Review Commission hearings.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-historic-preservation-resilience')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Ordinance Summary: The updated municipal code allows homeowners in designated historic preservation districts to install architecturally accurate impact-rated wood-clad windows and elevated HVAC stands without undergoing months-long Architectural Review Commission hearings.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-historic-preservation-resilience')">
@@ -9063,12 +8950,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The Minnesota Vikings restructured wide receiver Justin Jefferson's contract to open up $12.1 million in 2026 cap space.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Minnesota Vikings restructured wide receiver Justin Jefferson's contract to open up $12.1 million in 2026 cap space.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-01')">
               <span class="expand-label" id="story-sports-nfl-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-nfl-01-chevron">▾</span>
@@ -9334,12 +9215,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-florida-property-insurance-stabilization')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Market Trend: Average statewide premium increases moderated to 1.2% year-over-year in 2026, with ten major private carriers filing for slight rate reductions in Hillsborough, Pinellas, and Pasco counties.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-florida-property-insurance-stabilization')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Market Trend: Average statewide premium increases moderated to 1.2% year-over-year in 2026, with ten major private carriers filing for slight rate reductions in Hillsborough, Pinellas, and Pasco counties.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-florida-property-insurance-stabilization')">
@@ -9609,12 +9484,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Project Scope: The finalized agreement authorizes $600 million in combined municipal and county tourist-development bond funding to construct a state-of-the-art enclosed ballpark, with the Tampa Bay Rays and Hines development partners funding the remaining $700+ million.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-rays-gas-plant-agreement')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Project Scope: The finalized agreement authorizes $600 million in combined municipal and county tourist-development bond funding to construct a state-of-the-art enclosed ballpark, with the Tampa Bay Rays and Hines development partners funding the remaining $700+ million.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-rays-gas-plant-agreement')">
               <span class="expand-label" id="story-local-tampa-rays-gas-plant-agreement-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-tampa-rays-gas-plant-agreement-chevron">▾</span>
@@ -9880,12 +9749,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Pre-Game Matchup Context: Unbeaten Kansas City prepares to host Buffalo in a marquee AFC showdown, with both teams completing Friday injury walkthroughs ahead of kickoff.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Pre-Game Matchup Context: Unbeaten Kansas City prepares to host Buffalo in a marquee AFC showdown, with both teams completing Friday injury walkthroughs ahead of kickoff.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-chiefs-bills-snf-preview')">
@@ -10155,12 +10018,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Core Purpose: Hillsborough County commissioners approved a $380 million capital allocation to modernize 14 high-congestion intersections, resurface 86 miles of arterial roadways, and expand smart signal timing across the Tampa metropolitan core.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-tampa-transit-expansion')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Core Purpose: Hillsborough County commissioners approved a $380 million capital allocation to modernize 14 high-congestion intersections, resurface 86 miles of arterial roadways, and expand smart signal timing across the Tampa metropolitan core.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-tampa-transit-expansion')">
               <span class="expand-label" id="story-local-tampa-transit-expansion-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-tampa-transit-expansion-chevron">▾</span>
@@ -10426,12 +10283,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer: Yes, Apple TV+ / MLS Season Pass is fully available as a standalone app across iOS, Android, Roku, Amazon Fire TV, Apple TV 4K, and game consoles (plans start at Apple TV+ is $9.99/month (after a 7-day free trial); MLS Season Pass is available standalone for $14.99/month or $99/season ($12.99/month or $79/season for Apple TV+ subscribers), orderable directly through the Apple TV app or at tv.apple.com).</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Yes, Apple TV+ / MLS Season Pass is fully available as a standalone app across iOS, Android, Roku, Amazon Fire TV, Apple TV 4K, and game consoles (plans start at Apple TV+ is $9.99/month (after a 7-day free trial); MLS Season Pass is available standalone for $14.99/month or $99/season ($12.99/month or $79/season for Apple TV+ subscribers), orderable directly through the Apple TV app or at tv.apple.com).</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-apple-tv-standalone-sci-fi')">
@@ -10701,12 +10552,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Wirtz is viewed as the long-term successor to Kevin De Bruyne.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-soc-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Wirtz is viewed as the long-term successor to Kevin De Bruyne. Furthermore, Diplomatic envoys and international observers are monitoring regional security dynamics concerning Manchester City..</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-soc-01')">
               <span class="expand-label" id="story-sports-soc-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-soc-01-chevron">▾</span>
@@ -10972,12 +10817,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The DOJ, FBI, and Europol seized 42 servers and $28.5M in crypto from an international ransomware ring, distributing free decryption keys to 310 targeted hospitals and municipalities.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The DOJ, FBI, and Europol seized 42 servers and $28.5M in crypto from an international ransomware ring, distributing free decryption keys to 310 targeted hospitals and municipalities.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-doj-cyber-ransomware-takedown')">
@@ -11247,12 +11086,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The Federal Energy Regulatory Commission authorized $8 billion in competitive grants to upgrade electrical transmission corridors across 12 states.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-ferc-grid-grants')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Federal Energy Regulatory Commission authorized $8 billion in competitive grants to upgrade electrical transmission corridors across 12 states.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-ferc-grid-grants')">
               <span class="expand-label" id="story-ferc-grid-grants-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-ferc-grid-grants-chevron">▾</span>
@@ -11518,12 +11351,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-06')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">San Antonio Spurs center Victor Wembanyama posted 34 points, 14 rebounds, 6 assists, 7 blocks, and 5 steals in a double-overtime win over Phoenix, becoming the youngest player with multiple career 5x5 games.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-06')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: San Antonio Spurs center Victor Wembanyama posted 34 points, 14 rebounds, 6 assists, 7 blocks, and 5 steals in a double-overtime win over Phoenix, becoming the youngest player with multiple career 5x5 games.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-06')">
@@ -11793,12 +11620,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">How It Happened: The serviceman fell from the high stadium rafters while conducting a pre-kickoff demonstration before thousands of spectators when an apparent tether or equipment failure occurred.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-alamodome-airman-rappel')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: How It Happened: The serviceman fell from the high stadium rafters while conducting a pre-kickoff demonstration before thousands of spectators when an apparent tether or equipment failure occurred.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-alamodome-airman-rappel')">
               <span class="expand-label" id="story-alamodome-airman-rappel-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-alamodome-airman-rappel-chevron">▾</span>
@@ -12064,12 +11885,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-border-compromise')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">A bipartisan Senate coalition introduced a border security framework authorizing $14 billion for frontline enforcement and adjudication.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-border-compromise')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: A bipartisan Senate coalition introduced a border security framework authorizing $14 billion for frontline enforcement and adjudication.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-border-compromise')">
@@ -12339,12 +12154,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Chicago's defense intercepted New England quarterbacks three times and recovered a fumble, converting those takeaways into 17 second-half points.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Chicago's defense intercepted New England quarterbacks three times and recovered a fumble, converting those takeaways into 17 second-half points.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-bears-patriots-tnf-recap')">
               <span class="expand-label" id="story-bears-patriots-tnf-recap-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-bears-patriots-tnf-recap-chevron">▾</span>
@@ -12609,13 +12418,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Three-year Phase 2 oncology trial data demonstrates that a personalized post-surgical neoantigen vaccine cuts pancreatic cancer recurrence risk by 48%, earning FDA Breakthrough Therapy Designation.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer: Primary wire reporting confirms that Three-year Phase 2 oncology trial data demonstrates that a personalized post-surgical neoantigen vaccine cuts pancreatic cancer recurrence risk by 48%, earning FDA Breakthrough Therapy Designation.</span>
+              <p class="fact-preview-text">Direct Answer: Three-year Phase 2 oncology trial data demonstrates that a personalized post-surgical neoantigen vaccine cuts pancreatic cancer recurrence risk by 48%, earning FDA Breakthrough Therapy Designation.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fda-mrna-pancreatic-trial')">
@@ -12632,7 +12435,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-fda-mrna-pancreatic-trial-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Three-year Phase 2 oncology trial data demonstrates that a personalized post-surgical neoantigen vaccine cuts pancreatic cancer recurrence risk by 48%, earning FDA Breakthrough Therapy Designation.</li><li>Key participants and officials addressed the central developments surrounding personalized pancreatic cancer vaccines.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer: Three-year Phase 2 oncology trial data demonstrates that a personalized post-surgical neoantigen vaccine cuts pancreatic cancer recurrence risk by 48%, earning FDA Breakthrough Therapy Designation.</li><li>Key participants and officials addressed the central developments surrounding personalized pancreatic cancer vaccines.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-fda-mrna-pancreatic-trial-facts-dossier" style="display: none;">
@@ -12883,12 +12686,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-michigan-senate-debate')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">In the final Michigan U.S. Senate debate in Detroit, Republican candidate Mike Rogers accused Democratic opponent Abdul El-Sayed of having past ties and ideological sympathies with the Muslim Brotherhood.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-michigan-senate-debate')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: In the final Michigan U.S. Senate debate in Detroit, Republican candidate Mike Rogers accused Democratic opponent Abdul El-Sayed of having past ties and ideological sympathies with the Muslim Brotherhood.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-michigan-senate-debate')">
@@ -13158,12 +12955,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Georgia is favored at -1.5 (-130 moneyline) with an implied 55% win probability over Texas (Over/Under 54.5 total points), according to consensus sports betting projections.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-cfb-03')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Georgia is favored at -1.5 (-130 moneyline) with an implied 55% win probability over Texas (Over/Under 54.5 total points), according to consensus sports betting projections.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-cfb-03')">
               <span class="expand-label" id="story-sports-cfb-03-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-cfb-03-chevron">▾</span>
@@ -13429,12 +13220,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Fourteen European defense ministries launched a permanent joint maritime and autonomous sonar task force to safeguard critical undersea internet cables and energy pipelines.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Fourteen European defense ministries launched a permanent joint maritime and autonomous sonar task force to safeguard critical undersea internet cables and energy pipelines.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nato-maritime-corridor-summit')">
@@ -13704,12 +13489,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Wealth managers report a strategic rotation away from legacy commercial office space into industrial, logistics, and opportunistic debt.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-real-estate-family-offices-rates')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Wealth managers report a strategic rotation away from legacy commercial office space into industrial, logistics, and opportunistic debt.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-real-estate-family-offices-rates')">
               <span class="expand-label" id="story-real-estate-family-offices-rates-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-real-estate-family-offices-rates-chevron">▾</span>
@@ -13977,12 +13756,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer: Undisputed champion Canelo Alvarez defends his titles against undefeated William Scull, streaming exclusively on the standalone DAZN app (starting at 9.99/month on dazn.com) with Alvarez favored at -1200.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-espn-dazn-viewing-guide')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Undisputed champion Canelo Alvarez defends his titles against undefeated William Scull, streaming exclusively on the standalone DAZN app (starting at 9.99/month on dazn.com) with Alvarez favored at -1200.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-espn-dazn-viewing-guide')">
               <span class="expand-label" id="story-espn-dazn-viewing-guide-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-espn-dazn-viewing-guide-chevron">▾</span>
@@ -14247,13 +14020,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Commercial deployment of co-packaged silicon photonics interconnects reduces AI data center energy consumption by 42% by transmitting data via laser pulses instead of copper wire.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer: Primary wire reporting confirms that Commercial deployment of co-packaged silicon photonics interconnects reduces AI data center energy consumption by 42% by transmitting data via laser pulses instead of copper wire.</span>
+              <p class="fact-preview-text">Direct Answer: Commercial deployment of co-packaged silicon photonics interconnects reduces AI data center energy consumption by 42% by transmitting data via laser pulses instead of copper wire.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nextgen-ai-datacenter-chips')">
@@ -14270,7 +14037,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-nextgen-ai-datacenter-chips-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer: Primary wire reporting confirms that Direct Answer: Primary wire reporting confirms that Commercial deployment of co-packaged silicon photonics interconnects reduces AI data center energy consumption by 42% by transmitting data via laser pulses instead of copper wire.</li><li>Key participants and officials addressed the central developments surrounding optical silicon photonics AI chips.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer: Commercial deployment of co-packaged silicon photonics interconnects reduces AI data center energy consumption by 42% by transmitting data via laser pulses instead of copper wire.</li><li>Key participants and officials addressed the central developments surrounding optical silicon photonics AI chips.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-nextgen-ai-datacenter-chips-facts-dossier" style="display: none;">
@@ -14521,12 +14288,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Kylie Jenner walked in the revived Victoria's Secret Fashion Show in New York City, debuting as the featured runway model wearing the multi-million dollar Fantasy Bra.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Kylie Jenner walked in the revived Victoria's Secret Fashion Show in New York City, debuting as the featured runway model wearing the multi-million dollar Fantasy Bra.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-kylie-jenner-fantasy-bra')">
@@ -14796,12 +14557,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The proposal reserves 14 automatic bids for conference champions and runners-up, with 10 at-large bids selected by committee.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-cfb-playoff-24')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The proposal reserves 14 automatic bids for conference champions and runners-up, with 10 at-large bids selected by committee.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cfb-playoff-24')">
               <span class="expand-label" id="story-cfb-playoff-24-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-cfb-playoff-24-chevron">▾</span>
@@ -15067,12 +14822,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Low-income patient families traveling hundreds of miles to major public hospital centers are forced to sleep on open sidewalks for weeks while relatives receive inpatient treatment.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-npr-sidewalk-sleepers')">
@@ -15342,12 +15091,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Governors from six Midwestern states signed an interstate compact establishing standardized regional licensing and water rights for small modular nuclear reactors (SMRs).</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nuclear-modular-compact')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Governors from six Midwestern states signed an interstate compact establishing standardized regional licensing and water rights for small modular nuclear reactors (SMRs).</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nuclear-modular-compact')">
               <span class="expand-label" id="story-nuclear-modular-compact-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nuclear-modular-compact-chevron">▾</span>
@@ -15613,12 +15356,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-kompany-bayern-hospital')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Club emergency medical staff provided immediate on-pitch evaluation and resuscitation care before Kompany was stabilized and transferred via ambulance.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-kompany-bayern-hospital')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Club emergency medical staff provided immediate on-pitch evaluation and resuscitation care before Kompany was stabilized and transferred via ambulance.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-kompany-bayern-hospital')">
@@ -15888,12 +15625,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">What Happened: A landmark investigative retrospective by. re-examined the 1995 O.J. Simpson double-murder trial, detailing critical forensic evidence and cultural dynamics that shaped the verdict.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-oj-simpson-case')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: A landmark investigative retrospective by. re-examined the 1995 O.J. Simpson double-murder trial, detailing critical forensic evidence and cultural dynamics that shaped the verdict.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-oj-simpson-case')">
               <span class="expand-label" id="story-oj-simpson-case-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-oj-simpson-case-chevron">▾</span>
@@ -16159,12 +15890,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-port-security-fentanyl')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">U.S. Customs and Border Protection officers seized over four tons of chemical precursors used to manufacture illicit fentanyl at a West Coast container port.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-port-security-fentanyl')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: U.S. Customs and Border Protection officers seized over four tons of chemical precursors used to manufacture illicit fentanyl at a West Coast container port.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-port-security-fentanyl')">
@@ -16434,12 +16159,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Superstar outfielder Juan Soto and agent Scott Boras have opened formal free agency discussions with an asking price topping $600 million.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-mlb-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Superstar outfielder Juan Soto and agent Scott Boras have opened formal free agency discussions with an asking price topping $600 million.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-mlb-01')">
               <span class="expand-label" id="story-sports-mlb-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-mlb-01-chevron">▾</span>
@@ -16704,13 +16423,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-ap-fema-grants')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer & Core Reason: Direct Answer & Core Reason: The decision was prompted by fema has overhauled its disaster grant distribution framework, establishing direct digital disbursement timelines to accelerate funding for storm-damaged communities.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-ap-fema-grants')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The decision was prompted by fema has overhauled its disaster grant distribution framework, establishing direct digital disbursement timelines to accelerate funding for storm-damaged communities.</span>
+              <p class="fact-preview-text">Direct Answer & Core Reason: FEMA overhauled its disaster grant distribution framework, establishing direct digital disbursement timelines to accelerate funding for storm-damaged communities.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-ap-fema-grants')">
@@ -16727,7 +16440,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-ap-fema-grants-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer & Core Reason: Direct Answer & Core Reason: The decision was prompted by fema has overhauled its disaster grant distribution framework, establishing direct digital disbursement timelines to accelerate funding for storm-damaged communities.</li><li>Key participants and officials addressed the central developments surrounding FEMA.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer & Core Reason: FEMA overhauled its disaster grant distribution framework, establishing direct digital disbursement timelines to accelerate funding for storm-damaged communities.</li><li>Key participants and officials addressed the central developments surrounding FEMA.</li><li>The development brings critical policy, operational, and community factors to the forefront.</li><li>Organizational representatives issued formal statements clarifying specific positions and background facts.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-ap-fema-grants-facts-dossier" style="display: none;">
@@ -16978,12 +16691,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-trump-approval-midterms')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">What Happened: Comprehensive national polling revealed former President Donald Trump's net favorability ratings dropped to historic cyclical lows across critical battleground states.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-trump-approval-midterms')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Comprehensive national polling revealed former President Donald Trump's net favorability ratings dropped to historic cyclical lows across critical battleground states.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-approval-midterms')">
@@ -17250,13 +16957,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-01')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
-              <p class="fact-preview-text">Direct Answer & Financial Breakdown: Six massive guaranteed coaching buyout clauses—ranging from $15 million to over $70 million across major Power Four programs—are acting as the primary financial gatekeepers determining which schools make head-coaching changes this season.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Financial Breakdown: Six massive guaranteed coaching buyout clauses—ranging from $15 million to over $70 million across major Power Four programs—are acting as the primary financial gatekeepers determining which schools make head-coaching changes this season.</span>
+              <p class="fact-preview-text">Direct Answer & Trade Context: The New York Knicks and Atlanta Hawks initiated preliminary trade talks evaluating veteran center Clint Capela to reinforce New York's interior rim protection following frontcourt injuries.</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-01')">
@@ -17273,14 +16974,14 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nba-01-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Answer & Financial Breakdown: Six massive guaranteed coaching buyout clauses—ranging from $15 million to over $70 million across major Power Four programs—are acting as the primary financial gatekeepers determining which schools make head-coaching changes this season.</li><li>Revenue-Sharing Squeeze: Under the landmark $20.5 million annual school revenue-sharing cap taking effect in college athletics, athletic directors must weigh paying tens of millions in dead-money buyouts against funding competitive NIL and transfer-portal rosters.</li><li>Booster & Television Leverage: While SEC and Big Ten conference television distributions exceed $60 million per school annually, university presidents require billionaire booster guarantees before triggering multi-year contract terminations.</li><li>Compressed Carousel Timeline: The early December high school signing period and the winter NCAA transfer portal window force programs to finalize coaching changes in late November rather than waiting until after bowl games.</li></ul>
+                <ul class="core-facts-list"><li>Direct Answer & Trade Context: The New York Knicks and Atlanta Hawks initiated preliminary trade talks evaluating veteran center Clint Capela to reinforce New York's interior rim protection following frontcourt injuries.</li><li>Salary Matching & Contract Structure: Capela is in the final year of his contract valued at 2.3 million, requiring the Knicks to package matching salaries without exceeding the second luxury tax apron.</li><li>Interior Rebound & Shot Blocking: Capela has averaged 11.5 points, 10.6 rebounds, and 1.5 blocks per game, providing veteran playoff rebounding and defensive anchoring.</li><li>Hawks Frontcourt Rotation: Atlanta has explored multiple frontcourt configurations to open expanded playing time for fourth-year center Onyeka Okongwu.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nba-01-facts-dossier" style="display: none;">
                   <div class="dossier-inner">
                     <div class="dossier-section">
                       <div class="dossier-heading">📌 In-Depth Context & Background</div>
-                      <p class="dossier-text">Direct Answer & Financial Breakdown: Six massive guaranteed coaching buyout clauses—ranging from $15 million to over $70 million across major Power Four programs—are acting as the primary financial gatekeepers determining which schools make head-coaching changes this season. Revenue-Sharing Squeeze: Under the landmark $20.5 million annual school revenue-sharing cap taking effect in college athletics, athletic directors must weigh paying tens of millions in dead-money buyouts against funding competitive NIL and transfer-portal rosters.</p>
+                      <p class="dossier-text">Direct Answer & Trade Context: The New York Knicks and Atlanta Hawks initiated preliminary trade talks evaluating veteran center Clint Capela to reinforce New York's interior rim protection following frontcourt injuries. Salary Matching & Contract Structure: Capela is in the final year of his contract valued at 2.3 million, requiring the Knicks to package matching salaries without exceeding the second luxury tax apron.</p>
                     </div>
                     <div class="dossier-section">
                       <div class="dossier-heading">📊 Documented Data & Source Evidence</div>
@@ -17524,12 +17225,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Ceasefire Deal: Russia and Ukraine agreed to an immediate localized humanitarian truce in the frontline city of Oleshky, halting artillery shelling and establishing demilitarized transit corridors for trapped civilians to safely evacuate.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Ceasefire Deal: Russia and Ukraine agreed to an immediate localized humanitarian truce in the frontline city of Oleshky, halting artillery shelling and establishing demilitarized transit corridors for trapped civilians to safely evacuate.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-1792776582-melania-oleshky')">
@@ -17799,12 +17494,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Stock index futures continued to trade defensively after the Nasdaq endured its steepest selloff since early summer.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-stock-futures-nasdaq-pressure')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Stock index futures continued to trade defensively after the Nasdaq endured its steepest selloff since early summer.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-stock-futures-nasdaq-pressure')">
               <span class="expand-label" id="story-stock-futures-nasdaq-pressure-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-stock-futures-nasdaq-pressure-chevron">▾</span>
@@ -18070,12 +17759,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cfb-01')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">College Football Playoff leadership and conference commissioners are reviewing a framework to expand the postseason tournament to 24 teams by 2027.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-cfb-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: College Football Playoff leadership and conference commissioners are reviewing a framework to expand the postseason tournament to 24 teams by 2027.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-cfb-01')">
@@ -18345,12 +18028,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Key participants and officials addressed the central developments surrounding CBP AI cargo scanners.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-cbp-autonomous-port-scanners')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Key participants and officials addressed the central developments surrounding CBP AI cargo scanners.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cbp-autonomous-port-scanners')">
               <span class="expand-label" id="story-cbp-autonomous-port-scanners-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-cbp-autonomous-port-scanners-chevron">▾</span>
@@ -18616,12 +18293,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">How It Happened: The Gerber family released personal photographs, intimate reflections, and messages of enduring love as friends and fashion industry colleagues expressed widespread condolences.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-cindy-crawford-tribute')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: How It Happened: The Gerber family released personal photographs, intimate reflections, and messages of enduring love as friends and fashion industry colleagues expressed widespread condolences.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cindy-crawford-tribute')">
@@ -18891,12 +18562,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The PGA Tour and Saudi Arabia's Public Investment Fund (PIF) advanced negotiations on an investment framework to unify commercial men's professional golf operations.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-golf-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The PGA Tour and Saudi Arabia's Public Investment Fund (PIF) advanced negotiations on an investment framework to unify commercial men's professional golf operations.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-golf-01')">
               <span class="expand-label" id="story-sports-golf-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-golf-01-chevron">▾</span>
@@ -19162,12 +18827,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-hhs-cash-prices')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Hospitals must disclose standard machine-readable price lists covering 300 shoppable medical services, imaging tests, and prescription therapies.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-hhs-cash-prices')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Hospitals must disclose standard machine-readable price lists covering 300 shoppable medical services, imaging tests, and prescription therapies.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-hhs-cash-prices')">
@@ -19437,12 +19096,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Severe Pacific storm gusts exceeding 65 mph downed high-voltage lines, cutting electricity to over 280,000 customers in Oregon and Washington.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-weather-power-outage-pacific')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Severe Pacific storm gusts exceeding 65 mph downed high-voltage lines, cutting electricity to over 280,000 customers in Oregon and Washington.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-weather-power-outage-pacific')">
               <span class="expand-label" id="story-weather-power-outage-pacific-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-weather-power-outage-pacific-chevron">▾</span>
@@ -19708,12 +19361,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-03')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Jordan Mason took first-team reps.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-03')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Jordan Mason took first-team reps. Furthermore, Key participants and officials addressed the central developments surrounding 49ers..</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-03')">
@@ -19983,12 +19630,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-oregon-school-shooting')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: A 16-year-old gunman killed three students and one educator at an Oregon elementary school before being neutralized by an armed bystander.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-oregon-school-shooting')">
               <span class="expand-label" id="story-oregon-school-shooting-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-oregon-school-shooting-chevron">▾</span>
@@ -20254,12 +19895,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-trump-east-potomac-links')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Former President Donald Trump announced an executive proposal to shutter Washington, D.C.'s historic public East Potomac Golf Links starting November 15 for 15 months of renovations.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-east-potomac-links')">
@@ -20529,12 +20164,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Milwaukee faces second-apron restrictions in potential deals.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-03')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Milwaukee faces second-apron restrictions in potential deals. Furthermore, Milwaukee faces second-apron restrictions in potential deals. The Milwaukee Bucks are exploring trade options for perimeter defense..</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-03')">
               <span class="expand-label" id="story-sports-nba-03-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-nba-03-chevron">▾</span>
@@ -20800,12 +20429,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Multiple Canadian Armed Forces personnel were killed or critically injured following a major fire and explosion at Canadian Forces Base (CFB) Wainwright in Alberta, Canada.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-canada-cfb-wainwright-fire')">
@@ -21075,12 +20698,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Verdict: BWX Technologies is the stronger buy for risk-conscious investors due to long-term naval nuclear reactor defense contracts, while Centrus offers higher speculative growth tied to domestic HALEU enrichment capacity.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Verdict: BWX Technologies is the stronger buy for risk-conscious investors due to long-term naval nuclear reactor defense contracts, while Centrus offers higher speculative growth tied to domestic HALEU enrichment capacity.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-centrus-vs-bwxt-nuclear-buy')">
               <span class="expand-label" id="story-centrus-vs-bwxt-nuclear-buy-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-centrus-vs-bwxt-nuclear-buy-chevron">▾</span>
@@ -21345,13 +20962,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-cfb-02')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Ryan Day responded by stating that Direct Response: Ryan Day responded by stating that Ohio State head coach Ryan Day responded directly to rivalry pressure ahead of the Michigan game, stating the program embraces its championship standard, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-cfb-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Ryan Day responded by stating that Direct Response: Ryan Day responded by stating that Ohio State head coach Ryan Day responded directly to rivalry pressure ahead of the Michigan game, stating the program embraces its championship standard, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Ohio State head coach Ryan Day responded directly to rivalry pressure ahead of the Michigan game, stating the program embraces its championship standard..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-cfb-02')">
@@ -21368,7 +20979,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-cfb-02-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Ryan Day responded by stating that Direct Response: Ryan Day responded by stating that Ohio State head coach Ryan Day responded directly to rivalry pressure ahead of the Michigan game, stating the program embraces its championship standard, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Ryan Day.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Ryan Day.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Ohio State head coach Ryan Day responded directly to rivalry pressure ahead of the Michigan game, stating the program embraces its championship standard..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Ryan Day.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Ryan Day.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-cfb-02-facts-dossier" style="display: none;">
@@ -21619,12 +21230,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-supreme-court-speech')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Supreme Court heard oral arguments on Texas and Florida state statutes regulating how social media platforms moderate political viewpoints.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-supreme-court-speech')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Supreme Court heard oral arguments on Texas and Florida state statutes regulating how social media platforms moderate political viewpoints.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-supreme-court-speech')">
@@ -21894,12 +21499,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Director Christopher Nolan commenced principal photography on his next theatrical feature utilizing custom-engineered 70mm IMAX camera rigs.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-entertainment-nolan-imax')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Director Christopher Nolan commenced principal photography on his next theatrical feature utilizing custom-engineered 70mm IMAX camera rigs.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-entertainment-nolan-imax')">
               <span class="expand-label" id="story-entertainment-nolan-imax-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-entertainment-nolan-imax-chevron">▾</span>
@@ -22164,13 +21763,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-04')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Ravens responded by stating that Direct Response: Ravens responded by stating that Baltimore Ravens quarterback Lamar Jackson responded directly to questions about fourth-quarter passing stats, emphasizing that winning games is his sole priority, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-04')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Ravens responded by stating that Direct Response: Ravens responded by stating that Baltimore Ravens quarterback Lamar Jackson responded directly to questions about fourth-quarter passing stats, emphasizing that winning games is his sole priority, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Baltimore Ravens quarterback Lamar Jackson responded directly to questions about fourth-quarter passing stats, emphasizing that winning games is his sole priority..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-04')">
@@ -22187,7 +21780,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nfl-04-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Ravens responded by stating that Direct Response: Ravens responded by stating that Baltimore Ravens quarterback Lamar Jackson responded directly to questions about fourth-quarter passing stats, emphasizing that winning games is his sole priority, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Ravens.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Ravens.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Baltimore Ravens quarterback Lamar Jackson responded directly to questions about fourth-quarter passing stats, emphasizing that winning games is his sole priority..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Ravens.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Ravens.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nfl-04-facts-dossier" style="display: none;">
@@ -22438,12 +22031,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-medicare-negotiations')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Centers for Medicare & Medicaid Services published a new tranche of 15 high-expenditure prescription drugs selected for federal price negotiations.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-medicare-negotiations')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Centers for Medicare & Medicaid Services published a new tranche of 15 high-expenditure prescription drugs selected for federal price negotiations.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-medicare-negotiations')">
@@ -22713,12 +22300,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Key Political Context: Lawmakers, campaign strategists, and policy analysts outlined the direct legislative and electoral stakes surrounding Trump.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-trump-immigration-soften')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Key Political Context: Lawmakers, campaign strategists, and policy analysts outlined the direct legislative and electoral stakes surrounding Trump.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-trump-immigration-soften')">
               <span class="expand-label" id="story-trump-immigration-soften-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-trump-immigration-soften-chevron">▾</span>
@@ -22984,12 +22565,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-soc-02')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Mikel Arteta confirmed he is expected back next weekend.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-soc-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Mikel Arteta confirmed he is expected back next weekend. Furthermore, Scans revealed persistent ankle inflammation..</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-soc-02')">
@@ -23259,12 +22834,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">What Happened: Severe civil unrest and student-led riots erupted across Paris, Limoges, and regional French cities following heated national disputes over government austerity and police conduct.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-france-riots-shock')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Severe civil unrest and student-led riots erupted across Paris, Limoges, and regional French cities following heated national disputes over government austerity and police conduct.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-france-riots-shock')">
               <span class="expand-label" id="story-france-riots-shock-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-france-riots-shock-chevron">▾</span>
@@ -23532,12 +23101,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fed-rates-steady')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Federal Reserve's Federal Open Market Committee voted unanimously to maintain benchmark interest rates at 4.75% to 5.00%.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fed-rates-steady')">
               <span class="expand-label" id="story-fed-rates-steady-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-fed-rates-steady-chevron">▾</span>
@@ -23802,13 +23365,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-ten-01')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Jannik Sinner responded by stating that Carlos Alcaraz Grand responded directly to Showdown: Match Preview, Current Betting Odds, and Predictions, firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-ten-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Jannik Sinner responded by stating that Carlos Alcaraz Grand responded directly to Showdown: Match Preview, Current Betting Odds, and Predictions, firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Jannik Sinner responded by stating that Carlos Alcaraz Grand responded directly to Showdown: Match Preview, Current Betting Odds, and Predictions, firmly defending their record and rejecting criticisms with verifiable documentation..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-ten-01')">
@@ -23825,7 +23382,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-ten-01-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Jannik Sinner responded by stating that Carlos Alcaraz Grand responded directly to Showdown: Match Preview, Current Betting Odds, and Predictions, firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</li><li>Key participants and officials addressed the central developments surrounding Jannik Sinner.</li><li>Pre-Game Matchup Context: Both rosters are completing final walkthroughs ahead of this upcoming contest featuring Jannik Sinner, with division standings and postseason seeding leverage on the line.</li><li>Key Tactical Matchup to Watch: Analysts point to turnover margin, situational efficiency, and in-game adjustments as the decisive factors once the game begins.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Jannik Sinner responded by stating that Carlos Alcaraz Grand responded directly to Showdown: Match Preview, Current Betting Odds, and Predictions, firmly defending their record and rejecting criticisms with verifiable documentation..</li><li>Key participants and officials addressed the central developments surrounding Jannik Sinner.</li><li>Pre-Game Matchup Context: Both rosters are completing final walkthroughs ahead of this upcoming contest featuring Jannik Sinner, with division standings and postseason seeding leverage on the line.</li><li>Key Tactical Matchup to Watch: Analysts point to turnover margin, situational efficiency, and in-game adjustments as the decisive factors once the game begins.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-ten-01-facts-dossier" style="display: none;">
@@ -24076,12 +23633,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-science-astronomy-water-vapor')">
@@ -24351,12 +23902,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Domestic box office receipts exceeded industry holiday projections by 18%, driven by original cinematic releases and premium auditorium tickets.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-entertainment-box-office-rebound')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Domestic box office receipts exceeded industry holiday projections by 18%, driven by original cinematic releases and premium auditorium tickets.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-entertainment-box-office-rebound')">
               <span class="expand-label" id="story-entertainment-box-office-rebound-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-entertainment-box-office-rebound-chevron">▾</span>
@@ -24622,12 +24167,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-05')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Parsons did not participate in team drills Wednesday.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-05')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Parsons did not participate in team drills Wednesday. Furthermore, Parsons did not participate in team drills Wednesday. Dallas Cowboys pass rusher Micah Parsons is listed..</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-05')">
@@ -24897,12 +24436,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The FBI, U.S. Postal Inspection Service, and state election boards launched joint investigations into suspicious mailings sent to election offices in 16 states.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-election-mailings')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The FBI, U.S. Postal Inspection Service, and state election boards launched joint investigations into suspicious mailings sent to election offices in 16 states.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-election-mailings')">
               <span class="expand-label" id="story-election-mailings-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-election-mailings-chevron">▾</span>
@@ -25170,12 +24703,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">What Happened: The Pakistani federal government suspended the provincial government of Khyber Pakhtunkhwa (KP), imposing emergency federal rule over the opposition-controlled territory.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Pakistani federal government suspended the provincial government of Khyber Pakhtunkhwa (KP), imposing emergency federal rule over the opposition-controlled territory.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-pakistan-kp-emergency-rule')">
               <span class="expand-label" id="story-pakistan-kp-emergency-rule-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-pakistan-kp-emergency-rule-chevron">▾</span>
@@ -25440,13 +24967,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-08')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Texans responded by stating that Stroud responded directly to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-08')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Texans responded by stating that Stroud responded directly to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Texans responded by stating that Stroud responded directly to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday', firmly defending their record and rejecting criticisms with verifiable documentation..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-08')">
@@ -25463,7 +24984,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nfl-08-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Texans responded by stating that Stroud responded directly to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Texans.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Texans.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Texans responded by stating that Stroud responded directly to MVP chatter following comeback drive: 'It's a blessing, but all that matters is execution on Sunday', firmly defending their record and rejecting criticisms with verifiable documentation..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Texans.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Texans.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nfl-08-facts-dossier" style="display: none;">
@@ -25714,12 +25235,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-tesla-roadster')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-tesla-roadster')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Tesla announced plans to reveal the final production design and engineering specifications of its next-generation electric Roadster.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-tesla-roadster')">
@@ -25989,12 +25504,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The U.S. Department of Commerce expanded export restrictions on advanced semiconductor manufacturing tools and high-density AI accelerator chips.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-chip-export-controls')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The U.S. Department of Commerce expanded export restrictions on advanced semiconductor manufacturing tools and high-density AI accelerator chips.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-chip-export-controls')">
               <span class="expand-label" id="story-chip-export-controls-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-chip-export-controls-chevron">▾</span>
@@ -26260,12 +25769,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-06')">
               <span class="fact-preview-badge odds">🎲 LIVE ODDS & WIN PROBABILITY</span>
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Eagles are favored at -6.5 (-210 moneyline) with an implied 68% win probability over Cowboys (Over/Under 42.5 total points), according to consensus sports betting projections.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-06')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Eagles are favored at -6.5 (-210 moneyline) with an implied 68% win probability over Cowboys (Over/Under 42.5 total points), according to consensus sports betting projections.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-06')">
@@ -26535,12 +26038,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">House and Senate leadership agreed on a statutory top-line $1.65 trillion discretionary spending framework to fund federal agency operations.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-budget-shutdown-deal')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: House and Senate leadership agreed on a statutory top-line $1.65 trillion discretionary spending framework to fund federal agency operations.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-budget-shutdown-deal')">
               <span class="expand-label" id="story-budget-shutdown-deal-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-budget-shutdown-deal-chevron">▾</span>
@@ -26808,12 +26305,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Ukrainian defense ministers warned that operational geofencing on Starlink satellite terminals compromised battlefield tactical coordination.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-starlink-ukraine-cnbc')">
               <span class="expand-label" id="story-starlink-ukraine-cnbc-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-starlink-ukraine-cnbc-chevron">▾</span>
@@ -27078,13 +26569,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-09')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Bengals responded by stating that Direct Response: Bengals responded by stating that Cincinnati Bengals receiver Ja'Marr Chase stated his sole focus is on on-field dominance following an 11-catch, 168-yard, two-touchdown game, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-09')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Bengals responded by stating that Direct Response: Bengals responded by stating that Cincinnati Bengals receiver Ja'Marr Chase stated his sole focus is on on-field dominance following an 11-catch, 168-yard, two-touchdown game, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Cincinnati Bengals receiver Ja'Marr Chase stated his sole focus is on on-field dominance following an 11-catch, 168-yard, two-touchdown game..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-09')">
@@ -27101,7 +26586,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nfl-09-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Bengals responded by stating that Direct Response: Bengals responded by stating that Cincinnati Bengals receiver Ja'Marr Chase stated his sole focus is on on-field dominance following an 11-catch, 168-yard, two-touchdown game, directly addressing the claims so there is no ambiguity, directly addressing the claims so there is no ambiguity.</li><li>Chase leads the NFL in receiving yards and touchdowns.</li><li>Financial & Contract Breakdown: Front-office executives and athletic directors are evaluating salary-cap rules, guaranteed buyout obligations, and luxury-tax thresholds regarding Bengals.</li><li>Roster & Cap Implications: How management structures compensation and draft/portal capital around Bengals directly dictates roster flexibility for the upcoming season.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Cincinnati Bengals receiver Ja'Marr Chase stated his sole focus is on on-field dominance following an 11-catch, 168-yard, two-touchdown game..</li><li>Chase leads the NFL in receiving yards and touchdowns.</li><li>Financial & Contract Breakdown: Front-office executives and athletic directors are evaluating salary-cap rules, guaranteed buyout obligations, and luxury-tax thresholds regarding Bengals.</li><li>Roster & Cap Implications: How management structures compensation and draft/portal capital around Bengals directly dictates roster flexibility for the upcoming season.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nfl-09-facts-dossier" style="display: none;">
@@ -27352,12 +26837,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-anthropic-ipo')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-anthropic-ipo')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Venture capital underwriters and institutional investors tempered valuation targets for AI research company Anthropic ahead of prospective public filings.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-anthropic-ipo')">
@@ -27627,12 +27106,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Delegates from 14 coastal nations convened in Geneva to establish standardized international security corridors across Black Sea shipping lanes.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Delegates from 14 coastal nations convened in Geneva to establish standardized international security corridors across Black Sea shipping lanes.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-world-geneva-maritime-talks')">
               <span class="expand-label" id="story-world-geneva-maritime-talks-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-world-geneva-maritime-talks-chevron">▾</span>
@@ -27897,13 +27370,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-07')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Lions responded by stating that Direct Response: Lions offensive coordinator Ben Johnson responded directly to head coaching speculation: 'My focus is 100% on winning a Super Bowl here', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-07')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Lions responded by stating that Direct Response: Lions offensive coordinator Ben Johnson responded directly to head coaching speculation: 'My focus is 100% on winning a Super Bowl here', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Lions responded by stating that Direct Response: Lions offensive coordinator Ben Johnson responded directly to head coaching speculation: 'My focus is 100% on winning a Super Bowl here', firmly defending their record and rejecting criticisms with verifiable documentation..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-07')">
@@ -27920,7 +27387,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nfl-07-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Lions responded by stating that Direct Response: Lions offensive coordinator Ben Johnson responded directly to head coaching speculation: 'My focus is 100% on winning a Super Bowl here', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Lions.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Lions.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Lions responded by stating that Direct Response: Lions offensive coordinator Ben Johnson responded directly to head coaching speculation: 'My focus is 100% on winning a Super Bowl here', firmly defending their record and rejecting criticisms with verifiable documentation..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Lions.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Lions.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nfl-07-facts-dossier" style="display: none;">
@@ -28171,12 +27638,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Dow Jones Industrial Average gained 215 points while the tech-heavy Nasdaq Composite dropped 1.2% in an institutional sector rotation.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Dow Jones Industrial Average gained 215 points while the tech-heavy Nasdaq Composite dropped 1.2% in an institutional sector rotation.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-dow-nasdaq-ai-rotation')">
@@ -28446,12 +27907,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-science-nasa-james-webb')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: NASA's James Webb Space Telescope detected atmospheric water vapor, carbon dioxide, and methane on a temperate Earth-sized exoplanet.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-science-nasa-james-webb')">
               <span class="expand-label" id="story-science-nasa-james-webb-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-science-nasa-james-webb-chevron">▾</span>
@@ -28717,12 +28172,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nfl-10')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Final clearance steps remain.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nfl-10')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Final clearance steps remain. Furthermore, Showing zero symptoms during neurological tests..</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nfl-10')">
@@ -28992,12 +28441,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Operation Summary: Joint federal and state law enforcement forces arrested 18 high-ranking cartel operatives in a multi-county sting operation spanning McAllen, Laredo, and San Antonio, dismantling an active human and narcotics trafficking corridor.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fox-border-enforcement-cartel-crackdown')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Operation Summary: Joint federal and state law enforcement forces arrested 18 high-ranking cartel operatives in a multi-county sting operation spanning McAllen, Laredo, and San Antonio, dismantling an active human and narcotics trafficking corridor.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fox-border-enforcement-cartel-crackdown')">
               <span class="expand-label" id="story-fox-border-enforcement-cartel-crackdown-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-fox-border-enforcement-cartel-crackdown-chevron">▾</span>
@@ -29265,12 +28708,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Output Statistics: U.S. crude oil production reached an all-time record of 13.8 million barrels per day in October 2026, driven by drilling efficiencies in the Permian Basin of Texas and New Mexico.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fox-business-energy-production-records')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Output Statistics: U.S. crude oil production reached an all-time record of 13.8 million barrels per day in October 2026, driven by drilling efficiencies in the Permian Basin of Texas and New Mexico.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fox-business-energy-production-records')">
               <span class="expand-label" id="story-fox-business-energy-production-records-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-fox-business-energy-production-records-chevron">▾</span>
@@ -29535,13 +28972,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-04')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Lakers responded by stating that Head coach JJ Redick finalized the Lakers' starting rotation featuring D'Angelo Russell, Austin Reaves, Rui Hachimura, LeBron James, and Anthony Davis, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-04')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Lakers responded by stating that Head coach JJ Redick finalized the Lakers' starting rotation featuring D'Angelo Russell, Austin Reaves, Rui Hachimura, LeBron James, and Anthony Davis, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Lakers responded by stating that Head coach JJ Redick finalized the Lakers' starting rotation featuring D'Angelo Russell, Austin Reaves, Rui Hachimura, LeBron James, and Anthony Davis..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-04')">
@@ -29558,7 +28989,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nba-04-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Lakers responded by stating that Head coach JJ Redick finalized the Lakers' starting rotation featuring D'Angelo Russell, Austin Reaves, Rui Hachimura, LeBron James, and Anthony Davis, directly addressing the claims so there is no ambiguity.</li><li>The tactical game plan emphasizes faster transition pace and increasing three-point attempts by over 20% compared to last season.</li><li>The coaching staff established strict regular-season minute management protocols for veteran superstar LeBron James ahead of the Western Conference opener.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Lakers responded by stating that Head coach JJ Redick finalized the Lakers' starting rotation featuring D'Angelo Russell, Austin Reaves, Rui Hachimura, LeBron James, and Anthony Davis..</li><li>The tactical game plan emphasizes faster transition pace and increasing three-point attempts by over 20% compared to last season.</li><li>The coaching staff established strict regular-season minute management protocols for veteran superstar LeBron James ahead of the Western Conference opener.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nba-04-facts-dossier" style="display: none;">
@@ -29809,12 +29240,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-fox-second-amendment-carry-precedent')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Legal Holding: The federal circuit court ruled 2-1 that state statutes banning licensed concealed carry in public transit, parks, and licensed commercial venues violate the Second Amendment under Supreme Court precedent.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-fox-second-amendment-carry-precedent')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Legal Holding: The federal circuit court ruled 2-1 that state statutes banning licensed concealed carry in public transit, parks, and licensed commercial venues violate the Second Amendment under Supreme Court precedent.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-fox-second-amendment-carry-precedent')">
@@ -30084,12 +29509,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Legislative Summary: The legislation raises the federal minimum wage in annual increments to $17 per hour by 2030, with automatic annual cost-of-living adjustments tied to the national median wage index thereafter.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-msnbc-labor-minimum-wage-bill')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Legislative Summary: The legislation raises the federal minimum wage in annual increments to $17 per hour by 2030, with automatic annual cost-of-living adjustments tied to the national median wage index thereafter.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-msnbc-labor-minimum-wage-bill')">
               <span class="expand-label" id="story-msnbc-labor-minimum-wage-bill-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-msnbc-labor-minimum-wage-bill-chevron">▾</span>
@@ -30355,12 +29774,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-05')">
               <span class="fact-preview-badge odds">🎲 LIVE ODDS & WIN PROBABILITY</span>
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Thunder are favored at -5.5 (-155 moneyline) with an implied 60% win probability over Nuggets (Over/Under 47.0 total points), according to consensus sports betting projections.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-05')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Thunder are favored at -5.5 (-155 moneyline) with an implied 60% win probability over Nuggets (Over/Under 47.0 total points), according to consensus sports betting projections.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-05')">
@@ -30630,12 +30043,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Clean Energy Data: Combined wind and solar electricity generation reached 24.2% of total power output on regional grids through September 2026, surpassing coal generation (16.8%) by a decisive 7.4% margin.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-guardian-clean-energy-milestone')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Clean Energy Data: Combined wind and solar electricity generation reached 24.2% of total power output on regional grids through September 2026, surpassing coal generation (16.8%) by a decisive 7.4% margin.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-guardian-clean-energy-milestone')">
               <span class="expand-label" id="story-guardian-clean-energy-milestone-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-guardian-clean-energy-milestone-chevron">▾</span>
@@ -30903,12 +30310,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Investigation Findings: Private-equity-owned community hospitals eliminated unprofitable clinical services—including labor and delivery wards, pediatric units, and emergency trauma centers—at triple the rate of non-profit community facilities.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-propublica-hospital-equity-care-cutbacks')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Investigation Findings: Private-equity-owned community hospitals eliminated unprofitable clinical services—including labor and delivery wards, pediatric units, and emergency trauma centers—at triple the rate of non-profit community facilities.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-propublica-hospital-equity-care-cutbacks')">
               <span class="expand-label" id="story-propublica-hospital-equity-care-cutbacks-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-propublica-hospital-equity-care-cutbacks-chevron">▾</span>
@@ -31173,13 +30574,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-07')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Timberwolves responded by stating that Direct Response: Timberwolves star Anthony Edwards responded directly to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-07')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Timberwolves responded by stating that Direct Response: Timberwolves star Anthony Edwards responded directly to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Timberwolves responded by stating that Direct Response: Timberwolves star Anthony Edwards responded directly to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that', firmly defending their record and rejecting criticisms with verifiable documentation..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-07')">
@@ -31196,7 +30591,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nba-07-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Timberwolves responded by stating that Direct Response: Timberwolves star Anthony Edwards responded directly to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Timberwolves.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Timberwolves.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Timberwolves responded by stating that Direct Response: Timberwolves star Anthony Edwards responded directly to defensive critiques following loss to Mavericks: 'I gotta lock in, simple as that', firmly defending their record and rejecting criticisms with verifiable documentation..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Timberwolves.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Timberwolves.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nba-07-facts-dossier" style="display: none;">
@@ -31447,12 +30842,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-orlando-lake-eola-farmers-market')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Event Hours: The Lake Eola Sunday Market operates every Sunday from 10:00 AM to 4:00 PM along the southeast corner of Lake Eola Park (E. Washington St. & N. Eola Dr.), featuring free admission.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-orlando-lake-eola-farmers-market')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Event Hours: The Lake Eola Sunday Market operates every Sunday from 10:00 AM to 4:00 PM along the southeast corner of Lake Eola Park (E. Washington St. & N. Eola Dr.), featuring free admission.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-orlando-lake-eola-farmers-market')">
@@ -31722,12 +31111,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Event Schedule: Wynwood Second Saturday runs from 6:00 PM to 11:00 PM throughout the Wynwood Arts District along NW 2nd Avenue and 24th Street.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-miami-wynwood-art-walk-showcase')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Event Schedule: Wynwood Second Saturday runs from 6:00 PM to 11:00 PM throughout the Wynwood Arts District along NW 2nd Avenue and 24th Street.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-miami-wynwood-art-walk-showcase')">
               <span class="expand-label" id="story-local-miami-wynwood-art-walk-showcase-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-miami-wynwood-art-walk-showcase-chevron">▾</span>
@@ -31993,12 +31376,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-nba-08')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Imaging confirmed no new structural damage.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nba-08')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Imaging confirmed no new structural damage. Furthermore, Medical & Imaging Evaluation: Team physicians and independent athletic specialists conducted diagnostic evaluations to determine the recover.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nba-08')">
@@ -32268,12 +31645,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & Festival Schedule: The Atlanta Dogwood Festival runs Friday through Sunday at Piedmont Park with free admission for the public across all three days.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-atlanta-dogwood-festival-showcase')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Festival Schedule: The Atlanta Dogwood Festival runs Friday through Sunday at Piedmont Park with free admission for the public across all three days.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-atlanta-dogwood-festival-showcase')">
               <span class="expand-label" id="story-local-atlanta-dogwood-festival-showcase-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-atlanta-dogwood-festival-showcase-chevron">▾</span>
@@ -32539,12 +31910,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-atlanta-beltline-transit-expansion')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Project Scope: The 80 million funding package advances paving on the Southside Trail Segments 4 and 5 while preparing the Streetcar East extension connecting downtown to Ponce City Market.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-atlanta-beltline-transit-expansion')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Project Scope: The 80 million funding package advances paving on the Southside Trail Segments 4 and 5 while preparing the Streetcar East extension connecting downtown to Ponce City Market.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-atlanta-beltline-transit-expansion')">
@@ -32814,12 +32179,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Rangers are favored at -6.5 (-210 moneyline) with an implied 68% win probability over Bruins (Over/Under 42.5 total points), according to consensus sports betting projections.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-nhl-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Rangers are favored at -6.5 (-210 moneyline) with an implied 68% win probability over Bruins (Over/Under 42.5 total points), according to consensus sports betting projections.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-nhl-01')">
               <span class="expand-label" id="story-sports-nhl-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-nhl-01-chevron">▾</span>
@@ -33085,12 +32444,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-local-nyc-bryant-park-winter-village')">
               <span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>
               <p class="fact-preview-text">Direct Answer & Admission: The 17,000-square-foot outdoor ice rink is completely free to enter for visitors who bring their own skates (online reservation required), operating daily through March.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-nyc-bryant-park-winter-village')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & Admission: The 17,000-square-foot outdoor ice rink is completely free to enter for visitors who bring their own skates (online reservation required), operating daily through March.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-nyc-bryant-park-winter-village')">
@@ -33360,12 +32713,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Direct Answer & System Benefits: The automated CBTC signal rollout replaces 90-year-old electro-mechanical track relays with digital transponders, allowing trains to run safely closer together and increasing line capacity by 20%.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-local-nyc-subway-signal-modernization')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Answer & System Benefits: The automated CBTC signal rollout replaces 90-year-old electro-mechanical track relays with digital transponders, allowing trains to run safely closer together and increasing line capacity by 20%.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-local-nyc-subway-signal-modernization')">
               <span class="expand-label" id="story-local-nyc-subway-signal-modernization-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-local-nyc-subway-signal-modernization-chevron">▾</span>
@@ -33631,12 +32978,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-mlb-03')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Sasaki is subject to international amateur bonus pool restrictions.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-mlb-03')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Sasaki is subject to international amateur bonus pool restrictions. Furthermore, His posting by the Chiba Lotte Marines..</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-mlb-03')">
@@ -33906,12 +33247,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Current Betting Odds & Win Probability: Islam Makhachev is favored at -2.5 (-145 moneyline) with an implied 58% win probability over Arman Tsarukyan Current Betting (Over/Under 45.5 total points), according to consensus sports betting projections.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-ufc-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Current Betting Odds & Win Probability: Islam Makhachev is favored at -2.5 (-145 moneyline) with an implied 58% win probability over Arman Tsarukyan Current Betting (Over/Under 45.5 total points), according to consensus sports betting projections.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-ufc-01')">
               <span class="expand-label" id="story-sports-ufc-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-ufc-01-chevron">▾</span>
@@ -34179,12 +33514,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">1 pick in the 2025 NBA Draft.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-cbb-01')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: 1 pick in the 2025 NBA Draft. Furthermore, The consensus projected No..</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-cbb-01')">
               <span class="expand-label" id="story-sports-cbb-01-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-sports-cbb-01-chevron">▾</span>
@@ -34449,13 +33778,7 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-sports-ufc-02')">
               <span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>
-              <p class="fact-preview-text">Direct Response: Jon Jones responded by stating that Direct Response: Dana White responded directly to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-sports-ufc-02')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Direct Response: Jon Jones responded by stating that Direct Response: Dana White responded directly to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</span>
+              <p class="fact-preview-text">Direct Response: Dana White responded directly to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments', firmly defending their record and rejecting criticisms with verifiable documentation..</p>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-sports-ufc-02')">
@@ -34472,7 +33795,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-ufc-02-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Direct Response: Jon Jones responded by stating that Direct Response: Dana White responded directly to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments', firmly defending their record and rejecting criticisms with verifiable documentation, directly addressing the claims so there is no ambiguity.</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Jon Jones.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Jon Jones.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
+                <ul class="core-facts-list"><li>Direct Response: Dana White responded directly to Jon Jones retirement rumors ahead of heavyweight title unification bout: 'He loves the big moments', firmly defending their record and rejecting criticisms with verifiable documentation..</li><li>Key Competitive Breakdown: Primary sports wire reporting detailed the decisive statistical margins, roster contributions, and situational execution surrounding Jon Jones.</li><li>Standings & Postseason Impact: The result directly shifts division tiebreakers, poll rankings, and playoff seeding trajectories for Jon Jones.</li><li>Coaching & Film Evaluation: Coaching staffs highlighted line-of-scrimmage physicality, turnover discipline, and late-game composure as the defining factors.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-ufc-02-facts-dossier" style="display: none;">
@@ -34723,12 +34046,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">No. 25 BYU generated major national attention at the Big 12 men's basketball media days in Kansas City, highlighted by the high-profile arrival of five-star freshman phenom AJ Dybantsa and the NBA-style offensive system introduced by new head coach Kevin Young.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: No. 25 BYU generated major national attention at the Big 12 men's basketball media days in Kansas City, highlighted by the high-profile arrival of five-star freshman phenom AJ Dybantsa and the NBA-style offensive system introduced by new head coach Kevin Young.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-byu-big-12-basketball-media-days')">
@@ -34998,12 +34315,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Front office personnel have contacted multiple franchises, including the Milwaukee Bucks, gauging trade interest while evaluating whether Porzingis' unique contract structure and $30M salary can be relocated before the trade deadline.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Front office personnel have contacted multiple franchises, including the Milwaukee Bucks, gauging trade interest while evaluating whether Porzingis' unique contract structure and $30M salary can be relocated before the trade deadline.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-warriors-porzingis-trades-absence')">
               <span class="expand-label" id="story-warriors-porzingis-trades-absence-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-warriors-porzingis-trades-absence-chevron">▾</span>
@@ -35269,12 +34580,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Los Angeles Rams announced that wide receiver Davante Adams sustained a significant lower-leg injury and is projected to miss 6 to 10 weeks of regular season action.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Los Angeles Rams announced that wide receiver Davante Adams sustained a significant lower-leg injury and is projected to miss 6 to 10 weeks of regular season action.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-rams-injuries-wr-adams')">
@@ -35544,12 +34849,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">NBA.com published its comprehensive preseason power rankings evaluating all 30 franchises ahead of the 2026-27 regular season tip-off.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: NBA.com published its comprehensive preseason power rankings evaluating all 30 franchises ahead of the 2026-27 regular season tip-off.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nba-preseason-power-rankings')">
               <span class="expand-label" id="story-nba-preseason-power-rankings-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nba-preseason-power-rankings-chevron">▾</span>
@@ -35815,12 +35114,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-cfb-rankings-upsets')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Multiple Top-10 national championship contenders were knocked off in historic weekend upsets, creating massive turmoil across the updated AP Top 25 rankings.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-cfb-rankings-upsets')">
@@ -36090,12 +35383,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The prospective partnership would terminate outstanding antitrust litigation and inject over $3 billion in sovereign capital into PGA Tour Enterprises.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-pga-saudi-merger')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The prospective partnership would terminate outstanding antitrust litigation and inject over $3 billion in sovereign capital into PGA Tour Enterprises.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-pga-saudi-merger')">
               <span class="expand-label" id="story-pga-saudi-merger-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-pga-saudi-merger-chevron">▾</span>
@@ -36361,12 +35648,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-ncaa-revenue-share')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The NCAA and Power Five athletic conferences approved a landmark $2.75 billion class-action legal settlement in the House v. NCAA case.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-ncaa-revenue-share')">
@@ -36636,12 +35917,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">Philadelphia Eagles starting quarterback Jalen Hurts was officially ruled out of Sunday's matchup against the Carolina Panthers.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nfl-jalen-hurts')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: Philadelphia Eagles starting quarterback Jalen Hurts was officially ruled out of Sunday's matchup against the Carolina Panthers.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nfl-jalen-hurts')">
               <span class="expand-label" id="story-nfl-jalen-hurts-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nfl-jalen-hurts-chevron">▾</span>
@@ -36909,12 +36184,6 @@ body.searching-mode #blindStanceSection {
               <p class="fact-preview-text">The tactical game plan emphasizes faster transition pace and increasing three-point attempts by over 20% compared to last season.</p>
             </div>
 
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-nba-lakers-prep')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The tactical game plan emphasizes faster transition pace and increasing three-point attempts by over 20% compared to last season.</span>
-            </div>
-
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-nba-lakers-prep')">
               <span class="expand-label" id="story-nba-lakers-prep-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="story-nba-lakers-prep-chevron">▾</span>
@@ -37180,12 +36449,6 @@ body.searching-mode #blindStanceSection {
             <div class="fact-preview-strip" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">
               <span class="fact-preview-badge fact">📌 VERIFIED LEAD FACT</span>
               <p class="fact-preview-text">The Milwaukee Brewers completed a four-game National League Championship Series sweep of the defending World Series champion Los Angeles Dodgers.</p>
-            </div>
-
-            <div class="what-changed-pill" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')" title="What shifted in the last 24 hours">
-              <span class="changed-icon">⚡</span>
-              <span class="changed-label">What Changed:</span>
-              <span class="changed-text">Latest 24-hour update: The Milwaukee Brewers completed a four-game National League Championship Series sweep of the defending World Series champion Los Angeles Dodgers.</span>
             </div>
 
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('story-dodgers-brewers-nlcs')">

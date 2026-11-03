@@ -1184,9 +1184,10 @@ def run_all_regression_tests():
     assert 'id="navDailyLens"' in html, "Test 31 Failed: #navDailyLens view tab missing from index.html"
     assert 'id="pillFollowing"' in html, "Test 31 Failed: #pillFollowing filter pill missing from category bar"
 
-    # 2. Verify 'What Changed Since Yesterday' callouts on cards
-    assert 'class="what-changed-pill"' in html, "Test 31 Failed: what-changed-pill callouts missing from story cards"
-    assert "What Changed:" in html, "Test 31 Failed: 'What Changed:' label missing from cards"
+    # 2. Verify Streamlined Article Cards (what-changed-pill purged) & Daily Lens Morning Briefing
+    assert 'class="what-changed-pill"' not in html, "Test 31 Failed: what-changed-pill must be purged from feed story cards for streamlined scrolling!"
+    assert 'class="what-changed-box"' in html, "Test 31 Failed: what-changed-box missing from Your Daily Lens morning briefing"
+    assert "What Changed Since Yesterday" in html, "Test 31 Failed: 'What Changed Since Yesterday' label missing from Daily Lens briefing"
 
     # 3. Verify Story Evolution Tracker timeline drawers on cards
     assert 'class="story-evolution-box"' in html, "Test 31 Failed: story-evolution-box missing from story cards"
@@ -1207,6 +1208,7 @@ def run_all_regression_tests():
     assert ".what-changed-box" in css, "Test 31 Failed: .what-changed-box missing from styles.css"
     assert ".story-evolution-box" in css, "Test 31 Failed: .story-evolution-box missing from styles.css"
     assert ".timeline-track" in css, "Test 31 Failed: .timeline-track missing from styles.css"
+    assert "-webkit-line-clamp: 3;" not in css, "Test 31 Failed: -webkit-line-clamp still present in styles.css"
 
     print("✓ TEST 31 PASSED: Your Daily Lens morning briefing & Story Evolution Tracker verified (100% interactive, 24-hr deltas & timelines active).")
     passed_count += 1

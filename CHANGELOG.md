@@ -1,5 +1,19 @@
 # Your News Lens — Changelog
 
+## [v13.1] - 2026-11-03 — Full Uncut Instant Answers & Streamlined Feed Scrolling (What Changed Purge)
+- **Full Instant Answer Visibility & Ellipsis Purge (`.fact-preview-text`)**:
+  - Eliminated `-webkit-line-clamp: 3;`, `display: -webkit-box;`, and `overflow: hidden;` on `.fact-preview-text` across `styles.css` and `index.html`.
+  - Guarantees the complete, direct answer is fully visible on mobile screens without being truncated mid-sentence with an ellipsis `...`.
+  - Refined direct answers in `data/stories.json` (such as College Football Power Rankings Top 25 stakes, Senate budget deals, and Treasury yield rallies), purging awkward duplicated wire prefixes so answers are immediate and punchy.
+- **Feed Streamlining: Removed What Changed Section on Article Cards**:
+  - Purged the `.what-changed-pill` yellow box from all 122+ story cards in the magazine feed in `engine.py` and `index.html`.
+  - Enforced `.what-changed-pill { display: none !important; }` in `styles.css`.
+  - Substantially reduces card vertical footprint for faster, smoother scrolling through the article catalog.
+  - Kept the comprehensive 24-hour delta analysis in the dedicated morning briefing (`🌅 Your Daily Lens` / `#dailyLensView`).
+- **Regression Suite Verification**:
+  - Updated `TEST 31` in `test_regression_suite.py` to verify the absence of `-webkit-line-clamp: 3;` and the clean removal of `.what-changed-pill` on feed cards.
+  - All 31 regression tests passed with a 100% success rate.
+
 ## [v13.0] - 2026-11-02 — Per-Article Polarizing Controversial Take Poll & Sunday Email Blind Challenge Delegation
 - **Delegation of Blind Stance Challenge to Weekly Sunday Email Newsletter**:
   - Removed the Blind Stance Challenge (`#blindStanceSection`) completely from the website homepage, resolving user feedback that a static daily challenge felt gimmicky and did not update fast enough.

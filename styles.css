@@ -1131,13 +1131,11 @@ main {
 }
 
 .fact-preview-text {
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  line-height: 1.55;
+  margin: 0;
+  display: block;
 }
 
 /* ==========================================================================
@@ -3254,16 +3252,7 @@ body.searching-mode #blindStanceSection {
 
 /* Card-Face What Changed Pill */
 .what-changed-pill {
-  background: rgba(245, 158, 11, 0.09);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin: 8px 0 10px;
-  font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.15s ease;
+  display: none !important;
 }
 
 .what-changed-pill:hover {
