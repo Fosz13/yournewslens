@@ -684,6 +684,43 @@ def synthesize_story_main_point_facts(title: str, context: str = "", category: s
     ]
 
 
+
+def resolve_poll_side_lenses(statement: str, agree_label: str = "", disagree_label: str = "") -> Tuple[str, str]:
+    """Determines which perspective lens (LEFT/Blue vs RIGHT/Red) aligns with voting AGREE vs DISAGREE on a poll."""
+    ag_low = (agree_label or "").lower()
+    dis_low = (disagree_label or "").lower()
+    stmt_low = (statement or "").lower()
+    comb = f"{stmt_low} {ag_low}"
+
+    # Explicit Right/Red AGREE labels
+    right_agree_labels = [
+        "cut property taxes", "fiscal treason", "checks & balances", "reignites inflation",
+        "all-in on fusion", "stop closures", "fix roads first", "rail boondoggle",
+        "abolish historic boards", "ban ransom payments", "unfair ratepayer tax",
+        "enforce zero tolerance", "fast-track access", "retaliate directly"
+    ]
+    if any(r in ag_low for r in right_agree_labels):
+        return ("RIGHT", "LEFT")
+
+    # Explicit Left/Blue AGREE labels (or explicit Right/Red DISAGREE labels like "focus on domestic priorities")
+    left_agree_labels = [
+        "lead active diplomacy", "cancel debt", "cap coaching buyouts", "player health first",
+        "boost community life", "helps everyday households", "destroys heritage",
+        "gentrification trap", "stop waterfront bailouts", "mlb needs a salary cap",
+        "enforce tough penalties", "insurer bailout", "zero tax subsidies", "build real transit",
+        "worse than cable", "financial fair play", "end pre-game stunts", "ban thursday games"
+    ]
+    right_disagree_labels = [
+        "focus on domestic priorities", "enforce repayment", "boosters fund it",
+        "drivers need roads", "focus on core basics", "let cleared pros play"
+    ]
+    if any(l in ag_low for l in left_agree_labels) or any(rd in dis_low for rd in right_disagree_labels):
+        return ("LEFT", "RIGHT")
+
+    if any(m in comb for m in ["cancel debt", "cap coaching buyouts", "banned from paying", "zero tax subsidies", "lead active diplomacy"]):
+        return ("LEFT", "RIGHT")
+    return ("RIGHT", "LEFT")
+
 def generate_merit_controversial_poll(title: str, context: str = "", category: str = "", focus_ent: str = "", existing_take: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Generates an interesting, thought-provoking poll QUESTION (ending with '?') based directly on the
@@ -754,16 +791,17 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
                 # Convert declarative controversial take into a direct question on the merits
                 m_should = re.match(r"^([A-Z][^,]+?)\s+should\s+(.+)$", s_body)
                 m_is = re.match(r"^([A-Z][^,]+?)\s+(is|are|has|have|will|can|does|do)\s+(.+)$", s_body)
+                proper_Starts = r"^(?:U\.S\.|US|NFL|NBA|MLB|NHL|NCAA|CFP|IMF|DOJ|FBI|FDA|CDC|EPA|GOP|MAGA|AI|EU|UK|UN|NATO|FERC|CBP|IRS|SEC|Florida|Texas|California|America|American|Congress|Senate|White House|Victor|Patrick|Los Angeles|New York|Tampa|Miami|Orlando|Chicago|Buffalo|Philadelphia|Michigan|China|Russia|Ukraine|Israel|Iran|France|Pakistan|Brazil|Canada)\b"
                 if m_should:
                     subj = m_should.group(1).strip()
                     rest = m_should.group(2).strip()
-                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(r"^(?:U\.S\.|US|NFL|NBA|MLB|NHL|NCAA|CFP|IMF|DOJ|FBI|FDA|CDC|EPA|GOP|MAGA|AI|EU|UK|UN|NATO|FERC|CBP|IRS|SEC)\b", subj) else subj
+                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(proper_Starts, subj, re.I) else subj
                     q_stmt = f"Should {subj_fixed} {rest}?"
                 elif m_is:
                     subj = m_is.group(1).strip()
                     aux = m_is.group(2).strip().capitalize()
                     rest = m_is.group(3).strip()
-                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(r"^(?:U\.S\.|US|NFL|NBA|MLB|NHL|NCAA|CFP|IMF|DOJ|FBI|FDA|CDC|EPA|GOP|MAGA|AI|EU|UK|UN|NATO|FERC|CBP|IRS|SEC)\b", subj) else subj
+                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(proper_Starts, subj, re.I) else subj
                     q_stmt = f"{aux} {subj_fixed} {rest}?"
                 else:
                     q_stmt = f"Do you agree that {s_body[0].lower() + s_body[1:]}?"
@@ -849,19 +887,30 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
             "total_votes": total_votes
         }
 
+    if any(w in comb for w in ["cyberattack", "cyberattacks", "ransomware", "hackers", "hacked", "data breach", "blood bank"]):
+        return {
+            "statement": "Should governments treat cyberattacks on critical facilities like blood banks and hospitals as acts of war requiring direct retaliation?",
+            "agree_label": "Yes — Retaliate directly",
+            "disagree_label": "No — Defensive safeguards",
+            "baseline_agree_pct": agree_pct,
+            "baseline_disagree_pct": disagree_pct,
+            "total_votes": total_votes
+        }
+
     if "tech" in c_low or "science" in c_low:
         return {
-            "statement": f"Given the rapid advances surrounding {ent}, do the long-term scientific and economic benefits outweigh the risks?",
-            "agree_label": "Yes — Benefits outweigh risks",
-            "disagree_label": "No — Needs stricter guardrails",
+            "statement": f"Given the rapid advances in {ent}, do the economic and technological benefits outweigh the need for new government regulation?",
+            "agree_label": "Yes — Unleash innovation",
+            "disagree_label": "No — Stricter regulation",
             "baseline_agree_pct": agree_pct,
             "baseline_disagree_pct": disagree_pct,
             "total_votes": total_votes
         }
 
     if "world" in c_low:
+        topic_phrase = ent if len(ent.split()) >= 2 else clean_title[:48]
         return {
-            "statement": f"Regarding {ent}, should the U.S. and allied nations take a more active diplomatic and economic role or stay focused on domestic priorities?",
+            "statement": f"On {topic_phrase}, should the U.S. and allies step in with active diplomatic leverage or put domestic priorities first?",
             "agree_label": "Lead active diplomacy",
             "disagree_label": "Focus on domestic priorities",
             "baseline_agree_pct": agree_pct,
@@ -4922,8 +4971,11 @@ def extract_focus_entity(text: str) -> str:
         if len(tokens) >= 2:
             return " ".join(tokens[:4])
 
+    # Only use a single capitalized word if it is NOT just the first word of the sentence
+    first_word_m = re.match(r'^([A-Z][a-zA-Z]{2,})\b', cleaned)
+    first_word = first_word_m.group(1) if first_word_m else ""
     single_matches = re.findall(r'\b[A-Z][a-zA-Z]{2,}\b', cleaned)
-    single_filtered = [s for s in single_matches if s not in stops and s not in standalone_particles]
+    single_filtered = [s for s in single_matches if s not in stops and s not in standalone_particles and s != first_word]
     if single_filtered:
         return single_filtered[0]
 
@@ -8204,6 +8256,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         ct_agree_pct = ct.get("baseline_agree_pct", 62)
         ct_disagree_pct = ct.get("baseline_disagree_pct", 38)
         ct_votes = ct.get("total_votes", 2840)
+        ct_agree_lens, ct_disagree_lens = resolve_poll_side_lenses(ct_statement, ct_agree_lbl, ct_disagree_lbl)
         milestones_html = []
         for m in timeline:
             m_time = m.get("time", "")
@@ -8219,6 +8272,46 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             </div>
             ''')
         timeline_html = "".join(milestones_html)
+
+        lensList = [
+            {"key": "CENTER", "name": "Balanced Lens — Green / Centrist Persona", "short": "Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
+            {"key": "RIGHT", "name": "Red Lens — MAGA Persona", "short": "Right", "icon": "🔴", "chipClass": "red", "display": 'style="display: none;"'},
+            {"key": "LEFT", "name": "Blue Lens — Liberal Persona", "short": "Left", "icon": "🔵", "chipClass": "blue", "display": 'style="display: none;"'}
+        ]
+        lens_boxes_html = []
+        for lens in lensList:
+            pData = perspectives.get(lens["key"], {})
+            tp_list = pData.get("talking_points", [])
+            quotes = "".join([f'<div class="quote-row">"{tp}"</div>' for tp in tp_list])
+            lens_boxes_html.append(f"""
+              <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
+                <div class="lens-status-row">
+                  <div class="lens-chip {lens['chipClass']}">
+                    <span>{lens['icon']}</span>
+                    <span>{lens['name']}</span>
+                  </div>
+
+                  <div class="card-toggle-group">
+                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT'); event.stopPropagation();">Left</button>
+                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER'); event.stopPropagation();">Balanced</button>
+                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT'); event.stopPropagation();">Right</button>
+                  </div>
+                </div>
+
+                <div class="perspective-meta-bar">
+                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
+                  {f'<span class="source-attribution">Source: {pData.get("source_attribution")}</span>' if pData.get("source_attribution") else ''}
+                </div>
+
+                <div class="talking-points-panel">
+                  <div class="panel-header">
+                    <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                    <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this); event.stopPropagation();">📋 Copy</button>
+                  </div>
+                  {quotes}
+                </div>
+              </div>""")
+        joined_lens_html = "".join(lens_boxes_html)
 
         card = f"""
         <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" data-lean="{lean}" data-source="{src_name}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
@@ -8247,7 +8340,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>
             </div>
 
-            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view Key Facts & Perspectives">
+            <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view Key Facts">
               {s.get('title', '')}
             </h3>
 
@@ -8256,8 +8349,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <p class="fact-preview-text">{lead_fact}</p>
             </div>
 
-            <!-- Quick Polarizing Vote Bar -->
-            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-pct="{ct_agree_pct}" data-disagree-pct="{ct_disagree_pct}">
+            <!-- Quick Polarizing Vote Bar (Reveals Percentages + Matching Red/Blue Lens Persona Immediately on Vote) -->
+            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-pct="{ct_agree_pct}" data-disagree-pct="{ct_disagree_pct}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
               <p class="take-statement-text">“{ct_statement}”</p>
 
               <div class="take-vote-actions">
@@ -8280,19 +8373,20 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>
 
               <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
-                <span class="take-voted-msg" id="{sId}-voted-msg" onclick="toggleLensDrawer('{sId}', event, this); event.stopPropagation();">📊 {ct_agree_pct}% voted with you vs. {ct_disagree_pct}% on the other side — see Lens / Personas ▾</span>
+                <span class="take-voted-msg" id="{sId}-voted-msg">📊 {ct_agree_pct}% voted with you vs. {ct_disagree_pct}% on the other side</span>
                 <span class="take-total-votes" id="{sId}-total-votes" data-base-votes="{ct_votes}">{ct_votes:,} votes</span>
+              </div>
+
+              <!-- Matching Red / Blue Lens Persona (Revealed Immediately Upon Voting) -->
+              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">
+                {joined_lens_html}
               </div>
             </div>
 
-            <div class="expand-prompt-bar dual-expand-bar" id="{sId}-expand-bar">
+            <div class="expand-prompt-bar single-facts-bar" id="{sId}-expand-bar">
               <button type="button" class="btn-card-drawer btn-drawer-facts" id="{sId}-btn-facts-drawer" data-story-id="{sId}" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
                 <span class="drawer-btn-left"><span class="drawer-btn-icon">📌</span><span class="expand-label" id="{sId}-expand-label">Key Facts</span></span>
                 <span class="expand-chevron" id="{sId}-chevron">▾</span>
-              </button>
-              <button type="button" class="btn-card-drawer btn-drawer-lens" id="{sId}-btn-lens-drawer" data-story-id="{sId}" onclick="toggleLensDrawer('{sId}', event, this)">
-                <span class="drawer-btn-left"><span class="drawer-btn-icon">🎭</span><span class="expand-lens-label" id="{sId}-lens-expand-label">Lens / Persona</span></span>
-                <span class="expand-lens-chevron" id="{sId}-lens-chevron">▾</span>
               </button>
             </div>
 
@@ -8330,9 +8424,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                     </div>
                   </div>
                 </div>
-              </div>"""
+              </div>
 
-        card += f"""
               <!-- Story Evolution Tracker (Chronological Milestones) -->
               <div class="story-evolution-box" id="{sId}-evolution-box">
                 <div class="evolution-header" onclick="toggleEvolutionTimeline('{sId}', event)">
@@ -8353,63 +8446,6 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
               </div>
               </div><!-- end facts-drawer-panel -->
-              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">"""
-
-        lensList = [
-            {"key": "CENTER", "name": "Balanced Lens — Green / Centrist Persona", "short": "Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
-            {"key": "RIGHT", "name": "Red Lens — MAGA Persona", "short": "Right", "icon": "🔴", "chipClass": "red", "display": 'style="display: none;"'},
-            {"key": "LEFT", "name": "Blue Lens — Liberal Persona", "short": "Left", "icon": "🔵", "chipClass": "blue", "display": 'style="display: none;"'}
-        ]
-
-        for lens in lensList:
-            pData = perspectives.get(lens["key"], {})
-            tp_list = pData.get("talking_points", [])
-            quotes = "".join([f'<div class="quote-row">"{tp}"</div>' for tp in tp_list])
-
-            card += f"""
-              <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
-                <div class="lens-status-row">
-                  <div class="lens-chip {lens['chipClass']}">
-                    <span>{lens['icon']}</span>
-                    <span>{lens['name']}</span>
-                  </div>
-
-                  <div class="card-toggle-group">
-                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT')">Left</button>
-                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER')">Balanced</button>
-                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT')">Right</button>
-                  </div>
-                </div>
-
-                <div class="perspective-meta-bar">
-                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
-                  {f'<span class="source-attribution">Source: {pData.get("source_attribution")}</span>' if pData.get("source_attribution") else ''}
-                </div>
-
-                <div class="talking-points-panel">
-                  <div class="panel-header">
-                    <span class="panel-title">💬 Key Talking Points & Arguments</span>
-                    <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this)">📋 Copy</button>
-                  </div>
-                  {quotes}
-                </div>
-              </div>"""
-
-        # Deterministic reader stance baseline percentages
-        h = abs(hash(sId))
-        r_bias = (h % 22) + 26
-        l_bias = ((h >> 3) % 22) + 26
-        c_bias = 100 - r_bias - l_bias
-        if c_bias < 16:
-            c_bias = 22
-            rem = 78
-            ratio = r_bias / (r_bias + l_bias)
-            r_bias = int(rem * ratio)
-            l_bias = rem - r_bias
-        total_votes = 820 + (h % 1450)
-
-        card += f"""
-              </div><!-- end lens-drawer-panel -->
 
               <div class="card-bottom-actions">
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
@@ -8644,11 +8680,33 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     var myPct = (choice === "AGREE") ? agPct : disPct;
     var otherPct = (choice === "AGREE") ? disPct : agPct;
     var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
-    if (votedMsg) votedMsg.textContent = "📊 " + myPct + "% voted with you vs. " + otherPct + "% on the other side — see Lens / Personas ▾";
+    if (votedMsg) votedMsg.textContent = "📊 " + myPct + "% voted with you vs. " + otherPct + "% on the other side";
     var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
     if (totalVotesEl) {
       var baseV = parseInt(totalVotesEl.getAttribute("data-base-votes") || totalVotesEl.textContent.replace(/[^0-9]/g, "") || "2840", 10);
       totalVotesEl.textContent = (baseV + 1).toLocaleString() + " votes";
+    }
+    var card = pollEl.closest ? pollEl.closest(".compact-card") : document.getElementById(sId);
+    var agreeLens = pollEl.getAttribute("data-agree-lens") || "RIGHT";
+    var disagreeLens = pollEl.getAttribute("data-disagree-lens") || "LEFT";
+    var chosenLens = (choice === "AGREE") ? agreeLens : disagreeLens;
+    var lensPanel = pollEl.querySelector(".lens-drawer-panel") || document.getElementById(sId + "-lens-panel");
+    if (lensPanel) lensPanel.style.display = "block";
+    var views = ["RIGHT", "CENTER", "LEFT"];
+    for (var v = 0; v < views.length; v++) {
+      var vEl = document.getElementById(sId + "-view-" + views[v]) || (card ? card.querySelector('[id$="-view-' + views[v] + '"]') : null);
+      if (vEl) vEl.style.display = (views[v] === chosenLens) ? "block" : "none";
+    }
+    if (card) {
+      var tBtns = card.querySelectorAll(".card-toggle-btn");
+      for (var b = 0; b < tBtns.length; b++) {
+        var btn = tBtns[b];
+        var txt = btn.textContent.trim().toUpperCase();
+        btn.classList.remove("active", "left", "center", "right");
+        if (chosenLens === "LEFT" && txt.indexOf("LEFT") !== -1) btn.classList.add("active", "left");
+        else if (chosenLens === "CENTER" && (txt.indexOf("BAL") !== -1 || txt.indexOf("CENTER") !== -1)) btn.classList.add("active", "center");
+        else if (chosenLens === "RIGHT" && txt.indexOf("RIGHT") !== -1) btn.classList.add("active", "right");
+      }
     }
   };
 
