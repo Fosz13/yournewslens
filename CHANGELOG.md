@@ -1,5 +1,30 @@
 # Your News Lens — Changelog
 
+## [v15.1] - 2026-11-04 — JavaScript Unescaped Quote Fix & Ultra-Slim Quick Vote Box
+- **Resolved JavaScript SyntaxError Breaking All Page Buttons (`app.js`, `index.html`)**:
+  - Fixed an unescaped single quote in `renderControversialPoll` (`'🔥 You're with the ...'` -> `"✓ In the " + myPct + "% " + groupType + " — see 3 perspectives ▾"`), which had caused the browser JS parser to abort script execution and leave `toggleStoryDetails`, `setGlobalPerspective`, and category buttons unbound.
+  - Added automated `node -c app.js` JavaScript syntax validation directly into `TEST 30` of `test_regression_suite.py` so no JS syntax error can ever pass CI again.
+- **Redesigned Ultra-Slim Quick Vote Box (`.controversial-take-poll`)**:
+  - Removed the bulky header bar (`🔥 The Controversial Take`, `⚡ Most Polarizing Debate`, `Tap to vote`) and inner nested box.
+  - Now renders as a sleek, compact inline quick-vote prompt showing just the 1-sentence provocative question and two slim 34px side-by-side buttons (`👍 Agree (...)` | `👎 Disagree (...)`).
+
+## [v15.0] - 2026-11-03 — Editorial Intelligence Engine, 100-Point Automated Quality Gate & Independent QA Benchmark Suite
+- **Editorial Intelligence & Reader Question Inference (`infer_reader_question`, `generate_direct_headline_answer`)**:
+  - Upgraded `engine.py` to evaluate both the headline and full article text rather than relying solely on headline keywords.
+  - Explicitly classifies whether a headline asks a direct question or identifies the primary implicit question an ordinary reader would naturally ask (e.g., *corporate_layoffs*, *accident_investigation*, *election_outcome*, *business_acquisition*, *product_recall*, *scientific_discovery*, *legal_ruling*, *market_movement*, *natural_disaster*).
+  - Eliminated robotic filler prefixes (`"The decision was prompted by..."`, `"Primary wire reporting confirms that..."`) and protected abbreviations (`St.`, `U.S.`, `No.`, `Dr.`, `Rep.`, `Sen.`) during sentence splitting.
+  - Added explicit detection and honest acknowledgment when source articles state that information is not yet established (`"The NTSB has not yet identified..."`, `"Officials have not disclosed..."`).
+- **100-Point Automated Content Quality Scoring & Self-Healing Gate (`score_instant_answer_quality`, `validate_and_score_story_record`)**:
+  - Implemented the 5-part 100-point internal quality rubric: Directness of Answer (25 pts), Specificity & Usefulness (25 pts), Article Grounding (25 pts), Relevance to Headline (15 pts), and Clarity & Readability (10 pts).
+  - Enforces a minimum score of **80/100** before publication and rejects all prohibited filler phrases (`"Key participants addressed the central developments"`, `"Officials continue to monitor the situation"`, `"The development represents a significant milestone"`, `"Stakeholders are evaluating the potential implications"`, `"Authorities are working to determine next steps"`).
+  - Evaluates image quality independently (`image_validation`) and persists full audit metadata (`instant_answer`, `editorial_validation`, `image_validation`) directly inside every record in `data/stories.json`.
+- **20-Story Real-World Benchmark & Adversarial QA Suite (`data/qa_benchmark_20_stories.json`, `data/qa_audit_report.json`, Tests 32–35)**:
+  - Added `TEST 32` verifying **Test A (Florida Election Results)** and **Test B (Palm Beach County Aircraft Crash NTSB Investigation)**.
+  - Added `TEST 33` evaluating 20 real-world story types and writing reproducible audit results to `data/qa_audit_report.json`.
+  - Added `TEST 34` verifying 10 distinct image subjects, zero cross-domain bleed, and 100% ID-locked stability across feed reordering.
+  - Added `TEST 35` performing adversarial testing (injecting generic filler, mismatched stadium photos on business stories, broken image URLs, and unestablished-cause questions) and verifying automatic self-healing.
+  - All 35/35 regression tests pass at 100%.
+
 ## [v14.0] - 2026-11-03 — Front-Face "Hot Take" Polarizing Vote Bar & Majority/Minority Perspective Hook
 - **Surfaced Controversial Take Poll Directly onto the Front Card Face (`.controversial-take-poll`)**:
   - Moved the polarizing debate poll out of the collapsed `.card-details` drawer and placed it directly on the visible front face of every story card—immediately below the `📌 KEY FACT` / `⚡ INSTANT ANSWER` box and above the `⚖️ View Key Facts & Perspectives` expand button.

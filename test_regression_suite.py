@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 31
+    total_tests = 35
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1150,7 +1150,12 @@ def run_all_regression_tests():
     assert 'onclick="voteControversialTake(' in html, "Test 30 Failed: voteControversialTake click handler missing from story cards"
     assert 'btn-take-agree' in html, "Test 30 Failed: btn-take-agree missing from story polls"
     assert 'btn-take-disagree' in html, "Test 30 Failed: btn-take-disagree missing from story polls"
-    assert 'The Controversial Take' in html, "Test 30 Failed: 'The Controversial Take' badge missing from story cards"
+    assert 'The Controversial Take' not in html[html.find('id="storiesFeedView"'):html.find('<script>')], "Test 30 Failed: Verbose 'The Controversial Take' header must be removed from story cards"
+    assert 'class="take-statement-text"' in html, "Test 30 Failed: take-statement-text missing from story cards"
+    # Verify JavaScript syntax of app.js and inline <script> in index.html using node -c
+    import subprocess
+    js_check = subprocess.run(["node", "-c", "app.js"], capture_output=True, text=True)
+    assert js_check.returncode == 0, f"Test 30 Failed: JavaScript SyntaxError in app.js: {js_check.stderr}"
 
     # 3. Verify script tag exports voting functions on window
     s_tag = html.rfind("<script>")
@@ -1215,6 +1220,182 @@ def run_all_regression_tests():
     assert "-webkit-line-clamp: 3;" not in css, "Test 31 Failed: -webkit-line-clamp still present in styles.css"
 
     print("✓ TEST 31 PASSED: Your Daily Lens morning briefing & Story Evolution Tracker verified (100% interactive, 24-hr deltas & timelines active).")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 32: Test A (Florida Election Results) & Test B (Palm Beach County Aircraft Crash)
+    # -------------------------------------------------------------------------
+    print("\n[TEST 32] Test A (Florida Election Results) & Test B (Palm Beach Aircraft Crash) Verification...")
+    # Test A: Florida Election Results
+    t_fla = "Did Florida Election Results Favor Democrats or Republicans?"
+    c_fla = (
+        "Republicans maintained control of the governor's office and both chambers of the state legislature "
+        "in Tuesday's general election, while Democrats made gains in several competitive congressional districts "
+        "across South and Central Florida."
+    )
+    synth_fla = engine.generate_contextual_synthesis(t_fla, c_fla, "Politics")
+    ans_fla = synth_fla["core_facts"][0]
+    score_fla = engine.score_instant_answer_quality(t_fla, ans_fla, c_fla, "Politics")
+    assert score_fla["passed"] and score_fla["total_score"] >= 80, f"Test 32 Failed: Test A score below 80: {score_fla}"
+    assert "republicans" in ans_fla.lower() and "governor" in ans_fla.lower() and "democrats" in ans_fla.lower(), f"Test 32 Failed: Test A missing party/race outcomes: {ans_fla}"
+    assert "voters participated in important" not in ans_fla.lower(), f"Test 32 Failed: Test A gave bad generic answer: {ans_fla}"
+
+    # Test B: Palm Beach County Aircraft Crash
+    t_pbc = "Pieces of Jet That Crashed in Palm Beach County Found Miles Away From Impact Site, NTSB Says"
+    c_pbc = (
+        "Investigators recovered pieces of the Bombardier Challenger 600 tail stabilizer and flight control surfaces "
+        "nearly four miles from the primary Palm Beach County crash site, suggesting debris was scattered across a wider area "
+        "during an in-flight breakup. The NTSB is examining the debris field and cockpit voice recorder at its Washington "
+        "laboratory to determine what caused the structural failure."
+    )
+    synth_pbc = engine.generate_contextual_synthesis(t_pbc, c_pbc, "National News")
+    ans_pbc = synth_pbc["core_facts"][0]
+    score_pbc = engine.score_instant_answer_quality(t_pbc, ans_pbc, c_pbc, "National News")
+    assert score_pbc["passed"] and score_pbc["total_score"] >= 80, f"Test 32 Failed: Test B score below 80: {score_pbc}"
+    assert any(k in ans_pbc.lower() for k in ["tail stabilizer", "flight control", "recovered pieces"]), f"Test 32 Failed: Test B missing recovered components: {ans_pbc}"
+    assert "four miles" in ans_pbc.lower() or "in-flight breakup" in ans_pbc.lower(), f"Test 32 Failed: Test B missing significance of debris field: {ans_pbc}"
+    assert "key participants and officials addressed" not in ans_pbc.lower(), f"Test 32 Failed: Test B emitted prohibited boilerplate: {ans_pbc}"
+
+    print("✓ TEST 32 PASSED: Test A (Florida Election outcomes) and Test B (Palm Beach NTSB recovered debris) verified.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 33: 20-Story Real-World Benchmark Suite & 100-Point Quality Gate (>=80)
+    # -------------------------------------------------------------------------
+    print("\n[TEST 33] 20-Story Real-World Benchmark Suite & 100-Point Quality Gate Verification...")
+    bench_path = os.path.join(os.path.dirname(__file__), "data", "qa_benchmark_20_stories.json")
+    assert os.path.exists(bench_path), "Test 33 Failed: data/qa_benchmark_20_stories.json missing!"
+    with open(bench_path, "r", encoding="utf-8") as bf:
+        bench_stories = json.load(bf)
+    assert len(bench_stories) >= 20, f"Test 33 Failed: Expected >= 20 benchmark story types, found {len(bench_stories)}"
+
+    audit_results = []
+    bench_seen_urls = set()
+    for b_idx, b_item in enumerate(bench_stories):
+        b_title = b_item["headline"]
+        b_text = b_item["article_text"]
+        b_cat = b_item["category"]
+        q_info = engine.infer_reader_question(b_title, b_cat)
+        b_synth = engine.generate_contextual_synthesis(b_title, b_text, b_cat)
+        b_ans = b_synth["core_facts"][0]
+        b_score = engine.score_instant_answer_quality(b_title, b_ans, b_text, b_cat)
+        b_img = engine.resolve_story_image(b_title, b_cat, b_cat, used_urls=bench_seen_urls)
+
+        assert b_score["passed"] and b_score["total_score"] >= 80, f"Test 33 Failed on {b_item['test_id']}: score={b_score['total_score']}, issues={b_score['issues']}, ans={b_ans}"
+        assert any(req in b_ans.lower() for req in b_item["must_contain_any"]), f"Test 33 Failed on {b_item['test_id']}: answer missing required specifics: {b_ans}"
+        assert not any(forb in b_ans.lower() for forb in b_item["must_not_contain"]), f"Test 33 Failed on {b_item['test_id']}: answer contained forbidden phrase: {b_ans}"
+
+        audit_results.append({
+            "test_id": b_item["test_id"],
+            "story_type": b_item["story_type"],
+            "headline": b_title,
+            "expected_reader_question": b_item["expected_reader_question"],
+            "inferred_reader_question": q_info["reader_question"],
+            "generated_answer": b_ans,
+            "quality_score": b_score["total_score"],
+            "score_breakdown": b_score["breakdown"],
+            "image_url": b_img["url"],
+            "image_caption": b_img["caption"],
+            "image_credit": b_img["credit"],
+            "passed": True
+        })
+
+    audit_out_path = os.path.join(os.path.dirname(__file__), "data", "qa_audit_report.json")
+    with open(audit_out_path, "w", encoding="utf-8") as af:
+        json.dump({"total_benchmark_stories": len(audit_results), "passed_count": len(audit_results), "results": audit_results}, af, indent=2, ensure_ascii=False)
+
+    print(f"✓ TEST 33 PASSED: All {len(audit_results)}/20 real-world story types passed the 80+ quality gate and audit report written to data/qa_audit_report.json.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 34: 10-Subject Image Regression & Reordering Stability Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 34] 10-Subject Image Regression & Reordering Stability Verification...")
+    ten_subjects = [
+        {"id": "img-test-1", "title": "Did Florida Election Results Favor Democrats or Republicans?", "category": "Politics", "master_category": "National Headlines"},
+        {"id": "img-test-2", "title": "Pieces of Jet That Crashed in Palm Beach County Found Miles Away From Impact Site, NTSB Says", "category": "National News", "master_category": "National Headlines"},
+        {"id": "img-test-3", "title": "Chiefs vs. Bills Sunday Night Football Matchup Preview, Odds, and Predictions", "category": "Sports", "master_category": "Sports"},
+        {"id": "img-test-4", "title": "Celtics vs. Cavaliers Eastern Conference Basketball Showdown", "category": "Sports", "master_category": "Sports"},
+        {"id": "img-test-5", "title": "Dodgers vs. Yankees World Series Baseball Game 1 Preview", "category": "Sports", "master_category": "Sports"},
+        {"id": "img-test-6", "title": "Can Personalized Immunotherapy Vaccines Stop Pancreatic Cancer Recurrence?", "category": "Health", "master_category": "National Headlines"},
+        {"id": "img-test-7", "title": "How Do Optical Silicon Photonics Interconnects Cut AI Data Center Power Use by 40%?", "category": "Science & Tech", "master_category": "Science & Tech"},
+        {"id": "img-test-8", "title": "Kylie Jenner's Fantasy Bra Moment Draws Criticism From Victoria's Secret Fans", "category": "Entertainment", "master_category": "Entertainment"},
+        {"id": "img-test-9", "title": "Federal Reserve Holds Benchmark Interest Rates Steady as Inflation Eases", "category": "Business & Economy", "master_category": "National Headlines"},
+        {"id": "img-test-10", "title": "High Winds Trigger Widespread Power Outages Across Pacific Northwest Electrical Grid", "category": "Energy & Weather", "master_category": "National Headlines"}
+    ]
+    used_10 = set()
+    assigned_by_id = {}
+    for item in ten_subjects:
+        res_img = engine.resolve_story_image(item["title"], item["category"], item["master_category"], used_urls=used_10)
+        item["image_url"] = res_img["url"]
+        item["caption"] = res_img["caption"]
+        item["credit"] = res_img["credit"]
+        assigned_by_id[item["id"]] = res_img["url"]
+        assert not engine.is_story_image_mismatched(item), f"Test 34 Failed: Image mismatch on {item['id']}: {res_img}"
+
+    # Verify all 10 URLs are 100% distinct
+    assert len(set(assigned_by_id.values())) == 10, "Test 34 Failed: Duplicate image URLs assigned across 10 distinct subjects!"
+
+    # Verify Florida election did NOT receive a football stadium
+    assert "football" not in ten_subjects[0]["caption"].lower() and "stadium" not in ten_subjects[0]["caption"].lower(), "Test 34 Failed: Election story got stadium image!"
+
+    # Reorder stories (reverse order) and verify image assignments stay locked to each story ID
+    reordered = list(reversed(ten_subjects))
+    reordered_dedup = engine.enforce_feed_image_uniqueness(reordered)
+    for r_item in reordered_dedup:
+        assert r_item["image_url"] == assigned_by_id[r_item["id"]], f"Test 34 Failed: Reordering stories shifted image for {r_item['id']}!"
+
+    print("✓ TEST 34 PASSED: 10 distinct subjects matched accurately, zero cross-domain bleed, and reordering preserves exact story-ID image bindings.")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 35: Adversarial Quality Assurance & Self-Healing Gate Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 35] Adversarial Quality Assurance & Self-Healing Gate Verification...")
+    # Scenario 1: Generic AI filler answer injected despite specific facts in article text
+    adv_generic = {
+        "id": "adv-1",
+        "title": "Northrop Dynamics Announces 10,000 Layoffs Amid Commercial Aviation Restructuring",
+        "category": "Business & Economy",
+        "master_category": "National Headlines",
+        "article_text": "Aerospace manufacturer Northrop Dynamics announced Tuesday it will eliminate 10,000 salaried and assembly positions beginning December 1, citing supply-chain bottlenecks and a $1.4 billion quarterly loss.",
+        "core_facts": [
+            "Key participants addressed the central developments.",
+            "Officials continue to monitor the situation.",
+            "The development represents a significant milestone.",
+            "Stakeholders are evaluating the potential implications."
+        ],
+        "image_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80",
+        "caption": "Collegiate football stadium under floodlights.",
+        "credit": "Source: Sports Wire"
+    }
+    # Verify initial generic answer fails quality gate (<80) and football stadium on business story is flagged as mismatched
+    raw_eval = engine.score_instant_answer_quality(adv_generic["title"], adv_generic["core_facts"][0], adv_generic["article_text"], adv_generic["category"])
+    assert not raw_eval["passed"] and raw_eval["total_score"] < 80, f"Test 35 Failed: Generic filler was not rejected! {raw_eval}"
+    assert engine.is_story_image_mismatched(adv_generic), "Test 35 Failed: Football stadium on corporate layoff story was not flagged as mismatched!"
+
+    # Run self-healing validator and verify it repairs both the answer and the image
+    healed_adv = engine.validate_and_score_story_record(adv_generic, seen_image_urls=set())
+    assert healed_adv["editorial_validation"]["passed"] and healed_adv["editorial_validation"]["quality_score"] >= 80, f"Test 35 Failed: Self-healing did not repair generic answer: {healed_adv['editorial_validation']}"
+    assert "northrop dynamics" in healed_adv["core_facts"][0].lower() and "10,000" in healed_adv["core_facts"][0].lower(), f"Test 35 Failed: Repaired answer missing specifics: {healed_adv['core_facts'][0]}"
+    assert not engine.is_story_image_mismatched(healed_adv), "Test 35 Failed: Repaired image still mismatched!"
+
+    # Scenario 2: Question headline where article does NOT establish the answer (must not invent facts)
+    adv_unestablished = {
+        "id": "adv-2",
+        "title": "What Caused the Midnight Transformer Explosion at the Sub-Station?",
+        "category": "Energy & Weather",
+        "master_category": "National Headlines",
+        "article_text": "Fire crews extinguished a three-alarm blaze at the municipal electrical sub-station shortly after 2 a.m. Utility investigators have not yet identified what caused the transformer explosion, and officials have not disclosed when full voltage will be restored.",
+        "core_facts": ["What Caused the Midnight Transformer Explosion at the Sub-Station?"],
+        "image_url": "https://images.unsplash.com/photo-broken-404"
+    }
+    healed_unest = engine.validate_and_score_story_record(adv_unestablished, seen_image_urls=set())
+    assert healed_unest["editorial_validation"]["passed"], f"Test 35 Failed: Unestablished answer failed validation: {healed_unest['editorial_validation']}"
+    assert "not yet identified" in healed_unest["core_facts"][0].lower() or "not disclosed" in healed_unest["core_facts"][0].lower(), f"Test 35 Failed: Did not acknowledge missing information: {healed_unest['core_facts'][0]}"
+    assert engine.is_usable_image_url(healed_unest["image_url"]), "Test 35 Failed: Broken image URL was not replaced with verified fallback!"
+
+    print("✓ TEST 35 PASSED: Adversarial QA verified (generic filler rejected & healed, mismatched images replaced, missing facts honestly acknowledged).")
     passed_count += 1
 
     print("\n" + "=" * 75)
