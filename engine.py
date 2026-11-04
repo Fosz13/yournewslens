@@ -7664,7 +7664,7 @@ def prerender_daily_lens_html(stories: List[Dict[str, Any]]) -> str:
         </article>"""
         cards_html.append(card)
 
-    date_str = "Friday, October 30, 2026"
+    date_str = datetime.now().strftime("%A, %B %d, %Y")
     return f"""
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <div id="dailyLensView" class="daily-lens-container" style="display: none;">

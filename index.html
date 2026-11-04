@@ -3760,6 +3760,7 @@ body.searching-mode #blindStanceSection {
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <div id="dailyLensView" class="daily-lens-container" style="display: none;">
       <div class="daily-lens-header">
         <div class="daily-lens-badge">
@@ -3768,7 +3769,7 @@ body.searching-mode #blindStanceSection {
         <h1 class="daily-lens-title">Your Daily Lens</h1>
         <p class="daily-lens-subtitle">The 6 biggest stories shaping today — analyzed through Left, Balanced, and Right perspectives, highlighting exactly what changed since yesterday.</p>
         <div class="daily-lens-meta-bar">
-          <span class="daily-lens-date" id="dailyLensDateDisplay">Friday, October 30, 2026</span>
+          <span class="daily-lens-date" id="dailyLensDateDisplay">Wednesday, November 04, 2026</span>
           <span class="daily-lens-reading-time">⚡ 4-Minute Morning Read</span>
           <span class="daily-lens-status">🎯 Fully Grounded in Primary Wires</span>
         </div>
@@ -4107,13 +4108,15 @@ body.searching-mode #blindStanceSection {
 
     
 
+    
+
     <div id="storiesFeedView" class="feed-container">
 
         <article class="compact-card featured-lead-card" data-category="Politics" data-master-category="Politics" data-cat-slug="politics" data-metro="" data-subcategory="" data-lean="center" data-source="Associated Press Wire" data-publisher-bias="center" data-original-index="0" id="story-senate-appropriations-live-vote">
           <div class="hero-image-wrap" onclick="toggleStoryDetails('story-senate-appropriations-live-vote')">
-            <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80" alt="The United States Capitol building and House chamber wing in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG" alt="The United States Capitol dome and legislative chambers in Washington, D.C." class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, 'Politics');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">The United States Capitol building and House chamber wing in Washington, D.C.</span>
+              <span class="caption-text">The United States Capitol dome and legislative chambers in Washington, D.C.</span>
               <span class="credit-tag">Source: Associated Press Wire</span>
             </div>
           </div>
@@ -38644,6 +38647,16 @@ function cleanPhotoCredit(credit, sourceName) {
       if (savedStoryVotes) {
         _userStoryVotes = JSON.parse(savedStoryVotes) || {};
       }
+    } catch (e) {}
+
+    // Dynamically update edition date displays to current date
+    try {
+      var dEl = document.getElementById('currentEditionDate');
+      var dlDateEl = document.getElementById('dailyLensDateDisplay');
+      var now = new Date();
+      var dateStr = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      if (dEl) dEl.textContent = dateStr;
+      if (dlDateEl) dlDateEl.textContent = dateStr;
     } catch (e) {}
 
     // Hydrate followed stories from localStorage
