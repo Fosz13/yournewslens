@@ -1143,7 +1143,7 @@ def run_all_regression_tests():
     poll_matches = re.findall(r'<div class="controversial-take-poll"[^>]*id="([^"]+)-controversial-poll"', html)
     assert len(poll_matches) >= 97, f"Test 30 Failed: Expected >= 97 controversial take polls, found {len(poll_matches)}"
     first_poll_pos = html.find('class="controversial-take-poll"')
-    first_expand_pos = html.find('class="expand-prompt-bar"')
+    first_expand_pos = html.find('class="expand-prompt-bar')
     assert 0 < first_poll_pos < first_expand_pos, "Test 30 Failed: Controversial take poll must appear on the front card face before expand-prompt-bar!"
 
     # 2. Verify Polarizing Agree/Disagree voting buttons and onclick handlers

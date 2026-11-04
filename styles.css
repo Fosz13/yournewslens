@@ -3565,3 +3565,114 @@ body.searching-mode #blindStanceSection {
   color: #10b981;
   font-weight: 750;
 }
+
+
+/* Dual Expand Action Buttons: Key Facts Button + Lens / Persona Button */
+.expand-prompt-bar.dual-expand-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  margin-top: auto;
+}
+
+.expand-prompt-bar.dual-expand-bar:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+.btn-card-drawer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.16s ease;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-drawer-facts:hover,
+.btn-drawer-facts.active {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+}
+
+.btn-drawer-lens {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(56, 189, 248, 0.12) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+}
+
+.btn-drawer-lens:hover,
+.btn-drawer-lens.active {
+  border-color: #10b981;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.24) 0%, rgba(56, 189, 248, 0.24) 100%);
+  color: #34d399;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+[data-theme="light"] .btn-drawer-facts:hover,
+[data-theme="light"] .btn-drawer-facts.active {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0369a1;
+}
+
+[data-theme="light"] .btn-drawer-lens {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0f9ff 100%);
+  border-color: #38bdf8;
+  color: #0f172a;
+}
+
+[data-theme="light"] .btn-drawer-lens:hover,
+[data-theme="light"] .btn-drawer-lens.active {
+  background: linear-gradient(135deg, #d1fae5 0%, #e0f2fe 100%);
+  border-color: #059669;
+  color: #047857;
+}
+
+.drawer-btn-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawer-btn-icon {
+  font-size: 13px;
+}
+
+.expand-lens-label {
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.expand-lens-chevron {
+  font-size: 14px;
+  color: var(--link-hover);
+  transition: transform 0.2s ease;
+}
+
+.controversial-take-poll.has-voted .vote-pct {
+  display: inline-block !important;
+  background: rgba(15, 23, 42, 0.45);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="light"] .controversial-take-poll.has-voted .vote-pct {
+  background: rgba(15, 23, 42, 0.1);
+}

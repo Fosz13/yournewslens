@@ -8251,7 +8251,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               {s.get('title', '')}
             </h3>
 
-            <div class="fact-preview-strip" onclick="toggleStoryDetails('{sId}')">
+            <div class="fact-preview-strip" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
               {callout_badge}
               <p class="fact-preview-text">{lead_fact}</p>
             </div>
@@ -8261,12 +8261,12 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <p class="take-statement-text">“{ct_statement}”</p>
 
               <div class="take-vote-actions">
-                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" onclick="voteControversialTake('{sId}', 'AGREE'); event.stopPropagation();">
+                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" data-story-id="{sId}" data-choice="AGREE" onclick="voteControversialTake('{sId}', 'AGREE', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
                   <span class="vote-label">{ct_agree_lbl}</span>
                   <span class="vote-pct" id="{sId}-pct-agree" style="display: none;">{ct_agree_pct}%</span>
                 </button>
-                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" onclick="voteControversialTake('{sId}', 'DISAGREE'); event.stopPropagation();">
+                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" data-story-id="{sId}" data-choice="DISAGREE" onclick="voteControversialTake('{sId}', 'DISAGREE', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
                   <span class="vote-label">{ct_disagree_lbl}</span>
                   <span class="vote-pct" id="{sId}-pct-disagree" style="display: none;">{ct_disagree_pct}%</span>
@@ -8280,17 +8280,24 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>
 
               <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
-                <span class="take-voted-msg" id="{sId}-voted-msg" onclick="toggleStoryDetails('{sId}'); event.stopPropagation();">✓ In the majority — see 3 perspectives ▾</span>
-                <span class="take-total-votes" id="{sId}-total-votes">{ct_votes:,} votes</span>
+                <span class="take-voted-msg" id="{sId}-voted-msg" onclick="toggleLensDrawer('{sId}', event, this); event.stopPropagation();">📊 {ct_agree_pct}% voted with you vs. {ct_disagree_pct}% on the other side — see Lens / Personas ▾</span>
+                <span class="take-total-votes" id="{sId}-total-votes" data-base-votes="{ct_votes}">{ct_votes:,} votes</span>
               </div>
             </div>
 
-            <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
-              <span class="expand-label" id="{sId}-expand-label">⚖️ View Key Facts & Perspectives</span>
-              <span class="expand-chevron" id="{sId}-chevron">▾</span>
+            <div class="expand-prompt-bar dual-expand-bar" id="{sId}-expand-bar">
+              <button type="button" class="btn-card-drawer btn-drawer-facts" id="{sId}-btn-facts-drawer" data-story-id="{sId}" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
+                <span class="drawer-btn-left"><span class="drawer-btn-icon">📌</span><span class="expand-label" id="{sId}-expand-label">Key Facts</span></span>
+                <span class="expand-chevron" id="{sId}-chevron">▾</span>
+              </button>
+              <button type="button" class="btn-card-drawer btn-drawer-lens" id="{sId}-btn-lens-drawer" data-story-id="{sId}" onclick="toggleLensDrawer('{sId}', event, this)">
+                <span class="drawer-btn-left"><span class="drawer-btn-icon">🎭</span><span class="expand-lens-label" id="{sId}-lens-expand-label">Lens / Persona</span></span>
+                <span class="expand-lens-chevron" id="{sId}-lens-chevron">▾</span>
+              </button>
             </div>
 
             <div class="card-details" id="{sId}-details">
+              <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: none;">
               <div class="neutral-box">
                 <div class="neutral-box-header">
                   <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
@@ -8324,6 +8331,29 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                   </div>
                 </div>
               </div>"""
+
+        card += f"""
+              <!-- Story Evolution Tracker (Chronological Milestones) -->
+              <div class="story-evolution-box" id="{sId}-evolution-box">
+                <div class="evolution-header" onclick="toggleEvolutionTimeline('{sId}', event)">
+                  <div class="evolution-title-wrap">
+                    <span class="evolution-icon">📈</span>
+                    <span class="evolution-title">Story Evolution Tracker</span>
+                    <span class="evolution-count-tag">{len(timeline)} milestones</span>
+                  </div>
+                  <button type="button" class="btn-toggle-evolution" id="{sId}-btn-evolution" onclick="toggleEvolutionTimeline('{sId}', event)">
+                    <span id="{sId}-evolution-btn-text">View Timeline</span>
+                    <span id="{sId}-evolution-chevron" class="evolution-chevron">▾</span>
+                  </button>
+                </div>
+                <div class="evolution-timeline" id="{sId}-evolution-timeline" style="display: none;">
+                  <div class="timeline-track">
+                    {timeline_html}
+                  </div>
+                </div>
+              </div>
+              </div><!-- end facts-drawer-panel -->
+              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">"""
 
         lensList = [
             {"key": "CENTER", "name": "Balanced Lens — Green / Centrist Persona", "short": "Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
@@ -8379,25 +8409,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         total_votes = 820 + (h % 1450)
 
         card += f"""
-              <!-- Story Evolution Tracker (Chronological Milestones) -->
-              <div class="story-evolution-box" id="{sId}-evolution-box">
-                <div class="evolution-header" onclick="toggleEvolutionTimeline('{sId}', event)">
-                  <div class="evolution-title-wrap">
-                    <span class="evolution-icon">📈</span>
-                    <span class="evolution-title">Story Evolution Tracker</span>
-                    <span class="evolution-count-tag">{len(timeline)} milestones</span>
-                  </div>
-                  <button type="button" class="btn-toggle-evolution" id="{sId}-btn-evolution" onclick="toggleEvolutionTimeline('{sId}', event)">
-                    <span id="{sId}-evolution-btn-text">View Timeline</span>
-                    <span id="{sId}-evolution-chevron" class="evolution-chevron">▾</span>
-                  </button>
-                </div>
-                <div class="evolution-timeline" id="{sId}-evolution-timeline" style="display: none;">
-                  <div class="timeline-track">
-                    {timeline_html}
-                  </div>
-                </div>
-              </div>
+              </div><!-- end lens-drawer-panel -->
 
               <div class="card-bottom-actions">
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
@@ -8584,6 +8596,132 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
 
         # Update live count badge
         content = re.sub(r'id="liveStoryCountBadge">[^<]*<', f'id="liveStoryCountBadge">{len(stories)} Live Stories<', content)
+
+
+        # Synchronize instant <head> controller so Vote, Key Facts, and Lens/Persona buttons work at 0ms while HTML streams
+        head_script = """<script>
+  window.onImgError = window.onImgError || function(img, cat) {
+    if (!img) return;
+    var step = parseInt(img.getAttribute("data-fallback-step") || "0", 10);
+    var isSport = cat && String(cat).toLowerCase().indexOf("sport") !== -1;
+    var p1 = isSport ? "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" : "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG";
+    var p2 = isSport ? "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" : "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80";
+    if (step === 0 && img.src !== p1) { img.setAttribute("data-fallback-step", "1"); img.src = p1; }
+    else if (step <= 1 && img.src !== p2) { img.setAttribute("data-fallback-step", "2"); img.src = p2; }
+    else {
+      img.onerror = null;
+      img.src = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#0f172a"/><text x="600" y="345" font-family="Inter,sans-serif" font-size="28" font-weight="700" fill="#10b981" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text></svg>');
+    }
+  };
+
+  window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
+    var e = evt || window.event;
+    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+    var pollEl = (btnEl && btnEl.closest ? btnEl.closest(".controversial-take-poll") : null) ||
+                 (storyId ? document.getElementById(storyId + "-controversial-poll") : null);
+    if (!pollEl) return;
+    var sId = storyId || pollEl.getAttribute("data-story-id") || "";
+    try {
+      var saved = JSON.parse(localStorage.getItem("userControversialVotes") || "{}");
+      saved[sId] = choice;
+      localStorage.setItem("userControversialVotes", JSON.stringify(saved));
+    } catch (err) {}
+    pollEl.classList.add("has-voted");
+    var btnAgree = pollEl.querySelector(".btn-take-agree") || document.getElementById(sId + "-btn-agree");
+    var btnDisagree = pollEl.querySelector(".btn-take-disagree") || document.getElementById(sId + "-btn-disagree");
+    if (btnAgree) btnAgree.classList.toggle("selected-agree", choice === "AGREE");
+    if (btnDisagree) btnDisagree.classList.toggle("selected-disagree", choice === "DISAGREE");
+    var agPct = parseInt(pollEl.getAttribute("data-agree-pct") || "62", 10);
+    var disPct = parseInt(pollEl.getAttribute("data-disagree-pct") || "38", 10);
+    var pctAgree = (btnAgree ? btnAgree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-agree");
+    var pctDisagree = (btnDisagree ? btnDisagree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-disagree");
+    if (pctAgree) { pctAgree.textContent = agPct + "%"; pctAgree.style.display = "inline-block"; }
+    if (pctDisagree) { pctDisagree.textContent = disPct + "%"; pctDisagree.style.display = "inline-block"; }
+    var track = pollEl.querySelector(".take-consensus-track") || document.getElementById(sId + "-take-track");
+    var footer = pollEl.querySelector(".take-footer-meta") || document.getElementById(sId + "-take-footer");
+    if (track) track.style.display = "flex";
+    if (footer) footer.style.display = "flex";
+    var myPct = (choice === "AGREE") ? agPct : disPct;
+    var otherPct = (choice === "AGREE") ? disPct : agPct;
+    var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
+    if (votedMsg) votedMsg.textContent = "📊 " + myPct + "% voted with you vs. " + otherPct + "% on the other side — see Lens / Personas ▾";
+    var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
+    if (totalVotesEl) {
+      var baseV = parseInt(totalVotesEl.getAttribute("data-base-votes") || totalVotesEl.textContent.replace(/[^0-9]/g, "") || "2840", 10);
+      totalVotesEl.textContent = (baseV + 1).toLocaleString() + " votes";
+    }
+  };
+
+  window.toggleKeyFactsDrawer = window.toggleKeyFactsDrawer || function(storyId, evt, btnEl) {
+    var e = evt || window.event;
+    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || document.getElementById(storyId);
+    if (!card) return;
+    var sId = storyId || card.id;
+    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
+    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
+    var lensPanel = document.getElementById(sId + "-lens-panel") || card.querySelector(".lens-drawer-panel");
+    var factsBtn = document.getElementById(sId + "-btn-facts-drawer") || card.querySelector(".btn-drawer-facts");
+    var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
+    var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
+    if (!factsPanel) return;
+    var isOpen = (factsPanel.style.display === "block");
+    if (!isOpen) {
+      card.classList.add("expanded");
+      if (details) details.style.display = "block";
+      factsPanel.style.display = "block";
+      if (factsBtn) factsBtn.classList.add("active");
+      if (label) label.textContent = "Hide Key Facts";
+      if (chevron) chevron.textContent = "▴";
+    } else {
+      factsPanel.style.display = "none";
+      if (factsBtn) factsBtn.classList.remove("active");
+      if (label) label.textContent = "Key Facts";
+      if (chevron) chevron.textContent = "▾";
+      if (!lensPanel || lensPanel.style.display === "none") {
+        card.classList.remove("expanded");
+        if (details) details.style.display = "none";
+      }
+    }
+  };
+
+  window.toggleLensDrawer = window.toggleLensDrawer || function(storyId, evt, btnEl) {
+    var e = evt || window.event;
+    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
+    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || document.getElementById(storyId);
+    if (!card) return;
+    var sId = storyId || card.id;
+    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
+    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
+    var lensPanel = document.getElementById(sId + "-lens-panel") || card.querySelector(".lens-drawer-panel");
+    var lensBtn = document.getElementById(sId + "-btn-lens-drawer") || card.querySelector(".btn-drawer-lens");
+    var label = document.getElementById(sId + "-lens-expand-label") || (lensBtn ? lensBtn.querySelector(".expand-lens-label") : null);
+    var chevron = document.getElementById(sId + "-lens-chevron") || (lensBtn ? lensBtn.querySelector(".expand-lens-chevron") : null);
+    if (!lensPanel) return;
+    var isOpen = (lensPanel.style.display === "block");
+    if (!isOpen) {
+      card.classList.add("expanded");
+      if (details) details.style.display = "block";
+      lensPanel.style.display = "block";
+      if (lensBtn) lensBtn.classList.add("active");
+      if (label) label.textContent = "Hide Lens / Persona";
+      if (chevron) chevron.textContent = "▴";
+    } else {
+      lensPanel.style.display = "none";
+      if (lensBtn) lensBtn.classList.remove("active");
+      if (label) label.textContent = "Lens / Persona";
+      if (chevron) chevron.textContent = "▾";
+      if (!factsPanel || factsPanel.style.display === "none") {
+        card.classList.remove("expanded");
+        if (details) details.style.display = "none";
+      }
+    }
+  };
+  </script>"""
+        s_head_sc = content.find("<script>")
+        e_head_sc = content.find("</script>", s_head_sc)
+        if s_head_sc != -1 and e_head_sc != -1 and e_head_sc < content.find("</head>"):
+            content = content[:s_head_sc] + head_script + content[e_head_sc + len("</script>"):]
 
         # Synchronize inline styles with styles.css
         styles_path = os.path.join(BASE_DIR, "styles.css")
