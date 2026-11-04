@@ -1,5 +1,17 @@
 # Your News Lens — Changelog
 
+## [v13.2] - 2026-11-03 — Fresh Breaking News Ingestion & Resolution of Pipeline Stalling Bug
+- **Breaking News Lead Story Replacement**:
+  - Replaced the stale October 30 Senate Appropriations story at index 0 with live breaking coverage of the **2026 Midterm Elections** (*"2026 Midterm Elections: Americans Vote Across 50 States to Decide Control of House and Senate"*) and the **Inaugural 12-Team College Football Playoff Rankings** (*"College Football Playoff Rankings: CFP Committee Unveils First Official 12-Team Postseason Bracket of 2026"*).
+- **Eliminated Hardcoded Test 26 Assertion Blocking GitHub Actions Wire Updates**:
+  - Diagnosed why the automated scraper was never updating `yournewslens.com`: TEST 26 in `test_regression_suite.py` previously asserted `feed_cards[:5] == top_5_ids`, requiring the first 5 cards to permanently match the static October 30 demo IDs. Whenever `engine.py` scraped fresh news on GitHub Actions, this assertion threw an error, terminating the workflow before `git push`.
+  - Loosened TEST 26 to verify that core baseline stories remain available while allowing fresh breaking stories to lead the feed dynamically.
+- **Automated Trigger on Push (`.github/workflows/update_news.yml`)**:
+  - Added `push: branches: [main]` to the GitHub Actions workflow so pushing updates immediately triggers a fresh live wire scrape on GitHub instead of waiting on the delayed cron queue.
+  - Attached `[skip ci]` to automated git commits to prevent recursive trigger loops.
+- **Regression Suite Verification**:
+  - Confirmed 100% pass rate across all 31 regression tests in `test_regression_suite.py`.
+
 ## [v13.1] - 2026-11-03 — Full Uncut Instant Answers & Streamlined Feed Scrolling (What Changed Purge)
 - **Full Instant Answer Visibility & Ellipsis Purge (`.fact-preview-text`)**:
   - Eliminated `-webkit-line-clamp: 3;`, `display: -webkit-box;`, and `overflow: hidden;` on `.fact-preview-text` across `styles.css` and `index.html`.
