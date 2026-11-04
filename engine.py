@@ -7467,6 +7467,46 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <p class="fact-preview-text">{lead_fact}</p>
             </div>
 
+            <!-- The Controversial Take (Front-Face Polarizing Poll) -->
+            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-pct="{ct_agree_pct}" data-disagree-pct="{ct_disagree_pct}">
+              <div class="take-header-bar">
+                <div class="take-badge-group">
+                  <span class="take-badge-fire">🔥</span>
+                  <span class="take-badge-title">The Controversial Take</span>
+                  <span class="take-polarizing-tag">⚡ Most Polarizing Debate</span>
+                </div>
+                <span class="take-vote-status" id="{sId}-take-status">Tap to vote</span>
+              </div>
+
+              <div class="take-statement-box">
+                <p class="take-statement-text">“{ct_statement}”</p>
+              </div>
+
+              <div class="take-vote-actions">
+                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" onclick="voteControversialTake('{sId}', 'AGREE'); event.stopPropagation();">
+                  <span class="vote-icon">🔥</span>
+                  <span class="vote-label">{ct_agree_lbl}</span>
+                  <span class="vote-pct" id="{sId}-pct-agree">{ct_agree_pct}%</span>
+                </button>
+                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" onclick="voteControversialTake('{sId}', 'DISAGREE'); event.stopPropagation();">
+                  <span class="vote-icon">❄️</span>
+                  <span class="vote-label">{ct_disagree_lbl}</span>
+                  <span class="vote-pct" id="{sId}-pct-disagree">{ct_disagree_pct}%</span>
+                </button>
+              </div>
+
+              <!-- Live Polarizing Consensus Track -->
+              <div class="take-consensus-track" id="{sId}-take-track" style="display: none;">
+                <div class="take-fill-agree" id="{sId}-fill-agree" style="width: {ct_agree_pct}%;"></div>
+                <div class="take-fill-disagree" id="{sId}-fill-disagree" style="width: {ct_disagree_pct}%;"></div>
+              </div>
+
+              <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
+                <span class="take-voted-msg" id="{sId}-voted-msg" onclick="toggleStoryDetails('{sId}'); event.stopPropagation();">✓ Vote recorded — tap to compare perspectives</span>
+                <span class="take-total-votes" id="{sId}-total-votes">{ct_votes:,} readers voted</span>
+              </div>
+            </div>
+
             <div class="expand-prompt-bar" onclick="toggleStoryDetails('{sId}')">
               <span class="expand-label" id="{sId}-expand-label">⚖️ View Key Facts & Perspectives</span>
               <span class="expand-chevron" id="{sId}-chevron">▾</span>
@@ -7578,46 +7618,6 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                   <div class="timeline-track">
                     {timeline_html}
                   </div>
-                </div>
-              </div>
-
-              <!-- The Controversial Take (Quick Polarizing Poll) -->
-              <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}">
-                <div class="take-header-bar">
-                  <div class="take-badge-group">
-                    <span class="take-badge-fire">🔥</span>
-                    <span class="take-badge-title">The Controversial Take</span>
-                    <span class="take-polarizing-tag">⚡ Most Polarizing Debate</span>
-                  </div>
-                  <span class="take-vote-status" id="{sId}-take-status">Vote to see crowd consensus</span>
-                </div>
-
-                <div class="take-statement-box">
-                  <p class="take-statement-text">“{ct_statement}”</p>
-                </div>
-
-                <div class="take-vote-actions">
-                  <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" onclick="voteControversialTake('{sId}', 'AGREE')">
-                    <span class="vote-icon">🔥</span>
-                    <span class="vote-label">{ct_agree_lbl}</span>
-                    <span class="vote-pct" id="{sId}-pct-agree">{ct_agree_pct}%</span>
-                  </button>
-                  <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" onclick="voteControversialTake('{sId}', 'DISAGREE')">
-                    <span class="vote-icon">❄️</span>
-                    <span class="vote-label">{ct_disagree_lbl}</span>
-                    <span class="vote-pct" id="{sId}-pct-disagree">{ct_disagree_pct}%</span>
-                  </button>
-                </div>
-
-                <!-- Live Polarizing Consensus Track -->
-                <div class="take-consensus-track" id="{sId}-take-track" style="display: none;">
-                  <div class="take-fill-agree" id="{sId}-fill-agree" style="width: {ct_agree_pct}%;"></div>
-                  <div class="take-fill-disagree" id="{sId}-fill-disagree" style="width: {ct_disagree_pct}%;"></div>
-                </div>
-
-                <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
-                  <span class="take-voted-msg" id="{sId}-voted-msg">✓ Your vote recorded</span>
-                  <span class="take-total-votes" id="{sId}-total-votes">{ct_votes:,} readers voted</span>
                 </div>
               </div>
 

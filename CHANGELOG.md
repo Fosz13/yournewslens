@@ -1,5 +1,16 @@
 # Your News Lens — Changelog
 
+## [v14.0] - 2026-11-03 — Front-Face "Hot Take" Polarizing Vote Bar & Majority/Minority Perspective Hook
+- **Surfaced Controversial Take Poll Directly onto the Front Card Face (`.controversial-take-poll`)**:
+  - Moved the polarizing debate poll out of the collapsed `.card-details` drawer and placed it directly on the visible front face of every story card—immediately below the `📌 KEY FACT` / `⚡ INSTANT ANSWER` box and above the `⚖️ View Key Facts & Perspectives` expand button.
+  - Designed a sleek, compact card-face footprint in `styles.css` with side-by-side 2-column Agree/Disagree buttons (`grid-template-columns: 1fr 1fr`) on both desktop and mobile viewports so readers can rapid-fire vote while thumb-scrolling down the feed without opening a single drawer.
+- **Instant Majority/Minority Crowd Reveal & Curiosity Hook (`renderControversialPoll`)**:
+  - Voting immediately reveals the animated split consensus bar (`.take-consensus-track`) and calculates whether the reader landed in the crowd majority or minority (e.g., *`✓ In the 68% majority`* or *`✓ In the 32% minority`*).
+  - Displays an interactive curiosity prompt (`🔥 You're with the 32% minority — tap to see the 3 perspectives ▾`) wired to `toggleStoryDetails(storyId)` that opens the full Left, Balanced, and Right breakdown with one tap.
+- **Regression Suite Verification**:
+  - Updated `TEST 30` in `test_regression_suite.py` to assert that `.controversial-take-poll` appears on the front card face prior to `.expand-prompt-bar`.
+  - All 31 regression tests passed (100% success rate).
+
 ## [v13.3] - 2026-11-03 — Comprehensive Code Audit, Question vs. Key Fact Differentiation & 100% Topic-Locked Photography
 - **Question vs. Non-Question Callout Differentiation (`⚡ INSTANT ANSWER` vs. `📌 KEY FACT`)**:
   - Updated `engine.py` and `app.js` so that `⚡ INSTANT ANSWER` is exclusively displayed when the headline asks a question or creates a direct curiosity gap (`Why...`, `How...`, `Where to Watch...`, `Which...`, `Here's why...`, or `?`), immediately delivering the direct answer.
