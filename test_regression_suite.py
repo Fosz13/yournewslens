@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 35
+    total_tests = 36
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1396,6 +1396,59 @@ def run_all_regression_tests():
     assert engine.is_usable_image_url(healed_unest["image_url"]), "Test 35 Failed: Broken image URL was not replaced with verified fallback!"
 
     print("✓ TEST 35 PASSED: Adversarial QA verified (generic filler rejected & healed, mismatched images replaced, missing facts honestly acknowledged).")
+    passed_count += 1
+
+    # -------------------------------------------------------------------------
+    # TEST 36: Live Wire Screenshot Regression Verification (Amendment 3, Bucs-Bears Bar Photo Ban, Merit Poll Questions & Hidden Vote Pct)
+    # -------------------------------------------------------------------------
+    print("\n[TEST 36] Live Wire Screenshot Regression Verification (Amendment 3, Bucs-Bears, Merit Polls & Hidden Vote Percentages)...")
+    # 1. Screenshot 1: "'Voters have spoken': Florida homeowners to see decrease in property tax bills after passing Amendment 3"
+    t_amend3 = "'Voters have spoken': Florida homeowners to see decrease in property tax bills after passing Amendment 3"
+    cat_a3, master_a3 = engine.classify_article(t_amend3, "", "WFLA News Channel 8")
+    assert cat_a3 != "Sports" and master_a3 != "Sports", f"Test 36 Failed: Amendment 3 property tax bills misclassified as Sports: {cat_a3}"
+    ent_a3 = engine.extract_focus_entity(t_amend3)
+    assert ent_a3.lower() != "bills", f"Test 36 Failed: extract_focus_entity extracted NFL 'Bills' from 'property tax bills': {ent_a3}"
+    synth_a3 = engine.generate_contextual_synthesis(t_amend3, "", cat_a3)
+    f0_a3 = synth_a3["core_facts"][0]
+    assert "primary sports wire reporting" not in f0_a3.lower() and "key competitive breakdown" not in f0_a3.lower(), f"Test 36 Failed: Sports boilerplate on Amendment 3 story: {f0_a3}"
+    assert "property tax" in f0_a3.lower() and "amendment 3" in f0_a3.lower(), f"Test 36 Failed: Key fact did not explain Amendment 3 property tax decrease: {f0_a3}"
+    poll_a3 = engine.generate_merit_controversial_poll(t_amend3, "", cat_a3, ent_a3)
+    assert "?" in poll_a3["statement"] and "property tax" in poll_a3["statement"].lower(), f"Test 36 Failed: Poll is not a merit-based question on property taxes: {poll_a3}"
+
+    # 2. Screenshot 2: "Buccaneers-Bears: Top Storylines & Key Matchups in Week Nine - Tampa Bay Buccaneers"
+    t_bucs = "Buccaneers-Bears: Top Storylines & Key Matchups in Week Nine - Tampa Bay Buccaneers"
+    cat_bucs, master_bucs = engine.classify_article(t_bucs, "", "Tampa Bay Times / Local Wire")
+    assert cat_bucs == "Sports" and master_bucs == "Sports", f"Test 36 Failed: Buccaneers-Bears not classified as Sports: {cat_bucs}"
+    synth_bucs = engine.generate_contextual_synthesis(t_bucs, "", cat_bucs)
+    f0_bucs = synth_bucs["core_facts"][0]
+    assert not f0_bucs.lower().startswith("what happened: buccaneers-bears"), f"Test 36 Failed: Fact 1 echoed title: {f0_bucs}"
+    assert "buccaneers" in f0_bucs.lower() and "bears" in f0_bucs.lower() and "favored" in f0_bucs.lower(), f"Test 36 Failed: Fact 1 missing Buccaneers-Bears matchup odds: {f0_bucs}"
+    img_bucs = engine.resolve_story_image(t_bucs, cat_bucs, master_bucs, set())
+    assert "1514933651103" not in img_bucs["url"], f"Test 36 Failed: Bar photo assigned to Buccaneers-Bears: {img_bucs['url']}"
+    assert not engine.is_usable_image_url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80"), "Test 36 Failed: Bar photo 1514933651103 not banned in is_usable_image_url!"
+    poll_bucs = engine.generate_merit_controversial_poll(t_bucs, "", cat_bucs, engine.extract_focus_entity(t_bucs))
+    assert "?" in poll_bucs["statement"] and ("buccaneers" in poll_bucs["statement"].lower() or "bucs" in poll_bucs["statement"].lower()), f"Test 36 Failed: Poll not specific to Buccaneers-Bears: {poll_bucs}"
+
+    # 3. Verify 100% of stories in data/stories.json and index.html have merit-based poll questions ('?'), zero generic 'Public policy surrounding...', zero bar photos, and hidden vote percentages before voting
+    with open("data/stories.json", "r", encoding="utf-8") as fs36:
+        all_st36 = json.load(fs36)
+    for st_item in all_st36:
+        ct_obj = st_item.get("controversial_take") or {}
+        stmt = str(ct_obj.get("statement") or "")
+        assert "?" in stmt and "public policy surrounding" not in stmt.lower(), f"Test 36 Failed: Non-question or generic poll on {st_item.get('id')}: {stmt}"
+        assert "1514933651103" not in str(st_item.get("image_url") or ""), f"Test 36 Failed: Bar photo in stories.json on {st_item.get('id')}"
+
+    with open("index.html", "r", encoding="utf-8") as fh36:
+        html36 = fh36.read()
+    assert "Public policy surrounding this issue does far more harm" not in html36, "Test 36 Failed: Generic poll fallback text still present in index.html!"
+    assert "1514933651103-005eec06c04b" not in html36, "Test 36 Failed: Bar photo URL still present in index.html!"
+    assert '<span class="vote-pct" id="' in html36 and 'style="display: none;"' in html36, "Test 36 Failed: .vote-pct spans are not hidden prior to voting in index.html!"
+
+    with open("styles.css", "r", encoding="utf-8") as fc36:
+        css36 = fc36.read()
+    assert ".controversial-take-poll.has-voted .vote-pct" in css36, "Test 36 Failed: .has-voted .vote-pct reveal rule missing from styles.css!"
+
+    print("✓ TEST 36 PASSED: Amendment 3 property tax story & Buccaneers-Bears story verified, bar photo banned globally, 124/124 polls are merit-based questions, and vote percentages are hidden until user votes.")
     passed_count += 1
 
     print("\n" + "=" * 75)

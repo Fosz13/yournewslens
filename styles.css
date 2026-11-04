@@ -3501,9 +3501,15 @@ body.searching-mode #blindStanceSection {
 }
 
 .vote-pct {
+  display: none;
   font-size: 12px;
   font-weight: 850;
-  opacity: 0.9;
+  opacity: 0.95;
+  margin-left: 6px;
+}
+
+.controversial-take-poll.has-voted .vote-pct {
+  display: inline-block !important;
 }
 
 .take-consensus-track {
