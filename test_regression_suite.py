@@ -32,7 +32,7 @@ def run_all_regression_tests():
     print("RUNNING YOUR NEWS LENS COMPREHENSIVE 8-PART REGRESSION SUITE")
     print("=" * 75)
     passed_count = 0
-    total_tests = 36
+    total_tests = 37
 
     # -------------------------------------------------------------------------
     # TEST 1: Kylie Jenner / Fashion Runway
@@ -1449,6 +1449,106 @@ def run_all_regression_tests():
     assert ".controversial-take-poll.has-voted .vote-pct" in css36, "Test 36 Failed: .has-voted .vote-pct reveal rule missing from styles.css!"
 
     print("✓ TEST 36 PASSED: Amendment 3 property tax story & Buccaneers-Bears story verified, bar photo banned globally, 124/124 polls are merit-based questions, and vote percentages are hidden until user votes.")
+    passed_count += 1
+
+
+    # -------------------------------------------------------------------------
+    # TEST 37: Real Supabase Community Polling & Zero Fabricated Numbers Verification
+    # -------------------------------------------------------------------------
+    print("\n[TEST 37] Real Supabase Community Polling & Zero Fabricated Numbers Verification...")
+    with open("app.js", "r", encoding="utf-8") as fa37:
+        app_js37 = fa37.read()
+    with open("index.html", "r", encoding="utf-8") as fh37:
+        html37 = fh37.read()
+    with open("engine.py", "r", encoding="utf-8") as fe37:
+        eng37 = fe37.read()
+    with open("data/stories.json", "r", encoding="utf-8") as fs37:
+        stories_raw37 = fs37.read()
+
+    # 1. Verify Supabase URL, publishable key, visitor ID key, REST endpoint, and RPC endpoint in both app.js and index.html
+    for target_name, target_content in [("app.js", app_js37), ("index.html", html37)]:
+        assert "https://vswxehmxdbtdatnlovsl.supabase.co" in target_content, f"Test 37 Failed: Supabase URL missing from {target_name}"
+        assert "sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD" in target_content, f"Test 37 Failed: Supabase publishable key missing from {target_name}"
+        assert "ynlCommunityPollVisitorId" in target_content, f"Test 37 Failed: ynlCommunityPollVisitorId key missing from {target_name}"
+        assert "/rest/v1/poll_votes" in target_content, f"Test 37 Failed: /rest/v1/poll_votes missing from {target_name}"
+        assert "/rest/v1/rpc/get_poll_results" in target_content, f"Test 37 Failed: /rest/v1/rpc/get_poll_results missing from {target_name}"
+        assert "No community votes yet." in target_content, f"Test 37 Failed: 'No community votes yet.' missing from {target_name}"
+
+    # 2. Verify ZERO fabricated poll numbers or attributes exist anywhere in app.js, index.html, engine.py, or data/stories.json
+    forbidden_fake_poll_terms = [
+        "baseline_agree_pct",
+        "baseline_disagree_pct",
+        "data-agree-pct",
+        "data-disagree-pct",
+        "data-base-votes",
+        "2840"
+    ]
+    for term in forbidden_fake_poll_terms:
+        assert term not in app_js37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in app.js"
+        assert term not in html37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in index.html"
+        assert term not in eng37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in engine.py"
+        assert term not in stories_raw37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in data/stories.json"
+
+    # 3. Verify that Script 0 in <head> of index.html does NOT contain a duplicate local-only voteControversialTake
+    head_part = html37[:html37.find("</head>")]
+    assert "window.voteControversialTake" not in head_part, "Test 37 Failed: Duplicate local-only voteControversialTake found in <head>!"
+
+    # 4. Run Node.js behavioral test on parsePollResultsPayload, visitor ID generation, and zero-vote / non-zero-vote calculation
+    import subprocess
+    node_test_script = """
+    const fs = require('fs');
+    const vm = require('vm');
+    const storage = {};
+    const sandbox = {
+      window: {},
+      document: {
+        readyState: 'loading',
+        addEventListener: function() {},
+        documentElement: { setAttribute: function() {}, getAttribute: function() { return 'dark'; } },
+        getElementById: function() { return null; },
+        querySelector: function() { return null; },
+        querySelectorAll: function() { return []; }
+      },
+      localStorage: {
+        getItem: function(k) { return storage[k] || null; },
+        setItem: function(k, v) { storage[k] = String(v); }
+      },
+      crypto: { randomUUID: function() { return '11111111-2222-4333-8444-555555555555'; } },
+      fetch: function() { return Promise.resolve({ ok: true, json: () => Promise.resolve([]) }); },
+      setInterval: function() {},
+      setTimeout: function() {},
+      console: console
+    };
+    sandbox.window = sandbox;
+    const code = fs.readFileSync('app.js', 'utf8');
+    vm.runInNewContext(code, sandbox);
+
+    // Verify visitor ID creation and persistence under exact key ynlCommunityPollVisitorId
+    const vid1 = sandbox.window.getOrCreatePollVisitorId();
+    const vid2 = sandbox.window.getOrCreatePollVisitorId();
+    if (!vid1 || vid1 !== vid2 || storage['ynlCommunityPollVisitorId'] !== vid1) {
+      throw new Error('Visitor ID persistence failed: ' + vid1);
+    }
+
+    // Verify zero votes payload parsing
+    const emptyStats = sandbox.window.parsePollResultsPayload([]);
+    if (emptyStats.totalVotes !== 0 || emptyStats.agreePct !== 0 || emptyStats.disagreePct !== 0) {
+      throw new Error('Zero-vote stats invalid: ' + JSON.stringify(emptyStats));
+    }
+
+    // Verify real vote counts parsing (e.g. 79 agree, 46 disagree -> 125 total, 63% / 37%)
+    const realStats = sandbox.window.parsePollResultsPayload([
+      { choice_id: 'agree', vote_count: 79 },
+      { choice_id: 'disagree', vote_count: 46 }
+    ]);
+    if (realStats.totalVotes !== 125 || realStats.agreePct !== 63 || realStats.disagreePct !== 37) {
+      throw new Error('Real vote aggregation math invalid: ' + JSON.stringify(realStats));
+    }
+    """
+    node_res = subprocess.run(["node", "-e", node_test_script], capture_output=True, text=True)
+    assert node_res.returncode == 0, f"Test 37 Failed: Node behavioral test failed: {node_res.stderr}"
+
+    print("✓ TEST 37 PASSED: Real Supabase Community Polling verified (persistent visitor ID, REST insert, RPC aggregation, 0-vote state, and 0 fabricated numbers across all files).")
     passed_count += 1
 
     print("\n" + "=" * 75)

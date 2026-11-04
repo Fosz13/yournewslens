@@ -734,27 +734,14 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
     c_low = (category or "").lower()
     ent = focus_ent if focus_ent and focus_ent.lower() not in ["the", "a", "an", "bills"] else clean_title[:42]
 
-    seed = abs(hash(clean_title))
-    agree_pct = 51 + (seed % 27)  # 51% to 77%
-    if seed % 2 == 1:
-        agree_pct = 100 - agree_pct
-    disagree_pct = 100 - agree_pct
-    total_votes = 1420 + (seed % 3400)
-
-    if isinstance(existing_take, dict):
-        agree_pct = int(existing_take.get("baseline_agree_pct") or agree_pct)
-        disagree_pct = int(existing_take.get("baseline_disagree_pct") or (100 - agree_pct))
-        total_votes = int(existing_take.get("total_votes") or total_votes)
+    # Real community polling via Supabase: never generate fabricated percentages or vote counts.
 
     # 1. Property Tax / Amendment 3 / Homeowner Tax Relief
     if ("property tax" in comb or "tax bills" in comb or "amendment 3" in comb or "homestead" in comb):
         return {
             "statement": "Does cutting Florida property taxes via Amendment 3 help working homeowners more than it hurts local funding for schools and first responders?",
             "agree_label": "Yes — Cut property taxes",
-            "disagree_label": "No — Protect local funding",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Protect local funding"
         }
 
     # 2. Buccaneers vs. Bears / Specific NFL & CFB Matchups
@@ -762,10 +749,7 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
         return {
             "statement": "In the Week 9 Buccaneers vs. Bears matchup, do you trust Tampa Bay's offensive line and passing attack to beat Chicago's defense?",
             "agree_label": "Yes — Bucs win & cover",
-            "disagree_label": "No — Bears pull the upset",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Bears pull the upset"
         }
 
     # 3. Coaching Buyouts / Coaching Carousel
@@ -773,10 +757,7 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
         return {
             "statement": "Should public universities be banned from paying $40M–$70M guaranteed coaching buyouts while student tuition and fees keep rising?",
             "agree_label": "Yes — Cap coaching buyouts",
-            "disagree_label": "No — Boosters fund it",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Boosters fund it"
         }
 
     # 4. If existing_take has a specific custom statement (not the generic 'Public policy surrounding...'),
@@ -814,10 +795,7 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
             return {
                 "statement": q_stmt,
                 "agree_label": ag_lbl,
-                "disagree_label": dis_lbl,
-                "baseline_agree_pct": agree_pct,
-                "baseline_disagree_pct": disagree_pct,
-                "total_votes": total_votes
+                "disagree_label": dis_lbl
             }
 
     # 5. Domain-Specific Merit Question Synthesis for New Stories
@@ -826,27 +804,18 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
             return {
                 "statement": f"Based on the matchup merits and current form in {ent}, do you think the favored side will cover the spread and win outright?",
                 "agree_label": "Yes — Favorite covers",
-                "disagree_label": "No — Underdog steps up",
-                "baseline_agree_pct": agree_pct,
-                "baseline_disagree_pct": disagree_pct,
-                "total_votes": total_votes
+                "disagree_label": "No — Underdog steps up"
             }
         if any(w in comb for w in ["injury", "injured", "concussion", "out", "ir", "surgery", "recovery"]):
             return {
                 "statement": f"Should teams and leagues mandate stricter rest timelines for {ent} even when playoff seeding is on the line?",
                 "agree_label": "Yes — Player health first",
-                "disagree_label": "No — Let cleared pros play",
-                "baseline_agree_pct": agree_pct,
-                "baseline_disagree_pct": disagree_pct,
-                "total_votes": total_votes
+                "disagree_label": "No — Let cleared pros play"
             }
         return {
             "statement": f"Looking at the performance and competitive merits around {ent}, does this result prove they are a legitimate championship contender?",
             "agree_label": "Yes — True contender",
-            "disagree_label": "No — Still overhyped",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Still overhyped"
         }
 
     if "local" in c_low:
@@ -854,57 +823,39 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
             return {
                 "statement": f"Should local cities dedicate more public park space and municipal resources to free community events like {ent}?",
                 "agree_label": "Yes — Boost community life",
-                "disagree_label": "No — Focus on core basics",
-                "baseline_agree_pct": agree_pct,
-                "baseline_disagree_pct": disagree_pct,
-                "total_votes": total_votes
+                "disagree_label": "No — Focus on core basics"
             }
         if any(w in comb for w in ["transit", "ferry", "rail", "road", "bridge", "corridor", "growth", "zoning", "housing"]):
             return {
                 "statement": f"Based on the merits of {ent}, is this the right infrastructure and growth priority for local taxpayers and commuters?",
                 "agree_label": "Yes — Smart local investment",
-                "disagree_label": "No — Wrong spending priority",
-                "baseline_agree_pct": agree_pct,
-                "baseline_disagree_pct": disagree_pct,
-                "total_votes": total_votes
+                "disagree_label": "No — Wrong spending priority"
             }
         return {
             "statement": f"On the merits of {ent}, will this local action make a measurable positive difference for area residents?",
             "agree_label": "Yes — Positive local impact",
-            "disagree_label": "No — Misses the real issue",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Misses the real issue"
         }
 
     if "business" in c_low or "econom" in c_low:
         return {
             "statement": f"Looking at the economic fundamentals behind {ent}, will this trend benefit everyday working households or mostly Wall Street institutions?",
             "agree_label": "Helps everyday households",
-            "disagree_label": "Mostly benefits Wall Street",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "Mostly benefits Wall Street"
         }
 
     if any(w in comb for w in ["cyberattack", "cyberattacks", "ransomware", "hackers", "hacked", "data breach", "blood bank"]):
         return {
             "statement": "Should governments treat cyberattacks on critical facilities like blood banks and hospitals as acts of war requiring direct retaliation?",
             "agree_label": "Yes — Retaliate directly",
-            "disagree_label": "No — Defensive safeguards",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Defensive safeguards"
         }
 
     if "tech" in c_low or "science" in c_low:
         return {
             "statement": f"Given the rapid advances in {ent}, do the economic and technological benefits outweigh the need for new government regulation?",
             "agree_label": "Yes — Unleash innovation",
-            "disagree_label": "No — Stricter regulation",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "No — Stricter regulation"
         }
 
     if "world" in c_low:
@@ -912,19 +863,13 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
         return {
             "statement": f"On {topic_phrase}, should the U.S. and allies step in with active diplomatic leverage or put domestic priorities first?",
             "agree_label": "Lead active diplomacy",
-            "disagree_label": "Focus on domestic priorities",
-            "baseline_agree_pct": agree_pct,
-            "baseline_disagree_pct": disagree_pct,
-            "total_votes": total_votes
+            "disagree_label": "Focus on domestic priorities"
         }
 
     return {
         "statement": f"Weighing the core arguments surrounding {ent}, do you support this policy direction and its impact on everyday citizens?",
         "agree_label": "Yes — Right direction",
-        "disagree_label": "No — Wrong approach",
-        "baseline_agree_pct": agree_pct,
-        "baseline_disagree_pct": disagree_pct,
-        "total_votes": total_votes
+        "disagree_label": "No — Wrong approach"
     }
 
 def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context: str = "", focus_ent: str = "") -> dict:
@@ -8251,11 +8196,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             ct = generate_merit_controversial_poll(title_str, summary, str(cat), extract_focus_entity(title_str), existing_take=ct)
             s["controversial_take"] = ct
         ct_statement = ct.get("statement")
-        ct_agree_lbl = ct.get("agree_label") or "Yes — Agree"
-        ct_disagree_lbl = ct.get("disagree_label") or "No — Disagree"
-        ct_agree_pct = ct.get("baseline_agree_pct", 62)
-        ct_disagree_pct = ct.get("baseline_disagree_pct", 38)
-        ct_votes = ct.get("total_votes", 2840)
+        ct_agree_lbl = ct.get("agree_label") or "Agree"
+        ct_disagree_lbl = ct.get("disagree_label") or "Disagree"
         ct_agree_lens, ct_disagree_lens = resolve_poll_side_lenses(ct_statement, ct_agree_lbl, ct_disagree_lbl)
         milestones_html = []
         for m in timeline:
@@ -8349,32 +8291,32 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               <p class="fact-preview-text">{lead_fact}</p>
             </div>
 
-            <!-- Quick Polarizing Vote Bar (Reveals Percentages + Matching Red/Blue Lens Persona Immediately on Vote) -->
-            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-pct="{ct_agree_pct}" data-disagree-pct="{ct_disagree_pct}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
+            <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
+            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
               <p class="take-statement-text">“{ct_statement}”</p>
 
               <div class="take-vote-actions">
-                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" data-story-id="{sId}" data-choice="AGREE" onclick="voteControversialTake('{sId}', 'AGREE', this, event); event.stopPropagation();">
+                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" data-story-id="{sId}" data-choice="agree" onclick="voteControversialTake('{sId}', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
                   <span class="vote-label">{ct_agree_lbl}</span>
-                  <span class="vote-pct" id="{sId}-pct-agree" style="display: none;">{ct_agree_pct}%</span>
+                  <span class="vote-pct" id="{sId}-pct-agree" style="display: none;"></span>
                 </button>
-                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" data-story-id="{sId}" data-choice="DISAGREE" onclick="voteControversialTake('{sId}', 'DISAGREE', this, event); event.stopPropagation();">
+                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" data-story-id="{sId}" data-choice="disagree" onclick="voteControversialTake('{sId}', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
                   <span class="vote-label">{ct_disagree_lbl}</span>
-                  <span class="vote-pct" id="{sId}-pct-disagree" style="display: none;">{ct_disagree_pct}%</span>
+                  <span class="vote-pct" id="{sId}-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
 
-              <!-- Live Polarizing Consensus Track -->
+              <!-- Live Polarizing Consensus Track (Populated strictly from real Supabase votes) -->
               <div class="take-consensus-track" id="{sId}-take-track" style="display: none;">
-                <div class="take-fill-agree" id="{sId}-fill-agree" style="width: {ct_agree_pct}%;"></div>
-                <div class="take-fill-disagree" id="{sId}-fill-disagree" style="width: {ct_disagree_pct}%;"></div>
+                <div class="take-fill-agree" id="{sId}-fill-agree" style="width: 0%;"></div>
+                <div class="take-fill-disagree" id="{sId}-fill-disagree" style="width: 0%;"></div>
               </div>
 
-              <div class="take-footer-meta" id="{sId}-take-footer" style="display: none;">
-                <span class="take-voted-msg" id="{sId}-voted-msg">📊 {ct_agree_pct}% voted with you vs. {ct_disagree_pct}% on the other side</span>
-                <span class="take-total-votes" id="{sId}-total-votes" data-base-votes="{ct_votes}">{ct_votes:,} votes</span>
+              <div class="take-footer-meta" id="{sId}-take-footer" style="display: flex;">
+                <span class="take-voted-msg" id="{sId}-voted-msg">No community votes yet.</span>
+                <span class="take-total-votes" id="{sId}-total-votes"></span>
               </div>
             </div>
 
@@ -8633,7 +8575,7 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
         content = re.sub(r'id="liveStoryCountBadge">[^<]*<', f'id="liveStoryCountBadge">{len(stories)} Live Stories<', content)
 
 
-        # Synchronize instant <head> controller so Vote, Key Facts, and Lens/Persona buttons work at 0ms while HTML streams
+        # Synchronize <head> image fallback script (all polling logic lives in app.js / main script with zero duplication)
         head_script = """<script>
   window.onImgError = window.onImgError || function(img, cat) {
     if (!img) return;
@@ -8646,137 +8588,6 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     else {
       img.onerror = null;
       img.src = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#0f172a"/><text x="600" y="345" font-family="Inter,sans-serif" font-size="28" font-weight="700" fill="#10b981" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text></svg>');
-    }
-  };
-
-  window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
-    var e = evt || window.event;
-    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
-    var pollEl = (btnEl && btnEl.closest ? btnEl.closest(".controversial-take-poll") : null) ||
-                 (storyId ? document.getElementById(storyId + "-controversial-poll") : null);
-    if (!pollEl) return;
-    var sId = storyId || pollEl.getAttribute("data-story-id") || "";
-    try {
-      var saved = JSON.parse(localStorage.getItem("userControversialVotes") || "{}");
-      saved[sId] = choice;
-      localStorage.setItem("userControversialVotes", JSON.stringify(saved));
-    } catch (err) {}
-    pollEl.classList.add("has-voted");
-    var btnAgree = pollEl.querySelector(".btn-take-agree") || document.getElementById(sId + "-btn-agree");
-    var btnDisagree = pollEl.querySelector(".btn-take-disagree") || document.getElementById(sId + "-btn-disagree");
-    if (btnAgree) btnAgree.classList.toggle("selected-agree", choice === "AGREE");
-    if (btnDisagree) btnDisagree.classList.toggle("selected-disagree", choice === "DISAGREE");
-    var agPct = parseInt(pollEl.getAttribute("data-agree-pct") || "62", 10);
-    var disPct = parseInt(pollEl.getAttribute("data-disagree-pct") || "38", 10);
-    var pctAgree = (btnAgree ? btnAgree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-agree");
-    var pctDisagree = (btnDisagree ? btnDisagree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-disagree");
-    if (pctAgree) { pctAgree.textContent = agPct + "%"; pctAgree.style.display = "inline-block"; }
-    if (pctDisagree) { pctDisagree.textContent = disPct + "%"; pctDisagree.style.display = "inline-block"; }
-    var track = pollEl.querySelector(".take-consensus-track") || document.getElementById(sId + "-take-track");
-    var footer = pollEl.querySelector(".take-footer-meta") || document.getElementById(sId + "-take-footer");
-    if (track) track.style.display = "flex";
-    if (footer) footer.style.display = "flex";
-    var myPct = (choice === "AGREE") ? agPct : disPct;
-    var otherPct = (choice === "AGREE") ? disPct : agPct;
-    var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
-    if (votedMsg) votedMsg.textContent = "📊 " + myPct + "% voted with you vs. " + otherPct + "% on the other side";
-    var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
-    if (totalVotesEl) {
-      var baseV = parseInt(totalVotesEl.getAttribute("data-base-votes") || totalVotesEl.textContent.replace(/[^0-9]/g, "") || "2840", 10);
-      totalVotesEl.textContent = (baseV + 1).toLocaleString() + " votes";
-    }
-    var card = pollEl.closest ? pollEl.closest(".compact-card") : document.getElementById(sId);
-    var agreeLens = pollEl.getAttribute("data-agree-lens") || "RIGHT";
-    var disagreeLens = pollEl.getAttribute("data-disagree-lens") || "LEFT";
-    var chosenLens = (choice === "AGREE") ? agreeLens : disagreeLens;
-    var details = document.getElementById(sId + "-details") || (card ? card.querySelector(".card-details") : null);
-    var factsPanel = document.getElementById(sId + "-facts-panel") || (card ? card.querySelector(".facts-drawer-panel") : null);
-    var lensPanel = document.getElementById(sId + "-lens-panel") || (card ? card.querySelector(".lens-drawer-panel") : null);
-    if (card && !card.classList.contains("expanded")) {
-      card.classList.add("expanded");
-      if (details) details.style.display = "block";
-      if (factsPanel && !card.classList.contains("facts-open")) factsPanel.style.display = "none";
-    }
-    if (lensPanel) lensPanel.style.display = "block";
-    var views = ["RIGHT", "CENTER", "LEFT"];
-    for (var v = 0; v < views.length; v++) {
-      var vEl = document.getElementById(sId + "-view-" + views[v]) || (card ? card.querySelector('[id$="-view-' + views[v] + '"]') : null);
-      if (vEl) vEl.style.display = (views[v] === chosenLens) ? "block" : "none";
-    }
-    if (card) {
-      var tBtns = card.querySelectorAll(".card-toggle-btn");
-      for (var b = 0; b < tBtns.length; b++) {
-        var btn = tBtns[b];
-        var txt = btn.textContent.trim().toUpperCase();
-        btn.classList.remove("active", "left", "center", "right");
-        if (chosenLens === "LEFT" && txt.indexOf("LEFT") !== -1) btn.classList.add("active", "left");
-        else if (chosenLens === "CENTER" && (txt.indexOf("BAL") !== -1 || txt.indexOf("CENTER") !== -1)) btn.classList.add("active", "center");
-        else if (chosenLens === "RIGHT" && txt.indexOf("RIGHT") !== -1) btn.classList.add("active", "right");
-      }
-    }
-  };
-
-  window.toggleKeyFactsDrawer = window.toggleKeyFactsDrawer || function(storyId, evt, btnEl) {
-    var e = evt || window.event;
-    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
-    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || document.getElementById(storyId);
-    if (!card) return;
-    var sId = storyId || card.id;
-    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
-    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
-    var lensPanel = document.getElementById(sId + "-lens-panel") || card.querySelector(".lens-drawer-panel");
-    var factsBtn = document.getElementById(sId + "-btn-facts-drawer") || card.querySelector(".btn-drawer-facts");
-    var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
-    var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
-    if (!factsPanel) return;
-    var isOpen = card.classList.contains("expanded") && factsPanel.style.display !== "none";
-    if (!isOpen) {
-      card.classList.add("expanded", "facts-open");
-      if (details) details.style.display = "block";
-      factsPanel.style.display = "block";
-      if (lensPanel) lensPanel.style.display = "block";
-      if (factsBtn) factsBtn.classList.add("active");
-      if (label) label.textContent = "Hide Key Facts";
-      if (chevron) chevron.textContent = "▴";
-    } else {
-      card.classList.remove("expanded", "facts-open");
-      if (details) details.style.display = "none";
-      if (factsBtn) factsBtn.classList.remove("active");
-      if (label) label.textContent = "Key Facts";
-      if (chevron) chevron.textContent = "▾";
-    }
-  };
-
-  window.toggleLensDrawer = window.toggleLensDrawer || function(storyId, evt, btnEl) {
-    var e = evt || window.event;
-    if (e && typeof e.stopPropagation === "function") e.stopPropagation();
-    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || document.getElementById(storyId);
-    if (!card) return;
-    var sId = storyId || card.id;
-    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
-    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
-    var lensPanel = document.getElementById(sId + "-lens-panel") || card.querySelector(".lens-drawer-panel");
-    var lensBtn = document.getElementById(sId + "-btn-lens-drawer") || card.querySelector(".btn-drawer-lens");
-    var label = document.getElementById(sId + "-lens-expand-label") || (lensBtn ? lensBtn.querySelector(".expand-lens-label") : null);
-    var chevron = document.getElementById(sId + "-lens-chevron") || (lensBtn ? lensBtn.querySelector(".expand-lens-chevron") : null);
-    if (!lensPanel) return;
-    var isOpen = (lensPanel.style.display === "block");
-    if (!isOpen) {
-      card.classList.add("expanded");
-      if (details) details.style.display = "block";
-      lensPanel.style.display = "block";
-      if (lensBtn) lensBtn.classList.add("active");
-      if (label) label.textContent = "Hide Lens / Persona";
-      if (chevron) chevron.textContent = "▴";
-    } else {
-      lensPanel.style.display = "none";
-      if (lensBtn) lensBtn.classList.remove("active");
-      if (label) label.textContent = "Lens / Persona";
-      if (chevron) chevron.textContent = "▾";
-      if (!factsPanel || factsPanel.style.display === "none") {
-        card.classList.remove("expanded");
-        if (details) details.style.display = "none";
-      }
     }
   };
   </script>"""
