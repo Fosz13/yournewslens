@@ -3778,3 +3778,86 @@ body.searching-mode #blindStanceSection {
 .expand-prompt-bar.single-facts-bar .btn-card-drawer {
   width: 100%;
 }
+
+
+/* =========================================================================
+   PULL-DOWN ON TOP BANNER (.app-header) TO REFRESH FROM ANY SCROLL POSITION
+   ========================================================================= */
+.app-header {
+  touch-action: pan-x;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.app-header input {
+  touch-action: auto;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.banner-pull-refresh-bar {
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.18) 0%, rgba(56, 189, 248, 0.18) 100%);
+  color: var(--text-primary);
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  transition: height 0.18s ease, opacity 0.18s ease, background 0.18s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.banner-pull-refresh-bar.pulling {
+  transition: none;
+  border-bottom-color: rgba(56, 189, 248, 0.3);
+}
+
+.banner-pull-refresh-bar.ready-to-refresh {
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.32) 0%, rgba(56, 189, 248, 0.32) 100%);
+  color: #10b981;
+  border-bottom-color: #10b981;
+}
+
+[data-theme="light"] .banner-pull-refresh-bar.ready-to-refresh {
+  background: #d1fae5;
+  color: #047857;
+  border-bottom-color: #10b981;
+}
+
+.banner-pull-refresh-bar.refreshing {
+  height: 42px !important;
+  opacity: 1 !important;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.25) 0%, rgba(56, 189, 248, 0.25) 100%);
+  border-bottom-color: rgba(16, 185, 129, 0.4);
+}
+
+[data-theme="light"] .banner-pull-refresh-bar.refreshing {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.banner-pull-pill-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px 0 4px;
+  cursor: pointer;
+}
+
+.banner-pull-pill {
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.38);
+  transition: background 0.15s ease, width 0.15s ease;
+}
+
+.app-header:hover .banner-pull-pill {
+  background: rgba(56, 189, 248, 0.65);
+  width: 48px;
+}

@@ -8376,11 +8376,6 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 <span class="take-voted-msg" id="{sId}-voted-msg">📊 {ct_agree_pct}% voted with you vs. {ct_disagree_pct}% on the other side</span>
                 <span class="take-total-votes" id="{sId}-total-votes" data-base-votes="{ct_votes}">{ct_votes:,} votes</span>
               </div>
-
-              <!-- Matching Red / Blue Lens Persona (Revealed Immediately Upon Voting) -->
-              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">
-                {joined_lens_html}
-              </div>
             </div>
 
             <div class="expand-prompt-bar single-facts-bar" id="{sId}-expand-bar">
@@ -8391,7 +8386,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             </div>
 
             <div class="card-details" id="{sId}-details">
-              <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: none;">
+              <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: block;">
               <div class="neutral-box">
                 <div class="neutral-box-header">
                   <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
@@ -8446,6 +8441,10 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
               </div>
               </div><!-- end facts-drawer-panel -->
+
+              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: block;">
+                {joined_lens_html}
+              </div>
 
               <div class="card-bottom-actions">
                 <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
@@ -8690,7 +8689,14 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     var agreeLens = pollEl.getAttribute("data-agree-lens") || "RIGHT";
     var disagreeLens = pollEl.getAttribute("data-disagree-lens") || "LEFT";
     var chosenLens = (choice === "AGREE") ? agreeLens : disagreeLens;
-    var lensPanel = pollEl.querySelector(".lens-drawer-panel") || document.getElementById(sId + "-lens-panel");
+    var details = document.getElementById(sId + "-details") || (card ? card.querySelector(".card-details") : null);
+    var factsPanel = document.getElementById(sId + "-facts-panel") || (card ? card.querySelector(".facts-drawer-panel") : null);
+    var lensPanel = document.getElementById(sId + "-lens-panel") || (card ? card.querySelector(".lens-drawer-panel") : null);
+    if (card && !card.classList.contains("expanded")) {
+      card.classList.add("expanded");
+      if (details) details.style.display = "block";
+      if (factsPanel && !card.classList.contains("facts-open")) factsPanel.style.display = "none";
+    }
     if (lensPanel) lensPanel.style.display = "block";
     var views = ["RIGHT", "CENTER", "LEFT"];
     for (var v = 0; v < views.length; v++) {
@@ -8723,23 +8729,21 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
     var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
     if (!factsPanel) return;
-    var isOpen = (factsPanel.style.display === "block");
+    var isOpen = card.classList.contains("expanded") && factsPanel.style.display !== "none";
     if (!isOpen) {
-      card.classList.add("expanded");
+      card.classList.add("expanded", "facts-open");
       if (details) details.style.display = "block";
       factsPanel.style.display = "block";
+      if (lensPanel) lensPanel.style.display = "block";
       if (factsBtn) factsBtn.classList.add("active");
       if (label) label.textContent = "Hide Key Facts";
       if (chevron) chevron.textContent = "▴";
     } else {
-      factsPanel.style.display = "none";
+      card.classList.remove("expanded", "facts-open");
+      if (details) details.style.display = "none";
       if (factsBtn) factsBtn.classList.remove("active");
       if (label) label.textContent = "Key Facts";
       if (chevron) chevron.textContent = "▾";
-      if (!lensPanel || lensPanel.style.display === "none") {
-        card.classList.remove("expanded");
-        if (details) details.style.display = "none";
-      }
     }
   };
 
