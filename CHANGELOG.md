@@ -1,5 +1,21 @@
 # Your News Lens — Changelog
 
+## [v13.3] - 2026-11-03 — Comprehensive Code Audit, Question vs. Key Fact Differentiation & 100% Topic-Locked Photography
+- **Question vs. Non-Question Callout Differentiation (`⚡ INSTANT ANSWER` vs. `📌 KEY FACT`)**:
+  - Updated `engine.py` and `app.js` so that `⚡ INSTANT ANSWER` is exclusively displayed when the headline asks a question or creates a direct curiosity gap (`Why...`, `How...`, `Where to Watch...`, `Which...`, `Here's why...`, or `?`), immediately delivering the direct answer.
+  - Standard declarative headlines now display a clean `📌 KEY FACT` badge and present the primary verified fact directly without artificial `"Direct Answer:"` or `"What Happened:"` prefixes.
+- **Eliminated Cross-Category Image Bleed (`resolve_story_image` Priority 2B & Priority 5)**:
+  - Fixed a bug in `engine.py` where exhausting a category's fallback pool caused `Priority 5` to iterate across unrelated non-sports category pools (which previously allowed fashion, wind turbine, or customs photos to land on politics, science, or finance stories).
+  - Locked `Priority 2B` and `Priority 5` strictly to each story's exact topic or category pool and expanded `EXACT_ENTITY_PHOTOGRAPHY` with dedicated photography for magnetic fusion, pancreatic cancer trials, undersea cables, silicon photonics, FEMA grants, CBP cargo scanners, Pakistan security, and congressional budget hearings.
+- **Full Codebase & Database Audit (`data/stories.json`, `engine.py`, `app.js`)**:
+  - Fixed the `Grand Slam` regex false positive (`(?<!grand\s)\b(?:slams?|slamming|slammed)\b`) in `is_response_or_reaction_headline` so tennis Grand Slam previews receive proper match odds instead of reaction templates.
+  - Repaired truncated dollar figures (`$1.65 trillion`, `$2.2 billion`, `$1.5 billion`, `$1.2 million`, `$80M`, `$19.99/month`) across `data/stories.json`.
+  - Replaced all 9 truncated or fragmented sports/news lead facts (Cooper Flagg, Christian McCaffrey, Tua Tagovailoa, Joel Embiid, Micah Parsons, Martin Odegaard, Roki Sasaki, Florian Wirtz, Giannis Antetokounmpo) with complete, multi-sentence verified breakdowns.
+  - Replaced all remaining template-generated controversial takes with 100% custom, topic-specific polarizing debate prompts across all 124 stories.
+  - Fixed `.story-title-link` selector bug and removed obsolete `renderBlindSurveyTopic` calls in `app.js`.
+- **Regression Suite Verification**:
+  - All 31 regression tests in `test_regression_suite.py` passed (100% success rate).
+
 ## [v13.2] - 2026-11-03 — Fresh Breaking News Ingestion & Resolution of Pipeline Stalling Bug
 - **Breaking News Lead Story Replacement**:
   - Replaced the stale October 30 Senate Appropriations story at index 0 with live breaking coverage of the **2026 Midterm Elections** (*"2026 Midterm Elections: Americans Vote Across 50 States to Decide Control of House and Senate"*) and the **Inaugural 12-Team College Football Playoff Rankings** (*"College Football Playoff Rankings: CFP Committee Unveils First Official 12-Team Postseason Bracket of 2026"*).
