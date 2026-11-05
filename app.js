@@ -1043,7 +1043,7 @@
     var currentDy = 0;
 
     headerEl.addEventListener('touchstart', function(ev) {
-      if (_isBannerRefreshing) return;
+      if (_isBannerRefreshing || ev.target.closest?.('.ynl-mast-menu')) return;
       if (ev.target && ev.target.tagName && ev.target.tagName.toLowerCase() === 'input') return;
       if (!ev.touches || ev.touches.length !== 1) return;
       startY = ev.touches[0].clientY;
@@ -1105,6 +1105,8 @@
     var input = document.getElementById('liveSearchInput');
     if (input) input.value = '';
     currentSearchQuery = '';
+    var menu = document.querySelector('.ynl-mast-menu');
+    if (menu) menu.open = false;
     showStoriesTab();
     filterCategory('All');
     window.scrollTo({top: 0, behavior: 'instant'});
@@ -1123,12 +1125,50 @@
     }, {passive: true});
     header.addEventListener('focusin', function () { header.classList.remove('ynl-header-hidden'); });
     var controls = header.querySelector('.header-controls');
-    if (controls) {
-      var help = document.createElement('details');
-      help.className = 'ynl-lens-help';
-      help.innerHTML = '<summary>How lenses work</summary><p>Left and Right highlight different political arguments. Balanced focuses on what is known and where accounts differ. Sports and other stories use topic-specific angles. Facts stay the same across lenses.</p>';
-      controls.append(help);
+    var masthead = header.querySelector('.header-container');
+    var refresh = document.getElementById('btnEditionRefresh');
+    if (!controls || !masthead || !refresh) return;
+    header.classList.add('ynl-masthead');
+    refresh.title = 'Refresh and return to the latest stories';
+    refresh.innerHTML = '<span aria-hidden="true">↻</span>';
+    var actions = document.createElement('div');
+    actions.className = 'ynl-mast-actions';
+    actions.append(refresh);
+    header.querySelector('.brand-row').append(actions);
+
+    var menu = document.createElement('details');
+    menu.className = 'ynl-mast-menu';
+    var summary = document.createElement('summary');
+    summary.textContent = 'Browse';
+    menu.append(summary);
+    actions.append(menu);
+    var panel = document.createElement('div');
+    panel.className = 'ynl-mast-panel';
+    menu.append(panel);
+    var help = document.createElement('details');
+    help.className = 'ynl-lens-help';
+    help.innerHTML = '<summary><span aria-hidden="true">ⓘ</span> Lens guide</summary><p>Left and Right highlight political arguments. Balanced focuses on the evidence. Sports and other stories use topic-specific angles. Source links identify outside viewpoints. News Lens analysis is our own.</p>';
+    var search = controls.querySelector('.search-input-wrap');
+    var theme = document.getElementById('btnThemeToggle');
+    var nav = document.querySelector('.filter-bar');
+    var local = document.getElementById('localNewsBanner');
+    var beats = document.getElementById('localSubnavBar');
+    for (var group of [search, nav, local, beats, theme, help]) {
+      if (group) panel.append(group);
     }
+    function closeMenu() { menu.open = false; }
+    panel.addEventListener('click', function (event) {
+      if (event.target.closest('.view-tab, .subcat-pill, .cat-pill:not([data-category="Local"])')) {
+        closeMenu();
+        summary.focus({preventScroll: true});
+      }
+    });
+    document.addEventListener('pointerdown', function (event) {
+      if (menu.open && !menu.contains(event.target)) closeMenu();
+    });
+    header.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) { closeMenu(); summary.focus(); }
+    });
   }
 
   var readerInterests = {};

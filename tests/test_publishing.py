@@ -137,7 +137,7 @@ class PublishingTest(unittest.TestCase):
         story = editorial.prepare_story({"id": "story-no-image", "title": "An article without a usable photo"})
         page = engine.prerender_cards_html([story])
         self.assertNotIn("hero-image-wrap", page)
-        self.assertIn("Editorial lens", page)
+        self.assertIn("News Lens analysis", page)
 
     def test_city_calendar_listing_has_date_and_real_source(self):
         from datetime import datetime
@@ -159,6 +159,15 @@ class PublishingTest(unittest.TestCase):
         self.assertIn("Jim Geraghty", right["source_attribution"])
         self.assertIn("nationalreview.com", right["source_url"])
         self.assertIn("change course", right["talking_points"][0])
+
+    def test_stale_lens_placeholders_are_replaced(self):
+        row = {"title": "Ronaldo retires from Portugal duty", "category": "Sports",
+               "perspectives": {"LEFT": {"perspective_badge": "pending_commentary"}}}
+        editorial.restore_missing_features(row)
+        left = row["perspectives"]["LEFT"]
+        self.assertEqual(left["perspective_badge"], "news_lens_analysis")
+        self.assertIn("scoring responsibilities", left["talking_points"][0])
+        self.assertEqual(len(row["perspectives"]), 3)
 
     def test_old_unverified_records_are_not_published(self):
         self.assertEqual(publish_wire.refresh_existing(

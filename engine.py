@@ -8152,7 +8152,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
 
                 <div class="perspective-meta-bar">
-                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else ('Editorial lens' if pData.get('perspective_badge') == 'editorial_prompt' else ('Coverage pending' if pData.get('perspective_badge') == 'pending_commentary' else '🤖 AI-Generated Analysis'))}</span>
+                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else ('News Lens analysis' if pData.get('perspective_badge') in ('editorial_prompt', 'news_lens_analysis') else ('Coverage pending' if pData.get('perspective_badge') == 'pending_commentary' else '🤖 AI-Generated Analysis'))}</span>
                   {attribution}
                 </div>
 

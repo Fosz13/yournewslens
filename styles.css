@@ -3970,3 +3970,35 @@ header.app-header.ynl-header-hidden { transform: translateY(-105%); pointer-even
 .ynl-debate-card > p { opacity: .8; font-size: .8rem; margin: 0 0 .3rem; }
 .ynl-debate-order select { padding: .35rem; border-radius: .35rem; }
 @media (prefers-reduced-motion: reduce) { header.app-header { transition: none; } }
+
+/* One compact masthead; the panel overlays stories instead of consuming feed space. */
+header.app-header.ynl-masthead { padding: 8px 14px; }
+.ynl-masthead .header-container { display: grid; gap: 6px; }
+.ynl-masthead .brand-row { display: flex; width: 100%; gap: 9px; justify-content: flex-start; align-items: center; }
+.ynl-masthead .brand-icon { width: 31px; height: 31px; min-width: 31px; border-radius: 8px; }
+.ynl-masthead .brand-icon svg { width: 20px; height: 20px; }
+.ynl-masthead .brand-title { font-size: clamp(1rem, 4.6vw, 1.45rem); white-space: nowrap; }
+.ynl-masthead .brand-tagline, .ynl-masthead .banner-pull-pill-wrap { display: none; }
+.ynl-mast-actions { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+.ynl-masthead .btn-header-refresh, .ynl-mast-menu > summary { min-height: 34px; border: 1px solid var(--border-subtle); background: var(--bg-surface, #162033); color: var(--text-primary); border-radius: 8px; cursor: pointer; padding: 4px 8px; }
+.ynl-masthead .btn-header-refresh { min-width: 34px; font-size: 1.05rem; }
+.ynl-mast-menu > summary { display: grid; place-items: center; list-style: none; font-size: .76rem; font-weight: 700; }
+.ynl-mast-menu > summary::-webkit-details-marker, .ynl-lens-help > summary::-webkit-details-marker { display: none; }
+.ynl-masthead .header-controls { display: flex; justify-content: flex-start; }
+.ynl-masthead .lens-selector-wrapper { width: 100%; max-width: 370px; min-height: 0; padding: 2px; gap: 3px; }
+.ynl-masthead .lens-selector-wrapper .lens-btn { flex: 1; min-height: 32px; padding: 4px 8px; }
+.ynl-masthead .lens-label { padding: 0 8px; }
+.ynl-mast-panel { position: absolute; top: 100%; right: 12px; left: 12px; width: auto; max-width: 620px; margin-left: auto; max-height: min(72dvh, 600px); overflow: auto; padding: 10px; display: grid; gap: 8px; background: var(--bg-header); border: 1px solid var(--border-subtle); border-radius: 0 0 14px 14px; box-shadow: 0 16px 36px #0006; }
+.ynl-mast-panel .filter-bar { position: static; padding: 0; margin: 0; }
+.ynl-mast-panel .top-nav-row, .ynl-mast-panel .category-bar-wrapper { margin: 0; padding: 0; }
+.ynl-mast-panel .view-tabs { display: flex; flex-wrap: wrap; width: 100%; gap: 4px; padding: 4px; }
+.ynl-mast-panel .view-tab { flex: 1 1 auto; padding: 7px 5px; font-size: .72rem; }
+.ynl-mast-panel .category-carousel { flex-wrap: wrap; overflow: visible; gap: 4px; padding: 5px 0; }
+.ynl-mast-panel .cat-pill { padding: 5px 8px; font-size: .73rem; }
+.ynl-mast-panel .welcome-edition-bar, .ynl-mast-panel .local-subnav-bar { width: 100%; margin: 0; }
+.ynl-mast-panel .city-selector-dropdown { position: static; width: 100%; }
+.ynl-mast-panel .edition-bar-inner { padding: 6px; }
+.ynl-mast-panel .edition-date, .ynl-mast-panel .edition-divider { display: none; }
+.ynl-mast-panel .ynl-lens-help { padding: 5px 7px; border: 1px solid var(--border-subtle); border-radius: 8px; }
+.ynl-mast-panel .ynl-lens-help summary { list-style: none; font-weight: 700; }
+.ynl-masthead:has(.ynl-mast-menu[open]) { touch-action: auto; }

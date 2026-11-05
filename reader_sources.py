@@ -111,25 +111,17 @@ def enrich_lenses(stories, items):
     ignored = {"trump", "democrat", "democrats", "republican", "republicans", "says", "news", "with"}
     for story in stories:
         title = story["title"]
-        if title.startswith("Progressives hail") and "midterm" in title.lower():
+        if ((title.startswith("Progressives hail") and "midterm" in title.lower()) or
+                title.startswith("Democrats prepare to take Congress after sweeping wins")):
             story["perspective_mode"] = "political"
             story["perspectives"] = {
-                "LEFT": entry("The win is a mandate to challenge Democratic party insiders as well as Trump. Progressives want leaders to turn the result into a bolder agenda.", "The Guardian · progressive reaction", story["article_url"]),
-                "CENTER": entry("Democrats plan to use their congressional majorities to check Trump. The result gives them leverage, and it also raises the prospect of two years of deadlock.", "Reuters · reporting", "https://www.investing.com/news/politics-news/democrats-vow-to-rein-in-trump-as-he-shows-off-white-house-ballroom-5002462"),
+                "LEFT": entry("Democratic leaders see the results as a chance to press their affordability agenda and hold the administration accountable.", "Hakeem Jeffries · via Reuters", "https://www.reuters.com/legal/government/democrats-seize-congress-sweeping-midterm-repudiation-trump-2026-11-04/"),
+                "CENTER": entry("Democrats plan to use their congressional majorities to check Trump. The result gives them leverage and raises the prospect of two years of deadlock.", "Reuters · reporting", "https://www.reuters.com/legal/government/democrats-vow-rein-trump-he-shows-off-white-house-ballroom-2026-11-05/"),
                 "RIGHT": entry("Republicans should take the loss as a verdict on Trump’s performance. Geraghty argues that the party needs to change course to win back dissatisfied voters.", "Jim Geraghty · National Review", "https://www.nationalreview.com/the-morning-jolt/the-voters-have-spoken-trump-failed/amp/"),
             }
             continue
         if story.get("perspective_mode") != "political":
             continue
-        viewpoints = story.setdefault("perspectives", {})
-        for side in ("LEFT", "CENTER", "RIGHT"):
-            current = viewpoints.get(side)
-            if not current or current.get("perspective_badge") != "editorial_prompt":
-                continue
-            if side == "CENTER" and story.get("core_facts"):
-                viewpoints[side] = entry(story["core_facts"][0], story.get("source_name", ""), story["article_url"])
-            else:
-                viewpoints[side] = {"talking_points": [], "perspective_badge": "pending_commentary"}
         keywords = editorial.tokens(title) - ignored
         for side, rows in candidates.items():
             ranked = sorted(((len(keywords & (editorial.tokens(item["title"]) - ignored)), item, fact)
