@@ -20,6 +20,11 @@ import urllib.request
 import urllib.error
 import urllib.parse
 import email.utils
+from html import escape
+import hashlib
+from pathlib import Path
+
+import editorial
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional, Set, Tuple
@@ -2181,7 +2186,7 @@ def resolve_canonical_publisher(title: str, link: str, xml_source: str = "", fee
     suffix_match = re.search(r'\s+[-–—|]\s+([^-–—|]{2,35})$', title_str)
     suffix_pub = suffix_match.group(1).strip() if suffix_match else ""
 
-    for candidate in (xml_source, suffix_pub, feed_source):
+    for candidate in (xml_source, feed_source):
         c_low = (candidate or "").lower()
         if not c_low or "google news" in c_low:
             continue
@@ -2233,7 +2238,7 @@ def resolve_canonical_publisher(title: str, link: str, xml_source: str = "", fee
         return "NPR News"
     if "x.com" in url_low or "twitter.com" in url_low:
         return "Verified X Breaking Wire"
-    return feed_source if "google news" not in feed_source.lower() else "AP News Wire"
+    return feed_source if "google news" not in feed_source.lower() else (urllib.parse.urlsplit(link).hostname or "News publisher")
 
 # =============================================================================
 # THREE-LAYER ARCHITECTURAL SAFEGUARDS: IMAGE POOLS, FACTS & PERSPECTIVE VALIDATION
@@ -3225,7 +3230,12 @@ def parse_pubdate_to_relative(pub_date_str: str) -> Tuple[int, str]:
     if not pub_date_str:
         return now_ts, "Recently"
     try:
-        dt = email.utils.parsedate_to_datetime(pub_date_str)
+        try:
+            dt = email.utils.parsedate_to_datetime(pub_date_str)
+        except ValueError:
+            dt = datetime.fromisoformat(pub_date_str)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
         diff_sec = int((datetime.now(timezone.utc) - dt).total_seconds())
         if diff_sec < 180:
             return int(dt.timestamp()), "Just now"
@@ -4093,7 +4103,7 @@ def extract_image_from_xml_item(item: ET.Element, source_name: str, title: str) 
     return None
 
 
-def scrape_article_lead_image_and_meta(article_url: str, title: str, source_name: str) -> Dict[str, Any]:
+def scrape_article_lead_image_and_meta(article_url: str, title: str, source_name: str, *, direct_only=False) -> Dict[str, Any]:
     """
     Fetches the actual article's lead photograph (`og:image`, `twitter:image`, JSON-LD `image`)
     and article summary (`og:description`) directly from the article URL.
@@ -4120,6 +4130,14 @@ def scrape_article_lead_image_and_meta(article_url: str, title: str, source_name
                 result["resolved_url"] = final_url
                 raw_bytes = resp.read(131072)  # Read first 128KB (<head> + hero)
                 page_html = raw_bytes.decode("utf-8", errors="ignore")
+
+                if direct_only:
+                    page_title = re.search(r"<title[^>]*>(.*?)</title>", page_html, re.I | re.S)
+                    original_host = urllib.parse.urlsplit(article_url).hostname or ""
+                    final_host = urllib.parse.urlsplit(final_url).hostname or ""
+                    if (original_host.removeprefix("www.") != final_host.removeprefix("www.")
+                            or not page_title or not editorial.same_headline(clean_title, clean_html_text(page_title[1]))):
+                        return result
 
                 # Extract og:image / twitter:image
                 meta_patterns = [
@@ -4192,8 +4210,14 @@ def scrape_article_lead_image_and_meta(article_url: str, title: str, source_name
                         "is_original_article_image": True
                     }
                     return result
-        except Exception:
+        except urllib.error.HTTPError as error:
+            if direct_only and error.code in (404, 410):
+                result["unavailable"] = True
+        except (OSError, ValueError):
             pass
+
+    if direct_only:
+        return result
 
     # 2. If Google News RSS link or direct page didn't yield an image, query Bing News RSS for the exact article headline!
     # Bing News RSS provides <News:Image> (the article's real lead photo) and a multi-sentence <description> snippet!
@@ -4513,7 +4537,9 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
             }
         )
         with urllib.request.urlopen(req, timeout=12) as resp:
-            content = resp.read()
+            content = resp.read(2_000_001)
+            if len(content) > 2_000_000:
+                raise ValueError("RSS response exceeds size limit")
             root = ET.fromstring(content)
             
             xml_items = root.findall(".//item")
@@ -4529,7 +4555,7 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                     if link_el is not None:
                         link = link_el.get("href", "")
                 desc = clean_html_text(item.findtext("description", "") or item.findtext("{http://www.w3.org/2005/Atom}summary", ""))
-                raw_pub_date = item.findtext("pubDate", "") or item.findtext("{http://www.w3.org/2005/Atom}updated", "") or ""
+                raw_pub_date = item.findtext("pubDate", "") or item.findtext("{http://www.w3.org/2005/Atom}published", "") or item.findtext("{http://www.w3.org/2005/Atom}updated", "") or ""
                 
                 source_el = item.find("source")
                 xml_src_name = clean_html_text(source_el.text) if source_el is not None and source_el.text else ""
@@ -4544,25 +4570,9 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                     if is_disallowed_source(resolved_src):
                         continue
 
-                    # 1. Try extracting the picture directly from the RSS XML item first
+                    if not raw_pub_date or rel_time == "Recently" or not editorial.source_url(link):
+                        continue
                     scraped_pic = extract_image_from_xml_item(item, resolved_src, title)
-
-                    # 2. If RSS XML did not embed the photo (or if description is just a headline echo),
-                    #    fetch the actual article page og:image / twitter:image / Bing News article image!
-                    clean_t = re.sub(r'\s+[-–—|]\s+[^-–—|]+$', '', title).strip()
-                    t_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', clean_t.lower()))
-                    d_words = set(re.findall(r'\b[a-zA-Z]{4,}\b', (desc or "").lower()))
-                    desc_is_echo = (not d_words) or (len(t_words & d_words) / max(len(d_words), 1) > 0.65)
-
-                    if (not scraped_pic or desc_is_echo) and scraped_count < max_items:
-                        scraped_count += 1
-                        meta_res = scrape_article_lead_image_and_meta(link, title, resolved_src)
-                        if not scraped_pic and meta_res.get("image"):
-                            scraped_pic = meta_res["image"]
-                        if desc_is_echo and meta_res.get("description"):
-                            desc = meta_res["description"]
-                        if meta_res.get("resolved_url") and ("news.google.com" in (link or "") or not link):
-                            link = meta_res["resolved_url"]
 
                     items.append({
                         "title": title,
@@ -8044,46 +8054,30 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         sub_cat = s.get("sub_category", "")
         lean = s.get("lean", "center")
         publisher_bias = publisher_editorial_bias(s.get("source_name") or s.get("source", ""))
-        imgUrl = s.get("image_url", "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=1200&q=80" if "sport" in str(cat).lower() else "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG")
+        imgUrl = editorial.source_url(s.get("image_url")) or editorial.PLACEHOLDER
         caption = s.get("caption", s.get("title", ""))
         source = s.get("source", "Associated Press Wire")
         src_name = s.get("source_name") or (source.split(" • ")[0] if " • " in source else source)
-        credit = clean_photo_credit(s.get("credit", ""), src_name)
+        credit = clean_photo_credit(s.get("credit", ""), src_name) if imgUrl != editorial.PLACEHOLDER else ""
         pub_ts = s.get("pub_timestamp", "")
         rel_time_str = source.split(" • ")[-1] if " • " in source else "Just now"
         summary = s.get("neutral_summary", "")
         encoded_title = urllib.parse.quote(s.get('title', ''))
-        article_url = s.get("article_url") or s.get("link") or f"https://news.google.com/search?q={encoded_title}"
+        title_str = str(s.get("title") or "")
+        article_url = editorial.source_url(s.get("article_url") or s.get("link")) or f"https://news.google.com/search?q={encoded_title}"
 
         perspectives = s.get("perspectives", {})
         
-        # Format 4 core facts
-        core_facts = s.get("core_facts")
-        lead_fact = summary
-        if isinstance(core_facts, list) and len(core_facts) > 0:
-            lead_fact = str(core_facts[0])
-            facts_items = "".join([f"<li>{f}</li>" for f in core_facts[:4]])
-            facts_markup = f'<ul class="core-facts-list">{facts_items}</ul>'
-        else:
-            facts_markup = f'<div class="neutral-desc">{summary}</div>'
-
-        # Determine lead fact callout badge style for the card face preview
-        lf_lower = lead_fact.lower()
-        title_str = str(s.get("title", ""))
-        if is_question_or_clickbait_headline(title_str):
-            callout_badge = '<span class="fact-preview-badge answer">⚡ INSTANT ANSWER</span>'
-        elif lf_lower.startswith("direct response"):
-            callout_badge = '<span class="fact-preview-badge response">💬 DIRECT RESPONSE</span>'
-        elif lf_lower.startswith("current betting odds"):
-            callout_badge = '<span class="fact-preview-badge odds">🎲 LIVE ODDS & WIN PROBABILITY</span>'
-        else:
-            callout_badge = '<span class="fact-preview-badge fact">📌 KEY FACT</span>'
-
-        # Expanded facts dossier
-        exp_facts = s.get("expanded_facts", {})
-        exp_context = exp_facts.get("in_depth_context") or summary or "Comprehensive investigative reporting details the full chronology, background mechanisms, and procedural milestones surrounding this development."
-        exp_evidence = exp_facts.get("key_evidence_data") or "Documented records, official filings, and verified metrics substantiate the primary claims and administrative statements reported by primary wire sources."
-        exp_impact = exp_facts.get("strategic_impact") or "Key oversight bodies, regulatory agencies, and institutional leaders have scheduled follow-up hearings, public notices, and implementation milestones."
+        core_facts = s.get("core_facts") or []
+        lead_fact = s.get("lead_fact") or editorial.NO_FACT
+        additional_facts = [fact for fact in core_facts if fact != lead_fact]
+        facts_items = "".join(f"<li>{escape(fact)}</li>" for fact in additional_facts)
+        facts_markup = (f'<ul class="core-facts-list">{facts_items}</ul>' if facts_items else
+                        '<p class="neutral-desc">See the original article for more details.</p>')
+        label = "⚡ INSTANT ANSWER" if s.get("has_direct_answer") else "📌 KEY FACT"
+        if not core_facts or lead_fact == editorial.NO_ANSWER:
+            label = "📄 SOURCE COVERAGE"
+        callout_badge = f'<span class="fact-preview-badge fact">{label}</span>'
 
         # Clean editorial tags row without gaudy rank badges
         if cat == "Local News":
@@ -8095,69 +8089,59 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 sub_badge = '<span class="category-tag cat-coast">☀️ Coast</span>'
             else:
                 sub_badge = ''
-            tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span> {sub_badge}'.strip()
+            tags_html = f'<span class="category-tag cat-{cat_slug}">{escape(cat)}</span> {sub_badge}'.strip()
         elif idx == 0:
-            tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+            tags_html = f'<span class="featured-lead-pill">⚡ BREAKING LEAD</span> <span class="category-tag cat-{cat_slug}">{escape(cat)}</span>'
         elif idx < 5:
-            tags_html = f'<span class="live-wire-pill">● TOP STORY</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+            tags_html = f'<span class="live-wire-pill">● TOP STORY</span> <span class="category-tag cat-{cat_slug}">{escape(cat)}</span>'
         elif idx < 12:
-            tags_html = f'<span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-{cat_slug}">{cat}</span>'
+            tags_html = f'<span class="live-wire-pill">● LIVE</span> <span class="category-tag cat-{cat_slug}">{escape(cat)}</span>'
         else:
-            tags_html = f'<span class="category-tag cat-{cat_slug}">{cat}</span>'
+            tags_html = f'<span class="category-tag cat-{cat_slug}">{escape(cat)}</span>'
 
-        what_changed = s.get("what_changed_since_yesterday") or "Overnight developments verified across primary wire dispatches."
-        timeline = s.get("evolution_timeline", [])
         ct = s.get("controversial_take") or {}
-        ct = generate_merit_controversial_poll(title_str, summary, str(cat), extract_focus_entity(title_str), existing_take=ct)
-        s["controversial_take"] = ct
         ct_statement = ct.get("statement")
-        ct_agree_lbl = ct.get("agree_label") or "Agree"
-        ct_disagree_lbl = ct.get("disagree_label") or "Disagree"
-        ct_agree_lens, ct_disagree_lens = resolve_poll_side_lenses(ct_statement, ct_agree_lbl, ct_disagree_lbl)
-        milestones_html = []
-        for m in timeline:
-            m_time = m.get("time", "")
-            m_tag = m.get("tag", "")
-            m_event = m.get("event", "")
-            milestones_html.append(f'''
-            <div class="timeline-milestone">
-              <div class="milestone-meta-row">
-                <span class="milestone-time">{m_time}</span>
-                <span class="milestone-tag">{m_tag}</span>
-              </div>
-              <p class="milestone-desc">{m_event}</p>
-            </div>
-            ''')
-        timeline_html = "".join(milestones_html)
-
+        ct_agree_lbl = ct.get("agree_label", "")
+        ct_disagree_lbl = ct.get("disagree_label", "")
+        political = s.get("perspective_mode") == "political"
+        names = ("Blue Lens", "Balanced Lens", "Red Lens") if political else (
+            "Perspective 1", "Perspective 2", "Perspective 3")
         lensList = [
-            {"key": "CENTER", "name": "Balanced Lens — Green / Centrist Persona", "short": "Balanced", "icon": "🟢", "chipClass": "emerald", "display": ""},
-            {"key": "RIGHT", "name": "Red Lens — MAGA Persona", "short": "Right", "icon": "🔴", "chipClass": "red", "display": 'style="display: none;"'},
-            {"key": "LEFT", "name": "Blue Lens — Liberal Persona", "short": "Left", "icon": "🔵", "chipClass": "blue", "display": 'style="display: none;"'}
+            {"key": key, "name": name, "icon": "", "chipClass": chip,
+             "display": '' if key == "CENTER" else 'style="display: none;"'}
+            for key, name, chip in zip(("LEFT", "CENTER", "RIGHT"), names,
+                                       ("blue", "emerald", "red") if political else ("emerald",) * 3)
         ]
+        if not political:
+            names = tuple(perspectives.get(key, {}).get("label") or name
+                          for key, name in zip(("LEFT", "CENTER", "RIGHT"), names))
+            for lens, name in zip(lensList, names):
+                lens["name"] = name
+        if not perspectives:
+            lensList = []
         lens_boxes_html = []
         for lens in lensList:
             pData = perspectives.get(lens["key"], {})
             tp_list = pData.get("talking_points", [])
-            quotes = "".join([f'<div class="quote-row">"{tp}"</div>' for tp in tp_list])
+            quotes = "".join([f'<div class="quote-row">{escape(tp)}</div>' for tp in tp_list])
             lens_boxes_html.append(f"""
               <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
                 <div class="lens-status-row">
                   <div class="lens-chip {lens['chipClass']}">
                     <span>{lens['icon']}</span>
-                    <span>{lens['name']}</span>
+                    <span>{escape(lens['name'])}</span>
                   </div>
 
                   <div class="card-toggle-group">
-                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT'); event.stopPropagation();">Left</button>
-                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER'); event.stopPropagation();">Balanced</button>
-                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT'); event.stopPropagation();">Right</button>
+                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" data-perspective="LEFT" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT'); event.stopPropagation();">{escape(names[0])}</button>
+                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" data-perspective="CENTER" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER'); event.stopPropagation();">{escape(names[1])}</button>
+                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" data-perspective="RIGHT" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT'); event.stopPropagation();">{escape(names[2])}</button>
                   </div>
                 </div>
 
                 <div class="perspective-meta-bar">
                   <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
-                  {f'<span class="source-attribution">Source: {pData.get("source_attribution")}</span>' if pData.get("source_attribution") else ''}
+                  {f'<span class="source-attribution">Source: {escape(pData.get("source_attribution"))}</span>' if pData.get("source_attribution") else ''}
                 </div>
 
                 <div class="talking-points-panel">
@@ -8171,12 +8155,12 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         joined_lens_html = "".join(lens_boxes_html)
 
         card = f"""
-        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{cat}" data-master-category="{master_cat}" data-cat-slug="{cat_slug}" data-metro="{metro}" data-subcategory="{sub_cat}" data-lean="{lean}" data-source="{src_name}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
-          <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
-            <img src="{imgUrl}" alt="{caption}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; onImgError(this, '{cat}');" />
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{escape(cat)}" data-master-category="{escape(master_cat)}" data-cat-slug="{cat_slug}" data-metro="{escape(metro)}" data-subcategory="{escape(sub_cat)}" data-lean="{escape(lean)}" data-has-perspectives="{str(bool(perspectives)).lower()}" data-topics="{escape(json.dumps(s.get('topic_keys') or editorial.topic_keys(title_str)))}" data-perspective-mode="{escape(s.get('perspective_mode', 'topical'))}" data-source="{escape(src_name)}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
+          <div class="hero-image-wrap{' placeholder-image' if imgUrl == editorial.PLACEHOLDER else ''}" onclick="toggleStoryDetails('{sId}')">
+            <img src="{escape(imgUrl)}" alt="{escape(caption)}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='article-placeholder.svg'; this.alt=''; this.parentElement.classList.add('placeholder-image');" />
             <div class="photo-caption-bar">
-              <span class="caption-text">{caption}</span>
-              <span class="credit-tag">{credit}</span>
+              <span class="caption-text">{escape(caption)}</span>
+              <span class="credit-tag">{escape(credit)}</span>
             </div>
           </div>
 
@@ -8190,35 +8174,33 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                   <span class="follow-star">⭐</span>
                   <span class="follow-label">Follow</span>
                 </button>
-                <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on {src_name}">
-                  <span>{src_name}</span> <span class="ext-icon">↗</span>
+                <a href="{escape(article_url)}" target="_blank" rel="noopener noreferrer" class="source-link-chip" title="Read original article on {escape(src_name)}">
+                  <span>{escape(src_name)}</span> <span class="ext-icon">↗</span>
                 </a>
-                <span class="source-tag" data-timestamp="{pub_ts}">{rel_time_str}</span>
+                <span class="source-tag" data-timestamp="{escape(str(pub_ts))}">{escape(rel_time_str)}</span>
               </div>
             </div>
 
             <h3 class="story-title" onclick="toggleStoryDetails('{sId}')" title="Click to view Key Facts">
-              {s.get('title', '')}
+              {escape(s.get('title', ''))}
             </h3>
 
-            <div class="fact-preview-strip" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
+            <button type="button" class="fact-preview-strip" aria-expanded="false" aria-controls="{sId}-facts-panel" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
               {callout_badge}
-              <p class="fact-preview-text">{lead_fact}</p><span class="fact-preview-chevron" aria-hidden="true">▾</span>
-            </div>
+              <span class="fact-preview-text">{escape(lead_fact)}</span><span class="fact-preview-chevron" aria-hidden="true">▾</span>
+            </button>
 
-            <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="{'display:none' if not ct_statement else ''}" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
-              <p class="take-statement-text">“{ct_statement}”</p>
+            <!-- Community voting -->
+            <div class="controversial-take-poll" {'hidden' if not ct_statement else ''} id="{sId}-controversial-poll" data-story-id="{sId}">
+              <p class="take-statement-text">{escape(ct_statement or "")}</p>
 
               <div class="take-vote-actions">
-                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" data-story-id="{sId}" data-choice="agree" onclick="voteControversialTake('{sId}', 'agree', this, event); event.stopPropagation();">
-                  <span class="vote-icon">👍</span>
-                  <span class="vote-label">{ct_agree_lbl}</span>
+                <button type="button" class="btn-take-vote btn-take-agree" id="{sId}-btn-agree" data-story-id="{sId}" data-choice="agree">
+                  <span class="vote-label">{escape(ct_agree_lbl)}</span>
                   <span class="vote-pct" id="{sId}-pct-agree" style="display: none;"></span>
                 </button>
-                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" data-story-id="{sId}" data-choice="disagree" onclick="voteControversialTake('{sId}', 'disagree', this, event); event.stopPropagation();">
-                  <span class="vote-icon">👎</span>
-                  <span class="vote-label">{ct_disagree_lbl}</span>
+                <button type="button" class="btn-take-vote btn-take-disagree" id="{sId}-btn-disagree" data-story-id="{sId}" data-choice="disagree">
+                  <span class="vote-label">{escape(ct_disagree_lbl)}</span>
                   <span class="vote-pct" id="{sId}-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -8230,7 +8212,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>
 
               <div class="take-footer-meta" id="{sId}-take-footer" style="display: flex;">
-                <span class="take-voted-msg" id="{sId}-voted-msg">No community votes yet.</span>
+                <span class="take-voted-msg" role="status" id="{sId}-voted-msg">Loading community results…</span>
                 <span class="take-total-votes" id="{sId}-total-votes"></span>
               </div>
             </div>
@@ -8240,66 +8222,17 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             <div class="card-details" id="{sId}-details">
               <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: block;">
               <div class="neutral-box">
-                <div class="neutral-box-header">
-                  <div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div>
-                  <button type="button" class="btn-expand-facts" id="{sId}-btn-facts-toggle" onclick="toggleFactExpansion('{sId}', event)">
-                    <span id="{sId}-fact-btn-text">🔍 Deep Dive & Evidence</span>
-                    <span id="{sId}-fact-btn-chevron" class="expand-facts-chevron">▾</span>
-                  </button>
-                </div>
+                <div class="neutral-box-header"><div class="neutral-title">More from the source</div></div>
                 {facts_markup}
-
-                <!-- Expandable Detailed Evidence Dossier -->
-                <div class="expanded-facts-dossier" id="{sId}-facts-dossier" style="display: none;">
-                  <div class="dossier-inner">
-                    <div class="dossier-section">
-                      <div class="dossier-heading">📌 In-Depth Context & Background</div>
-                      <p class="dossier-text">{exp_context}</p>
-                    </div>
-                    <div class="dossier-section">
-                      <div class="dossier-heading">📊 Documented Data & Source Evidence</div>
-                      <p class="dossier-text">{exp_evidence}</p>
-                    </div>
-                    <div class="dossier-section">
-                      <div class="dossier-heading">🔮 Strategic Impact & Next Milestones</div>
-                      <p class="dossier-text">{exp_impact}</p>
-                    </div>
-                    <div class="dossier-footer">
-                      <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="dossier-ext-link">
-                        <span>📖 Read full original coverage on {src_name}</span> <span>↗</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Story Evolution Tracker (Chronological Milestones) -->
-              <div class="story-evolution-box" id="{sId}-evolution-box">
-                <div class="evolution-header" onclick="toggleEvolutionTimeline('{sId}', event)">
-                  <div class="evolution-title-wrap">
-                    <span class="evolution-icon">📈</span>
-                    <span class="evolution-title">Story Evolution Tracker</span>
-                    <span class="evolution-count-tag">{len(timeline)} milestones</span>
-                  </div>
-                  <button type="button" class="btn-toggle-evolution" id="{sId}-btn-evolution" onclick="toggleEvolutionTimeline('{sId}', event)">
-                    <span id="{sId}-evolution-btn-text">View Timeline</span>
-                    <span id="{sId}-evolution-chevron" class="evolution-chevron">▾</span>
-                  </button>
-                </div>
-                <div class="evolution-timeline" id="{sId}-evolution-timeline" style="display: none;">
-                  <div class="timeline-track">
-                    {timeline_html}
-                  </div>
-                </div>
               </div>
               </div><!-- end facts-drawer-panel -->
 
-              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: block;">
+              <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">
                 {joined_lens_html}
               </div>
 
               <div class="card-bottom-actions">
-                <a href="{article_url}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {src_name}">
+                <a href="{escape(article_url)}" target="_blank" rel="noopener noreferrer" class="btn-read-article" title="Read full original article on {escape(src_name)}">
                   <span>📖</span>
                   <span>Read Article</span>
                   <span class="arrow-up-right">↗</span>
@@ -8330,85 +8263,55 @@ def prerender_daily_lens_html(stories: List[Dict[str, Any]]) -> str:
         cat_slug = get_category_slug(cat)
         title = s.get("title", "")
         source = s.get("source_name") or (s.get("source", "").split(" • ")[0] if " • " in s.get("source", "") else s.get("source", "Wire"))
-        rel_time = "Updated this morning"
-        what_changed = s.get("what_changed_since_yesterday", "Overnight developments verified across primary wire dispatches.")
-
-        persp = s.get("perspectives", {})
-        l_take = (persp.get("LEFT", {}).get("talking_points", [""]) or [""])[0]
-        c_take = (persp.get("CENTER", {}).get("talking_points", [""]) or [""])[0]
-        r_take = (persp.get("RIGHT", {}).get("talking_points", [""]) or [""])[0]
+        rel_time = (s.get("source") or "").split(" • ")[-1]
+        what_changed = s.get("lead_fact") or editorial.NO_FACT
 
         card = f"""
         <article class="daily-lens-story-card" id="daily-card-{s_id}">
           <div class="daily-card-top">
             <div class="daily-card-badge-row">
-              <span class="category-tag cat-{cat_slug}">{cat}</span>
-              <span class="daily-card-source">{source} • {rel_time}</span>
+              <span class="category-tag cat-{cat_slug}">{escape(cat)}</span>
+              <span class="daily-card-source">{escape(source)} • {rel_time}</span>
             </div>
-            <h2 class="daily-card-title" onclick="jumpToStoryCard('{s_id}')">{title}</h2>
+            <h2 class="daily-card-title" onclick="jumpToStoryCard('{s_id}')">{escape(title)}</h2>
           </div>
 
-          <!-- What Changed Since Yesterday Callout Box -->
+          <!-- What the source reports Callout Box -->
           <div class="what-changed-box">
             <div class="what-changed-header">
               <span class="what-changed-icon">⚡</span>
-              <span class="what-changed-label">What Changed Since Yesterday</span>
+              <span class="what-changed-label">What the source reports</span>
             </div>
-            <p class="what-changed-text">{what_changed}</p>
-          </div>
-
-          <!-- 3 Perspectives Side-by-Side Tri-Lens Grid -->
-          <div class="daily-tri-lens-grid">
-            <div class="daily-lens-col left">
-              <div class="daily-lens-col-header">
-                <span class="col-dot blue">●</span>
-                <span class="col-name">Left Lens</span>
-              </div>
-              <p class="daily-lens-col-text">"{l_take}"</p>
-            </div>
-            <div class="daily-lens-col center">
-              <div class="daily-lens-col-header">
-                <span class="col-dot green">●</span>
-                <span class="col-name">Balanced Lens</span>
-              </div>
-              <p class="daily-lens-col-text">"{c_take}"</p>
-            </div>
-            <div class="daily-lens-col right">
-              <div class="daily-lens-col-header">
-                <span class="col-dot red">●</span>
-                <span class="col-name">Right Lens</span>
-              </div>
-              <p class="daily-lens-col-text">"{r_take}"</p>
-            </div>
+            <p class="what-changed-text">{escape(what_changed)}</p>
           </div>
 
           <div class="daily-card-actions">
             <button type="button" class="btn-follow-story" id="daily-follow-{s_id}" onclick="toggleFollowStory('{s_id}', this)">
               <span class="star-icon">⭐</span>
-              <span class="follow-text">Follow Story Evolution</span>
+              <span class="follow-text">Follow story</span>
             </button>
             <button type="button" class="btn-jump-story" onclick="jumpToStoryCard('{s_id}')">
-              <span>🔍 Full Story &amp; Dossier</span>
+              <span>🔍 Full story</span>
               <span>&rarr;</span>
             </button>
           </div>
         </article>"""
         cards_html.append(card)
 
-    date_str = datetime.now().strftime("%A, %B %d, %Y")
+    date_str = datetime.fromtimestamp(max((s.get("pub_timestamp") or 0) for s in stories), timezone.utc).strftime("%A, %B %d, %Y")
     return f"""
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <div id="dailyLensView" class="daily-lens-container" style="display: none;">
       <div class="daily-lens-header">
         <div class="daily-lens-badge">
-          <span>🌅</span> <span>Morning Edition • Curated Daily at 7:00 AM</span>
+          <span>🌅</span> <span>Daily briefing</span>
         </div>
         <h1 class="daily-lens-title">Your Daily Lens</h1>
-        <p class="daily-lens-subtitle">The 6 biggest stories shaping today — analyzed through Left, Balanced, and Right perspectives, highlighting exactly what changed since yesterday.</p>
+        <p class="daily-lens-subtitle">Six stories from the latest edition.</p>
         <div class="daily-lens-meta-bar">
           <span class="daily-lens-date" id="dailyLensDateDisplay">{date_str}</span>
           <span class="daily-lens-reading-time">⚡ 4-Minute Morning Read</span>
-          <span class="daily-lens-status">🎯 Fully Grounded in Primary Wires</span>
+          <span class="daily-lens-status">🎯 Publisher links included</span>
         </div>
       </div>
 
@@ -8418,198 +8321,37 @@ def prerender_daily_lens_html(stories: List[Dict[str, Any]]) -> str:
     </div>"""
 
 
+def render_index_html(stories: List[Dict[str, Any]]) -> str:
+    with open(HTML_FILE, encoding="utf-8") as handle:
+        content = handle.read()
+    replacements = {
+        "DAILY LENS": prerender_daily_lens_html(stories),
+        "STORY FEED": prerender_cards_html(stories),
+    }
+    for label, markup in replacements.items():
+        start = f"<!-- BEGIN {label} -->"
+        end = f"<!-- END GENERATED {label} -->"
+        if content.count(start) != 1 or content.count(end) != 1:
+            raise ValueError(f"Expected one generated section for {label}")
+        before, after_start = content.split(start, 1)
+        _, after = after_start.split(end, 1)
+        content = before + start + "\n" + markup + "\n" + end + after
+    content = re.sub(r'id="storiesFeedView" class="feed-container" data-edition="[^"]*"',
+                     f'id="storiesFeedView" class="feed-container" data-edition="{stories[0].get("edition", "")}"',
+                     content)
+    for asset in ("styles.css", "app.js", "polling.js"):
+        version = hashlib.sha256((Path(__file__).resolve().parent / asset).read_bytes()).hexdigest()[:12]
+        content = re.sub(rf'="{re.escape(asset)}(?:\?v=[0-9a-f]+)?"', f'="{asset}?v={version}"', content)
+    content = re.sub(r'id="liveStoryCountBadge">[^<]*<',
+                     f'id="liveStoryCountBadge">{len(stories)} Stories<', content)
+    return "\n".join(line.rstrip() for line in content.splitlines()) + "\n"
+
+
 def update_index_html_prerender(stories: List[Dict[str, Any]]):
-    import re
-    if not os.path.exists(HTML_FILE) or not stories:
-        return
-    try:
-        with open(HTML_FILE, "r", encoding="utf-8") as f:
-            content = f.read()
+    content = render_index_html(stories)
+    with open(HTML_FILE, "w", encoding="utf-8") as handle:
+        handle.write(content)
 
-                # Clean out any old blindStanceSection or fast inline script from homepage
-        if '<section class="blind-stance-section"' in content:
-            s_blind = content.find('<section class="blind-stance-section"')
-            e_blind = content.find('</section>', s_blind) + len('</section>')
-            content = content[:s_blind] + content[e_blind:]
-
-        if '<!-- Blind Stance Challenge Direct Inline Controller' in content:
-            s_fast = content.find('<!-- Blind Stance Challenge Direct Inline Controller')
-            e_fast = content.find('</script>', s_fast) + len('</script>')
-            content = content[:s_fast] + content[e_fast:]
-
-        # Clean out any old top-news-section or vertical dividers
-        if '<section class="top-news-section"' in content:
-            s_sec = content.find('<section class="top-news-section"')
-            e_sec = content.find('</section>', s_sec) + len('</section>')
-            content = content[:s_sec] + content[e_sec:]
-
-        if '<div class="vertical-feed-divider"' in content:
-            s_div = content.find('<div class="vertical-feed-divider"')
-            e_div = content.find('</div>\n    </div>', s_div)
-            if e_div != -1:
-                e_div += len('</div>\n    </div>')
-            else:
-                e_div = content.find('</div>', s_div) + len('</div>')
-            content = content[:s_div] + content[e_div:]
-
-        # Update or insert dailyLensView before storiesFeedView
-        daily_lens_html = prerender_daily_lens_html(stories)
-        if '<div id="dailyLensView"' in content:
-            dl_start = content.find('<div id="dailyLensView"')
-            dl_end = content.find('<!-- END DAILY LENS -->', dl_start)
-            if dl_end != -1:
-                dl_end += len('<!-- END DAILY LENS -->')
-            else:
-                dl_end = content.find('</div>\n    </div>', dl_start)
-                if dl_end != -1:
-                    dl_end += len('</div>\n    </div>')
-                else:
-                    dl_end = content.find('</div>', dl_start) + len('</div>')
-            content = content[:dl_start] + daily_lens_html.strip() + "\n\n    " + content[dl_end:]
-        else:
-            feed_pos = content.find('<div id="storiesFeedView"')
-            if feed_pos != -1:
-                content = content[:feed_pos] + daily_lens_html.strip() + "\n\n    " + content[feed_pos:]
-
-        # Update storiesFeedView with all stories
-        feed_start = content.find('<div id="storiesFeedView" class="feed-container">')
-        if feed_start != -1:
-            feed_start += len('<div id="storiesFeedView" class="feed-container">')
-            comm_view = content.find('<!-- Community Lounge -->')
-            feed_end = content.rfind('</div>', feed_start, comm_view if comm_view != -1 else len(content))
-            if feed_end != -1:
-                all_cards = "\n" + prerender_cards_html(stories) + "\n    "
-                content = content[:feed_start] + all_cards + content[feed_end:]
-
-        # Update live count badge
-        content = re.sub(r'id="liveStoryCountBadge">[^<]*<', f'id="liveStoryCountBadge">{len(stories)} Live Stories<', content)
-
-
-        # Synchronize <head> image fallback script (all polling logic lives in app.js / main script with zero duplication)
-        head_script = """<script>
-  window.onImgError = window.onImgError || function(img, cat) {
-    if (!img) return;
-    var step = parseInt(img.getAttribute("data-fallback-step") || "0", 10);
-    var isSport = cat && String(cat).toLowerCase().indexOf("sport") !== -1;
-    var p1 = isSport ? "https://images.unsplash.com/photo-1566577739112-5180d4bf9390?auto=format&fit=crop&w=1200&q=80" : "https://upload.wikimedia.org/wikipedia/commons/4/4f/US_Capitol_west_side.JPG";
-    var p2 = isSport ? "https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=1200&q=80" : "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80";
-    if (step === 0 && img.src !== p1) { img.setAttribute("data-fallback-step", "1"); img.src = p1; }
-    else if (step <= 1 && img.src !== p2) { img.setAttribute("data-fallback-step", "2"); img.src = p2; }
-    else {
-      img.onerror = null;
-      img.src = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#0f172a"/><text x="600" y="345" font-family="Inter,sans-serif" font-size="28" font-weight="700" fill="#10b981" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text></svg>');
-    }
-  };
-
-  window.switchStoryPerspective = window.switchStoryPerspective || function(storyId, p) {
-    if (!storyId || !p) return;
-    var views = ["RIGHT", "CENTER", "LEFT"];
-    for (var i = 0; i < views.length; i++) {
-      var el = document.getElementById(storyId + "-view-" + views[i]);
-      if (el) el.style.display = (views[i] === p) ? "block" : "none";
-    }
-    var card = document.getElementById(storyId);
-    if (card && card.querySelectorAll) {
-      var btns = card.querySelectorAll(".card-toggle-btn");
-      for (var b = 0; b < btns.length; b++) {
-        var btn = btns[b];
-        var txt = (btn.textContent || "").trim().toUpperCase();
-        btn.classList.remove("active", "left", "center", "right");
-        if (p === "LEFT" && txt.indexOf("LEFT") !== -1) btn.classList.add("active", "left");
-        else if (p === "CENTER" && (txt.indexOf("BAL") !== -1 || txt.indexOf("CENTER") !== -1)) btn.classList.add("active", "center");
-        else if (p === "RIGHT" && txt.indexOf("RIGHT") !== -1) btn.classList.add("active", "right");
-      }
-    }
-  };
-
-  window.toggleKeyFactsDrawer = window.toggleKeyFactsDrawer || function(storyId, evt, btnEl) {
-    var e = evt || window.event;
-    if (e) {
-      if (e.__handledDrawerToggle) return;
-      e.__handledDrawerToggle = true;
-      if (e.stopPropagation) e.stopPropagation();
-    }
-    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || (storyId ? document.getElementById(storyId) : null);
-    if (!card) return;
-    var sId = storyId || card.id;
-    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
-    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
-    var factsBtn = document.getElementById(sId + "-btn-facts-drawer") || card.querySelector(".btn-drawer-facts");
-    var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
-    var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
-    if (!factsPanel) return;
-    var isOpen = card.classList.contains("expanded") && factsPanel.style.display !== "none";
-    if (!isOpen) {
-      card.classList.add("expanded", "facts-open");
-      if (details) details.style.display = "block";
-      factsPanel.style.display = "block";
-      if (factsBtn) factsBtn.classList.add("active");
-      if (label) label.textContent = "Hide Key Facts";
-      if (chevron) chevron.textContent = "▴";
-    } else {
-      card.classList.remove("expanded", "facts-open");
-      if (details) details.style.display = "none";
-      if (factsBtn) factsBtn.classList.remove("active");
-      if (label) label.textContent = "Key Facts";
-      if (chevron) chevron.textContent = "▾";
-    }
-  };
-
-  window.toggleStoryDetails = window.toggleStoryDetails || function(storyId, evt) {
-    window.toggleKeyFactsDrawer(storyId, evt, null);
-  };
-
-  window.getOrCreatePollVisitorId = window.getOrCreatePollVisitorId || function() {
-    var key = "ynlCommunityPollVisitorId";
-    var vid = "";
-    try { vid = localStorage.getItem(key) || ""; } catch (e) {}
-    if (!vid || vid.length < 8) {
-      vid = "ynl_" + Date.now().toString(36) + "_" + Math.random().toString(36).substring(2, 12);
-      try { localStorage.setItem(key, vid); } catch (e) {}
-    }
-    return vid;
-  };
-
-  // While the large inline controller is loading, queue a tap without showing fake results.
-  // The real Supabase-backed controller replaces this function when the page finishes loading.
-  window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
-    if (evt && evt.stopPropagation) evt.stopPropagation();
-    window.__ynlPendingVote = { storyId: storyId, choice: choice };
-    var poll = btnEl && btnEl.closest ? btnEl.closest('.controversial-take-poll') : null;
-    var msg = poll ? poll.querySelector('.take-voted-msg') : null;
-    if (msg) msg.textContent = 'Loading voting…';
-  };
-  </script>"""
-        s_head_sc = content.find("<script>")
-        e_head_sc = content.find("</script>", s_head_sc)
-        if s_head_sc != -1 and e_head_sc != -1 and e_head_sc < content.find("</head>"):
-            content = content[:s_head_sc] + head_script + content[e_head_sc + len("</script>"):]
-
-        # Synchronize inline styles with styles.css
-        styles_path = os.path.join(BASE_DIR, "styles.css")
-        if os.path.exists(styles_path):
-            with open(styles_path, "r", encoding="utf-8") as sf:
-                css_code = sf.read()
-            s_style = content.find("<style>")
-            e_style = content.find("</style>")
-            if s_style != -1 and e_style != -1 and e_style > s_style:
-                content = content[:s_style + len("<style>")] + "\n" + css_code + "\n" + content[e_style:]
-
-        # Synchronize inline script with app.js
-        app_js_path = os.path.join(BASE_DIR, "app.js")
-        if os.path.exists(app_js_path):
-            with open(app_js_path, "r", encoding="utf-8") as jf:
-                app_js_code = jf.read()
-            s_tag = content.rfind("<script>")
-            e_tag = content.rfind("</script>")
-            if s_tag != -1 and e_tag != -1 and e_tag > s_tag:
-                content = content[:s_tag + len("<script>")] + "\n" + app_js_code + "\n" + content[e_tag:]
-
-        with open(HTML_FILE, "w", encoding="utf-8", errors="replace") as f:
-            f.write(content)
-        print("Successfully pre-rendered clean editorial feed and synced styles/scripts into index.html.")
-    except Exception as e:
-        print(f"Notice: Pre-rendering index.html: {e}")
 
 def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 150, min_per_cat: int = 6, category_order: Optional[List[str]] = None) -> List[Dict[str, Any]]:
     """Ensures balanced category distribution across the main feed via category interleaving.
@@ -8661,218 +8403,9 @@ def balance_feed_by_category(stories: List[Dict[str, Any]], max_total: int = 150
 
 
 def run_pipeline():
-    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting Your News Lens Wire Scraper...")
-    
-    existing_stories = []
-    if os.path.exists(DATA_FILE):
-        try:
-            with open(DATA_FILE, "r", encoding="utf-8") as f:
-                raw_existing = json.load(f)
-                existing_stories = [s for s in raw_existing if not is_disallowed_source(s)]
-        except Exception as e:
-            print(f"Notice: Loading existing data: {e}")
+    from publish_wire import run
+    run(sys.modules[__name__])
 
-    # Track used URLs to guarantee ZERO DUPLICATES across the entire feed!
-    used_urls: Set[str] = set()
-    scrape_budget = 10  # Cap live page scrapes during existing-story self-healing so CI runs fast
-
-    # Self-Healing: Check every existing story for theme mismatches, generic boilerplates, or headline repeats
-    for s in existing_stories:
-        try:
-            title = str(s.get("title") or "")
-            raw_cat = s.get("category", "General News")
-            cat = str(raw_cat[0]) if isinstance(raw_cat, (list, tuple)) and raw_cat else str(raw_cat or "General News")
-            s["category"] = cat
-
-            raw_master = s.get("master_category", "National Headlines")
-            master_cat = str(raw_master[0]) if isinstance(raw_master, (list, tuple)) and raw_master else str(raw_master or "National Headlines")
-            s["master_category"] = master_cat
-
-            pub_ts = s.get("pub_timestamp")
-            if pub_ts is not None:
-                try:
-                    ts_int = int(float(pub_ts))
-                    _, rel_time = parse_pubdate_to_relative(datetime.fromtimestamp(ts_int, timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT"))
-                    src_name = s.get("source_name") or s.get("source", "").split(" • ")[0]
-                    s["source"] = f"{src_name} • {rel_time}"
-                except Exception:
-                    pass
-
-            src_label = s.get("source_name") or (str(s.get("source") or "").split(" • ")[0]) or "Associated Press Wire"
-
-            # If mismatched, headline-echoing, or containing '??' credits or old generic sports boilerplate, re-classify and re-synthesize!
-            if is_story_mismatched(s):
-                print(f"[Self-Healing] Re-classifying and re-synthesizing story: {title[:55]}...")
-                cat_assigned, master_cat_assigned = classify_article(title, s.get("description", ""), src_label)
-                s["category"] = cat_assigned
-                s["master_category"] = master_cat_assigned
-                cat = cat_assigned
-                master_cat = master_cat_assigned
-                ctx = s.get("description") or s.get("neutral_summary") or ""
-                orig_scraped = {"url": s["image_url"], "caption": s.get("caption"), "credit": clean_photo_credit(s.get("credit"), src_label), "is_original_article_image": True} if (s.get("is_original_article_image") and is_usable_image_url(s.get("image_url"))) else None
-                if not orig_scraped and scrape_budget > 0:
-                    art_link = s.get("article_url") or s.get("link") or ""
-                    if art_link.startswith("http"):
-                        scrape_budget -= 1
-                        meta_res = scrape_article_lead_image_and_meta(art_link, title, src_label)
-                        if isinstance(meta_res, dict):
-                            if meta_res.get("image") and is_usable_image_url(meta_res["image"].get("url")):
-                                orig_scraped = meta_res["image"]
-                            if meta_res.get("description") and len(meta_res["description"]) > len(ctx):
-                                ctx = meta_res["description"]
-                                s["description"] = ctx
-                re_synth = call_ai_synthesizer(title, ctx, cat)
-                s["core_facts"] = re_synth.get("core_facts", extract_facts_from_context_and_title(title, ctx, cat))
-                s["neutral_summary"] = re_synth["neutral_summary"]
-                s["perspectives"] = re_synth["perspectives"]
-                if "expanded_facts" in re_synth:
-                    s["expanded_facts"] = re_synth["expanded_facts"]
-                img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=orig_scraped)
-                s["image_url"] = img_info["url"]
-                s["caption"] = img_info["caption"]
-                s["credit"] = clean_photo_credit(img_info["credit"], src_label)
-                s["is_original_article_image"] = bool(img_info.get("is_original_article_image"))
-                s["resolution_method"] = img_info.get("resolution_method", "")
-
-            # Self-Healing Image Check: If the story has an unrelated, broken, or mismatched image, re-resolve it!
-            if is_story_image_mismatched(s):
-                print(f"[Self-Healing Image] Re-resolving mismatched image for: {title[:55]}...")
-                scraped_cand = None
-                if scrape_budget > 0:
-                    art_link = s.get("article_url") or s.get("link") or ""
-                    if art_link.startswith("http"):
-                        scrape_budget -= 1
-                        meta_res = scrape_article_lead_image_and_meta(art_link, title, src_label)
-                        if isinstance(meta_res, dict) and meta_res.get("image") and is_usable_image_url(meta_res["image"].get("url")):
-                            scraped_cand = meta_res["image"]
-                img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=scraped_cand)
-                s["image_url"] = img_info["url"]
-                s["caption"] = img_info["caption"]
-                s["credit"] = clean_photo_credit(img_info["credit"], src_label)
-                used_urls.add(img_info["url"])
-            else:
-                existing_url = s.get("image_url")
-                if is_usable_image_url(existing_url):
-                    used_urls.add(existing_url)
-                else:
-                    img_info = resolve_story_image(title, cat, master_cat, used_urls, scraped_image=None)
-                    s["image_url"] = img_info["url"]
-                    s["caption"] = img_info["caption"]
-                    used_urls.add(img_info["url"])
-                s["credit"] = clean_photo_credit(s.get("credit"), src_label)
-        except Exception as heal_err:
-            print(f"Notice: Self-healing skipped item error: {heal_err}")
-
-    existing_titles = {str(s.get("title") or "").strip().lower() for s in existing_stories}
-    new_stories = []
-
-    max_items = getattr(config, 'INGESTION_SETTINGS', {}).get('max_items_per_feed', 12)
-    max_workers = getattr(config, 'INGESTION_SETTINGS', {}).get('max_workers', 12)
-    print(f"Fetching from {len(RSS_FEEDS)} feeds concurrently (max {max_items} items/feed)...")
-    incoming_items = fetch_all_feeds_concurrently(RSS_FEEDS, max_items_per_feed=max_items, max_workers=max_workers)
-    print(f"Retrieved {len(incoming_items)} total wire items across all sources.")
-
-    for it in incoming_items:
-        try:
-            if is_disallowed_source(it):
-                continue
-            t = it["title"]
-            if t.lower() in existing_titles:
-                continue
-
-            print(f"Processing wire item: {t[:65]}...")
-            cat_assigned, master_cat_assigned = classify_article(t, it["description"], feed_hint=it.get("source_name") or it.get("category", ""))
-            synthesis = call_ai_synthesizer(t, it["description"], cat_assigned)
-            scraped_pic = it.get("scraped_image")
-            img_info = resolve_story_image(t, cat_assigned, master_cat_assigned, used_urls, scraped_image=scraped_pic)
-            story_id = f"story-{int(time.time())}-{len(new_stories)}"
-            article_link = it.get("link") or f"https://news.google.com/search?q={urllib.parse.quote(t)}"
-            metro_assigned = it.get("metro", "")
-            if not metro_assigned and cat_assigned == "Local News":
-                metro_assigned = "Tampa Bay, FL"
-
-            subcat_assigned = it.get("sub_category", "")
-            if not subcat_assigned and cat_assigned == "Local News":
-                comb_text = (t + " " + (it.get("description") or "")).lower()
-                if any(w in comb_text for w in ["event", "festival", "market", "concert", "art", "music", "fair", "things to do", "exhibit", "celebration", "food truck", "craft", "parade"]):
-                    subcat_assigned = "events"
-                elif any(w in comb_text for w in ["transit", "road", "corridor", "airport", "construction", "zoning", "council", "commission", "preservation", "ballpark", "stadium", "development", "housing", "insurance"]):
-                    subcat_assigned = "growth"
-                elif any(w in comb_text for w in ["beach", "coast", "water", "estuary", "red tide", "marine", "storm", "hurricane", "ecology", "sensor", "shoreline"]):
-                    subcat_assigned = "coast"
-                else:
-                    subcat_assigned = ""
-
-            story_record = {
-                "id": story_id,
-                "category": cat_assigned,
-                "master_category": master_cat_assigned,
-                "metro": metro_assigned,
-                "sub_category": subcat_assigned,
-                "lean": synthesis.get("lean", "center"),
-                "title": t,
-                "source_name": it["source_name"],
-                "pub_timestamp": max(int(float(it.get("pub_timestamp") or 0)), int(time.time()) - 120),
-                "source": it["source"],
-                "article_url": article_link,
-                "link": article_link,
-                "image_url": img_info["url"],
-                "caption": img_info["caption"],
-                "credit": clean_photo_credit(img_info["credit"], it["source_name"]),
-                "is_original_article_image": bool(img_info.get("is_original_article_image")),
-                "resolution_method": img_info.get("resolution_method", ""),
-                "core_facts": synthesis.get("core_facts", extract_facts_from_context_and_title(t, it["description"], cat_assigned)),
-                "neutral_summary": synthesis["neutral_summary"],
-                "perspectives": synthesis["perspectives"],
-                "controversial_take": generate_merit_controversial_poll(t, it["description"], cat_assigned, extract_focus_entity(t))
-            }
-            new_stories.append(story_record)
-            existing_titles.add(t.lower())
-        except Exception as item_err:
-            print(f"Notice: Skipping malformed incoming item: {item_err}")
-
-    updated_feed = new_stories + existing_stories
-
-    # Guarantee 100% unique talking points across the entire feed (every category)
-    seen_talk_signatures = set()
-    for s in updated_feed:
-        try:
-            p = s.get("perspectives", {})
-            center_pts = p.get("CENTER", {}).get("talking_points", [])
-            sig = " ".join(center_pts) if center_pts else ""
-            if sig and sig in seen_talk_signatures:
-                t = str(s.get("title") or "")
-                cat = s.get("category", "General News")
-                re_synth = generate_contextual_synthesis(t + " duplicate_salt", s.get("description", "") or s.get("neutral_summary", ""), cat)
-                s["perspectives"] = re_synth["perspectives"]
-                p = s.get("perspectives", {})
-                center_pts = p.get("CENTER", {}).get("talking_points", [])
-                sig = " ".join(center_pts) if center_pts else ""
-            if sig:
-                seen_talk_signatures.add(sig)
-        except Exception:
-            pass
-
-    retention_cap = getattr(config, 'INGESTION_SETTINGS', {}).get('feed_retention_limit', 120)
-    min_quota = getattr(config, 'INGESTION_SETTINGS', {}).get('min_stories_per_category', 8)
-    updated_feed = balance_feed_by_category(updated_feed, max_total=retention_cap, min_per_cat=min_quota)
-
-    updated_feed = enforce_feed_image_uniqueness(updated_feed)
-    final_seen_urls: Set[str] = set()
-    for s_rec in updated_feed:
-        validate_and_score_story_record(s_rec, seen_image_urls=final_seen_urls)
-    os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
-    with open(DATA_FILE, "w", encoding="utf-8") as f:
-        json.dump(updated_feed, f, indent=2)
-
-    update_index_html_prerender(updated_feed)
-    print(f"Pipeline complete. Total stories: {len(updated_feed)} (Added: {len(new_stories)})")
 
 if __name__ == "__main__":
-    try:
-        run_pipeline()
-    except Exception as e:
-        print(f"[ENGINE WARNING] Handled exception in run_pipeline: {e}")
-        import traceback
-        traceback.print_exc()
-        sys.exit(0)
+    run_pipeline()

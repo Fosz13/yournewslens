@@ -2,54 +2,85 @@ name: Ingest Wire Feeds & Update Stories
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
-  workflow_dispatch: # Allows manual trigger testing
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+  pull_request:
+
+concurrency:
+  group: ${{ github.event_name == 'pull_request' && format('your-news-lens-pr-{0}', github.event.number) || 'your-news-lens-publish' }}
+  cancel-in-progress: false
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 jobs:
-  build-and-scrape:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install Dependencies
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run publishing and voting regressions
         run: |
-          pip install google-genai
+          python -m unittest discover -s tests
+          node --test tests/polling.test.cjs
+          node --check app.js
 
-      - name: Run Feed Engine
+  publish:
+    if: github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: write
+    outputs:
+      deploy: ${{ steps.edition.outputs.deploy }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch and render stories
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YNL_EDITORIAL_MODEL: ${{ vars.YNL_EDITORIAL_MODEL }}
         run: python engine.py
-
-      - name: Commit and Push Changes
+      - name: Build the public Pages artifact
+        run: python build_site.py
+      - name: Commit the edition
+        id: edition
         run: |
-          git config --global user.name 'LensWire Bot'
-          git config --global user.email 'bot@lenswire.com'
-          git add data/stories.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(feed): update wire synthesis [skip ci]" && git push)
-
-      - name: Deploy to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+          git config user.name "Your News Lens Bot"
+          git config user.email "bot@yournewslens.com"
+          git add data/stories.json index.html
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(wire): publish updated edition"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          elif [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! python build_site.py --check-live; then
+            echo "deploy=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.edition.outputs.deploy == 'true'
         with:
-          path: '.'
+          path: dist
 
   deploy-pages:
-    needs: build-and-scrape
+    if: needs.publish.outputs.deploy == 'true'
+    needs: publish
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - uses: actions/deploy-pages@v4
         id: deployment
-        uses: actions/deploy-pages@v4

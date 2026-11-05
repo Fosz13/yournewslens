@@ -1,123 +1,206 @@
-/* Your News Lens: independent, capture-phase Supabase poll controller.
-   Loads before the large news controller and works for dynamically added cards. */
+/* One controller for initial cards and cards loaded from the published feed. */
 (function () {
   'use strict';
-  if (window.__YNL_POLLING_V3__) return;
-  window.__YNL_POLLING_V3__ = true;
-  var URL = 'https://vswxehmxdbtdatnlovsl.supabase.co/rest/v1';
-  var KEY = 'sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD';
-  var busy = Object.create(null);
-  var voted = Object.create(null);
-  var stats = Object.create(null);
-  var visitorKey = 'ynlCommunityPollVisitorId';
-  var id = '';
-  try { id = localStorage.getItem(visitorKey) || ''; } catch (_) {}
-  if (!id || id.length < 8) {
-    id = 'ynl_' + (window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + '_' + Math.random().toString(36).slice(2));
-    try { localStorage.setItem(visitorKey, id); } catch (_) {}
+  const api = 'https://vswxehmxdbtdatnlovsl.supabase.co/rest/v1';
+  const apikey = 'sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD';
+  const visitorKey = 'ynlCommunityPollVisitorId';
+  const savedKey = 'ynlConfirmedPollChoices';
+  const pending = new Set();
+  const reads = new Map();
+  const snapshots = new Map();
+  let saved = {};
+  let visitor;
+  try {
+    visitor = localStorage.getItem(visitorKey);
+    const previous = JSON.parse(localStorage.getItem(savedKey) || '{}');
+    if (previous && typeof previous === 'object') saved = previous;
+  } catch (_) {}
+  if (!visitor) {
+    visitor = 'ynl_' + (window.crypto && crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(36) + Math.random().toString(36).slice(2));
+    try { localStorage.setItem(visitorKey, visitor); } catch (_) {}
   }
-  function request(path, payload, prefer) {
-    var headers = { apikey: KEY, 'Content-Type': 'application/json' };
+
+  async function request(path, body, prefer) {
+    const headers = { apikey, 'Content-Type': 'application/json' };
     if (prefer) headers.Prefer = prefer;
-    return fetch(URL + path, { method: 'POST', headers: headers, body: JSON.stringify(payload) }).then(function (r) {
-      if (r.ok) return r.status === 204 ? null : r.text().then(function (t) { return t ? JSON.parse(t) : null; });
-      return r.text().then(function (t) { var err = new Error('Supabase HTTP ' + r.status + ': ' + t); err.status = r.status; throw err; });
-    });
-  }
-  function counts(rows) {
-    var a = 0, d = 0;
-    if (!Array.isArray(rows)) throw new Error('Unexpected Supabase poll result format');
-    rows.forEach(function (r) {
-      var choice = String(r.choice_id || r.choice || '').toLowerCase();
-      var count = Number(r.vote_count != null ? r.vote_count : (r.count != null ? r.count : r.total_votes));
-      if (!Number.isFinite(count) || count < 0) return;
-      if (choice === 'agree') a += count;
-      if (choice === 'disagree') d += count;
-    });
-    return { agree: a, disagree: d, total: a + d };
-  }
-  function getResults(storyId) {
-    return request('/rpc/get_poll_results', { p_story_id: storyId }).then(function (rows) {
-      var result = counts(rows);
-      stats[storyId] = result;
-      return result;
-    });
-  }
-  function show(poll, message, result, choice) {
-    var footer = poll.querySelector('.take-footer-meta');
-    var msg = poll.querySelector('.take-voted-msg');
-    var total = poll.querySelector('.take-total-votes');
-    var agree = poll.querySelector('.btn-take-agree .vote-pct');
-    var disagree = poll.querySelector('.btn-take-disagree .vote-pct');
-    var track = poll.querySelector('.take-consensus-track');
-    var fillA = poll.querySelector('.take-fill-agree');
-    var fillD = poll.querySelector('.take-fill-disagree');
-    if (footer) footer.style.display = 'flex';
-    if (msg) msg.textContent = message;
-    if (!result) {
-      if (total) total.textContent = '';
-      if (agree) agree.style.display = 'none';
-      if (disagree) disagree.style.display = 'none';
-      if (track) track.style.display = 'none';
-      return;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    try {
+      const response = await fetch(api + path, { method: 'POST', headers, body: JSON.stringify(body), signal: controller.signal });
+      if (!response.ok) {
+        const error = new Error('Poll request returned HTTP ' + response.status);
+        error.status = response.status;
+        const details = await response.json().catch(() => ({}));
+        error.code = details && details.code;
+        throw error;
+      }
+      return path.startsWith('/rpc/') ? await response.json() : null;
+    } finally {
+      clearTimeout(timeout);
     }
-    var ap = result.total ? Math.round(result.agree * 100 / result.total) : 0;
-    var dp = result.total ? 100 - ap : 0;
-    if (total) total.textContent = 'Total votes: ' + result.total.toLocaleString();
-    if (agree) { agree.textContent = ap + '%'; agree.style.display = result.total ? 'inline-block' : 'none'; }
-    if (disagree) { disagree.textContent = dp + '%'; disagree.style.display = result.total ? 'inline-block' : 'none'; }
-    if (track) track.style.display = result.total ? 'flex' : 'none';
-    if (fillA) fillA.style.width = ap + '%';
-    if (fillD) fillD.style.width = dp + '%';
-    if (choice) {
-      poll.classList.add('has-voted');
-      var btn = poll.querySelector(choice === 'agree' ? '.btn-take-agree' : '.btn-take-disagree');
-      if (btn) btn.classList.add(choice === 'agree' ? 'selected-agree' : 'selected-disagree');
-      if (msg) msg.textContent = result.total ? ('📊 ' + (choice === 'agree' ? ap : dp) + '% voted with you • Agree: ' + ap + '% / Disagree: ' + dp + '%') : 'Your vote was saved. No results returned yet.';
-    } else if (msg) msg.textContent = result.total ? ('Agree: ' + ap + '% • Disagree: ' + dp + '%') : 'No community votes yet.';
   }
-  function setBusy(poll, isBusy) {
-    poll.querySelectorAll('.btn-take-vote').forEach(function (b) { b.disabled = isBusy; });
+
+  function pollKey(poll) {
+    const question = poll.querySelector('.take-statement-text').textContent.trim();
+    const labels = Array.from(poll.querySelectorAll('.vote-label'), label => label.textContent.trim());
+    const raw = [question, ...labels].join('|');
+    let hash = 2166136261;
+    for (let i = 0; i < raw.length; i++) hash = Math.imul(hash ^ raw.charCodeAt(i), 16777619);
+    return poll.dataset.storyId + '_q' + (hash >>> 0).toString(36);
   }
-  function revealLens(poll, storyId, choice) {
-    var panel = document.getElementById(storyId + '-lens-panel');
-    if (!panel) return;
-    if (panel.parentNode !== poll) poll.appendChild(panel);
-    panel.style.display = 'block';
-    var lens = poll.getAttribute(choice === 'agree' ? 'data-agree-lens' : 'data-disagree-lens') || (choice === 'agree' ? 'RIGHT' : 'LEFT');
-    if (typeof window.switchStoryPerspective === 'function') window.switchStoryPerspective(storyId, lens.toUpperCase());
+
+  function parseResults(rows) {
+    if (!Array.isArray(rows)) throw new Error('Invalid poll results');
+    const result = { agree: 0, disagree: 0 };
+    for (const row of rows) {
+      if (!row || typeof row !== "object") throw new Error("Invalid poll count");
+      const choice = String(row.choice_id || row.choice || row.vote_choice || '').toLowerCase();
+      const count = Number(row.vote_count ?? row.count ?? row.total_votes ?? row.votes);
+      if (!Object.hasOwn(result, choice) || !Number.isSafeInteger(count) || count < 0) {
+        throw new Error('Invalid poll count');
+      }
+      result[choice] += count;
+    }
+    result.total = result.agree + result.disagree;
+    return result;
   }
-  function vote(poll, button) {
-    var storyId = poll.getAttribute('data-story-id') || button.getAttribute('data-story-id');
-    var choice = String(button.getAttribute('data-choice') || (button.classList.contains('btn-take-disagree') ? 'disagree' : 'agree')).toLowerCase();
-    if (!storyId || (choice !== 'agree' && choice !== 'disagree') || busy[storyId]) return;
-    if (voted[storyId]) { show(poll, 'You have already voted on this story.', stats[storyId] || null, voted[storyId]); return; }
-    busy[storyId] = true;
-    setBusy(poll, true);
-    show(poll, 'Submitting your vote…', null);
-    var lens = poll.getAttribute(choice === 'agree' ? 'data-agree-lens' : 'data-disagree-lens') || 'CENTER';
-    var label = button.querySelector('.vote-label');
-    request('/poll_votes', { story_id: storyId, choice_id: choice, choice_label: label ? label.textContent.trim() : choice, lens: lens.toLowerCase(), voter_id: id }, 'return=minimal')
-      .then(function () {
-        voted[storyId] = choice;
-        return getResults(storyId).then(function (result) { show(poll, '', result, choice); revealLens(poll, storyId, choice); });
-      })
-      .catch(function (err) {
-        console.error('[YNL polling] Vote failed:', err);
-        var duplicate = err.status === 409 || /23505|duplicate key/i.test(err.message);
-        show(poll, duplicate ? 'You have already voted on this story. Reload to view community results.' : 'Vote not saved: ' + err.message, null);
-      })
-      .finally(function () { busy[storyId] = false; setBusy(poll, false); });
+
+  function render(poll, key, result, status) {
+    const choice = saved[key];
+    const voted = choice === 'agree' || choice === 'disagree';
+    const agreement = result?.total ? Math.round(result.agree * 100 / result.total) : 0;
+    const percentages = { agree: agreement, disagree: 100 - agreement };
+    const showResults = Boolean(result?.total);
+    for (const button of poll.querySelectorAll('.btn-take-vote')) {
+      const side = button.dataset.choice.toLowerCase();
+      const selected = choice === side;
+      const percentage = button.querySelector('.vote-pct');
+      button.disabled = pending.has(key) || voted || choice === 'duplicate';
+      button.setAttribute('aria-pressed', String(selected));
+      button.classList.toggle('selected-' + side, selected);
+      percentage.textContent = showResults ? percentages[side] + '%' : '';
+      percentage.style.display = showResults ? 'inline-block' : 'none';
+    }
+    poll.classList.toggle('has-voted', voted);
+    poll.querySelector('.take-consensus-track').style.display = showResults ? 'flex' : 'none';
+    poll.querySelector('.take-fill-agree').style.width = agreement + '%';
+    poll.querySelector('.take-fill-disagree').style.width = (100 - agreement) + '%';
+    poll.querySelector('.take-total-votes').textContent = result ? 'Total votes: ' + result.total.toLocaleString() : '';
+    poll.querySelector('.take-voted-msg').textContent = status || (
+      !result ? 'Community results are unavailable right now.' :
+      voted && showResults ? percentages[choice] + '% picked your answer.' :
+      voted || choice === 'duplicate' ? 'Your vote was recorded.' :
+      showResults ? 'Community results' : 'No community votes yet.'
+    );
   }
-  // Capture phase deliberately runs before legacy inline handlers and bubbling listeners.
-  document.addEventListener('click', function (event) {
-    var button = event.target && event.target.closest ? event.target.closest('.btn-take-vote') : null;
-    if (!button) return;
-    var poll = button.closest('.controversial-take-poll');
-    if (!poll) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
+
+  async function refresh(poll, key = pollKey(poll), afterWrite = false) {
+    // A read started before a vote may contain the old count.
+    if (afterWrite && reads.has(key)) await reads.get(key).catch(() => {});
+    if (!reads.has(key)) {
+      reads.set(key, request('/rpc/get_poll_results', { p_story_id: key })
+        .then(parseResults).finally(() => reads.delete(key)));
+    }
+    try {
+      const result = await reads.get(key);
+      snapshots.set(key, result);
+      if (!pending.has(key) || afterWrite) render(poll, key, result);
+    } catch (_) {
+      snapshots.delete(key);
+      if (!pending.has(key) || afterWrite) render(poll, key, null,
+        saved[key] ? 'Your vote was recorded. Community totals are temporarily unavailable.' : '');
+    }
+  }
+
+  async function vote(poll, button) {
+    const key = pollKey(poll);
+    const choice = button.dataset.choice.toLowerCase();
+    if (pending.has(key) || saved[key] || !['agree', 'disagree'].includes(choice)) return;
+    pending.add(key);
+    render(poll, key, snapshots.get(key), 'Submitting your vote…');
+    try {
+      await request('/poll_votes', {
+        story_id: key, choice_id: choice, choice_label: button.querySelector('.vote-label').textContent.trim(),
+        lens: 'center', voter_id: visitor
+      }, 'return=minimal');
+      saved[key] = choice;
+    } catch (error) {
+      if (error.status === 409 && error.code === '23505') saved[key] = 'duplicate';
+      else {
+        pending.delete(key);
+        render(poll, key, snapshots.get(key), 'Vote could not be confirmed. Please try again.');
+        return;
+      }
+    }
+    try {
+      localStorage.setItem(savedKey, JSON.stringify(Object.fromEntries(Object.entries(saved).slice(-300))));
+    } catch (_) {}
+    await refresh(poll, key, true);
+    pending.delete(key);
+    const card = document.getElementById(poll.dataset.storyId);
+    if (card && card.querySelector('.lens-drawer-panel') && card.dataset.hasPerspectives === 'true' && window.toggleLensDrawer) {
+      const panel = card.querySelector('.lens-drawer-panel');
+      if (window.getComputedStyle(panel).display === 'none' || window.getComputedStyle(panel.parentElement).display === 'none') {
+        window.toggleLensDrawer(card.id);
+      }
+    }
+  }
+
+  const observer = typeof IntersectionObserver === 'function' ? new IntersectionObserver((entries, io) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      io.unobserve(entry.target);
+      refresh(entry.target);
+    }
+  }, { rootMargin: '120px 0px' }) : null;
+
+  function observe(root) {
+    for (const poll of root.querySelectorAll('.controversial-take-poll:not([hidden])')) {
+      const key = pollKey(poll);
+      render(poll, key, snapshots.get(key), snapshots.has(key) ? '' : 'Loading community results…');
+      if (observer) observer.observe(poll);
+      else refresh(poll);
+    }
+  }
+
+  document.addEventListener('click', event => {
+    const button = event.target.closest?.('.btn-take-vote');
+    const poll = button?.closest('.controversial-take-poll:not([hidden])');
+    if (!poll || button.disabled) return;
     vote(poll, button);
-  }, true);
-  window.__ynlPollControllerVersion = '3.0';
+  });
+  function visiblePolls() {
+    return [...document.querySelectorAll('.controversial-take-poll:not([hidden])')].filter(poll => {
+      const rect = poll.getBoundingClientRect();
+      return rect.width > 0 && rect.bottom > 0 && rect.top < window.innerHeight;
+    });
+  }
+
+  window.ynlRefreshVisiblePolls = () => visiblePolls().forEach(poll => refresh(poll));
+  window.ynlRenderDebates = async () => {
+    const list = document.getElementById('communityPostsList');
+    const status = document.getElementById('debateStatus');
+    const polls = [...document.querySelectorAll('.controversial-take-poll:not([hidden])')].slice(0, 12);
+    status.textContent = 'Checking votes on recent polls…';
+    await Promise.all(polls.map(poll => refresh(poll)));
+    const ranked = polls.map(poll => ({ poll, result: snapshots.get(pollKey(poll)) }))
+      .filter(item => item.result?.total > 0)
+      .sort((first, second) => second.result.total - first.result.total);
+    list.replaceChildren();
+    for (const {poll, result} of ranked.slice(0, 5)) {
+      const row = document.createElement('li');
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn-action-small';
+      button.textContent = poll.querySelector('.take-statement-text').textContent + ' · ' +
+        result.total.toLocaleString() + (result.total === 1 ? ' vote' : ' votes');
+      button.addEventListener('click', () => window.jumpToStoryCard(poll.dataset.storyId));
+      row.append(button);
+      list.append(row);
+    }
+    status.textContent = ranked.length ? 'Most votes among the latest polls.' :
+      polls.some(poll => !snapshots.has(pollKey(poll))) ? 'Some community totals are unavailable.' :
+      'No votes on recent polls yet.';
+  };
+  document.addEventListener('DOMContentLoaded', () => observe(document));
 })();

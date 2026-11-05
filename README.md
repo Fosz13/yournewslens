@@ -88,3 +88,14 @@ REGRESSION SUITE COMPLETED: 20/20 TESTS PASSED (100% SUCCESS)
 - Lens ranking now uses publisher orientation metadata rather than relying only on the article's `lean` field. Left and Right prioritize matching publishers; Balanced preserves the original chronological order.
 - Added CNN, Fox News, The Guardian, HuffPost, and Washington Examiner feeds to broaden publisher coverage. Existing AP, Reuters, BBC, NPR, CBS, and other feeds remain available.
 - Sports, entertainment, and weather stories are not promoted or demoted based on publisher orientation.
+
+## Publishing and verification
+
+The active production target is GitHub Pages. Use the **Ingest Wire Feeds & Update Stories** workflow on the default branch to publish a new edition. The job checks the code first, builds the feed and HTML together, commits them, and uploads only the public site files. A no-change run checks the live edition before deciding whether deployment needs a retry.
+
+- Run `python engine.py` to fetch and build a local edition. The publisher keeps an edition when all feeds fail and rejects empty output.
+- Run `python -m unittest discover -s tests` and `node --test tests/polling.test.cjs` for offline regressions.
+- Run `python build_site.py` to build `dist`. For a preview, use `python -m http.server --directory dist 8046`.
+- Configure the existing `GEMINI_API_KEY` repository secret to enable sourced editorial analysis. Set `YNL_EDITORIAL_MODEL` only to override the default model. Each run analyzes at most six newly selected stories. With source-only publishing, only article evidence and narrowly defined polls appear.
+- `scheduler.py` refreshes local files. Use GitHub Actions for production deployments. The sports-only runner uses the same source checks and rendering as the main wire.
+- For voting, confirm the existing Supabase project has anonymous insert access on `poll_votes`, aggregate access through `get_poll_results(p_story_id)`, and a unique database constraint on `(story_id, voter_id)`. Test an insert and retry in a development project. Poll IDs include the current question and answer labels so revised questions start separate totals.
