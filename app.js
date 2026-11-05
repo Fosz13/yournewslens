@@ -299,23 +299,25 @@
   }
 
   function generateClientMeritPoll(title, desc, category, existingTake) {
-    var clean = String(title || '').replace(/\s+[-–—|]\s+[^-–—|]+$/, '').trim();
-    var t = clean.toLowerCase();
-    var cat = String(category || '').toLowerCase();
-    if (/\b(award|anniversary|celebrat|honor|honour|memorial|obituary|festival|ceremony)\b/i.test(t) && !/controvers|dispute|backlash|criticism|cancel|funding/i.test(t)) return null;
-    if (/\b(election|midterm|voters?|ballot|governor|senate|house race)\b/i.test(t) && /result|wins?|losses?|victory|defeat/i.test(t)) {
-      var place = /florida/i.test(t) ? 'Florida' : /texas/i.test(t) ? 'Texas' : /california/i.test(t) ? 'California' : 'These';
-      return {statement:'Do ' + place + ' election results suggest voters approve of the current leadership?',agree_label:'Yes — A vote of confidence',disagree_label:'No — Other factors mattered'};
+    var clean=String(title||'').replace(/\s+[-–—|]\s+[^-–—|]+$/,'').trim();
+    var t=clean.toLowerCase(), cat=String(category||'').toLowerCase();
+    var result;
+    if (/\b(award|anniversary|celebrat|honor|honour|festival|ceremony|prize)\b/i.test(t)) result=['Should local achievements and community celebrations like this receive more news coverage?','Yes — More local coverage','No — Focus on other news'];
+    else if (/\b(obituary|memorial|dies|death|killed|fatal)\b/i.test(t)) result=['Would you like more reporting on the person or community affected by this story?','Yes — More context','No — Current coverage is enough'];
+    else if (/sport/i.test(cat)) {
+      if (/injur|surgery|sprain|concussion|recovery/i.test(t)) result=['Should the athlete in this story prioritize a full recovery over returning quickly?','Yes — Health first','No — Return when cleared'];
+      else if (/trade|fired|coach|signing|contract|extension|draft|playoff|ranking|contender/i.test(t)) result=['Do you agree with the team or league decision described in this story?','Yes — Right move','No — Wrong move'];
+      else result=['Would you like more analysis of the players and teams involved in this story?','Yes — More analysis','No — Just the highlights'];
+    } else if (/election|midterm|voters?|ballot|governor|senate|house race/i.test(t) && /result|wins?|losses?|victory|defeat/i.test(t)) {
+      var state=(clean.match(/\b(Florida|Texas|California|Georgia|New York|Pennsylvania)\b/i)||[])[0];
+      result=['Do '+(state ? state+' election':'these election')+' results suggest approval of the current leadership?','Yes — A vote of confidence','No — Other factors mattered'];
     }
-    if (/sport/i.test(cat) && /injur|surgery|sprain|concussion|return|recovery/i.test(t)) return {statement:'Should the player in “' + clean.substring(0,75) + '” prioritize a full recovery over a quick return?',agree_label:'Yes — Health first',disagree_label:'No — Return when cleared'};
-    if (/sport/i.test(cat) && /trade|fired|coach|signing|contract|extension|draft|playoff|ranking|contender/i.test(t)) return {statement:'Was the decision in “' + clean.substring(0,75) + '” the right move?',agree_label:'Yes — Right move',disagree_label:'No — Wrong move'};
-    if (existingTake && typeof existingTake.statement === 'string') {
-      var q=existingTake.statement;
-      if (q.indexOf('?') !== -1 && !/weighing the core|policy direction|everyday citizens|public policy surrounding|based on the merits|economic fundamentals|competitive merits|right priority for local/i.test(q)) {
-        return {statement:q,agree_label:existingTake.agree_label || 'Yes — Agree',disagree_label:existingTake.disagree_label || 'No — Disagree'};
-      }
-    }
-    return null; // No real debate: no poll.
+    if (!result && existingTake && typeof existingTake.statement==='string' && existingTake.statement.includes('?') && !/weighing the core|policy direction|everyday citizens|public policy surrounding|based on the merits|economic fundamentals|competitive merits|right priority for local/i.test(existingTake.statement)) return existingTake;
+    if (!result && /tech|ai/i.test(cat)) result=['Would you want to use the technology described in this story?','Yes — I would try it','No — Not for me'];
+    if (!result && /business|econom/i.test(cat)) result=['Would this business development affect your spending or investment decisions?','Yes — It matters to me','No — Little impact'];
+    if (!result && /politic|world/i.test(cat)) result=['Should this development be a higher priority for decision-makers?','Yes — Higher priority','No — Other issues first'];
+    if (!result) result=['Would you like more follow-up reporting on this story?','Yes — Keep following it','No — This is enough'];
+    return {statement:result[0],agree_label:result[1],disagree_label:result[2]};
   }
 
   // Live Breaking Reserve Pool for Instant On-Demand Wire Sync (guarantees new stories even if CORS/offline)
@@ -1654,7 +1656,7 @@ function cleanPhotoCredit(credit, sourceName) {
           '</div>' +
         '</div>' +
         '<h3 class="story-title" onclick="toggleStoryDetails(\'' + sId + '\')" title="Click to view key facts and perspectives">' + s.title + '</h3>' +
-        '<div class="fact-preview-strip" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' + calloutBadge + '<p class="fact-preview-text">' + leadFact + '</p></div>' +
+        '<div class="fact-preview-strip" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' + calloutBadge + '<p class="fact-preview-text">' + leadFact + '</p><span class="fact-preview-chevron" aria-hidden="true">▾</span></div>' +
         '<div class="controversial-take-poll" id="' + sId + '-controversial-poll" data-story-id="' + sId + '" data-agree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).agree + '" data-disagree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).disagree + '">' +
           '<p class="take-statement-text">“' + s.controversial_take.statement + '”</p>' +
           '<div class="take-vote-actions">' +
@@ -1673,12 +1675,6 @@ function cleanPhotoCredit(credit, sourceName) {
             '<span class="take-voted-msg" id="' + sId + '-voted-msg">No community votes yet.</span>' +
             '<span class="take-total-votes" id="' + sId + '-total-votes"></span>' +
           '</div>' +
-        '</div>' +
-        '<div class="expand-prompt-bar single-facts-bar" id="' + sId + '-expand-bar">' +
-          '<button type="button" class="btn-card-drawer btn-drawer-facts" id="' + sId + '-btn-facts-drawer" data-story-id="' + sId + '" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' +
-            '<span class="drawer-btn-left"><span class="drawer-btn-icon">📌</span><span class="expand-label" id="' + sId + '-expand-label">Key Facts</span></span>' +
-            '<span class="expand-chevron" id="' + sId + '-chevron">▾</span>' +
-          '</button>' +
         '</div>' +
         '<div class="card-details" id="' + sId + '-details">' +
           '<div class="facts-drawer-panel" id="' + sId + '-facts-panel" style="display: block;">' +

@@ -3902,3 +3902,9 @@ body.searching-mode #blindStanceSection {
     color: #0f172a !important;
   }
 }
+
+/* The instant answer is the single disclosure control for the remaining key facts. */
+.fact-preview-strip { cursor:pointer; position:relative; padding-right:36px; }
+.fact-preview-chevron { position:absolute; right:14px; top:50%; transform:translateY(-50%); font-size:18px; opacity:.75; pointer-events:none; }
+.compact-card.facts-open .fact-preview-chevron { transform:translateY(-50%) rotate(180deg); }
+.fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:2px; }

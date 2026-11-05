@@ -734,19 +734,21 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
     c_low = (category or "").lower()
     ent = focus_ent if focus_ent and focus_ent.lower() not in ["the", "a", "an", "bills"] else clean_title[:42]
 
-    # Editorial gate: polls are optional. A news announcement, award, obituary or
-    # routine event does not automatically contain a meaningful debate.
-    if re.search(r"\b(awards?|anniversary|celebrates?|honou?rs?|obituary|memorial|birthday|festival|ceremony|grand opening|wins? prize)\b", t_low) and not re.search(r"\b(controversy|dispute|backlash|criticism|should|ban|funding|cancel)\b", t_low):
-        return {}
-    # Ask about a concrete decision or consequence rather than invented policy.
+    # Nearly every story can support a relevant reader preference, even without political conflict.
+    # Use the story's real subject; never manufacture a policy, decision or allegation.
+    if re.search(r"\b(awards?|anniversary|celebrates?|honou?rs?|festival|ceremony|grand opening|prize)\b", t_low):
+        return {'statement': 'Should local achievements and community celebrations like this receive more news coverage?', 'agree_label': 'Yes — More local coverage', 'disagree_label': 'No — Focus on other news'}
+    if re.search(r"\b(obituary|memorial|dies|death|killed|fatal)\b", t_low):
+        return {'statement': 'Would you like more reporting on the person or community affected by this story?', 'agree_label': 'Yes — More context', 'disagree_label': 'No — Current coverage is enough'}
+    if 'sport' in c_low:
+        if re.search(r"\b(injury|injured|surgery|sprain|concussion|recovery)\b", t_low):
+            return {'statement': 'Should the athlete in this story prioritize a full recovery over returning quickly?', 'agree_label': 'Yes — Health first', 'disagree_label': 'No — Return when cleared'}
+        if re.search(r"\b(trade|fired|fire|coach|signing|contract|extension|draft|playoff|rankings?|contender)\b",t_low):
+            return {'statement': 'Do you agree with the team or league decision described in this story?', 'agree_label': 'Yes — Right move', 'disagree_label': 'No — Wrong move'}
+        return {'statement': 'Would you like more analysis of the players and teams involved in this story?', 'agree_label': 'Yes — More analysis', 'disagree_label': 'No — Just the highlights'}
     if re.search(r"\b(election|midterm|voters?|ballot|governor|senate|house race)\b", t_low) and re.search(r"\b(results?|wins?|losses?|victory|defeat)\b", t_low):
-        state = next((x for x in ('Florida','Texas','California','Georgia','New York','Pennsylvania') if x.lower() in t_low), 'these')
-        return {'statement': f'Do {state} election results suggest voters approve of the current leadership?', 'agree_label':'Yes — A vote of confidence', 'disagree_label':'No — Other factors mattered'}
-    if 'sport' in c_low and re.search(r"\b(injury|injured|surgery|sprain|concussion|return|recovery)\b", t_low):
-        team = re.sub(r"\s+[-–—|]\s+[^-–—|]+$",'',clean_title)[:70]
-        return {'statement': f'Should {team} prioritize a full recovery over a quick return to play?', 'agree_label':'Yes — Health first', 'disagree_label':'No — Return when cleared'}
-    if 'sport' in c_low and re.search(r"\b(trade|fired|fire|coach|signing|contract|extension|draft|playoff|rankings?|contender)\b",t_low):
-        return {'statement': f'Was the decision in “{clean_title[:78]}” the right move?', 'agree_label':'Yes — Right move', 'disagree_label':'No — Wrong move'}
+        state = next((x for x in ('Florida','Texas','California','Georgia','New York','Pennsylvania') if x.lower() in t_low), None)
+        return {'statement': f'Do {state + " election" if state else "these election"} results suggest approval of the current leadership?', 'agree_label':'Yes — A vote of confidence', 'disagree_label':'No — Other factors mattered'}
     # Real community polling via Supabase: never generate fabricated percentages or vote counts.
 
     # 1. Property Tax / Amendment 3 / Homeowner Tax Relief
@@ -811,8 +813,14 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
                 "disagree_label": dis_lbl
             }
 
-    # Do not invent a generic controversy where the source contains none.
-    return {}
+    # Last resort: a reader-preference question tied to the actual subject, not invented politics.
+    if 'tech' in c_low or re.search(r"\b(ai|software|app|technology|device)\b", t_low):
+        return {'statement':'Would you want to use the technology described in this story?', 'agree_label':'Yes — I would try it', 'disagree_label':'No — Not for me'}
+    if 'business' in c_low or 'econom' in c_low:
+        return {'statement':'Would this business development affect your spending or investment decisions?', 'agree_label':'Yes — It matters to me', 'disagree_label':'No — Little impact'}
+    if 'politic' in c_low or 'world' in c_low:
+        return {'statement':'Should this development be a higher priority for decision-makers?', 'agree_label':'Yes — Higher priority', 'disagree_label':'No — Other issues first'}
+    return {'statement':'Would you like more follow-up reporting on this story?', 'agree_label':'Yes — Keep following it', 'disagree_label':'No — This is enough'}
 
 def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context: str = "", focus_ent: str = "") -> dict:
     """Universal guard ensuring Fact 1 adheres strictly to user mandates across all returned syntheses."""
@@ -8239,7 +8247,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
             <div class="fact-preview-strip" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
               {callout_badge}
-              <p class="fact-preview-text">{lead_fact}</p>
+              <p class="fact-preview-text">{lead_fact}</p><span class="fact-preview-chevron" aria-hidden="true">▾</span>
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
@@ -8271,12 +8279,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>
             </div>
 
-            <div class="expand-prompt-bar single-facts-bar" id="{sId}-expand-bar">
-              <button type="button" class="btn-card-drawer btn-drawer-facts" id="{sId}-btn-facts-drawer" data-story-id="{sId}" onclick="toggleKeyFactsDrawer('{sId}', event, this)">
-                <span class="drawer-btn-left"><span class="drawer-btn-icon">📌</span><span class="expand-label" id="{sId}-expand-label">Key Facts</span></span>
-                <span class="expand-chevron" id="{sId}-chevron">▾</span>
-              </button>
-            </div>
+
 
             <div class="card-details" id="{sId}-details">
               <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: block;">
@@ -8619,41 +8622,6 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     var poll = btnEl && btnEl.closest ? btnEl.closest('.controversial-take-poll') : null;
     var msg = poll ? poll.querySelector('.take-voted-msg') : null;
     if (msg) msg.textContent = 'Loading voting…';
-  };
-    fetch(sbUrl + "/rest/v1/poll_votes", {
-      method: "POST",
-      headers: { "apikey": sbKey, "Content-Type": "application/json", "Prefer": "return=minimal" },
-      body: JSON.stringify(payload)
-    }).then(function() {
-      return fetch(sbUrl + "/rest/v1/rpc/get_poll_results", {
-        method: "POST",
-        headers: { "apikey": sbKey, "Content-Type": "application/json" },
-        body: JSON.stringify({ p_story_id: String(sId) })
-      });
-    }).then(function(r) { return r.ok ? r.json() : []; }).then(function(rows) {
-      if (!Array.isArray(rows) || rows.length === 0) return;
-      var aCnt = 0, dCnt = 0;
-      for (var i = 0; i < rows.length; i++) {
-        var c = String(rows[i].choice_id || rows[i].choice || "").toLowerCase();
-        var n = parseInt(rows[i].vote_count || rows[i].count || rows[i].total_votes || 0, 10) || 0;
-        if (c.indexOf("agree") === 0) aCnt += n;
-        else if (c.indexOf("disagree") === 0) dCnt += n;
-      }
-      if (norm === "AGREE" && aCnt < 1) aCnt = 1;
-      if (norm === "DISAGREE" && dCnt < 1) dCnt = 1;
-      var tot = aCnt + dCnt;
-      if (tot > 0) {
-        var aP = Math.round((aCnt / tot) * 100);
-        var dP = 100 - aP;
-        var myP = (norm === "AGREE") ? aP : dP;
-        if (pctAgree) pctAgree.textContent = aP + "%";
-        if (pctDisagree) pctDisagree.textContent = dP + "%";
-        if (fillAgree) fillAgree.style.width = aP + "%";
-        if (fillDisagree) fillDisagree.style.width = dP + "%";
-        if (votedMsg) votedMsg.textContent = "📊 " + myP + "% voted with you • Agree: " + aP + "% / Disagree: " + dP + "%";
-        if (totalVotesEl) totalVotesEl.textContent = "Total votes: " + tot.toLocaleString();
-      }
-    }).catch(function() {});
   };
   </script>"""
         s_head_sc = content.find("<script>")
