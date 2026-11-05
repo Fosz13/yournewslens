@@ -1139,15 +1139,32 @@
     var menu = document.createElement('details');
     menu.className = 'ynl-mast-menu';
     var summary = document.createElement('summary');
-    summary.textContent = 'Browse';
+    summary.textContent = 'More';
     menu.append(summary);
     actions.append(menu);
     var panel = document.createElement('div');
     panel.className = 'ynl-mast-panel';
     menu.append(panel);
-    var help = document.createElement('details');
-    help.className = 'ynl-lens-help';
-    help.innerHTML = '<summary><span aria-hidden="true">ⓘ</span> Lens guide</summary><p>Left and Right highlight political arguments. Balanced focuses on the evidence. Sports and other stories use topic-specific angles. Source links identify outside viewpoints. News Lens analysis is our own.</p>';
+    var help = document.createElement('button');
+    help.type = 'button';
+    help.className = 'ynl-guide-button';
+    help.textContent = 'ⓘ How lenses work';
+
+    var shortcuts = document.createElement('nav');
+    shortcuts.className = 'ynl-topic-shortcuts';
+    shortcuts.setAttribute('aria-label', 'Popular topics');
+    for (var topic of [['All', 'All'], ['Politics', 'Politics'], ['Local', 'Local'], ['Sports', 'Sports']]) {
+      var button = document.querySelector('.cat-pill[data-category="' + topic[0] + '"]');
+      if (!button) continue;
+      button.textContent = topic[1];
+      shortcuts.append(button);
+      button.addEventListener('click', function (event) {
+        showStoriesTab();
+        menu.open = event.currentTarget.dataset.category === 'Local';
+      });
+    }
+    masthead.append(shortcuts);
+    bindLensGuide(help);
     var search = controls.querySelector('.search-input-wrap');
     var theme = document.getElementById('btnThemeToggle');
     var nav = document.querySelector('.filter-bar');
@@ -1169,6 +1186,41 @@
     header.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && menu.open) { closeMenu(); summary.focus(); }
     });
+  }
+
+  function bindLensGuide(help) {
+    var dialog = document.createElement('dialog');
+    if (typeof dialog.showModal !== 'function') {
+      help.hidden = true;
+      return;
+    }
+    dialog.className = 'ynl-lens-dialog';
+    dialog.setAttribute('aria-labelledby', 'ynlLensGuideTitle');
+    dialog.innerHTML = `<form method="dialog">
+      <button type="submit" class="ynl-guide-close" aria-label="Close lens guide">×</button>
+      <h2 id="ynlLensGuideTitle">How lenses work</h2>
+      <p>Choose a lens to change the viewpoint. The key facts stay the same.</p>
+      <dl>
+        <div><dt>Left</dt><dd>Progressive arguments and priorities.</dd></div>
+        <div><dt>Balanced</dt><dd>Evidence, trade-offs, and what’s still unclear.</dd></div>
+        <div><dt>Right</dt><dd>Conservative arguments and priorities.</dd></div>
+      </dl>
+      <p>Sports and other nonpolitical stories use angles that fit the story.</p>
+      <label class="ynl-guide-optout"><input type="checkbox"> Don’t show this message again</label>
+      <button type="submit" class="ynl-guide-done" autofocus>Got it</button>
+    </form>`;
+    document.body.append(dialog);
+    var checkbox = dialog.querySelector('input');
+    var preference = 'ynlHideLensWelcome';
+    try { checkbox.checked = localStorage.getItem(preference) === '1'; } catch (_) {}
+    dialog.addEventListener('close', function () {
+      try {
+        if (checkbox.checked) localStorage.setItem(preference, '1');
+        else localStorage.removeItem(preference);
+      } catch (_) {}
+    });
+    help.addEventListener('click', function () { dialog.showModal(); });
+    if (!checkbox.checked) dialog.showModal();
   }
 
   var readerInterests = {};
