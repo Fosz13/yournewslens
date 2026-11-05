@@ -4104,3 +4104,13 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
 
 #communityView, #communityPostsList, .ynl-debate-card { min-width: 0; }
 .btn-discuss-small[hidden] { display: none; }
+
+.ynl-story-comments { margin-block: 12px; min-width: 0; overflow-wrap: anywhere; }
+.ynl-story-comments summary { cursor: pointer; width: fit-content; }
+.ynl-story-comments form, .ynl-story-comments label { display: grid; gap: 8px; }
+.ynl-story-comments textarea {
+  width: 100%; min-height: 5rem; padding: 8px;
+  background: var(--bg-card-solid); color: var(--text-primary); font: inherit;
+}
+.ynl-story-comments li { white-space: pre-wrap; margin-block: 8px; }
+.ynl-story-comments button { min-height: 44px; justify-self: start; }
