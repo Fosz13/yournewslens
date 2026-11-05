@@ -151,7 +151,7 @@ class PublishingTest(unittest.TestCase):
         story = editorial.prepare_story({"id": "story-no-image", "title": "An article without a usable photo"})
         page = engine.prerender_cards_html([story])
         self.assertNotIn("hero-image-wrap", page)
-        self.assertIn("News Lens analysis", page)
+        self.assertNotIn("News Lens analysis", page)
 
     def test_city_calendar_listing_has_date_and_real_source(self):
         from datetime import datetime

@@ -196,7 +196,7 @@ def fallback_poll(title, facts):
     return {}
 
 
-def fallback_perspectives(title, facts, political, poll):
+def fallback_perspectives(title, facts):
     evidence = facts[0] if facts else title
     if aviation_alert(title):
         angles = (
@@ -210,38 +210,8 @@ def fallback_perspectives(title, facts, political, poll):
             ("Legacy", "Ronaldo’s international retirement separates two debates: how to judge his career for Portugal, and how the team should play in its next chapter."),
             ("Selection and tactics", "The next squad will reveal the coach’s priorities: a fixed striker to lead the line or a more fluid attack that lets forwards exchange positions."),
         )
-    elif political and re.search(r"\b(?:elections?|midterms?|congressional majorit(?:y|ies))\b", title, re.I):
-        angles = (
-            ("Blue Lens", "Turn electoral gains into concrete affordability measures and oversight. Voters should be able to judge the winners by what they deliver."),
-            ("Balanced Lens", facts[0] if facts else title),
-            ("Red Lens", "Treat the result as a warning to the losing party. Rebuild credibility on costs and public priorities, and judge the winners by their record in office."),
-        )
-    elif political and re.search(r"\b(?:budget|spending|tax(?:es)?|funding)\b", title, re.I):
-        angles = (
-            ("Blue Lens", "Protect public services that households rely on. Any change should explain who pays and whether low-income families carry a disproportionate share."),
-            ("Balanced Lens", facts[0] if facts else title),
-            ("Red Lens", "Make the case for spending or taxes line by line. Identify the trade-offs and what can be cut or reworked before putting another obligation on taxpayers."),
-        )
-    elif political:
-        subject = title.rstrip(".?!")
-        angles = (
-            ("Blue Lens", f"On “{subject},” the progressive case starts with who bears the costs. Judge the response by whether it protects people with the least leverage and puts decision-makers under public scrutiny."),
-            ("Balanced Lens", facts[0] if facts else f"“{subject}” is the reported development. Its consequences depend on what is actually implemented and what the source can substantiate."),
-            ("Red Lens", f"On “{subject},” the conservative case starts with accountability and limits on power. Put the burden on officials to show they have authority and that any costs or new obligations are justified."),
-        )
-    elif poll and poll["agree_label"] != "Yes":
-        first, second = poll["agree_label"], poll["disagree_label"]
-        angles = (
-            ("Case for " + first, f"For “{title},” the argument for “{first}” depends on whether it delivers a better result under the conditions described by the source."),
-            ("Evidence", facts[0] if facts else title),
-            ("Case for " + second, f"For “{title},” “{second}” is the alternative if the case for “{first}” depends on assumptions the reporting has yet to establish."),
-        )
     else:
-        angles = (
-            ("Impact", f"For “{title},” the practical significance depends on who will experience a concrete change. Give the most weight to effects the original reporting can document."),
-            ("Evidence", facts[0] if facts else title),
-            ("Next development", facts[1] if len(facts) > 1 else f"The next meaningful update on “{title}” would establish what changed after the initial report."),
-        )
+        return {}
     return {side: {"label": label, "talking_points": [point], "evidence": evidence,
                    "perspective_badge": "news_lens_analysis"}
             for side, (label, point) in zip(("LEFT", "CENTER", "RIGHT"), angles)}
@@ -270,13 +240,13 @@ def restore_missing_features(record):
                  record.get("category") in {"Politics", "Border & Security"})
     if not perspectives:
         record["perspective_mode"] = "political" if political else "topical"
-    fallback = fallback_perspectives(title, facts, political, poll)
+    fallback = fallback_perspectives(title, facts)
+    perspectives = {side: value for side, value in perspectives.items()
+                    if value.get("talking_points") and value.get("perspective_badge") not in {
+                        "editorial_prompt", "pending_commentary", "news_lens_analysis"
+                    }}
     for side, value in fallback.items():
-        previous = perspectives.get(side) or {}
-        if not previous.get("talking_points") or previous.get("perspective_badge") in {
-            "editorial_prompt", "pending_commentary", "news_lens_analysis"
-        }:
-            perspectives[side] = value
+        perspectives.setdefault(side, value)
     record["perspectives"] = perspectives
     return record
 

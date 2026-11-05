@@ -8126,8 +8126,17 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                           for key, name in zip(("LEFT", "CENTER", "RIGHT"), names))
             for lens, name in zip(lensList, names):
                 lens["name"] = name
-        if not perspectives:
-            lensList = []
+        lensList = [lens for lens in lensList if perspectives.get(lens["key"], {}).get("talking_points")]
+        default_lens = "CENTER" if any(lens["key"] == "CENTER" for lens in lensList) else (
+            lensList[0]["key"] if lensList else "")
+        for lens in lensList:
+            lens["display"] = '' if lens["key"] == default_lens else 'style="display: none;"'
+        lens_buttons = "".join(
+            f'<button type="button" class="card-toggle-btn" data-story="{sId}" '
+            f'data-perspective="{lens["key"]}" onclick="switchStoryPerspective(this.dataset.story, '
+            f'this.dataset.perspective); event.stopPropagation();">{escape(lens["name"])}</button>'
+            for lens in lensList
+        ) if len(lensList) > 1 else ""
         lens_boxes_html = []
         for lens in lensList:
             pData = perspectives.get(lens["key"], {})
@@ -8148,9 +8157,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                   </div>
 
                   <div class="card-toggle-group">
-                    <button type="button" class="card-toggle-btn {'active left' if lens['key'] == 'LEFT' else ''}" data-story="{sId}" data-perspective="LEFT" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'LEFT'); event.stopPropagation();">{escape(names[0])}</button>
-                    <button type="button" class="card-toggle-btn {'active center' if lens['key'] == 'CENTER' else ''}" data-story="{sId}" data-perspective="CENTER" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'CENTER'); event.stopPropagation();">{escape(names[1])}</button>
-                    <button type="button" class="card-toggle-btn {'active right' if lens['key'] == 'RIGHT' else ''}" data-story="{sId}" data-perspective="RIGHT" onclick="switchStoryPerspective(this.getAttribute('data-story'), 'RIGHT'); event.stopPropagation();">{escape(names[2])}</button>
+                    {lens_buttons}
                   </div>
                 </div>
 
@@ -8259,8 +8266,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                     <span>🤍</span>
                     <span>Save</span>
                   </button>
-                  <button type="button" class="btn-discuss-small" onclick="showLoungeTab()">
-                    <span>👥</span> Discuss
+                  <button type="button" class="btn-discuss-small" onclick="focusStoryPoll('{sId}')" {'hidden' if not ct_statement else ''}>
+                    <span>🗳️</span> Vote on this story
                   </button>
                 </div>
               </div>

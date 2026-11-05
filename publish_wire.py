@@ -20,7 +20,7 @@ import reader_sources
 
 MAX_AGE = 3 * 86400
 MAX_NEW = 52
-MAX_AI = 6
+MAX_AI = 12
 
 
 def analyze(title, category, facts):
@@ -35,7 +35,8 @@ def analyze(title, category, facts):
         "perspectives (LEFT, CENTER and RIGHT objects each with evidence copied verbatim, a distinct point in plain English, and a short descriptive label), "
         "and poll (null or an object with statement, agree_label and disagree_label). For nonpolitical stories the "
         "perspectives should focus on practical consequences or tradeoffs, with sports points about teams, tactics or outcomes. "
-        "Omit perspectives unless all three say something distinct and grounded. Polls must name the real decision, "
+        "Each lens must name a person, team, organization, decision or outcome from this story and explain a concrete implication grounded in its cited sentence. "
+        "Omit perspectives unless all three add distinct value beyond the headline. Skip generic advice or speculation. Polls must name the real decision, "
         "teams or policy, offer two distinct answers and omit presumed outcomes. Skip polls on tragedy and individual allegations. "
         "Do not add statistics, quotations, or new factual claims. Use null when the material is insufficient."
     )
@@ -252,13 +253,22 @@ def collect_stories(engine, incoming, existing, now):
         by_url[key] = record
         titles.append(title)
         source_counts[source] += 1
-    to_analyze = []
+    # Alternate between Tampa, sports, and the newest remaining stories.
+    groups = ([], [], [])
     for record in additions:
         facts = editorial.excerpt_facts(record["title"], record["source_excerpt"])
-        if facts and len(to_analyze) < MAX_AI:
-            to_analyze.append((record, facts))
+        if facts:
+            group = 0 if record.get("metro") == reader_sources.TAMPA else (
+                1 if record["category"] == "Sports" else 2)
+            groups[group].append((record, facts))
         else:
             editorial.prepare_story(record)
+    to_analyze = []
+    for index in range(max(map(len, groups))):
+        to_analyze.extend(group[index] for group in groups if index < len(group))
+    for record, _ in to_analyze[MAX_AI:]:
+        editorial.prepare_story(record)
+    to_analyze = to_analyze[:MAX_AI]
 
     def analyze_story(item):
         record, facts = item
