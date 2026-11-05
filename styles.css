@@ -4101,3 +4101,6 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
     grid-row-end: span var(--ynl-card-span, 120);
   }
 }
+
+#communityView, #communityPostsList, .ynl-debate-card { min-width: 0; }
+.btn-discuss-small[hidden] { display: none; }

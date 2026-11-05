@@ -178,6 +178,13 @@
 
   function switchStoryPerspective(storyId, p) {
     if (!storyId || !p) return;
+    if (!document.getElementById(storyId + '-view-' + p)) {
+      var available = ['CENTER', 'LEFT', 'RIGHT'].find(function (side) {
+        return document.getElementById(storyId + '-view-' + side);
+      });
+      if (!available) return;
+      p = available;
+    }
     var views = ['RIGHT', 'CENTER', 'LEFT'];
     for (var i = 0; i < views.length; i++) {
       var el = document.getElementById(storyId + '-view-' + views[i]);
@@ -814,6 +821,13 @@
     }
   }
 
+  window.focusStoryPoll = function (storyId) {
+    var poll = document.getElementById(storyId + '-controversial-poll');
+    if (!poll || poll.hidden) return;
+    poll.scrollIntoView({ block: 'center' });
+    poll.querySelector('button:not(:disabled)')?.focus({ preventScroll: true });
+  };
+
   function showLoungeTab() {
     var feed = document.getElementById('storiesFeedView');
     var comm = document.getElementById('communityView');
@@ -827,7 +841,7 @@
     if (localBeats) localBeats.style.display = 'none';
     var empty = document.getElementById('feedEmptyState');
     if (empty) empty.hidden = true;
-    if (comm) comm.style.display = 'flex';
+    if (comm) comm.style.display = 'block';
     if (window.ynlRenderDebates) window.ynlRenderDebates();
     if (dailyLens) dailyLens.style.display = 'none';
     if (tabS) tabS.className = 'view-tab';
@@ -1036,7 +1050,7 @@
       if (blind) blind.style.display = 'none';
     }
     document.dispatchEvent(new Event('ynl:edition'));
-    if (document.getElementById('communityView')?.style.display === 'flex' && window.ynlRenderDebates) {
+    if (document.getElementById('communityView')?.style.display === 'block' && window.ynlRenderDebates) {
       window.ynlRenderDebates();
     }
   }
@@ -1329,6 +1343,9 @@
       var category = document.createElement('span');
       category.className = 'ynl-top-category';
       category.textContent = card.dataset.category;
+      if (card.querySelector('.controversial-take-poll:not([hidden])')) {
+        category.textContent += ' · Vote';
+      }
       var headline = document.createElement('span');
       headline.className = 'ynl-top-headline';
       headline.textContent = card.querySelector('.story-title').textContent.trim();
@@ -1359,9 +1376,14 @@
         }
       }
     });
-    feed.querySelectorAll('.compact-card').forEach(function (card) {
-      observer.observe(card, { box: 'border-box' });
-    });
+    function observeCurrentCards() {
+      observer.disconnect();
+      feed.querySelectorAll('.compact-card').forEach(function (card) {
+        observer.observe(card, { box: 'border-box' });
+      });
+    }
+    observeCurrentCards();
+    document.addEventListener('ynl:edition', observeCurrentCards);
   }
 
   function renderDailyBriefing() {
