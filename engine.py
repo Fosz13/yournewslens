@@ -745,8 +745,8 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
         if re.search(r"trade|fired|coach|signing|contract|extension|draft",t):
             return poll("Do you think the team made the right move?", "Yes — Good decision", "No — Bad decision")
         if re.search(r"\b(win|won|beat|defeat|loss|lost|game|match|playoff)\b",t):
-            return poll("Do you think this team can keep it up?", "Yes — They're for real", "No — I'm not convinced")
-        return poll("Would you like to see more coverage of this team or athlete?", "Yes — More coverage", "No — Not interested")
+            return poll("Can the team in this story keep winning?", "Yes — They can", "No — Not convinced")
+        return {}  # No meaningful sports decision: do not invent a poll.
     if re.search(r"\b(attack|war|military|sanctions|ceasefire)\b",t):
         return poll("Should leaders do more to resolve this situation?", "Yes — Take action", "No — Current approach is enough")
     if re.search(r"\b(price|pricing|cost|subscription|fees|rates)\b",t):
@@ -763,7 +763,7 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
         return poll("Do you think this is good news for consumers?", "Yes — Good for consumers", "No — I don't think so")
     if 'politic' in c:
         return poll("Do you support the decision described in this story?", "Yes — I support it", "No — I don't")
-    return poll("Would you like to see more reporting on this story?", "Yes — Follow up", "No — That's enough")
+    return {}  # No meaningful reader decision: do not invent engagement bait.
 
 def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context: str = "", focus_ent: str = "") -> dict:
     """Universal guard ensuring Fact 1 adheres strictly to user mandates across all returned syntheses."""

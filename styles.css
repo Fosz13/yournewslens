@@ -3922,3 +3922,10 @@ body.searching-mode #blindStanceSection {
 .btn-take-vote { min-width:0; height:auto; min-height:38px; align-items:center; }
 .vote-label { min-width:0; line-height:1.35; }
 @media(max-width:480px){ .take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } .btn-take-vote { padding:8px 6px; } }
+
+/* Poll copy must remain readable on narrow mobile screens. */
+.controversial-take-poll, .take-vote-actions, .btn-take-vote { min-width:0; max-width:100%; }
+.take-statement-text, .vote-label, .take-voted-msg { white-space:normal !important; overflow:visible !important; text-overflow:clip !important; overflow-wrap:anywhere; word-break:normal; }
+.btn-take-vote { height:auto !important; min-height:44px; align-items:center; }
+.take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
+@media(max-width:380px) { .take-vote-actions { grid-template-columns:minmax(0,1fr); } }
