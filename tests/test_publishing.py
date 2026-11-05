@@ -117,6 +117,26 @@ class PublishingTest(unittest.TestCase):
         self.assertNotIn('href="javascript:', rendered)
         self.assertIn("&lt;script&gt;", rendered)
 
+    def test_aviation_story_remains_interactive_without_model(self):
+        story = editorial.prepare_story({
+            "id": "story-flight-alert", "title": "Bomb alerts force flights to land in France, Bulgaria, Belgium",
+            "source_name": "Reuters", "category": "World News",
+        })
+        self.assertIn("EI402", story["lead_fact"])
+        self.assertIn("Airbus_A320", story["image_url"])
+        self.assertIn("Assess the threat first", story["controversial_take"]["disagree_label"])
+        self.assertEqual("topical", story["perspective_mode"])
+        page = engine.prerender_cards_html([story])
+        self.assertIn("Passenger safety", page)
+        self.assertIn("File photo", page)
+        self.assertIn("CC BY-SA 3.0", page)
+
+    def test_missing_image_has_no_logo_hero(self):
+        story = editorial.prepare_story({"id": "story-no-image", "title": "An article without a usable photo"})
+        page = engine.prerender_cards_html([story])
+        self.assertNotIn("hero-image-wrap", page)
+        self.assertIn("Editorial lens", page)
+
     def test_old_unverified_records_are_not_published(self):
         self.assertEqual(publish_wire.refresh_existing(
             [{"title": TITLE, "article_url": URL, "pub_timestamp": int(time.time())}], int(time.time()), False

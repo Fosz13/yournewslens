@@ -45,14 +45,19 @@ def analyze(title, category, facts):
         f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
         data=body, headers={"x-goog-api-key": api_key, "Content-Type": "application/json"}
     )
-    try:
-        with urllib.request.urlopen(req, timeout=10) as response:
-            result = json.load(response)
-        parts = result["candidates"][0]["content"]["parts"]
-        return json.loads("".join(part.get("text", "") for part in parts if not part.get("thought")))
-    except (OSError, ValueError, TypeError, KeyError, IndexError) as error:
-        print("[editorial] Source-only mode for this item:", getattr(error, "code", type(error).__name__))
-        return {}
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(req, timeout=15) as response:
+                result = json.load(response)
+            parts = result["candidates"][0]["content"]["parts"]
+            return json.loads("".join(part.get("text", "") for part in parts if not part.get("thought")))
+        except (OSError, ValueError, TypeError, KeyError, IndexError) as error:
+            code = getattr(error, "code", None)
+            if attempt == 0 and (isinstance(error, TimeoutError) or code in {500, 502, 503, 504}):
+                time.sleep(1)
+                continue
+            print("[editorial] Source-only mode for this item:", code or type(error).__name__)
+            return {}
 
 
 def dedupe_images(records):
@@ -93,6 +98,7 @@ def refresh_existing(records, now, offline):
             record.pop("source_excerpt", None)
             record["is_original_article_image"] = False
             editorial.prepare_story(record)
+        editorial.restore_missing_features(record)
         seen.add(editorial.canonical_url(url))
         retained.append(record)
     return retained

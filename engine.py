@@ -8059,6 +8059,9 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         source = s.get("source", "Associated Press Wire")
         src_name = s.get("source_name") or (source.split(" • ")[0] if " • " in source else source)
         credit = clean_photo_credit(s.get("credit", ""), src_name) if imgUrl != editorial.PLACEHOLDER else ""
+        license_url = editorial.source_url(s.get("image_license_url"))
+        if license_url:
+            credit = s.get("credit", "")
         pub_ts = s.get("pub_timestamp", "")
         rel_time_str = source.split(" • ")[-1] if " • " in source else "Just now"
         summary = s.get("neutral_summary", "")
@@ -8140,7 +8143,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
 
                 <div class="perspective-meta-bar">
-                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else '🤖 AI-Generated Analysis'}</span>
+                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else ('Editorial lens' if pData.get('perspective_badge') == 'editorial_prompt' else '🤖 AI-Generated Analysis')}</span>
                   {f'<span class="source-attribution">Source: {escape(pData.get("source_attribution"))}</span>' if pData.get("source_attribution") else ''}
                 </div>
 
@@ -8154,15 +8157,20 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
               </div>""")
         joined_lens_html = "".join(lens_boxes_html)
 
-        card = f"""
-        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{escape(cat)}" data-master-category="{escape(master_cat)}" data-cat-slug="{cat_slug}" data-metro="{escape(metro)}" data-subcategory="{escape(sub_cat)}" data-lean="{escape(lean)}" data-has-perspectives="{str(bool(perspectives)).lower()}" data-topics="{escape(json.dumps(s.get('topic_keys') or editorial.topic_keys(title_str)))}" data-perspective-mode="{escape(s.get('perspective_mode', 'topical'))}" data-source="{escape(src_name)}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
-          <div class="hero-image-wrap{' placeholder-image' if imgUrl == editorial.PLACEHOLDER else ''}" onclick="toggleStoryDetails('{sId}')">
-            <img src="{escape(imgUrl)}" alt="{escape(caption)}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null; this.src='article-placeholder.svg'; this.alt=''; this.parentElement.classList.add('placeholder-image');" />
+        image_html = ""
+        if imgUrl != editorial.PLACEHOLDER:
+            license_link = f' · <a href="{escape(license_url)}">CC BY-SA 3.0</a>' if license_url else ""
+            image_html = f"""
+          <div class="hero-image-wrap" onclick="toggleStoryDetails('{sId}')">
+            <img src="{escape(imgUrl)}" alt="{escape(caption)}" class="hero-photo" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentElement.hidden=true" />
             <div class="photo-caption-bar">
               <span class="caption-text">{escape(caption)}</span>
-              <span class="credit-tag">{escape(credit)}</span>
+              <span class="credit-tag">{escape(credit)}{license_link}</span>
             </div>
-          </div>
+          </div>"""
+        card = f"""
+        <article class="compact-card{' featured-lead-card' if idx == 0 else ''}" data-category="{escape(cat)}" data-master-category="{escape(master_cat)}" data-cat-slug="{cat_slug}" data-metro="{escape(metro)}" data-subcategory="{escape(sub_cat)}" data-lean="{escape(lean)}" data-has-perspectives="{str(bool(perspectives)).lower()}" data-topics="{escape(json.dumps(s.get('topic_keys') or editorial.topic_keys(title_str)))}" data-perspective-mode="{escape(s.get('perspective_mode', 'topical'))}" data-source="{escape(src_name)}" data-publisher-bias="{publisher_bias}" data-original-index="{idx}" id="{sId}">
+          {image_html}
 
           <div class="card-body">
             <div class="meta-row">
