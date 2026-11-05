@@ -1119,8 +1119,14 @@
     window.addEventListener('scroll', function () {
       var y = Math.max(0, window.scrollY);
       if (y < 20 || y < last - 4) header.classList.remove('ynl-header-hidden');
-      else if (y > header.offsetHeight && y > last + 4 && !header.contains(document.activeElement)
-               && !_isBannerRefreshing) header.classList.add('ynl-header-hidden');
+      else if (y > header.offsetHeight && y > last + 4 && !_isBannerRefreshing) {
+        var active = document.activeElement;
+        var editing = header.contains(active) && active.matches('input, textarea, [contenteditable="true"]');
+        if (!editing) {
+          if (menu) menu.open = false;
+          header.classList.add('ynl-header-hidden');
+        }
+      }
       if (Math.abs(y - last) > 4 || y === 0) last = y;
     }, {passive: true});
     header.addEventListener('focusin', function () { header.classList.remove('ynl-header-hidden'); });
@@ -1199,7 +1205,7 @@
     dialog.innerHTML = `<form method="dialog">
       <button type="submit" class="ynl-guide-close" aria-label="Close lens guide">×</button>
       <h2 id="ynlLensGuideTitle">How lenses work</h2>
-      <p>Choose a lens to change the viewpoint. The key facts stay the same.</p>
+      <p>Choose Left or Right to see more stories from sources that lean that way, higher in your feed. Balanced gives you the standard mix. The key facts stay the same.</p>
       <dl>
         <div><dt>Left</dt><dd>Progressive arguments and priorities.</dd></div>
         <div><dt>Balanced</dt><dd>Evidence, trade-offs, and what’s still unclear.</dd></div>
