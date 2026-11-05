@@ -3908,3 +3908,17 @@ body.searching-mode #blindStanceSection {
 .fact-preview-chevron { position:absolute; right:14px; top:50%; transform:translateY(-50%); font-size:18px; opacity:.75; pointer-events:none; }
 .compact-card.facts-open .fact-preview-chevron { transform:translateY(-50%) rotate(180deg); }
 .fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:2px; }
+
+/* Editorial clarity: never crop article facts, poll answers or reader talking points. */
+.fact-preview-strip, .fact-preview-text, .take-statement-text, .take-vote-actions,
+.btn-take-vote, .vote-label, .talking-points-panel, .quote-row, .panel-title {
+  max-height:none !important; -webkit-line-clamp:unset !important;
+  text-overflow:clip !important; overflow-wrap:anywhere; white-space:normal;
+}
+.fact-preview-text, .take-statement-text, .quote-row { display:block; overflow:visible !important; }
+.fact-preview-strip { cursor:pointer; }
+.fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:3px; }
+.take-vote-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.btn-take-vote { min-width:0; height:auto; min-height:38px; align-items:center; }
+.vote-label { min-width:0; line-height:1.35; }
+@media(max-width:480px){ .take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } .btn-take-vote { padding:8px 6px; } }

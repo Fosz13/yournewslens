@@ -677,7 +677,7 @@ def synthesize_story_main_point_facts(title: str, context: str = "", category: s
         ]
 
     return [
-        f"Main Takeaway: Primary reporting confirms that {clean_title[0].lower() + clean_title[1:].rstrip('.')}, establishing key operational and public impacts surrounding {ent}.",
+        f"{clean_title.rstrip('.')}.",
         f"Key Context: Verified wire dispatches detailed the underlying data, institutional decisions, and timeline driving {ent}.",
         f"Direct Impact: Affected communities, organizations, and decision-makers are actively adjusting plans around {ent}.",
         f"What's Next: Additional official disclosures and scheduled milestones regarding {ent} will follow."
@@ -721,106 +721,49 @@ def resolve_poll_side_lenses(statement: str, agree_label: str = "", disagree_lab
         return ("LEFT", "RIGHT")
     return ("RIGHT", "LEFT")
 
-def generate_merit_controversial_poll(title: str, context: str = "", category: str = "", focus_ent: str = "", existing_take: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
-    """
-    Generates an interesting, thought-provoking poll QUESTION (ending with '?') based directly on the
-    merits of the specific article, along with tailored Agree/Disagree choice labels.
-    Never uses generic filler like 'Public policy surrounding this issue does far more harm to taxpayers than good.'
-    """
-    clean_title = re.sub(r'\s+[-–—|]\s+[^-–—|]+$', '', title or "").strip()
-    t_low = clean_title.lower()
-    ctx_low = (context or "").lower()
-    comb = f"{t_low} {ctx_low}"
-    c_low = (category or "").lower()
-    ent = focus_ent if focus_ent and focus_ent.lower() not in ["the", "a", "an", "bills"] else clean_title[:42]
-
-    # Nearly every story can support a relevant reader preference, even without political conflict.
-    # Use the story's real subject; never manufacture a policy, decision or allegation.
-    if re.search(r"\b(awards?|anniversary|celebrates?|honou?rs?|festival|ceremony|grand opening|prize)\b", t_low):
-        return {'statement': 'Should local achievements and community celebrations like this receive more news coverage?', 'agree_label': 'Yes — More local coverage', 'disagree_label': 'No — Focus on other news'}
-    if re.search(r"\b(obituary|memorial|dies|death|killed|fatal)\b", t_low):
-        return {'statement': 'Would you like more reporting on the person or community affected by this story?', 'agree_label': 'Yes — More context', 'disagree_label': 'No — Current coverage is enough'}
-    if 'sport' in c_low:
-        if re.search(r"\b(injury|injured|surgery|sprain|concussion|recovery)\b", t_low):
-            return {'statement': 'Should the athlete in this story prioritize a full recovery over returning quickly?', 'agree_label': 'Yes — Health first', 'disagree_label': 'No — Return when cleared'}
-        if re.search(r"\b(trade|fired|fire|coach|signing|contract|extension|draft|playoff|rankings?|contender)\b",t_low):
-            return {'statement': 'Do you agree with the team or league decision described in this story?', 'agree_label': 'Yes — Right move', 'disagree_label': 'No — Wrong move'}
-        return {'statement': 'Would you like more analysis of the players and teams involved in this story?', 'agree_label': 'Yes — More analysis', 'disagree_label': 'No — Just the highlights'}
-    if re.search(r"\b(election|midterm|voters?|ballot|governor|senate|house race)\b", t_low) and re.search(r"\b(results?|wins?|losses?|victory|defeat)\b", t_low):
-        state = next((x for x in ('Florida','Texas','California','Georgia','New York','Pennsylvania') if x.lower() in t_low), None)
-        return {'statement': f'Do {state + " election" if state else "these election"} results suggest approval of the current leadership?', 'agree_label':'Yes — A vote of confidence', 'disagree_label':'No — Other factors mattered'}
-    # Real community polling via Supabase: never generate fabricated percentages or vote counts.
-
-    # 1. Property Tax / Amendment 3 / Homeowner Tax Relief
-    if ("property tax" in comb or "tax bills" in comb or "amendment 3" in comb or "homestead" in comb):
-        return {
-            "statement": "Does cutting Florida property taxes via Amendment 3 help working homeowners more than it hurts local funding for schools and first responders?",
-            "agree_label": "Yes — Cut property taxes",
-            "disagree_label": "No — Protect local funding"
-        }
-
-    # 2. Buccaneers vs. Bears / Specific NFL & CFB Matchups
-    if ("buccaneers" in t_low or "bucs" in t_low) and "bears" in t_low:
-        return {
-            "statement": "In the Week 9 Buccaneers vs. Bears matchup, do you trust Tampa Bay's offensive line and passing attack to beat Chicago's defense?",
-            "agree_label": "Yes — Bucs win & cover",
-            "disagree_label": "No — Bears pull the upset"
-        }
-
-    # 3. Coaching Buyouts / Coaching Carousel
-    if any(k in comb for k in ["buyout", "buyouts", "coaching carousel", "fired coach", "hot seat"]):
-        return {
-            "statement": "Should public universities be banned from paying $40M–$70M guaranteed coaching buyouts while student tuition and fees keep rising?",
-            "agree_label": "Yes — Cap coaching buyouts",
-            "disagree_label": "No — Boosters fund it"
-        }
-
-    # 4. If existing_take has a specific custom statement (not the generic 'Public policy surrounding...'),
-    #    convert it into a sharp, direct merit-based QUESTION ('?') while preserving its specific content!
-    if isinstance(existing_take, dict) and existing_take.get("statement"):
-        raw_stmt = str(existing_take["statement"]).strip().strip('\x22“”')
-        if not any(p in raw_stmt.lower() for p in ('public policy surrounding','weighing the core arguments','weighing the core merits','policy direction','everyday citizens','based on the merits','looking at the economic fundamentals','looking at the performance and competitive merits')) and len(raw_stmt) > 20:
-            if raw_stmt.endswith("?"):
-                q_stmt = raw_stmt
-            else:
-                s_body = raw_stmt.rstrip(".")
-                # Convert declarative controversial take into a direct question on the merits
-                m_should = re.match(r"^([A-Z][^,]+?)\s+should\s+(.+)$", s_body)
-                m_is = re.match(r"^([A-Z][^,]+?)\s+(is|are|has|have|will|can|does|do)\s+(.+)$", s_body)
-                proper_Starts = r"^(?:U\.S\.|US|NFL|NBA|MLB|NHL|NCAA|CFP|IMF|DOJ|FBI|FDA|CDC|EPA|GOP|MAGA|AI|EU|UK|UN|NATO|FERC|CBP|IRS|SEC|Florida|Texas|California|America|American|Congress|Senate|White House|Victor|Patrick|Los Angeles|New York|Tampa|Miami|Orlando|Chicago|Buffalo|Philadelphia|Michigan|China|Russia|Ukraine|Israel|Iran|France|Pakistan|Brazil|Canada)\b"
-                if m_should:
-                    subj = m_should.group(1).strip()
-                    rest = m_should.group(2).strip()
-                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(proper_Starts, subj, re.I) else subj
-                    q_stmt = f"Should {subj_fixed} {rest}?"
-                elif m_is:
-                    subj = m_is.group(1).strip()
-                    aux = m_is.group(2).strip().capitalize()
-                    rest = m_is.group(3).strip()
-                    subj_fixed = subj[0].lower() + subj[1:] if not re.match(proper_Starts, subj, re.I) else subj
-                    q_stmt = f"{aux} {subj_fixed} {rest}?"
-                else:
-                    q_stmt = f"Do you agree that {s_body[0].lower() + s_body[1:]}?"
-            ag_lbl = existing_take.get("agree_label") or "Yes — Agree"
-            dis_lbl = existing_take.get("disagree_label") or "No — Disagree"
-            if ag_lbl == "Agree":
-                ag_lbl = "Yes — Agree"
-            if dis_lbl == "Disagree":
-                dis_lbl = "No — Disagree"
-            return {
-                "statement": q_stmt,
-                "agree_label": ag_lbl,
-                "disagree_label": dis_lbl
-            }
-
-    # Last resort: a reader-preference question tied to the actual subject, not invented politics.
-    if 'tech' in c_low or re.search(r"\b(ai|software|app|technology|device)\b", t_low):
-        return {'statement':'Would you want to use the technology described in this story?', 'agree_label':'Yes — I would try it', 'disagree_label':'No — Not for me'}
-    if 'business' in c_low or 'econom' in c_low:
-        return {'statement':'Would this business development affect your spending or investment decisions?', 'agree_label':'Yes — It matters to me', 'disagree_label':'No — Little impact'}
-    if 'politic' in c_low or 'world' in c_low:
-        return {'statement':'Should this development be a higher priority for decision-makers?', 'agree_label':'Yes — Higher priority', 'disagree_label':'No — Other issues first'}
-    return {'statement':'Would you like more follow-up reporting on this story?', 'agree_label':'Yes — Keep following it', 'disagree_label':'No — This is enough'}
+def generate_merit_controversial_poll(title: str, context: str = "", category: str = "", focus_ent: str = "", existing_take=None) -> Dict[str, Any]:
+    """A short reader question about the reported event; never invent a controversy."""
+    clean = re.sub(r"\s+[-–—|]\s+(?:AP News|Reuters|CBS News|CNN|Fox News|[^-–—|]{2,35} News)$", "", title or "", flags=re.I).strip()
+    t = clean.lower()
+    c = (category or "").lower()
+    def poll(q, yes="Yes", no="No"):
+        return {"statement":q, "agree_label":yes, "disagree_label":no}
+    # These are deliberately understandable without reading the entire article.
+    if re.search(r"\b(democrats?|republicans?)\b",t) and re.search(r"\b(win|won|victory|control|majority|house|senate|midterms?)\b",t):
+        winner = "Democrats" if re.search(r"democrats?\s+(?:win|won|take|gain)",t) else "Republicans" if re.search(r"republicans?\s+(?:win|won|take|gain)",t) else "the winning party"
+        if winner != "the winning party":
+            return poll(f"Do you think {winner} winning control of Congress will lead to positive changes?", "Yes — I think so", "No — I don't")
+        return poll("Do you think the election results will lead to positive changes?", "Yes — I think so", "No — I don't")
+    if re.search(r"\b(election|midterm|voters?|ballot|governor|senate|house race)\b",t):
+        state=next((x for x in ('Florida','Texas','California','Georgia','New York','Pennsylvania') if x.lower() in t),None)
+        return poll(f"Do you think {state + ' voters' if state else 'voters'} made the right choice in this election?", "Yes — Right choice", "No — I disagree")
+    if re.search(r"\b(award|awards|anniversary|celebrates?|honors?|honours?|festival|ceremony|prize)\b",t):
+        return poll("Should local achievements like this get more attention in the news?", "Yes — More coverage", "No — Other news matters more")
+    if 'sport' in c or re.search(r"\b(nfl|nba|mlb|nhl|football|soccer|quarterback|playoffs?)\b",t):
+        if re.search(r"injur|surgery|sprain|concussion|recovery",t):
+            return poll("Should this player wait until fully healthy before returning?", "Yes — Health first", "No — Return when cleared")
+        if re.search(r"trade|fired|coach|signing|contract|extension|draft",t):
+            return poll("Do you think the team made the right move?", "Yes — Good decision", "No — Bad decision")
+        if re.search(r"\b(win|won|beat|defeat|loss|lost|game|match|playoff)\b",t):
+            return poll("Do you think this team can keep it up?", "Yes — They're for real", "No — I'm not convinced")
+        return poll("Would you like to see more coverage of this team or athlete?", "Yes — More coverage", "No — Not interested")
+    if re.search(r"\b(attack|war|military|sanctions|ceasefire)\b",t):
+        return poll("Should leaders do more to resolve this situation?", "Yes — Take action", "No — Current approach is enough")
+    if re.search(r"\b(price|pricing|cost|subscription|fees|rates)\b",t):
+        return poll("Do you think the price described in this story is fair?", "Yes — Fair price", "No — Too expensive")
+    if re.search(r"\b(ai|artificial intelligence|app|software|technology|device)\b",t) or 'tech' in c:
+        return poll("Would you try the technology in this story?", "Yes — I'd try it", "No — Not for me")
+    # Keep a genuinely specific, already-edited question, but reject templates and broken headlines.
+    if isinstance(existing_take,dict):
+        q=str(existing_take.get('statement') or '').strip().strip('“”')
+        bad=r"weighing|core merits|policy direction|everyday citizens|surrounding|main takeaway|central facts|this issue|do you agree that|right priority|economic fundamentals"
+        if q.endswith('?') and 18<=len(q)<=170 and not re.search(bad,q,re.I) and not re.search(r"\b(?:do|does|did) you support this\b",q,re.I):
+            return poll(q, existing_take.get('agree_label') or 'Yes', existing_take.get('disagree_label') or 'No')
+    if 'business' in c or 'econom' in c:
+        return poll("Do you think this is good news for consumers?", "Yes — Good for consumers", "No — I don't think so")
+    if 'politic' in c:
+        return poll("Do you support the decision described in this story?", "Yes — I support it", "No — I don't")
+    return poll("Would you like to see more reporting on this story?", "Yes — Follow up", "No — That's enough")
 
 def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context: str = "", focus_ent: str = "") -> dict:
     """Universal guard ensuring Fact 1 adheres strictly to user mandates across all returned syntheses."""
@@ -7948,6 +7891,19 @@ Evaluate BOTH the headline and the full article text in this priority order:
 - FACT 2 (HOW IT HAPPENED / COMPARATIVE METRICS): Sequence of events, operational background, or financial data.
 - FACT 3 (KEY EVIDENCE / ESSENTIAL QUOTES): Direct quotes, official filings, or documented findings (filter out reporter bylines).
 - FACT 4 (WHY IT MATTERS / WHAT'S NEXT): Immediate consequences, broader significance, or scheduled next milestones.
+
+5. PLAIN-LANGUAGE LENS TALKING POINTS:
+- Write as if a thoughtful person is explaining the story to a friend. Two short sentences maximum per talking point, preferably 12–25 words.
+- Use ordinary words; no "stakeholders", "institutional frameworks", "core merits", "broader implications", "underscores", "narrative", "reckless", "MAGA movement" or rhetorical slogans unless directly relevant.
+- Do not invent quotes, motivations, opinions of named commentators, or factual claims.
+- Different lenses should offer real differences in emphasis, not stereotypes; for sports, arts, and nonpolitical stories, focus on practical reader viewpoints rather than political ideology.
+- Ground each talking point in the supplied article facts. If evidence is limited, say what is still unknown.
+
+6. POLL QUESTION QUALITY:
+- Nearly every article should have a short, specific, natural-language question a reader can answer without extra explanation.
+- Do not force politics into sports, local celebrations, entertainment or business.
+- Never use templates such as "weighing the core merits", "policy direction", "everyday citizens", or "do you agree with the approach surrounding".
+- The two answers must actually answer the question. Never imply facts not established by the article.
 
 5. THREE GENUINELY DISTINCT POLITICAL PERSPECTIVES:
 - LEFT: Progressive interpretation emphasizing public interest, labor rights, equity, consumer protection, and democratic accountability.

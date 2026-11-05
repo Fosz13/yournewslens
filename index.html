@@ -3920,6 +3920,34 @@ body.searching-mode #blindStanceSection {
 .compact-card.facts-open .fact-preview-chevron { transform:translateY(-50%) rotate(180deg); }
 .fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:2px; }
 
+/* Editorial clarity: never crop article facts, poll answers or reader talking points. */
+.fact-preview-strip, .fact-preview-text, .take-statement-text, .take-vote-actions,
+.btn-take-vote, .vote-label, .talking-points-panel, .quote-row, .panel-title {
+  max-height:none !important; -webkit-line-clamp:unset !important;
+  text-overflow:clip !important; overflow-wrap:anywhere; white-space:normal;
+}
+.fact-preview-text, .take-statement-text, .quote-row { display:block; overflow:visible !important; }
+.fact-preview-strip { cursor:pointer; }
+.fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:3px; }
+.take-vote-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.btn-take-vote { min-width:0; height:auto; min-height:38px; align-items:center; }
+.vote-label { min-width:0; line-height:1.35; }
+@media(max-width:480px){ .take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } .btn-take-vote { padding:8px 6px; } }
+
+
+/* Editorial clarity: never crop article facts, poll answers or reader talking points. */
+.fact-preview-strip, .fact-preview-text, .take-statement-text, .take-vote-actions,
+.btn-take-vote, .vote-label, .talking-points-panel, .quote-row, .panel-title {
+  max-height:none !important; -webkit-line-clamp:unset !important;
+  text-overflow:clip !important; overflow-wrap:anywhere; white-space:normal;
+}
+.fact-preview-text, .take-statement-text, .quote-row { display:block; overflow:visible !important; }
+.fact-preview-strip { cursor:pointer; }
+.fact-preview-strip:focus-visible { outline:2px solid #10b981; outline-offset:3px; }
+.take-vote-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+.btn-take-vote { min-width:0; height:auto; min-height:38px; align-items:center; }
+.vote-label { min-width:0; line-height:1.35; }
+@media(max-width:480px){ .take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); } .btn-take-vote { padding:8px 6px; } }
 </style>
   <script src="polling.js?v=3"></script>
   <script>
@@ -4195,6 +4223,7 @@ body.searching-mode #blindStanceSection {
     
 
     <!-- Streamlined Bento Magazine Feed -->
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
@@ -4615,6 +4644,8 @@ body.searching-mode #blindStanceSection {
 
     
 
+    
+
     <div id="storiesFeedView" class="feed-container">
 
         <article class="compact-card featured-lead-card" data-category="Politics" data-master-category="National Headlines" data-cat-slug="politics" data-metro="" data-subcategory="" data-lean="center" data-source="Associated Press Wire" data-publisher-bias="center" data-original-index="0" id="story-2026-midterm-election-day">
@@ -4654,17 +4685,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-2026-midterm-election-day-controversial-poll" data-story-id="story-2026-midterm-election-day" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is divided government with opposite parties controlling Congress and the White House far better for American taxpayers than unified party control?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-2026-midterm-election-day-btn-agree" data-story-id="story-2026-midterm-election-day" data-choice="agree" onclick="voteControversialTake('story-2026-midterm-election-day', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Checks & Balances)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-2026-midterm-election-day-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-2026-midterm-election-day-btn-disagree" data-story-id="story-2026-midterm-election-day" data-choice="disagree" onclick="voteControversialTake('story-2026-midterm-election-day', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Causes Gridlock)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-2026-midterm-election-day-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -4882,17 +4913,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-cfb-2026-first-official-playoff-rankings-controversial-poll" data-story-id="story-cfb-2026-first-official-playoff-rankings" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-cfb-2026-first-official-playoff-rankings-btn-agree" data-story-id="story-cfb-2026-first-official-playoff-rankings" data-choice="agree" onclick="voteControversialTake('story-cfb-2026-first-official-playoff-rankings', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-cfb-2026-first-official-playoff-rankings-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-cfb-2026-first-official-playoff-rankings-btn-disagree" data-story-id="story-cfb-2026-first-official-playoff-rankings" data-choice="disagree" onclick="voteControversialTake('story-cfb-2026-first-official-playoff-rankings', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-cfb-2026-first-official-playoff-rankings-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -5110,17 +5141,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-senate-appropriations-live-vote-controversial-poll" data-story-id="story-senate-appropriations-live-vote" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is passing an $895B spending package when the national debt sits at $36 trillion fiscal treason, no matter what defense or border funds are attached?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-senate-appropriations-live-vote-btn-agree" data-story-id="story-senate-appropriations-live-vote" data-choice="agree" onclick="voteControversialTake('story-senate-appropriations-live-vote', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Fiscal Treason)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-senate-appropriations-live-vote-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-senate-appropriations-live-vote-btn-disagree" data-story-id="story-senate-appropriations-live-vote" data-choice="disagree" onclick="voteControversialTake('story-senate-appropriations-live-vote', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Essential Funding)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-senate-appropriations-live-vote-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -5370,17 +5401,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-cfb-six-coaching-buyouts-controversial-poll" data-story-id="story-cfb-six-coaching-buyouts" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-cfb-six-coaching-buyouts-btn-agree" data-story-id="story-cfb-six-coaching-buyouts" data-choice="agree" onclick="voteControversialTake('story-cfb-six-coaching-buyouts', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-cfb-six-coaching-buyouts-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-cfb-six-coaching-buyouts-btn-disagree" data-story-id="story-cfb-six-coaching-buyouts" data-choice="disagree" onclick="voteControversialTake('story-cfb-six-coaching-buyouts', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-cfb-six-coaching-buyouts-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -6150,17 +6181,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-bbc-Fusion-energy-tokamak-record-controversial-poll" data-story-id="story-bbc-Fusion-energy-tokamak-record" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should governments freeze all renewable wind and solar subsidies and redirect every taxpayer dollar into commercial nuclear fusion reactors?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-bbc-Fusion-energy-tokamak-record-btn-agree" data-story-id="story-bbc-Fusion-energy-tokamak-record" data-choice="agree" onclick="voteControversialTake('story-bbc-Fusion-energy-tokamak-record', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (All-In On Fusion)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-bbc-Fusion-energy-tokamak-record-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-bbc-Fusion-energy-tokamak-record-btn-disagree" data-story-id="story-bbc-Fusion-energy-tokamak-record" data-choice="disagree" onclick="voteControversialTake('story-bbc-Fusion-energy-tokamak-record', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Keep Solar & Wind)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-bbc-Fusion-energy-tokamak-record-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -6410,17 +6441,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-tampa-gasparilla-arts-preview-controversial-poll" data-story-id="story-local-tampa-gasparilla-arts-preview" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should local achievements and community celebrations like this receive more news coverage?”</p>
+              <p class="take-statement-text">“Should local achievements like this get more attention in the news?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-tampa-gasparilla-arts-preview-btn-agree" data-story-id="story-local-tampa-gasparilla-arts-preview" data-choice="agree" onclick="voteControversialTake('story-local-tampa-gasparilla-arts-preview', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More local coverage</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-local-tampa-gasparilla-arts-preview-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-tampa-gasparilla-arts-preview-btn-disagree" data-story-id="story-local-tampa-gasparilla-arts-preview" data-choice="disagree" onclick="voteControversialTake('story-local-tampa-gasparilla-arts-preview', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Focus on other news</span>
+                  <span class="vote-label">No — Other news matters more</span>
                   <span class="vote-pct" id="story-local-tampa-gasparilla-arts-preview-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -6929,18 +6960,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-local-tampa-ybor-heritage-culinary-tour-controversial-poll" data-story-id="story-local-tampa-ybor-heritage-culinary-tour" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Do you agree that commercializing historic working-class ethnic districts into pricey tourist entertainment zones destroys authentic immigrant heritage?”</p>
+            <div class="controversial-take-poll" style="" id="story-local-tampa-ybor-heritage-culinary-tour-controversial-poll" data-story-id="story-local-tampa-ybor-heritage-culinary-tour" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-tampa-ybor-heritage-culinary-tour-btn-agree" data-story-id="story-local-tampa-ybor-heritage-culinary-tour" data-choice="agree" onclick="voteControversialTake('story-local-tampa-ybor-heritage-culinary-tour', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Destroys Heritage)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-tampa-ybor-heritage-culinary-tour-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-tampa-ybor-heritage-culinary-tour-btn-disagree" data-story-id="story-local-tampa-ybor-heritage-culinary-tour" data-choice="disagree" onclick="voteControversialTake('story-local-tampa-ybor-heritage-culinary-tour', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Economic Revival)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-tampa-ybor-heritage-culinary-tour-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -7190,17 +7221,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-02-controversial-poll" data-story-id="story-sports-nfl-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-02-btn-agree" data-story-id="story-sports-nfl-02" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nfl-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-02-btn-disagree" data-story-id="story-sports-nfl-02" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nfl-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -7450,17 +7481,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-tampa-pickleball-open-championship-controversial-poll" data-story-id="story-local-tampa-pickleball-open-championship" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that converting historic community tennis and basketball courts into loud, crowded pickleball courts is an obnoxious land grab that cities must halt?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-tampa-pickleball-open-championship-btn-agree" data-story-id="story-local-tampa-pickleball-open-championship" data-choice="agree" onclick="voteControversialTake('story-local-tampa-pickleball-open-championship', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Save Tennis Courts)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-tampa-pickleball-open-championship-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-tampa-pickleball-open-championship-btn-disagree" data-story-id="story-local-tampa-pickleball-open-championship" data-choice="disagree" onclick="voteControversialTake('story-local-tampa-pickleball-open-championship', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Grow Pickleball)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-tampa-pickleball-open-championship-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -7969,18 +8000,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-local-tampa-hyde-park-fresh-market-controversial-poll" data-story-id="story-local-tampa-hyde-park-fresh-market" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Do you agree that upscale open-air markets in affluent neighborhoods drive up retail rents and price out blue-collar Tampa small businesses?”</p>
+            <div class="controversial-take-poll" style="" id="story-local-tampa-hyde-park-fresh-market-controversial-poll" data-story-id="story-local-tampa-hyde-park-fresh-market" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-tampa-hyde-park-fresh-market-btn-agree" data-story-id="story-local-tampa-hyde-park-fresh-market" data-choice="agree" onclick="voteControversialTake('story-local-tampa-hyde-park-fresh-market', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Gentrification Trap)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-tampa-hyde-park-fresh-market-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-tampa-hyde-park-fresh-market-btn-disagree" data-story-id="story-local-tampa-hyde-park-fresh-market" data-choice="disagree" onclick="voteControversialTake('story-local-tampa-hyde-park-fresh-market', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Supports Local Makers)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-tampa-hyde-park-fresh-market-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -8229,18 +8260,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-local-miami-coastal-resilience-seawall-controversial-poll" data-story-id="story-local-miami-coastal-resilience-seawall" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Do you agree that taxpayers shouldn't bail out luxury waterfront homeowners with $220M public seawalls when inland neighborhoods still flood every summer?”</p>
+            <div class="controversial-take-poll" style="" id="story-local-miami-coastal-resilience-seawall-controversial-poll" data-story-id="story-local-miami-coastal-resilience-seawall" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-miami-coastal-resilience-seawall-btn-agree" data-story-id="story-local-miami-coastal-resilience-seawall" data-choice="agree" onclick="voteControversialTake('story-local-miami-coastal-resilience-seawall', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Stop Waterfront Bailouts)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-miami-coastal-resilience-seawall-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-miami-coastal-resilience-seawall-btn-disagree" data-story-id="story-local-miami-coastal-resilience-seawall" data-choice="disagree" onclick="voteControversialTake('story-local-miami-coastal-resilience-seawall', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Protects Tax Base)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-miami-coastal-resilience-seawall-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -8490,17 +8521,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-mlb-02-controversial-poll" data-story-id="story-sports-mlb-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-mlb-02-btn-agree" data-story-id="story-sports-mlb-02" data-choice="agree" onclick="voteControversialTake('story-sports-mlb-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-mlb-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-mlb-02-btn-disagree" data-story-id="story-sports-mlb-02" data-choice="disagree" onclick="voteControversialTake('story-sports-mlb-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-mlb-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -9010,17 +9041,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-02-controversial-poll" data-story-id="story-sports-nba-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-02-btn-agree" data-story-id="story-sports-nba-02" data-choice="agree" onclick="voteControversialTake('story-sports-nba-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nba-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-02-btn-disagree" data-story-id="story-sports-nba-02" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nba-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -9790,17 +9821,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-01-controversial-poll" data-story-id="story-sports-nfl-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-01-btn-agree" data-story-id="story-sports-nfl-01" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-nfl-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-01-btn-disagree" data-story-id="story-sports-nfl-01" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-nfl-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -10049,18 +10080,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-local-florida-property-insurance-stabilization-controversial-poll" data-story-id="story-local-florida-property-insurance-stabilization" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Is florida's property insurance 'stabilization' a mirage—state regulators are shielding corporate insurers from lawsuits while homeowners still pay triple the national average?”</p>
+            <div class="controversial-take-poll" style="" id="story-local-florida-property-insurance-stabilization-controversial-poll" data-story-id="story-local-florida-property-insurance-stabilization" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-florida-property-insurance-stabilization-btn-agree" data-story-id="story-local-florida-property-insurance-stabilization" data-choice="agree" onclick="voteControversialTake('story-local-florida-property-insurance-stabilization', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Insurer Bailout)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-florida-property-insurance-stabilization-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-florida-property-insurance-stabilization-btn-disagree" data-story-id="story-local-florida-property-insurance-stabilization" data-choice="disagree" onclick="voteControversialTake('story-local-florida-property-insurance-stabilization', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Market Is Recovering)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-florida-property-insurance-stabilization-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -10570,17 +10601,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-chiefs-bills-snf-preview-controversial-poll" data-story-id="story-chiefs-bills-snf-preview" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-chiefs-bills-snf-preview-btn-agree" data-story-id="story-chiefs-bills-snf-preview" data-choice="agree" onclick="voteControversialTake('story-chiefs-bills-snf-preview', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-chiefs-bills-snf-preview-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-chiefs-bills-snf-preview-btn-disagree" data-story-id="story-chiefs-bills-snf-preview" data-choice="disagree" onclick="voteControversialTake('story-chiefs-bills-snf-preview', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-chiefs-bills-snf-preview-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -11089,18 +11120,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-apple-tv-standalone-sci-fi-controversial-poll" data-story-id="story-apple-tv-standalone-sci-fi" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Has streaming giants charging $10 to $20 a month each while locking shows behind half a dozen separate apps become a worse ripoff than cable TV?”</p>
+            <div class="controversial-take-poll" style="" id="story-apple-tv-standalone-sci-fi-controversial-poll" data-story-id="story-apple-tv-standalone-sci-fi" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Do you think the price described in this story is fair?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-apple-tv-standalone-sci-fi-btn-agree" data-story-id="story-apple-tv-standalone-sci-fi" data-choice="agree" onclick="voteControversialTake('story-apple-tv-standalone-sci-fi', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Worse Than Cable)</span>
+                  <span class="vote-label">Yes — Fair price</span>
                   <span class="vote-pct" id="story-apple-tv-standalone-sci-fi-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-apple-tv-standalone-sci-fi-btn-disagree" data-story-id="story-apple-tv-standalone-sci-fi" data-choice="disagree" onclick="voteControversialTake('story-apple-tv-standalone-sci-fi', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Better Quality Shows)</span>
+                  <span class="vote-label">No — Too expensive</span>
                   <span class="vote-pct" id="story-apple-tv-standalone-sci-fi-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -11350,17 +11381,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-soc-01-controversial-poll" data-story-id="story-sports-soc-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-soc-01-btn-agree" data-story-id="story-sports-soc-01" data-choice="agree" onclick="voteControversialTake('story-sports-soc-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-soc-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-soc-01-btn-disagree" data-story-id="story-sports-soc-01" data-choice="disagree" onclick="voteControversialTake('story-sports-soc-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-soc-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -12125,22 +12156,22 @@ body.searching-mode #blindStanceSection {
 
             <div class="fact-preview-strip" onclick="toggleKeyFactsDrawer('story-sports-nba-06', event, this)">
               <span class="fact-preview-badge fact">📌 KEY FACT</span>
-              <p class="fact-preview-text">Main Takeaway: Primary reporting confirms that spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns, establishing key operational and public impacts surrounding Victor Wembanyama.</p><span class="fact-preview-chevron" aria-hidden="true">▾</span>
+              <p class="fact-preview-text">Spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns.</p><span class="fact-preview-chevron" aria-hidden="true">▾</span>
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-06-controversial-poll" data-story-id="story-sports-nba-06" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-06-btn-agree" data-story-id="story-sports-nba-06" data-choice="agree" onclick="voteControversialTake('story-sports-nba-06', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nba-06-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-06-btn-disagree" data-story-id="story-sports-nba-06" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-06', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nba-06-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -12169,7 +12200,7 @@ body.searching-mode #blindStanceSection {
                     <span id="story-sports-nba-06-fact-btn-chevron" class="expand-facts-chevron">▾</span>
                   </button>
                 </div>
-                <ul class="core-facts-list"><li>Main Takeaway: Primary reporting confirms that spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns, establishing key operational and public impacts surrounding Victor Wembanyama.</li><li>Key Context: Verified wire dispatches detailed the underlying data, institutional decisions, and timeline driving Victor Wembanyama.</li><li>Direct Impact: Affected communities, organizations, and decision-makers are actively adjusting plans around Victor Wembanyama.</li><li>What's Next: Additional official disclosures and scheduled milestones regarding Victor Wembanyama will follow.</li></ul>
+                <ul class="core-facts-list"><li>Spurs phenom Victor Wembanyama records historic 5x5 stat line in double-overtime thriller against Suns.</li><li>Key Context: Verified wire dispatches detailed the underlying data, institutional decisions, and timeline driving Victor Wembanyama.</li><li>Direct Impact: Affected communities, organizations, and decision-makers are actively adjusting plans around Victor Wembanyama.</li><li>What's Next: Additional official disclosures and scheduled milestones regarding Victor Wembanyama will follow.</li></ul>
 
                 <!-- Expandable Detailed Evidence Dossier -->
                 <div class="expanded-facts-dossier" id="story-sports-nba-06-facts-dossier" style="display: none;">
@@ -12650,17 +12681,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-border-compromise-controversial-poll" data-story-id="story-border-compromise" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is any bipartisan border bill that allows thousands of asylum crossings per day before triggering shutdown authority an amnesty bill in disguise?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-border-compromise-btn-agree" data-story-id="story-border-compromise" data-choice="agree" onclick="voteControversialTake('story-border-compromise', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Enforce Zero Tolerance)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-border-compromise-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-border-compromise-btn-disagree" data-story-id="story-border-compromise" data-choice="disagree" onclick="voteControversialTake('story-border-compromise', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Pragmatic Compromise)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-border-compromise-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -12910,17 +12941,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-bears-patriots-tnf-recap-controversial-poll" data-story-id="story-bears-patriots-tnf-recap" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-bears-patriots-tnf-recap-btn-agree" data-story-id="story-bears-patriots-tnf-recap" data-choice="agree" onclick="voteControversialTake('story-bears-patriots-tnf-recap', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-bears-patriots-tnf-recap-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-bears-patriots-tnf-recap-btn-disagree" data-story-id="story-bears-patriots-tnf-recap" data-choice="disagree" onclick="voteControversialTake('story-bears-patriots-tnf-recap', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-bears-patriots-tnf-recap-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -13170,17 +13201,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-fda-mrna-pancreatic-trial-controversial-poll" data-story-id="story-fda-mrna-pancreatic-trial" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should the FDA's years-long clinical approval bureaucracy kills more terminal cancer patients than it protects—breakthrough vaccines be available immediately under Right to Try?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-fda-mrna-pancreatic-trial-btn-agree" data-story-id="story-fda-mrna-pancreatic-trial" data-choice="agree" onclick="voteControversialTake('story-fda-mrna-pancreatic-trial', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Fast-Track Access Now)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-fda-mrna-pancreatic-trial-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-fda-mrna-pancreatic-trial-btn-disagree" data-story-id="story-fda-mrna-pancreatic-trial" data-choice="disagree" onclick="voteControversialTake('story-fda-mrna-pancreatic-trial', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Safety Trials Are Vital)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-fda-mrna-pancreatic-trial-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -13430,17 +13461,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-michigan-senate-debate-controversial-poll" data-story-id="story-michigan-senate-debate" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Have televised Senate debates devolved into toxic personal smear campaigns that do zero to inform voters about actual economic legislation?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-michigan-senate-debate-btn-agree" data-story-id="story-michigan-senate-debate" data-choice="agree" onclick="voteControversialTake('story-michigan-senate-debate', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Debates Are Broken)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-michigan-senate-debate-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-michigan-senate-debate-btn-disagree" data-story-id="story-michigan-senate-debate" data-choice="disagree" onclick="voteControversialTake('story-michigan-senate-debate', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Exposes Candidates)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-michigan-senate-debate-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -13690,17 +13721,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-cfb-03-controversial-poll" data-story-id="story-sports-cfb-03" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-cfb-03-btn-agree" data-story-id="story-sports-cfb-03" data-choice="agree" onclick="voteControversialTake('story-sports-cfb-03', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-sports-cfb-03-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-cfb-03-btn-disagree" data-story-id="story-sports-cfb-03" data-choice="disagree" onclick="voteControversialTake('story-sports-cfb-03', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-sports-cfb-03-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -14210,17 +14241,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-real-estate-family-offices-rates-controversial-poll" data-story-id="story-real-estate-family-offices-rates" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should billionaire family offices and Wall Street funds be banned from buying up distressed residential and commercial real estate?”</p>
+              <p class="take-statement-text">“Do you think the price described in this story is fair?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-real-estate-family-offices-rates-btn-agree" data-story-id="story-real-estate-family-offices-rates" data-choice="agree" onclick="voteControversialTake('story-real-estate-family-offices-rates', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Ban Billionaire Landlords)</span>
+                  <span class="vote-label">Yes — Fair price</span>
                   <span class="vote-pct" id="story-real-estate-family-offices-rates-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-real-estate-family-offices-rates-btn-disagree" data-story-id="story-real-estate-family-offices-rates" data-choice="disagree" onclick="voteControversialTake('story-real-estate-family-offices-rates', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Free Market Capital)</span>
+                  <span class="vote-label">No — Too expensive</span>
                   <span class="vote-pct" id="story-real-estate-family-offices-rates-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -14470,17 +14501,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-espn-dazn-viewing-guide-controversial-poll" data-story-id="story-espn-dazn-viewing-guide" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-espn-dazn-viewing-guide-btn-agree" data-story-id="story-espn-dazn-viewing-guide" data-choice="agree" onclick="voteControversialTake('story-espn-dazn-viewing-guide', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-espn-dazn-viewing-guide-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-espn-dazn-viewing-guide-btn-disagree" data-story-id="story-espn-dazn-viewing-guide" data-choice="disagree" onclick="voteControversialTake('story-espn-dazn-viewing-guide', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-espn-dazn-viewing-guide-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -14730,17 +14761,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-nextgen-ai-datacenter-chips-controversial-poll" data-story-id="story-nextgen-ai-datacenter-chips" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should tech giants building power-hungry AI data centers be forced to build their own nuclear or solar plants instead of draining the public electrical grid?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-nextgen-ai-datacenter-chips-btn-agree" data-story-id="story-nextgen-ai-datacenter-chips" data-choice="agree" onclick="voteControversialTake('story-nextgen-ai-datacenter-chips', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Make Big Tech Build Power)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-nextgen-ai-datacenter-chips-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-nextgen-ai-datacenter-chips-btn-disagree" data-story-id="story-nextgen-ai-datacenter-chips" data-choice="disagree" onclick="voteControversialTake('story-nextgen-ai-datacenter-chips', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (AI Drives US Competitiveness)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-nextgen-ai-datacenter-chips-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -15250,17 +15281,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-cfb-playoff-24-controversial-poll" data-story-id="story-cfb-playoff-24" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-cfb-playoff-24-btn-agree" data-story-id="story-cfb-playoff-24" data-choice="agree" onclick="voteControversialTake('story-cfb-playoff-24', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-cfb-playoff-24-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-cfb-playoff-24-btn-disagree" data-story-id="story-cfb-playoff-24" data-choice="disagree" onclick="voteControversialTake('story-cfb-playoff-24', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-cfb-playoff-24-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -16030,17 +16061,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-kompany-bayern-hospital-controversial-poll" data-story-id="story-kompany-bayern-hospital" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-kompany-bayern-hospital-btn-agree" data-story-id="story-kompany-bayern-hospital" data-choice="agree" onclick="voteControversialTake('story-kompany-bayern-hospital', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-kompany-bayern-hospital-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-kompany-bayern-hospital-btn-disagree" data-story-id="story-kompany-bayern-hospital" data-choice="disagree" onclick="voteControversialTake('story-kompany-bayern-hospital', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-kompany-bayern-hospital-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -16290,17 +16321,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-oj-simpson-case-controversial-poll" data-story-id="story-oj-simpson-case" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that the 1995 O.J. Simpson verdict was less about the forensic evidence and more a justified indictment of decades of LAPD corruption and racism?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-oj-simpson-case-btn-agree" data-story-id="story-oj-simpson-case" data-choice="agree" onclick="voteControversialTake('story-oj-simpson-case', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (LAPD Bungled The Case)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-oj-simpson-case-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-oj-simpson-case-btn-disagree" data-story-id="story-oj-simpson-case" data-choice="disagree" onclick="voteControversialTake('story-oj-simpson-case', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Clear Miscarriage of Justice)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-oj-simpson-case-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -16810,17 +16841,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-mlb-01-controversial-poll" data-story-id="story-sports-mlb-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-mlb-01-btn-agree" data-story-id="story-sports-mlb-01" data-choice="agree" onclick="voteControversialTake('story-sports-mlb-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-mlb-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-mlb-01-btn-disagree" data-story-id="story-sports-mlb-01" data-choice="disagree" onclick="voteControversialTake('story-sports-mlb-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-mlb-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -17330,17 +17361,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-trump-approval-midterms-controversial-poll" data-story-id="story-trump-approval-midterms" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that national approval polls consistently undercount working-class conservative voters and cannot be trusted to predict midterm election turnouts?”</p>
+              <p class="take-statement-text">“Do you think the election results will lead to positive changes?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-trump-approval-midterms-btn-agree" data-story-id="story-trump-approval-midterms" data-choice="agree" onclick="voteControversialTake('story-trump-approval-midterms', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Polls Are Biased)</span>
+                  <span class="vote-label">Yes — I think so</span>
                   <span class="vote-pct" id="story-trump-approval-midterms-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-trump-approval-midterms-btn-disagree" data-story-id="story-trump-approval-midterms" data-choice="disagree" onclick="voteControversialTake('story-trump-approval-midterms', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Voters Are Turning On GOP)</span>
+                  <span class="vote-label">No — I don't</span>
                   <span class="vote-pct" id="story-trump-approval-midterms-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -17590,17 +17621,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-01-controversial-poll" data-story-id="story-sports-nba-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-01-btn-agree" data-story-id="story-sports-nba-01" data-choice="agree" onclick="voteControversialTake('story-sports-nba-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-nba-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-01-btn-disagree" data-story-id="story-sports-nba-01" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-nba-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -17850,17 +17881,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-1792776582-melania-oleshky-controversial-poll" data-story-id="story-1792776582-melania-oleshky" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that backchannel humanitarian diplomacy accomplishes far more to save civilian lives in Ukraine than sending another $60 billion in military weapons?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-1792776582-melania-oleshky-btn-agree" data-story-id="story-1792776582-melania-oleshky" data-choice="agree" onclick="voteControversialTake('story-1792776582-melania-oleshky', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Diplomacy Over Weapons)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-1792776582-melania-oleshky-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-1792776582-melania-oleshky-btn-disagree" data-story-id="story-1792776582-melania-oleshky" data-choice="disagree" onclick="voteControversialTake('story-1792776582-melania-oleshky', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Only Military Strength Works)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-1792776582-melania-oleshky-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -18370,17 +18401,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-cfb-01-controversial-poll" data-story-id="story-sports-cfb-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-cfb-01-btn-agree" data-story-id="story-sports-cfb-01" data-choice="agree" onclick="voteControversialTake('story-sports-cfb-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-sports-cfb-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-cfb-01-btn-disagree" data-story-id="story-sports-cfb-01" data-choice="disagree" onclick="voteControversialTake('story-sports-cfb-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-sports-cfb-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -18630,17 +18661,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-cbp-autonomous-port-scanners-controversial-poll" data-story-id="story-cbp-autonomous-port-scanners" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is deploying AI X-ray portals at every border crossing far more effective at stopping cartel smuggling than building physical steel walls?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-cbp-autonomous-port-scanners-btn-agree" data-story-id="story-cbp-autonomous-port-scanners" data-choice="agree" onclick="voteControversialTake('story-cbp-autonomous-port-scanners', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Smart Tech Beats Walls)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-cbp-autonomous-port-scanners-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-cbp-autonomous-port-scanners-btn-disagree" data-story-id="story-cbp-autonomous-port-scanners" data-choice="disagree" onclick="voteControversialTake('story-cbp-autonomous-port-scanners', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Physical Walls Are Essential)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-cbp-autonomous-port-scanners-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -19150,17 +19181,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-golf-01-controversial-poll" data-story-id="story-sports-golf-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-golf-01-btn-agree" data-story-id="story-sports-golf-01" data-choice="agree" onclick="voteControversialTake('story-sports-golf-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-golf-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-golf-01-btn-disagree" data-story-id="story-sports-golf-01" data-choice="disagree" onclick="voteControversialTake('story-sports-golf-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-golf-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -19930,17 +19961,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-03-controversial-poll" data-story-id="story-sports-nfl-03" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-03-btn-agree" data-story-id="story-sports-nfl-03" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-03', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nfl-03-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-03-btn-disagree" data-story-id="story-sports-nfl-03" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-03', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nfl-03-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -20710,17 +20741,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-03-controversial-poll" data-story-id="story-sports-nba-03" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-03-btn-agree" data-story-id="story-sports-nba-03" data-choice="agree" onclick="voteControversialTake('story-sports-nba-03', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nba-03-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-03-btn-disagree" data-story-id="story-sports-nba-03" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-03', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nba-03-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -20970,17 +21001,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-canada-cfb-wainwright-fire-controversial-poll" data-story-id="story-canada-cfb-wainwright-fire" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Have western nations hollowed out their domestic military base infrastructure and safety maintenance to dangerous levels?”</p>
+              <p class="take-statement-text">“Should leaders do more to resolve this situation?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-canada-cfb-wainwright-fire-btn-agree" data-story-id="story-canada-cfb-wainwright-fire" data-choice="agree" onclick="voteControversialTake('story-canada-cfb-wainwright-fire', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Military Bases Are Neglected)</span>
+                  <span class="vote-label">Yes — Take action</span>
                   <span class="vote-pct" id="story-canada-cfb-wainwright-fire-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-canada-cfb-wainwright-fire-btn-disagree" data-story-id="story-canada-cfb-wainwright-fire" data-choice="disagree" onclick="voteControversialTake('story-canada-cfb-wainwright-fire', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Isolated Tragic Accident)</span>
+                  <span class="vote-label">No — Current approach is enough</span>
                   <span class="vote-pct" id="story-canada-cfb-wainwright-fire-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -21490,17 +21521,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-cfb-02-controversial-poll" data-story-id="story-sports-cfb-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-cfb-02-btn-agree" data-story-id="story-sports-cfb-02" data-choice="agree" onclick="voteControversialTake('story-sports-cfb-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-cfb-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-cfb-02-btn-disagree" data-story-id="story-sports-cfb-02" data-choice="disagree" onclick="voteControversialTake('story-sports-cfb-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-cfb-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -21750,17 +21781,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-supreme-court-speech-controversial-poll" data-story-id="story-supreme-court-speech" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should big Tech social media platforms act as the modern public square and be legally barred from censoring any lawful political speech?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-supreme-court-speech-btn-agree" data-story-id="story-supreme-court-speech" data-choice="agree" onclick="voteControversialTake('story-supreme-court-speech', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Treat Tech Like Common Carriers)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-supreme-court-speech-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-supreme-court-speech-btn-disagree" data-story-id="story-supreme-court-speech" data-choice="disagree" onclick="voteControversialTake('story-supreme-court-speech', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Private Platforms Have 1A Rights)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-supreme-court-speech-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -22270,17 +22301,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-04-controversial-poll" data-story-id="story-sports-nfl-04" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-04-btn-agree" data-story-id="story-sports-nfl-04" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-04', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nfl-04-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-04-btn-disagree" data-story-id="story-sports-nfl-04" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-04', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nfl-04-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -22530,17 +22561,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-medicare-negotiations-controversial-poll" data-story-id="story-medicare-negotiations" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Will government price controls on prescription drugs slash pharmaceutical R&D and result in fewer life-saving cures over the next decade?”</p>
+              <p class="take-statement-text">“Do you think the price described in this story is fair?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-medicare-negotiations-btn-agree" data-story-id="story-medicare-negotiations" data-choice="agree" onclick="voteControversialTake('story-medicare-negotiations', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Price Caps Hurt Innovation)</span>
+                  <span class="vote-label">Yes — Fair price</span>
                   <span class="vote-pct" id="story-medicare-negotiations-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-medicare-negotiations-btn-disagree" data-story-id="story-medicare-negotiations" data-choice="disagree" onclick="voteControversialTake('story-medicare-negotiations', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Big Pharma Gouges Seniors)</span>
+                  <span class="vote-label">No — Too expensive</span>
                   <span class="vote-pct" id="story-medicare-negotiations-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -22790,17 +22821,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-trump-immigration-soften-controversial-poll" data-story-id="story-trump-immigration-soften" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that exempting big agriculture and hospitality corporations from immigration enforcement proves neither party actually wants to end illegal labor?”</p>
+              <p class="take-statement-text">“Do you support the decision described in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-trump-immigration-soften-btn-agree" data-story-id="story-trump-immigration-soften" data-choice="agree" onclick="voteControversialTake('story-trump-immigration-soften', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Corporate Lobbyists Run Policy)</span>
+                  <span class="vote-label">Yes — I support it</span>
                   <span class="vote-pct" id="story-trump-immigration-soften-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-trump-immigration-soften-btn-disagree" data-story-id="story-trump-immigration-soften" data-choice="disagree" onclick="voteControversialTake('story-trump-immigration-soften', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Pragmatic Economic Realism)</span>
+                  <span class="vote-label">No — I don't</span>
                   <span class="vote-pct" id="story-trump-immigration-soften-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -23050,17 +23081,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-soc-02-controversial-poll" data-story-id="story-sports-soc-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-soc-02-btn-agree" data-story-id="story-sports-soc-02" data-choice="agree" onclick="voteControversialTake('story-sports-soc-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-soc-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-soc-02-btn-disagree" data-story-id="story-sports-soc-02" data-choice="disagree" onclick="voteControversialTake('story-sports-soc-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-soc-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -23570,17 +23601,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-fed-rates-steady-controversial-poll" data-story-id="story-fed-rates-steady" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is the Federal Reserve keeping interest rates near 5% intentionally crushing first-time homebuyers while protecting big banks?”</p>
+              <p class="take-statement-text">“Do you think the price described in this story is fair?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-fed-rates-steady-btn-agree" data-story-id="story-fed-rates-steady" data-choice="agree" onclick="voteControversialTake('story-fed-rates-steady', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Fed Is Crushing Homebuyers)</span>
+                  <span class="vote-label">Yes — Fair price</span>
                   <span class="vote-pct" id="story-fed-rates-steady-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-fed-rates-steady-btn-disagree" data-story-id="story-fed-rates-steady" data-choice="disagree" onclick="voteControversialTake('story-fed-rates-steady', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (High Rates Stop Inflation)</span>
+                  <span class="vote-label">No — Too expensive</span>
                   <span class="vote-pct" id="story-fed-rates-steady-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -23830,17 +23861,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-ten-01-controversial-poll" data-story-id="story-sports-ten-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-ten-01-btn-agree" data-story-id="story-sports-ten-01" data-choice="agree" onclick="voteControversialTake('story-sports-ten-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-sports-ten-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-ten-01-btn-disagree" data-story-id="story-sports-ten-01" data-choice="disagree" onclick="voteControversialTake('story-sports-ten-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-sports-ten-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -24090,17 +24121,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-science-astronomy-water-vapor-controversial-poll" data-story-id="story-science-astronomy-water-vapor" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is spending billions of taxpayer dollars on deep-space telescopes searching for alien water vapor a luxury we can't afford while Earth's infrastructure crumbles?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-science-astronomy-water-vapor-btn-agree" data-story-id="story-science-astronomy-water-vapor" data-choice="agree" onclick="voteControversialTake('story-science-astronomy-water-vapor', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Fix Earth First)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-science-astronomy-water-vapor-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-science-astronomy-water-vapor-btn-disagree" data-story-id="story-science-astronomy-water-vapor" data-choice="disagree" onclick="voteControversialTake('story-science-astronomy-water-vapor', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Space Science Drives Humanity)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-science-astronomy-water-vapor-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -24350,17 +24381,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-entertainment-box-office-rebound-controversial-poll" data-story-id="story-entertainment-box-office-rebound" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that movie theaters charging $25 a ticket and $18 for popcorn deserve to lose audiences to home streaming setups?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-entertainment-box-office-rebound-btn-agree" data-story-id="story-entertainment-box-office-rebound" data-choice="agree" onclick="voteControversialTake('story-entertainment-box-office-rebound', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Theaters Priced Themselves Out)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-entertainment-box-office-rebound-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-entertainment-box-office-rebound-btn-disagree" data-story-id="story-entertainment-box-office-rebound" data-choice="disagree" onclick="voteControversialTake('story-entertainment-box-office-rebound', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Big Screen Is Worth It)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-entertainment-box-office-rebound-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -24610,7 +24641,7 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-05-controversial-poll" data-story-id="story-sports-nfl-05" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should the athlete in this story prioritize a full recovery over returning quickly?”</p>
+              <p class="take-statement-text">“Should this player wait until fully healthy before returning?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-05-btn-agree" data-story-id="story-sports-nfl-05" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-05', 'agree', this, event); event.stopPropagation();">
@@ -24870,17 +24901,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-election-mailings-controversial-poll" data-story-id="story-election-mailings" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should anyone convicted of sending threatening or suspicious packages to election workers face a mandatory 20-year federal prison sentence?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-election-mailings-btn-agree" data-story-id="story-election-mailings" data-choice="agree" onclick="voteControversialTake('story-election-mailings', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Mandatory 20-Year Sentence)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-election-mailings-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-election-mailings-btn-disagree" data-story-id="story-election-mailings" data-choice="disagree" onclick="voteControversialTake('story-election-mailings', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Use Existing Felony Laws)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-election-mailings-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -25390,17 +25421,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-08-controversial-poll" data-story-id="story-sports-nfl-08" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-08-btn-agree" data-story-id="story-sports-nfl-08" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-08', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nfl-08-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-08-btn-disagree" data-story-id="story-sports-nfl-08" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-08', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nfl-08-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -25650,17 +25681,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-tesla-roadster-controversial-poll" data-story-id="story-tesla-roadster" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that elon Musk taking $50,000 customer deposits in 2017 for a Tesla Roadster that still hasn't shipped is consumer fraud?”</p>
+              <p class="take-statement-text">“Do you think this is good news for consumers?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-tesla-roadster-btn-agree" data-story-id="story-tesla-roadster" data-choice="agree" onclick="voteControversialTake('story-tesla-roadster', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Unacceptable 8-Year Delay)</span>
+                  <span class="vote-label">Yes — Good for consumers</span>
                   <span class="vote-pct" id="story-tesla-roadster-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-tesla-roadster-btn-disagree" data-story-id="story-tesla-roadster" data-choice="disagree" onclick="voteControversialTake('story-tesla-roadster', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Engineering Breakthroughs Take Time)</span>
+                  <span class="vote-label">No — I don't think so</span>
                   <span class="vote-pct" id="story-tesla-roadster-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -25910,17 +25941,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-chip-export-controls-controversial-poll" data-story-id="story-chip-export-controls" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Are u.S. export bans on AI chips to China backfiring by forcing Beijing to build its own self-sufficient semiconductor supply chain?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-chip-export-controls-btn-agree" data-story-id="story-chip-export-controls" data-choice="agree" onclick="voteControversialTake('story-chip-export-controls', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Export Bans Are Backfiring)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-chip-export-controls-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-chip-export-controls-btn-disagree" data-story-id="story-chip-export-controls" data-choice="disagree" onclick="voteControversialTake('story-chip-export-controls', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Never Sell AI Weapons To Rivals)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-chip-export-controls-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -26170,17 +26201,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-06-controversial-poll" data-story-id="story-sports-nfl-06" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-06-btn-agree" data-story-id="story-sports-nfl-06" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-06', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nfl-06-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-06-btn-disagree" data-story-id="story-sports-nfl-06" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-06', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nfl-06-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -26950,17 +26981,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-09-controversial-poll" data-story-id="story-sports-nfl-09" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-09-btn-agree" data-story-id="story-sports-nfl-09" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-09', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-nfl-09-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-09-btn-disagree" data-story-id="story-sports-nfl-09" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-09', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-nfl-09-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -27210,17 +27241,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-anthropic-ipo-controversial-poll" data-story-id="story-anthropic-ipo" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Will foundation AI companies burning billions of dollars a year without a profitable business model never justify their $40B+ valuations?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-anthropic-ipo-btn-agree" data-story-id="story-anthropic-ipo" data-choice="agree" onclick="voteControversialTake('story-anthropic-ipo', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Massive AI Valuation Bubble)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-anthropic-ipo-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-anthropic-ipo-btn-disagree" data-story-id="story-anthropic-ipo" data-choice="disagree" onclick="voteControversialTake('story-anthropic-ipo', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (AI Will Replace Trillions In Labor)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-anthropic-ipo-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -27730,17 +27761,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-07-controversial-poll" data-story-id="story-sports-nfl-07" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-07-btn-agree" data-story-id="story-sports-nfl-07" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-07', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-nfl-07-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nfl-07-btn-disagree" data-story-id="story-sports-nfl-07" data-choice="disagree" onclick="voteControversialTake('story-sports-nfl-07', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-nfl-07-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -27990,17 +28021,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-dow-nasdaq-ai-rotation-controversial-poll" data-story-id="story-dow-nasdaq-ai-rotation" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Will boring dividend-paying industrial and energy stocks outperform flashy AI tech stocks over the next five years?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-dow-nasdaq-ai-rotation-btn-agree" data-story-id="story-dow-nasdaq-ai-rotation" data-choice="agree" onclick="voteControversialTake('story-dow-nasdaq-ai-rotation', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Value Beats AI Hype)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-dow-nasdaq-ai-rotation-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-dow-nasdaq-ai-rotation-btn-disagree" data-story-id="story-dow-nasdaq-ai-rotation" data-choice="disagree" onclick="voteControversialTake('story-dow-nasdaq-ai-rotation', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Tech Always Wins Long-Term)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-dow-nasdaq-ai-rotation-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -28250,17 +28281,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-science-nasa-james-webb-controversial-poll" data-story-id="story-science-nasa-james-webb" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Is statistical atmospheric biosignatures on distant exoplanets prove microbial life common across our galaxy?”</p>
+              <p class="take-statement-text">“Would you try the technology in this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-science-nasa-james-webb-btn-agree" data-story-id="story-science-nasa-james-webb" data-choice="agree" onclick="voteControversialTake('story-science-nasa-james-webb', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (We Are Not Alone)</span>
+                  <span class="vote-label">Yes — I'd try it</span>
                   <span class="vote-pct" id="story-science-nasa-james-webb-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-science-nasa-james-webb-btn-disagree" data-story-id="story-science-nasa-james-webb" data-choice="disagree" onclick="voteControversialTake('story-science-nasa-james-webb', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Extraordinary Claims Need Proof)</span>
+                  <span class="vote-label">No — Not for me</span>
                   <span class="vote-pct" id="story-science-nasa-james-webb-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -28510,7 +28541,7 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nfl-10-controversial-poll" data-story-id="story-sports-nfl-10" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should the athlete in this story prioritize a full recovery over returning quickly?”</p>
+              <p class="take-statement-text">“Should this player wait until fully healthy before returning?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nfl-10-btn-agree" data-story-id="story-sports-nfl-10" data-choice="agree" onclick="voteControversialTake('story-sports-nfl-10', 'agree', this, event); event.stopPropagation();">
@@ -29290,17 +29321,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-04-controversial-poll" data-story-id="story-sports-nba-04" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-04-btn-agree" data-story-id="story-sports-nba-04" data-choice="agree" onclick="voteControversialTake('story-sports-nba-04', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-sports-nba-04-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-04-btn-disagree" data-story-id="story-sports-nba-04" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-04', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-sports-nba-04-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -29550,17 +29581,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-fox-second-amendment-carry-precedent-controversial-poll" data-story-id="story-fox-second-amendment-carry-precedent" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that law-abiding citizens with concealed carry permits make public transit and parks safer by deterring violent criminals?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-fox-second-amendment-carry-precedent-btn-agree" data-story-id="story-fox-second-amendment-carry-precedent" data-choice="agree" onclick="voteControversialTake('story-fox-second-amendment-carry-precedent', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (More Good Guys With Guns)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-fox-second-amendment-carry-precedent-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-fox-second-amendment-carry-precedent-btn-disagree" data-story-id="story-fox-second-amendment-carry-precedent" data-choice="disagree" onclick="voteControversialTake('story-fox-second-amendment-carry-precedent', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (More Guns Mean More Shootings)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-fox-second-amendment-carry-precedent-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -29810,17 +29841,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-msnbc-labor-minimum-wage-bill-controversial-poll" data-story-id="story-msnbc-labor-minimum-wage-bill" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Will mandating a $17 federal minimum wage nationwide wipe out small-town restaurants and force businesses to replace teenage workers with self-checkout kiosks?”</p>
+              <p class="take-statement-text">“Do you think voters made the right choice in this election?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-msnbc-labor-minimum-wage-bill-btn-agree" data-story-id="story-msnbc-labor-minimum-wage-bill" data-choice="agree" onclick="voteControversialTake('story-msnbc-labor-minimum-wage-bill', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree ($17 Wage Kills Small Business)</span>
+                  <span class="vote-label">Yes — Right choice</span>
                   <span class="vote-pct" id="story-msnbc-labor-minimum-wage-bill-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-msnbc-labor-minimum-wage-bill-btn-disagree" data-story-id="story-msnbc-labor-minimum-wage-bill" data-choice="disagree" onclick="voteControversialTake('story-msnbc-labor-minimum-wage-bill', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Full-Time Work Deserves Living Pay)</span>
+                  <span class="vote-label">No — I disagree</span>
                   <span class="vote-pct" id="story-msnbc-labor-minimum-wage-bill-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -30070,17 +30101,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-05-controversial-poll" data-story-id="story-sports-nba-05" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-05-btn-agree" data-story-id="story-sports-nba-05" data-choice="agree" onclick="voteControversialTake('story-sports-nba-05', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-sports-nba-05-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-05-btn-disagree" data-story-id="story-sports-nba-05" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-05', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-sports-nba-05-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -30589,18 +30620,18 @@ body.searching-mode #blindStanceSection {
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" style="" id="story-propublica-hospital-equity-care-cutbacks-controversial-poll" data-story-id="story-propublica-hospital-equity-care-cutbacks" data-agree-lens="LEFT" data-disagree-lens="RIGHT">
-              <p class="take-statement-text">“Should public universities be banned from paying $40M–$70M guaranteed coaching buyouts while student tuition and fees keep rising?”</p>
+            <div class="controversial-take-poll" style="" id="story-propublica-hospital-equity-care-cutbacks-controversial-poll" data-story-id="story-propublica-hospital-equity-care-cutbacks" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
+              <p class="take-statement-text">“Do you think the price described in this story is fair?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-propublica-hospital-equity-care-cutbacks-btn-agree" data-story-id="story-propublica-hospital-equity-care-cutbacks" data-choice="agree" onclick="voteControversialTake('story-propublica-hospital-equity-care-cutbacks', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Cap coaching buyouts</span>
+                  <span class="vote-label">Yes — Fair price</span>
                   <span class="vote-pct" id="story-propublica-hospital-equity-care-cutbacks-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-propublica-hospital-equity-care-cutbacks-btn-disagree" data-story-id="story-propublica-hospital-equity-care-cutbacks" data-choice="disagree" onclick="voteControversialTake('story-propublica-hospital-equity-care-cutbacks', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Boosters fund it</span>
+                  <span class="vote-label">No — Too expensive</span>
                   <span class="vote-pct" id="story-propublica-hospital-equity-care-cutbacks-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -30850,17 +30881,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-07-controversial-poll" data-story-id="story-sports-nba-07" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think this team can keep it up?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-07-btn-agree" data-story-id="story-sports-nba-07" data-choice="agree" onclick="voteControversialTake('story-sports-nba-07', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — They're for real</span>
                   <span class="vote-pct" id="story-sports-nba-07-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-07-btn-disagree" data-story-id="story-sports-nba-07" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-07', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — I'm not convinced</span>
                   <span class="vote-pct" id="story-sports-nba-07-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -31110,17 +31141,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-orlando-lake-eola-farmers-market-controversial-poll" data-story-id="story-local-orlando-lake-eola-farmers-market" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that city-run weekend markets charge local farmers and artisans excessive vendor fees while giving corporate sponsors prime placement?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-orlando-lake-eola-farmers-market-btn-agree" data-story-id="story-local-orlando-lake-eola-farmers-market" data-choice="agree" onclick="voteControversialTake('story-local-orlando-lake-eola-farmers-market', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Cut Vendor Fees For Locals)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-orlando-lake-eola-farmers-market-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-orlando-lake-eola-farmers-market-btn-disagree" data-story-id="story-local-orlando-lake-eola-farmers-market" data-choice="disagree" onclick="voteControversialTake('story-local-orlando-lake-eola-farmers-market', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Fees Keep The Park Clean)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-orlando-lake-eola-farmers-market-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -31370,17 +31401,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-miami-wynwood-art-walk-showcase-controversial-poll" data-story-id="story-local-miami-wynwood-art-walk-showcase" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should local achievements and community celebrations like this receive more news coverage?”</p>
+              <p class="take-statement-text">“Should local achievements like this get more attention in the news?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-miami-wynwood-art-walk-showcase-btn-agree" data-story-id="story-local-miami-wynwood-art-walk-showcase" data-choice="agree" onclick="voteControversialTake('story-local-miami-wynwood-art-walk-showcase', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More local coverage</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-local-miami-wynwood-art-walk-showcase-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-miami-wynwood-art-walk-showcase-btn-disagree" data-story-id="story-local-miami-wynwood-art-walk-showcase" data-choice="disagree" onclick="voteControversialTake('story-local-miami-wynwood-art-walk-showcase', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Focus on other news</span>
+                  <span class="vote-label">No — Other news matters more</span>
                   <span class="vote-pct" id="story-local-miami-wynwood-art-walk-showcase-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -31630,17 +31661,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nba-08-controversial-poll" data-story-id="story-sports-nba-08" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nba-08-btn-agree" data-story-id="story-sports-nba-08" data-choice="agree" onclick="voteControversialTake('story-sports-nba-08', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nba-08-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nba-08-btn-disagree" data-story-id="story-sports-nba-08" data-choice="disagree" onclick="voteControversialTake('story-sports-nba-08', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nba-08-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -31890,17 +31921,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-atlanta-dogwood-festival-showcase-controversial-poll" data-story-id="story-local-atlanta-dogwood-festival-showcase" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Should local achievements and community celebrations like this receive more news coverage?”</p>
+              <p class="take-statement-text">“Should local achievements like this get more attention in the news?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-atlanta-dogwood-festival-showcase-btn-agree" data-story-id="story-local-atlanta-dogwood-festival-showcase" data-choice="agree" onclick="voteControversialTake('story-local-atlanta-dogwood-festival-showcase', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More local coverage</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-local-atlanta-dogwood-festival-showcase-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-atlanta-dogwood-festival-showcase-btn-disagree" data-story-id="story-local-atlanta-dogwood-festival-showcase" data-choice="disagree" onclick="voteControversialTake('story-local-atlanta-dogwood-festival-showcase', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Focus on other news</span>
+                  <span class="vote-label">No — Other news matters more</span>
                   <span class="vote-pct" id="story-local-atlanta-dogwood-festival-showcase-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -32410,17 +32441,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-nhl-01-controversial-poll" data-story-id="story-sports-nhl-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-nhl-01-btn-agree" data-story-id="story-sports-nhl-01" data-choice="agree" onclick="voteControversialTake('story-sports-nhl-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-nhl-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-nhl-01-btn-disagree" data-story-id="story-sports-nhl-01" data-choice="disagree" onclick="voteControversialTake('story-sports-nhl-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-nhl-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -32670,17 +32701,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-local-nyc-bryant-park-winter-village-controversial-poll" data-story-id="story-local-nyc-bryant-park-winter-village" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree that turning public Manhattan parks into corporate-sponsored holiday shopping villages for four months a year privatizes scarce public green space?”</p>
+              <p class="take-statement-text">“Would you like to see more reporting on this story?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-local-nyc-bryant-park-winter-village-btn-agree" data-story-id="story-local-nyc-bryant-park-winter-village" data-choice="agree" onclick="voteControversialTake('story-local-nyc-bryant-park-winter-village', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Agree (Stop Privatizing Public Parks)</span>
+                  <span class="vote-label">Yes — Follow up</span>
                   <span class="vote-pct" id="story-local-nyc-bryant-park-winter-village-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-local-nyc-bryant-park-winter-village-btn-disagree" data-story-id="story-local-nyc-bryant-park-winter-village" data-choice="disagree" onclick="voteControversialTake('story-local-nyc-bryant-park-winter-village', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">Disagree (Best Winter Tradition In NYC)</span>
+                  <span class="vote-label">No — That's enough</span>
                   <span class="vote-pct" id="story-local-nyc-bryant-park-winter-village-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -33190,17 +33221,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-mlb-03-controversial-poll" data-story-id="story-sports-mlb-03" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-mlb-03-btn-agree" data-story-id="story-sports-mlb-03" data-choice="agree" onclick="voteControversialTake('story-sports-mlb-03', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-mlb-03-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-mlb-03-btn-disagree" data-story-id="story-sports-mlb-03" data-choice="disagree" onclick="voteControversialTake('story-sports-mlb-03', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-mlb-03-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -33450,17 +33481,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-ufc-01-controversial-poll" data-story-id="story-sports-ufc-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-ufc-01-btn-agree" data-story-id="story-sports-ufc-01" data-choice="agree" onclick="voteControversialTake('story-sports-ufc-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-ufc-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-ufc-01-btn-disagree" data-story-id="story-sports-ufc-01" data-choice="disagree" onclick="voteControversialTake('story-sports-ufc-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-ufc-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -33710,17 +33741,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-cbb-01-controversial-poll" data-story-id="story-sports-cbb-01" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-cbb-01-btn-agree" data-story-id="story-sports-cbb-01" data-choice="agree" onclick="voteControversialTake('story-sports-cbb-01', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-cbb-01-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-cbb-01-btn-disagree" data-story-id="story-sports-cbb-01" data-choice="disagree" onclick="voteControversialTake('story-sports-cbb-01', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-cbb-01-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -33970,17 +34001,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-sports-ufc-02-controversial-poll" data-story-id="story-sports-ufc-02" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-sports-ufc-02-btn-agree" data-story-id="story-sports-ufc-02" data-choice="agree" onclick="voteControversialTake('story-sports-ufc-02', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-sports-ufc-02-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-sports-ufc-02-btn-disagree" data-story-id="story-sports-ufc-02" data-choice="disagree" onclick="voteControversialTake('story-sports-ufc-02', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-sports-ufc-02-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -34230,17 +34261,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-byu-big-12-basketball-media-days-controversial-poll" data-story-id="story-byu-big-12-basketball-media-days" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-byu-big-12-basketball-media-days-btn-agree" data-story-id="story-byu-big-12-basketball-media-days" data-choice="agree" onclick="voteControversialTake('story-byu-big-12-basketball-media-days', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-byu-big-12-basketball-media-days-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-byu-big-12-basketball-media-days-btn-disagree" data-story-id="story-byu-big-12-basketball-media-days" data-choice="disagree" onclick="voteControversialTake('story-byu-big-12-basketball-media-days', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-byu-big-12-basketball-media-days-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -34490,17 +34521,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-warriors-porzingis-trades-absence-controversial-poll" data-story-id="story-warriors-porzingis-trades-absence" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Do you think the team made the right move?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-warriors-porzingis-trades-absence-btn-agree" data-story-id="story-warriors-porzingis-trades-absence" data-choice="agree" onclick="voteControversialTake('story-warriors-porzingis-trades-absence', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — Good decision</span>
                   <span class="vote-pct" id="story-warriors-porzingis-trades-absence-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-warriors-porzingis-trades-absence-btn-disagree" data-story-id="story-warriors-porzingis-trades-absence" data-choice="disagree" onclick="voteControversialTake('story-warriors-porzingis-trades-absence', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Bad decision</span>
                   <span class="vote-pct" id="story-warriors-porzingis-trades-absence-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -34750,17 +34781,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-rams-injuries-wr-adams-controversial-poll" data-story-id="story-rams-injuries-wr-adams" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Should this player wait until fully healthy before returning?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-rams-injuries-wr-adams-btn-agree" data-story-id="story-rams-injuries-wr-adams" data-choice="agree" onclick="voteControversialTake('story-rams-injuries-wr-adams', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — Health first</span>
                   <span class="vote-pct" id="story-rams-injuries-wr-adams-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-rams-injuries-wr-adams-btn-disagree" data-story-id="story-rams-injuries-wr-adams" data-choice="disagree" onclick="voteControversialTake('story-rams-injuries-wr-adams', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Return when cleared</span>
                   <span class="vote-pct" id="story-rams-injuries-wr-adams-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -35010,17 +35041,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-nba-preseason-power-rankings-controversial-poll" data-story-id="story-nba-preseason-power-rankings" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-nba-preseason-power-rankings-btn-agree" data-story-id="story-nba-preseason-power-rankings" data-choice="agree" onclick="voteControversialTake('story-nba-preseason-power-rankings', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-nba-preseason-power-rankings-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-nba-preseason-power-rankings-btn-disagree" data-story-id="story-nba-preseason-power-rankings" data-choice="disagree" onclick="voteControversialTake('story-nba-preseason-power-rankings', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-nba-preseason-power-rankings-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -35270,17 +35301,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-cfb-rankings-upsets-controversial-poll" data-story-id="story-cfb-rankings-upsets" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Do you agree with the team or league decision described in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-cfb-rankings-upsets-btn-agree" data-story-id="story-cfb-rankings-upsets" data-choice="agree" onclick="voteControversialTake('story-cfb-rankings-upsets', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — Right move</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-cfb-rankings-upsets-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-cfb-rankings-upsets-btn-disagree" data-story-id="story-cfb-rankings-upsets" data-choice="disagree" onclick="voteControversialTake('story-cfb-rankings-upsets', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Wrong move</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-cfb-rankings-upsets-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -35530,17 +35561,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-pga-saudi-merger-controversial-poll" data-story-id="story-pga-saudi-merger" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-pga-saudi-merger-btn-agree" data-story-id="story-pga-saudi-merger" data-choice="agree" onclick="voteControversialTake('story-pga-saudi-merger', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-pga-saudi-merger-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-pga-saudi-merger-btn-disagree" data-story-id="story-pga-saudi-merger" data-choice="disagree" onclick="voteControversialTake('story-pga-saudi-merger', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-pga-saudi-merger-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -35790,17 +35821,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-ncaa-revenue-share-controversial-poll" data-story-id="story-ncaa-revenue-share" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-ncaa-revenue-share-btn-agree" data-story-id="story-ncaa-revenue-share" data-choice="agree" onclick="voteControversialTake('story-ncaa-revenue-share', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-ncaa-revenue-share-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-ncaa-revenue-share-btn-disagree" data-story-id="story-ncaa-revenue-share" data-choice="disagree" onclick="voteControversialTake('story-ncaa-revenue-share', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-ncaa-revenue-share-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -36050,17 +36081,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-nfl-jalen-hurts-controversial-poll" data-story-id="story-nfl-jalen-hurts" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-nfl-jalen-hurts-btn-agree" data-story-id="story-nfl-jalen-hurts" data-choice="agree" onclick="voteControversialTake('story-nfl-jalen-hurts', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-nfl-jalen-hurts-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-nfl-jalen-hurts-btn-disagree" data-story-id="story-nfl-jalen-hurts" data-choice="disagree" onclick="voteControversialTake('story-nfl-jalen-hurts', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-nfl-jalen-hurts-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -36310,17 +36341,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-nba-lakers-prep-controversial-poll" data-story-id="story-nba-lakers-prep" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-nba-lakers-prep-btn-agree" data-story-id="story-nba-lakers-prep" data-choice="agree" onclick="voteControversialTake('story-nba-lakers-prep', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-nba-lakers-prep-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-nba-lakers-prep-btn-disagree" data-story-id="story-nba-lakers-prep" data-choice="disagree" onclick="voteControversialTake('story-nba-lakers-prep', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-nba-lakers-prep-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -36570,17 +36601,17 @@ body.searching-mode #blindStanceSection {
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
             <div class="controversial-take-poll" style="" id="story-dodgers-brewers-nlcs-controversial-poll" data-story-id="story-dodgers-brewers-nlcs" data-agree-lens="RIGHT" data-disagree-lens="LEFT">
-              <p class="take-statement-text">“Would you like more analysis of the players and teams involved in this story?”</p>
+              <p class="take-statement-text">“Would you like to see more coverage of this team or athlete?”</p>
 
               <div class="take-vote-actions">
                 <button type="button" class="btn-take-vote btn-take-agree" id="story-dodgers-brewers-nlcs-btn-agree" data-story-id="story-dodgers-brewers-nlcs" data-choice="agree" onclick="voteControversialTake('story-dodgers-brewers-nlcs', 'agree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👍</span>
-                  <span class="vote-label">Yes — More analysis</span>
+                  <span class="vote-label">Yes — More coverage</span>
                   <span class="vote-pct" id="story-dodgers-brewers-nlcs-pct-agree" style="display: none;"></span>
                 </button>
                 <button type="button" class="btn-take-vote btn-take-disagree" id="story-dodgers-brewers-nlcs-btn-disagree" data-story-id="story-dodgers-brewers-nlcs" data-choice="disagree" onclick="voteControversialTake('story-dodgers-brewers-nlcs', 'disagree', this, event); event.stopPropagation();">
                   <span class="vote-icon">👎</span>
-                  <span class="vote-label">No — Just the highlights</span>
+                  <span class="vote-label">No — Not interested</span>
                   <span class="vote-pct" id="story-dodgers-brewers-nlcs-pct-disagree" style="display: none;"></span>
                 </button>
               </div>
@@ -37118,25 +37149,34 @@ body.searching-mode #blindStanceSection {
   }
 
   function generateClientMeritPoll(title, desc, category, existingTake) {
-    var clean=String(title||'').replace(/\s+[-–—|]\s+[^-–—|]+$/,'').trim();
-    var t=clean.toLowerCase(), cat=String(category||'').toLowerCase();
-    var result;
-    if (/\b(award|anniversary|celebrat|honor|honour|festival|ceremony|prize)\b/i.test(t)) result=['Should local achievements and community celebrations like this receive more news coverage?','Yes — More local coverage','No — Focus on other news'];
-    else if (/\b(obituary|memorial|dies|death|killed|fatal)\b/i.test(t)) result=['Would you like more reporting on the person or community affected by this story?','Yes — More context','No — Current coverage is enough'];
-    else if (/sport/i.test(cat)) {
-      if (/injur|surgery|sprain|concussion|recovery/i.test(t)) result=['Should the athlete in this story prioritize a full recovery over returning quickly?','Yes — Health first','No — Return when cleared'];
-      else if (/trade|fired|coach|signing|contract|extension|draft|playoff|ranking|contender/i.test(t)) result=['Do you agree with the team or league decision described in this story?','Yes — Right move','No — Wrong move'];
-      else result=['Would you like more analysis of the players and teams involved in this story?','Yes — More analysis','No — Just the highlights'];
-    } else if (/election|midterm|voters?|ballot|governor|senate|house race/i.test(t) && /result|wins?|losses?|victory|defeat/i.test(t)) {
-      var state=(clean.match(/\b(Florida|Texas|California|Georgia|New York|Pennsylvania)\b/i)||[])[0];
-      result=['Do '+(state ? state+' election':'these election')+' results suggest approval of the current leadership?','Yes — A vote of confidence','No — Other factors mattered'];
+    var clean=String(title||'').replace(/\s+[-–—|]\s+(?:AP News|Reuters|CBS News|CNN|Fox News|[^-–—|]{2,35} News)$/i,'').trim();
+    var t=clean.toLowerCase(), c=String(category||'').toLowerCase();
+    function p(q,y,n){return {statement:q,agree_label:y||'Yes',disagree_label:n||'No'};}
+    if (/\b(democrats?|republicans?)\b/.test(t) && /\b(win|won|victory|control|majority|house|senate|midterms?)\b/.test(t)) {
+      var w=/democrats?\s+(win|won|take|gain)/.test(t)?'Democrats':/republicans?\s+(win|won|take|gain)/.test(t)?'Republicans':null;
+      return p(w?'Do you think '+w+' winning control of Congress will lead to positive changes?':'Do you think the election results will lead to positive changes?','Yes — I think so',"No — I don't");
     }
-    if (!result && existingTake && typeof existingTake.statement==='string' && existingTake.statement.includes('?') && !/weighing the core|policy direction|everyday citizens|public policy surrounding|based on the merits|economic fundamentals|competitive merits|right priority for local/i.test(existingTake.statement)) return existingTake;
-    if (!result && /tech|ai/i.test(cat)) result=['Would you want to use the technology described in this story?','Yes — I would try it','No — Not for me'];
-    if (!result && /business|econom/i.test(cat)) result=['Would this business development affect your spending or investment decisions?','Yes — It matters to me','No — Little impact'];
-    if (!result && /politic|world/i.test(cat)) result=['Should this development be a higher priority for decision-makers?','Yes — Higher priority','No — Other issues first'];
-    if (!result) result=['Would you like more follow-up reporting on this story?','Yes — Keep following it','No — This is enough'];
-    return {statement:result[0],agree_label:result[1],disagree_label:result[2]};
+    if (/\b(election|midterm|voters?|ballot|governor|senate|house race)\b/.test(t)) {
+      var st=(clean.match(/\b(Florida|Texas|California|Georgia|New York|Pennsylvania)\b/i)||[])[0];
+      return p('Do you think '+(st?st+' voters':'voters')+' made the right choice in this election?','Yes — Right choice','No — I disagree');
+    }
+    if (/\b(award|awards|anniversary|celebrates?|honors?|honours?|festival|ceremony|prize)\b/.test(t))return p('Should local achievements like this get more attention in the news?','Yes — More coverage','No — Other news matters more');
+    if (/sport/.test(c)||/\b(nfl|nba|mlb|nhl|football|soccer|quarterback|playoffs?)\b/.test(t)){
+      if (/injur|surgery|sprain|concussion|recovery/.test(t))return p('Should this player wait until fully healthy before returning?','Yes — Health first','No — Return when cleared');
+      if (/trade|fired|coach|signing|contract|extension|draft/.test(t))return p('Do you think the team made the right move?','Yes — Good decision','No — Bad decision');
+      if (/\b(win|won|beat|defeat|loss|lost|game|match|playoff)\b/.test(t))return p('Do you think this team can keep it up?',"Yes — They're for real", "No — I'm not convinced");
+      return p('Would you like to see more coverage of this team or athlete?','Yes — More coverage','No — Not interested');
+    }
+    if (/\b(attack|war|military|sanctions|ceasefire)\b/.test(t))return p('Should leaders do more to resolve this situation?','Yes — Take action','No — Current approach is enough');
+    if (/\b(price|pricing|cost|subscription|fees|rates)\b/.test(t))return p('Do you think the price described in this story is fair?','Yes — Fair price','No — Too expensive');
+    if (/\b(ai|artificial intelligence|app|software|technology|device)\b/.test(t)||/tech/.test(c))return p('Would you try the technology in this story?',"Yes — I'd try it",'No — Not for me');
+    if (existingTake && typeof existingTake.statement==='string'){
+      var q=existingTake.statement.trim().replace(/^[“”]|[“”]$/g,'');
+      if(q.endsWith('?')&&q.length>=18&&q.length<=170&&!/weighing|core merits|policy direction|everyday citizens|surrounding|main takeaway|central facts|this issue|do you agree that|right priority|economic fundamentals/i.test(q))return existingTake;
+    }
+    if (/business|econom/.test(c))return p('Do you think this is good news for consumers?','Yes — Good for consumers',"No — I don't think so");
+    if (/politic/.test(c))return p('Do you support the decision described in this story?','Yes — I support it',"No — I don't");
+    return p('Would you like to see more reporting on this story?','Yes — Follow up',"No — That's enough");
   }
 
   // Live Breaking Reserve Pool for Instant On-Demand Wire Sync (guarantees new stories even if CORS/offline)
