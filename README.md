@@ -91,7 +91,11 @@ REGRESSION SUITE COMPLETED: 20/20 TESTS PASSED (100% SUCCESS)
 
 ## Publishing and verification
 
-The active production target is GitHub Pages. Use the **Ingest Wire Feeds & Update Stories** workflow on the default branch to publish a new edition. The job checks the code first, builds the feed and HTML together, commits them, and uploads only the public site files. A no-change run checks the live edition before deciding whether deployment needs a retry.
+The custom domain currently serves GitHub Pages. The **Ingest Wire Feeds & Update Stories** workflow publishes each changed edition to the `wire-data` branch on its 15-minute schedule or when run manually. GitHub Pages rebuilds on website changes pushed to `main`. The site fetches the live feed on page load and pull-to-refresh, and checks for a new edition every five minutes while visible. If the feed is unavailable, the bundled edition remains usable.
+
+For the linked Netlify project, keep the production branch on `main` and exclude `wire-data` from branch deploys (select **None** or list only the branches you preview). Leave the existing build and publish settings in place. The branch also contains a `netlify.toml` ignore rule. Remove any Netlify build hook tied to feed publishing because hooks bypass ignore rules. Keep GitHub Pages set to **GitHub Actions** for the current public domain.
+
+After merging, wait for the first workflow run to create `wire-data`. Run the workflow manually if it needs a retry. Confirm that the site displays the latest edition and that a scheduled or manual data-only run leaves `main` and the Netlify production deploy unchanged. GitHub's raw-file cache can take several minutes to expose a new edition. The repository must stay public for browser access to the feed.
 
 - Run `python engine.py` to fetch and build a local edition. The publisher keeps an edition when all feeds fail and rejects empty output.
 - Run `python -m unittest discover -s tests` and `node --test tests/polling.test.cjs` for offline regressions.

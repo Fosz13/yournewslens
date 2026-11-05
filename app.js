@@ -119,7 +119,7 @@
   }
 
   // Global Perspective Switcher
-  function setGlobalPerspective(p) {
+  function setGlobalPerspective(p, silent) {
     if (!p || (p !== 'LEFT' && p !== 'CENTER' && p !== 'RIGHT')) p = 'CENTER';
     currentGlobalPerspective = p;
     try {
@@ -170,7 +170,7 @@
       if (entry[0]) entry[0].setAttribute('aria-pressed', String(entry[1] === p));
     });
     var label = (p === 'RIGHT' ? 'Conservative Lens (Fox News & Right Media Prioritized)' : p === 'LEFT' ? 'Progressive Lens (Left Media & Labor Prioritized)' : 'Balanced Lens (Neutral Multi-Wire)');
-    if (document.readyState === 'complete') showToastNotification('Switched to ' + label);
+    if (!silent && document.readyState === 'complete') showToastNotification('Switched to ' + label);
     renderTopStories();
     if (document.body.classList.contains('daily-lens-mode')) renderDailyBriefing();
   }
@@ -998,16 +998,47 @@
   // =========================================================================
   var _isBannerRefreshing = false;
 
+  var wireURL = 'https://raw.githubusercontent.com/Fosz13/yournewslens/wire-data/v1/edition.json';
+
   function checkForEdition() {
-    return fetch('data/stories.json', { cache: 'no-cache' }).then(function (response) {
+    return fetch(wireURL, { cache: 'no-cache', signal: AbortSignal.timeout?.(8000) }).then(function (response) {
       if (!response.ok) throw new Error('Edition unavailable');
       return response.json();
-    }).then(function (records) {
-      if (!Array.isArray(records) || !records.length) throw new Error('Invalid edition');
-      var next = records[0].edition;
-      if (!/^[0-9a-f]{16}$/.test(next || '')) throw new Error('Invalid edition version');
-      return next !== document.getElementById('storiesFeedView').dataset.edition ? next : '';
+    }).then(function (edition) {
+      if (!edition || !/^[0-9a-f]{16}$/.test(edition.edition || '') ||
+          !Number.isSafeInteger(edition.storyCount) || edition.storyCount < 1 ||
+          typeof edition.markup !== 'string') throw new Error('Invalid edition');
+      return edition.edition !== document.getElementById('storiesFeedView').dataset.edition ? edition : null;
     });
+  }
+
+  function installEdition(edition) {
+    var feed = document.getElementById('storiesFeedView');
+    var template = document.createElement('template');
+    template.innerHTML = edition.markup;
+    var cards = Array.from(template.content.children);
+    if (cards.length !== edition.storyCount || cards.some(function (card) {
+      return !card.matches('article.compact-card') || !card.id;
+    }) || new Set(cards.map(function (card) { return card.id; })).size !== cards.length) {
+      throw new Error('Invalid story cards');
+    }
+    feed.replaceChildren(template.content);
+    feed.dataset.edition = edition.edition;
+    document.getElementById('btnEditionRefresh')?.classList.remove('edition-ready');
+    setGlobalPerspective(currentGlobalPerspective, true);
+    updateFollowButtonsInDOM();
+    updateRelativeTimestamps();
+    refreshLiveTicker();
+    applyFilters();
+    if (feed.style.display === 'none') {
+      document.getElementById('feedEmptyState').hidden = true;
+      var blind = document.getElementById('blindStanceSection');
+      if (blind) blind.style.display = 'none';
+    }
+    document.dispatchEvent(new Event('ynl:edition'));
+    if (document.getElementById('communityView')?.style.display === 'flex' && window.ynlRenderDebates) {
+      window.ynlRenderDebates();
+    }
   }
 
   function triggerBannerRefresh() {
@@ -1029,11 +1060,7 @@
     returnToLatestStories();
     checkForEdition().then(function (updated) {
       if (updated) {
-        var url = new URL(window.location.href);
-        url.hash = '';
-        url.searchParams.set('edition', updated);
-        try { sessionStorage.setItem('ynlRefreshToTop', '1'); } catch (_) {}
-        window.location.replace(url);
+        installEdition(updated);
       }
       else {
         if (window.ynlRefreshVisiblePolls) window.ynlRefreshVisiblePolls();
@@ -1409,13 +1436,6 @@
     bindCompactHeader();
     bindDesktopFeedLayout();
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    try {
-      if (sessionStorage.getItem('ynlRefreshToTop')) {
-        sessionStorage.removeItem('ynlRefreshToTop');
-        returnToLatestStories();
-        requestAnimationFrame(function () { window.scrollTo(0, 0); });
-      }
-    } catch (_) {}
     document.getElementById('storiesFeedView')?.addEventListener('click', function (event) {
       if (event.target.closest('.story-title, .fact-preview-strip, .source-link-chip, .hero-image-wrap')) {
         var card = event.target.closest('.compact-card');
@@ -1423,6 +1443,9 @@
       }
     });
 
+    checkForEdition().then(function (updated) {
+      if (updated) installEdition(updated);
+    }).catch(function () { /* Keep the bundled edition available. */ });
     setInterval(updateRelativeTimestamps, 30000);
     setInterval(function () {
       if (document.hidden) return;

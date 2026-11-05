@@ -1,0 +1,3 @@
+[build]
+  # Defense in depth if branch deploys are enabled in the Netlify dashboard.
+  ignore = 'test "$BRANCH" = wire-data'

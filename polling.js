@@ -243,4 +243,8 @@
         !list.querySelector(':focus')) display();
   };
   document.addEventListener('DOMContentLoaded', () => observe(document));
+  document.addEventListener('ynl:edition', () => {
+    if (observer) observer.disconnect();
+    observe(document.getElementById('storiesFeedView'));
+  });
 })();
