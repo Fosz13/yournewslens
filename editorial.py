@@ -12,6 +12,7 @@ QUESTION = re.compile(r"^(?:how|what|why|when|where|who|which)\b", re.I)
 JUNK = re.compile(
     r"^(?:[Bb]y [A-Z]|presented by|sign up|subscribe|read more|watch live|follow live|"
     r"here (?:are|is) (?:our|the)|this article)|"
+    r"\b(?:subscribe to (?:read|continue|unlock)|subscribers only|subscription required|access (?:the )?full article|you won.t believe|click here to (?:read|find out))\b|"
     r"\b(?:primary wire|operational and public impacts|key competitive breakdown|"
     r"stakeholders|verified wire|consensus sports betting|duplicate_salt)\b", re.I
 )

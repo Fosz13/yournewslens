@@ -90,6 +90,17 @@ class PublishingTest(unittest.TestCase):
         self.assertEqual(rows[0]["pub_timestamp"], items[0]["pub_timestamp"])
         self.assertEqual(rows[0]["id"], editorial.story_id(URL))
 
+    def test_publish_skips_paywall_teasers_and_existing_headline_only_stories(self):
+        now = int(time.time())
+        teaser = feed_item(title="AOC in 2028? Really?", description="Subscribe to read the full article about AOC in 2028.")
+        with patch.object(engine, "scrape_article_lead_image_and_meta", return_value={}):
+            self.assertEqual(publish_wire.collect_stories(engine, [teaser], [], now), ([], 0))
+        retained = editorial.prepare_story({
+            "title": teaser["title"], "article_url": URL, "source_excerpt": "",
+            "pub_timestamp": now, "editorial_source_checked": True,
+        })
+        self.assertEqual(publish_wire.refresh_existing([retained], now, offline=False), [])
+
     def test_definitive_publisher_404_skips_article(self):
         with patch.object(engine, "scrape_article_lead_image_and_meta", return_value={"unavailable": True}), \
              redirect_stdout(io.StringIO()):
