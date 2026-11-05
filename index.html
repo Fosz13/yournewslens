@@ -3914,6 +3914,11 @@ body.searching-mode #blindStanceSection {
   }
 }
 
+
+/* Accessible one-tap refresh on the sticky masthead. */
+.btn-header-refresh { background:rgba(56,189,248,.09); border:1px solid rgba(56,189,248,.35); color:var(--text-primary); border-radius:18px; padding:8px 12px; cursor:pointer; font:inherit; font-size:12px; white-space:nowrap; }
+.btn-header-refresh:hover, .btn-header-refresh:focus-visible { border-color:#38bdf8; background:rgba(56,189,248,.18); }
+@media(max-width:650px){.btn-header-refresh {padding:8px 10px}.btn-header-refresh span{display:none}}
 </style>
   <script src="polling.js?v=3"></script>
   <script>
@@ -4046,6 +4051,7 @@ body.searching-mode #blindStanceSection {
           <button type="button" class="lens-btn right" id="btnGlobalRight" onclick="setGlobalPerspective('RIGHT')">Right</button>
         </div>
 
+        <button type="button" class="btn-header-refresh" onclick="triggerBannerRefresh()" title="Refresh live stories without scrolling to top" aria-label="Refresh live stories">↻ <span>Refresh</span></button>
         <button type="button" class="btn-theme-toggle" id="btnThemeToggle" onclick="toggleThemeMode()" title="Switch between Obsidian Dark and Editorial Light mode">
           <span>☀️</span><span>Light</span>
         </button>
@@ -37573,6 +37579,10 @@ body.searching-mode #blindStanceSection {
       return /1514933651103|1569098644584|1519766304817|1516216628859|1526470608268|1508344928928|google_news_logo|gnews_logo|lh3\.googleusercontent\.com\/J6_coFbogxhRI9iM864NL/i.test(u);
     };
 
+    var imageWords = String(rawThumb || '').replace(/[_-]/g,' ').toLowerCase();
+    var titleWords = String(title || '').toLowerCase();
+    if (/(obama|barack|trump|biden|harris|putin|pope francis)/i.test(imageWords) && !/(obama|barack|trump|biden|harris|putin|pope francis)/i.test(titleWords)) rawThumb = '';
+    if (/award|anniversary|celebrat|ceremony/i.test(titleWords) && /obama|president|white.house|press.briefing|federal.podium/i.test(imageWords)) rawThumb = '';
     if (rawThumb && !isBannedImg(rawThumb)) {
       var upg = upgradeImageResolution(rawThumb);
       if (!usedDomUrls[upg]) return upg;
@@ -37712,99 +37722,23 @@ body.searching-mode #blindStanceSection {
   }
 
   function generateClientMeritPoll(title, desc, category, existingTake) {
-    var cleanT = String(title || '').replace(/\s+[-–—|]\s+[^-–—|]+$/, '').trim();
-    var comb = (cleanT + ' ' + String(desc || '')).toLowerCase();
-
-    if (existingTake && existingTake.statement && existingTake.statement.indexOf('Public policy surrounding') === -1 && existingTake.statement.indexOf('?') !== -1) {
-      return {
-        statement: existingTake.statement,
-        agree_label: (existingTake.agree_label && existingTake.agree_label !== 'Agree') ? existingTake.agree_label : 'Agree',
-        disagree_label: (existingTake.disagree_label && existingTake.disagree_label !== 'Disagree') ? existingTake.disagree_label : 'Disagree'
-      };
+    var clean = String(title || '').replace(/\s+[-–—|]\s+[^-–—|]+$/, '').trim();
+    var t = clean.toLowerCase();
+    var cat = String(category || '').toLowerCase();
+    if (/\b(award|anniversary|celebrat|honor|honour|memorial|obituary|festival|ceremony)\b/i.test(t) && !/controvers|dispute|backlash|criticism|cancel|funding/i.test(t)) return null;
+    if (/\b(election|midterm|voters?|ballot|governor|senate|house race)\b/i.test(t) && /result|wins?|losses?|victory|defeat/i.test(t)) {
+      var place = /florida/i.test(t) ? 'Florida' : /texas/i.test(t) ? 'Texas' : /california/i.test(t) ? 'California' : 'These';
+      return {statement:'Do ' + place + ' election results suggest voters approve of the current leadership?',agree_label:'Yes — A vote of confidence',disagree_label:'No — Other factors mattered'};
     }
-
-    if (/property\s+tax|tax\s+bills?|amendment\s+3|homestead/i.test(comb)) {
-      return {
-        statement: 'Does cutting Florida property taxes via Amendment 3 help working homeowners more than it hurts local funding for schools and first responders?',
-        agree_label: 'Agree — Cut property taxes',
-        disagree_label: 'Disagree — Protect local funding'
-      };
-    }
-
-    if ((/buccaneers|bucs/i.test(comb) && /bears/i.test(comb))) {
-      return {
-        statement: 'In the Week 9 Buccaneers vs. Bears matchup, do you trust Tampa Bay\x27s offensive line and passing attack to beat Chicago\x27s defense?',
-        agree_label: 'Agree — Bucs win & cover',
-        disagree_label: 'Disagree — Bears pull the upset'
-      };
-    }
-
-    if (/buyout|coaching\s+carousel|fired\s+coach/i.test(comb)) {
-      return {
-        statement: 'Should public universities be banned from paying $40M–$70M guaranteed coaching buyouts while student tuition and fees keep rising?',
-        agree_label: 'Agree — Cap coaching buyouts',
-        disagree_label: 'Disagree — Boosters fund it'
-      };
-    }
-
-    if (/cyberattack|ransomware|hackers?|blood\s+banks?|data\s+breach/i.test(comb)) {
-      return {
-        statement: 'Should governments treat cyberattacks on critical facilities like blood banks and hospitals as acts of war requiring direct retaliation?',
-        agree_label: 'Agree — Retaliate directly',
-        disagree_label: 'Disagree — Defensive safeguards'
-      };
-    }
-
-    if (category === 'Sports' || /sport/i.test(category)) {
-      if (/\b(?:vs\.?|versus|matchups?|week\s+\w+|preview|odds)\b/i.test(comb)) {
-        return {
-          statement: 'Based on the matchup merits in ' + cleanT.substring(0, 48) + ', do you think the favored team will win and cover the spread?',
-          agree_label: 'Agree — Favorite covers',
-          disagree_label: 'Disagree — Underdog wins'
-        };
+    if (/sport/i.test(cat) && /injur|surgery|sprain|concussion|return|recovery/i.test(t)) return {statement:'Should the player in “' + clean.substring(0,75) + '” prioritize a full recovery over a quick return?',agree_label:'Yes — Health first',disagree_label:'No — Return when cleared'};
+    if (/sport/i.test(cat) && /trade|fired|coach|signing|contract|extension|draft|playoff|ranking|contender/i.test(t)) return {statement:'Was the decision in “' + clean.substring(0,75) + '” the right move?',agree_label:'Yes — Right move',disagree_label:'No — Wrong move'};
+    if (existingTake && typeof existingTake.statement === 'string') {
+      var q=existingTake.statement;
+      if (q.indexOf('?') !== -1 && !/weighing the core|policy direction|everyday citizens|public policy surrounding|based on the merits|economic fundamentals|competitive merits|right priority for local/i.test(q)) {
+        return {statement:q,agree_label:existingTake.agree_label || 'Yes — Agree',disagree_label:existingTake.disagree_label || 'No — Disagree'};
       }
-      return {
-        statement: 'Based on the competitive merits of ' + cleanT.substring(0, 48) + ', does this prove they are a legitimate championship contender?',
-        agree_label: 'Agree — True contender',
-        disagree_label: 'Disagree — Still overhyped'
-      };
     }
-
-    if (category === 'Local News') {
-      if (/festival|market|concert|park|event|cinema|riverwalk/i.test(comb)) {
-        return {
-          statement: 'Should local cities dedicate more waterfront park space and municipal resources to community events like ' + cleanT.substring(0, 42) + '?',
-          agree_label: 'Agree — Boost community life',
-          disagree_label: 'Disagree — Focus on core basics'
-        };
-      }
-      if (/living\s+shoreline|oyster\s+reef|bayshore|seawall/i.test(comb)) {
-        return {
-          statement: 'Is spending $14.2M on Bayshore Boulevard living shoreline oyster reefs a smart investment to protect Tampa against storm surge?',
-          agree_label: 'Agree — Smart coastal defense',
-          disagree_label: 'Disagree — Too expensive'
-        };
-      }
-      if (/cross-bay\s+ferry|commuter\s+runs|water\s+transit/i.test(comb)) {
-        return {
-          statement: 'Should Hillsborough and Pinellas counties fund permanent year-round Cross-Bay Ferry commuter service between Tampa and St. Pete?',
-          agree_label: 'Agree — Expand ferry service',
-          disagree_label: 'Disagree — Focus on roads'
-        };
-      }
-      var shortLocalT = cleanT.length > 65 ? cleanT.substring(0, 65).replace(/\s+\S*$/, '...') : cleanT;
-      return {
-        statement: 'Based on the merits of "' + shortLocalT + '", is this the right priority for local residents and taxpayers?',
-        agree_label: 'Agree — Smart local priority',
-        disagree_label: 'Disagree — Wrong approach'
-      };
-    }
-
-    return {
-      statement: 'Weighing the core merits of ' + cleanT.substring(0, 50) + ', do you support this direction and its impact on everyday citizens?',
-      agree_label: 'Agree — Right direction',
-      disagree_label: 'Disagree — Wrong approach'
-    };
+    return null; // No real debate: no poll.
   }
 
   // Live Breaking Reserve Pool for Instant On-Demand Wire Sync (guarantees new stories even if CORS/offline)
@@ -39047,6 +38981,8 @@ function cleanPhotoCredit(credit, sourceName) {
     }
     var leadFact = String(coreFacts[0] || '');
     s.controversial_take = generateClientMeritPoll(s.title, leadFact, cat, s.controversial_take);
+    var hasRelevantPoll = !!(s.controversial_take && s.controversial_take.statement);
+    if (!hasRelevantPoll) s.controversial_take = {statement:'',agree_label:'',disagree_label:''};
 
     var lfLower = leadFact.toLowerCase();
     var rawTitleStr = String(s.title || "");
@@ -39144,7 +39080,7 @@ function cleanPhotoCredit(credit, sourceName) {
         '</div>' +
         '<h3 class="story-title" onclick="toggleStoryDetails(\'' + sId + '\')" title="Click to view key facts and perspectives">' + s.title + '</h3>' +
         '<div class="fact-preview-strip" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' + calloutBadge + '<p class="fact-preview-text">' + leadFact + '</p></div>' +
-        '<div class="controversial-take-poll" id="' + sId + '-controversial-poll" data-story-id="' + sId + '" data-agree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).agree + '" data-disagree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).disagree + '">' +
+        '<div class="controversial-take-poll" style="' + (hasRelevantPoll ? '' : 'display:none') + '" id="' + sId + '-controversial-poll" data-story-id="' + sId + '" data-agree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).agree + '" data-disagree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).disagree + '">' +
           '<p class="take-statement-text">“' + s.controversial_take.statement + '”</p>' +
           '<div class="take-vote-actions">' +
             '<button type="button" class="btn-take-vote btn-take-agree" id="' + sId + '-btn-agree" data-story-id="' + sId + '" data-choice="AGREE" onclick="voteControversialTake(\'' + sId + '\', \'AGREE\', this, event); event.stopPropagation();">' +
@@ -40309,10 +40245,9 @@ function cleanPhotoCredit(credit, sourceName) {
       }
       updateRelativeTimestamps();
       refreshLiveTicker();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
       showToastNotification('⚡ Live stories refreshed!');
     }).catch(function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToastNotification('Could not refresh stories. Please try again.');
     }).then(function() {
       setTimeout(function() {
         if (bar) {

@@ -734,6 +734,19 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
     c_low = (category or "").lower()
     ent = focus_ent if focus_ent and focus_ent.lower() not in ["the", "a", "an", "bills"] else clean_title[:42]
 
+    # Editorial gate: polls are optional. A news announcement, award, obituary or
+    # routine event does not automatically contain a meaningful debate.
+    if re.search(r"\b(awards?|anniversary|celebrates?|honou?rs?|obituary|memorial|birthday|festival|ceremony|grand opening|wins? prize)\b", t_low) and not re.search(r"\b(controversy|dispute|backlash|criticism|should|ban|funding|cancel)\b", t_low):
+        return {}
+    # Ask about a concrete decision or consequence rather than invented policy.
+    if re.search(r"\b(election|midterm|voters?|ballot|governor|senate|house race)\b", t_low) and re.search(r"\b(results?|wins?|losses?|victory|defeat)\b", t_low):
+        state = next((x for x in ('Florida','Texas','California','Georgia','New York','Pennsylvania') if x.lower() in t_low), 'these')
+        return {'statement': f'Do {state} election results suggest voters approve of the current leadership?', 'agree_label':'Yes — A vote of confidence', 'disagree_label':'No — Other factors mattered'}
+    if 'sport' in c_low and re.search(r"\b(injury|injured|surgery|sprain|concussion|return|recovery)\b", t_low):
+        team = re.sub(r"\s+[-–—|]\s+[^-–—|]+$",'',clean_title)[:70]
+        return {'statement': f'Should {team} prioritize a full recovery over a quick return to play?', 'agree_label':'Yes — Health first', 'disagree_label':'No — Return when cleared'}
+    if 'sport' in c_low and re.search(r"\b(trade|fired|fire|coach|signing|contract|extension|draft|playoff|rankings?|contender)\b",t_low):
+        return {'statement': f'Was the decision in “{clean_title[:78]}” the right move?', 'agree_label':'Yes — Right move', 'disagree_label':'No — Wrong move'}
     # Real community polling via Supabase: never generate fabricated percentages or vote counts.
 
     # 1. Property Tax / Amendment 3 / Homeowner Tax Relief
@@ -764,7 +777,7 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
     #    convert it into a sharp, direct merit-based QUESTION ('?') while preserving its specific content!
     if isinstance(existing_take, dict) and existing_take.get("statement"):
         raw_stmt = str(existing_take["statement"]).strip().strip('\x22“”')
-        if "public policy surrounding" not in raw_stmt.lower() and len(raw_stmt) > 20:
+        if not any(p in raw_stmt.lower() for p in ('public policy surrounding','weighing the core arguments','weighing the core merits','policy direction','everyday citizens','based on the merits','looking at the economic fundamentals','looking at the performance and competitive merits')) and len(raw_stmt) > 20:
             if raw_stmt.endswith("?"):
                 q_stmt = raw_stmt
             else:
@@ -798,79 +811,8 @@ def generate_merit_controversial_poll(title: str, context: str = "", category: s
                 "disagree_label": dis_lbl
             }
 
-    # 5. Domain-Specific Merit Question Synthesis for New Stories
-    if "sport" in c_low:
-        if is_upcoming_sports_event_headline(clean_title, category, context):
-            return {
-                "statement": f"Based on the matchup merits and current form in {ent}, do you think the favored side will cover the spread and win outright?",
-                "agree_label": "Yes — Favorite covers",
-                "disagree_label": "No — Underdog steps up"
-            }
-        if any(w in comb for w in ["injury", "injured", "concussion", "out", "ir", "surgery", "recovery"]):
-            return {
-                "statement": f"Should teams and leagues mandate stricter rest timelines for {ent} even when playoff seeding is on the line?",
-                "agree_label": "Yes — Player health first",
-                "disagree_label": "No — Let cleared pros play"
-            }
-        return {
-            "statement": f"Looking at the performance and competitive merits around {ent}, does this result prove they are a legitimate championship contender?",
-            "agree_label": "Yes — True contender",
-            "disagree_label": "No — Still overhyped"
-        }
-
-    if "local" in c_low:
-        if any(w in comb for w in ["festival", "market", "concert", "park", "event", "cinema", "riverwalk"]):
-            return {
-                "statement": f"Should local cities dedicate more public park space and municipal resources to free community events like {ent}?",
-                "agree_label": "Yes — Boost community life",
-                "disagree_label": "No — Focus on core basics"
-            }
-        if any(w in comb for w in ["transit", "ferry", "rail", "road", "bridge", "corridor", "growth", "zoning", "housing"]):
-            return {
-                "statement": f"Based on the merits of {ent}, is this the right infrastructure and growth priority for local taxpayers and commuters?",
-                "agree_label": "Yes — Smart local investment",
-                "disagree_label": "No — Wrong spending priority"
-            }
-        return {
-            "statement": f"On the merits of {ent}, will this local action make a measurable positive difference for area residents?",
-            "agree_label": "Yes — Positive local impact",
-            "disagree_label": "No — Misses the real issue"
-        }
-
-    if "business" in c_low or "econom" in c_low:
-        return {
-            "statement": f"Looking at the economic fundamentals behind {ent}, will this trend benefit everyday working households or mostly Wall Street institutions?",
-            "agree_label": "Helps everyday households",
-            "disagree_label": "Mostly benefits Wall Street"
-        }
-
-    if any(w in comb for w in ["cyberattack", "cyberattacks", "ransomware", "hackers", "hacked", "data breach", "blood bank"]):
-        return {
-            "statement": "Should governments treat cyberattacks on critical facilities like blood banks and hospitals as acts of war requiring direct retaliation?",
-            "agree_label": "Yes — Retaliate directly",
-            "disagree_label": "No — Defensive safeguards"
-        }
-
-    if "tech" in c_low or "science" in c_low:
-        return {
-            "statement": f"Given the rapid advances in {ent}, do the economic and technological benefits outweigh the need for new government regulation?",
-            "agree_label": "Yes — Unleash innovation",
-            "disagree_label": "No — Stricter regulation"
-        }
-
-    if "world" in c_low:
-        topic_phrase = ent if len(ent.split()) >= 2 else clean_title[:48]
-        return {
-            "statement": f"On {topic_phrase}, should the U.S. and allies step in with active diplomatic leverage or put domestic priorities first?",
-            "agree_label": "Lead active diplomacy",
-            "disagree_label": "Focus on domestic priorities"
-        }
-
-    return {
-        "statement": f"Weighing the core arguments surrounding {ent}, do you support this policy direction and its impact on everyday citizens?",
-        "agree_label": "Yes — Right direction",
-        "disagree_label": "No — Wrong approach"
-    }
+    # Do not invent a generic controversy where the source contains none.
+    return {}
 
 def finalize_synthesis_fact1(res: dict, title: str, category: str = "", context: str = "", focus_ent: str = "") -> dict:
     """Universal guard ensuring Fact 1 adheres strictly to user mandates across all returned syntheses."""
@@ -3561,6 +3503,16 @@ def is_story_image_mismatched(story: dict) -> bool:
         url = (story.get("image_url") or "").lower()
         caption = (story.get("caption") or "").lower()
         credit = (story.get("credit") or "").lower()
+
+        # Prevent high-profile portraits from being used for unrelated local stories.
+        # URL and captions are only weak signals; a neutral placeholder is safer.
+        named_subjects = ('barack obama','obama','donald trump','joe biden','kamala harris','elon musk','pope francis','vladimir putin')
+        image_description = ' '.join((url,caption,credit)).replace('_',' ').replace('-',' ')
+        for person in named_subjects:
+            if person in image_description and person not in title:
+                return True
+        if re.search(r'\b(award|anniversary|celebrat|festival|ceremony)\b',title) and any(w in image_description for w in ('federal podium','presidential','white house briefing','press briefing','obama')):
+            return True
 
         # Always reject banned/broken Unsplash photos or malformed query strings
         if not is_usable_image_url(url):
@@ -8192,9 +8144,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         what_changed = s.get("what_changed_since_yesterday") or "Overnight developments verified across primary wire dispatches."
         timeline = s.get("evolution_timeline", [])
         ct = s.get("controversial_take") or {}
-        if not ct.get("statement") or "public policy surrounding" in str(ct.get("statement", "")).lower() or "?" not in str(ct.get("statement", "")):
-            ct = generate_merit_controversial_poll(title_str, summary, str(cat), extract_focus_entity(title_str), existing_take=ct)
-            s["controversial_take"] = ct
+        ct = generate_merit_controversial_poll(title_str, summary, str(cat), extract_focus_entity(title_str), existing_take=ct)
+        s["controversial_take"] = ct
         ct_statement = ct.get("statement")
         ct_agree_lbl = ct.get("agree_label") or "Agree"
         ct_disagree_lbl = ct.get("disagree_label") or "Disagree"
@@ -8292,7 +8243,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
             </div>
 
             <!-- Quick Polarizing Vote Bar (Real Supabase Community Polling) -->
-            <div class="controversial-take-poll" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
+            <div class="controversial-take-poll" style="{'display:none' if not ct_statement else ''}" id="{sId}-controversial-poll" data-story-id="{sId}" data-agree-lens="{ct_agree_lens}" data-disagree-lens="{ct_disagree_lens}">
               <p class="take-statement-text">“{ct_statement}”</p>
 
               <div class="take-vote-actions">
