@@ -218,6 +218,46 @@ def fallback_perspectives(title, facts):
             for side, (label, point) in zip(("LEFT", "CENTER", "RIGHT"), angles)}
 
 
+READER_LENSES = {
+    "Sports": ("Team strategy", "How would I adjust the lineup or game plan in response?",
+               "Fan outlook", "What should I watch for in the team's next game or decision?"),
+    "Business & Economy": ("Customers & workers", "What might this change for customers or employees?",
+                           "Business outlook", "What would I look for in the company's next results or decision?"),
+    "Local News": ("Residents", "What does this change for people who live or work nearby?",
+                   "City response", "What decision should I watch for from local officials?"),
+    "Science & Tech": ("Practical use", "What would I be able to do differently if this works as described?",
+                       "Limitations", "What would I want independently tested before relying on it?"),
+    "Health": ("Patient impact", "What could this change for patients affected by the report?",
+               "Evidence gaps", "What evidence would I need before changing a health decision?"),
+    "Crime & Public Safety": ("Community safety", "What can people affected by this safely do now?",
+                              "Due process", "Which details have been confirmed, and what remains an allegation?"),
+    "World News": ("People affected", "What could this mean for people living through it?",
+                   "Regional response", "How might the governments or organizations involved respond?"),
+    "Entertainment": ("Audience", "What would this change about the experience for viewers or fans?",
+                      "Creators", "What does this mean for the people making or distributing the work?"),
+}
+DEFAULT_READER_LENSES = ("Public impact", "Who is most directly affected by this development?",
+                         "Accountability", "What decision or response should I look for from the people involved?")
+POLITICAL_READER_LENSES = ("Left", "I'd look at who bears the costs and whether this protects people with less power.",
+                           "Right", "I'd look at who has the authority to act and what new costs or obligations this creates.")
+
+
+def grounded_reader_lenses(facts, category, political):
+    if not facts:
+        return {}
+    first, left, last, right = (
+        POLITICAL_READER_LENSES if political else READER_LENSES.get(category, DEFAULT_READER_LENSES)
+    )
+    return {
+        "LEFT": {"label": first, "talking_points": [left, facts[0]], "persona": True,
+                 "perspective_badge": "news_lens_analysis"},
+        "CENTER": {"label": "What we know", "talking_points": facts[:2],
+                   "perspective_badge": "news_lens_analysis"},
+        "RIGHT": {"label": last, "talking_points": [right, facts[-1]], "persona": True,
+                  "perspective_badge": "news_lens_analysis"},
+    }
+
+
 def restore_missing_features(record):
     title = record["title"]
     facts = record.get("core_facts") or []
@@ -237,11 +277,12 @@ def restore_missing_features(record):
     poll = record.get("controversial_take") or fallback_poll(title, facts)
     record["controversial_take"] = poll
     perspectives = record.get("perspectives") or {}
-    political = (record.get("perspective_mode") == "political" or
-                 record.get("category") in {"Politics", "Border & Security"})
-    if not perspectives:
-        record["perspective_mode"] = "political" if political else "topical"
-    fallback = fallback_perspectives(title, facts)
+    category = record.get("category")
+    political = category != "Sports" and (record.get("perspective_mode") == "political" or
+                                           category in {"Politics", "Border & Security"})
+    record["perspective_mode"] = "political" if political else "topical"
+    fallback = grounded_reader_lenses(facts, category, political)
+    fallback.update(fallback_perspectives(title, facts))
     perspectives = {side: value for side, value in perspectives.items()
                     if value.get("talking_points") and value.get("perspective_badge") not in {
                         "editorial_prompt", "pending_commentary", "news_lens_analysis"
@@ -290,7 +331,7 @@ def prepare_story(record, analysis=None):
                     record["perspectives"][side] = {
                         "talking_points": [point], "evidence": evidence,
                         "label": label if isinstance(label, str) and 3 <= len(label) <= 30 else "",
-                        "persona": political and side in {"LEFT", "RIGHT"}
+                        "persona": side in {"LEFT", "RIGHT"}
                     }
         unique = {entry["talking_points"][0].casefold() for entry in record["perspectives"].values()}
         if len(unique) != 3:
