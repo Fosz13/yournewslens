@@ -8590,6 +8590,172 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
       img.src = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#0f172a"/><text x="600" y="345" font-family="Inter,sans-serif" font-size="28" font-weight="700" fill="#10b981" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text></svg>');
     }
   };
+
+  window.switchStoryPerspective = window.switchStoryPerspective || function(storyId, p) {
+    if (!storyId || !p) return;
+    var views = ["RIGHT", "CENTER", "LEFT"];
+    for (var i = 0; i < views.length; i++) {
+      var el = document.getElementById(storyId + "-view-" + views[i]);
+      if (el) el.style.display = (views[i] === p) ? "block" : "none";
+    }
+    var card = document.getElementById(storyId);
+    if (card && card.querySelectorAll) {
+      var btns = card.querySelectorAll(".card-toggle-btn");
+      for (var b = 0; b < btns.length; b++) {
+        var btn = btns[b];
+        var txt = (btn.textContent || "").trim().toUpperCase();
+        btn.classList.remove("active", "left", "center", "right");
+        if (p === "LEFT" && txt.indexOf("LEFT") !== -1) btn.classList.add("active", "left");
+        else if (p === "CENTER" && (txt.indexOf("BAL") !== -1 || txt.indexOf("CENTER") !== -1)) btn.classList.add("active", "center");
+        else if (p === "RIGHT" && txt.indexOf("RIGHT") !== -1) btn.classList.add("active", "right");
+      }
+    }
+  };
+
+  window.toggleKeyFactsDrawer = window.toggleKeyFactsDrawer || function(storyId, evt, btnEl) {
+    var e = evt || window.event;
+    if (e) {
+      if (e.__handledDrawerToggle) return;
+      e.__handledDrawerToggle = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || (storyId ? document.getElementById(storyId) : null);
+    if (!card) return;
+    var sId = storyId || card.id;
+    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
+    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
+    var factsBtn = document.getElementById(sId + "-btn-facts-drawer") || card.querySelector(".btn-drawer-facts");
+    var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
+    var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
+    if (!factsPanel) return;
+    var isOpen = card.classList.contains("expanded") && factsPanel.style.display !== "none";
+    if (!isOpen) {
+      card.classList.add("expanded", "facts-open");
+      if (details) details.style.display = "block";
+      factsPanel.style.display = "block";
+      if (factsBtn) factsBtn.classList.add("active");
+      if (label) label.textContent = "Hide Key Facts";
+      if (chevron) chevron.textContent = "▴";
+    } else {
+      card.classList.remove("expanded", "facts-open");
+      if (details) details.style.display = "none";
+      if (factsBtn) factsBtn.classList.remove("active");
+      if (label) label.textContent = "Key Facts";
+      if (chevron) chevron.textContent = "▾";
+    }
+  };
+
+  window.toggleStoryDetails = window.toggleStoryDetails || function(storyId, evt) {
+    window.toggleKeyFactsDrawer(storyId, evt, null);
+  };
+
+  window.getOrCreatePollVisitorId = window.getOrCreatePollVisitorId || function() {
+    var key = "ynlCommunityPollVisitorId";
+    var vid = "";
+    try { vid = localStorage.getItem(key) || ""; } catch (e) {}
+    if (!vid || vid.length < 8) {
+      vid = "ynl_" + Date.now().toString(36) + "_" + Math.random().toString(36).substring(2, 12);
+      try { localStorage.setItem(key, vid); } catch (e) {}
+    }
+    return vid;
+  };
+
+  window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
+    var e = evt || window.event;
+    if (e) {
+      if (e.__handledVoteClick) return;
+      e.__handledVoteClick = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    var pollEl = (btnEl && btnEl.closest ? btnEl.closest(".controversial-take-poll") : null) ||
+                 (storyId ? document.getElementById(storyId + "-controversial-poll") : null) ||
+                 (storyId ? document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]') : null);
+    var sId = storyId || (pollEl ? pollEl.getAttribute("data-story-id") : "");
+    var norm = String(choice || "").toUpperCase();
+    if (!sId || !pollEl || (norm !== "AGREE" && norm !== "DISAGREE")) return;
+
+    pollEl.classList.add("has-voted");
+    var btnAgree = pollEl.querySelector(".btn-take-agree") || document.getElementById(sId + "-btn-agree");
+    var btnDisagree = pollEl.querySelector(".btn-take-disagree") || document.getElementById(sId + "-btn-disagree");
+    var pctAgree = (btnAgree ? btnAgree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-agree");
+    var pctDisagree = (btnDisagree ? btnDisagree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-disagree");
+    var fillAgree = pollEl.querySelector(".take-fill-agree") || document.getElementById(sId + "-fill-agree");
+    var fillDisagree = pollEl.querySelector(".take-fill-disagree") || document.getElementById(sId + "-fill-disagree");
+    var track = pollEl.querySelector(".take-consensus-track") || document.getElementById(sId + "-take-track");
+    var footer = pollEl.querySelector(".take-footer-meta") || document.getElementById(sId + "-take-footer");
+    var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
+    var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
+
+    if (btnAgree) btnAgree.classList.toggle("selected-agree", norm === "AGREE");
+    if (btnDisagree) btnDisagree.classList.toggle("selected-disagree", norm === "DISAGREE");
+
+    var agPct = (norm === "AGREE") ? 100 : 0;
+    var disPct = (norm === "DISAGREE") ? 100 : 0;
+    if (pctAgree) { pctAgree.textContent = agPct + "%"; pctAgree.style.display = "inline-block"; }
+    if (pctDisagree) { pctDisagree.textContent = disPct + "%"; pctDisagree.style.display = "inline-block"; }
+    if (fillAgree) fillAgree.style.width = agPct + "%";
+    if (fillDisagree) fillDisagree.style.width = disPct + "%";
+    if (track) track.style.display = "flex";
+    if (footer) footer.style.display = "flex";
+    if (votedMsg) votedMsg.textContent = "📊 100% voted with you • Agree: " + agPct + "% / Disagree: " + disPct + "%";
+    if (totalVotesEl) totalVotesEl.textContent = "Total votes: 1";
+
+    var card = (pollEl.closest ? pollEl.closest(".compact-card") : null) || document.getElementById(sId);
+    var agreeLens = (pollEl.getAttribute("data-agree-lens") || "RIGHT").toUpperCase();
+    var disagreeLens = (pollEl.getAttribute("data-disagree-lens") || "LEFT").toUpperCase();
+    var chosenLens = (norm === "AGREE") ? agreeLens : disagreeLens;
+    var lensPanel = document.getElementById(sId + "-lens-panel") || (card ? card.querySelector(".lens-drawer-panel") : null);
+    if (lensPanel && lensPanel.parentNode !== pollEl) pollEl.appendChild(lensPanel);
+    if (lensPanel) lensPanel.style.display = "block";
+    window.switchStoryPerspective(sId, chosenLens);
+
+    var sbUrl = "https://vswxehmxdbtdatnlovsl.supabase.co";
+    var sbKey = "sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD";
+    var targetBtn = (norm === "AGREE") ? btnAgree : btnDisagree;
+    var lblEl = targetBtn ? targetBtn.querySelector(".vote-label") : null;
+    var choiceLabel = lblEl ? lblEl.textContent.trim() : (norm === "AGREE" ? "Agree" : "Disagree");
+    var payload = {
+      story_id: String(sId),
+      choice_id: norm.toLowerCase(),
+      choice_label: choiceLabel,
+      lens: chosenLens.toLowerCase(),
+      voter_id: window.getOrCreatePollVisitorId()
+    };
+    fetch(sbUrl + "/rest/v1/poll_votes", {
+      method: "POST",
+      headers: { "apikey": sbKey, "Content-Type": "application/json", "Prefer": "return=minimal" },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      return fetch(sbUrl + "/rest/v1/rpc/get_poll_results", {
+        method: "POST",
+        headers: { "apikey": sbKey, "Content-Type": "application/json" },
+        body: JSON.stringify({ p_story_id: String(sId) })
+      });
+    }).then(function(r) { return r.ok ? r.json() : []; }).then(function(rows) {
+      if (!Array.isArray(rows) || rows.length === 0) return;
+      var aCnt = 0, dCnt = 0;
+      for (var i = 0; i < rows.length; i++) {
+        var c = String(rows[i].choice_id || rows[i].choice || "").toLowerCase();
+        var n = parseInt(rows[i].vote_count || rows[i].count || rows[i].total_votes || 0, 10) || 0;
+        if (c.indexOf("agree") === 0) aCnt += n;
+        else if (c.indexOf("disagree") === 0) dCnt += n;
+      }
+      if (norm === "AGREE" && aCnt < 1) aCnt = 1;
+      if (norm === "DISAGREE" && dCnt < 1) dCnt = 1;
+      var tot = aCnt + dCnt;
+      if (tot > 0) {
+        var aP = Math.round((aCnt / tot) * 100);
+        var dP = 100 - aP;
+        var myP = (norm === "AGREE") ? aP : dP;
+        if (pctAgree) pctAgree.textContent = aP + "%";
+        if (pctDisagree) pctDisagree.textContent = dP + "%";
+        if (fillAgree) fillAgree.style.width = aP + "%";
+        if (fillDisagree) fillDisagree.style.width = dP + "%";
+        if (votedMsg) votedMsg.textContent = "📊 " + myP + "% voted with you • Agree: " + aP + "% / Disagree: " + dP + "%";
+        if (totalVotesEl) totalVotesEl.textContent = "Total votes: " + tot.toLocaleString();
+      }
+    }).catch(function() {});
+  };
   </script>"""
         s_head_sc = content.find("<script>")
         e_head_sc = content.find("</script>", s_head_sc)

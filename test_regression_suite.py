@@ -1489,9 +1489,9 @@ def run_all_regression_tests():
         assert term not in eng37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in engine.py"
         assert term not in stories_raw37, f"Test 37 Failed: Forbidden fake poll term '{term}' found in data/stories.json"
 
-    # 3. Verify that Script 0 in <head> of index.html does NOT contain a duplicate local-only voteControversialTake
+    # 3. Verify that Script 0 in <head> of index.html contains the instant-ready Supabase voteControversialTake with zero fake numbers
     head_part = html37[:html37.find("</head>")]
-    assert "window.voteControversialTake" not in head_part, "Test 37 Failed: Duplicate local-only voteControversialTake found in <head>!"
+    assert "window.voteControversialTake" in head_part and "vswxehmxdbtdatnlovsl.supabase.co" in head_part, "Test 37 Failed: Instant-ready Supabase voteControversialTake missing from <head>!"
 
     # 4. Run Node.js behavioral test on parsePollResultsPayload, visitor ID generation, and zero-vote / non-zero-vote calculation
     import subprocess

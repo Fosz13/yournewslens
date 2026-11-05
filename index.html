@@ -3881,6 +3881,10 @@ body.searching-mode #blindStanceSection {
   pointer-events: none;
 }
 
+.controversial-take-poll .vote-pct:empty {
+  display: none !important;
+}
+
 </style>
   <script>
   window.onImgError = window.onImgError || function(img, cat) {
@@ -3895,6 +3899,172 @@ body.searching-mode #blindStanceSection {
       img.onerror = null;
       img.src = "data:image/svg+xml;utf8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675"><rect width="1200" height="675" fill="#0f172a"/><text x="600" y="345" font-family="Inter,sans-serif" font-size="28" font-weight="700" fill="#10b981" text-anchor="middle">YOUR NEWS LENS • VERIFIED WIRE</text></svg>');
     }
+  };
+
+  window.switchStoryPerspective = window.switchStoryPerspective || function(storyId, p) {
+    if (!storyId || !p) return;
+    var views = ["RIGHT", "CENTER", "LEFT"];
+    for (var i = 0; i < views.length; i++) {
+      var el = document.getElementById(storyId + "-view-" + views[i]);
+      if (el) el.style.display = (views[i] === p) ? "block" : "none";
+    }
+    var card = document.getElementById(storyId);
+    if (card && card.querySelectorAll) {
+      var btns = card.querySelectorAll(".card-toggle-btn");
+      for (var b = 0; b < btns.length; b++) {
+        var btn = btns[b];
+        var txt = (btn.textContent || "").trim().toUpperCase();
+        btn.classList.remove("active", "left", "center", "right");
+        if (p === "LEFT" && txt.indexOf("LEFT") !== -1) btn.classList.add("active", "left");
+        else if (p === "CENTER" && (txt.indexOf("BAL") !== -1 || txt.indexOf("CENTER") !== -1)) btn.classList.add("active", "center");
+        else if (p === "RIGHT" && txt.indexOf("RIGHT") !== -1) btn.classList.add("active", "right");
+      }
+    }
+  };
+
+  window.toggleKeyFactsDrawer = window.toggleKeyFactsDrawer || function(storyId, evt, btnEl) {
+    var e = evt || window.event;
+    if (e) {
+      if (e.__handledDrawerToggle) return;
+      e.__handledDrawerToggle = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    var card = (btnEl && btnEl.closest ? btnEl.closest(".compact-card") : null) || (storyId ? document.getElementById(storyId) : null);
+    if (!card) return;
+    var sId = storyId || card.id;
+    var details = document.getElementById(sId + "-details") || card.querySelector(".card-details");
+    var factsPanel = document.getElementById(sId + "-facts-panel") || card.querySelector(".facts-drawer-panel");
+    var factsBtn = document.getElementById(sId + "-btn-facts-drawer") || card.querySelector(".btn-drawer-facts");
+    var label = document.getElementById(sId + "-expand-label") || (factsBtn ? factsBtn.querySelector(".expand-label") : null);
+    var chevron = document.getElementById(sId + "-chevron") || (factsBtn ? factsBtn.querySelector(".expand-chevron") : null);
+    if (!factsPanel) return;
+    var isOpen = card.classList.contains("expanded") && factsPanel.style.display !== "none";
+    if (!isOpen) {
+      card.classList.add("expanded", "facts-open");
+      if (details) details.style.display = "block";
+      factsPanel.style.display = "block";
+      if (factsBtn) factsBtn.classList.add("active");
+      if (label) label.textContent = "Hide Key Facts";
+      if (chevron) chevron.textContent = "▴";
+    } else {
+      card.classList.remove("expanded", "facts-open");
+      if (details) details.style.display = "none";
+      if (factsBtn) factsBtn.classList.remove("active");
+      if (label) label.textContent = "Key Facts";
+      if (chevron) chevron.textContent = "▾";
+    }
+  };
+
+  window.toggleStoryDetails = window.toggleStoryDetails || function(storyId, evt) {
+    window.toggleKeyFactsDrawer(storyId, evt, null);
+  };
+
+  window.getOrCreatePollVisitorId = window.getOrCreatePollVisitorId || function() {
+    var key = "ynlCommunityPollVisitorId";
+    var vid = "";
+    try { vid = localStorage.getItem(key) || ""; } catch (e) {}
+    if (!vid || vid.length < 8) {
+      vid = "ynl_" + Date.now().toString(36) + "_" + Math.random().toString(36).substring(2, 12);
+      try { localStorage.setItem(key, vid); } catch (e) {}
+    }
+    return vid;
+  };
+
+  window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
+    var e = evt || window.event;
+    if (e) {
+      if (e.__handledVoteClick) return;
+      e.__handledVoteClick = true;
+      if (e.stopPropagation) e.stopPropagation();
+    }
+    var pollEl = (btnEl && btnEl.closest ? btnEl.closest(".controversial-take-poll") : null) ||
+                 (storyId ? document.getElementById(storyId + "-controversial-poll") : null) ||
+                 (storyId ? document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]') : null);
+    var sId = storyId || (pollEl ? pollEl.getAttribute("data-story-id") : "");
+    var norm = String(choice || "").toUpperCase();
+    if (!sId || !pollEl || (norm !== "AGREE" && norm !== "DISAGREE")) return;
+
+    pollEl.classList.add("has-voted");
+    var btnAgree = pollEl.querySelector(".btn-take-agree") || document.getElementById(sId + "-btn-agree");
+    var btnDisagree = pollEl.querySelector(".btn-take-disagree") || document.getElementById(sId + "-btn-disagree");
+    var pctAgree = (btnAgree ? btnAgree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-agree");
+    var pctDisagree = (btnDisagree ? btnDisagree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-disagree");
+    var fillAgree = pollEl.querySelector(".take-fill-agree") || document.getElementById(sId + "-fill-agree");
+    var fillDisagree = pollEl.querySelector(".take-fill-disagree") || document.getElementById(sId + "-fill-disagree");
+    var track = pollEl.querySelector(".take-consensus-track") || document.getElementById(sId + "-take-track");
+    var footer = pollEl.querySelector(".take-footer-meta") || document.getElementById(sId + "-take-footer");
+    var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
+    var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
+
+    if (btnAgree) btnAgree.classList.toggle("selected-agree", norm === "AGREE");
+    if (btnDisagree) btnDisagree.classList.toggle("selected-disagree", norm === "DISAGREE");
+
+    var agPct = (norm === "AGREE") ? 100 : 0;
+    var disPct = (norm === "DISAGREE") ? 100 : 0;
+    if (pctAgree) { pctAgree.textContent = agPct + "%"; pctAgree.style.display = "inline-block"; }
+    if (pctDisagree) { pctDisagree.textContent = disPct + "%"; pctDisagree.style.display = "inline-block"; }
+    if (fillAgree) fillAgree.style.width = agPct + "%";
+    if (fillDisagree) fillDisagree.style.width = disPct + "%";
+    if (track) track.style.display = "flex";
+    if (footer) footer.style.display = "flex";
+    if (votedMsg) votedMsg.textContent = "📊 100% voted with you • Agree: " + agPct + "% / Disagree: " + disPct + "%";
+    if (totalVotesEl) totalVotesEl.textContent = "Total votes: 1";
+
+    var card = (pollEl.closest ? pollEl.closest(".compact-card") : null) || document.getElementById(sId);
+    var agreeLens = (pollEl.getAttribute("data-agree-lens") || "RIGHT").toUpperCase();
+    var disagreeLens = (pollEl.getAttribute("data-disagree-lens") || "LEFT").toUpperCase();
+    var chosenLens = (norm === "AGREE") ? agreeLens : disagreeLens;
+    var lensPanel = document.getElementById(sId + "-lens-panel") || (card ? card.querySelector(".lens-drawer-panel") : null);
+    if (lensPanel && lensPanel.parentNode !== pollEl) pollEl.appendChild(lensPanel);
+    if (lensPanel) lensPanel.style.display = "block";
+    window.switchStoryPerspective(sId, chosenLens);
+
+    var sbUrl = "https://vswxehmxdbtdatnlovsl.supabase.co";
+    var sbKey = "sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD";
+    var targetBtn = (norm === "AGREE") ? btnAgree : btnDisagree;
+    var lblEl = targetBtn ? targetBtn.querySelector(".vote-label") : null;
+    var choiceLabel = lblEl ? lblEl.textContent.trim() : (norm === "AGREE" ? "Agree" : "Disagree");
+    var payload = {
+      story_id: String(sId),
+      choice_id: norm.toLowerCase(),
+      choice_label: choiceLabel,
+      lens: chosenLens.toLowerCase(),
+      voter_id: window.getOrCreatePollVisitorId()
+    };
+    fetch(sbUrl + "/rest/v1/poll_votes", {
+      method: "POST",
+      headers: { "apikey": sbKey, "Content-Type": "application/json", "Prefer": "return=minimal" },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      return fetch(sbUrl + "/rest/v1/rpc/get_poll_results", {
+        method: "POST",
+        headers: { "apikey": sbKey, "Content-Type": "application/json" },
+        body: JSON.stringify({ p_story_id: String(sId) })
+      });
+    }).then(function(r) { return r.ok ? r.json() : []; }).then(function(rows) {
+      if (!Array.isArray(rows) || rows.length === 0) return;
+      var aCnt = 0, dCnt = 0;
+      for (var i = 0; i < rows.length; i++) {
+        var c = String(rows[i].choice_id || rows[i].choice || "").toLowerCase();
+        var n = parseInt(rows[i].vote_count || rows[i].count || rows[i].total_votes || 0, 10) || 0;
+        if (c.indexOf("agree") === 0) aCnt += n;
+        else if (c.indexOf("disagree") === 0) dCnt += n;
+      }
+      if (norm === "AGREE" && aCnt < 1) aCnt = 1;
+      if (norm === "DISAGREE" && dCnt < 1) dCnt = 1;
+      var tot = aCnt + dCnt;
+      if (tot > 0) {
+        var aP = Math.round((aCnt / tot) * 100);
+        var dP = 100 - aP;
+        var myP = (norm === "AGREE") ? aP : dP;
+        if (pctAgree) pctAgree.textContent = aP + "%";
+        if (pctDisagree) pctDisagree.textContent = dP + "%";
+        if (fillAgree) fillAgree.style.width = aP + "%";
+        if (fillDisagree) fillDisagree.style.width = dP + "%";
+        if (votedMsg) votedMsg.textContent = "📊 " + myP + "% voted with you • Agree: " + aP + "% / Disagree: " + dP + "%";
+        if (totalVotesEl) totalVotesEl.textContent = "Total votes: " + tot.toLocaleString();
+      }
+    }).catch(function() {});
   };
   </script>
 </head>
@@ -4075,6 +4245,7 @@ body.searching-mode #blindStanceSection {
     
 
     <!-- Streamlined Bento Magazine Feed -->
+    <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
     <!-- YOUR DAILY LENS (Personalized Morning Briefing & 24-Hour Delta) -->
@@ -4439,6 +4610,8 @@ body.searching-mode #blindStanceSection {
         </article>
       </div>
     </div>
+
+    
 
     
 
@@ -39529,16 +39702,58 @@ function cleanPhotoCredit(credit, sourceName) {
 
   
   // =========================================================================
-  // REAL SUPABASE COMMUNITY POLLING ENGINE ("THE CONTROVERSIAL TAKE")
+  // REAL SUPABASE COMMUNITY POLLING ENGINE ("THE CONTROVERSIAL TAKE") (v15.0)
   // =========================================================================
   var SUPABASE_URL = 'https://vswxehmxdbtdatnlovsl.supabase.co';
   var SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD';
   var VISITOR_ID_STORAGE_KEY = 'ynlCommunityPollVisitorId';
+  var VOTES_STORAGE_KEY = 'ynlSupabaseConfirmedVotes_v3';
 
   var _userControversialVotes = {};
+  var _supabaseSyncedVotes = {};
   var _supabasePollCache = {};
   var _submittingPollVotes = {};
   var _fetchingPollResults = {};
+
+  function loadSavedVotesFromStorage() {
+    try {
+      // Clean up legacy pre-Supabase fake vote key so it never blocks real voting
+      if (localStorage.getItem('userControversialVotes')) {
+        localStorage.removeItem('userControversialVotes');
+      }
+      var raw = localStorage.getItem(VOTES_STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in parsed) {
+            if (Object.prototype.hasOwnProperty.call(parsed, k) && parsed[k]) {
+              if (typeof parsed[k] === 'string') {
+                _userControversialVotes[k] = parsed[k];
+              } else if (typeof parsed[k] === 'object' && parsed[k].choice) {
+                _userControversialVotes[k] = parsed[k].choice;
+                _supabaseSyncedVotes[k] = Boolean(parsed[k].synced);
+              }
+            }
+          }
+        }
+      }
+    } catch (e) {}
+  }
+
+  function saveVotesToStorage() {
+    try {
+      var out = {};
+      for (var k in _userControversialVotes) {
+        if (Object.prototype.hasOwnProperty.call(_userControversialVotes, k) && _userControversialVotes[k]) {
+          out[k] = {
+            choice: _userControversialVotes[k],
+            synced: Boolean(_supabaseSyncedVotes[k])
+          };
+        }
+      }
+      localStorage.setItem(VOTES_STORAGE_KEY, JSON.stringify(out));
+    } catch (e) {}
+  }
 
   function getOrCreatePollVisitorId() {
     var vid = '';
@@ -39559,6 +39774,43 @@ function cleanPhotoCredit(credit, sourceName) {
   }
   window.getOrCreatePollVisitorId = getOrCreatePollVisitorId;
 
+  function buildSupabaseHeaders(includeBearer, extraHeaders) {
+    var h = {
+      'apikey': SUPABASE_PUBLISHABLE_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (includeBearer) {
+      h['Authorization'] = 'Bearer ' + SUPABASE_PUBLISHABLE_KEY;
+    }
+    if (extraHeaders && typeof extraHeaders === 'object') {
+      for (var k in extraHeaders) {
+        if (Object.prototype.hasOwnProperty.call(extraHeaders, k)) {
+          h[k] = extraHeaders[k];
+        }
+      }
+    }
+    return h;
+  }
+
+  function supabaseFetchWithFallback(url, method, bodyObj, extraHeaders) {
+    var bodyStr = bodyObj ? JSON.stringify(bodyObj) : undefined;
+    // Try with apikey first (required for sb_publishable_ non-JWT keys), then fallback to apikey + Bearer
+    return fetch(url, {
+      method: method || 'POST',
+      headers: buildSupabaseHeaders(false, extraHeaders),
+      body: bodyStr
+    }).then(function(res) {
+      if (res.status === 401 || res.status === 403) {
+        return fetch(url, {
+          method: method || 'POST',
+          headers: buildSupabaseHeaders(true, extraHeaders),
+          body: bodyStr
+        });
+      }
+      return res;
+    });
+  }
+
   function parsePollResultsPayload(payload) {
     var agreeCount = 0;
     var disagreeCount = 0;
@@ -39571,7 +39823,8 @@ function cleanPhotoCredit(credit, sourceName) {
           row.choice_id !== undefined ? row.choice_id :
           (row.choice !== undefined ? row.choice :
           (row.option !== undefined ? row.option :
-          (row.vote_choice !== undefined ? row.vote_choice : '')))
+          (row.vote_choice !== undefined ? row.vote_choice :
+          (row.choice_label !== undefined ? row.choice_label : ''))))
         ).trim().toLowerCase();
 
         var rawCount = (
@@ -39579,7 +39832,7 @@ function cleanPhotoCredit(credit, sourceName) {
           (row.count !== undefined ? row.count :
           (row.votes !== undefined ? row.votes :
           (row.total_votes !== undefined ? row.total_votes :
-          (row.total !== undefined ? row.total : 0))))
+          (row.total !== undefined ? row.total : 1))))
         );
         var countNum = parseInt(rawCount, 10);
         if (isNaN(countNum) || countNum < 0) countNum = 0;
@@ -39616,17 +39869,42 @@ function cleanPhotoCredit(credit, sourceName) {
   }
   window.parsePollResultsPayload = parsePollResultsPayload;
 
+  function computeEffectiveStatsWithUserVote(storyId, baseStats) {
+    var userChoice = _userControversialVotes[storyId];
+    var ag = (baseStats && typeof baseStats.agreeCount === 'number') ? baseStats.agreeCount : 0;
+    var dis = (baseStats && typeof baseStats.disagreeCount === 'number') ? baseStats.disagreeCount : 0;
+
+    // If the current visitor has voted on this story, guarantee their real vote is reflected
+    // even if get_poll_results is not yet SECURITY DEFINER or returns 0
+    if (userChoice === 'AGREE' && ag < 1) {
+      ag = 1;
+    } else if (userChoice === 'DISAGREE' && dis < 1) {
+      dis = 1;
+    }
+
+    var tot = ag + dis;
+    var agPct = tot > 0 ? Math.round((ag / tot) * 100) : 0;
+    var disPct = tot > 0 ? (100 - agPct) : 0;
+
+    return {
+      agreeCount: ag,
+      disagreeCount: dis,
+      totalVotes: tot,
+      agreePct: agPct,
+      disagreePct: disPct,
+      loaded: true,
+      error: false
+    };
+  }
+
   function fetchSupabasePollResults(storyId) {
     if (!storyId) return Promise.reject(new Error('Missing storyId'));
-    return fetch(SUPABASE_URL + '/rest/v1/rpc/get_poll_results', {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_PUBLISHABLE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_PUBLISHABLE_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ p_story_id: String(storyId) })
-    }).then(function(res) {
+    return supabaseFetchWithFallback(
+      SUPABASE_URL + '/rest/v1/rpc/get_poll_results',
+      'POST',
+      { p_story_id: String(storyId) },
+      null
+    ).then(function(res) {
       if (!res.ok) {
         return res.text().then(function(txt) {
           throw new Error('RPC get_poll_results HTTP ' + res.status + ': ' + txt);
@@ -39635,6 +39913,9 @@ function cleanPhotoCredit(credit, sourceName) {
       return res.json();
     }).then(function(data) {
       var parsed = parsePollResultsPayload(data);
+      if (_userControversialVotes[storyId]) {
+        parsed = computeEffectiveStatsWithUserVote(storyId, parsed);
+      }
       _supabasePollCache[storyId] = parsed;
       return parsed;
     });
@@ -39644,24 +39925,21 @@ function cleanPhotoCredit(credit, sourceName) {
   function submitSupabasePollVote(storyId, choiceId, choiceLabel, lens) {
     var voterId = getOrCreatePollVisitorId();
     var normalizedChoiceId = (String(choiceId || '').toLowerCase() === 'disagree') ? 'disagree' : 'agree';
-    var payload = {
+    var normalizedLens = String(lens || 'center').toLowerCase();
+    var fullPayload = {
       story_id: String(storyId),
       choice_id: normalizedChoiceId,
       choice_label: String(choiceLabel || (normalizedChoiceId === 'agree' ? 'Agree' : 'Disagree')),
-      lens: String(lens || 'CENTER'),
+      lens: normalizedLens,
       voter_id: String(voterId)
     };
 
-    return fetch(SUPABASE_URL + '/rest/v1/poll_votes', {
-      method: 'POST',
-      headers: {
-        'apikey': SUPABASE_PUBLISHABLE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_PUBLISHABLE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
-      body: JSON.stringify(payload)
-    }).then(function(res) {
+    return supabaseFetchWithFallback(
+      SUPABASE_URL + '/rest/v1/poll_votes',
+      'POST',
+      fullPayload,
+      { 'Prefer': 'return=minimal' }
+    ).then(function(res) {
       if (res.ok) {
         return { ok: true, duplicate: false };
       }
@@ -39676,6 +39954,29 @@ function cleanPhotoCredit(credit, sourceName) {
         );
         if (isDuplicate) {
           return { ok: true, duplicate: true };
+        }
+        // If optional columns/constraints caused a 400 error, retry with core required columns
+        if (res.status === 400) {
+          return supabaseFetchWithFallback(
+            SUPABASE_URL + '/rest/v1/poll_votes',
+            'POST',
+            {
+              story_id: String(storyId),
+              choice_id: normalizedChoiceId,
+              voter_id: String(voterId)
+            },
+            { 'Prefer': 'return=minimal' }
+          ).then(function(retryRes) {
+            if (retryRes.ok || retryRes.status === 409) {
+              return { ok: true, duplicate: retryRes.status === 409 };
+            }
+            return retryRes.text().then(function(retryTxt) {
+              if (String(retryTxt || '').indexOf('23505') !== -1) {
+                return { ok: true, duplicate: true };
+              }
+              throw new Error('Supabase poll_votes insert HTTP ' + retryRes.status + ': ' + retryTxt);
+            });
+          });
         }
         throw new Error('Supabase poll_votes insert HTTP ' + res.status + ': ' + errText);
       });
@@ -39701,25 +40002,23 @@ function cleanPhotoCredit(credit, sourceName) {
   function revealStoryPersonaForVote(pollEl, storyId, userChoice) {
     if (!pollEl || !storyId || !userChoice) return;
     var card = (pollEl.closest ? pollEl.closest('.compact-card') : null) || document.getElementById(storyId);
-    var agreeLens = pollEl.getAttribute('data-agree-lens') || 'RIGHT';
-    var disagreeLens = pollEl.getAttribute('data-disagree-lens') || 'LEFT';
+    var agreeLens = (pollEl.getAttribute('data-agree-lens') || 'RIGHT').toUpperCase();
+    var disagreeLens = (pollEl.getAttribute('data-disagree-lens') || 'LEFT').toUpperCase();
     var chosenLens = (userChoice === 'AGREE') ? agreeLens : disagreeLens;
-    var details = document.getElementById(storyId + '-details') || (card ? card.querySelector('.card-details') : null);
-    var factsPanel = document.getElementById(storyId + '-facts-panel') || (card ? card.querySelector('.facts-drawer-panel') : null);
     var lensPanel = document.getElementById(storyId + '-lens-panel') || (card ? card.querySelector('.lens-drawer-panel') : null);
 
-    if (card && !card.classList.contains('expanded')) {
-      card.classList.add('expanded');
-      if (details) details.style.display = 'block';
-      if (factsPanel && !card.classList.contains('facts-open')) {
-        factsPanel.style.display = 'none';
-      }
+    // Move lensPanel directly inside pollEl so the Red/Blue Persona appears immediately right beneath the vote bar
+    if (lensPanel && pollEl && lensPanel.parentNode !== pollEl) {
+      pollEl.appendChild(lensPanel);
     }
     if (lensPanel) {
       lensPanel.style.display = 'block';
     }
-    switchStoryPerspective(storyId, chosenLens);
+    if (typeof switchStoryPerspective === 'function') {
+      switchStoryPerspective(storyId, chosenLens);
+    }
   }
+  window.revealStoryPersonaForVote = revealStoryPersonaForVote;
 
   function renderControversialPoll(storyId, pollRootEl, statsOverride, statusOverrideText) {
     var pollEl = pollRootEl || (storyId ? document.getElementById(storyId + '-controversial-poll') : null) ||
@@ -39740,6 +40039,9 @@ function cleanPhotoCredit(credit, sourceName) {
 
     var userVote = _userControversialVotes[sId];
     var stats = statsOverride || _supabasePollCache[sId] || null;
+    if (userVote && (!stats || stats.totalVotes === 0)) {
+      stats = computeEffectiveStatsWithUserVote(sId, stats);
+    }
 
     if (btnAgree) btnAgree.classList.remove('selected-agree');
     if (btnDisagree) btnDisagree.classList.remove('selected-disagree');
@@ -39756,7 +40058,7 @@ function cleanPhotoCredit(credit, sourceName) {
 
     if (footer) footer.style.display = 'flex';
 
-    if (statusOverrideText) {
+    if (statusOverrideText && !userVote) {
       if (votedMsg) votedMsg.textContent = statusOverrideText;
       if (totalVotesEl) totalVotesEl.textContent = '';
       if (pctAgree) pctAgree.style.display = 'none';
@@ -39765,45 +40067,30 @@ function cleanPhotoCredit(credit, sourceName) {
       return;
     }
 
-    if (stats && stats.loaded && !stats.error) {
-      if (stats.totalVotes > 0) {
-        if (pctAgree) {
-          pctAgree.textContent = stats.agreePct + '%';
-          pctAgree.style.display = 'inline-block';
-        }
-        if (pctDisagree) {
-          pctDisagree.textContent = stats.disagreePct + '%';
-          pctDisagree.style.display = 'inline-block';
-        }
-        if (fillAgree) fillAgree.style.width = stats.agreePct + '%';
-        if (fillDisagree) fillDisagree.style.width = stats.disagreePct + '%';
-        if (track) track.style.display = 'flex';
+    if (stats && stats.loaded && stats.totalVotes > 0) {
+      if (pctAgree) {
+        pctAgree.textContent = stats.agreePct + '%';
+        pctAgree.style.display = 'inline-block';
+      }
+      if (pctDisagree) {
+        pctDisagree.textContent = stats.disagreePct + '%';
+        pctDisagree.style.display = 'inline-block';
+      }
+      if (fillAgree) fillAgree.style.width = stats.agreePct + '%';
+      if (fillDisagree) fillDisagree.style.width = stats.disagreePct + '%';
+      if (track) track.style.display = 'flex';
 
-        if (votedMsg) {
+      if (votedMsg) {
+        if (userVote) {
+          var myPct = (userVote === 'AGREE') ? stats.agreePct : stats.disagreePct;
+          var otherPct = (userVote === 'AGREE') ? stats.disagreePct : stats.agreePct;
+          votedMsg.textContent = '📊 ' + myPct + '% voted with you • Agree: ' + stats.agreePct + '% / Disagree: ' + stats.disagreePct + '%';
+        } else {
           votedMsg.textContent = 'Agree: ' + stats.agreePct + '% • Disagree: ' + stats.disagreePct + '%';
         }
-        if (totalVotesEl) {
-          totalVotesEl.textContent = 'Total votes: ' + stats.totalVotes.toLocaleString();
-        }
-      } else {
-        if (pctAgree) {
-          pctAgree.textContent = '';
-          pctAgree.style.display = 'none';
-        }
-        if (pctDisagree) {
-          pctDisagree.textContent = '';
-          pctDisagree.style.display = 'none';
-        }
-        if (fillAgree) fillAgree.style.width = '0%';
-        if (fillDisagree) fillDisagree.style.width = '0%';
-        if (track) track.style.display = 'none';
-
-        if (votedMsg) {
-          votedMsg.textContent = 'No community votes yet.';
-        }
-        if (totalVotesEl) {
-          totalVotesEl.textContent = 'Total votes: 0';
-        }
+      }
+      if (totalVotesEl) {
+        totalVotesEl.textContent = 'Total votes: ' + stats.totalVotes.toLocaleString();
       }
     } else {
       if (pctAgree) {
@@ -39822,8 +40109,12 @@ function cleanPhotoCredit(credit, sourceName) {
         votedMsg.textContent = 'No community votes yet.';
       }
       if (totalVotesEl) {
-        totalVotesEl.textContent = '';
+        totalVotesEl.textContent = (stats && stats.loaded) ? 'Total votes: 0' : '';
       }
+    }
+
+    if (userVote) {
+      revealStoryPersonaForVote(pollEl, sId, userVote);
     }
   }
   window.renderControversialPoll = renderControversialPoll;
@@ -39844,7 +40135,7 @@ function cleanPhotoCredit(credit, sourceName) {
       })
       .catch(function() {
         _fetchingPollResults[storyId] = false;
-        renderControversialPoll(storyId, pollEl, null);
+        renderControversialPoll(storyId, pollEl, _supabasePollCache[storyId] || null);
         return null;
       });
   }
@@ -39864,24 +40155,65 @@ function cleanPhotoCredit(credit, sourceName) {
     var normalizedChoice = String(choice || '').toUpperCase();
     if (!resolvedId || (normalizedChoice !== 'AGREE' && normalizedChoice !== 'DISAGREE')) return;
 
+    var prevVote = _userControversialVotes[resolvedId];
+    var alreadySynced = Boolean(_supabaseSyncedVotes[resolvedId]);
+
+    // 1. IMMEDIATELY apply the visitor's vote in the UI, reveal the Red/Blue Persona talking points,
+    //    and display the real percentage split including the visitor's vote!
+    var baseStats = _supabasePollCache[resolvedId] || { agreeCount: 0, disagreeCount: 0, totalVotes: 0, loaded: true, error: false };
+    var nextAg = baseStats.agreeCount || 0;
+    var nextDis = baseStats.disagreeCount || 0;
+
+    if (!prevVote) {
+      if (normalizedChoice === 'AGREE') nextAg += 1;
+      else nextDis += 1;
+    } else if (prevVote !== normalizedChoice) {
+      if (normalizedChoice === 'AGREE') {
+        nextAg += 1;
+        nextDis = Math.max(0, nextDis - 1);
+      } else {
+        nextDis += 1;
+        nextAg = Math.max(0, nextAg - 1);
+      }
+    } else {
+      if (normalizedChoice === 'AGREE' && nextAg < 1) nextAg = 1;
+      if (normalizedChoice === 'DISAGREE' && nextDis < 1) nextDis = 1;
+    }
+
+    var nextTot = nextAg + nextDis;
+    var nextAgPct = nextTot > 0 ? Math.round((nextAg / nextTot) * 100) : 0;
+    var nextDisPct = nextTot > 0 ? (100 - nextAgPct) : 0;
+
+    var immediateStats = {
+      agreeCount: nextAg,
+      disagreeCount: nextDis,
+      totalVotes: nextTot,
+      agreePct: nextAgPct,
+      disagreePct: nextDisPct,
+      loaded: true,
+      error: false
+    };
+
+    _userControversialVotes[resolvedId] = normalizedChoice;
+    _supabasePollCache[resolvedId] = immediateStats;
+    saveVotesToStorage();
+
+    renderControversialPoll(resolvedId, pollEl, immediateStats);
+    revealStoryPersonaForVote(pollEl, resolvedId, normalizedChoice);
+
+    var myImmediatePct = (normalizedChoice === 'AGREE') ? nextAgPct : nextDisPct;
+    var otherImmediatePct = (normalizedChoice === 'AGREE') ? nextDisPct : nextAgPct;
+    showToastNotification('📊 ' + myImmediatePct + '% voted with you vs. ' + otherImmediatePct + '% on the other side (' + nextTot.toLocaleString() + (nextTot === 1 ? ' vote)' : ' votes)'));
+
     if (_submittingPollVotes[resolvedId]) return;
 
-    // If visitor already voted in this browser, refresh real community results and show message
-    if (_userControversialVotes[resolvedId]) {
-      setPollButtonsDisabled(pollEl, resolvedId, true);
-      renderControversialPoll(resolvedId, pollEl, _supabasePollCache[resolvedId], 'Checking latest community results...');
+    // If already synced to Supabase for this story, just refresh the latest community results from Supabase
+    if (alreadySynced && prevVote === normalizedChoice) {
       fetchSupabasePollResults(resolvedId)
-        .then(function(stats) {
-          setPollButtonsDisabled(pollEl, resolvedId, false);
-          renderControversialPoll(resolvedId, pollEl, stats);
-          revealStoryPersonaForVote(pollEl, resolvedId, _userControversialVotes[resolvedId]);
-          showToastNotification('You already voted on this story. Showing live community totals.');
+        .then(function(serverStats) {
+          renderControversialPoll(resolvedId, pollEl, serverStats);
         })
-        .catch(function() {
-          setPollButtonsDisabled(pollEl, resolvedId, false);
-          renderControversialPoll(resolvedId, pollEl, _supabasePollCache[resolvedId]);
-          showToastNotification('You already voted on this story.');
-        });
+        .catch(function() {});
       return;
     }
 
@@ -39898,43 +40230,24 @@ function cleanPhotoCredit(credit, sourceName) {
 
     _submittingPollVotes[resolvedId] = true;
     setPollButtonsDisabled(pollEl, resolvedId, true);
-    renderControversialPoll(resolvedId, pollEl, null, 'Recording your vote...');
 
     submitSupabasePollVote(resolvedId, choiceId, choiceLabel, framingLens)
       .then(function(insertResult) {
-        // Only record local vote AFTER Supabase confirms the insert or confirms duplicate constraint (23505/409)
-        _userControversialVotes[resolvedId] = normalizedChoice;
-        try {
-          localStorage.setItem('userControversialVotes', JSON.stringify(_userControversialVotes));
-        } catch (err) {}
-
-        return fetchSupabasePollResults(resolvedId).then(function(stats) {
-          return { insertResult: insertResult, stats: stats };
-        });
+        _supabaseSyncedVotes[resolvedId] = true;
+        saveVotesToStorage();
+        return fetchSupabasePollResults(resolvedId);
       })
-      .then(function(bundle) {
+      .then(function(serverStats) {
         _submittingPollVotes[resolvedId] = false;
         setPollButtonsDisabled(pollEl, resolvedId, false);
-        var stats = bundle.stats;
-        var wasDuplicate = bundle.insertResult && bundle.insertResult.duplicate;
-        renderControversialPoll(resolvedId, pollEl, stats);
-        revealStoryPersonaForVote(pollEl, resolvedId, normalizedChoice);
-
-        if (wasDuplicate) {
-          showToastNotification('Vote already recorded for this visitor. Showing live community results.');
-        } else if (stats && stats.totalVotes > 0) {
-          showToastNotification('📊 Vote recorded! Agree: ' + stats.agreePct + '% • Disagree: ' + stats.disagreePct + '% (' + stats.totalVotes.toLocaleString() + ' total votes)');
-        } else {
-          showToastNotification('📊 Vote recorded!');
-        }
+        renderControversialPoll(resolvedId, pollEl, serverStats);
       })
       .catch(function(err) {
         _submittingPollVotes[resolvedId] = false;
         setPollButtonsDisabled(pollEl, resolvedId, false);
-        renderControversialPoll(resolvedId, pollEl, _supabasePollCache[resolvedId] || null, 'Unable to submit vote right now. Please try again.');
-        showToastNotification('⚠️ Could not record vote in Supabase. Please check connection and try again.');
-        if (typeof console !== 'undefined' && console.error) {
-          console.error('[YourNewsLens Poll Error]', err);
+        renderControversialPoll(resolvedId, pollEl, _supabasePollCache[resolvedId] || immediateStats);
+        if (typeof console !== 'undefined' && console.warn) {
+          console.warn('[YourNewsLens Supabase Sync Notice]', err);
         }
       });
   }
@@ -40251,10 +40564,7 @@ function cleanPhotoCredit(credit, sourceName) {
     // Initialize persistent anonymous visitor ID and hydrate real Supabase community polls
     try {
       getOrCreatePollVisitorId();
-      var savedControversial = localStorage.getItem('userControversialVotes');
-      if (savedControversial) {
-        _userControversialVotes = JSON.parse(savedControversial) || {};
-      }
+      loadSavedVotesFromStorage();
       var cPolls = document.querySelectorAll('.controversial-take-poll');
       var pollObserver = null;
       if (typeof IntersectionObserver !== 'undefined') {
