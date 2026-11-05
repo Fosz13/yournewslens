@@ -14,6 +14,8 @@ on:
       - '*.svg'
       - 'CNAME'
       - 'robots.txt'
+      - 'index.html'
+      - 'netlify.toml'
   pull_request:
 
 concurrency:
@@ -47,8 +49,6 @@ jobs:
     timeout-minutes: 12
     permissions:
       contents: write
-    outputs:
-      deploy: ${{ steps.edition.outputs.deploy }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,34 +56,51 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Restore the previous edition
+        run: |
+          wire="$RUNNER_TEMP/wire-data"
+          if git ls-remote --exit-code origin refs/heads/wire-data; then
+            git fetch --depth=1 origin refs/heads/wire-data
+            git worktree add --detach "$wire" FETCH_HEAD
+            cp "$wire/data/stories.json" data/stories.json
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
+            git worktree add --detach "$wire" HEAD
+            git -C "$wire" rm -rf .
+          fi
       - name: Fetch and render stories
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           YNL_EDITORIAL_MODEL: ${{ vars.YNL_EDITORIAL_MODEL }}
         run: python engine.py
-      - name: Build the public Pages artifact
-        run: python build_site.py
-      - name: Commit the edition
-        id: edition
+      - name: Publish to the data branch
         run: |
-          git config user.name "Your News Lens Bot"
-          git config user.email "bot@yournewslens.com"
-          git add data/stories.json index.html
-          if ! git diff --staged --quiet; then
-            git commit -m "chore(wire): publish updated edition"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-          elif [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! python build_site.py --check-live; then
-            echo "deploy=true" >> "$GITHUB_OUTPUT"
-          fi
+          wire="$RUNNER_TEMP/wire-data"
+          python build_site.py --wire "$wire"
+          cp netlify.toml "$wire/"
+          git -C "$wire" add data/stories.json v1/edition.json netlify.toml
+          if git -C "$wire" diff --cached --quiet; then exit 0; fi
+          git -C "$wire" -c user.name="Your News Lens Bot" -c user.email="bot@yournewslens.com" \
+            commit -m "chore(wire): publish updated edition"
+          git -C "$wire" push origin HEAD:refs/heads/wire-data
+
+  build-pages:
+    if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python build_site.py
       - uses: actions/upload-pages-artifact@v3
-        if: steps.edition.outputs.deploy == 'true'
         with:
           path: dist
 
   deploy-pages:
-    if: needs.publish.outputs.deploy == 'true'
-    needs: publish
+    needs: build-pages
     runs-on: ubuntu-latest
     permissions:
       pages: write

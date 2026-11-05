@@ -1,32 +1,57 @@
-"""Build only the files needed by the public site."""
+"""Build the public Pages artifact or package the separately published edition."""
+import hashlib
 import json
 from pathlib import Path
+import re
 import shutil
 import sys
-import urllib.request
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / "dist"
-
-def live_edition_matches():
-    try:
-        request = urllib.request.Request("https://yournewslens.com/data/stories.json",
-                                         headers={"Cache-Control": "no-cache"})
-        with urllib.request.urlopen(request, timeout=8) as response:
-            live = json.loads(response.read(2_000_000))
-        expected = json.loads((ROOT / "data" / "stories.json").read_text(encoding="utf-8"))
-        return bool(live and expected and live[0].get("edition") == expected[0]["edition"])
-    except (OSError, ValueError, TypeError, KeyError, IndexError):
-        return False
+ASSETS = ("styles.css", "app.js", "polling.js")
 
 
-if __name__ == "__main__":
-    if sys.argv[1:] == ["--check-live"]:
-        sys.exit(0 if live_edition_matches() else 1)
+def write_wire(destination):
+    source = ROOT / "data" / "stories.json"
+    records = json.loads(source.read_text(encoding="utf-8"))
+    index = (ROOT / "index.html").read_text(encoding="utf-8")
+    start, end = "<!-- BEGIN STORY FEED -->", "<!-- END GENERATED STORY FEED -->"
+    if index.count(start) != 1 or index.count(end) != 1:
+        raise ValueError("Expected one generated story feed")
+    _, _, after_start = index.partition(start)
+    markup, _, _ = after_start.partition(end)
+    if not records or f'id="{records[0]["id"]}"' not in markup:
+        raise ValueError("Rendered feed does not match the edition")
+    edition = {
+        "edition": hashlib.sha256(markup.encode()).hexdigest()[:16],
+        "storyCount": len(records),
+        "markup": markup,
+    }
+    (destination / "data").mkdir(parents=True, exist_ok=True)
+    (destination / "v1").mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, destination / "data" / "stories.json")
+    (destination / "v1" / "edition.json").write_text(
+        json.dumps(edition, ensure_ascii=False), encoding="utf-8"
+    )
+
+
+def build_site():
     (PUBLIC / "data").mkdir(parents=True, exist_ok=True)
-    for filename in ("index.html", "styles.css", "app.js", "polling.js", "article-placeholder.svg", "robots.txt", "CNAME"):
+    for filename in (*ASSETS, "article-placeholder.svg", "robots.txt", "CNAME"):
         shutil.copyfile(ROOT / filename, PUBLIC / filename)
+    index = (ROOT / "index.html").read_text(encoding="utf-8")
+    for asset in ASSETS:
+        version = hashlib.sha256((ROOT / asset).read_bytes()).hexdigest()[:12]
+        index = re.sub(rf'="{re.escape(asset)}(?:\?v=[0-9a-f]+)?"', f'="{asset}?v={version}"', index)
+    (PUBLIC / "index.html").write_text(index, encoding="utf-8")
     feed = json.loads((ROOT / "data" / "stories.json").read_text(encoding="utf-8"))
     for record in feed:
         record.pop("source_excerpt", None)
     (PUBLIC / "data" / "stories.json").write_text(json.dumps(feed, ensure_ascii=False), encoding="utf-8")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 3 and sys.argv[1] == "--wire":
+        write_wire(Path(sys.argv[2]))
+    else:
+        build_site()
