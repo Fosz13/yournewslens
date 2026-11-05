@@ -167,6 +167,14 @@ def refresh_existing(records, now, offline):
             record["is_original_article_image"] = False
             editorial.prepare_story(record)
         if not record.get("event_date"):
+            excerpt = record.get("source_excerpt") or ""
+            if editorial.MARKUP_LEAK.search(excerpt) or any(
+                editorial.MARKUP_LEAK.search(text or "")
+                for text in [record.get("lead_fact"), *(record.get("core_facts") or [])]
+            ):
+                # Previously scraped RSS can contain the tail of an image tag.
+                record["source_excerpt"] = excerpt.rsplit("/>", 1)[-1].strip()
+                editorial.prepare_story(record)
             if record.get("lead_fact") == editorial.NO_ANSWER:
                 facts = editorial.excerpt_facts(record["title"], record.get("source_excerpt", ""))
                 record["core_facts"] = facts
@@ -197,7 +205,7 @@ def collect_stories(engine, incoming, existing, now):
         key = editorial.canonical_url(url)
         title = item["title"]
         old = by_url.get(key)
-        if (old and old.get("source_excerpt")) or any(
+        if (old and (old.get("core_facts") or any(row is old for row in additions))) or any(
             editorial.same_headline(title, other) for other in titles if not old or other != old["title"]
         ):
             continue

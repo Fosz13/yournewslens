@@ -20,6 +20,7 @@ GENERIC_POLL = re.compile(
     r"the (?:team|technology|price|decision) (?:in|described)|"
     r"more (?:follow-up )?reporting|made the right choice|do more|right move)\b", re.I
 )
+MARKUP_LEAK = re.compile(r'\bdata-[a-z-]+\s*=|<[/!]?[a-z][^>]*>|/\s*>', re.I)
 TRACKING = {"fbclid", "gclid", "ocid", "cmpid", "ref", "source"}
 
 
@@ -92,7 +93,7 @@ def excerpt_facts(title, excerpt):
             continue
         words = tokens(sentence)
         if (not 35 <= len(sentence) <= 380 or sentence[-1:] not in ".!?“”\""
-                or sentence.endswith(("...", "…")) or JUNK.search(sentence)
+                or sentence.endswith(("...", "…")) or JUNK.search(sentence) or MARKUP_LEAK.search(sentence)
                 or re.search(r"\b(?:and|from|with|in|of|to|the|its|as|for|by|on)\.$", sentence, re.I)
                 or len(words - headline) < 3 or len(words & headline) < min(2, len(headline))):
             continue
