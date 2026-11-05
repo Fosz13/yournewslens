@@ -4,6 +4,16 @@ on:
   schedule:
     - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/scrape_and_update.yml'
+      - '*.py'
+      - '*.js'
+      - '*.css'
+      - '*.svg'
+      - 'CNAME'
+      - 'robots.txt'
   pull_request:
 
 concurrency:
