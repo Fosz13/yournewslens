@@ -1,6 +1,7 @@
 """Run the production wire with bounded work and source-first editorial rules."""
 import argparse
 from collections import Counter
+from datetime import datetime
 import hashlib
 import json
 import os
@@ -14,9 +15,10 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlsplit
 
 import editorial
+import reader_sources
 
 MAX_AGE = 3 * 86400
-MAX_NEW = 24
+MAX_NEW = 52
 MAX_AI = 6
 
 
@@ -98,7 +100,8 @@ def refresh_existing(records, now, offline):
             record.pop("source_excerpt", None)
             record["is_original_article_image"] = False
             editorial.prepare_story(record)
-        editorial.restore_missing_features(record)
+        if not record.get("event_date"):
+            editorial.restore_missing_features(record)
         seen.add(editorial.canonical_url(url))
         retained.append(record)
     return retained
@@ -111,6 +114,9 @@ def collect_stories(engine, incoming, existing, now):
     source_counts = Counter()
     scrape_budget = 10
     ordered = sorted(incoming, key=lambda row: (-row["pub_timestamp"], row["link"]))
+    local = [item for item in ordered if item.get("metro") == reader_sources.TAMPA]
+    priority = {id(item) for item in local[:14]}
+    ordered = local[:14] + [item for item in ordered if id(item) not in priority]
     for item in ordered:
         if len(additions) >= MAX_NEW:
             break
@@ -129,6 +135,14 @@ def collect_stories(engine, incoming, existing, now):
             continue
         excerpt = item["description"][:4500]
         category, master = engine.classify_article(title, "", item.get("category") or "")
+        metro = item.get("metro")
+        if item.get("feed_name") in {"WUSF", "Florida Phoenix"} and not re.search(
+            r"\b(?:Tampa|Hillsborough|Pinellas|Pasco|St\. Petersburg|Clearwater|Bradenton|Sarasota)\b",
+            f"{title} {excerpt}", re.I
+        ):
+            metro = ""
+        if metro and item.get("category") == "Local News":
+            category = master = "Local News"
         image = item.get("scraped_image") or {}
         if scrape_budget and urlsplit(url).hostname != "news.google.com" and (
             not image or not editorial.excerpt_facts(title, excerpt) or editorial.is_question(title)
@@ -146,7 +160,7 @@ def collect_stories(engine, incoming, existing, now):
             "id": old["id"] if old else editorial.story_id(url),
             "title": title, "article_url": url, "link": url,
             "source_name": source, "source": item["source"], "pub_timestamp": item["pub_timestamp"],
-            "category": category, "master_category": master, "metro": item["metro"],
+            "category": category, "master_category": master, "metro": metro or "",
             "sub_category": item["sub_category"], "source_excerpt": excerpt,
             "image_url": image.get("url"), "caption": "", "credit": image.get("credit", ""),
             "is_original_article_image": bool(image.get("is_original_article_image")),
@@ -175,7 +189,7 @@ def collect_stories(engine, incoming, existing, now):
         list(pool.map(analyze_story, to_analyze))
     combined = additions + [row for row in existing if by_url[editorial.canonical_url(row["article_url"])] is row]
     combined.sort(key=lambda row: -(row.get("pub_timestamp") or 0))
-    return engine.balance_feed_by_category(combined, max_total=100, min_per_cat=4), len(additions)
+    return engine.balance_feed_by_category(combined, max_total=180, min_per_cat=10), len(additions)
 
 
 def publish(engine, records):
@@ -212,12 +226,22 @@ def run(engine, offline=False, feeds=None):
     if offline:
         added = 0
     else:
-        feeds = engine.RSS_FEEDS if feeds is None else feeds
+        full_wire = feeds is None
+        if full_wire:
+            feeds = list({feed["url"]: feed for feed in [*engine.RSS_FEEDS, *reader_sources.feeds()]}.values())
         # Each feed has an independent timeout and a capped XML response.
         incoming = engine.fetch_all_feeds_concurrently(feeds, max_items_per_feed=5, max_workers=12)
         if not incoming:
             raise RuntimeError("No RSS items were fetched. Previous deployment retained.")
         records, added = collect_stories(engine, incoming, records, now)
+        if full_wire:
+            reader_sources.enrich_lenses(records, incoming)
+            events = reader_sources.fetch_events(now)
+            if events:
+                records = [story for story in records if not story.get("event_date")] + events
+            else:
+                today = datetime.fromtimestamp(now, reader_sources.ZoneInfo("America/New_York")).date().isoformat()
+                records = [story for story in records if story.get("event_date", today) >= today]
     publish(engine, records)
     print(f"[wire] Published {len(records)} stories, {added} added or refreshed")
     return added

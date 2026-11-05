@@ -4579,6 +4579,7 @@ def fetch_rss_items(feed_info: Dict[str, str], max_items: int = 3) -> List[Dict[
                         "link": link or xml_src_url,
                         "description": desc,
                         "source_name": resolved_src,
+                        "feed_name": feed_info["source"],
                         "source": f"{resolved_src} • {rel_time}",
                         "pub_timestamp": ts,
                         "category": feed_info.get("category", "General News"),
@@ -8033,9 +8034,9 @@ def get_category_slug(cat: str) -> str:
 def publisher_editorial_bias(source_name: Any) -> str:
     """Broad publisher-level editorial orientation; not an assessment of an article's facts."""
     name = str(source_name or "").lower()
-    if any(x in name for x in ("fox news", "daily wire", "breitbart", "new york post", "washington examiner", "newsmax", "oann", "one america news", "federalist")):
+    if any(x in name for x in ("fox news", "national review", "daily wire", "breitbart", "new york post", "washington examiner", "newsmax", "oann", "one america news", "federalist")):
         return "right"
-    if any(x in name for x in ("cnn", "msnbc", "huffpost", "the guardian", "npr", "democracy now", "mother jones", "the intercept", "vox", "slate")):
+    if any(x in name for x in ("cnn", "the nation", "msnbc", "huffpost", "the guardian", "npr", "democracy now", "mother jones", "the intercept", "vox", "slate")):
         return "left"
     return "center"
 
@@ -8075,10 +8076,12 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         lead_fact = s.get("lead_fact") or editorial.NO_FACT
         additional_facts = [fact for fact in core_facts if fact != lead_fact]
         facts_items = "".join(f"<li>{escape(fact)}</li>" for fact in additional_facts)
-        facts_markup = (f'<ul class="core-facts-list">{facts_items}</ul>' if facts_items else
-                        '<p class="neutral-desc">See the original article for more details.</p>')
+        facts_markup = (f'<div class="neutral-box"><h4>More key facts</h4><ul class="core-facts-list">{facts_items}</ul></div>'
+                        if facts_items else "")
         label = "⚡ INSTANT ANSWER" if s.get("has_direct_answer") else "📌 KEY FACT"
-        if not core_facts or lead_fact == editorial.NO_ANSWER:
+        if s.get("event_date"):
+            label = "📅 EVENT TIME"
+        elif not core_facts or lead_fact == editorial.NO_ANSWER:
             label = "📄 SOURCE COVERAGE"
         callout_badge = f'<span class="fact-preview-badge fact">{label}</span>'
 
@@ -8126,7 +8129,13 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         for lens in lensList:
             pData = perspectives.get(lens["key"], {})
             tp_list = pData.get("talking_points", [])
+            source_label = escape(pData.get("source_attribution") or "")
+            lens_source = editorial.source_url(pData.get("source_url"))
+            attribution = (f'<a class="source-attribution" href="{escape(lens_source)}" target="_blank" rel="noopener noreferrer">{source_label} ↗</a>'
+                           if lens_source else f'<span class="source-attribution">{source_label}</span>' if source_label else "")
             quotes = "".join([f'<div class="quote-row">{escape(tp)}</div>' for tp in tp_list])
+            if not quotes and pData.get("perspective_badge") == "pending_commentary":
+                quotes = '<p class="neutral-desc">Source-matched coverage for this lens is pending.</p>'
             lens_boxes_html.append(f"""
               <div id="{sId}-view-{lens['key']}" class="perspective-view-box" {lens['display']}>
                 <div class="lens-status-row">
@@ -8143,8 +8152,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
                 </div>
 
                 <div class="perspective-meta-bar">
-                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else ('Editorial lens' if pData.get('perspective_badge') == 'editorial_prompt' else '🤖 AI-Generated Analysis')}</span>
-                  {f'<span class="source-attribution">Source: {escape(pData.get("source_attribution"))}</span>' if pData.get("source_attribution") else ''}
+                  <span class="perspective-badge {pData.get('perspective_badge', 'ai_analysis')}">{'📑 Documented Commentary' if pData.get('perspective_badge') == 'documented_commentary' else ('Editorial lens' if pData.get('perspective_badge') == 'editorial_prompt' else ('Coverage pending' if pData.get('perspective_badge') == 'pending_commentary' else '🤖 AI-Generated Analysis'))}</span>
+                  {attribution}
                 </div>
 
                 <div class="talking-points-panel">
@@ -8229,11 +8238,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
             <div class="card-details" id="{sId}-details">
               <div class="facts-drawer-panel" id="{sId}-facts-panel" style="display: block;">
-              <div class="neutral-box">
-                <div class="neutral-box-header"><div class="neutral-title">More from the source</div></div>
                 {facts_markup}
               </div>
-              </div><!-- end facts-drawer-panel -->
 
               <div class="lens-drawer-panel" id="{sId}-lens-panel" style="display: none;">
                 {joined_lens_html}

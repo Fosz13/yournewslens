@@ -10,6 +10,7 @@ from unittest.mock import patch
 import editorial
 import engine
 import publish_wire
+import reader_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 TITLE = "How to watch Buccaneers vs. Bears: Week Nine preview"
@@ -96,7 +97,8 @@ class PublishingTest(unittest.TestCase):
             with patch.object(engine, "HTML_FILE", str(html)), patch.object(engine, "DATA_FILE", str(data)), \
                  patch.object(engine, "fetch_all_feeds_concurrently", return_value=[feed_item()]), \
                  patch.object(engine, "scrape_article_lead_image_and_meta", return_value={}), \
-                 patch.object(publish_wire, "analyze", return_value={}), redirect_stdout(io.StringIO()):
+                 patch.object(publish_wire, "analyze", return_value={}), \
+                 patch.object(reader_sources, "fetch_events", return_value=[]), redirect_stdout(io.StringIO()):
                 publish_wire.run(engine)
                 output = html.read_bytes(), data.read_bytes()
                 publish_wire.run(engine)
@@ -136,6 +138,27 @@ class PublishingTest(unittest.TestCase):
         page = engine.prerender_cards_html([story])
         self.assertNotIn("hero-image-wrap", page)
         self.assertIn("Editorial lens", page)
+
+    def test_city_calendar_listing_has_date_and_real_source(self):
+        from datetime import datetime
+        now = datetime.fromisoformat("2026-11-05T08:00:00-05:00").timestamp()
+        markup = ('<span class="date-part-F">November</span> <span class="date-part-j">6</span>'
+                  '<div class="views-field-nothing-2"><span class="field-content">7:00 - 9:30pm'
+                  '<div class="calendar-item" id="event-title-197206"><div class="fw-bold">'
+                  '<a href="/events/richards-run-life/197206">Richard&#039;s Run for Life</a>')
+        [event] = reader_sources.tampa_events(markup, now)
+        self.assertEqual(event["event_date"], "2026-11-06")
+        self.assertEqual(event["sub_category"], "events")
+        self.assertIn("7:00", event["lead_fact"])
+        self.assertIn("https://www.tampa.gov/events/", event["article_url"])
+
+    def test_blue_wave_lenses_link_to_documented_views(self):
+        row = {"title": "Progressives hail blue wave victories in US midterm elections", "article_url": URL}
+        reader_sources.enrich_lenses([row], [])
+        right = row["perspectives"]["RIGHT"]
+        self.assertIn("Jim Geraghty", right["source_attribution"])
+        self.assertIn("nationalreview.com", right["source_url"])
+        self.assertIn("change course", right["talking_points"][0])
 
     def test_old_unverified_records_are_not_published(self):
         self.assertEqual(publish_wire.refresh_existing(

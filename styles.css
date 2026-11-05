@@ -3957,3 +3957,16 @@ body.searching-mode #blindStanceSection {
   white-space: normal;
   min-height: 44px;
 }
+
+header.app-header { transition: transform 180ms ease; }
+header.app-header.ynl-header-hidden { transform: translateY(-105%); pointer-events: none; }
+.ynl-lens-help { color: var(--text-secondary, #b3bfd5); font-size: .78rem; width: 100%; }
+.ynl-lens-help summary { cursor: pointer; width: fit-content; }
+.ynl-lens-help p { max-width: 42rem; margin: .45rem 0 0; }
+.ynl-story-link { text-align: left; background: transparent; border: 0; color: inherit; cursor: pointer; padding: 0; font: inherit; font-weight: 700; }
+.ynl-story-link:hover, .ynl-story-link:focus-visible { text-decoration: underline; }
+#communityPostsList { list-style: none; padding: 0; display: grid; gap: .85rem; }
+.ynl-debate-card { border: 1px solid rgba(130,155,200,.25); border-radius: 1rem; padding: 1rem; }
+.ynl-debate-card > p { opacity: .8; font-size: .8rem; margin: 0 0 .3rem; }
+.ynl-debate-order select { padding: .35rem; border-radius: .35rem; }
+@media (prefers-reduced-motion: reduce) { header.app-header { transition: none; } }

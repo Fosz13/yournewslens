@@ -81,6 +81,7 @@
     showStoriesTab();
     var card = document.getElementById(storyId);
     if (!card) return;
+    recordStoryInterest(storyId, 1);
     if (card.style.display === 'none') {
       var search = document.getElementById('liveSearchInput');
       if (search) search.value = '';
@@ -170,6 +171,7 @@
     });
     var label = (p === 'RIGHT' ? 'Conservative Lens (Fox News & Right Media Prioritized)' : p === 'LEFT' ? 'Progressive Lens (Left Media & Labor Prioritized)' : 'Balanced Lens (Neutral Multi-Wire)');
     if (document.readyState === 'complete') showToastNotification('Switched to ' + label);
+    if (document.body.classList.contains('daily-lens-mode')) renderDailyBriefing();
   }
   window.setGlobalPerspective = setGlobalPerspective;
 
@@ -962,6 +964,7 @@
     if (tabL) tabL.className = 'view-tab';
 
     document.body.classList.add('daily-lens-mode');
+    renderDailyBriefing();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   window.showDailyLensTab = showDailyLensTab;
@@ -1001,10 +1004,13 @@
     if (icon) icon.textContent = '🔄';
     if (txt) txt.textContent = 'Refreshing live stories...';
 
+    returnToLatestStories();
     checkForEdition().then(function (updated) {
       if (updated) {
         var url = new URL(window.location.href);
+        url.hash = '';
         url.searchParams.set('edition', updated);
+        try { sessionStorage.setItem('ynlRefreshToTop', '1'); } catch (_) {}
         window.location.replace(url);
       }
       else {
@@ -1095,6 +1101,86 @@
     headerEl.addEventListener('touchcancel', finishPull, { passive: true });
   }
 
+  function returnToLatestStories() {
+    var input = document.getElementById('liveSearchInput');
+    if (input) input.value = '';
+    currentSearchQuery = '';
+    showStoriesTab();
+    filterCategory('All');
+    window.scrollTo({top: 0, behavior: 'instant'});
+  }
+
+  function bindCompactHeader() {
+    var header = document.getElementById('topAppBanner');
+    if (!header) return;
+    var last = Math.max(0, window.scrollY);
+    window.addEventListener('scroll', function () {
+      var y = Math.max(0, window.scrollY);
+      if (y < 20 || y < last - 4) header.classList.remove('ynl-header-hidden');
+      else if (y > header.offsetHeight && y > last + 4 && !header.contains(document.activeElement)
+               && !_isBannerRefreshing) header.classList.add('ynl-header-hidden');
+      if (Math.abs(y - last) > 4 || y === 0) last = y;
+    }, {passive: true});
+    header.addEventListener('focusin', function () { header.classList.remove('ynl-header-hidden'); });
+    var controls = header.querySelector('.header-controls');
+    if (controls) {
+      var help = document.createElement('details');
+      help.className = 'ynl-lens-help';
+      help.innerHTML = '<summary>How lenses work</summary><p>Left and Right highlight different political arguments. Balanced focuses on what is known and where accounts differ. Sports and other stories use topic-specific angles. Facts stay the same across lenses.</p>';
+      controls.append(help);
+    }
+  }
+
+  var readerInterests = {};
+  try { readerInterests = JSON.parse(localStorage.getItem('ynlReaderInterests')) || {}; } catch (_) {}
+
+  function recordStoryInterest(storyId, weight) {
+    var card = document.getElementById(storyId);
+    if (!card || !card.dataset.category) return;
+    for (var key of [card.dataset.category, ...readTopics(card)]) {
+      readerInterests[key] = Math.min(12, (Number(readerInterests[key]) || 0) + weight);
+    }
+    readerInterests = Object.fromEntries(Object.entries(readerInterests).slice(-100));
+    try { localStorage.setItem('ynlReaderInterests', JSON.stringify(readerInterests)); } catch (_) {}
+  }
+  window.ynlRecordStoryInterest = recordStoryInterest;
+
+  function renderDailyBriefing() {
+    var grid = document.getElementById('dailyLensStoriesGrid');
+    if (!grid) return;
+    var cards = [...document.querySelectorAll('#storiesFeedView .compact-card')];
+    var label = {LEFT: 'Left', CENTER: 'Balanced', RIGHT: 'Right'}[currentGlobalPerspective];
+    var intro = document.querySelector('.daily-lens-subtitle');
+    if (intro) intro.textContent = label + ' briefing · Ranked using your lens, followed stories, and reading and voting activity on this device.';
+    function score(card) {
+      var bias = card.dataset.publisherBias || 'center';
+      var preferred = currentGlobalPerspective.toLowerCase();
+      var interest = [card.dataset.category, ...readTopics(card)].reduce(function (total, key) {
+        return total + (Number(readerInterests[key]) || 0);
+      }, 0);
+      var follow = _userFollowedStories[card.id] ? 12 : isRelatedToFollowed(card) ? 7 : 0;
+      return (bias === preferred ? 6 : 0) + follow + Math.min(10, interest)
+        - Number(card.dataset.originalIndex || 0) / Math.max(cards.length, 1) * 4;
+    }
+    cards.sort(function (a, b) { return score(b) - score(a); });
+    grid.replaceChildren();
+    for (var card of cards.slice(0, 6)) {
+      var item = document.createElement('article');
+      item.className = 'daily-lens-story-card';
+      var title = document.createElement('button');
+      title.type = 'button';
+      title.className = 'daily-card-title ynl-story-link';
+      title.textContent = card.querySelector('.story-title').textContent.trim();
+      title.addEventListener('click', jumpToStoryCard.bind(null, card.id));
+      var meta = document.createElement('p');
+      meta.textContent = card.dataset.category + ' · ' + card.dataset.source;
+      var fact = document.createElement('p');
+      fact.textContent = card.querySelector('.fact-preview-text')?.textContent || '';
+      item.append(meta, title, fact);
+      grid.append(item);
+    }
+  }
+
   function initOnReady() {
     try {
       var savedTheme = localStorage.getItem('userEditorialTheme') || 'dark';
@@ -1112,6 +1198,10 @@
       }
     } catch (e) {}
 
+    var editionDate = document.getElementById('currentEditionDate');
+    if (editionDate) editionDate.textContent = new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'full', timeZone: 'America/New_York'
+    }).format(new Date());
     updateRelativeTimestamps();
     refreshLiveTicker();
     // Hydrate followed stories from localStorage
@@ -1125,6 +1215,21 @@
 
     applyFilters();
     bindBannerPullToRefresh();
+    bindCompactHeader();
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    try {
+      if (sessionStorage.getItem('ynlRefreshToTop')) {
+        sessionStorage.removeItem('ynlRefreshToTop');
+        returnToLatestStories();
+        requestAnimationFrame(function () { window.scrollTo(0, 0); });
+      }
+    } catch (_) {}
+    document.getElementById('storiesFeedView')?.addEventListener('click', function (event) {
+      if (event.target.closest('.story-title, .fact-preview-strip, .source-link-chip, .hero-image-wrap')) {
+        var card = event.target.closest('.compact-card');
+        if (card) recordStoryInterest(card.id, 1);
+      }
+    });
 
     setInterval(updateRelativeTimestamps, 30000);
     setInterval(function () {

@@ -124,6 +124,7 @@
         lens: 'center', voter_id: visitor
       }, 'return=minimal');
       saved[key] = choice;
+      if (window.ynlRecordStoryInterest) window.ynlRecordStoryInterest(poll.dataset.storyId, 3);
     } catch (error) {
       if (error.status === 409 && error.code === '23505') saved[key] = 'duplicate';
       else {
@@ -137,6 +138,12 @@
     } catch (_) {}
     await refresh(poll, key, true);
     pending.delete(key);
+    for (const other of document.querySelectorAll('.controversial-take-poll:not([hidden])')) {
+      if (other !== poll && other.dataset.storyId === poll.dataset.storyId && pollKey(other) === key) {
+        render(other, key, snapshots.get(key));
+      }
+    }
+    if (poll.closest?.('#communityView')) return;
     const card = document.getElementById(poll.dataset.storyId);
     if (card && card.querySelector('.lens-drawer-panel') && card.dataset.hasPerspectives === 'true' && window.toggleLensDrawer) {
       const panel = card.querySelector('.lens-drawer-panel');
@@ -177,30 +184,63 @@
   }
 
   window.ynlRefreshVisiblePolls = () => visiblePolls().forEach(poll => refresh(poll));
+  let debateGeneration = 0;
   window.ynlRenderDebates = async () => {
+    const generation = ++debateGeneration;
     const list = document.getElementById('communityPostsList');
     const status = document.getElementById('debateStatus');
-    const polls = [...document.querySelectorAll('.controversial-take-poll:not([hidden])')].slice(0, 12);
-    status.textContent = 'Checking votes on recent polls…';
-    await Promise.all(polls.map(poll => refresh(poll)));
-    const ranked = polls.map(poll => ({ poll, result: snapshots.get(pollKey(poll)) }))
-      .filter(item => item.result?.total > 0)
-      .sort((first, second) => second.result.total - first.result.total);
-    list.replaceChildren();
-    for (const {poll, result} of ranked.slice(0, 5)) {
-      const row = document.createElement('li');
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'btn-action-small';
-      button.textContent = poll.querySelector('.take-statement-text').textContent + ' · ' +
-        result.total.toLocaleString() + (result.total === 1 ? ' vote' : ' votes');
-      button.addEventListener('click', () => window.jumpToStoryCard(poll.dataset.storyId));
-      row.append(button);
-      list.append(row);
+    const polls = [...document.querySelectorAll('#storiesFeedView .controversial-take-poll:not([hidden])')]
+      .sort((a, b) => Number(a.closest('.compact-card').dataset.originalIndex) -
+                      Number(b.closest('.compact-card').dataset.originalIndex)).slice(0, 24);
+    let filter = document.getElementById('ynlDebateOrder');
+    if (!filter) {
+      const label = document.createElement('label');
+      label.className = 'ynl-debate-order';
+      label.textContent = 'Sort polls ';
+      filter = document.createElement('select');
+      filter.id = 'ynlDebateOrder';
+      for (const [value, title] of [['recent', 'Latest'], ['popular', 'Most voted'], ['open', 'Unanswered by you']]) {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = title;
+        filter.append(option);
+      }
+      filter.addEventListener('change', window.ynlRenderDebates);
+      label.append(filter);
+      status.before(label);
     }
-    status.textContent = ranked.length ? 'Most votes among the latest polls.' :
-      polls.some(poll => !snapshots.has(pollKey(poll))) ? 'Some community totals are unavailable.' :
-      'No votes on recent polls yet.';
+
+    function display() {
+      let ranked = polls.slice();
+      if (filter.value === 'open') ranked = ranked.filter(poll => !saved[pollKey(poll)]);
+      if (filter.value === 'popular') ranked.sort((a, b) =>
+        (snapshots.get(pollKey(b))?.total || 0) - (snapshots.get(pollKey(a))?.total || 0));
+      list.replaceChildren();
+      for (const poll of ranked) {
+        const story = poll.closest('.compact-card');
+        const row = document.createElement('li');
+        row.className = 'ynl-debate-card';
+        const source = document.createElement('p');
+        source.textContent = story.dataset.category + ' · ' + story.dataset.source;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'ynl-story-link';
+        button.textContent = story.querySelector('.story-title').textContent.trim();
+        button.addEventListener('click', () => window.jumpToStoryCard(poll.dataset.storyId));
+        const copy = poll.cloneNode(true);
+        copy.removeAttribute('id');
+        for (const element of copy.querySelectorAll('[id]')) element.removeAttribute('id');
+        render(copy, pollKey(copy), snapshots.get(pollKey(copy)), snapshots.has(pollKey(copy)) ? '' : 'Loading community results…');
+        row.append(source, button, copy);
+        list.append(row);
+      }
+      status.textContent = ranked.length ? ranked.length + ' questions. Vote here or open the story for its lenses.' :
+        filter.value === 'open' ? 'You’ve answered every poll in this edition.' : 'No polls in this edition yet.';
+    }
+    display();
+    await Promise.all([...list.querySelectorAll('.controversial-take-poll')].map(poll => refresh(poll)));
+    if (generation === debateGeneration && filter.value === 'popular' &&
+        !list.querySelector(':focus')) display();
   };
   document.addEventListener('DOMContentLoaded', () => observe(document));
 })();
