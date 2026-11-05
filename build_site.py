@@ -8,7 +8,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 PUBLIC = ROOT / "dist"
-ASSETS = ("styles.css", "app.js", "polling.js")
+ASSETS = ("styles.css", "app.js", "polling.js", "comments.js")
 
 
 def write_wire(destination):
