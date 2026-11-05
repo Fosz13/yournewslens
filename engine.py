@@ -8141,6 +8141,8 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         for lens in lensList:
             pData = perspectives.get(lens["key"], {})
             tp_list = pData.get("talking_points", [])
+            panel_title = ("What a reader using this lens might say" if pData.get("persona")
+                           else "Key Talking Points & Arguments")
             source_label = escape(pData.get("source_attribution") or "")
             lens_source = editorial.source_url(pData.get("source_url"))
             attribution = (f'<a class="source-attribution" href="{escape(lens_source)}" target="_blank" rel="noopener noreferrer">{source_label} ↗</a>'
@@ -8168,7 +8170,7 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
 
                 <div class="talking-points-panel">
                   <div class="panel-header">
-                    <span class="panel-title">💬 Key Talking Points & Arguments</span>
+                    <span class="panel-title">💬 {panel_title}</span>
                     <button type="button" class="btn-copy-chip" onclick="copyPointsFromCard(this); event.stopPropagation();">📋 Copy</button>
                   </div>
                   {quotes}

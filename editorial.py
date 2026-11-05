@@ -271,7 +271,7 @@ def prepare_story(record, analysis=None):
     record["instant_answer"] = facts[0] if grounded_answer else ""
     record["lead_fact"] = facts[0] if facts else NO_FACT
 
-    political = record.get("category") in {"Politics", "Border & Security"} and analysis.get("political") is True
+    political = record.get("category") != "Sports" and analysis.get("political") is True
     record["perspective_mode"] = "political" if political else "topical"
     proposed = analysis.get("perspectives")
     record["perspectives"] = {}
@@ -289,7 +289,8 @@ def prepare_story(record, analysis=None):
                     label = entry.get("label")
                     record["perspectives"][side] = {
                         "talking_points": [point], "evidence": evidence,
-                        "label": label if isinstance(label, str) and 3 <= len(label) <= 30 else ""
+                        "label": label if isinstance(label, str) and 3 <= len(label) <= 30 else "",
+                        "persona": political and side in {"LEFT", "RIGHT"}
                     }
         unique = {entry["talking_points"][0].casefold() for entry in record["perspectives"].values()}
         if len(unique) != 3:

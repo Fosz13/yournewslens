@@ -26,8 +26,8 @@
 
   function addDiscussButtons() {
     for (const card of document.querySelectorAll('#storiesFeedView article.compact-card')) {
-      const actions = card.querySelector('.card-action-group');
-      if (!actions || card.querySelector('.ynl-discuss')) continue;
+      const anchor = card.querySelector('.fact-preview-strip');
+      if (!anchor || card.querySelector('.ynl-discuss')) continue;
       const panel = document.createElement('details');
       panel.className = 'ynl-story-comments';
       panel.innerHTML = '<summary>Discuss</summary><p role="status"></p><ul></ul>' +
@@ -35,7 +35,7 @@
         '<small>Comments are public and checked automatically before posting.</small>' +
         '<button type="submit">Post comment</button><p role="status"></p></form>';
       panel.querySelector('summary').className = 'ynl-discuss btn-discuss-small';
-      actions.closest('.card-bottom-actions').after(panel);
+      anchor.after(panel);
       const list = panel.querySelector('ul');
       const status = panel.querySelector('p');
       panel.addEventListener('toggle', () => {
@@ -78,6 +78,10 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', addDiscussButtons);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addDiscussButtons, { once: true });
+  } else {
+    addDiscussButtons();
+  }
   document.addEventListener('ynl:edition', addDiscussButtons);
 })();
