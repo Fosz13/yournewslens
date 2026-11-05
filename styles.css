@@ -3929,3 +3929,31 @@ body.searching-mode #blindStanceSection {
 .btn-take-vote { height:auto !important; min-height:44px; align-items:center; }
 .take-vote-actions { grid-template-columns:repeat(2,minmax(0,1fr)); }
 @media(max-width:380px) { .take-vote-actions { grid-template-columns:minmax(0,1fr); } }
+
+.fact-preview-strip {
+  width: 100%;
+  text-align: left;
+  font: inherit;
+}
+
+.controversial-take-poll[hidden], .placeholder-image .photo-caption-bar {
+  display: none;
+}
+
+.hero-photo {
+  aspect-ratio: 16 / 9;
+}
+
+.btn-header-refresh.edition-ready {
+  outline: 2px solid #10b981;
+}
+
+#communityPostsList li {
+  margin-block: 0.75rem;
+}
+
+#communityPostsList button {
+  text-align: left;
+  white-space: normal;
+  min-height: 44px;
+}

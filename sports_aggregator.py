@@ -146,38 +146,11 @@ class SportsAggregator:
         return story_record
 
     def run_aggregation(self) -> int:
-        existing = self.load_existing_stories()
-        existing_titles = {s.get("title", "").strip().lower() for s in existing}
-        new_stories = []
+        from publish_wire import run
+        if os.path.abspath(self.data_file) != os.path.abspath(engine.DATA_FILE):
+            raise ValueError("The sports refresh uses the main edition data file")
+        return run(engine, feeds=SPORTS_NETWORK_FEEDS)
 
-        print(f"Connecting to {len(SPORTS_NETWORK_FEEDS)} sports network and X reporter wire feeds...")
-        for feed in SPORTS_NETWORK_FEEDS:
-            if engine.is_disallowed_source(feed):
-                continue
-            raw_items = self.fetch_feed_items(feed, max_items=3)
-            for item in raw_items:
-                t_clean = item["title"].strip().lower()
-                if t_clean not in existing_titles:
-                    try:
-                        record = self.process_and_synthesize(item)
-                        if record:
-                            new_stories.append(record)
-                        existing_titles.add(t_clean)
-                    except Exception as err:
-                        print(f"Notice synthesizing item: {err}")
-
-        if new_stories:
-            combined = new_stories + existing
-            balanced = engine.balance_feed_by_category(combined, max_total=150, min_per_cat=6)
-            balanced = engine.enforce_feed_image_uniqueness(balanced)
-            self.save_stories(balanced)
-            engine.update_index_html_prerender(balanced)
-            print(f"Added {len(new_stories)} new sports stories. Total feed: {len(balanced)}")
-            return len(new_stories)
-        else:
-            print("No new external items retrieved. Database is up-to-date with current sports catalog.")
-            return 0
 
 if __name__ == "__main__":
-    aggregator = SportsAggregator()
-    aggregator.run_aggregation()
+    SportsAggregator().run_aggregation()
