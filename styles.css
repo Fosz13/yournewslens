@@ -4018,3 +4018,30 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
 .ynl-guide-close { position: absolute; right: 12px; top: 10px; background: transparent; border: 0; color: inherit; cursor: pointer; min-width: 34px; min-height: 34px; font-size: 1.3rem; }
 .ynl-guide-optout { display: flex; align-items: center; gap: 8px; margin-top: 14px; cursor: pointer; }
 .ynl-guide-done { width: 100%; margin-top: 14px; min-height: 38px; border: 0; border-radius: 8px; background: #087b60; color: white; cursor: pointer; font-weight: 700; }
+
+.ynl-topic-shortcuts { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.ynl-topic-shortcuts .ynl-mast-menu > summary { padding-inline: 4px; }
+.hero-image-wrap[hidden] { display: none !important; }
+
+@media (min-width: 960px) {
+  header.app-header.ynl-masthead { padding: 9px 20px; }
+  .ynl-masthead .header-container {
+    display: grid;
+    grid-template-columns: auto minmax(225px, .9fr) minmax(285px, 1.2fr) minmax(165px, .85fr);
+    align-items: center;
+    gap: 12px;
+  }
+  .ynl-masthead .brand-row { width: auto; }
+  .ynl-masthead .header-controls, .ynl-masthead .lens-selector-wrapper,
+  .ynl-masthead .ynl-topic-shortcuts { max-width: none; min-width: 0; }
+  .ynl-masthead .lens-label { padding-inline: 5px; }
+  .ynl-masthead .header-container > .search-input-wrap { width: 100%; min-width: 0; }
+  .ynl-masthead .header-container > .search-input-wrap input { width: 100%; min-width: 0; }
+}
+
+@media (min-width: 960px) and (max-width: 1099px) {
+  .ynl-masthead .header-container {
+    grid-template-columns: auto minmax(235px, 1fr) minmax(280px, 1fr);
+  }
+  .ynl-masthead .header-container > .search-input-wrap { grid-column: 2 / -1; }
+}

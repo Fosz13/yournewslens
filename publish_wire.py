@@ -3,6 +3,7 @@ import argparse
 from collections import Counter
 from datetime import datetime
 import hashlib
+from html.parser import HTMLParser
 import json
 import os
 from pathlib import Path
@@ -12,7 +13,7 @@ import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urlsplit
+from urllib.parse import parse_qs, urlsplit
 
 import editorial
 import reader_sources
@@ -60,6 +61,71 @@ def analyze(title, category, facts):
                 continue
             print("[editorial] Source-only mode for this item:", code or type(error).__name__)
             return {}
+
+
+def publisher_asset(url):
+    """Identify a publisher's underlying asset independently of its rendition."""
+    parts = urlsplit(url or "")
+    host = parts.hostname or ""
+    if host == "i.guim.co.uk":
+        width = parse_qs(parts.query).get("width", [""])[0]
+        return "guardian", parts.path, int(width) if width.isdecimal() else None
+    if host.endswith(".cbsnewsstatic.com"):
+        match = re.search(r"/([0-9a-f-]{36})/thumbnail/(\d+)x\d+", parts.path)
+        if match:
+            return "cbs", match[1], int(match[2])
+    return "", "", None
+
+
+class PublisherPreview(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.images = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "meta":
+            values = dict(attrs)
+            if (values.get("property") or values.get("name")) in {"og:image", "twitter:image"}:
+                self.images.append(values.get("content"))
+
+
+def upgrade_small_image(row):
+    thumbnail = row.get("thumbnail_image_url") or row.get("image_url")
+    publisher, identity, _ = publisher_asset(thumbnail)
+    article = editorial.source_url(row.get("article_url"))
+    host = urlsplit(article).hostname
+    expected = {"guardian": "www.theguardian.com", "cbs": "www.cbsnews.com"}.get(publisher)
+    if article and expected and host == expected:
+        try:
+            req = urllib.request.Request(article, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=8) as response:
+                if urlsplit(response.geturl()).hostname != expected:
+                    return
+                preview = PublisherPreview()
+                preview.feed(response.read(512_000).decode("utf-8", errors="replace"))
+            for raw in preview.images:
+                url = editorial.source_url(raw)
+                candidate, asset, width = publisher_asset(url)
+                if candidate == publisher and asset == identity and width and width >= 640:
+                    row.update(image_url=url, is_original_article_image=True,
+                               resolution_method="publisher_full_size")
+                    row.pop("thumbnail_image_url", None)
+                    return
+        except (OSError, ValueError):
+            pass
+
+
+def refresh_thumbnail_images(records):
+    candidates = []
+    for row in records:
+        url = row.get("thumbnail_image_url") or row.get("image_url")
+        _, _, width = publisher_asset(url)
+        if width and width < 480:
+            row["thumbnail_image_url"] = url
+            editorial.placeholder(row)
+            candidates.append(row)
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        list(pool.map(upgrade_small_image, candidates[:18]))
 
 
 def dedupe_images(records):
@@ -195,6 +261,7 @@ def collect_stories(engine, incoming, existing, now):
 def publish(engine, records):
     if not records:
         raise RuntimeError("Refusing to publish an empty feed")
+    refresh_thumbnail_images(records)
     dedupe_images(records)
     if len({record["id"] for record in records}) != len(records):
         raise RuntimeError("Duplicate story IDs in generated feed")

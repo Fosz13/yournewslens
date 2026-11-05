@@ -1147,7 +1147,6 @@
     var summary = document.createElement('summary');
     summary.textContent = 'More';
     menu.append(summary);
-    actions.append(menu);
     var panel = document.createElement('div');
     panel.className = 'ynl-mast-panel';
     menu.append(panel);
@@ -1169,6 +1168,7 @@
         menu.open = event.currentTarget.dataset.category === 'Local';
       });
     }
+    shortcuts.append(menu);
     masthead.append(shortcuts);
     bindLensGuide(help);
     var search = controls.querySelector('.search-input-wrap');
@@ -1178,6 +1178,15 @@
     var beats = document.getElementById('localSubnavBar');
     for (var group of [search, nav, local, beats, theme, help]) {
       if (group) panel.append(group);
+    }
+    if (search) {
+      var desktopSearch = window.matchMedia('(min-width: 960px)');
+      function placeSearch() {
+        if (desktopSearch.matches) masthead.append(search);
+        else panel.prepend(search);
+      }
+      placeSearch();
+      desktopSearch.addEventListener('change', placeSearch);
     }
     function closeMenu() { menu.open = false; }
     panel.addEventListener('click', function (event) {
@@ -1313,6 +1322,15 @@
 
     applyFilters();
     bindBannerPullToRefresh();
+    function hideThumbnail(image) {
+      if (image.matches('.hero-photo') && image.naturalWidth > 0 && image.naturalWidth < 320) {
+        image.closest('.hero-image-wrap').hidden = true;
+      }
+    }
+    document.addEventListener('load', function (event) {
+      if (event.target instanceof HTMLImageElement) hideThumbnail(event.target);
+    }, true);
+    document.querySelectorAll('.hero-photo').forEach(hideThumbnail);
     bindCompactHeader();
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     try {

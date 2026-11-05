@@ -169,6 +169,28 @@ class PublishingTest(unittest.TestCase):
         self.assertIn("scoring responsibilities", left["talking_points"][0])
         self.assertEqual(len(row["perspectives"]), 3)
 
+    def test_publisher_image_refresh_uses_same_asset_and_signed_url(self):
+        thumb = "https://i.guim.co.uk/img/story.jpg?width=140&s=old"
+        full = "https://i.guim.co.uk/img/story.jpg?width=1200&s=new"
+        row = {"image_url": thumb, "article_url": "https://www.theguardian.com/news/test"}
+        with patch.object(publish_wire.urllib.request, "urlopen") as opened:
+            response = opened.return_value.__enter__.return_value
+            response.geturl.return_value = row["article_url"]
+            response.read.return_value = (
+                '<meta property="og:image" content="https://i.guim.co.uk/img/unrelated.jpg?width=1200">'
+                '<meta name="twitter:image" content="https://i.guim.co.uk/img/story.jpg?width=1200&amp;s=new">'
+            ).encode()
+            publish_wire.refresh_thumbnail_images([row])
+        self.assertEqual(row["image_url"], full)
+        self.assertEqual(row["resolution_method"], "publisher_full_size")
+
+    def test_cbs_renditions_keep_asset_identity(self):
+        asset = "fcb281c4-4540-4310-a779-29fcb2008eff"
+        small = f"https://assets3.cbsnewsstatic.com/hub/i/r/2026/11/04/{asset}/thumbnail/60x60/old/photo.jpg"
+        large = f"https://assets1.cbsnewsstatic.com/hub/i/r/2026/11/04/{asset}/thumbnail/1200x630g2/new/photo.jpg"
+        self.assertEqual(publish_wire.publisher_asset(small), ("cbs", asset, 60))
+        self.assertEqual(publish_wire.publisher_asset(large), ("cbs", asset, 1200))
+
     def test_old_unverified_records_are_not_published(self):
         self.assertEqual(publish_wire.refresh_existing(
             [{"title": TITLE, "article_url": URL, "pub_timestamp": int(time.time())}], int(time.time()), False
