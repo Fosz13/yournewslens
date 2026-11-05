@@ -40,6 +40,20 @@ class PublishingTest(unittest.TestCase):
             "agree_label": "Buccaneers", "disagree_label": "Bears"
         })
 
+    def test_question_without_direct_answer_uses_the_reported_main_point(self):
+        title = "What comes next for Democrats after their midterm victory?"
+        fact = "Democrats are preparing for a crowded 2028 presidential primary after the midterm election."
+        record = editorial.prepare_story({
+            "title": title, "category": "Politics", "source_excerpt": fact,
+            "article_url": URL, "pub_timestamp": int(time.time()), "editorial_source_checked": True,
+        })
+        self.assertFalse(record["has_direct_answer"])
+        self.assertEqual(record["lead_fact"], fact)
+        record["lead_fact"] = editorial.NO_ANSWER
+        retained = publish_wire.refresh_existing([record], time.time(), offline=False)
+        self.assertEqual(retained[0]["lead_fact"], fact)
+        self.assertFalse(retained[0]["has_direct_answer"])
+
     def test_recent_source_headline_can_ground_matchup_poll_without_viewing_answer(self):
         record = editorial.prepare_story({
             "title": "How to Watch: Buccaneers at Bears | Week 9 2026",

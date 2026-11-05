@@ -4045,3 +4045,27 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
   }
   .ynl-masthead .header-container > .search-input-wrap { grid-column: 2 / -1; }
 }
+
+.ynl-top-stories {
+  margin: 0 0 22px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+.ynl-top-stories h2 { margin: 0 0 8px; font-size: 1.2rem; }
+.ynl-top-stories ol { margin: 0; padding-inline-start: 1.55em; }
+.ynl-top-stories li { padding: 4px 0; break-inside: avoid; }
+.ynl-top-stories a { color: inherit; text-underline-offset: 3px; }
+.ynl-top-stories a:hover, .ynl-top-stories a:focus-visible { color: var(--accent); }
+
+@media (min-width: 880px) {
+  .ynl-top-stories ol { columns: 2; column-gap: 46px; }
+  #storiesFeedView.ynl-staggered-feed {
+    grid-auto-rows: 4px;
+    row-gap: 0;
+  }
+  #storiesFeedView.ynl-staggered-feed > .compact-card {
+    grid-row-end: span var(--ynl-card-span, 120);
+  }
+}

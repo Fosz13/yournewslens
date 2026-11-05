@@ -297,9 +297,7 @@ def prepare_story(record, analysis=None):
     record["core_facts"] = facts
     record["neutral_summary"] = facts[0] if facts else NO_FACT
     record["instant_answer"] = facts[0] if grounded_answer else ""
-    record["lead_fact"] = facts[0] if facts and (not is_question(title) or grounded_answer) else (
-        NO_ANSWER if is_question(title) else NO_FACT
-    )
+    record["lead_fact"] = facts[0] if facts else NO_FACT
 
     political = record.get("category") in {"Politics", "Border & Security"} and analysis.get("political") is True
     record["perspective_mode"] = "political" if political else "topical"

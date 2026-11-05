@@ -167,6 +167,11 @@ def refresh_existing(records, now, offline):
             record["is_original_article_image"] = False
             editorial.prepare_story(record)
         if not record.get("event_date"):
+            if record.get("lead_fact") == editorial.NO_ANSWER:
+                facts = editorial.excerpt_facts(record["title"], record.get("source_excerpt", ""))
+                record["core_facts"] = facts
+                record["lead_fact"] = facts[0] if facts else editorial.NO_FACT
+                record["neutral_summary"] = record["lead_fact"]
             editorial.restore_missing_features(record)
         seen.add(editorial.canonical_url(url))
         retained.append(record)
