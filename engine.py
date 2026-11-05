@@ -8660,67 +8660,15 @@ def update_index_html_prerender(stories: List[Dict[str, Any]]):
     return vid;
   };
 
+  // While the large inline controller is loading, queue a tap without showing fake results.
+  // The real Supabase-backed controller replaces this function when the page finishes loading.
   window.voteControversialTake = window.voteControversialTake || function(storyId, choice, btnEl, evt) {
-    var e = evt || window.event;
-    if (e) {
-      if (e.__handledVoteClick) return;
-      e.__handledVoteClick = true;
-      if (e.stopPropagation) e.stopPropagation();
-    }
-    var pollEl = (btnEl && btnEl.closest ? btnEl.closest(".controversial-take-poll") : null) ||
-                 (storyId ? document.getElementById(storyId + "-controversial-poll") : null) ||
-                 (storyId ? document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]') : null);
-    var sId = storyId || (pollEl ? pollEl.getAttribute("data-story-id") : "");
-    var norm = String(choice || "").toUpperCase();
-    if (!sId || !pollEl || (norm !== "AGREE" && norm !== "DISAGREE")) return;
-
-    pollEl.classList.add("has-voted");
-    var btnAgree = pollEl.querySelector(".btn-take-agree") || document.getElementById(sId + "-btn-agree");
-    var btnDisagree = pollEl.querySelector(".btn-take-disagree") || document.getElementById(sId + "-btn-disagree");
-    var pctAgree = (btnAgree ? btnAgree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-agree");
-    var pctDisagree = (btnDisagree ? btnDisagree.querySelector(".vote-pct") : null) || document.getElementById(sId + "-pct-disagree");
-    var fillAgree = pollEl.querySelector(".take-fill-agree") || document.getElementById(sId + "-fill-agree");
-    var fillDisagree = pollEl.querySelector(".take-fill-disagree") || document.getElementById(sId + "-fill-disagree");
-    var track = pollEl.querySelector(".take-consensus-track") || document.getElementById(sId + "-take-track");
-    var footer = pollEl.querySelector(".take-footer-meta") || document.getElementById(sId + "-take-footer");
-    var votedMsg = pollEl.querySelector(".take-voted-msg") || document.getElementById(sId + "-voted-msg");
-    var totalVotesEl = pollEl.querySelector(".take-total-votes") || document.getElementById(sId + "-total-votes");
-
-    if (btnAgree) btnAgree.classList.toggle("selected-agree", norm === "AGREE");
-    if (btnDisagree) btnDisagree.classList.toggle("selected-disagree", norm === "DISAGREE");
-
-    var agPct = (norm === "AGREE") ? 100 : 0;
-    var disPct = (norm === "DISAGREE") ? 100 : 0;
-    if (pctAgree) { pctAgree.textContent = agPct + "%"; pctAgree.style.display = "inline-block"; }
-    if (pctDisagree) { pctDisagree.textContent = disPct + "%"; pctDisagree.style.display = "inline-block"; }
-    if (fillAgree) fillAgree.style.width = agPct + "%";
-    if (fillDisagree) fillDisagree.style.width = disPct + "%";
-    if (track) track.style.display = "flex";
-    if (footer) footer.style.display = "flex";
-    if (votedMsg) votedMsg.textContent = "📊 100% voted with you • Agree: " + agPct + "% / Disagree: " + disPct + "%";
-    if (totalVotesEl) totalVotesEl.textContent = "Total votes: 1";
-
-    var card = (pollEl.closest ? pollEl.closest(".compact-card") : null) || document.getElementById(sId);
-    var agreeLens = (pollEl.getAttribute("data-agree-lens") || "RIGHT").toUpperCase();
-    var disagreeLens = (pollEl.getAttribute("data-disagree-lens") || "LEFT").toUpperCase();
-    var chosenLens = (norm === "AGREE") ? agreeLens : disagreeLens;
-    var lensPanel = document.getElementById(sId + "-lens-panel") || (card ? card.querySelector(".lens-drawer-panel") : null);
-    if (lensPanel && lensPanel.parentNode !== pollEl) pollEl.appendChild(lensPanel);
-    if (lensPanel) lensPanel.style.display = "block";
-    window.switchStoryPerspective(sId, chosenLens);
-
-    var sbUrl = "https://vswxehmxdbtdatnlovsl.supabase.co";
-    var sbKey = "sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD";
-    var targetBtn = (norm === "AGREE") ? btnAgree : btnDisagree;
-    var lblEl = targetBtn ? targetBtn.querySelector(".vote-label") : null;
-    var choiceLabel = lblEl ? lblEl.textContent.trim() : (norm === "AGREE" ? "Agree" : "Disagree");
-    var payload = {
-      story_id: String(sId),
-      choice_id: norm.toLowerCase(),
-      choice_label: choiceLabel,
-      lens: chosenLens.toLowerCase(),
-      voter_id: window.getOrCreatePollVisitorId()
-    };
+    if (evt && evt.stopPropagation) evt.stopPropagation();
+    window.__ynlPendingVote = { storyId: storyId, choice: choice };
+    var poll = btnEl && btnEl.closest ? btnEl.closest('.controversial-take-poll') : null;
+    var msg = poll ? poll.querySelector('.take-voted-msg') : null;
+    if (msg) msg.textContent = 'Loading voting…';
+  };
     fetch(sbUrl + "/rest/v1/poll_votes", {
       method: "POST",
       headers: { "apikey": sbKey, "Content-Type": "application/json", "Prefer": "return=minimal" },

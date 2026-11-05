@@ -3873,3 +3873,32 @@ body.searching-mode #blindStanceSection {
 .controversial-take-poll .vote-pct:empty {
   display: none !important;
 }
+
+/* Prevent sticky :hover highlight & layout shift from swallowing taps on mobile touchscreens */
+@media (hover: none), (pointer: coarse) {
+  .compact-card:hover {
+    transform: none !important;
+  }
+  .compact-card:hover .hero-photo {
+    transform: none !important;
+  }
+  .btn-take-vote:hover {
+    transform: none !important;
+  }
+  .btn-take-agree:hover:not(.selected-agree) {
+    border-color: var(--border-medium) !important;
+    background: var(--bg-card, #1e293b) !important;
+    color: var(--text-primary) !important;
+  }
+  .btn-take-disagree:hover:not(.selected-disagree) {
+    border-color: var(--border-medium) !important;
+    background: var(--bg-card, #1e293b) !important;
+    color: var(--text-primary) !important;
+  }
+  [data-theme="light"] .btn-take-agree:hover:not(.selected-agree),
+  [data-theme="light"] .btn-take-disagree:hover:not(.selected-disagree) {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+}

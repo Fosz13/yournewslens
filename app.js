@@ -297,74 +297,59 @@
   function generateClientMeritPoll(title, desc, category, existingTake) {
     var cleanT = String(title || '').replace(/\s+[-–—|]\s+[^-–—|]+$/, '').trim();
     var comb = (cleanT + ' ' + String(desc || '')).toLowerCase();
-    var seed = hashClientString(cleanT);
-    var agPct = 52 + (seed % 25);
-    if (seed % 2 === 1) agPct = 100 - agPct;
-    var disPct = 100 - agPct;
-    var totVotes = 1450 + (seed % 3200);
 
     if (existingTake && existingTake.statement && existingTake.statement.indexOf('Public policy surrounding') === -1 && existingTake.statement.indexOf('?') !== -1) {
       return {
         statement: existingTake.statement,
-        agree_label: (existingTake.agree_label && existingTake.agree_label !== 'Agree') ? existingTake.agree_label : 'Yes — Agree',
-        disagree_label: (existingTake.disagree_label && existingTake.disagree_label !== 'Disagree') ? existingTake.disagree_label : 'No — Disagree',
-        baseline_agree_pct: existingTake.baseline_agree_pct || agPct,
-        baseline_disagree_pct: existingTake.baseline_disagree_pct || disPct,
-        total_votes: existingTake.total_votes || totVotes
+        agree_label: (existingTake.agree_label && existingTake.agree_label !== 'Agree') ? existingTake.agree_label : 'Agree',
+        disagree_label: (existingTake.disagree_label && existingTake.disagree_label !== 'Disagree') ? existingTake.disagree_label : 'Disagree'
       };
     }
 
     if (/property\s+tax|tax\s+bills?|amendment\s+3|homestead/i.test(comb)) {
       return {
         statement: 'Does cutting Florida property taxes via Amendment 3 help working homeowners more than it hurts local funding for schools and first responders?',
-        agree_label: 'Yes — Cut property taxes',
-        disagree_label: 'No — Protect local funding',
-        baseline_agree_pct: agPct,
-        baseline_disagree_pct: disPct,
-        total_votes: totVotes
+        agree_label: 'Agree — Cut property taxes',
+        disagree_label: 'Disagree — Protect local funding'
       };
     }
 
     if ((/buccaneers|bucs/i.test(comb) && /bears/i.test(comb))) {
       return {
         statement: 'In the Week 9 Buccaneers vs. Bears matchup, do you trust Tampa Bay\x27s offensive line and passing attack to beat Chicago\x27s defense?',
-        agree_label: 'Yes — Bucs win & cover',
-        disagree_label: 'No — Bears pull the upset',
-        baseline_agree_pct: agPct,
-        baseline_disagree_pct: disPct,
-        total_votes: totVotes
+        agree_label: 'Agree — Bucs win & cover',
+        disagree_label: 'Disagree — Bears pull the upset'
       };
     }
 
     if (/buyout|coaching\s+carousel|fired\s+coach/i.test(comb)) {
       return {
         statement: 'Should public universities be banned from paying $40M–$70M guaranteed coaching buyouts while student tuition and fees keep rising?',
-        agree_label: 'Yes — Cap coaching buyouts',
-        disagree_label: 'No — Boosters fund it',
-        baseline_agree_pct: agPct,
-        baseline_disagree_pct: disPct,
-        total_votes: totVotes
+        agree_label: 'Agree — Cap coaching buyouts',
+        disagree_label: 'Disagree — Boosters fund it'
+      };
+    }
+
+    if (/cyberattack|ransomware|hackers?|blood\s+banks?|data\s+breach/i.test(comb)) {
+      return {
+        statement: 'Should governments treat cyberattacks on critical facilities like blood banks and hospitals as acts of war requiring direct retaliation?',
+        agree_label: 'Agree — Retaliate directly',
+        disagree_label: 'Disagree — Defensive safeguards'
       };
     }
 
     if (category === 'Sports' || /sport/i.test(category)) {
-      if (/(?:vs\.?|versus|matchups?|week\s+\w+|preview|odds)/i.test(comb)) {
+      if (/\b(?:vs\.?|versus|matchups?|week\s+\w+|preview|odds)\b/i.test(comb)) {
         return {
           statement: 'Based on the matchup merits in ' + cleanT.substring(0, 48) + ', do you think the favored team will win and cover the spread?',
-          agree_label: 'Yes — Favorite covers',
-          disagree_label: 'No — Underdog wins',
-          baseline_agree_pct: agPct,
-          baseline_disagree_pct: disPct,
-          total_votes: totVotes
+          agree_label: 'Agree — Favorite covers',
+          disagree_label: 'Disagree — Underdog wins'
         };
       }
       return {
         statement: 'Based on the competitive merits of ' + cleanT.substring(0, 48) + ', does this prove they are a legitimate championship contender?',
-        agree_label: 'Yes — True contender',
-        disagree_label: 'No — Still overhyped',
-        baseline_agree_pct: agPct,
-        baseline_disagree_pct: disPct,
-        total_votes: totVotes
+        agree_label: 'Agree — True contender',
+        disagree_label: 'Disagree — Still overhyped'
       };
     }
 
@@ -372,30 +357,36 @@
       if (/festival|market|concert|park|event|cinema|riverwalk/i.test(comb)) {
         return {
           statement: 'Should local cities dedicate more waterfront park space and municipal resources to community events like ' + cleanT.substring(0, 42) + '?',
-          agree_label: 'Yes — Boost community life',
-          disagree_label: 'No — Focus on core basics',
-          baseline_agree_pct: agPct,
-          baseline_disagree_pct: disPct,
-          total_votes: totVotes
+          agree_label: 'Agree — Boost community life',
+          disagree_label: 'Disagree — Focus on core basics'
         };
       }
+      if (/living\s+shoreline|oyster\s+reef|bayshore|seawall/i.test(comb)) {
+        return {
+          statement: 'Is spending $14.2M on Bayshore Boulevard living shoreline oyster reefs a smart investment to protect Tampa against storm surge?',
+          agree_label: 'Agree — Smart coastal defense',
+          disagree_label: 'Disagree — Too expensive'
+        };
+      }
+      if (/cross-bay\s+ferry|commuter\s+runs|water\s+transit/i.test(comb)) {
+        return {
+          statement: 'Should Hillsborough and Pinellas counties fund permanent year-round Cross-Bay Ferry commuter service between Tampa and St. Pete?',
+          agree_label: 'Agree — Expand ferry service',
+          disagree_label: 'Disagree — Focus on roads'
+        };
+      }
+      var shortLocalT = cleanT.length > 65 ? cleanT.substring(0, 65).replace(/\s+\S*$/, '...') : cleanT;
       return {
-        statement: 'Based on the merits of ' + cleanT.substring(0, 48) + ', is this the right priority for local residents and taxpayers?',
-        agree_label: 'Yes — Smart local priority',
-        disagree_label: 'No — Wrong approach',
-        baseline_agree_pct: agPct,
-        baseline_disagree_pct: disPct,
-        total_votes: totVotes
+        statement: 'Based on the merits of "' + shortLocalT + '", is this the right priority for local residents and taxpayers?',
+        agree_label: 'Agree — Smart local priority',
+        disagree_label: 'Disagree — Wrong approach'
       };
     }
 
     return {
       statement: 'Weighing the core merits of ' + cleanT.substring(0, 50) + ', do you support this direction and its impact on everyday citizens?',
-      agree_label: 'Yes — Right direction',
-      disagree_label: 'No — Wrong approach',
-      baseline_agree_pct: agPct,
-      baseline_disagree_pct: disPct,
-      total_votes: totVotes
+      agree_label: 'Agree — Right direction',
+      disagree_label: 'Disagree — Wrong approach'
     };
   }
 
@@ -913,10 +904,8 @@ function cleanPhotoCredit(credit, sourceName) {
     if (!card) return;
     var details = document.getElementById(storyId + '-details') || card.querySelector('.card-details');
     var factsPanel = document.getElementById(storyId + '-facts-panel') || card.querySelector('.facts-drawer-panel');
-    var lensPanel = document.getElementById(storyId + '-lens-panel') || card.querySelector('.lens-drawer-panel');
     var factsOpen = factsPanel && factsPanel.style.display !== 'none';
-    var lensOpen = lensPanel && lensPanel.style.display !== 'none';
-    if (factsOpen || lensOpen) {
+    if (factsOpen) {
       card.classList.add('expanded');
       if (details) details.style.display = 'block';
     } else {
@@ -937,6 +926,7 @@ function cleanPhotoCredit(credit, sourceName) {
     var sId = storyId || card.id;
     var details = document.getElementById(sId + '-details') || card.querySelector('.card-details');
     var factsPanel = document.getElementById(sId + '-facts-panel') || card.querySelector('.facts-drawer-panel');
+    var lensPanel = document.getElementById(sId + '-lens-panel') || card.querySelector('.lens-drawer-panel');
     var factsBtn = document.getElementById(sId + '-btn-facts-drawer') || card.querySelector('.btn-drawer-facts');
     var label = document.getElementById(sId + '-expand-label') || (factsBtn ? factsBtn.querySelector('.expand-label') : null);
     var chevron = document.getElementById(sId + '-chevron') || (factsBtn ? factsBtn.querySelector('.expand-chevron') : null);
@@ -946,20 +936,24 @@ function cleanPhotoCredit(credit, sourceName) {
       return;
     }
 
-    var isFactsOpen = (factsPanel.style.display === 'block');
+    var isFactsOpen = card.classList.contains('expanded') && factsPanel.style.display !== 'none';
     if (!isFactsOpen) {
-      card.classList.add('expanded');
+      if (typeof fetchAndRenderSupabasePoll === 'function') {
+        fetchAndRenderSupabasePoll(sId, false);
+      }
+      card.classList.add('expanded', 'facts-open');
       if (details) details.style.display = 'block';
       factsPanel.style.display = 'block';
+      if (lensPanel) lensPanel.style.display = 'block';
       if (factsBtn) factsBtn.classList.add('active');
       if (label) label.textContent = 'Hide Key Facts';
       if (chevron) chevron.textContent = '▴';
     } else {
-      factsPanel.style.display = 'none';
+      card.classList.remove('expanded', 'facts-open');
+      if (details) details.style.display = 'none';
       if (factsBtn) factsBtn.classList.remove('active');
       if (label) label.textContent = 'Key Facts';
       if (chevron) chevron.textContent = '▾';
-      syncCardExpandedContainer(card, sId);
     }
   }
   window.toggleKeyFactsDrawer = toggleKeyFactsDrawer;
@@ -1033,6 +1027,9 @@ function cleanPhotoCredit(credit, sourceName) {
 
     var isOpen = card.classList.contains('expanded');
     if (!isOpen) {
+      if (typeof fetchAndRenderSupabasePoll === 'function') {
+        fetchAndRenderSupabasePoll(storyId, false);
+      }
       card.classList.add('expanded');
       if (details) details.style.display = 'block';
       if (factsPanel) factsPanel.style.display = 'block';
@@ -1447,7 +1444,7 @@ function cleanPhotoCredit(credit, sourceName) {
   }
 
   function copyPointsFromCard(btn) {
-    var panel = btn.closest('.talking-points-panel');
+    var panel = btn.closest('.talking-points-panel') || btn.closest('.voted-talking-points-box');
     if (!panel) return;
     var rows = panel.querySelectorAll('.quote-row');
     var list = [];
@@ -1594,6 +1591,23 @@ function cleanPhotoCredit(credit, sourceName) {
     return 'general';
   }
 
+  function resolveClientPollSideLenses(stmt, agreeLbl, disagreeLbl) {
+    var agLow = String(agreeLbl || '').toLowerCase();
+    var disLow = String(disagreeLbl || '').toLowerCase();
+    var comb = (String(stmt || '') + ' ' + agLow).toLowerCase();
+    if (/cut property taxes|fiscal treason|checks & balances|reignites inflation|all-in on fusion|stop closures|fix roads first|rail boondoggle|abolish historic boards|ban ransom payments|unfair ratepayer tax|enforce zero tolerance|fast-track access|retaliate directly/i.test(agLow)) {
+      return { agree: 'RIGHT', disagree: 'LEFT' };
+    }
+    if (/lead active diplomacy|cancel debt|cap coaching buyouts|player health first|boost community life|helps everyday households|destroys heritage|gentrification trap|stop waterfront bailouts|mlb needs a salary cap|enforce tough penalties|insurer bailout|zero tax subsidies|build real transit|worse than cable|financial fair play|end pre-game stunts|ban thursday games/i.test(agLow) ||
+        /focus on domestic priorities|enforce repayment|boosters fund it|drivers need roads|focus on core basics|let cleared pros play/i.test(disLow)) {
+      return { agree: 'LEFT', disagree: 'RIGHT' };
+    }
+    if (/cancel debt|cap coaching buyouts|banned from paying|zero tax subsidies|lead active diplomacy/i.test(comb)) {
+      return { agree: 'LEFT', disagree: 'RIGHT' };
+    }
+    return { agree: 'RIGHT', disagree: 'LEFT' };
+  }
+
   function buildStoryCardElement(s, isFeaturedLead) {
     var sId = s.id || ('story-live-' + Date.now());
     var classified = classifyClientStory(s.title, s.neutral_summary || '', s.category || 'General News', s.master_category || s.category || 'National Headlines', s.subcategory || s.sub_category || '');
@@ -1713,43 +1727,39 @@ function cleanPhotoCredit(credit, sourceName) {
         '</div>' +
         '<h3 class="story-title" onclick="toggleStoryDetails(\'' + sId + '\')" title="Click to view key facts and perspectives">' + s.title + '</h3>' +
         '<div class="fact-preview-strip" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' + calloutBadge + '<p class="fact-preview-text">' + leadFact + '</p></div>' +
-        '<div class="controversial-take-poll" id="' + sId + '-controversial-poll" data-story-id="' + sId + '" data-agree-pct="' + s.controversial_take.baseline_agree_pct + '" data-disagree-pct="' + s.controversial_take.baseline_disagree_pct + '">' +
+        '<div class="controversial-take-poll" id="' + sId + '-controversial-poll" data-story-id="' + sId + '" data-agree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).agree + '" data-disagree-lens="' + resolveClientPollSideLenses(s.controversial_take.statement, s.controversial_take.agree_label, s.controversial_take.disagree_label).disagree + '">' +
           '<p class="take-statement-text">“' + s.controversial_take.statement + '”</p>' +
           '<div class="take-vote-actions">' +
             '<button type="button" class="btn-take-vote btn-take-agree" id="' + sId + '-btn-agree" data-story-id="' + sId + '" data-choice="AGREE" onclick="voteControversialTake(\'' + sId + '\', \'AGREE\', this, event); event.stopPropagation();">' +
-              '<span class="vote-icon">👍</span><span class="vote-label">' + s.controversial_take.agree_label + '</span><span class="vote-pct" id="' + sId + '-pct-agree" style="display: none;">' + s.controversial_take.baseline_agree_pct + '%</span>' +
+              '<span class="vote-icon">👍</span><span class="vote-label">' + s.controversial_take.agree_label + '</span><span class="vote-pct" id="' + sId + '-pct-agree" style="display: none;"></span>' +
             '</button>' +
             '<button type="button" class="btn-take-vote btn-take-disagree" id="' + sId + '-btn-disagree" data-story-id="' + sId + '" data-choice="DISAGREE" onclick="voteControversialTake(\'' + sId + '\', \'DISAGREE\', this, event); event.stopPropagation();">' +
-              '<span class="vote-icon">👎</span><span class="vote-label">' + s.controversial_take.disagree_label + '</span><span class="vote-pct" id="' + sId + '-pct-disagree" style="display: none;">' + s.controversial_take.baseline_disagree_pct + '%</span>' +
+              '<span class="vote-icon">👎</span><span class="vote-label">' + s.controversial_take.disagree_label + '</span><span class="vote-pct" id="' + sId + '-pct-disagree" style="display: none;"></span>' +
             '</button>' +
           '</div>' +
           '<div class="take-consensus-track" id="' + sId + '-take-track" style="display: none;">' +
-            '<div class="take-fill-agree" id="' + sId + '-fill-agree" style="width: ' + (s.controversial_take ? s.controversial_take.baseline_agree_pct : 62) + '%;"></div>' +
-            '<div class="take-fill-disagree" id="' + sId + '-fill-disagree" style="width: ' + (s.controversial_take ? s.controversial_take.baseline_disagree_pct : 38) + '%;"></div>' +
+            '<div class="take-fill-agree" id="' + sId + '-fill-agree" style="width: 0%;"></div>' +
+            '<div class="take-fill-disagree" id="' + sId + '-fill-disagree" style="width: 0%;"></div>' +
           '</div>' +
-          '<div class="take-footer-meta" id="' + sId + '-take-footer" style="display: none;">' +
-            '<span class="take-voted-msg" id="' + sId + '-voted-msg" onclick="toggleLensDrawer(\'' + sId + '\', event, this); event.stopPropagation();">📊 ' + s.controversial_take.baseline_agree_pct + '% voted with you vs. ' + s.controversial_take.baseline_disagree_pct + '% on the other side — see Lens / Personas ▾</span>' +
-            '<span class="take-total-votes" id="' + sId + '-total-votes" data-base-votes="' + (s.controversial_take ? s.controversial_take.total_votes : 2840) + '">' + (s.controversial_take ? s.controversial_take.total_votes : 2840) + ' votes</span>' +
+          '<div class="take-footer-meta" id="' + sId + '-take-footer" style="display: flex;">' +
+            '<span class="take-voted-msg" id="' + sId + '-voted-msg">No community votes yet.</span>' +
+            '<span class="take-total-votes" id="' + sId + '-total-votes"></span>' +
           '</div>' +
         '</div>' +
-        '<div class="expand-prompt-bar dual-expand-bar" id="' + sId + '-expand-bar">' +
+        '<div class="expand-prompt-bar single-facts-bar" id="' + sId + '-expand-bar">' +
           '<button type="button" class="btn-card-drawer btn-drawer-facts" id="' + sId + '-btn-facts-drawer" data-story-id="' + sId + '" onclick="toggleKeyFactsDrawer(\'' + sId + '\', event, this)">' +
             '<span class="drawer-btn-left"><span class="drawer-btn-icon">📌</span><span class="expand-label" id="' + sId + '-expand-label">Key Facts</span></span>' +
             '<span class="expand-chevron" id="' + sId + '-chevron">▾</span>' +
           '</button>' +
-          '<button type="button" class="btn-card-drawer btn-drawer-lens" id="' + sId + '-btn-lens-drawer" data-story-id="' + sId + '" onclick="toggleLensDrawer(\'' + sId + '\', event, this)">' +
-            '<span class="drawer-btn-left"><span class="drawer-btn-icon">🎭</span><span class="expand-lens-label" id="' + sId + '-lens-expand-label">Lens / Persona</span></span>' +
-            '<span class="expand-lens-chevron" id="' + sId + '-lens-chevron">▾</span>' +
-          '</button>' +
         '</div>' +
         '<div class="card-details" id="' + sId + '-details">' +
-          '<div class="facts-drawer-panel" id="' + sId + '-facts-panel" style="display: none;">' +
+          '<div class="facts-drawer-panel" id="' + sId + '-facts-panel" style="display: block;">' +
             '<div class="neutral-box">' +
               '<div class="neutral-box-header"><div class="neutral-title">⚖️ The Facts (Verified Breakdown)</div></div>' +
               '<ul class="core-facts-list">' + factsItems + '</ul>' +
             '</div>' +
           '</div>' +
-          '<div class="lens-drawer-panel" id="' + sId + '-lens-panel" style="display: none;">' +
+          '<div class="lens-drawer-panel" id="' + sId + '-lens-panel" style="display: block;">' +
             viewsHtml +
           '</div>' +
           '<div class="card-bottom-actions">' +
@@ -1776,6 +1786,9 @@ function cleanPhotoCredit(credit, sourceName) {
     }
     var cardEl = buildStoryCardElement(storyObj, true);
     feed.insertBefore(cardEl, feed.firstChild);
+    if (typeof fetchAndRenderSupabasePoll === 'function') {
+      fetchAndRenderSupabasePoll(storyObj.id, false);
+    }
     return true;
   }
 
@@ -2227,38 +2240,296 @@ function cleanPhotoCredit(credit, sourceName) {
 
   
   // =========================================================================
-  // THE CONTROVERSIAL TAKE ENGINE (QUICK POLARIZING POLL ON EVERY STORY) (v13.0)
+  // REAL SUPABASE COMMUNITY POLLING ENGINE ("THE CONTROVERSIAL TAKE") (v15.0)
   // =========================================================================
+  var SUPABASE_URL = 'https://vswxehmxdbtdatnlovsl.supabase.co';
+  var SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_OFiISa3vk9WNRLbIp8xuIg_2emzLYRD';
+  var VISITOR_ID_STORAGE_KEY = 'ynlCommunityPollVisitorId';
+  var VOTES_STORAGE_KEY = 'ynlSupabaseConfirmedVotes_v4';
+
   var _userControversialVotes = {};
+  var _supabaseSyncedVotes = {};
+  var _supabasePollCache = {};
+  var _submittingPollVotes = {};
+  var _fetchingPollResults = {};
 
-  function voteControversialTake(storyId, choice, btnEl, evt) {
-    var e = evt || (typeof window !== 'undefined' ? window.event : null);
-    if (e) {
-      if (e.__handledVoteClick) return;
-      e.__handledVoteClick = true;
-      if (typeof e.stopPropagation === 'function') e.stopPropagation();
-    }
-    var pollEl = (btnEl && btnEl.closest ? btnEl.closest('.controversial-take-poll') : null) ||
-                 (storyId ? document.getElementById(storyId + '-controversial-poll') : null) ||
-                 (storyId ? document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]') : null);
-    var resolvedId = storyId || (pollEl ? pollEl.getAttribute('data-story-id') : '');
-    if (!resolvedId || (choice !== 'AGREE' && choice !== 'DISAGREE')) return;
+  var _lastVoteActionTs = {};
 
-    _userControversialVotes[resolvedId] = choice;
+  function loadSavedVotesFromStorage() {
     try {
-      localStorage.setItem('userControversialVotes', JSON.stringify(_userControversialVotes));
-    } catch (err) {}
-
-    renderControversialPoll(resolvedId, pollEl);
-    var agPct = pollEl ? parseInt(pollEl.getAttribute('data-agree-pct') || '62', 10) : 62;
-    var disPct = pollEl ? parseInt(pollEl.getAttribute('data-disagree-pct') || '38', 10) : 38;
-    var myPct = (choice === 'AGREE') ? agPct : disPct;
-    var otherPct = (choice === 'AGREE') ? disPct : agPct;
-    showToastNotification('📊 ' + myPct + '% voted with you vs. ' + otherPct + '% on the other side!');
+      // Clean up legacy pre-Supabase fake vote key so it never blocks real voting
+      if (localStorage.getItem('userControversialVotes')) {
+        localStorage.removeItem('userControversialVotes');
+      }
+      var raw = localStorage.getItem(VOTES_STORAGE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && typeof parsed === 'object') {
+          for (var k in parsed) {
+            if (Object.prototype.hasOwnProperty.call(parsed, k) && parsed[k]) {
+              if (typeof parsed[k] === 'string') {
+                _userControversialVotes[k] = parsed[k];
+              } else if (typeof parsed[k] === 'object' && parsed[k].choice) {
+                _userControversialVotes[k] = parsed[k].choice;
+                _supabaseSyncedVotes[k] = Boolean(parsed[k].synced);
+              }
+            }
+          }
+        }
+      }
+    } catch (e) {}
   }
-  window.voteControversialTake = voteControversialTake;
 
-  function renderControversialPoll(storyId, pollRootEl) {
+  function saveVotesToStorage() {
+    try {
+      var out = {};
+      for (var k in _userControversialVotes) {
+        if (Object.prototype.hasOwnProperty.call(_userControversialVotes, k) && _userControversialVotes[k]) {
+          out[k] = {
+            choice: _userControversialVotes[k],
+            synced: Boolean(_supabaseSyncedVotes[k])
+          };
+        }
+      }
+      localStorage.setItem(VOTES_STORAGE_KEY, JSON.stringify(out));
+    } catch (e) {}
+  }
+
+  function getOrCreatePollVisitorId() {
+    var vid = '';
+    try {
+      vid = localStorage.getItem(VISITOR_ID_STORAGE_KEY) || '';
+    } catch (e) {}
+    if (!vid || typeof vid !== 'string' || vid.length < 8) {
+      if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+        vid = 'ynl_' + crypto.randomUUID();
+      } else {
+        vid = 'ynl_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 12) + '_' + Math.random().toString(36).substring(2, 10);
+      }
+      try {
+        localStorage.setItem(VISITOR_ID_STORAGE_KEY, vid);
+      } catch (e) {}
+    }
+    return vid;
+  }
+  window.getOrCreatePollVisitorId = getOrCreatePollVisitorId;
+
+  function buildSupabaseHeaders(includeBearer, extraHeaders) {
+    var h = {
+      'apikey': SUPABASE_PUBLISHABLE_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (includeBearer) {
+      h['Authorization'] = 'Bearer ' + SUPABASE_PUBLISHABLE_KEY;
+    }
+    if (extraHeaders && typeof extraHeaders === 'object') {
+      for (var k in extraHeaders) {
+        if (Object.prototype.hasOwnProperty.call(extraHeaders, k)) {
+          h[k] = extraHeaders[k];
+        }
+      }
+    }
+    return h;
+  }
+
+  function supabaseFetchWithFallback(url, method, bodyObj, extraHeaders) {
+    var bodyStr = bodyObj ? JSON.stringify(bodyObj) : undefined;
+    // Try with apikey first (required for sb_publishable_ non-JWT keys), then fallback to apikey + Bearer
+    return fetch(url, {
+      method: method || 'POST',
+      headers: buildSupabaseHeaders(false, extraHeaders),
+      body: bodyStr
+    }).then(function(res) {
+      if (res.status === 401 || res.status === 403) {
+        return fetch(url, {
+          method: method || 'POST',
+          headers: buildSupabaseHeaders(true, extraHeaders),
+          body: bodyStr
+        });
+      }
+      return res;
+    });
+  }
+
+  function parsePollResultsPayload(payload) {
+    var agreeCount = 0;
+    var disagreeCount = 0;
+
+    if (Array.isArray(payload)) {
+      for (var i = 0; i < payload.length; i++) {
+        var row = payload[i];
+        if (!row || typeof row !== 'object') continue;
+        var rawChoice = String(
+          row.choice_id !== undefined ? row.choice_id :
+          (row.choice !== undefined ? row.choice :
+          (row.option !== undefined ? row.option :
+          (row.vote_choice !== undefined ? row.vote_choice :
+          (row.choice_label !== undefined ? row.choice_label : ''))))
+        ).trim().toLowerCase();
+
+        var rawCount = (
+          row.vote_count !== undefined ? row.vote_count :
+          (row.count !== undefined ? row.count :
+          (row.votes !== undefined ? row.votes :
+          (row.total_votes !== undefined ? row.total_votes :
+          (row.total !== undefined ? row.total : 1))))
+        );
+        var countNum = parseInt(rawCount, 10);
+        if (isNaN(countNum) || countNum < 0) countNum = 0;
+
+        if (rawChoice === 'agree' || rawChoice.indexOf('agree') === 0 || rawChoice === 'yes') {
+          agreeCount += countNum;
+        } else if (rawChoice === 'disagree' || rawChoice.indexOf('disagree') === 0 || rawChoice === 'no') {
+          disagreeCount += countNum;
+        }
+      }
+    } else if (payload && typeof payload === 'object') {
+      if (payload.agree !== undefined || payload.disagree !== undefined) {
+        agreeCount = Math.max(0, parseInt(payload.agree || 0, 10) || 0);
+        disagreeCount = Math.max(0, parseInt(payload.disagree || 0, 10) || 0);
+      } else if (payload.agree_count !== undefined || payload.disagree_count !== undefined) {
+        agreeCount = Math.max(0, parseInt(payload.agree_count || 0, 10) || 0);
+        disagreeCount = Math.max(0, parseInt(payload.disagree_count || 0, 10) || 0);
+      }
+    }
+
+    var totalVotes = agreeCount + disagreeCount;
+    var agreePct = totalVotes > 0 ? Math.round((agreeCount / totalVotes) * 100) : 0;
+    var disagreePct = totalVotes > 0 ? (100 - agreePct) : 0;
+
+    return {
+      agreeCount: agreeCount,
+      disagreeCount: disagreeCount,
+      totalVotes: totalVotes,
+      agreePct: agreePct,
+      disagreePct: disagreePct,
+      loaded: true,
+      error: false
+    };
+  }
+  window.parsePollResultsPayload = parsePollResultsPayload;
+
+  function fetchSupabasePollResults(storyId) {
+    if (!storyId) return Promise.reject(new Error('Missing storyId'));
+    return supabaseFetchWithFallback(
+      SUPABASE_URL + '/rest/v1/rpc/get_poll_results',
+      'POST',
+      { p_story_id: String(storyId) },
+      null
+    ).then(function(res) {
+      if (!res.ok) {
+        return res.text().then(function(txt) {
+          throw new Error('RPC get_poll_results HTTP ' + res.status + ': ' + txt);
+        });
+      }
+      return res.json();
+    }).then(function(data) {
+      var parsed = parsePollResultsPayload(data);
+      _supabasePollCache[storyId] = parsed;
+      return parsed;
+    });
+  }
+  window.fetchSupabasePollResults = fetchSupabasePollResults;
+
+  function submitSupabasePollVote(storyId, choiceId, choiceLabel, lens) {
+    var voterId = getOrCreatePollVisitorId();
+    var normalizedChoiceId = (String(choiceId || '').toLowerCase() === 'disagree') ? 'disagree' : 'agree';
+    var normalizedLens = String(lens || 'center').toLowerCase();
+    var fullPayload = {
+      story_id: String(storyId),
+      choice_id: normalizedChoiceId,
+      choice_label: String(choiceLabel || (normalizedChoiceId === 'agree' ? 'Agree' : 'Disagree')),
+      lens: normalizedLens,
+      voter_id: String(voterId)
+    };
+
+    return supabaseFetchWithFallback(
+      SUPABASE_URL + '/rest/v1/poll_votes',
+      'POST',
+      fullPayload,
+      { 'Prefer': 'return=minimal' }
+    ).then(function(res) {
+      if (res.ok) {
+        return { ok: true, duplicate: false };
+      }
+      return res.text().then(function(errText) {
+        var lowerErr = String(errText || '').toLowerCase();
+        var isDuplicate = (
+          res.status === 409 ||
+          lowerErr.indexOf('23505') !== -1 ||
+          lowerErr.indexOf('duplicate key') !== -1 ||
+          lowerErr.indexOf('unique constraint') !== -1 ||
+          lowerErr.indexOf('poll_votes_story_id_voter_id_key') !== -1
+        );
+        if (isDuplicate) {
+          return { ok: true, duplicate: true };
+        }
+        // If optional columns/constraints caused a 400 error, retry with core required columns
+        if (res.status === 400) {
+          return supabaseFetchWithFallback(
+            SUPABASE_URL + '/rest/v1/poll_votes',
+            'POST',
+            {
+              story_id: String(storyId),
+              choice_id: normalizedChoiceId,
+              voter_id: String(voterId)
+            },
+            { 'Prefer': 'return=minimal' }
+          ).then(function(retryRes) {
+            if (retryRes.ok || retryRes.status === 409) {
+              return { ok: true, duplicate: retryRes.status === 409 };
+            }
+            return retryRes.text().then(function(retryTxt) {
+              if (String(retryTxt || '').indexOf('23505') !== -1) {
+                return { ok: true, duplicate: true };
+              }
+              throw new Error('Supabase poll_votes insert HTTP ' + retryRes.status + ': ' + retryTxt);
+            });
+          });
+        }
+        throw new Error('Supabase poll_votes insert HTTP ' + res.status + ': ' + errText);
+      });
+    });
+  }
+  window.submitSupabasePollVote = submitSupabasePollVote;
+
+  function setPollButtonsDisabled(pollEl, storyId, disabled) {
+    var btnAgree = (pollEl ? pollEl.querySelector('.btn-take-agree') : null) || document.getElementById(storyId + '-btn-agree');
+    var btnDisagree = (pollEl ? pollEl.querySelector('.btn-take-disagree') : null) || document.getElementById(storyId + '-btn-disagree');
+    if (btnAgree) {
+      btnAgree.disabled = Boolean(disabled);
+      if (disabled) btnAgree.classList.add('is-submitting');
+      else btnAgree.classList.remove('is-submitting');
+    }
+    if (btnDisagree) {
+      btnDisagree.disabled = Boolean(disabled);
+      if (disabled) btnDisagree.classList.add('is-submitting');
+      else btnDisagree.classList.remove('is-submitting');
+    }
+  }
+
+  function revealStoryPersonaForVote(pollEl, storyId, userChoice) {
+    if (!pollEl || !storyId || !userChoice) return;
+    var card = (pollEl.closest ? pollEl.closest('.compact-card') : null) || document.getElementById(storyId);
+    var agreeLens = (pollEl.getAttribute('data-agree-lens') || 'RIGHT').toUpperCase();
+    var disagreeLens = (pollEl.getAttribute('data-disagree-lens') || 'LEFT').toUpperCase();
+    var chosenLens = (userChoice === 'AGREE') ? agreeLens : disagreeLens;
+    var lensPanel = document.getElementById(storyId + '-lens-panel') || (card ? card.querySelector('.lens-drawer-panel') : null);
+
+    // Move lensPanel directly inside pollEl so the Red/Blue Persona appears immediately right beneath the vote bar
+    if (lensPanel && pollEl && lensPanel.parentNode !== pollEl) {
+      pollEl.appendChild(lensPanel);
+    }
+    if (lensPanel) {
+      lensPanel.style.display = 'block';
+    }
+    if (typeof switchStoryPerspective === 'function') {
+      switchStoryPerspective(storyId, chosenLens);
+    }
+  }
+  window.revealStoryPersonaForVote = revealStoryPersonaForVote;
+
+  function renderControversialPoll(storyId, pollRootEl, statsOverride, statusOverrideText) {
     var pollEl = pollRootEl || (storyId ? document.getElementById(storyId + '-controversial-poll') : null) ||
                  (storyId ? document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]') : null);
     if (!pollEl) return;
@@ -2268,64 +2539,189 @@ function cleanPhotoCredit(credit, sourceName) {
     var btnDisagree = pollEl.querySelector('.btn-take-disagree') || document.getElementById(sId + '-btn-disagree');
     var pctAgree = (btnAgree ? btnAgree.querySelector('.vote-pct') : null) || document.getElementById(sId + '-pct-agree');
     var pctDisagree = (btnDisagree ? btnDisagree.querySelector('.vote-pct') : null) || document.getElementById(sId + '-pct-disagree');
+    var fillAgree = pollEl.querySelector('.take-fill-agree') || document.getElementById(sId + '-fill-agree');
+    var fillDisagree = pollEl.querySelector('.take-fill-disagree') || document.getElementById(sId + '-fill-disagree');
     var track = pollEl.querySelector('.take-consensus-track') || document.getElementById(sId + '-take-track');
     var footer = pollEl.querySelector('.take-footer-meta') || document.getElementById(sId + '-take-footer');
-    var status = document.getElementById(sId + '-take-status');
     var votedMsg = pollEl.querySelector('.take-voted-msg') || document.getElementById(sId + '-voted-msg');
     var totalVotesEl = pollEl.querySelector('.take-total-votes') || document.getElementById(sId + '-total-votes');
 
     var userVote = _userControversialVotes[sId];
+    var stats = statsOverride || _supabasePollCache[sId] || null;
 
     if (btnAgree) btnAgree.classList.remove('selected-agree');
     if (btnDisagree) btnDisagree.classList.remove('selected-disagree');
 
-    if (userVote) {
+    if (userVote === 'AGREE' && btnAgree) {
       pollEl.classList.add('has-voted');
-      if (userVote === 'AGREE' && btnAgree) {
-        btnAgree.classList.add('selected-agree');
-      } else if (userVote === 'DISAGREE' && btnDisagree) {
-        btnDisagree.classList.add('selected-disagree');
-      }
-
-      var agPct = parseInt(pollEl.getAttribute('data-agree-pct') || '62', 10);
-      var disPct = parseInt(pollEl.getAttribute('data-disagree-pct') || '38', 10);
-      if (pctAgree) {
-        pctAgree.textContent = agPct + '%';
-        pctAgree.style.display = 'inline-block';
-      }
-      if (pctDisagree) {
-        pctDisagree.textContent = disPct + '%';
-        pctDisagree.style.display = 'inline-block';
-      }
-      if (track) track.style.display = 'flex';
-      if (footer) footer.style.display = 'flex';
-
-      var myPct = (userVote === 'AGREE') ? agPct : disPct;
-      var otherPct = (userVote === 'AGREE') ? disPct : agPct;
-      if (status) {
-        status.textContent = '📊 ' + myPct + '% with you vs. ' + otherPct + '% other side';
-      }
-      if (votedMsg) {
-        votedMsg.textContent = '📊 ' + myPct + '% voted with you vs. ' + otherPct + '% on the other side — see Lens / Personas ▾';
-      }
-      if (totalVotesEl) {
-        var baseV = parseInt(totalVotesEl.getAttribute('data-base-votes') || totalVotesEl.textContent.replace(/[^0-9]/g, '') || '2840', 10);
-        totalVotesEl.textContent = (baseV + 1).toLocaleString() + ' votes';
-      }
+      btnAgree.classList.add('selected-agree');
+    } else if (userVote === 'DISAGREE' && btnDisagree) {
+      pollEl.classList.add('has-voted');
+      btnDisagree.classList.add('selected-disagree');
     } else {
       pollEl.classList.remove('has-voted');
+    }
+
+    if (footer) footer.style.display = 'flex';
+
+    if (statusOverrideText) {
+      if (votedMsg) votedMsg.textContent = statusOverrideText;
+      if (totalVotesEl) totalVotesEl.textContent = '';
       if (pctAgree) pctAgree.style.display = 'none';
       if (pctDisagree) pctDisagree.style.display = 'none';
       if (track) track.style.display = 'none';
-      if (footer) footer.style.display = 'none';
-      if (status) status.textContent = 'Tap to vote';
+      return;
+    }
+
+    if (stats && stats.loaded && stats.totalVotes > 0) {
+      if (pctAgree) {
+        pctAgree.textContent = stats.agreePct + '%';
+        pctAgree.style.display = 'inline-block';
+      }
+      if (pctDisagree) {
+        pctDisagree.textContent = stats.disagreePct + '%';
+        pctDisagree.style.display = 'inline-block';
+      }
+      if (fillAgree) fillAgree.style.width = stats.agreePct + '%';
+      if (fillDisagree) fillDisagree.style.width = stats.disagreePct + '%';
+      if (track) track.style.display = 'flex';
+
+      if (votedMsg) {
+        if (userVote) {
+          var myPct = (userVote === 'AGREE') ? stats.agreePct : stats.disagreePct;
+          var otherPct = (userVote === 'AGREE') ? stats.disagreePct : stats.agreePct;
+          votedMsg.textContent = '📊 ' + myPct + '% voted with you • Agree: ' + stats.agreePct + '% / Disagree: ' + stats.disagreePct + '%';
+        } else {
+          votedMsg.textContent = 'Agree: ' + stats.agreePct + '% • Disagree: ' + stats.disagreePct + '%';
+        }
+      }
+      if (totalVotesEl) {
+        totalVotesEl.textContent = 'Total votes: ' + stats.totalVotes.toLocaleString();
+      }
+    } else {
+      if (pctAgree) {
+        pctAgree.textContent = '';
+        pctAgree.style.display = 'none';
+      }
+      if (pctDisagree) {
+        pctDisagree.textContent = '';
+        pctDisagree.style.display = 'none';
+      }
+      if (fillAgree) fillAgree.style.width = '0%';
+      if (fillDisagree) fillDisagree.style.width = '0%';
+      if (track) track.style.display = 'none';
+
+      if (votedMsg) {
+        votedMsg.textContent = 'No community votes yet.';
+      }
+      if (totalVotesEl) {
+        totalVotesEl.textContent = (stats && stats.loaded) ? 'Total votes: 0' : '';
+      }
+    }
+
+    if (userVote) {
+      revealStoryPersonaForVote(pollEl, sId, userVote);
     }
   }
   window.renderControversialPoll = renderControversialPoll;
 
-  // Global Document Click Delegation Fallback (guarantees vote and drawer buttons always fire)
+  function fetchAndRenderSupabasePoll(storyId, revealPersonaIfVoted) {
+    if (!storyId || _fetchingPollResults[storyId]) return Promise.resolve(null);
+    _fetchingPollResults[storyId] = true;
+    var pollEl = document.getElementById(storyId + '-controversial-poll') ||
+                 document.querySelector('.controversial-take-poll[data-story-id="' + storyId + '"]');
+    return fetchSupabasePollResults(storyId)
+      .then(function(stats) {
+        _fetchingPollResults[storyId] = false;
+        renderControversialPoll(storyId, pollEl, stats);
+        if (revealPersonaIfVoted && _userControversialVotes[storyId]) {
+          revealStoryPersonaForVote(pollEl, storyId, _userControversialVotes[storyId]);
+        }
+        return stats;
+      })
+      .catch(function(err) {
+        _fetchingPollResults[storyId] = false;
+        console.error('[YNL polling] Could not load community results:', err);
+        renderControversialPoll(storyId, pollEl, null, 'Community results unavailable. Please try again.');
+        return null;
+      });
+  }
+  window.fetchAndRenderSupabasePoll = fetchAndRenderSupabasePoll;
+
+  function voteControversialTake(storyId, choice, btnEl, evt) {
+    var e = evt || window.event;
+    if (e) {
+      if (e.__handledVoteClick) return;
+      e.__handledVoteClick = true;
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+    }
+    var pollEl = (btnEl && btnEl.closest ? btnEl.closest('.controversial-take-poll') : null) ||
+                 (storyId ? document.getElementById(storyId + '-controversial-poll') : null);
+    var resolvedId = storyId || (pollEl ? pollEl.getAttribute('data-story-id') : '');
+    var normalizedChoice = String(choice || '').toUpperCase();
+    if (!pollEl || !resolvedId || (normalizedChoice !== 'AGREE' && normalizedChoice !== 'DISAGREE')) return;
+    if (_submittingPollVotes[resolvedId]) return;
+
+    if (_supabaseSyncedVotes[resolvedId]) {
+      fetchAndRenderSupabasePoll(resolvedId, true);
+      showToastNotification('Your vote was already recorded for this story.');
+      return;
+    }
+
+    var targetBtn = pollEl.querySelector(normalizedChoice === 'AGREE' ? '.btn-take-agree' : '.btn-take-disagree');
+    var labelEl = targetBtn ? targetBtn.querySelector('.vote-label') : null;
+    var choiceLabel = labelEl ? labelEl.textContent.trim() : (normalizedChoice === 'AGREE' ? 'Agree' : 'Disagree');
+    var agreeLens = pollEl.getAttribute('data-agree-lens') || 'RIGHT';
+    var disagreeLens = pollEl.getAttribute('data-disagree-lens') || 'LEFT';
+    var framingLens = normalizedChoice === 'AGREE' ? agreeLens : disagreeLens;
+
+    _submittingPollVotes[resolvedId] = true;
+    setPollButtonsDisabled(pollEl, resolvedId, true);
+    var votedMsg = pollEl.querySelector('.take-voted-msg');
+    if (votedMsg) votedMsg.textContent = 'Submitting your vote…';
+
+    submitSupabasePollVote(resolvedId, normalizedChoice.toLowerCase(), choiceLabel, framingLens)
+      .then(function(result) {
+        if (result.duplicate) {
+          throw new Error('This visitor has already voted on this story.');
+        }
+        // Only now is the vote confirmed by Supabase.
+        _userControversialVotes[resolvedId] = normalizedChoice;
+        _supabaseSyncedVotes[resolvedId] = true;
+        saveVotesToStorage();
+        return fetchSupabasePollResults(resolvedId);
+      })
+      .then(function(stats) {
+        renderControversialPoll(resolvedId, pollEl, stats);
+        revealStoryPersonaForVote(pollEl, resolvedId, normalizedChoice);
+        showToastNotification('Vote recorded! Community results updated.');
+      })
+      .catch(function(err) {
+        console.error('[YNL polling] Vote or results request failed:', err);
+        var confirmed = Boolean(_supabaseSyncedVotes[resolvedId]);
+        renderControversialPoll(resolvedId, pollEl, null,
+          confirmed ? 'Vote saved, but results could not be loaded.' : 'Vote not recorded. ' + err.message);
+        showToastNotification(confirmed ? 'Vote saved; results unavailable.' : 'Vote failed. Please try again.');
+      })
+      .then(function() {
+        _submittingPollVotes[resolvedId] = false;
+        setPollButtonsDisabled(pollEl, resolvedId, false);
+      });
+  }
+  window.voteControversialTake = voteControversialTake;
+  if (window.__ynlPendingVote) {
+    var pendingVote = window.__ynlPendingVote;
+    window.__ynlPendingVote = null;
+    var replayVote = function() { voteControversialTake(pendingVote.storyId, pendingVote.choice, null, null); };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', replayVote, { once: true });
+    else replayVote();
+  }
+
+  // Global Document Click & Mobile Touch Delegation Fallback (guarantees vote and drawer buttons always fire on phone & desktop)
   if (typeof document !== 'undefined' && document.addEventListener && !window.__YNL_CLICK_DELEGATE_BOUND__) {
     window.__YNL_CLICK_DELEGATE_BOUND__ = true;
+    // Rely on the browser's native click event on both touch and mouse devices.
+    // Synthetic touchend votes could race with the native click and submit twice.
     document.addEventListener('click', function(ev) {
       if (!ev || !ev.target || !ev.target.closest) return;
       var voteBtn = ev.target.closest('.btn-take-vote');
@@ -2461,6 +2857,127 @@ function cleanPhotoCredit(credit, sourceName) {
 
 
 
+  // =========================================================================
+  // PULL-DOWN ON TOP BANNER (.app-header) TO REFRESH FROM ANYWHERE ON PAGE
+  // =========================================================================
+  var _isBannerRefreshing = false;
+
+  function triggerBannerRefresh() {
+    if (_isBannerRefreshing) return;
+    _isBannerRefreshing = true;
+
+    var bar = document.getElementById('bannerPullRefreshBar');
+    var icon = document.getElementById('bannerPullRefreshIcon');
+    var txt = document.getElementById('bannerPullRefreshText');
+    if (bar) {
+      bar.classList.remove('pulling', 'ready-to-refresh');
+      bar.classList.add('refreshing');
+      bar.style.height = '42px';
+      bar.style.opacity = '1';
+    }
+    if (icon) icon.textContent = '🔄';
+    if (txt) txt.textContent = 'Refreshing live stories...';
+
+    Promise.all([
+      loadLiveStories(true),
+      fetchBrowserLiveRSS()
+    ]).then(function(results) {
+      var totalAdded = (results[0] || 0) + (results[1] || 0);
+      if (totalAdded === 0 && Array.isArray(LIVE_WIRE_RESERVE_DISPATCHES) && LIVE_WIRE_RESERVE_DISPATCHES.length > 0) {
+        var rItem = JSON.parse(JSON.stringify(LIVE_WIRE_RESERVE_DISPATCHES[_reserveIndex % LIVE_WIRE_RESERVE_DISPATCHES.length]));
+        _reserveIndex++;
+        rItem.id = rItem.id + '-' + Date.now();
+        rItem.pub_timestamp = Math.floor(Date.now() / 1000) - 15;
+        if (prependStoryToFeed(rItem)) totalAdded++;
+      }
+      updateRelativeTimestamps();
+      refreshLiveTicker();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      showToastNotification('⚡ Live stories refreshed!');
+    }).catch(function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }).then(function() {
+      setTimeout(function() {
+        if (bar) {
+          bar.classList.remove('refreshing', 'pulling', 'ready-to-refresh');
+          bar.style.height = '0px';
+          bar.style.opacity = '0';
+        }
+        _isBannerRefreshing = false;
+      }, 650);
+    });
+  }
+  window.triggerBannerRefresh = triggerBannerRefresh;
+
+  function bindBannerPullToRefresh() {
+    var headerEl = document.querySelector('.app-header');
+    if (!headerEl || headerEl.__pullBound) return;
+    headerEl.__pullBound = true;
+
+    var startY = 0;
+    var startX = 0;
+    var pulling = false;
+    var currentDy = 0;
+
+    headerEl.addEventListener('touchstart', function(ev) {
+      if (_isBannerRefreshing) return;
+      if (ev.target && ev.target.tagName && ev.target.tagName.toLowerCase() === 'input') return;
+      if (!ev.touches || ev.touches.length !== 1) return;
+      startY = ev.touches[0].clientY;
+      startX = ev.touches[0].clientX;
+      pulling = true;
+      currentDy = 0;
+    }, { passive: true });
+
+    headerEl.addEventListener('touchmove', function(ev) {
+      if (!pulling || _isBannerRefreshing || !ev.touches || ev.touches.length !== 1) return;
+      var dy = ev.touches[0].clientY - startY;
+      var dx = Math.abs(ev.touches[0].clientX - startX);
+      if (dy > 10 && dy > dx) {
+        if (ev.cancelable) ev.preventDefault();
+        currentDy = dy;
+        var bar = document.getElementById('bannerPullRefreshBar');
+        var icon = document.getElementById('bannerPullRefreshIcon');
+        var txt = document.getElementById('bannerPullRefreshText');
+        if (bar) {
+          bar.classList.add('pulling');
+          var h = Math.min(Math.round(dy * 0.6), 52);
+          bar.style.height = h + 'px';
+          bar.style.opacity = String(Math.min(dy / 45, 1));
+          if (dy >= 48) {
+            bar.classList.add('ready-to-refresh');
+            if (icon) icon.textContent = '⚡';
+            if (txt) txt.textContent = 'Release to refresh stories!';
+          } else {
+            bar.classList.remove('ready-to-refresh');
+            if (icon) icon.textContent = '↓';
+            if (txt) txt.textContent = 'Pull down on banner to refresh stories';
+          }
+        }
+      }
+    }, { passive: false });
+
+    function finishPull() {
+      if (!pulling) return;
+      pulling = false;
+      if (currentDy >= 48) {
+        currentDy = 0;
+        triggerBannerRefresh();
+      } else {
+        currentDy = 0;
+        var bar = document.getElementById('bannerPullRefreshBar');
+        if (bar && !_isBannerRefreshing) {
+          bar.classList.remove('pulling', 'ready-to-refresh');
+          bar.style.height = '0px';
+          bar.style.opacity = '0';
+        }
+      }
+    }
+
+    headerEl.addEventListener('touchend', finishPull, { passive: true });
+    headerEl.addEventListener('touchcancel', finishPull, { passive: true });
+  }
+
   function initOnReady() {
     try {
       var savedTheme = localStorage.getItem('userEditorialTheme') || 'dark';
@@ -2510,20 +3027,41 @@ function cleanPhotoCredit(credit, sourceName) {
       updateFollowButtonsInDOM();
     } catch (e) {}
 
-    // Hydrate all controversial take polls present in initial DOM
+    // Initialize persistent anonymous visitor ID and hydrate real Supabase community polls
     try {
-      var savedControversial = localStorage.getItem('userControversialVotes');
-      if (savedControversial) {
-        _userControversialVotes = JSON.parse(savedControversial) || {};
-      }
+      getOrCreatePollVisitorId();
+      loadSavedVotesFromStorage();
       var cPolls = document.querySelectorAll('.controversial-take-poll');
+      var pollObserver = null;
+      if (typeof IntersectionObserver !== 'undefined') {
+        pollObserver = new IntersectionObserver(function(entries, obs) {
+          for (var ei = 0; ei < entries.length; ei++) {
+            if (entries[ei].isIntersecting) {
+              var targetEl = entries[ei].target;
+              obs.unobserve(targetEl);
+              var stId = targetEl.getAttribute('data-story-id');
+              if (stId) {
+                fetchAndRenderSupabasePoll(stId, false);
+              }
+            }
+          }
+        }, { rootMargin: '250px 0px' });
+      }
       for (var cp = 0; cp < cPolls.length; cp++) {
-        var cpId = cPolls[cp].getAttribute('data-story-id');
-        if (cpId) renderControversialPoll(cpId);
+        var cpEl = cPolls[cp];
+        var cpId = cpEl.getAttribute('data-story-id');
+        if (!cpId) continue;
+        renderControversialPoll(cpId, cpEl, null);
+        if (cp < 8 || _userControversialVotes[cpId]) {
+          fetchAndRenderSupabasePoll(cpId, false);
+        } else if (pollObserver) {
+          pollObserver.observe(cpEl);
+        }
       }
     } catch (e) {}
 
 
+    bindBannerPullToRefresh();
     loadLiveStories(false);
 
     // Auto-update relative timestamps every 30s and poll live feeds every 3 minutes
