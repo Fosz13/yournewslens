@@ -3209,7 +3209,9 @@ def clean_html_text(raw_text: str) -> str:
         return ""
     import html
     # 1. Unescape HTML entities (&nbsp;, &amp;, &quot;, &#39;, etc.)
-    text = html.unescape(raw_text)
+    image_tag = r'''<img\b(?:[^>"']|"[^"]*"|'[^']*')*>'''
+    text = html.unescape(re.sub(image_tag, ' ', raw_text, flags=re.I))
+    text = re.sub(image_tag, ' ', text, flags=re.I)
     # 2. In Google News RSS descriptions, remove source tags like <font color="#6f6f6f">NFL.com</font>
     text = re.sub(r'<font[^>]*>.*?</font>', ' ', text, flags=re.DOTALL | re.IGNORECASE)
     # 3. Treat </li> and <br> as sentence boundaries
@@ -8081,8 +8083,9 @@ def prerender_cards_html(stories: List[Dict[str, Any]]) -> str:
         label = "⚡ INSTANT ANSWER" if s.get("has_direct_answer") else "📌 KEY FACT"
         if s.get("event_date"):
             label = "📅 EVENT TIME"
-        elif not core_facts or lead_fact == editorial.NO_ANSWER:
-            label = "📄 SOURCE COVERAGE"
+        elif not core_facts or lead_fact in {editorial.NO_FACT, editorial.NO_ANSWER}:
+            label = "Story details"
+            lead_fact = ""
         callout_badge = f'<span class="fact-preview-badge fact">{label}</span>'
 
         # Clean editorial tags row without gaudy rank badges

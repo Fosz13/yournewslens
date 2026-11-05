@@ -1311,7 +1311,8 @@
       section.id = 'topStories';
       section.className = 'ynl-top-stories';
       section.setAttribute('aria-labelledby', 'topStoriesHeading');
-      section.innerHTML = '<h2 id="topStoriesHeading">Top stories</h2><ol></ol>';
+      section.innerHTML = '<h2 id="topStoriesHeading">Top stories</h2><ol class="ynl-top-leads"></ol>' +
+        '<details><summary>More top stories</summary><ol class="ynl-top-more" start="5"></ol></details>';
       feed.before(section);
     }
     section.hidden = feed.style.display === 'none' ||
@@ -1321,12 +1322,17 @@
       return card.style.display !== 'none' && !card.dataset.category?.toLowerCase().includes('local');
     }).slice(0, 10);
     section.hidden = !cards.length;
-    var list = section.querySelector('ol');
-    list.replaceChildren(...cards.map(function (card) {
+    var items = cards.map(function (card) {
       var item = document.createElement('li');
       var link = document.createElement('a');
       link.href = '#' + card.id;
-      link.textContent = card.querySelector('.story-title').textContent.trim();
+      var category = document.createElement('span');
+      category.className = 'ynl-top-category';
+      category.textContent = card.dataset.category;
+      var headline = document.createElement('span');
+      headline.className = 'ynl-top-headline';
+      headline.textContent = card.querySelector('.story-title').textContent.trim();
+      link.append(category, headline);
       link.addEventListener('click', function (event) {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
@@ -1334,7 +1340,11 @@
       });
       item.append(link);
       return item;
-    }));
+    });
+    section.querySelector('.ynl-top-leads').replaceChildren(...items.slice(0, 4));
+    var more = section.querySelector('details');
+    more.hidden = items.length <= 4;
+    more.querySelector('.ynl-top-more').replaceChildren(...items.slice(4));
   }
 
   function bindDesktopFeedLayout() {

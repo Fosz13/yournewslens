@@ -4047,20 +4047,52 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
 }
 
 .ynl-top-stories {
-  margin: 0 0 22px;
-  padding: 14px 18px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
+  margin: 0 0 24px;
+  padding: 4px 0 12px;
+  border-block-end: 1px solid var(--border-subtle);
 }
-.ynl-top-stories h2 { margin: 0 0 8px; font-size: 1.2rem; }
-.ynl-top-stories ol { margin: 0; padding-inline-start: 1.55em; }
-.ynl-top-stories li { padding: 4px 0; break-inside: avoid; }
-.ynl-top-stories a { color: inherit; text-underline-offset: 3px; }
-.ynl-top-stories a:hover, .ynl-top-stories a:focus-visible { color: var(--accent); }
+.ynl-top-stories h2 {
+  margin: 0 0 12px;
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.ynl-top-stories ol { list-style: none; margin: 0; padding: 0; }
+.ynl-top-stories a { display: grid; gap: 3px; color: var(--text-primary); text-decoration: none; }
+.ynl-top-stories a:hover .ynl-top-headline,
+.ynl-top-stories a:focus-visible .ynl-top-headline { text-decoration: underline; text-underline-offset: 3px; }
+.ynl-top-category { color: var(--text-muted); font-size: .72rem; font-weight: 700; }
+.ynl-top-headline { font-size: .95rem; font-weight: 650; line-height: 1.3; }
+.ynl-top-leads > li:first-child {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border-inline-start: 3px solid var(--border-active);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+.ynl-top-leads > li:first-child .ynl-top-headline {
+  font-family: Georgia, serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+}
+.ynl-top-leads > li:not(:first-child), .ynl-top-more > li {
+  padding: 9px 0;
+  border-block-end: 1px solid var(--border-subtle);
+}
+.ynl-top-stories summary {
+  cursor: pointer;
+  padding: 10px 0 2px;
+  color: var(--text-secondary);
+  font-size: .82rem;
+  font-weight: 700;
+}
 
 @media (min-width: 880px) {
-  .ynl-top-stories ol { columns: 2; column-gap: 46px; }
+  .ynl-top-leads { display: grid; grid-template-columns: 1.3fr 1fr; column-gap: 20px; }
+  .ynl-top-leads > li:first-child { grid-row: span 3; display: flex; align-items: center; }
+  .ynl-top-more { columns: 2; column-gap: 20px; }
+  .ynl-top-more > li { break-inside: avoid; }
   #storiesFeedView.ynl-staggered-feed {
     grid-auto-rows: 4px;
     row-gap: 0;
