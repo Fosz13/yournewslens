@@ -181,6 +181,8 @@ def refresh_existing(records, now, offline):
                 record["core_facts"] = facts
                 record["lead_fact"] = facts[0] if facts else editorial.NO_FACT
                 record["neutral_summary"] = record["lead_fact"]
+            if not editorial.excerpt_facts(record["title"], record.get("source_excerpt", "")):
+                continue
             editorial.restore_missing_features(record)
         seen.add(editorial.canonical_url(url))
         retained.append(record)
@@ -191,6 +193,7 @@ def collect_stories(engine, incoming, existing, now):
     by_url = {editorial.canonical_url(row["article_url"]): row for row in existing}
     titles = [row["title"] for row in existing]
     additions = []
+    evidence_by_id = {}
     source_counts = Counter()
     scrape_budget = 10
     ordered = sorted(incoming, key=lambda row: (-row["pub_timestamp"], row["link"]))
@@ -236,6 +239,9 @@ def collect_stories(engine, incoming, existing, now):
                 excerpt = (excerpt + " " + metadata["description"]).strip()[:4500]
             if metadata.get("image"):
                 image = metadata["image"]
+        facts = editorial.excerpt_facts(title, excerpt)
+        if not facts:
+            continue
         record = {
             "id": old["id"] if old else editorial.story_id(url),
             "title": title, "article_url": url, "link": url,
@@ -250,19 +256,16 @@ def collect_stories(engine, incoming, existing, now):
             # Aggregator media frequently represents the feed instead of the specific article.
             record["is_original_article_image"] = False
         additions.append(record)
+        evidence_by_id[record["id"]] = facts
         by_url[key] = record
         titles.append(title)
         source_counts[source] += 1
     # Alternate between Tampa, sports, and the newest remaining stories.
     groups = ([], [], [])
     for record in additions:
-        facts = editorial.excerpt_facts(record["title"], record["source_excerpt"])
-        if facts:
-            group = 0 if record.get("metro") == reader_sources.TAMPA else (
-                1 if record["category"] == "Sports" else 2)
-            groups[group].append((record, facts))
-        else:
-            editorial.prepare_story(record)
+        group = 0 if record.get("metro") == reader_sources.TAMPA else (
+            1 if record["category"] == "Sports" else 2)
+        groups[group].append((record, evidence_by_id[record["id"]]))
     to_analyze = []
     for index in range(max(map(len, groups))):
         to_analyze.extend(group[index] for group in groups if index < len(group))
