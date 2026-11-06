@@ -1338,6 +1338,7 @@
     section.hidden = !cards.length;
     var items = cards.map(function (card) {
       var item = document.createElement('li');
+      item.dataset.catSlug = card.dataset.catSlug || 'general';
       var link = document.createElement('a');
       link.href = '#' + card.id;
       var category = document.createElement('span');

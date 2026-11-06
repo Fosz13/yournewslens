@@ -4065,10 +4065,21 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
 .ynl-top-stories a:focus-visible .ynl-top-headline { text-decoration: underline; text-underline-offset: 3px; }
 .ynl-top-category { color: var(--text-muted); font-size: .72rem; font-weight: 700; }
 .ynl-top-headline { font-size: .95rem; font-weight: 650; line-height: 1.3; }
+.ynl-top-stories li { border-inline-start: 3px solid var(--category-stripe, #94a3b8); }
+.ynl-top-stories [data-cat-slug="politics"] { --category-stripe: #38bdf8; }
+.ynl-top-stories [data-cat-slug="sports"] { --category-stripe: #10b981; }
+.ynl-top-stories [data-cat-slug="business"] { --category-stripe: #f59e0b; }
+.ynl-top-stories [data-cat-slug="world"] { --category-stripe: #a855f7; }
+.ynl-top-stories [data-cat-slug="local"] { --category-stripe: #84cc16; }
+.ynl-top-stories [data-cat-slug="tech"] { --category-stripe: #06b6d4; }
+.ynl-top-stories [data-cat-slug="entertainment"] { --category-stripe: #ec4899; }
+.ynl-top-stories [data-cat-slug="health"] { --category-stripe: #14b8a6; }
+.ynl-top-stories [data-cat-slug="energy"] { --category-stripe: #eab308; }
+.ynl-top-stories [data-cat-slug="crime"] { --category-stripe: #ef4444; }
+.ynl-top-stories [data-cat-slug="border"] { --category-stripe: #f97316; }
 .ynl-top-leads > li:first-child {
   padding: 14px 16px;
   background: var(--bg-card);
-  border-inline-start: 3px solid var(--border-active);
   border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
 }
 .ynl-top-leads > li:first-child .ynl-top-headline {
@@ -4077,7 +4088,7 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
   font-weight: 700;
 }
 .ynl-top-leads > li:not(:first-child), .ynl-top-more > li {
-  padding: 9px 0;
+  padding: 9px 12px;
   border-block-end: 1px solid var(--border-subtle);
 }
 .ynl-top-stories summary {
