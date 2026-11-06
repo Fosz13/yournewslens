@@ -4004,7 +4004,7 @@ header.app-header.ynl-masthead { padding: 8px 14px; }
 .ynl-masthead:has(.ynl-mast-menu[open]) { touch-action: auto; }
 
 .ynl-topic-shortcuts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 5px; width: 100%; max-width: 370px; }
-.ynl-topic-shortcuts .cat-pill { margin: 0; min-width: 0; padding: 5px 3px; min-height: 34px; font-size: .78rem; }
+.ynl-topic-shortcuts .cat-pill { justify-content: center; text-align: center; margin: 0; min-width: 0; padding: 5px 3px; min-height: 34px; font-size: .78rem; }
 .ynl-guide-button { justify-self: start; border: 1px solid var(--border-subtle); border-radius: 8px; padding: 7px 10px; background: var(--bg-header); color: var(--text-primary); cursor: pointer; }
 .ynl-lens-dialog { position: fixed; inset: 0; margin: auto; width: min(420px, calc(100% - 28px)); max-height: 90dvh; padding: 0; overflow: auto; border: 1px solid var(--border-subtle); border-radius: 16px; background: var(--bg-header); color: var(--text-primary); box-shadow: 0 20px 60px #0008; }
 .ynl-lens-dialog::backdrop { background: #030817b5; }
