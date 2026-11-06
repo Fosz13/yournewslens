@@ -219,25 +219,25 @@ def fallback_perspectives(title, facts):
 
 
 READER_LENSES = {
-    "Sports": ("Team strategy", "How would I adjust the lineup or game plan in response?",
-               "Fan outlook", "What should I watch for in the team's next game or decision?"),
-    "Business & Economy": ("Customers & workers", "What might this change for customers or employees?",
-                           "Business outlook", "What would I look for in the company's next results or decision?"),
-    "Local News": ("Residents", "What does this change for people who live or work nearby?",
-                   "City response", "What decision should I watch for from local officials?"),
-    "Science & Tech": ("Practical use", "What would I be able to do differently if this works as described?",
-                       "Limitations", "What would I want independently tested before relying on it?"),
-    "Health": ("Patient impact", "What could this change for patients affected by the report?",
-               "Evidence gaps", "What evidence would I need before changing a health decision?"),
-    "Crime & Public Safety": ("Community safety", "What can people affected by this safely do now?",
-                              "Due process", "Which details have been confirmed, and what remains an allegation?"),
-    "World News": ("People affected", "What could this mean for people living through it?",
-                   "Regional response", "How might the governments or organizations involved respond?"),
-    "Entertainment": ("Audience", "What would this change about the experience for viewers or fans?",
-                      "Creators", "What does this mean for the people making or distributing the work?"),
+    "Sports": ("Team strategy", "I'd adjust the game plan around the players the team can count on right now.",
+               "Fan outlook", "I'd use the next game to see whether this changes the way the team plays."),
+    "Business & Economy": ("Customers & workers", "I'd judge this by what it does to prices, jobs, and working conditions.",
+                           "Business outlook", "I'd look for the next financial results to show a measurable effect."),
+    "Local News": ("Residents", "I'd judge this by whether it makes daily life easier for the people who live nearby.",
+                   "City response", "I'd want local officials to spell out the next step and when residents will see it."),
+    "Science & Tech": ("Practical use", "I'd want to see a real-world use before counting on this.",
+                       "Limitations", "I'd put more weight on independent testing than on the initial claims."),
+    "Health": ("Patient impact", "I'd want to know whether the findings apply to patients like me.",
+               "Evidence gaps", "I'd look for stronger evidence before changing a health decision."),
+    "Crime & Public Safety": ("Community safety", "I'd prioritize clear, practical safety information for the people affected.",
+                              "Due process", "I'd wait for corroborating evidence before drawing conclusions about anyone involved."),
+    "World News": ("People affected", "I'd judge the response by what changes for people living through it.",
+                   "Regional response", "I'd watch for concrete steps from the governments involved before treating their statements as a shift in policy."),
+    "Entertainment": ("Audience", "I'd judge this by whether it improves what viewers or fans actually get.",
+                      "Creators", "I'd pay attention to how this changes the choices available to the people making the work."),
 }
-DEFAULT_READER_LENSES = ("Public impact", "Who is most directly affected by this development?",
-                         "Accountability", "What decision or response should I look for from the people involved?")
+DEFAULT_READER_LENSES = ("Public impact", "I'd give the most weight to how this affects the people directly involved.",
+                         "Accountability", "I'd judge the people involved by their next concrete action.")
 POLITICAL_READER_LENSES = ("Left", "I'd look at who bears the costs and whether this protects people with less power.",
                            "Right", "I'd look at who has the authority to act and what new costs or obligations this creates.")
 
@@ -249,11 +249,11 @@ def grounded_reader_lenses(facts, category, political):
         POLITICAL_READER_LENSES if political else READER_LENSES.get(category, DEFAULT_READER_LENSES)
     )
     return {
-        "LEFT": {"label": first, "talking_points": [left, facts[0]], "persona": True,
+        "LEFT": {"label": first, "talking_points": [left], "persona": True,
                  "perspective_badge": "news_lens_analysis"},
         "CENTER": {"label": "What we know", "talking_points": facts[:2],
                    "perspective_badge": "news_lens_analysis"},
-        "RIGHT": {"label": last, "talking_points": [right, facts[-1]], "persona": True,
+        "RIGHT": {"label": last, "talking_points": [right], "persona": True,
                   "perspective_badge": "news_lens_analysis"},
     }
 
@@ -323,7 +323,7 @@ def prepare_story(record, analysis=None):
                 continue
             evidence = entry.get("evidence")
             point = entry.get("point")
-            if isinstance(evidence, str) and evidence in facts and isinstance(point, str) and 15 <= len(point) <= 220:
+            if isinstance(evidence, str) and evidence in facts and isinstance(point, str) and 15 <= len(point) <= 220 and "?" not in point:
                 numbers = set(re.findall(r"\d+(?:[.,]\d+)*", point))
                 grounded_numbers = set(re.findall(r"\d+(?:[.,]\d+)*", evidence))
                 if not JUNK.search(point) and tokens(point) & tokens(evidence) and numbers <= grounded_numbers:
