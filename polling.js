@@ -112,16 +112,34 @@
     }
   }
 
+  function lensForVote(poll, choice) {
+    const card = document.getElementById(poll.dataset.storyId);
+    if (card?.dataset.perspectiveMode !== 'political') return null;
+    const question = poll.querySelector('.take-statement-text').textContent.trim();
+    const labels = [...poll.querySelectorAll('.vote-label')].map(label => label.textContent.trim());
+    // Map the policy in this specific poll, rather than treating Yes as a party.
+    if (/^Should the United States pursue military action to destroy parts of Iran as warned by Donald Trump\?$/i.test(question) &&
+        labels.join('|').toLowerCase() === 'yes|no') {
+      return choice === 'agree' ? 'RIGHT' : 'LEFT';
+    }
+    if (labels.join('|').toLowerCase() === 'require a vote|leave it to the president' &&
+        /\bCongress\b.*\bmilitary action\b.*\bIran\b/i.test(question)) {
+      return choice === 'agree' ? 'LEFT' : 'RIGHT';
+    }
+    return null;
+  }
+
   async function vote(poll, button) {
     const key = pollKey(poll);
     const choice = button.dataset.choice.toLowerCase();
     if (pending.has(key) || saved[key] || !['agree', 'disagree'].includes(choice)) return;
+    const lens = lensForVote(poll, choice);
     pending.add(key);
     render(poll, key, snapshots.get(key), 'Submitting your vote…');
     try {
       await request('/poll_votes', {
         story_id: key, choice_id: choice, choice_label: button.querySelector('.vote-label').textContent.trim(),
-        lens: 'center', voter_id: visitor
+        lens: lens?.toLowerCase() || 'center', voter_id: visitor
       }, 'return=minimal');
       saved[key] = choice;
       if (window.ynlRecordStoryInterest) window.ynlRecordStoryInterest(poll.dataset.storyId, 3);
@@ -149,6 +167,9 @@
       const panel = card.querySelector('.lens-drawer-panel');
       if (window.getComputedStyle(panel).display === 'none' || window.getComputedStyle(panel.parentElement).display === 'none') {
         window.toggleLensDrawer(card.id);
+      }
+      if (lens && saved[key] === choice && window.switchStoryPerspective) {
+        window.switchStoryPerspective(card.id, lens);
       }
     }
   }
